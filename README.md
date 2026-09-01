@@ -7,6 +7,7 @@ INKLAB 是一个面向《Splatoon 3》玩家的非官方配装研究工具。它
 ## 项目维护者
 
 - GitHub：[`wezoItachi`](https://github.com/wezoItachi)
+- 项目仓库：[`wezoItachi/inklab`](https://github.com/wezoItachi/inklab)（目前为私有开发仓库）
 
 ## 项目目标
 

@@ -1,7 +1,12 @@
 {
-  "name": "sites-project",
+  "name": "inklab",
   "version": "0.1.0",
   "private": true,
+  "author": "wezoItachi",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wezoItachi/inklab.git"
+  },
   "engines": {
     "node": ">=22.13.0"
   },
