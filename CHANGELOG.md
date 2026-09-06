@@ -1,5 +1,9 @@
 # Changelog
 
+## Unreleased
+
+- Removed the archived starter UI files after validation; recovery remains available from `dev-2026-09-06`.
+
 ## 2026-09-06 — Local Data & Export UI
 
 - Added a version-controlled INKLAB data registry with provenance and authorization status.

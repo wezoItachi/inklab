@@ -29,7 +29,6 @@
     "build/**",
     "dist/**",
     "coverage/**",
-    "deprecated/**",
     "next-env.d.ts"
   ],
   "rules": {
