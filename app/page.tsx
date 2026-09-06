@@ -1,68 +1,93 @@
 'use client';
 import {useCallback,useEffect,useMemo,useRef,useState} from 'react';
-import {Check,Copy,Footprints,Gamepad2,Layers,Lock,Pause,Play,Plus,RotateCcw,Search,Shirt,Sparkles,TrendingUp,Zap} from 'lucide-react';
-type A={id:string;name:string;short:string;group:string;color:string};
-const abilities:A[]=[
-['ssu','提升鱿鱼冲刺速度','游速','机动','#8B5CF6'],['rsu','提升人类移动速度','走速','机动','#14B8A6'],['qsj','缩短超级跳跃时间','快跳','机动','#38BDF8'],['ia','行动强化','行动','机动','#6366F1'],['ism','提升墨汁效率（主要武器）','主省','续航','#F97316'],['iss','提升墨汁效率（次要武器）','副省','续航','#F59E0B'],['iru','提升墨汁回复力','回墨','续航','#84CC16'],['subp','提升次要武器性能','副强','副武','#10B981'],['scu','提升特殊武器增加量','大招增','特殊','#EC4899'],['ss','降低特殊武器减少量','大招减','特殊','#F43F5E'],['spu','提升特殊武器性能','大招强','特殊','#D946EF'],['qr','缩短复活时间','复活','生存','#EF4444'],['inkres','减轻对手墨汁影响','粘脚','生存','#22C55E'],['subr','减轻次要武器影响','副防','生存','#06B6D4'],
-['og','最初冲刺','开局','头部限定','#A3E635'],['lde','最后冲刺','末冲','头部限定','#FACC15'],['tenacity','逆境强化','逆境','头部限定','#FB923C'],['comeback','回归','回归','头部限定','#2DD4BF'],
-['ninja','鱿鱼忍者','隐游','服装限定','#7C3AED'],['haunt','复仇','复仇','服装限定','#E11D48'],['thermal','热力墨汁','热墨','服装限定','#F97316'],['rp','提升复活惩罚','死惩','服装限定','#991B1B'],['doubler','追加装备能力增倍','倍增','服装限定','#65A30D'],
-['stealth','隐身跳跃','隐跳','鞋子限定','#0EA5E9'],['object','提升对物体攻击力','对物','鞋子限定','#F59E0B'],['drop','受身术','受身','鞋子限定','#EC4899']
-].map(([id,name,short,group,color])=>({id,name,short,group,color}));
-const groups=['全部','机动','续航','副武','特殊','生存','头部限定','服装限定','鞋子限定'];
-const abilityAliases:Record<string,string>={inkres:'安全鞋 粘脚 粘脚抗性',subr:'副防',subp:'副武增强 副强',ninja:'隐游',rp:'死惩',stealth:'隐跳',object:'对物',lde:'末冲',og:'开局强化'};
-const abilityAssetCodes:Record<string,string>={ssu:'SSU',rsu:'RSU',qsj:'QSJ',ia:'IA',ism:'ISM',iss:'ISS',iru:'IRU',subp:'BRU',scu:'SCU',ss:'SS',spu:'SPU',qr:'QR',inkres:'RES',subr:'SRU',og:'OG',lde:'LDE',tenacity:'T',comeback:'CB',ninja:'NS',haunt:'H',thermal:'TI',rp:'RP',doubler:'AD',stealth:'SJ',object:'OS',drop:'DR'};
-const presets=[
- {name:'前线缠斗',desc:'强调机动与快速返场',ids:['ssu','qsj','inkres'],slots:[['ssu',10],['ssu',3],['qsj',3],['inkres',3],['ism',10],['ism',3],['iru',3],['ssu',3],['qsj',10],['qsj',3],['subr',3],['ss',3]]},
- {name:'副武器压制',desc:'机器人双投关键配置',ids:['iss','iru','subr'],slots:[['iss',10],['iss',3],['iss',3],['iss',3],['iru',10],['iss',3],['iru',3],['subr',3],['qsj',10],['qsj',3],['inkres',3],['ss',3]]},
- {name:'大招循环',desc:'稳定积攒并保护大招槽',ids:['scu','ss','spu'],slots:[['scu',10],['scu',3],['ss',3],['qsj',3],['spu',10],['spu',3],['scu',3],['inkres',3],['qsj',10],['ss',3],['subr',3],['ssu',3]]}
-] as const;
-const initialSlots=presets[0].slots.map(x=>[...x]) as [string,number][];
-function Icon({a,small=false}:{a?:A;small?:boolean}){const code=a?abilityAssetCodes[a.id]:undefined;return <span className={'ink-icon '+(small?'small':'')}>{code?<img src={`/assets/abilities/${code}.avif`} alt=""/>:a?.short.slice(0,1)||'+'}</span>}
+import {Check,Copy,Download,Footprints,Gamepad2,Layers,Lock,Pause,Play,Plus,RotateCcw,Search,Sparkles,TrendingUp,Zap} from 'lucide-react';
+import {NativeSelect,NativeSelectOption} from '@/components/ui/native-select';
+import {DATA_VERSION,getWeapon,weapons,type Weapon} from '@/lib/weapons';
+import {calculateAbilityTotals,clonePresetSlots,presets,replaceLoadoutSlot,type LoadoutSlot} from '@/lib/loadouts';
+import {angleDifferenceDegrees,isRollJumpTiming,isRollReverse} from '@/lib/analysis';
+import {exportLoadoutPng,normalizeTags} from '@/lib/export-loadout-png';
+import {abilities,abilityAliases,abilityGroups,getAbilityAssetUrl,type Ability} from '@/lib/abilities';
+import {AbilityIcon} from '@/components/ability-icon';
+import {getWeaponParameterSnapshot} from '@/lib/weapon-parameter-status';
+import {ParameterStatusStrip} from '@/components/parameter-status-strip';
+import {decodeLoadoutQuery,encodeLoadoutQuery,LOCAL_LOADOUT_KEY} from '@/lib/loadout-share';
+const initialSlots=clonePresetSlots(0);
 export default function Home(){
  const[page,setPage]=useState<'lab'|'wiki'|'library'|'motion'>('lab'),[labMode,setLabMode]=useState<'planner'|'single'>('single');
- const[group,setGroup]=useState('全部'),[query,setQuery]=useState(''),[selected,setSelected]=useState(['ssu','qsj','inkres','ism']),[copied,setCopied]=useState(false);
- const[slots,setSlots]=useState<[string,number][]>(initialSlots),[focus,setFocus]=useState('iss'),[activePreset,setActivePreset]=useState(0);
+ const[weaponId,setWeaponId]=useState(weapons[0].id);
+ const[group,setGroup]=useState('全部'),[query,setQuery]=useState('');
+ const[cardTitle,setCardTitle]=useState(''),[cardAuthor,setCardAuthor]=useState(''),[cardTags,setCardTags]=useState(''),[cardNote,setCardNote]=useState('');
+ const[exportStatus,setExportStatus]=useState<'idle'|'working'|'saved'|'error'>('idle');
+ const[slots,setSlots]=useState<LoadoutSlot[]>(initialSlots),[focus,setFocus]=useState('iss'),[activePreset,setActivePreset]=useState(0);
+ const[selectedSlot,setSelectedSlot]=useState(0);
+ const[analysisApPreview,setAnalysisApPreview]=useState<number|null>(null);
+ const[shareStatus,setShareStatus]=useState<'idle'|'copied'|'error'>('idle');
+ const[localReady,setLocalReady]=useState(false);
  const filtered=abilities.filter(a=>(group==='全部'||a.group===group)&&(a.name.includes(query)||a.short.includes(query)||(abilityAliases[a.id]||'').includes(query)));
- const totals=useMemo(()=>{const m=new Map<string,number>();slots.forEach(([id,ap])=>m.set(id,(m.get(id)||0)+ap));return [...m].map(([id,ap])=>({a:abilities.find(x=>x.id===id),ap})).sort((a,b)=>b.ap-a.ap)},[slots]);
- const currentAp=totals.find(x=>x.a?.id===focus)?.ap||0;
- const applyPreset=(i:number)=>{setActivePreset(i);setSelected([...presets[i].ids]);setSlots(presets[i].slots.map(x=>[...x]) as [string,number][]);setFocus(presets[i].ids[0])};
- const toggle=(id:string)=>{setFocus(id);setSelected(s=>s.includes(id)?s:[...s,id])};
- const setSubAp=(id:string,ap:number)=>{const mains=slots.filter(x=>x[1]===10);const subs=slots.filter(x=>x[1]===3&&x[0]!==id);const count=Math.min(9,Math.round(ap/3));while(subs.length>9-count)subs.pop();while(subs.length<9-count)subs.push(['qsj',3]);setSlots([...mains,...subs,...Array.from({length:count},()=>[id,3] as [string,number])]);setSelected(s=>s.includes(id)?s:[...s,id])};
+ const totals=useMemo(()=>calculateAbilityTotals(slots).map(({id,ap})=>({a:abilities.find(x=>x.id===id),ap})),[slots]);
+ const currentAp=analysisApPreview??totals.find(x=>x.a?.id===focus)?.ap??0;
+ const weapon=getWeapon(weaponId);
+ const parameterSnapshot=getWeaponParameterSnapshot(weapon);
+ const currentPresetName=presets[activePreset]?.name??'自定义配装';
+ useEffect(()=>{
+  const timer=window.setTimeout(()=>{
+   const weaponIds=new Set(weapons.map(({id})=>id)),abilityIds=new Set(abilities.map(({id})=>id));
+   const fromUrl=decodeLoadoutQuery(window.location.search,weaponIds,abilityIds);
+   let restored=fromUrl;
+   if(!restored){try{const saved=localStorage.getItem(LOCAL_LOADOUT_KEY);if(saved)restored=decodeLoadoutQuery(saved,weaponIds,abilityIds)}catch{/* Browser storage can be unavailable in privacy modes. */}}
+   if(restored){setWeaponId(restored.weaponId);setSlots(restored.slots);setActivePreset(-1);setFocus(restored.slots[0][0])}
+   setLocalReady(true);
+  },0);
+  return()=>window.clearTimeout(timer);
+ },[]);
+ useEffect(()=>{if(localReady)try{localStorage.setItem(LOCAL_LOADOUT_KEY,encodeLoadoutQuery({weaponId,slots}))}catch{/* Keep the editor usable when storage is unavailable. */}},[localReady,slots,weaponId]);
+ const applyPreset=(i:number)=>{setActivePreset(i);setSlots(clonePresetSlots(i));setSelectedSlot(0);setFocus(presets[i].ids[0]);setAnalysisApPreview(null)};
+ const selectAnalysis=(id:string)=>{setFocus(id);setAnalysisApPreview(null)};
+ const replaceSelectedSlot=(id:string)=>{setSlots(current=>replaceLoadoutSlot(current,selectedSlot,id));setActivePreset(-1)};
+ const copyShareLink=async()=>{const query=encodeLoadoutQuery({weaponId,slots}),url=`${window.location.origin}${window.location.pathname}?${query}`;window.history.replaceState(null,'',url);try{await navigator.clipboard.writeText(url);setShareStatus('copied');setTimeout(()=>setShareStatus('idle'),1800)}catch{setShareStatus('error')}};
+ const savePng=async()=>{
+  setExportStatus('working');
+  const title=cardTitle.trim()||`${weapon.name} · ${currentPresetName}`;
+  const tags=normalizeTags(cardTags);if(!tags.length)tags.push(weapon.family,currentPresetName,'57AP');
+  try{await exportLoadoutPng({title,author:cardAuthor.trim()||'匿名玩家',tags,note:cardNote.trim()||`围绕 ${weapon.name} 的 ${currentPresetName} 方向继续微调。`,version:DATA_VERSION,weapon:{name:weapon.name,badge:weapon.badge,family:weapon.family,sub:weapon.sub.name,special:weapon.special},slots:slots.map(([id,ap])=>{const ability=abilities.find(item=>item.id===id);return{short:ability?.short||id,ap,iconUrl:getAbilityAssetUrl(id)}}),totals:totals.map(({a,ap})=>({short:a?.short||'未知',ap,iconUrl:a?getAbilityAssetUrl(a.id):undefined}))});setExportStatus('saved');setTimeout(()=>setExportStatus('idle'),1800)}catch{setExportStatus('error')}
+ };
  return <main><header className="topbar"><div className="brand"><span>S3</span>INKLAB <b>配装实验室</b></div><nav><button className={page==='lab'?'active':''} onClick={()=>{setPage('lab');setLabMode('single')}}>实验室</button><button className={page==='wiki'?'active':''} onClick={()=>setPage('wiki')}>能力百科</button><button className={page==='library'?'active':''} onClick={()=>setPage('library')}>玩家方案</button><button className={page==='motion'?'active':''} onClick={()=>setPage('motion')}>操作实验</button></nav><button className="ghost"><Sparkles size={15}/> 原型模式</button></header>
  {page==='wiki'?<AbilityWiki focus={focus} setFocus={setFocus}/>:page==='library'?<SchemeLibrary/>:page==='motion'?<MotionLab/>:<>
  <div className="lab-switch"><button className={labMode==='single'?'active':''} onClick={()=>setLabMode('single')}><Zap size={15}/> 单套配装分析</button><button className={labMode==='planner'?'active':''} onClick={()=>setLabMode('planner')}><Layers size={15}/> 通用装备规划</button></div>
- {labMode==='planner'?<UniversalPlanner/>:<section className="workspace analyzer-workspace"><div className="intro"><div><em>WEAPON LAB / 001</em><h1>武器配装分析器</h1><p>左侧调整实验条件，右侧读取与当前武器绑定的实际收益。</p></div><button className="primary compact" onClick={()=>{setCopied(true);setTimeout(()=>setCopied(false),1400)}}>{copied?<Check size={15}/>:<Copy size={15}/>} {copied?'已复制':'分享方案'}</button></div>
+ {labMode==='planner'?<UniversalPlanner/>:<section className="workspace analyzer-workspace"><div className="intro"><div><em>WEAPON LAB / 001</em><h1>武器配装分析器</h1><p>左侧调整实验条件，右侧读取与当前武器绑定的实际收益。</p></div><button className="primary compact" disabled={exportStatus==='working'} onClick={savePng}>{exportStatus==='saved'?<Check size={15}/>:<Download size={15}/>} {exportStatus==='working'?'正在生成':exportStatus==='saved'?'已保存 PNG':exportStatus==='error'?'重试保存':'保存配装图'}</button></div>
  <div className="layout analyzer-layout"><section className="builder control-column">
-  <Title n="01" text="要分析的武器"><button><Search size={14}/>搜索</button></Title><div className="weapon"><div className="weapon-pic">89</div><div><small>副武器：机器人炸弹 · 特殊：诱饵烟花</small><h2>N-ZAP89</h2><p>射击枪 · 支援 / 前中卫</p></div><button>更换</button></div>
-  <Title n="02" text="快速配装"><button onClick={()=>applyPreset(0)}><RotateCcw size={14}/>重置</button></Title><div className="presets vertical">{presets.map((p,i)=><button className={activePreset===i?'picked':''} key={p.name} onClick={()=>applyPreset(i)}><b>0{i+1}</b><div><strong>{p.name}</strong><small>{p.desc}</small></div>{activePreset===i?<Check size={17}/>:<Plus size={17}/>}</button>)}</div>
-  <div className="loadout-title"><h3>配装 1</h3><b>57 / 57 AP</b></div><div className="gear-stack compact-gears">{['头部','服装','鞋子'].map((g,r)=><div className="gear" key={g}><div><span>{['帽','衣','鞋'][r]}</span><small>{g}</small></div><section>{slots.slice(r*4,r*4+4).map(([id,ap],i)=><button className={i===0?'main':''} key={i} onClick={()=>setFocus(id)}><Icon small a={abilities.find(a=>a.id===id)}/><em>{ap}</em></button>)}</section></div>)}</div>
-  <Title n="03" text="石头池"><small>点击查看右侧分析</small></Title><div className="filter mini-filter"><div>{groups.map(g=><button key={g} className={group===g?'active':''} onClick={()=>setGroup(g)}>{g}</button>)}</div><label><Search size={14}/><input value={query} onChange={e=>setQuery(e.target.value)} placeholder="搜索"/></label></div>
-  <div className="stone-pool">{filtered.map(a=><button title={a.name} key={a.id} className={focus===a.id?'focused':''} onClick={()=>toggle(a.id)}><Icon a={a}/><small>{a.short}</small></button>)}</div>
+  <Title n="01" text="要分析的武器"><small>6 把代表武器</small></Title><div className="weapon"><div className="weapon-pic">{weapon.badge}</div><div><small>副武器：{weapon.sub.name} · 特殊：{weapon.special}</small><h2>{weapon.name}</h2><p>{weapon.family} · {weapon.role}</p></div><NativeSelect className="weapon-select" value={weaponId} onChange={event=>setWeaponId(event.target.value)} aria-label="更换武器">{weapons.map(item=><NativeSelectOption key={item.id} value={item.id}>{item.name}</NativeSelectOption>)}</NativeSelect></div>
+  <Title n="02" text="快速配装"><button onClick={()=>applyPreset(weapon.recommendedPreset)}><RotateCcw size={14}/>应用当前武器建议</button></Title><div className="presets vertical">{presets.map((p,i)=><button className={activePreset===i?'picked':''} key={p.name} onClick={()=>applyPreset(i)}><b>0{i+1}</b><div><strong>{p.name}{weapon.recommendedPreset===i?' · 推荐':''}</strong><small>{p.desc}</small></div>{activePreset===i?<Check size={17}/>:<Plus size={17}/>}</button>)}</div>
+  <div className="loadout-title"><div><h3>{activePreset<0?'自定义配装':'配装 1'}</h3><small>{localReady?'已自动保存在此浏览器':'正在读取本机配装'}</small></div><div className="loadout-actions"><button onClick={copyShareLink}><Copy size={13}/>{shareStatus==='copied'?'链接已复制':shareStatus==='error'?'复制失败':'复制分享链接'}</button><b>57 / 57 AP</b></div></div><div className="gear-stack compact-gears">{['头部','服装','鞋子'].map((g,r)=><div className="gear" key={g}><div><span>{['帽','衣','鞋'][r]}</span><small>{g}</small></div><section>{slots.slice(r*4,r*4+4).map(([id,ap],i)=>{const index=r*4+i;return <button aria-pressed={selectedSlot===index} title={`选择${g}${i===0?'主技能':'小技能'}槽位`} className={`${i===0?'main ':''}${selectedSlot===index?'selected-slot':''}`} key={index} onClick={()=>setSelectedSlot(index)}><AbilityIcon small ability={abilities.find(a=>a.id===id)}/><em>{ap}</em></button>})}</section></div>)}</div>
+  <Title n="03" text="石头池"><small>已选第 {selectedSlot+1} 槽 · 点击石头直接替换</small></Title><div className="filter mini-filter"><div>{abilityGroups.map(g=><button key={g} className={group===g?'active':''} onClick={()=>setGroup(g)}>{g}</button>)}</div><label><Search size={14}/><input value={query} onChange={e=>setQuery(e.target.value)} placeholder="搜索"/></label></div>
+  <div className="stone-pool">{filtered.map(a=><button title={`用${a.name}替换第 ${selectedSlot+1} 槽`} key={a.id} onClick={()=>replaceSelectedSlot(a.id)}><AbilityIcon ability={a}/><small>{a.short}</small></button>)}</div>
  </section>
- <aside className="analysis-column"><div className="analysis-head"><div><small>LIVE WEAPON ANALYSIS</small><h2>N-ZAP89 的配装结果</h2></div><span>游戏版本 11.3</span></div>
-  <div className="context-strip"><div><b>主要武器</b><span>N-ZAP89</span></div><div><b>次要武器</b><span>机器人炸弹</span></div><div><b>特殊武器</b><span>诱饵烟花</span></div></div>
-  <EffectPanel id={focus} ap={currentAp} setAp={ap=>setSubAp(focus,ap)}/>
-  <div className="analysis-summary"><h3>当前能力构成</h3><div>{totals.map(x=><button key={x.a?.id} onClick={()=>setFocus(x.a?.id||'iss')}><Icon small a={x.a}/><span>{x.a?.short}</span><b>{x.ap}AP</b></button>)}</div></div>
-  <div className="accordions">{['主要武器效率与射击数','次要武器实际影响','特殊武器循环','移动与返场','生存与抗性','其他能力'].map((x,i)=><details open={i===1} key={x}><summary><span>{x}</span><b>{i===1?'机器人炸弹 · 关键节点':''}</b></summary><div>{i===1?'已根据当前副武器自动筛选：副省影响耗墨量；副武增强影响投掷距离与相关性能。选择左侧石头即可更新这里的结论。':'展开后将展示与当前武器相关的数值、关键阈值、边际收益和机会成本。'}</div></details>)}</div>
-  <div className="notice"><Check size={15}/><p><b>分析上下文已锁定</b><br/>所有描述均以 N-ZAP89 当前套装与 57AP 配装为前提。</p></div><p className="note">效果数值为原型演示 · 正式版将绑定当前版本数据</p>
+ <aside className="analysis-column"><div className="analysis-head"><div><small>LIVE WEAPON ANALYSIS</small><h2>{weapon.name} 的配装结果</h2></div><span>游戏版本 {DATA_VERSION}</span></div>
+  <div className="context-strip"><div><b>主要武器</b><span>{weapon.name}</span></div><div><b>次要武器</b><span>{weapon.sub.name}</span></div><div><b>特殊武器</b><span>{weapon.special}</span></div></div>
+  <ParameterStatusStrip snapshot={parameterSnapshot}/>
+  <details className="export-settings export-settings-collapsible"><summary><div><Download size={16}/><span><b>配装图片信息</b><small>可选 · 留空会自动生成</small></span></div><em>展开填写</em></summary><div className="export-fields"><label>标题<input maxLength={30} value={cardTitle} onChange={e=>setCardTitle(e.target.value)} placeholder={`${weapon.name} · ${currentPresetName}`}/></label><label>作者<input maxLength={18} value={cardAuthor} onChange={e=>setCardAuthor(e.target.value)} placeholder="匿名玩家"/></label><label className="wide">标签<input maxLength={40} value={cardTags} onChange={e=>setCardTags(e.target.value)} placeholder={`${weapon.family}，${currentPresetName}，57AP`}/></label><label className="wide">一句话<textarea maxLength={70} rows={2} value={cardNote} onChange={e=>setCardNote(e.target.value)} placeholder={`围绕 ${weapon.name} 的 ${currentPresetName} 方向继续微调。`}/></label><p>这些内容只用于生成本机 PNG，不会上传服务器。</p></div></details>
+  <div className="analysis-summary"><h3>选择要分析的能力 <small>仅影响右侧说明，不修改配装</small></h3><div>{totals.map(x=><button aria-pressed={focus===x.a?.id} className={focus===x.a?.id?'selected-analysis':''} key={x.a?.id} onClick={()=>selectAnalysis(x.a?.id||'iss')}><AbilityIcon small ability={x.a}/><span>{x.a?.short}</span><b>{x.ap}AP</b></button>)}</div></div>
+  <EffectPanel weapon={weapon} id={focus} ap={currentAp} setAp={setAnalysisApPreview}/>
+  <div className="accordions">{['主要武器效率与射击数','次要武器实际影响','特殊武器循环','移动与返场','生存与抗性','其他能力'].map((x,i)=><details open={i===1} key={x}><summary><span>{x}</span><b>{i===1?weapon.sub.name+' · 当前套装':''}</b></summary><div>{i===1?`已根据 ${weapon.sub.name} 自动筛选：副省以基础耗墨 ${weapon.sub.baseInkCost}% 为计算入口；副武增强影响${weapon.sub.subPowerEffect}。`:'正式参数导入后，将在这里展示当前武器的数值、关键阈值、边际收益和机会成本。'}</div></details>)}</div>
+  <div className="notice"><Check size={15}/><p><b>分析上下文已由 weaponId 驱动</b><br/>当前结论以 {weapon.name}、{weapon.sub.name}、{weapon.special} 与现有 57AP 配装为前提。</p></div><p className="note">套装关系已核对 · AP 效果曲线仍为原型，未验证处不提供攻略结论</p>
  </aside></div></section>}</>}<footer className="legal-footer"><b>INKLAB 是非官方玩家工具</b><span>Splatoon 及游戏内能力图标的商标与版权归 Nintendo 所有。本站使用官方图标仅用于能力辨认，与 Nintendo 无隶属、授权或合作关系。</span><a href="https://github.com/sendou-ink/assets" target="_blank" rel="noreferrer">图标来源</a><span className="weapon-data-credit"><a href="https://leanny.github.io/splat3/" target="_blank" rel="noreferrer">武器数据：Leanny</a><em>Ver. 11.3.0</em></span></footer></main>
 }
 function Title({n,text,children}:{n:string;text:string;children:React.ReactNode}){return <div className="title"><div><span>{n}</span><h3>{text}</h3></div>{children}</div>}
-function EffectPanel({id,ap,setAp}:{id:string;ap:number;setAp:(ap:number)=>void}){
+function EffectPanel({weapon,id,ap,setAp}:{weapon:Weapon;id:string;ap:number;setAp:(ap:number)=>void}){
  const a=abilities.find(x=>x.id===id);
  const isSub=id==='iss';
  const isSubPower=id==='subp';
  return <section className="effect-panel"><div className="effect-head"><div><span>03</span><h3>{a?.short} 对当前武器有什么用？</h3></div><b><Zap size={13}/> 武器上下文</b></div>
- {isSub?<><div className="effect-main"><Icon a={a}/><div><small>N-ZAP89 · 机器人炸弹</small><strong>降低每次投掷的墨水消耗</strong><p>当前 {ap}AP：从基础 55% 降至约 {ap>=12?'49.6':ap>=6?'51.9':ap>=3?'53.4':'55.0'}%，{ap>=12?'已解锁满墨连续投掷 2 个。':'尚未达到连续投掷 2 个的关键点。'}</p></div><span className={ap>=12?'hit':''}>{ap>=12?'阈值达成':'距阈值 '+Math.max(0,12-ap)+'AP'}</span></div><div className="breakpoints">{[3,6,12].map(n=><button className={ap===n?'active':''} onClick={()=>setAp(n)} key={n}><b>{n}AP</b><small>{n===3?'轻量续航':n===6?'频繁探路':'机器人双投'}</small></button>)}</div><p className="judgement"><TrendingUp size={14}/><b>科研结论：</b>3AP 的机会成本最低；如果目标是连续投掷两个机器人，直接规划到 12AP，中间档位主要改善投掷后的主武器余墨。</p></>:isSubPower?<SubPowerPanel a={a} ap={ap} setAp={setAp}/>:<div className="effect-main generic"><Icon a={a}/><div><small>当前配置 · {ap}AP</small><strong>{a?.name}</strong><p>正式版会在这里显示与 N-ZAP89 主武器、副武器和特殊武器绑定的实际数值、下一个关键节点及边际收益。</p></div></div>}
+ {isSub?<><div className="effect-main"><AbilityIcon ability={a}/><div><small>{weapon.name} · {weapon.sub.name}</small><strong>降低每次使用副武器的墨水消耗</strong><p>当前 {ap}AP；{weapon.sub.name} 的基础耗墨为 {weapon.sub.baseInkCost}%。精确曲线与连续使用阈值将在参数层验证后显示。</p></div><span>曲线待验证</span></div><div className="breakpoints">{[3,6,12].map(n=><button className={ap===n?'active':''} onClick={()=>setAp(n)} key={n}><b>{n}AP</b><small>{n===3?'轻量投入':n===6?'平衡投入':'专项投入'}</small></button>)}</div><p className="judgement"><TrendingUp size={14}/><b>当前结论：</b>武器切换已经更新基础耗墨与副武语境；在公式和字段完成双重核对前，不把演示档位写成正式攻略。</p></>:isSubPower?<SubPowerPanel weapon={weapon} a={a} ap={ap} setAp={setAp}/>:<div className="effect-main generic"><AbilityIcon ability={a}/><div><small>{weapon.name} · 当前 {ap}AP</small><strong>{a?.name}</strong><p>当前分析上下文已绑定 {weapon.sub.name} 与 {weapon.special}；此能力的正式参数仍待导入。</p></div></div>}
  </section>
 }
 
-function SubPowerPanel({a,ap,setAp}:{a?:A;ap:number;setAp:(ap:number)=>void}){
- return <><div className="effect-main sub-context"><Icon a={a}/><div><small>N-ZAP89 · 当前副武器：机器人炸弹</small><strong>让机器人炸弹投得更远</strong><p>副武增强提高投掷初速度，因此落点距离增加；它不会强化机器人锁敌、追踪移动或爆炸伤害。</p></div><span>影响 1 项参数</span></div>
- <div className="impact-matrix"><div className="yes"><Check size={14}/><span><b>投掷距离</b><small>提升 · 更容易越过掩体布置机器人</small></span></div><div><b>—</b><span><strong>索敌与追踪</strong><small>不变 · 发现范围和追踪速度不增加</small></span></div><div><b>—</b><span><strong>爆炸范围</strong><small>不变</small></span></div><div><b>—</b><span><strong>爆炸伤害</strong><small>不变 · 不改变确杀线</small></span></div></div>
+function SubPowerPanel({weapon,a,ap,setAp}:{weapon:Weapon;a?:Ability;ap:number;setAp:(ap:number)=>void}){
+ return <><div className="effect-main sub-context"><AbilityIcon ability={a}/><div><small>{weapon.name} · 当前副武器：{weapon.sub.name}</small><strong>提升{weapon.sub.subPowerEffect}</strong><p>副武器性能提升的作用会随副武器改变；切换武器后，本面板不会沿用机器人炸弹的说明。</p></div><span>套装已联动</span></div>
+ <div className="impact-matrix"><div className="yes"><Check size={14}/><span><b>{weapon.sub.subPowerEffect}</b><small>提升 · 具体幅度待参数层验证</small></span></div>{weapon.sub.subPowerDoesNotChange.map(item=><div key={item}><b>—</b><span><strong>{item}</strong><small>不变</small></span></div>)}</div>
  <div className="breakpoints">{[3,6,10].map(n=><button className={ap===n?'active':''} onClick={()=>setAp(n)} key={n}><b>{n}AP</b><small>{n===3?'轻量延伸':n===6?'常用试投':'主技能投入'}</small></button>)}</div>
- <div className="sub-compare"><b>同主武器分支</b><span><strong>N-ZAP85 · 吸盘炸弹</strong></span><span><Check size={13}/> 投掷距离提升</span><span>— 爆炸范围与伤害不变</span></div>
- <p className="judgement"><TrendingUp size={14}/><b>配装建议：</b>机器人炸弹的副武增强属于“落点与施压角度”投资，不是伤害投资。是否值得带，应结合地图掩体和你常用的投掷位置判断。</p></>
+ <div className="sub-compare"><b>当前套装</b><span><strong>{weapon.name} · {weapon.sub.name}</strong></span><span><Check size={13}/> {weapon.sub.subPowerEffect}</span><span>— {weapon.sub.subPowerDoesNotChange.join('、')}</span></div>
+ <p className="judgement"><TrendingUp size={14}/><b>配装建议：</b>先根据你实际使用 {weapon.sub.name} 的频率判断是否投入；精确 AP 收益将在版本参数通过测试后补充。</p></>
 }
 
 const planningWeapons=[
@@ -98,8 +123,8 @@ function AbilityWiki({focus,setFocus}:{focus:string;setFocus:(id:string)=>void})
  const current=abilities.find(a=>a.id===focus)||abilities[0];
  return <section className="workspace wiki-page"><div className="intro"><div><em>ABILITY INDEX / 003</em><h1>能力百科</h1><p>先按玩法与装备规则缩小范围，再查看它对具体武器的实际意义。</p></div><label className="wiki-search"><Search size={15}/><input value={q} onChange={e=>setQ(e.target.value)} placeholder="搜索能力名称"/></label></div>
  <div className="tag-board">{tags.map(t=><button key={t} className={(t==='全部'&&!filters.length)||filters.includes(t)?'active':''} onClick={()=>toggle(t)}>{t}</button>)}</div>
- <div className="wiki-grid"><section><div className="wiki-count"><b>{shown.length}</b> 个能力符合条件 <span>可组合多个标签</span></div><div className="wiki-abilities">{shown.map(a=><button className={focus===a.id?'active':''} onClick={()=>setFocus(a.id)} key={a.id}><Icon a={a}/><div><b>{a.short}</b><small>{a.name}</small></div><Plus size={14}/></button>)}</div></section>
- <aside className="ability-detail"><div className="ability-name"><Icon a={current}/><div><small>{current.group} / 当前选中</small><h2>{current.name}</h2></div></div><div className="detail-tags"><span>可作为小技能</span><span>{current.group}</span><span>存在边际收益</span></div><div className="wiki-callout"><b>对 N-ZAP89 的意义</b><p>{current.id==='iss'?'降低机器人炸弹耗墨，并增加投掷后可以继续射击的次数。若目标是双投，需要直接规划到关键 AP 档位。':'选择武器后，这里将转换成实际动作、阈值与机会成本，而不只显示抽象参数。'}</p></div><h3>常见投入方式</h3><div className="ap-recipes"><button><b>3AP</b><span>轻量投入</span><small>占用一颗小石头</small></button><button className="active"><b>6AP</b><span>平衡投入</span><small>适合通用装备</small></button><button><b>专项</b><span>围绕临界点</span><small>按武器计算</small></button></div><button className="primary"><Zap size={15}/>围绕此能力进入实验室</button></aside></div></section>
+ <div className="wiki-grid"><section><div className="wiki-count"><b>{shown.length}</b> 个能力符合条件 <span>可组合多个标签</span></div><div className="wiki-abilities">{shown.map(a=><button className={focus===a.id?'active':''} onClick={()=>setFocus(a.id)} key={a.id}><AbilityIcon ability={a}/><div><b>{a.short}</b><small>{a.name}</small></div><Plus size={14}/></button>)}</div></section>
+ <aside className="ability-detail"><div className="ability-name"><AbilityIcon ability={current}/><div><small>{current.group} / 当前选中</small><h2>{current.name}</h2></div></div><div className="detail-tags"><span>可作为小技能</span><span>{current.group}</span><span>存在边际收益</span></div><div className="wiki-callout"><b>对 N-ZAP89 的意义</b><p>{current.id==='iss'?'降低机器人炸弹耗墨，并增加投掷后可以继续射击的次数。若目标是双投，需要直接规划到关键 AP 档位。':'选择武器后，这里将转换成实际动作、阈值与机会成本，而不只显示抽象参数。'}</p></div><h3>常见投入方式</h3><div className="ap-recipes"><button><b>3AP</b><span>轻量投入</span><small>占用一颗小石头</small></button><button className="active"><b>6AP</b><span>平衡投入</span><small>适合通用装备</small></button><button><b>专项</b><span>围绕临界点</span><small>按武器计算</small></button></div><button className="primary"><Zap size={15}/>围绕此能力进入实验室</button></aside></div></section>
 }
 
 function SchemeLibrary(){
@@ -110,7 +135,7 @@ function SchemeLibrary(){
   <div className="build-card-title"><div><span>副武压制</span><span>前中卫</span><span>个人手感</span></div><small>标签自动组成标题</small></div>
   <div className="build-meta"><b>@墨鱼实验员</b><span>方案 #0042</span><time>2026/09/01</time></div>
   <div className="build-weapon"><span className="weapon-badge">89</span><div><small>使用武器</small><b>N-ZAP89</b><em>机器人炸弹 · 诱饵烟花</em></div></div>
-  <div className="submitted-gears">{['头部','服装','鞋子'].map((part,row)=><div className="submitted-gear" key={part}><div className={'gear-reference '+(row===2?'with-reference':'')}><span>{row===0?'帽':row===1?'衣':'鞋'}</span><small>{row===2?'附装备参考':part+'外观未选择'}</small></div><section>{sampleSlots[row].map((id,i)=><div className={i===0?'main':''} key={i}><Icon a={abilities.find(a=>a.id===id)} small/><em>{i===0?10:3}</em></div>)}</section></div>)}</div>
+ <div className="submitted-gears">{['头部','服装','鞋子'].map((part,row)=><div className="submitted-gear" key={part}><div className={'gear-reference '+(row===2?'with-reference':'')}><span>{row===0?'帽':row===1?'衣':'鞋'}</span><small>{row===2?'附装备参考':part+'外观未选择'}</small></div><section>{sampleSlots[row].map((id,i)=><div className={i===0?'main':''} key={i}><AbilityIcon ability={abilities.find(a=>a.id===id)} small/><em>{i===0?10:3}</em></div>)}</section></div>)}</div>
   <div className="author-note"><b>作者实测</b><p>习惯补一点人速来调整横向拉枪；核心仍是机器人炸弹的压制与续航，鞋子作为我的通用单件。</p></div>
   <div className="build-actions"><button><Copy size={14}/> 复制结构</button><button className="lab-action"><Zap size={14}/> 打开实验室微调</button></div>
  </article>
@@ -122,23 +147,23 @@ function MotionLab(){
  const[stick,setStick]=useState({x:0,y:0}),stickRef=useRef({x:0,y:0});
  const[trail,setTrail]=useState<MotionPoint[]>([{x:50,y:78}]),posRef=useRef({x:50,y:78});
  const[running,setRunning]=useState(true),runningRef=useRef(true);
- const[controller,setController]=useState('未连接'),[status,setStatus]=useState('先保持一个方向，再快速反向');
+ const[controller,setController]=useState('未连接'),[status,setStatus]=useState('先保持一个方向，再快速反向'),[source,setSource]=useState('键鼠');
  const[stats,setStats]=useState({angle:0,strength:0,reverse:0,delay:0,attempts:0,success:0});
  const previousRef=useRef({x:0,y:-1,time:0}),reverseAtRef=useRef(0),sourceRef=useRef('键鼠');
  const setInput=useCallback((rawX:number,rawY:number,source='键鼠')=>{
   const length=Math.hypot(rawX,rawY),scale=length>1?1/length:1;
   const x=rawX*scale,y=rawY*scale,magnitude=Math.min(1,length);
-  stickRef.current={x,y};setStick({x,y});sourceRef.current=source;
+  stickRef.current={x,y};setStick({x,y});sourceRef.current=source;setSource(source);
   if(magnitude>.5){
-   const prev=previousRef.current,prevLength=Math.hypot(prev.x,prev.y)||1;
-   const difference=Math.acos(Math.max(-1,Math.min(1,(x*prev.x+y*prev.y)/(magnitude*prevLength))))*180/Math.PI;
-   if(difference>=120&&Date.now()-prev.time<900){reverseAtRef.current=Date.now();setStatus('反向完成：现在按跳跃');}
+   const prev=previousRef.current;
+   const difference=angleDifferenceDegrees(prev,{x,y});
+   if(isRollReverse(difference,Date.now()-prev.time)){reverseAtRef.current=Date.now();setStatus('反向完成：现在按跳跃');}
    previousRef.current={x,y,time:Date.now()};
    setStats(s=>({...s,angle:(Math.atan2(x,-y)*180/Math.PI+360)%360,strength:magnitude*100,reverse:difference}));
   }else setStats(s=>({...s,strength:magnitude*100}));
  },[]);
  const jump=useCallback(()=>{
-  const delay=reverseAtRef.current?Date.now()-reverseAtRef.current:0,success=delay>0&&delay<=350;
+   const delay=reverseAtRef.current?Date.now()-reverseAtRef.current:0,success=isRollJumpTiming(delay);
   setStats(s=>({...s,delay,attempts:s.attempts+1,success:s.success+(success?1:0)}));
   setStatus(success?'滚行时机命中！继续尝试稳定复现':'未命中：先快速反向，再于 350ms 内跳跃');reverseAtRef.current=0;
  },[]);
@@ -160,12 +185,13 @@ function MotionLab(){
  const pointer=(e:React.PointerEvent<HTMLDivElement>)=>{const r=e.currentTarget.getBoundingClientRect();setInput((e.clientX-r.left-r.width/2)/(r.width*.42),(e.clientY-r.top-r.height/2)/(r.height*.42),'触摸 / 鼠标')};
  const reset=()=>{posRef.current={x:50,y:78};setTrail([{x:50,y:78}]);setStats({angle:0,strength:0,reverse:0,delay:0,attempts:0,success:0});setStatus('先保持一个方向，再快速反向')};
  const points=trail.map(p=>`${p.x},${p.y}`).join(' ');
+ const currentPosition=trail.at(-1)??{x:50,y:78};
  return <section className="workspace motion-page"><div className="intro"><div><em>CONTROL LAB / EXPERIMENT 01</em><h1>鱿鱼滚行练习器</h1><p>观察摇杆反向与跳跃时机，把操作手感转换成可以复盘的轨迹。</p></div><span className="version-pill">独立实验原型</span></div>
- <div className="motion-grid"><section className="motion-controls"><Title n="01" text="输入设备"><small>三种方式任选</small></Title><div className="device-card"><Gamepad2/><div><b>{controller==='未连接'?'连接 PC 手柄即可自动识别':'手柄已连接'}</b><small title={controller}>{controller==='未连接'?'也可直接使用 WASD / 方向键':controller}</small></div><span>{sourceRef.current}</span></div>
+ <div className="motion-grid"><section className="motion-controls"><Title n="01" text="输入设备"><small>三种方式任选</small></Title><div className="device-card"><Gamepad2/><div><b>{controller==='未连接'?'连接 PC 手柄即可自动识别':'手柄已连接'}</b><small title={controller}>{controller==='未连接'?'也可直接使用 WASD / 方向键':controller}</small></div><span>{source}</span></div>
  <Title n="02" text="模拟摇杆"><small>拖动圆盘，Space / 手柄 A 跳跃</small></Title><div className="stick-zone" onPointerDown={e=>{e.currentTarget.setPointerCapture(e.pointerId);pointer(e)}} onPointerMove={e=>{if(e.currentTarget.hasPointerCapture(e.pointerId))pointer(e)}} onPointerUp={e=>{e.currentTarget.releasePointerCapture(e.pointerId);setInput(0,0,'触摸 / 鼠标')}}><i/><b style={{transform:`translate(calc(-50% + ${stick.x*82}px),calc(-50% + ${stick.y*82}px))`}}><span/></b></div>
  <div className={'motion-status '+(status.startsWith('滚行时机命中')?'success':status.startsWith('未命中')?'error':'')}><span>{status.startsWith('滚行时机命中')?'✓':status.startsWith('未命中')?'×':'→'}</span><div><b>{status}</b><small>建议：先向前推住，再在一次干净动作中反拉并跳跃</small></div></div><button className="primary jump-button" onClick={jump}>模拟跳跃 <kbd>Space</kbd></button></section>
  <aside className="motion-result"><div className="motion-head"><div><small>ESTIMATED MOVEMENT PATH</small><h2>行动轨迹</h2></div><div><button onClick={()=>setRunning(v=>!v)}>{running?<Pause size={14}/>:<Play size={14}/>} {running?'暂停':'继续'}</button><button onClick={reset}><RotateCcw size={14}/> 重置</button></div></div>
- <div className="path-board"><svg viewBox="0 0 100 100" preserveAspectRatio="none" aria-label="估算行动轨迹"><defs><pattern id="motion-grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="currentColor" strokeWidth=".18"/></pattern></defs><rect width="100" height="100" fill="url(#motion-grid)"/><line x1="50" y1="0" x2="50" y2="100"/><line x1="0" y1="50" x2="100" y2="50"/><polyline points={points} fill="none"/><circle cx={posRef.current.x} cy={posRef.current.y} r="1.8"/></svg><span>起点</span><b>当前朝向 {Math.round(stats.angle)}°</b></div>
+ <div className="path-board"><svg viewBox="0 0 100 100" preserveAspectRatio="none" aria-label="估算行动轨迹"><defs><pattern id="motion-grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="currentColor" strokeWidth=".18"/></pattern></defs><rect width="100" height="100" fill="url(#motion-grid)"/><line x1="50" y1="0" x2="50" y2="100"/><line x1="0" y1="50" x2="100" y2="50"/><polyline points={points} fill="none"/><circle cx={currentPosition.x} cy={currentPosition.y} r="1.8"/></svg><span>起点</span><b>当前朝向 {Math.round(stats.angle)}°</b></div>
  <div className="motion-metrics"><div><span>摇杆力度</span><b>{Math.round(stats.strength)}%</b><i><em style={{width:`${stats.strength}%`}}/></i></div><div><span>本次反向角</span><b>{Math.round(stats.reverse)}°</b><small>目标 ≥ 120°</small></div><div><span>反向 → 跳跃</span><b>{stats.delay?stats.delay+'ms':'—'}</b><small>练习窗 ≤ 350ms</small></div><div><span>命中次数</span><b>{stats.success} / {stats.attempts}</b><small>仅为练习判定</small></div></div>
  <div className="motion-disclaimer"><Sparkles size={16}/><p><b>原型边界</b>　摇杆输入来自浏览器 Gamepad API；右侧角色路径是二维估算，不读取 Nintendo Switch、游戏画面或游戏物理。后续可接入武器重量、游速 AP 与动作阶段模型。</p></div></aside></div></section>
 }

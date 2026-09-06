@@ -1,0 +1,63 @@
+import {DATA_VERSION, type Weapon} from './weapons.ts';
+
+export type VerificationStatus = 'verified' | 'pending' | 'demo';
+
+export type ParameterField = {
+  label: string;
+  status: VerificationStatus;
+  source?: string;
+  note: string;
+};
+
+export type WeaponParameterSnapshot = {
+  weaponId: string;
+  gameVersion: typeof DATA_VERSION;
+  upstreamSnapshotVersion: '11.2.0';
+  fields: readonly ParameterField[];
+};
+
+export const verificationStatusLabels: Record<VerificationStatus, string> = {
+  verified: '已核对',
+  pending: '待验证',
+  demo: '原型演示',
+};
+
+export const parameterSources = {
+  nintendo1130: {
+    label: 'Nintendo Ver. 11.3.0 更新公告',
+    url: 'https://www.nintendo.com/en-gb/Support/Nintendo-Switch/Game-Updates/How-to-Update-Splatoon-3-2266003.html',
+    checkedAt: '2026-09-06',
+  },
+  leanny1120: {
+    label: 'Leanny/splat3 版本索引（当前至 11.2.0）',
+    url: 'https://github.com/Leanny/splat3/blob/main/versions.json',
+    checkedAt: '2026-09-06',
+  },
+  internalReview: {
+    label: 'INKLAB 六武器人工核对记录',
+    checkedAt: '2026-09-06',
+  },
+} as const;
+
+export function getWeaponParameterSnapshot(weapon: Weapon): WeaponParameterSnapshot {
+  return {
+    weaponId: weapon.id,
+    gameVersion: DATA_VERSION,
+    upstreamSnapshotVersion: '11.2.0',
+    fields: [
+      {label: '武器套装', status: 'verified', source: 'internalReview', note: `${weapon.sub.name} · ${weapon.special}`},
+      {label: '副武耗墨', status: 'verified', source: 'internalReview', note: `基础耗墨 ${weapon.sub.baseInkCost}%`},
+      {label: '副武增强对象', status: 'verified', source: 'internalReview', note: weapon.sub.subPowerEffect},
+      {label: '主武参数', status: 'pending', note: '等待 Ver. 11.3.0 结构化字段映射'},
+      {label: 'AP 效果曲线', status: 'pending', note: '公式与版本参数尚未完成双重核对'},
+      {label: '快速配装', status: 'demo', note: '交互样例，不代表正式攻略或社区统计'},
+    ],
+  };
+}
+
+export function summarizeParameterStatuses(fields: readonly ParameterField[]): Record<VerificationStatus, number> {
+  return fields.reduce<Record<VerificationStatus, number>>((summary, field) => {
+    summary[field.status] += 1;
+    return summary;
+  }, {verified: 0, pending: 0, demo: 0});
+}

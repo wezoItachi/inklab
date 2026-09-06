@@ -1,0 +1,121 @@
+{
+  "gameVersion": "11.3.0",
+  "datasetStatus": "representative-test-set",
+  "defaultSourceId": "inklab-manual-review",
+  "weapons": [
+    {
+      "id": "shooter-quickmiddle-cstm01",
+      "name": "N-ZAP89",
+      "badge": "89",
+      "family": "射击枪",
+      "role": "支援 / 前中卫",
+      "sub": {
+        "id": "autobomb",
+        "name": "机器人炸弹",
+        "baseInkCost": 55,
+        "subPowerEffect": "投掷初速度与落点距离",
+        "subPowerDoesNotChange": ["索敌与追踪", "爆炸范围", "爆炸伤害"]
+      },
+      "special": "诱饵烟花",
+      "recommendedPreset": 1,
+      "verification": "kit-verified",
+      "sourceId": "inklab-manual-review",
+      "checkedAt": "2026-09-06"
+    },
+    {
+      "id": "shooter-normalt",
+      "name": "斯普拉射击枪",
+      "badge": "枪",
+      "family": "射击枪",
+      "role": "前线 / 泛用",
+      "sub": {
+        "id": "suction-bomb",
+        "name": "吸盘炸弹",
+        "baseInkCost": 70,
+        "subPowerEffect": "投掷初速度与落点距离",
+        "subPowerDoesNotChange": ["引爆时间", "爆炸范围", "爆炸伤害"]
+      },
+      "special": "终极发射",
+      "recommendedPreset": 0,
+      "verification": "kit-verified",
+      "sourceId": "inklab-manual-review",
+      "checkedAt": "2026-09-06"
+    },
+    {
+      "id": "shooter-short-cstm11",
+      "name": "窄域标记枪 新型",
+      "badge": "窄",
+      "family": "射击枪",
+      "role": "前线 / 高机动",
+      "sub": {
+        "id": "burst-bomb",
+        "name": "快速炸弹",
+        "baseInkCost": 40,
+        "subPowerEffect": "投掷初速度与落点距离",
+        "subPowerDoesNotChange": ["爆炸范围", "直击伤害", "溅射伤害"]
+      },
+      "special": "螃蟹坦克",
+      "recommendedPreset": 0,
+      "verification": "kit-verified",
+      "sourceId": "inklab-manual-review",
+      "checkedAt": "2026-09-06"
+    },
+    {
+      "id": "charger-normalt",
+      "name": "斯普拉蓄力狙击枪",
+      "badge": "狙",
+      "family": "蓄力枪",
+      "role": "后卫 / 长射程",
+      "sub": {
+        "id": "splat-bomb",
+        "name": "斯普拉炸弹",
+        "baseInkCost": 70,
+        "subPowerEffect": "投掷初速度与落点距离",
+        "subPowerDoesNotChange": ["引爆时间", "爆炸范围", "爆炸伤害"]
+      },
+      "special": "吸墨机",
+      "recommendedPreset": 2,
+      "verification": "kit-verified",
+      "sourceId": "inklab-manual-review",
+      "checkedAt": "2026-09-06"
+    },
+    {
+      "id": "roller-normalt",
+      "name": "斯普拉滚筒",
+      "badge": "滚",
+      "family": "滚筒",
+      "role": "前线 / 伏击",
+      "sub": {
+        "id": "curling-bomb",
+        "name": "冰壶炸弹",
+        "baseInkCost": 65,
+        "subPowerEffect": "地面滑行速度",
+        "subPowerDoesNotChange": ["蓄力时间", "爆炸范围", "爆炸伤害"]
+      },
+      "special": "巨大防护罩",
+      "recommendedPreset": 0,
+      "verification": "kit-verified",
+      "sourceId": "inklab-manual-review",
+      "checkedAt": "2026-09-06"
+    },
+    {
+      "id": "spinner-standardt",
+      "name": "桶装旋转枪",
+      "badge": "桶",
+      "family": "加特林",
+      "role": "中后卫 / 压制",
+      "sub": {
+        "id": "sprinkler",
+        "name": "洒墨器",
+        "baseInkCost": 60,
+        "subPowerEffect": "高频与中频涂墨阶段的持续时间",
+        "subPowerDoesNotChange": ["投掷距离", "单滴伤害", "同时设置数量"]
+      },
+      "special": "弹跳声呐",
+      "recommendedPreset": 2,
+      "verification": "kit-verified",
+      "sourceId": "inklab-manual-review",
+      "checkedAt": "2026-09-06"
+    }
+  ]
+}

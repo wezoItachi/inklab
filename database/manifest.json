@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "databaseId": "inklab-core",
+  "gameVersion": "11.3.0",
+  "updatedAt": "2026-09-06",
+  "scope": "representative-weapon-test-set",
+  "records": {
+    "weapons": "weapons.v11.3.0.json",
+    "sources": "sources.json"
+  },
+  "authorization": {
+    "leannySplat3": "pending",
+    "sendouAbilityAssets": "pending"
+  }
+}
