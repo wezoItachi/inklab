@@ -1,0 +1,301 @@
+{
+  "gameVersion": "11.3.0",
+  "datasetStatus": "representative-test-set",
+  "defaultSourceId": "inklab-manual-review",
+  "records": [
+    {
+      "weaponId": "shooter-quickmiddle-cstm01",
+      "parameters": [
+        {
+          "key": "damagePerShot",
+          "label": "单发基础伤害",
+          "value": null,
+          "unit": "damage",
+          "status": "pending",
+          "note": "等待版本字段与实测结果双重核对"
+        },
+        {
+          "key": "fireIntervalFrames",
+          "label": "射击间隔",
+          "value": null,
+          "unit": "frames",
+          "status": "pending",
+          "note": "等待版本字段与实测结果双重核对"
+        },
+        {
+          "key": "inkConsumptionPerShot",
+          "label": "单发耗墨",
+          "value": null,
+          "unit": "percent",
+          "status": "pending",
+          "note": "等待版本字段与实测结果双重核对"
+        },
+        {
+          "key": "effectiveRange",
+          "label": "有效射程",
+          "value": null,
+          "unit": "internal",
+          "status": "pending",
+          "note": "需要记录采用的射程定义与换算方式"
+        },
+        {
+          "key": "shotSpread",
+          "label": "射击扩散",
+          "value": null,
+          "unit": "degrees",
+          "status": "pending",
+          "note": "需要区分跳跃、地面与连续射击状态"
+        },
+        {
+          "key": "movementSpeedWhileFiring",
+          "label": "射击时移动速度",
+          "value": null,
+          "unit": "internal",
+          "status": "pending",
+          "note": "等待重量与人速效果模型确定"
+        }
+      ]
+    },
+    {
+      "weaponId": "shooter-normalt",
+      "parameters": [
+        {
+          "key": "damagePerShot",
+          "label": "单发基础伤害",
+          "value": null,
+          "unit": "damage",
+          "status": "pending",
+          "note": "等待版本字段与实测结果双重核对"
+        },
+        {
+          "key": "fireIntervalFrames",
+          "label": "射击间隔",
+          "value": null,
+          "unit": "frames",
+          "status": "pending",
+          "note": "等待版本字段与实测结果双重核对"
+        },
+        {
+          "key": "inkConsumptionPerShot",
+          "label": "单发耗墨",
+          "value": null,
+          "unit": "percent",
+          "status": "pending",
+          "note": "等待版本字段与实测结果双重核对"
+        },
+        {
+          "key": "effectiveRange",
+          "label": "有效射程",
+          "value": null,
+          "unit": "internal",
+          "status": "pending",
+          "note": "需要记录采用的射程定义与换算方式"
+        },
+        {
+          "key": "shotSpread",
+          "label": "射击扩散",
+          "value": null,
+          "unit": "degrees",
+          "status": "pending",
+          "note": "需要区分跳跃、地面与连续射击状态"
+        },
+        {
+          "key": "movementSpeedWhileFiring",
+          "label": "射击时移动速度",
+          "value": null,
+          "unit": "internal",
+          "status": "pending",
+          "note": "等待重量与人速效果模型确定"
+        }
+      ]
+    },
+    {
+      "weaponId": "shooter-short-cstm11",
+      "parameters": [
+        {
+          "key": "damagePerShot",
+          "label": "单发基础伤害",
+          "value": null,
+          "unit": "damage",
+          "status": "pending",
+          "note": "等待版本字段与实测结果双重核对"
+        },
+        {
+          "key": "fireIntervalFrames",
+          "label": "射击间隔",
+          "value": null,
+          "unit": "frames",
+          "status": "pending",
+          "note": "等待版本字段与实测结果双重核对"
+        },
+        {
+          "key": "inkConsumptionPerShot",
+          "label": "单发耗墨",
+          "value": null,
+          "unit": "percent",
+          "status": "pending",
+          "note": "等待版本字段与实测结果双重核对"
+        },
+        {
+          "key": "effectiveRange",
+          "label": "有效射程",
+          "value": null,
+          "unit": "internal",
+          "status": "pending",
+          "note": "需要记录采用的射程定义与换算方式"
+        },
+        {
+          "key": "shotSpread",
+          "label": "射击扩散",
+          "value": null,
+          "unit": "degrees",
+          "status": "pending",
+          "note": "需要区分跳跃、地面与连续射击状态"
+        },
+        {
+          "key": "movementSpeedWhileFiring",
+          "label": "射击时移动速度",
+          "value": null,
+          "unit": "internal",
+          "status": "pending",
+          "note": "等待重量与人速效果模型确定"
+        }
+      ]
+    },
+    {
+      "weaponId": "charger-normalt",
+      "parameters": [
+        {
+          "key": "fullChargeDamage",
+          "label": "满蓄力伤害",
+          "value": null,
+          "unit": "damage",
+          "status": "pending",
+          "note": "等待版本字段与实测结果双重核对"
+        },
+        {
+          "key": "fullChargeFrames",
+          "label": "满蓄力时间",
+          "value": null,
+          "unit": "frames",
+          "status": "pending",
+          "note": "需要明确是否包含起始帧"
+        },
+        {
+          "key": "inkConsumptionPerCharge",
+          "label": "每次蓄力耗墨",
+          "value": null,
+          "unit": "percent",
+          "status": "pending",
+          "note": "需要区分未满蓄力与满蓄力"
+        },
+        {
+          "key": "effectiveRange",
+          "label": "满蓄力有效射程",
+          "value": null,
+          "unit": "internal",
+          "status": "pending",
+          "note": "需要记录采用的射程定义与换算方式"
+        },
+        {
+          "key": "chargeHold",
+          "label": "是否支持储存蓄力",
+          "value": null,
+          "unit": null,
+          "status": "pending",
+          "note": "等待武器机制核对"
+        }
+      ]
+    },
+    {
+      "weaponId": "roller-normalt",
+      "parameters": [
+        {
+          "key": "horizontalSwingDamageMax",
+          "label": "横挥最大伤害",
+          "value": null,
+          "unit": "damage",
+          "status": "pending",
+          "note": "需要同时记录距离衰减定义"
+        },
+        {
+          "key": "horizontalSwingFrames",
+          "label": "横挥间隔",
+          "value": null,
+          "unit": "frames",
+          "status": "pending",
+          "note": "等待版本字段与实测结果双重核对"
+        },
+        {
+          "key": "inkConsumptionPerSwing",
+          "label": "单次挥击耗墨",
+          "value": null,
+          "unit": "percent",
+          "status": "pending",
+          "note": "需要区分横挥与竖挥"
+        },
+        {
+          "key": "rollDamageMax",
+          "label": "碾压最大伤害",
+          "value": null,
+          "unit": "damage",
+          "status": "pending",
+          "note": "等待版本字段与实测结果双重核对"
+        },
+        {
+          "key": "rollInkConsumption",
+          "label": "滚动耗墨",
+          "value": null,
+          "unit": "percentPerSecond",
+          "status": "pending",
+          "note": "等待统一时间单位"
+        }
+      ]
+    },
+    {
+      "weaponId": "spinner-standardt",
+      "parameters": [
+        {
+          "key": "damagePerShot",
+          "label": "单发基础伤害",
+          "value": null,
+          "unit": "damage",
+          "status": "pending",
+          "note": "等待版本字段与实测结果双重核对"
+        },
+        {
+          "key": "fullChargeFrames",
+          "label": "满蓄力时间",
+          "value": null,
+          "unit": "frames",
+          "status": "pending",
+          "note": "需要明确蓄力阶段定义"
+        },
+        {
+          "key": "firingDurationFrames",
+          "label": "满蓄力射击持续时间",
+          "value": null,
+          "unit": "frames",
+          "status": "pending",
+          "note": "等待版本字段与实测结果双重核对"
+        },
+        {
+          "key": "inkConsumptionPerCharge",
+          "label": "每次蓄力耗墨",
+          "value": null,
+          "unit": "percent",
+          "status": "pending",
+          "note": "需要区分蓄力阶段"
+        },
+        {
+          "key": "effectiveRange",
+          "label": "有效射程",
+          "value": null,
+          "unit": "internal",
+          "status": "pending",
+          "note": "需要记录采用的射程定义与换算方式"
+        }
+      ]
+    }
+  ]
+}

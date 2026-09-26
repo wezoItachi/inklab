@@ -27,6 +27,7 @@
 - `database/manifest.json`：数据库索引、目标游戏版本及授权沟通状态。
 - `database/sources.json`：来源、核对日期与使用状态。
 - `database/main-weapons.v11.3.0.json`：当前六把代表主武器。
+- `database/main-weapon-parameters.v11.3.0.json`：主武器参数字段、单位、核验状态和字段级来源位置。
 - `database/sub-weapons.v11.3.0.json`：副武器基础耗墨与增强语境。
 - `database/special-weapons.v11.3.0.json`：特殊武器身份表。
 - `database/weapon-kits.v11.3.0.json`：版本化武器套装关系。

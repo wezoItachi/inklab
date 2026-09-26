@@ -5,6 +5,7 @@
 - `manifest.json`：数据版本、文件索引与授权沟通状态。
 - `sources.json`：来源、核对日期与使用状态。
 - `main-weapons.v11.3.0.json`：代表主武器的身份、类别与定位。
+- `main-weapon-parameters.v11.3.0.json`：按武器类别定义的主武器参数字段与核验状态。
 - `sub-weapons.v11.3.0.json`：副武器基础耗墨与副武增强语境。
 - `special-weapons.v11.3.0.json`：特殊武器身份表。
 - `weapon-kits.v11.3.0.json`：主武器与副武器、特殊武器的套装关系。

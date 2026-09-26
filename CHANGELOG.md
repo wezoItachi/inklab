@@ -5,6 +5,7 @@
 - Removed the archived starter UI files after validation; recovery remains available from `dev-2026-09-06`.
 - Split the representative game data into versioned main-weapon, sub-weapon, special-weapon, and weapon-kit tables with cross-reference validation.
 - Added tested editor restoration rules for URL-first loading, local fallback, custom builds, and weapon changes.
+- Added the first-party main-weapon parameter schema for the six representative weapons; all unverified values remain empty and explicitly pending.
 
 ## 2026-09-06 — Local Data & Export UI
 

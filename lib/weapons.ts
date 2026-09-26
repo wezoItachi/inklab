@@ -1,10 +1,13 @@
 import mainWeaponDatabaseJson from '../database/main-weapons.v11.3.0.json' with { type: 'json' };
+import mainWeaponParameterDatabaseJson from '../database/main-weapon-parameters.v11.3.0.json' with { type: 'json' };
 import specialWeaponDatabaseJson from '../database/special-weapons.v11.3.0.json' with { type: 'json' };
 import subWeaponDatabaseJson from '../database/sub-weapons.v11.3.0.json' with { type: 'json' };
 import weaponKitDatabaseJson from '../database/weapon-kits.v11.3.0.json' with { type: 'json' };
 import {
   validateGameDatabase,
   type MainWeaponDatabase,
+  type MainWeaponParameterDatabase,
+  type MainWeaponParameterRecord,
   type SpecialWeaponDatabase,
   type SubWeaponDatabase,
   type WeaponFamily,
@@ -13,6 +16,8 @@ import {
 } from '../database/schema.ts';
 
 const mainWeaponDatabase = mainWeaponDatabaseJson as MainWeaponDatabase;
+const mainWeaponParameterDatabase =
+  mainWeaponParameterDatabaseJson as MainWeaponParameterDatabase;
 const subWeaponDatabase = subWeaponDatabaseJson as SubWeaponDatabase;
 const specialWeaponDatabase =
   specialWeaponDatabaseJson as SpecialWeaponDatabase;
@@ -22,6 +27,7 @@ validateGameDatabase(
   subWeaponDatabase,
   specialWeaponDatabase,
   weaponKitDatabase,
+  mainWeaponParameterDatabase,
 );
 
 const subWeaponsById = new Map(
@@ -36,6 +42,8 @@ const kitsByWeaponId = new Map(
 
 export const DATA_VERSION = mainWeaponDatabase.gameVersion;
 export const DATASET_STATUS = mainWeaponDatabase.datasetStatus;
+export const mainWeaponParameters: readonly MainWeaponParameterRecord[] =
+  mainWeaponParameterDatabase.records;
 export const weapons: readonly WeaponRecord[] = mainWeaponDatabase.weapons.map(
   (weapon) => {
     const kit = kitsByWeaponId.get(weapon.id)!;
@@ -61,4 +69,13 @@ export type { WeaponFamily };
 
 export function getWeapon(weaponId: string): Weapon {
   return weapons.find((weapon) => weapon.id === weaponId) ?? weapons[0];
+}
+
+export function getMainWeaponParameters(
+  weaponId: string,
+): MainWeaponParameterRecord {
+  return (
+    mainWeaponParameters.find((record) => record.weaponId === weaponId) ??
+    mainWeaponParameters[0]
+  );
 }

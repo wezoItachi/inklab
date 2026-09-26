@@ -6,6 +6,7 @@
   "scope": "representative-weapon-test-set",
   "records": {
     "mainWeapons": "main-weapons.v11.3.0.json",
+    "mainWeaponParameters": "main-weapon-parameters.v11.3.0.json",
     "subWeapons": "sub-weapons.v11.3.0.json",
     "specialWeapons": "special-weapons.v11.3.0.json",
     "weaponKits": "weapon-kits.v11.3.0.json",

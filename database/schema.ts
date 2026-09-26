@@ -61,6 +61,30 @@ export type SpecialWeaponDatabase = VersionedRecordSet<
 >;
 export type WeaponKitDatabase = VersionedRecordSet<'kits', WeaponKitRecord>;
 
+export type ParameterVerificationStatus = 'verified' | 'pending' | 'demo';
+
+export type MainWeaponParameterField = {
+  key: string;
+  label: string;
+  value: number | string | boolean | null;
+  unit: string | null;
+  status: ParameterVerificationStatus;
+  note: string;
+  sourceId?: string;
+  upstreamPath?: string;
+  checkedAt?: string;
+};
+
+export type MainWeaponParameterRecord = {
+  weaponId: string;
+  parameters: MainWeaponParameterField[];
+};
+
+export type MainWeaponParameterDatabase = VersionedRecordSet<
+  'records',
+  MainWeaponParameterRecord
+>;
+
 export type WeaponRecord = MainWeaponRecord & {
   sub: Pick<
     SubWeaponRecord,
@@ -101,8 +125,15 @@ export function validateGameDatabase(
   subWeapons: SubWeaponDatabase,
   specialWeapons: SpecialWeaponDatabase,
   kits: WeaponKitDatabase,
+  mainWeaponParameters?: MainWeaponParameterDatabase,
 ): void {
-  const documents = [weapons, subWeapons, specialWeapons, kits];
+  const documents = [
+    weapons,
+    subWeapons,
+    specialWeapons,
+    kits,
+    ...(mainWeaponParameters ? [mainWeaponParameters] : []),
+  ];
   for (const document of documents) {
     validateVersionedDocument(document);
     if (document.gameVersion !== weapons.gameVersion)
@@ -146,4 +177,55 @@ export function validateGameDatabase(
   }
   if (kitWeaponIds.size !== weaponIds.size)
     throw new Error('Every weapon must have exactly one kit');
+
+  if (mainWeaponParameters) {
+    const parameterWeaponIds = new Set<string>();
+    for (const record of mainWeaponParameters.records) {
+      if (!weaponIds.has(record.weaponId))
+        throw new Error(
+          `Unknown parameter weapon reference: ${record.weaponId}`,
+        );
+      if (parameterWeaponIds.has(record.weaponId))
+        throw new Error(
+          `Duplicate weapon parameter record: ${record.weaponId}`,
+        );
+      if (record.parameters.length < 1)
+        throw new Error(`Missing weapon parameter fields: ${record.weaponId}`);
+
+      const parameterKeys = new Set<string>();
+      for (const parameter of record.parameters) {
+        if (!parameter.key || parameterKeys.has(parameter.key))
+          throw new Error(
+            `Invalid or duplicate parameter key: ${record.weaponId}.${parameter.key}`,
+          );
+        if (!parameter.label || !parameter.note)
+          throw new Error(
+            `Missing parameter description: ${record.weaponId}.${parameter.key}`,
+          );
+        if (parameter.status === 'pending' && parameter.value !== null)
+          throw new Error(
+            `Pending parameter must not contain a value: ${record.weaponId}.${parameter.key}`,
+          );
+        if (parameter.status === 'verified') {
+          if (
+            parameter.value === null ||
+            !parameter.sourceId ||
+            !parameter.upstreamPath ||
+            !parameter.checkedAt
+          )
+            throw new Error(
+              `Verified parameter is missing provenance: ${record.weaponId}.${parameter.key}`,
+            );
+          if (!/^\d{4}-\d{2}-\d{2}$/.test(parameter.checkedAt))
+            throw new Error(
+              `Invalid parameter check date: ${record.weaponId}.${parameter.key}`,
+            );
+        }
+        parameterKeys.add(parameter.key);
+      }
+      parameterWeaponIds.add(record.weaponId);
+    }
+    if (parameterWeaponIds.size !== weaponIds.size)
+      throw new Error('Every weapon must have one parameter record');
+  }
 }

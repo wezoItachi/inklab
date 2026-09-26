@@ -1,4 +1,8 @@
-import {DATA_VERSION, type Weapon} from './weapons.ts';
+import {
+  DATA_VERSION,
+  getMainWeaponParameters,
+  type Weapon,
+} from './weapons.ts';
 
 export type VerificationStatus = 'verified' | 'pending' | 'demo';
 
@@ -39,25 +43,66 @@ export const parameterSources = {
   },
 } as const;
 
-export function getWeaponParameterSnapshot(weapon: Weapon): WeaponParameterSnapshot {
+export function getWeaponParameterSnapshot(
+  weapon: Weapon,
+): WeaponParameterSnapshot {
+  const mainParameters = getMainWeaponParameters(weapon.id).parameters;
+  const verifiedMainParameters = mainParameters.filter(
+    ({ status }) => status === 'verified',
+  ).length;
   return {
     weaponId: weapon.id,
     gameVersion: DATA_VERSION,
     upstreamSnapshotVersion: '11.2.0',
     fields: [
-      {label: '武器套装', status: 'verified', source: 'internalReview', note: `${weapon.sub.name} · ${weapon.special}`},
-      {label: '副武耗墨', status: 'verified', source: 'internalReview', note: `基础耗墨 ${weapon.sub.baseInkCost}%`},
-      {label: '副武增强对象', status: 'verified', source: 'internalReview', note: weapon.sub.subPowerEffect},
-      {label: '主武参数', status: 'pending', note: '等待 Ver. 11.3.0 结构化字段映射'},
-      {label: 'AP 效果曲线', status: 'pending', note: '公式与版本参数尚未完成双重核对'},
-      {label: '快速配装', status: 'demo', note: '交互样例，不代表正式攻略或社区统计'},
+      {
+        label: '武器套装',
+        status: 'verified',
+        source: 'internalReview',
+        note: `${weapon.sub.name} · ${weapon.special}`,
+      },
+      {
+        label: '副武耗墨',
+        status: 'verified',
+        source: 'internalReview',
+        note: `基础耗墨 ${weapon.sub.baseInkCost}%`,
+      },
+      {
+        label: '副武增强对象',
+        status: 'verified',
+        source: 'internalReview',
+        note: weapon.sub.subPowerEffect,
+      },
+      {
+        label: '主武参数',
+        status:
+          verifiedMainParameters === mainParameters.length
+            ? 'verified'
+            : 'pending',
+        note: `已建 ${mainParameters.length} 个字段 · ${verifiedMainParameters} 个已核对`,
+      },
+      {
+        label: 'AP 效果曲线',
+        status: 'pending',
+        note: '公式与版本参数尚未完成双重核对',
+      },
+      {
+        label: '快速配装',
+        status: 'demo',
+        note: '交互样例，不代表正式攻略或社区统计',
+      },
     ],
   };
 }
 
-export function summarizeParameterStatuses(fields: readonly ParameterField[]): Record<VerificationStatus, number> {
-  return fields.reduce<Record<VerificationStatus, number>>((summary, field) => {
-    summary[field.status] += 1;
-    return summary;
-  }, {verified: 0, pending: 0, demo: 0});
+export function summarizeParameterStatuses(
+  fields: readonly ParameterField[],
+): Record<VerificationStatus, number> {
+  return fields.reduce<Record<VerificationStatus, number>>(
+    (summary, field) => {
+      summary[field.status] += 1;
+      return summary;
+    },
+    { verified: 0, pending: 0, demo: 0 },
+  );
 }
