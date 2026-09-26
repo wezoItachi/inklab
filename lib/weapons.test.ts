@@ -1,12 +1,22 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import {DATA_VERSION, DATASET_STATUS, getWeapon, weapons} from './weapons.ts';
+import {
+  DATA_VERSION,
+  DATASET_STATUS,
+  getMainWeaponParameters,
+  getWeapon,
+  summarizeMainWeaponParameters,
+  weapons,
+} from './weapons.ts';
 
 void test('representative 11.3 weapon set covers the planned families', () => {
   assert.equal(DATA_VERSION, '11.3.0');
   assert.equal(DATASET_STATUS, 'representative-test-set');
   assert.equal(weapons.length, 6);
-  assert.deepEqual(new Set(weapons.map((weapon) => weapon.family)), new Set(['射击枪', '蓄力枪', '滚筒', '加特林']));
+  assert.deepEqual(
+    new Set(weapons.map((weapon) => weapon.family)),
+    new Set(['射击枪', '蓄力枪', '滚筒', '加特林']),
+  );
 });
 
 void test('every weapon drives a complete analysis context', () => {
@@ -26,4 +36,20 @@ void test('every weapon drives a complete analysis context', () => {
 
 void test('unknown ids safely fall back to the first supported weapon', () => {
   assert.equal(getWeapon('missing').id, weapons[0].id);
+  assert.equal(getMainWeaponParameters('missing').weaponId, weapons[0].id);
+});
+
+void test('every representative weapon exposes its parameter audit progress', () => {
+  for (const weapon of weapons) {
+    const parameters = getMainWeaponParameters(weapon.id);
+    const summary = summarizeMainWeaponParameters(weapon.id);
+    assert.equal(parameters.weaponId, weapon.id);
+    assert.equal(summary.total, parameters.parameters.length);
+    assert.deepEqual(summary, {
+      total: parameters.parameters.length,
+      verified: 0,
+      pending: parameters.parameters.length,
+      demo: 0,
+    });
+  }
 });

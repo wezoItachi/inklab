@@ -10,6 +10,7 @@ import {abilities,abilityAliases,abilityGroups,getAbilityAssetUrl,type Ability} 
 import {AbilityIcon} from '@/components/ability-icon';
 import {getWeaponParameterSnapshot} from '@/lib/weapon-parameter-status';
 import {ParameterStatusStrip} from '@/components/parameter-status-strip';
+import {MainWeaponParameterAudit} from '@/components/main-weapon-parameter-audit';
 import {encodeLoadoutQuery,LOCAL_LOADOUT_KEY} from '@/lib/loadout-share';
 import {resolveInitialEditorState} from '@/lib/editor-state';
 const initialSlots=clonePresetSlots(0);
@@ -66,6 +67,7 @@ export default function Home(){
  <aside className="analysis-column"><div className="analysis-head"><div><small>LIVE WEAPON ANALYSIS</small><h2>{weapon.name} 的配装结果</h2></div><span>游戏版本 {DATA_VERSION}</span></div>
   <div className="context-strip"><div><b>主要武器</b><span>{weapon.name}</span></div><div><b>次要武器</b><span>{weapon.sub.name}</span></div><div><b>特殊武器</b><span>{weapon.special}</span></div></div>
   <ParameterStatusStrip snapshot={parameterSnapshot}/>
+  <MainWeaponParameterAudit weaponId={weapon.id}/>
   <details className="export-settings export-settings-collapsible"><summary><div><Download size={16}/><span><b>配装图片信息</b><small>可选 · 留空会自动生成</small></span></div><em>展开填写</em></summary><div className="export-fields"><label>标题<input maxLength={30} value={cardTitle} onChange={e=>setCardTitle(e.target.value)} placeholder={`${weapon.name} · ${currentPresetName}`}/></label><label>作者<input maxLength={18} value={cardAuthor} onChange={e=>setCardAuthor(e.target.value)} placeholder="匿名玩家"/></label><label className="wide">标签<input maxLength={40} value={cardTags} onChange={e=>setCardTags(e.target.value)} placeholder={`${weapon.family}，${currentPresetName}，57AP`}/></label><label className="wide">一句话<textarea maxLength={70} rows={2} value={cardNote} onChange={e=>setCardNote(e.target.value)} placeholder={`围绕 ${weapon.name} 的 ${currentPresetName} 方向继续微调。`}/></label><p>这些内容只用于生成本机 PNG，不会上传服务器。</p></div></details>
   <div className="analysis-summary"><h3>选择要分析的能力 <small>仅影响右侧说明，不修改配装</small></h3><div>{totals.map(x=><button aria-pressed={focus===x.a?.id} className={focus===x.a?.id?'selected-analysis':''} key={x.a?.id} onClick={()=>selectAnalysis(x.a?.id||'iss')}><AbilityIcon small ability={x.a}/><span>{x.a?.short}</span><b>{x.ap}AP</b></button>)}</div></div>
   <EffectPanel weapon={weapon} id={focus} ap={currentAp} setAp={setAnalysisApPreview}/>

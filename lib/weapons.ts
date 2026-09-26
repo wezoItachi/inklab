@@ -79,3 +79,14 @@ export function getMainWeaponParameters(
     mainWeaponParameters[0]
   );
 }
+
+export function summarizeMainWeaponParameters(weaponId: string) {
+  const parameters = getMainWeaponParameters(weaponId).parameters;
+  return parameters.reduce(
+    (summary, parameter) => {
+      summary[parameter.status] += 1;
+      return summary;
+    },
+    { total: parameters.length, verified: 0, pending: 0, demo: 0 },
+  );
+}
