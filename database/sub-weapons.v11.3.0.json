@@ -1,0 +1,67 @@
+{
+  "gameVersion": "11.3.0",
+  "datasetStatus": "representative-test-set",
+  "defaultSourceId": "inklab-manual-review",
+  "subWeapons": [
+    {
+      "id": "autobomb",
+      "name": "机器人炸弹",
+      "baseInkCost": 55,
+      "subPowerEffect": "投掷初速度与落点距离",
+      "subPowerDoesNotChange": ["索敌与追踪", "爆炸范围", "爆炸伤害"],
+      "verification": "kit-verified",
+      "sourceId": "inklab-manual-review",
+      "checkedAt": "2026-09-06"
+    },
+    {
+      "id": "suction-bomb",
+      "name": "吸盘炸弹",
+      "baseInkCost": 70,
+      "subPowerEffect": "投掷初速度与落点距离",
+      "subPowerDoesNotChange": ["引爆时间", "爆炸范围", "爆炸伤害"],
+      "verification": "kit-verified",
+      "sourceId": "inklab-manual-review",
+      "checkedAt": "2026-09-06"
+    },
+    {
+      "id": "burst-bomb",
+      "name": "快速炸弹",
+      "baseInkCost": 40,
+      "subPowerEffect": "投掷初速度与落点距离",
+      "subPowerDoesNotChange": ["爆炸范围", "直击伤害", "溅射伤害"],
+      "verification": "kit-verified",
+      "sourceId": "inklab-manual-review",
+      "checkedAt": "2026-09-06"
+    },
+    {
+      "id": "splat-bomb",
+      "name": "斯普拉炸弹",
+      "baseInkCost": 70,
+      "subPowerEffect": "投掷初速度与落点距离",
+      "subPowerDoesNotChange": ["引爆时间", "爆炸范围", "爆炸伤害"],
+      "verification": "kit-verified",
+      "sourceId": "inklab-manual-review",
+      "checkedAt": "2026-09-06"
+    },
+    {
+      "id": "curling-bomb",
+      "name": "冰壶炸弹",
+      "baseInkCost": 65,
+      "subPowerEffect": "地面滑行速度",
+      "subPowerDoesNotChange": ["蓄力时间", "爆炸范围", "爆炸伤害"],
+      "verification": "kit-verified",
+      "sourceId": "inklab-manual-review",
+      "checkedAt": "2026-09-06"
+    },
+    {
+      "id": "sprinkler",
+      "name": "洒墨器",
+      "baseInkCost": 60,
+      "subPowerEffect": "高频与中频涂墨阶段的持续时间",
+      "subPowerDoesNotChange": ["投掷距离", "单滴伤害", "同时设置数量"],
+      "verification": "kit-verified",
+      "sourceId": "inklab-manual-review",
+      "checkedAt": "2026-09-06"
+    }
+  ]
+}

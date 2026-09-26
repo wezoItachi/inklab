@@ -1,0 +1,49 @@
+{
+  "gameVersion": "11.3.0",
+  "datasetStatus": "representative-test-set",
+  "defaultSourceId": "inklab-manual-review",
+  "specialWeapons": [
+    {
+      "id": "decoy",
+      "name": "诱饵烟花",
+      "verification": "kit-verified",
+      "sourceId": "inklab-manual-review",
+      "checkedAt": "2026-09-06"
+    },
+    {
+      "id": "trizooka",
+      "name": "终极发射",
+      "verification": "kit-verified",
+      "sourceId": "inklab-manual-review",
+      "checkedAt": "2026-09-06"
+    },
+    {
+      "id": "crab-tank",
+      "name": "螃蟹坦克",
+      "verification": "kit-verified",
+      "sourceId": "inklab-manual-review",
+      "checkedAt": "2026-09-06"
+    },
+    {
+      "id": "ink-vac",
+      "name": "吸墨机",
+      "verification": "kit-verified",
+      "sourceId": "inklab-manual-review",
+      "checkedAt": "2026-09-06"
+    },
+    {
+      "id": "big-bubbler",
+      "name": "巨大防护罩",
+      "verification": "kit-verified",
+      "sourceId": "inklab-manual-review",
+      "checkedAt": "2026-09-06"
+    },
+    {
+      "id": "wave-breaker",
+      "name": "弹跳声呐",
+      "verification": "kit-verified",
+      "sourceId": "inklab-manual-review",
+      "checkedAt": "2026-09-06"
+    }
+  ]
+}

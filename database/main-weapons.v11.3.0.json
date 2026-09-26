@@ -1,0 +1,67 @@
+{
+  "gameVersion": "11.3.0",
+  "datasetStatus": "representative-test-set",
+  "defaultSourceId": "inklab-manual-review",
+  "weapons": [
+    {
+      "id": "shooter-quickmiddle-cstm01",
+      "name": "N-ZAP89",
+      "badge": "89",
+      "family": "射击枪",
+      "role": "支援 / 前中卫",
+      "verification": "kit-verified",
+      "sourceId": "inklab-manual-review",
+      "checkedAt": "2026-09-06"
+    },
+    {
+      "id": "shooter-normalt",
+      "name": "斯普拉射击枪",
+      "badge": "枪",
+      "family": "射击枪",
+      "role": "前线 / 泛用",
+      "verification": "kit-verified",
+      "sourceId": "inklab-manual-review",
+      "checkedAt": "2026-09-06"
+    },
+    {
+      "id": "shooter-short-cstm11",
+      "name": "窄域标记枪 新型",
+      "badge": "窄",
+      "family": "射击枪",
+      "role": "前线 / 高机动",
+      "verification": "kit-verified",
+      "sourceId": "inklab-manual-review",
+      "checkedAt": "2026-09-06"
+    },
+    {
+      "id": "charger-normalt",
+      "name": "斯普拉蓄力狙击枪",
+      "badge": "狙",
+      "family": "蓄力枪",
+      "role": "后卫 / 长射程",
+      "verification": "kit-verified",
+      "sourceId": "inklab-manual-review",
+      "checkedAt": "2026-09-06"
+    },
+    {
+      "id": "roller-normalt",
+      "name": "斯普拉滚筒",
+      "badge": "滚",
+      "family": "滚筒",
+      "role": "前线 / 伏击",
+      "verification": "kit-verified",
+      "sourceId": "inklab-manual-review",
+      "checkedAt": "2026-09-06"
+    },
+    {
+      "id": "spinner-standardt",
+      "name": "桶装旋转枪",
+      "badge": "桶",
+      "family": "加特林",
+      "role": "中后卫 / 压制",
+      "verification": "kit-verified",
+      "sourceId": "inklab-manual-review",
+      "checkedAt": "2026-09-06"
+    }
+  ]
+}

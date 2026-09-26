@@ -1,0 +1,61 @@
+{
+  "gameVersion": "11.3.0",
+  "datasetStatus": "representative-test-set",
+  "defaultSourceId": "inklab-manual-review",
+  "kits": [
+    {
+      "weaponId": "shooter-quickmiddle-cstm01",
+      "subId": "autobomb",
+      "specialId": "decoy",
+      "recommendedPreset": 1,
+      "verification": "kit-verified",
+      "sourceId": "inklab-manual-review",
+      "checkedAt": "2026-09-06"
+    },
+    {
+      "weaponId": "shooter-normalt",
+      "subId": "suction-bomb",
+      "specialId": "trizooka",
+      "recommendedPreset": 0,
+      "verification": "kit-verified",
+      "sourceId": "inklab-manual-review",
+      "checkedAt": "2026-09-06"
+    },
+    {
+      "weaponId": "shooter-short-cstm11",
+      "subId": "burst-bomb",
+      "specialId": "crab-tank",
+      "recommendedPreset": 0,
+      "verification": "kit-verified",
+      "sourceId": "inklab-manual-review",
+      "checkedAt": "2026-09-06"
+    },
+    {
+      "weaponId": "charger-normalt",
+      "subId": "splat-bomb",
+      "specialId": "ink-vac",
+      "recommendedPreset": 2,
+      "verification": "kit-verified",
+      "sourceId": "inklab-manual-review",
+      "checkedAt": "2026-09-06"
+    },
+    {
+      "weaponId": "roller-normalt",
+      "subId": "curling-bomb",
+      "specialId": "big-bubbler",
+      "recommendedPreset": 0,
+      "verification": "kit-verified",
+      "sourceId": "inklab-manual-review",
+      "checkedAt": "2026-09-06"
+    },
+    {
+      "weaponId": "spinner-standardt",
+      "subId": "sprinkler",
+      "specialId": "wave-breaker",
+      "recommendedPreset": 2,
+      "verification": "kit-verified",
+      "sourceId": "inklab-manual-review",
+      "checkedAt": "2026-09-06"
+    }
+  ]
+}
