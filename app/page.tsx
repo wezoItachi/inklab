@@ -10,7 +10,8 @@ import {abilities,abilityAliases,abilityGroups,getAbilityAssetUrl,type Ability} 
 import {AbilityIcon} from '@/components/ability-icon';
 import {getWeaponParameterSnapshot} from '@/lib/weapon-parameter-status';
 import {ParameterStatusStrip} from '@/components/parameter-status-strip';
-import {decodeLoadoutQuery,encodeLoadoutQuery,LOCAL_LOADOUT_KEY} from '@/lib/loadout-share';
+import {encodeLoadoutQuery,LOCAL_LOADOUT_KEY} from '@/lib/loadout-share';
+import {resolveInitialEditorState} from '@/lib/editor-state';
 const initialSlots=clonePresetSlots(0);
 export default function Home(){
  const[page,setPage]=useState<'lab'|'wiki'|'library'|'motion'>('lab'),[labMode,setLabMode]=useState<'planner'|'single'>('single');
@@ -32,10 +33,10 @@ export default function Home(){
  useEffect(()=>{
   const timer=window.setTimeout(()=>{
    const weaponIds=new Set(weapons.map(({id})=>id)),abilityIds=new Set(abilities.map(({id})=>id));
-   const fromUrl=decodeLoadoutQuery(window.location.search,weaponIds,abilityIds);
-   let restored=fromUrl;
-   if(!restored){try{const saved=localStorage.getItem(LOCAL_LOADOUT_KEY);if(saved)restored=decodeLoadoutQuery(saved,weaponIds,abilityIds)}catch{/* Browser storage can be unavailable in privacy modes. */}}
-   if(restored){setWeaponId(restored.weaponId);setSlots(restored.slots);setActivePreset(-1);setFocus(restored.slots[0][0])}
+   let saved:string|null=null;
+   try{saved=localStorage.getItem(LOCAL_LOADOUT_KEY)}catch{/* Browser storage can be unavailable in privacy modes. */}
+   const restored=resolveInitialEditorState({urlSearch:window.location.search,savedSearch:saved,defaultWeaponId:weapons[0].id,weaponIds,abilityIds});
+   if(restored.source!=='default'){setWeaponId(restored.state.weaponId);setSlots(restored.state.slots);setActivePreset(restored.state.activePreset);setFocus(restored.state.focus);setSelectedSlot(restored.state.selectedSlot)}
    setLocalReady(true);
   },0);
   return()=>window.clearTimeout(timer);
