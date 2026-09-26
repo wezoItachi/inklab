@@ -16,7 +16,7 @@ export type ParameterField = {
 export type WeaponParameterSnapshot = {
   weaponId: string;
   gameVersion: typeof DATA_VERSION;
-  upstreamSnapshotVersion: '11.2.0';
+  upstreamSnapshotVersion: '11.3.0';
   fields: readonly ParameterField[];
 };
 
@@ -30,12 +30,12 @@ export const parameterSources = {
   nintendo1130: {
     label: 'Nintendo Ver. 11.3.0 更新公告',
     url: 'https://www.nintendo.com/en-gb/Support/Nintendo-Switch/Game-Updates/How-to-Update-Splatoon-3-2266003.html',
-    checkedAt: '2026-09-06',
+    checkedAt: '2026-09-27',
   },
-  leanny1120: {
-    label: 'Leanny/splat3 版本索引（当前至 11.2.0）',
-    url: 'https://github.com/Leanny/splat3/blob/main/versions.json',
-    checkedAt: '2026-09-06',
+  leanny1130: {
+    label: 'Leanny/splat3 11.3.0 参数快照',
+    url: 'https://github.com/Leanny/splat3/tree/main/data/parameter/1130',
+    checkedAt: '2026-09-27',
   },
   internalReview: {
     label: 'INKLAB 六武器人工核对记录',
@@ -53,7 +53,7 @@ export function getWeaponParameterSnapshot(
   return {
     weaponId: weapon.id,
     gameVersion: DATA_VERSION,
-    upstreamSnapshotVersion: '11.2.0',
+    upstreamSnapshotVersion: '11.3.0',
     fields: [
       {
         label: '武器套装',

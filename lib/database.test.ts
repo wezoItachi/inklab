@@ -50,25 +50,57 @@ void test('normalized game tables have valid cross references and registered sou
     assert.ok(sourceIds.has(record.sourceId), record.sourceId);
 });
 
-void test('main weapon parameter schema starts empty until each field is verified', () => {
-  assert.equal(
-    mainWeaponParameterDocument.records.length,
-    mainWeaponDocument.weapons.length,
-  );
-  for (const record of mainWeaponParameterDocument.records) {
+void test('main weapon parameters expose values only after field-level verification', () => {
+  const parameterRecords = (
+    mainWeaponParameterDocument as MainWeaponParameterDatabase
+  ).records;
+  const sourceIds = new Set(sourcesDocument.sources.map((source) => source.id));
+  assert.equal(parameterRecords.length, mainWeaponDocument.weapons.length);
+  for (const record of parameterRecords) {
     assert.ok(record.parameters.length >= 5, record.weaponId);
     for (const parameter of record.parameters) {
-      assert.equal(
-        parameter.status,
-        'pending',
-        `${record.weaponId}.${parameter.key}`,
-      );
-      assert.equal(
-        parameter.value,
-        null,
-        `${record.weaponId}.${parameter.key}`,
-      );
       assert.ok(parameter.note, `${record.weaponId}.${parameter.key}`);
+      if (parameter.status === 'pending') {
+        assert.equal(
+          parameter.value,
+          null,
+          `${record.weaponId}.${parameter.key}`,
+        );
+      }
+      if (parameter.status === 'verified') {
+        assert.notEqual(
+          parameter.value,
+          null,
+          `${record.weaponId}.${parameter.key}`,
+        );
+        assert.ok(parameter.sourceId, `${record.weaponId}.${parameter.key}`);
+        assert.ok(
+          sourceIds.has(parameter.sourceId),
+          `${record.weaponId}.${parameter.key}`,
+        );
+        assert.ok(
+          parameter.upstreamPath,
+          `${record.weaponId}.${parameter.key}`,
+        );
+        assert.match(
+          parameter.checkedAt ?? '',
+          /^\d{4}-\d{2}-\d{2}$/,
+          `${record.weaponId}.${parameter.key}`,
+        );
+      }
     }
   }
+
+  const nzap89 = parameterRecords.find(
+    ({ weaponId }) => weaponId === 'shooter-quickmiddle-cstm01',
+  );
+  assert.ok(nzap89);
+  assert.equal(
+    nzap89.parameters.filter(({ status }) => status === 'verified').length,
+    6,
+  );
+  assert.equal(
+    nzap89.parameters.filter(({ status }) => status === 'pending').length,
+    1,
+  );
 });

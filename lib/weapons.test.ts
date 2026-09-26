@@ -45,11 +45,15 @@ void test('every representative weapon exposes its parameter audit progress', ()
     const summary = summarizeMainWeaponParameters(weapon.id);
     assert.equal(parameters.weaponId, weapon.id);
     assert.equal(summary.total, parameters.parameters.length);
-    assert.deepEqual(summary, {
-      total: parameters.parameters.length,
-      verified: 0,
-      pending: parameters.parameters.length,
-      demo: 0,
-    });
+    if (weapon.id === 'shooter-quickmiddle-cstm01') {
+      assert.deepEqual(summary, { total: 7, verified: 6, pending: 1, demo: 0 });
+    } else {
+      assert.deepEqual(summary, {
+        total: parameters.parameters.length,
+        verified: 0,
+        pending: parameters.parameters.length,
+        demo: 0,
+      });
+    }
   }
 });

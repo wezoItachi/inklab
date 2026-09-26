@@ -5,8 +5,9 @@
 - Removed the archived starter UI files after validation; recovery remains available from `dev-2026-09-06`.
 - Split the representative game data into versioned main-weapon, sub-weapon, special-weapon, and weapon-kit tables with cross-reference validation.
 - Added tested editor restoration rules for URL-first loading, local fallback, custom builds, and weapon changes.
-- Added the first-party main-weapon parameter schema for the six representative weapons; all unverified values remain empty and explicitly pending.
+- Added the first-party main-weapon parameter schema for the six representative weapons; unverified values remain empty and explicitly pending.
 - Added a development-only main-weapon parameter audit table; production keeps only a concise verification notice.
+- Verified the first six N-ZAP89 fields against the fixed 11.3.0 upstream snapshot, with field-level provenance and normalization notes; effective range remains pending.
 
 ## 2026-09-06 — Local Data & Export UI
 

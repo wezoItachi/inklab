@@ -9,26 +9,35 @@
         {
           "key": "damagePerShot",
           "label": "单发基础伤害",
-          "value": null,
+          "value": 30,
           "unit": "damage",
-          "status": "pending",
-          "note": "等待版本字段与实测结果双重核对"
+          "status": "verified",
+          "note": "上游 ValueMax=300，按游戏伤害定点值除以 10 规范化为 30.0；Nintendo 11.3.0 未调整 N-ZAP89",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponShooterQuickMiddle.game__GameParameterTable.json#GameParameters.DamageParam.ValueMax",
+          "checkedAt": "2026-09-27"
         },
         {
           "key": "fireIntervalFrames",
           "label": "射击间隔",
-          "value": null,
+          "value": 5,
           "unit": "frames",
-          "status": "pending",
-          "note": "等待版本字段与实测结果双重核对"
+          "status": "verified",
+          "note": "直接记录 RepeatFrame；Nintendo 11.3.0 未调整 N-ZAP89",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponShooterQuickMiddle.game__GameParameterTable.json#GameParameters.WeaponParam.RepeatFrame",
+          "checkedAt": "2026-09-27"
         },
         {
           "key": "inkConsumptionPerShot",
           "label": "单发耗墨",
-          "value": null,
+          "value": 0.8,
           "unit": "percent",
-          "status": "pending",
-          "note": "等待版本字段与实测结果双重核对"
+          "status": "verified",
+          "note": "上游 InkConsume=0.008，乘以 100 规范化为墨水槽百分比 0.8%；Nintendo 11.3.0 未调整 N-ZAP89",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponShooterQuickMiddle.game__GameParameterTable.json#GameParameters.WeaponParam.InkConsume",
+          "checkedAt": "2026-09-27"
         },
         {
           "key": "effectiveRange",
@@ -39,20 +48,37 @@
           "note": "需要记录采用的射程定义与换算方式"
         },
         {
-          "key": "shotSpread",
-          "label": "射击扩散",
-          "value": null,
+          "key": "groundShotSpreadDegrees",
+          "label": "地面射击扩散",
+          "value": 4.75,
           "unit": "degrees",
-          "status": "pending",
-          "note": "需要区分跳跃、地面与连续射击状态"
+          "status": "verified",
+          "note": "直接记录 Stand_DegSwerve；连续射击偏移累积另行建模",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponShooterQuickMiddle.game__GameParameterTable.json#GameParameters.WeaponParam.Stand_DegSwerve",
+          "checkedAt": "2026-09-27"
+        },
+        {
+          "key": "jumpShotSpreadDegrees",
+          "label": "跳跃射击扩散",
+          "value": 12,
+          "unit": "degrees",
+          "status": "verified",
+          "note": "直接记录 Jump_DegSwerve；跳跃偏移变化过程另行建模",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponShooterQuickMiddle.game__GameParameterTable.json#GameParameters.WeaponParam.Jump_DegSwerve",
+          "checkedAt": "2026-09-27"
         },
         {
           "key": "movementSpeedWhileFiring",
           "label": "射击时移动速度",
-          "value": null,
+          "value": 0.088,
           "unit": "internal",
-          "status": "pending",
-          "note": "等待重量与人速效果模型确定"
+          "status": "verified",
+          "note": "直接记录未叠加人速能力效果的 MoveSpeed 基础内部值",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponShooterQuickMiddle.game__GameParameterTable.json#GameParameters.WeaponParam.MoveSpeed",
+          "checkedAt": "2026-09-27"
         }
       ]
     },
@@ -92,12 +118,20 @@
           "note": "需要记录采用的射程定义与换算方式"
         },
         {
-          "key": "shotSpread",
-          "label": "射击扩散",
+          "key": "groundShotSpreadDegrees",
+          "label": "地面射击扩散",
           "value": null,
           "unit": "degrees",
           "status": "pending",
-          "note": "需要区分跳跃、地面与连续射击状态"
+          "note": "等待地面射击字段与连续射击状态核对"
+        },
+        {
+          "key": "jumpShotSpreadDegrees",
+          "label": "跳跃射击扩散",
+          "value": null,
+          "unit": "degrees",
+          "status": "pending",
+          "note": "等待跳跃射击字段与偏移变化过程核对"
         },
         {
           "key": "movementSpeedWhileFiring",
@@ -145,12 +179,20 @@
           "note": "需要记录采用的射程定义与换算方式"
         },
         {
-          "key": "shotSpread",
-          "label": "射击扩散",
+          "key": "groundShotSpreadDegrees",
+          "label": "地面射击扩散",
           "value": null,
           "unit": "degrees",
           "status": "pending",
-          "note": "需要区分跳跃、地面与连续射击状态"
+          "note": "等待地面射击字段与连续射击状态核对"
+        },
+        {
+          "key": "jumpShotSpreadDegrees",
+          "label": "跳跃射击扩散",
+          "value": null,
+          "unit": "degrees",
+          "status": "pending",
+          "note": "等待跳跃射击字段与偏移变化过程核对"
         },
         {
           "key": "movementSpeedWhileFiring",
