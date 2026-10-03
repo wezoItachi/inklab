@@ -1,7 +1,10 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import type { MainWeaponParameterRecord } from '../database/schema.ts';
-import { analyzeMainWeaponEfficiency } from './main-weapon-analysis.ts';
+import {
+  analyzeChargerEfficiency,
+  analyzeMainWeaponEfficiency,
+} from './main-weapon-analysis.ts';
 import { getMainWeaponParameters } from './weapons.ts';
 
 void test('derives N-ZAP89 efficiency only from verified 11.3.0 fields', () => {
@@ -64,6 +67,26 @@ void test('derives complete Splash-o-matic results from the corrected weapon ide
   });
 });
 
+void test('derives verified Splat Charger results without guessing charge time', () => {
+  const result = analyzeChargerEfficiency(
+    getMainWeaponParameters('charger-normalt'),
+  );
+  assert.ok(result);
+  assert.deepEqual(result, {
+    verifiedInputCount: 5,
+    fullChargeDamage: 160,
+    fullChargeFrames: null,
+    inkConsumptionPerCharge: 18,
+    fullChargesPerTank: 5,
+    shotsToSplat: 1,
+    inkConsumptionPerSplat: 18,
+    chargeHold: true,
+    chargeHoldFrames: 75,
+    chargeHoldSeconds: 1.25,
+    fullChargeTravelDistance: 24.037,
+  });
+});
+
 void test('rejects invalid target health and ignores unverified values', () => {
   const record: MainWeaponParameterRecord = {
     weaponId: 'test',
@@ -79,5 +102,7 @@ void test('rejects invalid target health and ignores unverified values', () => {
     ],
   };
   assert.equal(analyzeMainWeaponEfficiency(record), null);
+  assert.equal(analyzeChargerEfficiency(record), null);
   assert.throws(() => analyzeMainWeaponEfficiency(record, 0), RangeError);
+  assert.throws(() => analyzeChargerEfficiency(record, 0), RangeError);
 });

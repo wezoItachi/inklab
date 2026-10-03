@@ -11,6 +11,7 @@
 - Added a verified N-ZAP89 main-weapon efficiency panel for full-tank shots, firing duration, shots to splat, ink per splat, and theoretical splat time.
 - Verified five explicit Splattershot fields and made the efficiency panel reveal partial results without guessing its omitted firing interval.
 - Corrected the third representative shooter from a mismatched Neo Splash-o-matic identity to the base Splash-o-matic, migrated legacy saved IDs, and verified six explicit fields.
+- Added partial Splat Charger analysis from five verified fields, including full-charge damage, tank efficiency, charge storage, and travel distance without guessing the omitted charge time.
 
 ## 2026-09-06 — Local Data & Export UI
 

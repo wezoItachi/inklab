@@ -243,10 +243,13 @@
         {
           "key": "fullChargeDamage",
           "label": "满蓄力伤害",
-          "value": null,
+          "value": 160,
           "unit": "damage",
-          "status": "pending",
-          "note": "等待版本字段与实测结果双重核对"
+          "status": "verified",
+          "note": "上游 ValueFullCharge=1600，按游戏伤害定点值除以 10 规范化为 160.0",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponChargerNormal.game__GameParameterTable.json#GameParameters.DamageParam.ValueFullCharge",
+          "checkedAt": "2026-10-03"
         },
         {
           "key": "fullChargeFrames",
@@ -254,15 +257,18 @@
           "value": null,
           "unit": "frames",
           "status": "pending",
-          "note": "需要明确是否包含起始帧"
+          "note": "11.3.0 武器文件未显式包含满蓄力帧数；确认默认值来源前不写入"
         },
         {
           "key": "inkConsumptionPerCharge",
           "label": "每次蓄力耗墨",
-          "value": null,
+          "value": 18,
           "unit": "percent",
-          "status": "pending",
-          "note": "需要区分未满蓄力与满蓄力"
+          "status": "verified",
+          "note": "上游 InkConsumeFullCharge=0.18，乘以 100 规范化为墨水槽百分比 18%",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponChargerNormal.game__GameParameterTable.json#GameParameters.WeaponParam.InkConsumeFullCharge",
+          "checkedAt": "2026-10-03"
         },
         {
           "key": "effectiveRange",
@@ -275,10 +281,35 @@
         {
           "key": "chargeHold",
           "label": "是否支持储存蓄力",
-          "value": null,
+          "value": true,
           "unit": null,
-          "status": "pending",
-          "note": "等待武器机制核对"
+          "status": "verified",
+          "note": "WeaponKeepChargeParam 存在，支持储存满蓄力",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponChargerNormal.game__GameParameterTable.json#GameParameters.WeaponKeepChargeParam.$type",
+          "checkedAt": "2026-10-03"
+        },
+        {
+          "key": "chargeHoldFrames",
+          "label": "满蓄力储存窗口",
+          "value": 75,
+          "unit": "frames",
+          "status": "verified",
+          "note": "直接记录 KeepChargeFullFrame；按 60 帧换算为 1.25 秒",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponChargerNormal.game__GameParameterTable.json#GameParameters.WeaponKeepChargeParam.KeepChargeFullFrame",
+          "checkedAt": "2026-10-03"
+        },
+        {
+          "key": "fullChargeTravelDistance",
+          "label": "满蓄力弹道距离",
+          "value": 24.037,
+          "unit": "internal",
+          "status": "verified",
+          "note": "直接记录 DistanceFullCharge；不等同于界面有效射程",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponChargerNormal.game__GameParameterTable.json#GameParameters.MoveParam.DistanceFullCharge",
+          "checkedAt": "2026-10-03"
         }
       ]
     },
