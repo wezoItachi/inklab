@@ -10,6 +10,7 @@
 - Verified the first six N-ZAP89 fields against the fixed 11.3.0 upstream snapshot, with field-level provenance and normalization notes; effective range remains pending.
 - Added a verified N-ZAP89 main-weapon efficiency panel for full-tank shots, firing duration, shots to splat, ink per splat, and theoretical splat time.
 - Verified five explicit Splattershot fields and made the efficiency panel reveal partial results without guessing its omitted firing interval.
+- Corrected the third representative shooter from a mismatched Neo Splash-o-matic identity to the base Splash-o-matic, migrated legacy saved IDs, and verified six explicit fields.
 
 ## 2026-09-06 — Local Data & Export UI
 

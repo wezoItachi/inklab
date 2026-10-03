@@ -44,6 +44,26 @@ void test('derives partial Splattershot results without guessing its omitted fir
   });
 });
 
+void test('derives complete Splash-o-matic results from the corrected weapon identity', () => {
+  const result = analyzeMainWeaponEfficiency(
+    getMainWeaponParameters('shooter-precision'),
+  );
+  assert.ok(result);
+  assert.deepEqual(result, {
+    verifiedInputCount: 3,
+    damagePerShot: 28,
+    fireIntervalFrames: 5,
+    inkConsumptionPerShot: 0.8,
+    shotsPerFullTank: 125,
+    fullTankFiringWindowFrames: 620,
+    fullTankFiringWindowSeconds: 620 / 60,
+    shotsToSplat: 4,
+    inkConsumptionPerSplat: 3.2,
+    splatTimeFrames: 15,
+    splatTimeSeconds: 0.25,
+  });
+});
+
 void test('rejects invalid target health and ignores unverified values', () => {
   const record: MainWeaponParameterRecord = {
     weaponId: 'test',

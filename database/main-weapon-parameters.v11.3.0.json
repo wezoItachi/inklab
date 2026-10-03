@@ -159,31 +159,40 @@
       ]
     },
     {
-      "weaponId": "shooter-short-cstm11",
+      "weaponId": "shooter-precision",
       "parameters": [
         {
           "key": "damagePerShot",
           "label": "单发基础伤害",
-          "value": null,
+          "value": 28,
           "unit": "damage",
-          "status": "pending",
-          "note": "等待版本字段与实测结果双重核对"
+          "status": "verified",
+          "note": "上游 ValueMax=280，按游戏伤害定点值除以 10 规范化为 28.0；Nintendo 11.3.0 未调整窄域标记枪",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponShooterPrecision.game__GameParameterTable.json#GameParameters.DamageParam.ValueMax",
+          "checkedAt": "2026-10-03"
         },
         {
           "key": "fireIntervalFrames",
           "label": "射击间隔",
-          "value": null,
+          "value": 5,
           "unit": "frames",
-          "status": "pending",
-          "note": "等待版本字段与实测结果双重核对"
+          "status": "verified",
+          "note": "直接记录 RepeatFrame；Nintendo 11.3.0 未调整窄域标记枪",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponShooterPrecision.game__GameParameterTable.json#GameParameters.WeaponParam.RepeatFrame",
+          "checkedAt": "2026-10-03"
         },
         {
           "key": "inkConsumptionPerShot",
           "label": "单发耗墨",
-          "value": null,
+          "value": 0.8,
           "unit": "percent",
-          "status": "pending",
-          "note": "等待版本字段与实测结果双重核对"
+          "status": "verified",
+          "note": "上游 InkConsume=0.008，乘以 100 规范化为墨水槽百分比 0.8%",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponShooterPrecision.game__GameParameterTable.json#GameParameters.WeaponParam.InkConsume",
+          "checkedAt": "2026-10-03"
         },
         {
           "key": "effectiveRange",
@@ -196,26 +205,35 @@
         {
           "key": "groundShotSpreadDegrees",
           "label": "地面射击扩散",
-          "value": null,
+          "value": 0,
           "unit": "degrees",
-          "status": "pending",
-          "note": "等待地面射击字段与连续射击状态核对"
+          "status": "verified",
+          "note": "直接记录 Stand_DegSwerve=0；连续射击偏移累积另行建模",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponShooterPrecision.game__GameParameterTable.json#GameParameters.WeaponParam.Stand_DegSwerve",
+          "checkedAt": "2026-10-03"
         },
         {
           "key": "jumpShotSpreadDegrees",
           "label": "跳跃射击扩散",
-          "value": null,
+          "value": 0,
           "unit": "degrees",
-          "status": "pending",
-          "note": "等待跳跃射击字段与偏移变化过程核对"
+          "status": "verified",
+          "note": "直接记录 Jump_DegSwerve=0；跳跃偏移变化过程另行建模",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponShooterPrecision.game__GameParameterTable.json#GameParameters.WeaponParam.Jump_DegSwerve",
+          "checkedAt": "2026-10-03"
         },
         {
           "key": "movementSpeedWhileFiring",
           "label": "射击时移动速度",
-          "value": null,
+          "value": 0.072,
           "unit": "internal",
-          "status": "pending",
-          "note": "等待重量与人速效果模型确定"
+          "status": "verified",
+          "note": "直接记录未叠加人速能力效果的 MoveSpeed 基础内部值",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponShooterPrecision.game__GameParameterTable.json#GameParameters.WeaponParam.MoveSpeed",
+          "checkedAt": "2026-10-03"
         }
       ]
     },
