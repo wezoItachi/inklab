@@ -319,10 +319,13 @@
         {
           "key": "horizontalSwingDamageMax",
           "label": "横挥最大伤害",
-          "value": null,
+          "value": 150,
           "unit": "damage",
-          "status": "pending",
-          "note": "需要同时记录距离衰减定义"
+          "status": "verified",
+          "note": "取横挥 Inside.DamageMaxValue=1500，按游戏伤害定点值除以 10；仅表示近距离最高值，不代表全距离伤害",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponRollerNormal.game__GameParameterTable.json#GameParameters.WideSwingUnitGroupParam.DamageParam.Inside.DamageMaxValue",
+          "checkedAt": "2026-10-03"
         },
         {
           "key": "horizontalSwingFrames",
@@ -330,31 +333,84 @@
           "value": null,
           "unit": "frames",
           "status": "pending",
-          "note": "等待版本字段与实测结果双重核对"
+          "note": "上游 SwingFrame=21 只描述内部挥击阶段；完整连续挥击间隔需确认其他动作帧后再写入"
         },
         {
           "key": "inkConsumptionPerSwing",
           "label": "单次挥击耗墨",
-          "value": null,
+          "value": 8.5,
           "unit": "percent",
-          "status": "pending",
-          "note": "需要区分横挥与竖挥"
+          "status": "verified",
+          "note": "横挥与竖挥 InkConsume 均为 0.085，乘以 100 规范化为墨水槽百分比 8.5%",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponRollerNormal.game__GameParameterTable.json#GameParameters.WeaponWideSwingParam.InkConsume",
+          "checkedAt": "2026-10-03"
+        },
+        {
+          "key": "verticalSwingDamageMax",
+          "label": "竖挥最大伤害",
+          "value": 150,
+          "unit": "damage",
+          "status": "verified",
+          "note": "取竖挥 Inside.DamageMaxValue=1500，按游戏伤害定点值除以 10；仅表示近距离最高值",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponRollerNormal.game__GameParameterTable.json#GameParameters.VerticalSwingUnitGroupParam.DamageParam.Inside.DamageMaxValue",
+          "checkedAt": "2026-10-03"
         },
         {
           "key": "rollDamageMax",
           "label": "碾压最大伤害",
-          "value": null,
+          "value": 125,
           "unit": "damage",
-          "status": "pending",
-          "note": "等待版本字段与实测结果双重核对"
+          "status": "verified",
+          "note": "上游 BodyParam.Damage=1250，按游戏伤害定点值除以 10 规范化为 125",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponRollerNormal.game__GameParameterTable.json#GameParameters.BodyParam.Damage",
+          "checkedAt": "2026-10-03"
         },
         {
-          "key": "rollInkConsumption",
-          "label": "滚动耗墨",
-          "value": null,
-          "unit": "percentPerSecond",
-          "status": "pending",
-          "note": "等待统一时间单位"
+          "key": "rollInkConsumptionMinPerFrame",
+          "label": "滚动最低每帧耗墨",
+          "value": 0.02,
+          "unit": "percentPerFrame",
+          "status": "verified",
+          "note": "InkConsumeMinPerFrame=0.0002，乘以 100 规范化为每帧墨水槽百分比 0.02%；实际值随滚动速度变化",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponRollerNormal.game__GameParameterTable.json#GameParameters.WeaponRollParam.InkConsumeMinPerFrame",
+          "checkedAt": "2026-10-03"
+        },
+        {
+          "key": "rollInkConsumptionMaxPerFrame",
+          "label": "滚动最高每帧耗墨",
+          "value": 0.1,
+          "unit": "percentPerFrame",
+          "status": "verified",
+          "note": "InkConsumeMaxPerFrame=0.001，乘以 100 规范化为每帧墨水槽百分比 0.1%；实际值随滚动速度变化",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponRollerNormal.game__GameParameterTable.json#GameParameters.WeaponRollParam.InkConsumeMaxPerFrame",
+          "checkedAt": "2026-10-03"
+        },
+        {
+          "key": "rollSpeedNormal",
+          "label": "普通滚动速度",
+          "value": 0.108,
+          "unit": "internalPerFrame",
+          "status": "verified",
+          "note": "直接记录 WeaponRollParam.SpeedNormal 内部单位",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponRollerNormal.game__GameParameterTable.json#GameParameters.WeaponRollParam.SpeedNormal",
+          "checkedAt": "2026-10-03"
+        },
+        {
+          "key": "rollSpeedDash",
+          "label": "加速滚动速度",
+          "value": 0.132,
+          "unit": "internalPerFrame",
+          "status": "verified",
+          "note": "直接记录 WeaponRollParam.SpeedDash 内部单位",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponRollerNormal.game__GameParameterTable.json#GameParameters.WeaponRollParam.SpeedDash",
+          "checkedAt": "2026-10-03"
         }
       ]
     },

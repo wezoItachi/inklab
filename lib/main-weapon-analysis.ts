@@ -34,6 +34,25 @@ export type ChargerEfficiency = {
   fullChargeTravelDistance: number | null;
 };
 
+export type RollerEfficiency = {
+  verifiedInputCount: number;
+  horizontalSwingDamageMax: number | null;
+  horizontalSwingFrames: number | null;
+  inkConsumptionPerSwing: number | null;
+  verticalSwingDamageMax: number | null;
+  rollDamageMax: number | null;
+  swingsPerTank: number | null;
+  horizontalSwingsToSplat: number | null;
+  verticalSwingsToSplat: number | null;
+  rollHitsToSplat: number | null;
+  rollInkConsumptionMinPerFrame: number | null;
+  rollInkConsumptionMaxPerFrame: number | null;
+  rollDurationMinSeconds: number | null;
+  rollDurationMaxSeconds: number | null;
+  rollSpeedNormal: number | null;
+  rollSpeedDash: number | null;
+};
+
 function getVerifiedNumber(
   parameters: readonly MainWeaponParameterField[],
   key: string,
@@ -185,5 +204,85 @@ export function analyzeChargerEfficiency(
         ? null
         : chargeHoldFrames / GAME_FRAMES_PER_SECOND,
     fullChargeTravelDistance,
+  };
+}
+
+export function analyzeRollerEfficiency(
+  record: MainWeaponParameterRecord,
+  targetHealth = DEFAULT_TARGET_HEALTH,
+): RollerEfficiency | null {
+  if (!Number.isFinite(targetHealth) || targetHealth <= 0)
+    throw new RangeError('Target health must be positive');
+
+  const horizontalSwingDamageMax = getVerifiedNumber(
+    record.parameters,
+    'horizontalSwingDamageMax',
+  );
+  const horizontalSwingFrames = getVerifiedNumber(
+    record.parameters,
+    'horizontalSwingFrames',
+  );
+  const inkConsumptionPerSwing = getVerifiedNumber(
+    record.parameters,
+    'inkConsumptionPerSwing',
+  );
+  const verticalSwingDamageMax = getVerifiedNumber(
+    record.parameters,
+    'verticalSwingDamageMax',
+  );
+  const rollDamageMax = getVerifiedNumber(record.parameters, 'rollDamageMax');
+  const rollInkConsumptionMinPerFrame = getVerifiedNumber(
+    record.parameters,
+    'rollInkConsumptionMinPerFrame',
+  );
+  const rollInkConsumptionMaxPerFrame = getVerifiedNumber(
+    record.parameters,
+    'rollInkConsumptionMaxPerFrame',
+  );
+  const rollSpeedNormal = getVerifiedNumber(
+    record.parameters,
+    'rollSpeedNormal',
+  );
+  const rollSpeedDash = getVerifiedNumber(record.parameters, 'rollSpeedDash');
+  const verifiedInputCount = [
+    horizontalSwingDamageMax,
+    horizontalSwingFrames,
+    inkConsumptionPerSwing,
+    verticalSwingDamageMax,
+    rollDamageMax,
+    rollInkConsumptionMinPerFrame,
+    rollInkConsumptionMaxPerFrame,
+    rollSpeedNormal,
+    rollSpeedDash,
+  ].filter((value) => value !== null).length;
+  if (verifiedInputCount === 0) return null;
+
+  const hitsToSplat = (damage: number | null) =>
+    damage === null ? null : Math.ceil(targetHealth / damage);
+  const durationSeconds = (consumptionPerFrame: number | null) =>
+    consumptionPerFrame === null
+      ? null
+      : 100 / consumptionPerFrame / GAME_FRAMES_PER_SECOND;
+
+  return {
+    verifiedInputCount,
+    horizontalSwingDamageMax,
+    horizontalSwingFrames,
+    inkConsumptionPerSwing,
+    verticalSwingDamageMax,
+    rollDamageMax,
+    swingsPerTank:
+      inkConsumptionPerSwing === null
+        ? null
+        : Math.floor((100 + Number.EPSILON) / inkConsumptionPerSwing),
+    horizontalSwingsToSplat: hitsToSplat(horizontalSwingDamageMax),
+    verticalSwingsToSplat: hitsToSplat(verticalSwingDamageMax),
+    rollHitsToSplat: hitsToSplat(rollDamageMax),
+    rollInkConsumptionMinPerFrame,
+    rollInkConsumptionMaxPerFrame,
+    rollDurationMinSeconds: durationSeconds(rollInkConsumptionMaxPerFrame),
+    rollDurationMaxSeconds: durationSeconds(rollInkConsumptionMinPerFrame),
+    rollSpeedNormal,
+    rollSpeedDash,
   };
 }

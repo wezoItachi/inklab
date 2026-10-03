@@ -53,6 +53,8 @@ void test('every representative weapon exposes its parameter audit progress', ()
       assert.deepEqual(summary, { total: 7, verified: 6, pending: 1, demo: 0 });
     } else if (weapon.id === 'charger-normalt') {
       assert.deepEqual(summary, { total: 7, verified: 5, pending: 2, demo: 0 });
+    } else if (weapon.id === 'roller-normalt') {
+      assert.deepEqual(summary, { total: 9, verified: 8, pending: 1, demo: 0 });
     } else {
       assert.deepEqual(summary, {
         total: parameters.parameters.length,

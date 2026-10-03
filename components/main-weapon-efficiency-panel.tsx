@@ -1,8 +1,10 @@
 import {
   analyzeChargerEfficiency,
   analyzeMainWeaponEfficiency,
+  analyzeRollerEfficiency,
   type ChargerEfficiency,
   type MainWeaponEfficiency,
+  type RollerEfficiency,
 } from '@/lib/main-weapon-analysis';
 import { getMainWeaponParameters } from '@/lib/weapons';
 
@@ -110,13 +112,69 @@ function ChargerContent({ analysis }: { analysis: ChargerEfficiency }) {
   );
 }
 
+function RollerContent({ analysis }: { analysis: RollerEfficiency }) {
+  return (
+    <div className="main-efficiency-content">
+      <div className="main-efficiency-grid">
+        <span>
+          <small>横挥最大伤害</small>
+          <strong>{analysis.horizontalSwingDamageMax ?? '待验证'}</strong>
+          <em>{analysis.horizontalSwingsToSplat ?? '待验证'} 发击倒</em>
+        </span>
+        <span>
+          <small>竖挥最大伤害</small>
+          <strong>{analysis.verticalSwingDamageMax ?? '待验证'}</strong>
+          <em>{analysis.verticalSwingsToSplat ?? '待验证'} 发击倒</em>
+        </span>
+        <span>
+          <small>满墨挥击次数</small>
+          <strong>{analysis.swingsPerTank ?? '待验证'}</strong>
+          <em>
+            {analysis.inkConsumptionPerSwing?.toFixed(1) ?? '待验证'}% / 次
+          </em>
+        </span>
+        <span>
+          <small>完整横挥间隔</small>
+          <strong>{analysis.horizontalSwingFrames ?? '待验证'}</strong>
+          <em>帧</em>
+        </span>
+        <span>
+          <small>碾压最大伤害</small>
+          <strong>{analysis.rollDamageMax ?? '待验证'}</strong>
+          <em>{analysis.rollHitsToSplat ?? '待验证'} 次击倒</em>
+        </span>
+        <span>
+          <small>满墨连续滚动</small>
+          <strong>
+            {analysis.rollDurationMinSeconds === null ||
+            analysis.rollDurationMaxSeconds === null
+              ? '待验证'
+              : `${analysis.rollDurationMinSeconds.toFixed(2)}–${analysis.rollDurationMaxSeconds.toFixed(2)}`}
+          </strong>
+          <em>秒 · 随速度变化</em>
+        </span>
+      </div>
+      <p>
+        滚动普通 / 加速速度为 {analysis.rollSpeedNormal ?? '待验证'} /{' '}
+        {analysis.rollSpeedDash ?? '待验证'}
+        （内部单位）。伤害只表示近距离最高值；滚动时长按 60 帧及每帧 0.02%–0.1%
+        的耗墨范围推算，未计入起手挥击、墨水回复或主武器省墨能力。
+      </p>
+    </div>
+  );
+}
+
 export function MainWeaponEfficiencyPanel({ weaponId }: { weaponId: string }) {
   const record = getMainWeaponParameters(weaponId);
   const shooterAnalysis = analyzeMainWeaponEfficiency(record);
   const chargerAnalysis = analyzeChargerEfficiency(record);
-  const analysis = shooterAnalysis ?? chargerAnalysis;
+  const rollerAnalysis = analyzeRollerEfficiency(record);
+  const analysis = shooterAnalysis ?? chargerAnalysis ?? rollerAnalysis;
   const verifiedInputCount =
-    shooterAnalysis?.verifiedInputCount ?? chargerAnalysis?.verifiedInputCount;
+    shooterAnalysis?.verifiedInputCount ??
+    chargerAnalysis?.verifiedInputCount ??
+    rollerAnalysis?.verifiedInputCount;
+  const coreInputCount = shooterAnalysis ? 3 : chargerAnalysis ? 6 : 9;
 
   return (
     <details className="main-efficiency-panel" open={analysis !== null}>
@@ -124,7 +182,7 @@ export function MainWeaponEfficiencyPanel({ weaponId }: { weaponId: string }) {
         <span>主要武器效率与射击数</span>
         <b>
           {analysis
-            ? `${verifiedInputCount}/${shooterAnalysis ? 3 : 6} 核心字段 · 100 HP`
+            ? `${verifiedInputCount}/${coreInputCount} 核心字段 · 100 HP`
             : '参数待验证'}
         </b>
       </summary>
@@ -132,6 +190,8 @@ export function MainWeaponEfficiencyPanel({ weaponId }: { weaponId: string }) {
         <ShooterContent analysis={shooterAnalysis} />
       ) : chargerAnalysis ? (
         <ChargerContent analysis={chargerAnalysis} />
+      ) : rollerAnalysis ? (
+        <RollerContent analysis={rollerAnalysis} />
       ) : (
         <div className="main-efficiency-pending">
           核心参数至少核对一项后，才会显示对应计算。

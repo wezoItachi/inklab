@@ -4,6 +4,7 @@ import type { MainWeaponParameterRecord } from '../database/schema.ts';
 import {
   analyzeChargerEfficiency,
   analyzeMainWeaponEfficiency,
+  analyzeRollerEfficiency,
 } from './main-weapon-analysis.ts';
 import { getMainWeaponParameters } from './weapons.ts';
 
@@ -87,6 +88,31 @@ void test('derives verified Splat Charger results without guessing charge time',
   });
 });
 
+void test('derives verified Splat Roller results without treating swing phase as the full interval', () => {
+  const result = analyzeRollerEfficiency(
+    getMainWeaponParameters('roller-normalt'),
+  );
+  assert.ok(result);
+  assert.deepEqual(result, {
+    verifiedInputCount: 8,
+    horizontalSwingDamageMax: 150,
+    horizontalSwingFrames: null,
+    inkConsumptionPerSwing: 8.5,
+    verticalSwingDamageMax: 150,
+    rollDamageMax: 125,
+    swingsPerTank: 11,
+    horizontalSwingsToSplat: 1,
+    verticalSwingsToSplat: 1,
+    rollHitsToSplat: 1,
+    rollInkConsumptionMinPerFrame: 0.02,
+    rollInkConsumptionMaxPerFrame: 0.1,
+    rollDurationMinSeconds: 100 / 0.1 / 60,
+    rollDurationMaxSeconds: 100 / 0.02 / 60,
+    rollSpeedNormal: 0.108,
+    rollSpeedDash: 0.132,
+  });
+});
+
 void test('rejects invalid target health and ignores unverified values', () => {
   const record: MainWeaponParameterRecord = {
     weaponId: 'test',
@@ -103,6 +129,8 @@ void test('rejects invalid target health and ignores unverified values', () => {
   };
   assert.equal(analyzeMainWeaponEfficiency(record), null);
   assert.equal(analyzeChargerEfficiency(record), null);
+  assert.equal(analyzeRollerEfficiency(record), null);
   assert.throws(() => analyzeMainWeaponEfficiency(record, 0), RangeError);
   assert.throws(() => analyzeChargerEfficiency(record, 0), RangeError);
+  assert.throws(() => analyzeRollerEfficiency(record, 0), RangeError);
 });

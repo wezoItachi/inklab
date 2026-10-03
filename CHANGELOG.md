@@ -12,6 +12,7 @@
 - Verified five explicit Splattershot fields and made the efficiency panel reveal partial results without guessing its omitted firing interval.
 - Corrected the third representative shooter from a mismatched Neo Splash-o-matic identity to the base Splash-o-matic, migrated legacy saved IDs, and verified six explicit fields.
 - Added partial Splat Charger analysis from five verified fields, including full-charge damage, tank efficiency, charge storage, and travel distance without guessing the omitted charge time.
+- Added Splat Roller analysis from eight verified fields, preserving separate swing, rolling-damage, speed, and variable per-frame ink-consumption semantics.
 
 ## 2026-09-06 — Local Data & Export UI
 
