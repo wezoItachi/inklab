@@ -10,6 +10,7 @@ void test('derives N-ZAP89 efficiency only from verified 11.3.0 fields', () => {
   );
   assert.ok(result);
   assert.deepEqual(result, {
+    verifiedInputCount: 3,
     damagePerShot: 30,
     fireIntervalFrames: 5,
     inkConsumptionPerShot: 0.8,
@@ -23,11 +24,24 @@ void test('derives N-ZAP89 efficiency only from verified 11.3.0 fields', () => {
   });
 });
 
-void test('does not calculate when a required field is still pending', () => {
-  assert.equal(
-    analyzeMainWeaponEfficiency(getMainWeaponParameters('shooter-normalt')),
-    null,
+void test('derives partial Splattershot results without guessing its omitted fire interval', () => {
+  const result = analyzeMainWeaponEfficiency(
+    getMainWeaponParameters('shooter-normalt'),
   );
+  assert.ok(result);
+  assert.deepEqual(result, {
+    verifiedInputCount: 2,
+    damagePerShot: 36,
+    fireIntervalFrames: null,
+    inkConsumptionPerShot: 0.92,
+    shotsPerFullTank: 108,
+    fullTankFiringWindowFrames: null,
+    fullTankFiringWindowSeconds: null,
+    shotsToSplat: 3,
+    inkConsumptionPerSplat: 2.76,
+    splatTimeFrames: null,
+    splatTimeSeconds: null,
+  });
 });
 
 void test('rejects invalid target health and ignores unverified values', () => {

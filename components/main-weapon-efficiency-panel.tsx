@@ -10,35 +10,53 @@ export function MainWeaponEfficiencyPanel({ weaponId }: { weaponId: string }) {
     <details className="main-efficiency-panel" open={analysis !== null}>
       <summary>
         <span>主要武器效率与射击数</span>
-        <b>{analysis ? '已核对参数 · 100 HP' : '参数待验证'}</b>
+        <b>
+          {analysis
+            ? `${analysis.verifiedInputCount}/3 核心字段 · 100 HP`
+            : '参数待验证'}
+        </b>
       </summary>
       {analysis ? (
         <div className="main-efficiency-content">
           <div className="main-efficiency-grid">
             <span>
               <small>单发伤害</small>
-              <strong>{analysis.damagePerShot}</strong>
+              <strong>{analysis.damagePerShot ?? '待验证'}</strong>
               <em>damage</em>
             </span>
             <span>
               <small>满墨射击数</small>
-              <strong>{analysis.shotsPerFullTank}</strong>
+              <strong>{analysis.shotsPerFullTank ?? '待验证'}</strong>
               <em>发</em>
             </span>
             <span>
               <small>满墨射击窗口</small>
-              <strong>{analysis.fullTankFiringWindowSeconds.toFixed(2)}</strong>
+              <strong>
+                {analysis.fullTankFiringWindowSeconds?.toFixed(2) ?? '待验证'}
+              </strong>
               <em>秒</em>
             </span>
             <span>
               <small>击倒所需</small>
-              <strong>{analysis.shotsToSplat}</strong>
-              <em>发 · {analysis.inkConsumptionPerSplat.toFixed(1)}% 墨</em>
+              <strong>{analysis.shotsToSplat ?? '待验证'}</strong>
+              <em>
+                发 ·{' '}
+                {analysis.inkConsumptionPerSplat === null
+                  ? '耗墨待验证'
+                  : `${analysis.inkConsumptionPerSplat.toFixed(1)}% 墨`}
+              </em>
             </span>
             <span>
               <small>理论击倒时间</small>
-              <strong>{analysis.splatTimeSeconds.toFixed(2)}</strong>
-              <em>秒 · {analysis.splatTimeFrames} 帧</em>
+              <strong>
+                {analysis.splatTimeSeconds?.toFixed(2) ?? '待验证'}
+              </strong>
+              <em>
+                秒 ·{' '}
+                {analysis.splatTimeFrames === null
+                  ? '射击间隔待验证'
+                  : `${analysis.splatTimeFrames} 帧`}
+              </em>
             </span>
           </div>
           <p>
@@ -48,7 +66,7 @@ export function MainWeaponEfficiencyPanel({ weaponId }: { weaponId: string }) {
         </div>
       ) : (
         <div className="main-efficiency-pending">
-          伤害、射击间隔与单发耗墨全部核对后，才会显示精确计算。
+          伤害、射击间隔或单发耗墨至少核对一项后，才会显示对应计算。
         </div>
       )}
     </details>

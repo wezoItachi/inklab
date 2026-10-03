@@ -47,6 +47,8 @@ void test('every representative weapon exposes its parameter audit progress', ()
     assert.equal(summary.total, parameters.parameters.length);
     if (weapon.id === 'shooter-quickmiddle-cstm01') {
       assert.deepEqual(summary, { total: 7, verified: 6, pending: 1, demo: 0 });
+    } else if (weapon.id === 'shooter-normalt') {
+      assert.deepEqual(summary, { total: 7, verified: 5, pending: 2, demo: 0 });
     } else {
       assert.deepEqual(summary, {
         total: parameters.parameters.length,

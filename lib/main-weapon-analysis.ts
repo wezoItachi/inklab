@@ -7,16 +7,17 @@ const DEFAULT_TARGET_HEALTH = 100;
 const GAME_FRAMES_PER_SECOND = 60;
 
 export type MainWeaponEfficiency = {
-  damagePerShot: number;
-  fireIntervalFrames: number;
-  inkConsumptionPerShot: number;
-  shotsPerFullTank: number;
-  fullTankFiringWindowFrames: number;
-  fullTankFiringWindowSeconds: number;
-  shotsToSplat: number;
-  inkConsumptionPerSplat: number;
-  splatTimeFrames: number;
-  splatTimeSeconds: number;
+  verifiedInputCount: number;
+  damagePerShot: number | null;
+  fireIntervalFrames: number | null;
+  inkConsumptionPerShot: number | null;
+  shotsPerFullTank: number | null;
+  fullTankFiringWindowFrames: number | null;
+  fullTankFiringWindowSeconds: number | null;
+  shotsToSplat: number | null;
+  inkConsumptionPerSplat: number | null;
+  splatTimeFrames: number | null;
+  splatTimeSeconds: number | null;
 };
 
 function getVerifiedNumber(
@@ -48,34 +49,48 @@ export function analyzeMainWeaponEfficiency(
     record.parameters,
     'inkConsumptionPerShot',
   );
-  if (
-    damagePerShot === null ||
-    fireIntervalFrames === null ||
-    inkConsumptionPerShot === null
-  )
-    return null;
+  const verifiedInputCount = [
+    damagePerShot,
+    fireIntervalFrames,
+    inkConsumptionPerShot,
+  ].filter((value) => value !== null).length;
+  if (verifiedInputCount === 0) return null;
 
-  const shotsPerFullTank = Math.floor(
-    (100 + Number.EPSILON) / inkConsumptionPerShot,
-  );
-  const shotsToSplat = Math.ceil(targetHealth / damagePerShot);
-  const fullTankFiringWindowFrames = Math.max(
-    0,
-    (shotsPerFullTank - 1) * fireIntervalFrames,
-  );
-  const splatTimeFrames = Math.max(0, (shotsToSplat - 1) * fireIntervalFrames);
+  const shotsPerFullTank =
+    inkConsumptionPerShot === null
+      ? null
+      : Math.floor((100 + Number.EPSILON) / inkConsumptionPerShot);
+  const shotsToSplat =
+    damagePerShot === null ? null : Math.ceil(targetHealth / damagePerShot);
+  const fullTankFiringWindowFrames =
+    shotsPerFullTank === null || fireIntervalFrames === null
+      ? null
+      : Math.max(0, (shotsPerFullTank - 1) * fireIntervalFrames);
+  const splatTimeFrames =
+    shotsToSplat === null || fireIntervalFrames === null
+      ? null
+      : Math.max(0, (shotsToSplat - 1) * fireIntervalFrames);
 
   return {
+    verifiedInputCount,
     damagePerShot,
     fireIntervalFrames,
     inkConsumptionPerShot,
     shotsPerFullTank,
     fullTankFiringWindowFrames,
     fullTankFiringWindowSeconds:
-      fullTankFiringWindowFrames / GAME_FRAMES_PER_SECOND,
+      fullTankFiringWindowFrames === null
+        ? null
+        : fullTankFiringWindowFrames / GAME_FRAMES_PER_SECOND,
     shotsToSplat,
-    inkConsumptionPerSplat: shotsToSplat * inkConsumptionPerShot,
+    inkConsumptionPerSplat:
+      shotsToSplat === null || inkConsumptionPerShot === null
+        ? null
+        : Math.round(shotsToSplat * inkConsumptionPerShot * 1000) / 1000,
     splatTimeFrames,
-    splatTimeSeconds: splatTimeFrames / GAME_FRAMES_PER_SECOND,
+    splatTimeSeconds:
+      splatTimeFrames === null
+        ? null
+        : splatTimeFrames / GAME_FRAMES_PER_SECOND,
   };
 }

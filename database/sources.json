@@ -5,7 +5,7 @@
       "kind": "official-release-notes",
       "label": "Nintendo Ver. 11.3.0 更新公告",
       "url": "https://www.nintendo.com/en-gb/Support/Nintendo-Switch/Game-Updates/How-to-Update-Splatoon-3-2266003.html",
-      "checkedAt": "2026-09-27",
+      "checkedAt": "2026-10-03",
       "authorization": "public-reference"
     },
     {
@@ -13,7 +13,7 @@
       "kind": "planned-structured-upstream",
       "label": "Leanny/splat3",
       "url": "https://github.com/Leanny/splat3",
-      "checkedAt": "2026-09-27",
+      "checkedAt": "2026-10-03",
       "latestObservedVersion": "11.3.0",
       "authorization": "pending"
     },

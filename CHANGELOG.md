@@ -9,6 +9,7 @@
 - Added a development-only main-weapon parameter audit table; production keeps only a concise verification notice.
 - Verified the first six N-ZAP89 fields against the fixed 11.3.0 upstream snapshot, with field-level provenance and normalization notes; effective range remains pending.
 - Added a verified N-ZAP89 main-weapon efficiency panel for full-tank shots, firing duration, shots to splat, ink per splat, and theoretical splat time.
+- Verified five explicit Splattershot fields and made the efficiency panel reveal partial results without guessing its omitted firing interval.
 
 ## 2026-09-06 — Local Data & Export UI
 
