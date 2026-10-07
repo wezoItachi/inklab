@@ -2,9 +2,11 @@ import {
   analyzeChargerEfficiency,
   analyzeMainWeaponEfficiency,
   analyzeRollerEfficiency,
+  analyzeSpinnerEfficiency,
   type ChargerEfficiency,
   type MainWeaponEfficiency,
   type RollerEfficiency,
+  type SpinnerEfficiency,
 } from '@/lib/main-weapon-analysis';
 import { getMainWeaponParameters } from '@/lib/weapons';
 
@@ -164,17 +166,74 @@ function RollerContent({ analysis }: { analysis: RollerEfficiency }) {
   );
 }
 
+function SpinnerContent({ analysis }: { analysis: SpinnerEfficiency }) {
+  return (
+    <div className="main-efficiency-content">
+      <div className="main-efficiency-grid">
+        <span>
+          <small>满蓄力伤害</small>
+          <strong>{analysis.damagePerShot ?? '待验证'}</strong>
+          <em>{analysis.shotsToSplat ?? '待验证'} 发击倒</em>
+        </span>
+        <span>
+          <small>满蓄力时间</small>
+          <strong>{analysis.fullChargeSeconds?.toFixed(2) ?? '待验证'}</strong>
+          <em>秒 · {analysis.fullChargeFrames ?? '待验证'} 帧</em>
+        </span>
+        <span>
+          <small>持续射击窗口</small>
+          <strong>
+            {analysis.firingDurationSeconds?.toFixed(2) ?? '待验证'}
+          </strong>
+          <em>秒 · {analysis.firingDurationFrames ?? '待验证'} 帧</em>
+        </span>
+        <span>
+          <small>满蓄力射击数</small>
+          <strong>{analysis.shotsPerFullCharge ?? '待验证'}</strong>
+          <em>{analysis.fireIntervalFrames ?? '待验证'} 帧 / 发</em>
+        </span>
+        <span>
+          <small>满墨蓄力次数</small>
+          <strong>{analysis.fullChargesPerTank ?? '待验证'}</strong>
+          <em>{analysis.inkConsumptionPerCharge ?? '待验证'}% / 次</em>
+        </span>
+        <span>
+          <small>理论击倒时间</small>
+          <strong>{analysis.splatTimeSeconds?.toFixed(2) ?? '待验证'}</strong>
+          <em>秒 · {analysis.splatTimeFrames ?? '待验证'} 帧</em>
+        </span>
+      </div>
+      <p>
+        满蓄力定义为连续完成 48 帧第一阶段与 72 帧第二阶段；按 60 帧和 100 HP
+        目标计算。40 发仅由 160 帧窗口可被 4
+        帧间隔整除推导；参数文件未定义首发帧与端点，仍待实机验证。结果未计入蓄力中断、伤害衰减、弹道飞行、墨水回复或主武器省墨能力。
+      </p>
+    </div>
+  );
+}
+
 export function MainWeaponEfficiencyPanel({ weaponId }: { weaponId: string }) {
   const record = getMainWeaponParameters(weaponId);
-  const shooterAnalysis = analyzeMainWeaponEfficiency(record);
+  const spinnerAnalysis = analyzeSpinnerEfficiency(record);
+  const shooterAnalysis = spinnerAnalysis
+    ? null
+    : analyzeMainWeaponEfficiency(record);
   const chargerAnalysis = analyzeChargerEfficiency(record);
   const rollerAnalysis = analyzeRollerEfficiency(record);
-  const analysis = shooterAnalysis ?? chargerAnalysis ?? rollerAnalysis;
+  const analysis =
+    spinnerAnalysis ?? shooterAnalysis ?? chargerAnalysis ?? rollerAnalysis;
   const verifiedInputCount =
+    spinnerAnalysis?.verifiedInputCount ??
     shooterAnalysis?.verifiedInputCount ??
     chargerAnalysis?.verifiedInputCount ??
     rollerAnalysis?.verifiedInputCount;
-  const coreInputCount = shooterAnalysis ? 3 : chargerAnalysis ? 6 : 9;
+  const coreInputCount = spinnerAnalysis
+    ? 5
+    : shooterAnalysis
+      ? 3
+      : chargerAnalysis
+        ? 6
+        : 9;
 
   return (
     <details className="main-efficiency-panel" open={analysis !== null}>
@@ -186,7 +245,9 @@ export function MainWeaponEfficiencyPanel({ weaponId }: { weaponId: string }) {
             : '参数待验证'}
         </b>
       </summary>
-      {shooterAnalysis ? (
+      {spinnerAnalysis ? (
+        <SpinnerContent analysis={spinnerAnalysis} />
+      ) : shooterAnalysis ? (
         <ShooterContent analysis={shooterAnalysis} />
       ) : chargerAnalysis ? (
         <ChargerContent analysis={chargerAnalysis} />

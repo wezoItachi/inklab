@@ -420,34 +420,57 @@
         {
           "key": "damagePerShot",
           "label": "单发基础伤害",
-          "value": null,
+          "value": 30,
           "unit": "damage",
-          "status": "pending",
-          "note": "等待版本字段与实测结果双重核对"
+          "status": "verified",
+          "note": "满蓄力最大单发伤害；上游定点值除以 10",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponSpinnerStandard.game__GameParameterTable.json#GameParameters.DamageParam.ValueFullChargeMax",
+          "checkedAt": "2026-10-03"
         },
         {
           "key": "fullChargeFrames",
           "label": "满蓄力时间",
-          "value": null,
+          "value": 120,
           "unit": "frames",
-          "status": "pending",
-          "note": "需要明确蓄力阶段定义"
+          "status": "verified",
+          "note": "第一阶段 48 帧加第二阶段 72 帧；本地满蓄力定义为完成两个连续阶段",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponSpinnerStandard.game__GameParameterTable.json#GameParameters.WeaponParam.ChargeFrame_First+ChargeFrame_Second",
+          "checkedAt": "2026-10-03"
         },
         {
           "key": "firingDurationFrames",
           "label": "满蓄力射击持续时间",
-          "value": null,
+          "value": 160,
           "unit": "frames",
-          "status": "pending",
-          "note": "等待版本字段与实测结果双重核对"
+          "status": "verified",
+          "note": "采用完成第二阶段蓄力后的最大射击窗口；参数文件未定义首发帧与端点",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponSpinnerStandard.game__GameParameterTable.json#GameParameters.WeaponParam.MaxShootingFrame_Second",
+          "checkedAt": "2026-10-03"
+        },
+        {
+          "key": "fireIntervalFrames",
+          "label": "射击间隔",
+          "value": 4,
+          "unit": "frames",
+          "status": "verified",
+          "note": "满蓄力射击阶段的重复发射间隔",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponSpinnerStandard.game__GameParameterTable.json#GameParameters.WeaponParam.RepeatFrame",
+          "checkedAt": "2026-10-03"
         },
         {
           "key": "inkConsumptionPerCharge",
           "label": "每次蓄力耗墨",
-          "value": null,
+          "value": 22.5,
           "unit": "percent",
-          "status": "pending",
-          "note": "需要区分蓄力阶段"
+          "status": "verified",
+          "note": "满蓄力耗墨比例乘以 100",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponSpinnerStandard.game__GameParameterTable.json#GameParameters.WeaponParam.InkConsume",
+          "checkedAt": "2026-10-03"
         },
         {
           "key": "effectiveRange",

@@ -109,4 +109,19 @@ void test('main weapon parameters expose values only after field-level verificat
     nzap89.parameters.filter(({ status }) => status === 'pending').length,
     1,
   );
+
+  const heavySplatling = parameterRecords.find(
+    ({ weaponId }) => weaponId === 'spinner-standardt',
+  );
+  assert.ok(heavySplatling);
+  assert.equal(
+    heavySplatling.parameters.filter(({ status }) => status === 'verified')
+      .length,
+    5,
+  );
+  assert.equal(
+    heavySplatling.parameters.filter(({ status }) => status === 'pending')
+      .length,
+    1,
+  );
 });

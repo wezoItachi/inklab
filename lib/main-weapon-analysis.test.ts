@@ -5,6 +5,7 @@ import {
   analyzeChargerEfficiency,
   analyzeMainWeaponEfficiency,
   analyzeRollerEfficiency,
+  analyzeSpinnerEfficiency,
 } from './main-weapon-analysis.ts';
 import { getMainWeaponParameters } from './weapons.ts';
 
@@ -113,6 +114,53 @@ void test('derives verified Splat Roller results without treating swing phase as
   });
 });
 
+void test('derives Heavy Splatling values and its divisible-window shot estimate', () => {
+  const result = analyzeSpinnerEfficiency(
+    getMainWeaponParameters('spinner-standardt'),
+  );
+  assert.ok(result);
+  assert.deepEqual(result, {
+    verifiedInputCount: 5,
+    damagePerShot: 30,
+    fullChargeFrames: 120,
+    fullChargeSeconds: 2,
+    firingDurationFrames: 160,
+    firingDurationSeconds: 160 / 60,
+    fireIntervalFrames: 4,
+    inkConsumptionPerCharge: 22.5,
+    fullChargesPerTank: 4,
+    shotsPerFullCharge: 40,
+    shotsToSplat: 4,
+    splatTimeFrames: 12,
+    splatTimeSeconds: 0.2,
+  });
+});
+
+void test('does not infer spinner shot count from an ambiguous firing-window endpoint', () => {
+  const record: MainWeaponParameterRecord = {
+    weaponId: 'test-spinner',
+    parameters: [
+      {
+        key: 'firingDurationFrames',
+        label: 'firing duration',
+        value: 161,
+        unit: 'frames',
+        status: 'verified',
+        note: 'test fixture',
+      },
+      {
+        key: 'fireIntervalFrames',
+        label: 'fire interval',
+        value: 4,
+        unit: 'frames',
+        status: 'verified',
+        note: 'test fixture',
+      },
+    ],
+  };
+  assert.equal(analyzeSpinnerEfficiency(record)?.shotsPerFullCharge, null);
+});
+
 void test('rejects invalid target health and ignores unverified values', () => {
   const record: MainWeaponParameterRecord = {
     weaponId: 'test',
@@ -130,7 +178,9 @@ void test('rejects invalid target health and ignores unverified values', () => {
   assert.equal(analyzeMainWeaponEfficiency(record), null);
   assert.equal(analyzeChargerEfficiency(record), null);
   assert.equal(analyzeRollerEfficiency(record), null);
+  assert.equal(analyzeSpinnerEfficiency(record), null);
   assert.throws(() => analyzeMainWeaponEfficiency(record, 0), RangeError);
   assert.throws(() => analyzeChargerEfficiency(record, 0), RangeError);
   assert.throws(() => analyzeRollerEfficiency(record, 0), RangeError);
+  assert.throws(() => analyzeSpinnerEfficiency(record, 0), RangeError);
 });

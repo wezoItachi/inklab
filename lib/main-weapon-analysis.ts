@@ -53,6 +53,22 @@ export type RollerEfficiency = {
   rollSpeedDash: number | null;
 };
 
+export type SpinnerEfficiency = {
+  verifiedInputCount: number;
+  damagePerShot: number | null;
+  fullChargeFrames: number | null;
+  fullChargeSeconds: number | null;
+  firingDurationFrames: number | null;
+  firingDurationSeconds: number | null;
+  fireIntervalFrames: number | null;
+  inkConsumptionPerCharge: number | null;
+  fullChargesPerTank: number | null;
+  shotsPerFullCharge: number | null;
+  shotsToSplat: number | null;
+  splatTimeFrames: number | null;
+  splatTimeSeconds: number | null;
+};
+
 function getVerifiedNumber(
   parameters: readonly MainWeaponParameterField[],
   key: string,
@@ -284,5 +300,81 @@ export function analyzeRollerEfficiency(
     rollDurationMaxSeconds: durationSeconds(rollInkConsumptionMinPerFrame),
     rollSpeedNormal,
     rollSpeedDash,
+  };
+}
+
+export function analyzeSpinnerEfficiency(
+  record: MainWeaponParameterRecord,
+  targetHealth = DEFAULT_TARGET_HEALTH,
+): SpinnerEfficiency | null {
+  if (!Number.isFinite(targetHealth) || targetHealth <= 0)
+    throw new RangeError('Target health must be positive');
+
+  const damagePerShot = getVerifiedNumber(record.parameters, 'damagePerShot');
+  const fullChargeFrames = getVerifiedNumber(
+    record.parameters,
+    'fullChargeFrames',
+  );
+  const firingDurationFrames = getVerifiedNumber(
+    record.parameters,
+    'firingDurationFrames',
+  );
+  const fireIntervalFrames = getVerifiedNumber(
+    record.parameters,
+    'fireIntervalFrames',
+  );
+  const inkConsumptionPerCharge = getVerifiedNumber(
+    record.parameters,
+    'inkConsumptionPerCharge',
+  );
+  const verifiedInputCount = [
+    damagePerShot,
+    fullChargeFrames,
+    firingDurationFrames,
+    fireIntervalFrames,
+    inkConsumptionPerCharge,
+  ].filter((value) => value !== null).length;
+  if (verifiedInputCount === 0) return null;
+
+  const shotsPerFullCharge =
+    firingDurationFrames === null ||
+    fireIntervalFrames === null ||
+    fireIntervalFrames <= 0 ||
+    firingDurationFrames % fireIntervalFrames !== 0
+      ? null
+      : firingDurationFrames / fireIntervalFrames;
+  const shotsToSplat =
+    damagePerShot === null ? null : Math.ceil(targetHealth / damagePerShot);
+  const splatTimeFrames =
+    shotsToSplat === null || fireIntervalFrames === null
+      ? null
+      : Math.max(0, (shotsToSplat - 1) * fireIntervalFrames);
+
+  return {
+    verifiedInputCount,
+    damagePerShot,
+    fullChargeFrames,
+    fullChargeSeconds:
+      fullChargeFrames === null
+        ? null
+        : fullChargeFrames / GAME_FRAMES_PER_SECOND,
+    firingDurationFrames,
+    firingDurationSeconds:
+      firingDurationFrames === null
+        ? null
+        : firingDurationFrames / GAME_FRAMES_PER_SECOND,
+    fireIntervalFrames,
+    inkConsumptionPerCharge,
+    fullChargesPerTank:
+      inkConsumptionPerCharge === null
+        ? null
+        : Math.floor((100 + Number.EPSILON) / inkConsumptionPerCharge),
+    shotsPerFullCharge,
+    shotsToSplat,
+    splatTimeFrames,
+    splatTimeSeconds:
+      splatTimeFrames === null
+        ? null
+        : splatTimeFrames / GAME_FRAMES_PER_SECOND,
   };
 }
