@@ -16,6 +16,8 @@
 - Added partial Splat Charger analysis from five verified fields, including full-charge damage, tank efficiency, charge storage, and travel distance without guessing the omitted charge time.
 - Added Splat Roller analysis from eight verified fields, preserving separate swing, rolling-damage, speed, and variable per-frame ink-consumption semantics.
 - Completed the six-weapon representative verification loop with Heavy Splatling charge stages, firing window, repeat interval, ink consumption, and a dedicated analysis panel.
+- Fixed narrow-screen analysis layouts so all primary pages remain within a 390 px viewport instead of pushing the analysis column off-screen.
+- Pinned the pnpm version used by the existing install and added a reproducible type-check script.
 
 ## 2026-09-06 — Local Data & Export UI
 

@@ -2,6 +2,7 @@
   "name": "inklab",
   "version": "0.1.0",
   "private": true,
+  "packageManager": "pnpm@11.19.0",
   "author": "wezoItachi",
   "repository": {
     "type": "git",
@@ -15,6 +16,7 @@
     "build": "vinext build",
     "start": "wrangler dev --config dist/server/wrangler.json",
     "test": "node --experimental-strip-types --test lib/*.test.ts",
+    "typecheck": "tsc --noEmit --incremental false",
     "lint": "oxlint",
     "format": "oxfmt"
   },
