@@ -1,6 +1,8 @@
 export type AuthorizationStatus =
   | 'public-reference'
   | 'first-party-record'
+  | 'permission-with-attribution'
+  | 'permission-without-attribution'
   | 'pending';
 export type VerificationStatus = 'kit-verified' | 'pending' | 'demo';
 

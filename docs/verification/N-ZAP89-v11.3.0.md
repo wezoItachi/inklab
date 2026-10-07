@@ -25,4 +25,4 @@ Nintendo 的 Ver. 11.3.0 更新说明未列出 N-ZAP85 / N-ZAP89 的主武器参
 
 ## 授权边界
 
-本记录用于字段准确性审核，不代表 Leanny 已授权再发布其完整数据库。`database/sources.json` 和 `database/manifest.json` 中的授权状态继续保持 `pending`；项目不得据此批量镜像或公开上游数据。
+本记录用于字段准确性审核。Leanny 已同意项目按 **Data provided by Lean** 并链接其仓库的方式使用所需数据；该记录不表示 INKLAB 拥有或可批量镜像完整上游数据库。

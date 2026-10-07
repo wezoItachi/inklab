@@ -27,8 +27,14 @@ void test('database manifest keeps game data and authorization boundaries explic
   assert.equal(manifest.records.subWeapons, 'sub-weapons.v11.3.0.json');
   assert.equal(manifest.records.specialWeapons, 'special-weapons.v11.3.0.json');
   assert.equal(manifest.records.weaponKits, 'weapon-kits.v11.3.0.json');
-  assert.equal(manifest.authorization.leannySplat3, 'pending');
-  assert.equal(manifest.authorization.sendouAbilityAssets, 'pending');
+  assert.equal(
+    manifest.authorization.leannySplat3,
+    'permission-with-attribution',
+  );
+  assert.equal(
+    manifest.authorization.sendouAbilityAssets,
+    'permission-without-attribution',
+  );
 });
 
 void test('normalized game tables have valid cross references and registered sources', () => {

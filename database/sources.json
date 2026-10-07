@@ -15,7 +15,21 @@
       "url": "https://github.com/Leanny/splat3",
       "checkedAt": "2026-10-03",
       "latestObservedVersion": "11.3.0",
-      "authorization": "pending"
+      "authorization": "permission-with-attribution",
+      "attribution": "Data provided by Lean",
+      "permissionRecord": "https://github.com/Leanny/splat3/issues/7#issuecomment-5566028905"
+    },
+    {
+      "id": "sendou-ability-assets",
+      "kind": "ability-icon-upstream",
+      "label": "sendou-ink/assets ability icons",
+      "url": "https://github.com/sendou-ink/assets/tree/main/assets/img/abilities",
+      "checkedAt": "2026-10-06",
+      "authorization": "permission-without-attribution",
+      "permissionRecord": "https://github.com/sendou-ink/assets/issues/37#issuecomment-6000744990",
+      "scope": "26 ability icons copied into the public INKLAB repository and served from the INKLAB website",
+      "attribution": "No attribution to Sendouc required",
+      "upstreamSource": "https://github.com/Leanny/splat3"
     },
     {
       "id": "inklab-manual-review",
