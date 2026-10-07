@@ -4,6 +4,7 @@
 
 - Recorded Leanny's permission condition and added the required “Data provided by Lean” repository attribution in the app and project documentation.
 - Recorded Sendouc's response permitting the requested 26-icon repository and website use without attribution to him, while preserving the separate Nintendo-rights boundary and `Leanny/splat3` source note.
+- Adopted MIT for INKLAB-owned code, clarified the Public Alpha source-preview status, and excluded internal handoff notes from the public working tree after verified external backup.
 - Removed the archived starter UI files after validation; recovery remains available from `dev-2026-09-06`.
 - Split the representative game data into versioned main-weapon, sub-weapon, special-weapon, and weapon-kit tables with cross-reference validation.
 - Added tested editor restoration rules for URL-first loading, local fallback, custom builds, and weapon changes.

@@ -36,3 +36,6 @@ next-env.d.ts
 /.wrangler/
 /outputs/
 /work/
+
+# internal handoff notes (archived outside the public repository)
+/docs/HANDOFF*.md
