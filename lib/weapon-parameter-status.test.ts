@@ -7,17 +7,20 @@ import {
   summarizeParameterStatuses,
 } from './weapon-parameter-status.ts';
 
-void test('creates a versioned snapshot for every representative weapon', () => {
+void test('creates an honest versioned snapshot for every catalog weapon', () => {
   for (const weapon of weapons) {
     const snapshot = getWeaponParameterSnapshot(weapon);
     assert.equal(snapshot.weaponId, weapon.id);
     assert.equal(snapshot.gameVersion, '11.3.0');
     assert.equal(snapshot.upstreamSnapshotVersion, '11.3.0');
-    assert.deepEqual(summarizeParameterStatuses(snapshot.fields), {
-      verified: 3,
-      pending: 2,
-      demo: 1,
-    });
+    const summary = summarizeParameterStatuses(snapshot.fields);
+    assert.equal(summary.verified + summary.pending + summary.demo, 6);
+    assert.equal(snapshot.fields.find(({ label }) => label === '武器套装')?.status, 'verified');
+    assert.equal(snapshot.fields.find(({ label }) => label === 'AP 效果曲线')?.status, 'pending');
+    assert.equal(
+      snapshot.fields.find(({ label }) => label === '系统建议')?.status,
+      'demo',
+    );
   }
 });
 

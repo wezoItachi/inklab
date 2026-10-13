@@ -1,49 +1,159 @@
 {
   "gameVersion": "11.3.0",
-  "datasetStatus": "representative-test-set",
-  "defaultSourceId": "inklab-manual-review",
+  "datasetStatus": "full-weapon-catalog-partial-parameters",
+  "defaultSourceId": "leanny-splat3",
   "specialWeapons": [
     {
-      "id": "decoy",
-      "name": "诱饵烟花",
-      "verification": "kit-verified",
-      "sourceId": "inklab-manual-review",
-      "checkedAt": "2026-09-06"
-    },
-    {
-      "id": "trizooka",
-      "name": "终极发射",
-      "verification": "kit-verified",
-      "sourceId": "inklab-manual-review",
-      "checkedAt": "2026-09-06"
-    },
-    {
-      "id": "crab-tank",
-      "name": "螃蟹坦克",
-      "verification": "kit-verified",
-      "sourceId": "inklab-manual-review",
-      "checkedAt": "2026-09-06"
-    },
-    {
       "id": "ink-vac",
+      "upstreamId": "SpBlower",
       "name": "吸墨机",
       "verification": "kit-verified",
       "sourceId": "inklab-manual-review",
       "checkedAt": "2026-09-06"
     },
     {
+      "id": "kraken-royale",
+      "upstreamId": "SpCastle",
+      "name": "帝王鱿鱼",
+      "verification": "kit-verified",
+      "sourceId": "leanny-splat3",
+      "checkedAt": "2026-10-07"
+    },
+    {
+      "id": "crab-tank",
+      "upstreamId": "SpChariot",
+      "name": "螃蟹坦克",
+      "verification": "kit-verified",
+      "sourceId": "inklab-manual-review",
+      "checkedAt": "2026-09-06"
+    },
+    {
+      "id": "splattercolor-screen",
+      "upstreamId": "SpChimney",
+      "name": "浮墨幕墙",
+      "verification": "kit-verified",
+      "sourceId": "leanny-splat3",
+      "checkedAt": "2026-10-07"
+    },
+    {
+      "id": "tacticooler",
+      "upstreamId": "SpEnergyStand",
+      "name": "能量站",
+      "verification": "kit-verified",
+      "sourceId": "leanny-splat3",
+      "checkedAt": "2026-10-07"
+    },
+    {
+      "id": "decoy",
+      "upstreamId": "SpFirework",
+      "name": "诱饵烟花",
+      "verification": "kit-verified",
+      "sourceId": "inklab-manual-review",
+      "checkedAt": "2026-09-06"
+    },
+    {
       "id": "big-bubbler",
+      "upstreamId": "SpGreatBarrier",
       "name": "巨大防护罩",
       "verification": "kit-verified",
       "sourceId": "inklab-manual-review",
       "checkedAt": "2026-09-06"
     },
     {
+      "id": "ink-storm",
+      "upstreamId": "SpInkStorm",
+      "name": "墨雨云",
+      "verification": "kit-verified",
+      "sourceId": "leanny-splat3",
+      "checkedAt": "2026-10-07"
+    },
+    {
+      "id": "inkjet",
+      "upstreamId": "SpJetpack",
+      "name": "喷射背包",
+      "verification": "kit-verified",
+      "sourceId": "leanny-splat3",
+      "checkedAt": "2026-10-07"
+    },
+    {
+      "id": "killer-wail-5.1",
+      "upstreamId": "SpMicroLaser",
+      "name": "喇叭镭射5.1ch",
+      "verification": "kit-verified",
+      "sourceId": "leanny-splat3",
+      "checkedAt": "2026-10-07"
+    },
+    {
+      "id": "tenta-missiles",
+      "upstreamId": "SpMultiMissile",
+      "name": "多重导弹",
+      "verification": "kit-verified",
+      "sourceId": "leanny-splat3",
+      "checkedAt": "2026-10-07"
+    },
+    {
+      "id": "booyah-bomb",
+      "upstreamId": "SpNiceBall",
+      "name": "赞气弹",
+      "verification": "kit-verified",
+      "sourceId": "leanny-splat3",
+      "checkedAt": "2026-10-07"
+    },
+    {
+      "id": "triple-splashdown",
+      "upstreamId": "SpPogo",
+      "name": "终极着陆",
+      "verification": "kit-verified",
+      "sourceId": "leanny-splat3",
+      "checkedAt": "2026-10-07"
+    },
+    {
       "id": "wave-breaker",
+      "upstreamId": "SpShockSonar",
       "name": "弹跳声呐",
       "verification": "kit-verified",
       "sourceId": "inklab-manual-review",
       "checkedAt": "2026-09-06"
+    },
+    {
+      "id": "reef-slider",
+      "upstreamId": "SpSkewer",
+      "name": "鲨鱼坐骑",
+      "verification": "kit-verified",
+      "sourceId": "leanny-splat3",
+      "checkedAt": "2026-10-07"
+    },
+    {
+      "id": "zipcaster",
+      "upstreamId": "SpSuperHook",
+      "name": "触手喷射",
+      "verification": "kit-verified",
+      "sourceId": "leanny-splat3",
+      "checkedAt": "2026-10-07"
+    },
+    {
+      "id": "triple-inkstrike",
+      "upstreamId": "SpTripleTornado",
+      "name": "三重龙卷风",
+      "verification": "kit-verified",
+      "sourceId": "leanny-splat3",
+      "checkedAt": "2026-10-07"
+    },
+    {
+      "id": "trizooka",
+      "upstreamId": "SpUltraShot",
+      "name": "终极发射",
+      "verification": "kit-verified",
+      "sourceId": "inklab-manual-review",
+      "checkedAt": "2026-09-06"
+    },
+    {
+      "id": "ultra-stamp",
+      "upstreamId": "SpUltraStamp",
+      "name": "终极印章",
+      "verification": "kit-verified",
+      "sourceId": "leanny-splat3",
+      "checkedAt": "2026-10-07"
     }
   ]
 }

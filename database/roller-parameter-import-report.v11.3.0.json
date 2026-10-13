@@ -1,0 +1,36 @@
+{
+  "gameVersion": "11.3.0",
+  "importedAt": "2026-10-08",
+  "sourceId": "leanny-splat3",
+  "sourceCommit": "7280ff9cde8bb1c5dcef46c700c326471584d2e6",
+  "attribution": "Data provided by Lean",
+  "scope": "Roller family explicit fields only",
+  "inputs": [
+    {
+      "upstreamPath": "data/parameter/1130/weapon/WeaponRollerCompact.game__GameParameterTable.json",
+      "sha256": "0c586351a0d16bae0fcb416ed053e69790b14ca4660dc3a1771516f740332415"
+    },
+    {
+      "upstreamPath": "data/parameter/1130/weapon/WeaponRollerHeavy.game__GameParameterTable.json",
+      "sha256": "7206012122ec2faf48713f313ed58002bd77fe4f7e9923aee667bc518102a37a"
+    },
+    {
+      "upstreamPath": "data/parameter/1130/weapon/WeaponRollerHunter.game__GameParameterTable.json",
+      "sha256": "3de9fc1dd3a57939bceac11ddc04f110fad3f51677cec60ff57a83a78f54a23e"
+    },
+    {
+      "upstreamPath": "data/parameter/1130/weapon/WeaponRollerNormal.game__GameParameterTable.json",
+      "sha256": "5b423eb35d4cac268a1e4085ec8321d27639ddbfc8f3775bb65696af5c2449c7"
+    },
+    {
+      "upstreamPath": "data/parameter/1130/weapon/WeaponRollerWide.game__GameParameterTable.json",
+      "sha256": "3e4d368b04c78ce4ee81dc09862136b9aee214397d96990e98609d91209b2f80"
+    }
+  ],
+  "outputCounts": {
+    "rollerWeapons": 14,
+    "rollerParameterClasses": 5,
+    "recordsWithVerifiedFields": 73,
+    "pendingOnlyRecords": 101
+  }
+}

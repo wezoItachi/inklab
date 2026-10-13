@@ -9,12 +9,30 @@
       "authorization": "public-reference"
     },
     {
+      "id": "nintendo-splatoon-base-weapons",
+      "kind": "official-weapon-description",
+      "label": "Nintendo Splatoon Base 武器说明",
+      "url": "https://www.nintendo.com/jp/character/splatoon/en/fashion/index.html",
+      "checkedAt": "2026-10-10",
+      "authorization": "public-reference",
+      "scope": "三发猎鱼弓的三向发射说明与邦普V的一次五发说明"
+    },
+    {
       "id": "leanny-splat3",
-      "kind": "planned-structured-upstream",
+      "kind": "structured-upstream",
       "label": "Leanny/splat3",
       "url": "https://github.com/Leanny/splat3",
-      "checkedAt": "2026-10-03",
+      "checkedAt": "2026-10-07",
       "latestObservedVersion": "11.3.0",
+      "scope": "Ver. 11.3.0 main-weapon identities, localized names, categories, kit relationships, and selected explicit main-weapon parameter fields",
+      "upstreamPaths": [
+        "data/mush/1130/WeaponInfoMain.json",
+        "data/language/CNzh.json",
+        "data/parameter/1130/weapon/WeaponShooter*.game__GameParameterTable.json",
+        "data/parameter/1130/weapon/WeaponBlaster*.game__GameParameterTable.json",
+        "data/parameter/1130/weapon/WeaponRoller*.game__GameParameterTable.json",
+        "data/parameter/1130/weapon/WeaponCharger*.game__GameParameterTable.json"
+      ],
       "authorization": "permission-with-attribution",
       "attribution": "Data provided by Lean",
       "permissionRecord": "https://github.com/Leanny/splat3/issues/7#issuecomment-5566028905"
@@ -34,7 +52,7 @@
     {
       "id": "inklab-manual-review",
       "kind": "internal-review",
-      "label": "INKLAB 六武器人工核对记录",
+      "label": "INKLAB 六武器参数人工核对记录",
       "checkedAt": "2026-09-06",
       "authorization": "first-party-record"
     }

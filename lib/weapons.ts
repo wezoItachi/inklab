@@ -42,6 +42,19 @@ const kitsByWeaponId = new Map(
 
 export const DATA_VERSION = mainWeaponDatabase.gameVersion;
 export const DATASET_STATUS = mainWeaponDatabase.datasetStatus;
+export const WEAPON_FAMILIES: readonly WeaponFamily[] = [
+  '射击枪',
+  '爆破枪',
+  '滚筒',
+  '画笔',
+  '蓄力枪',
+  '泼桶',
+  '加特林',
+  '双枪',
+  '伞',
+  '弓',
+  '刮水刀',
+];
 export const mainWeaponParameters: readonly MainWeaponParameterRecord[] =
   mainWeaponParameterDatabase.records;
 export const weapons: readonly WeaponRecord[] = mainWeaponDatabase.weapons.map(
@@ -63,6 +76,9 @@ export const weapons: readonly WeaponRecord[] = mainWeaponDatabase.weapons.map(
     };
   },
 );
+export const PARAMETER_VERIFIED_WEAPON_COUNT = mainWeaponParameters.filter(
+  ({ parameters }) => parameters.some(({ status }) => status === 'verified'),
+).length;
 
 export type Weapon = WeaponRecord;
 export type { WeaponFamily };
@@ -74,10 +90,11 @@ export function getWeapon(weaponId: string): Weapon {
 export function getMainWeaponParameters(
   weaponId: string,
 ): MainWeaponParameterRecord {
-  return (
-    mainWeaponParameters.find((record) => record.weaponId === weaponId) ??
-    mainWeaponParameters[0]
+  const record = mainWeaponParameters.find(
+    (parameterRecord) => parameterRecord.weaponId === weaponId,
   );
+  if (!record) throw new Error(`Missing parameter record: ${weaponId}`);
+  return record;
 }
 
 export function summarizeMainWeaponParameters(weaponId: string) {

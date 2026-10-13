@@ -35,10 +35,10 @@ export const parameterSources = {
   leanny1130: {
     label: 'Leanny/splat3 11.3.0 参数快照',
     url: 'https://github.com/Leanny/splat3/tree/main/data/parameter/1130',
-    checkedAt: '2026-09-27',
+    checkedAt: '2026-10-07',
   },
   internalReview: {
-    label: 'INKLAB 六武器人工核对记录',
+    label: 'INKLAB 六武器参数人工核对记录',
     checkedAt: '2026-09-06',
   },
 } as const;
@@ -58,20 +58,28 @@ export function getWeaponParameterSnapshot(
       {
         label: '武器套装',
         status: 'verified',
-        source: 'internalReview',
+        source:
+          weapon.sourceId === 'leanny-splat3'
+            ? 'leanny1130'
+            : 'internalReview',
         note: `${weapon.sub.name} · ${weapon.special}`,
       },
       {
         label: '副武耗墨',
-        status: 'verified',
-        source: 'internalReview',
-        note: `基础耗墨 ${weapon.sub.baseInkCost}%`,
+        status: weapon.sub.baseInkCost === null ? 'pending' : 'verified',
+        source: weapon.sub.baseInkCost === null ? undefined : 'internalReview',
+        note:
+          weapon.sub.baseInkCost === null
+            ? '副武器身份已导入，基础耗墨尚未逐字段核对'
+            : `基础耗墨 ${weapon.sub.baseInkCost}%`,
       },
       {
         label: '副武增强对象',
-        status: 'verified',
-        source: 'internalReview',
-        note: weapon.sub.subPowerEffect,
+        status: weapon.sub.subPowerEffect === null ? 'pending' : 'verified',
+        source:
+          weapon.sub.subPowerEffect === null ? undefined : 'internalReview',
+        note:
+          weapon.sub.subPowerEffect ?? '副武增强作用对象尚未逐字段核对',
       },
       {
         label: '主武参数',
@@ -87,9 +95,9 @@ export function getWeaponParameterSnapshot(
         note: '公式与版本参数尚未完成双重核对',
       },
       {
-        label: '快速配装',
+        label: '系统建议',
         status: 'demo',
-        note: '交互样例，不代表正式攻略或社区统计',
+        note: '由武器族与已核对套装生成；不含外部或内测样本',
       },
     ],
   };

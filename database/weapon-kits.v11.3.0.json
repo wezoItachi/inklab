@@ -1,7 +1,7 @@
 {
   "gameVersion": "11.3.0",
-  "datasetStatus": "representative-test-set",
-  "defaultSourceId": "inklab-manual-review",
+  "datasetStatus": "full-weapon-catalog-partial-parameters",
+  "defaultSourceId": "leanny-splat3",
   "kits": [
     {
       "weaponId": "shooter-quickmiddle-cstm01",
@@ -56,6 +56,1518 @@
       "verification": "kit-verified",
       "sourceId": "inklab-manual-review",
       "checkedAt": "2026-09-06"
+    },
+    {
+      "weaponId": "main-0",
+      "subId": "curling-bomb",
+      "specialId": "ultra-stamp",
+      "recommendedPreset": null,
+      "verification": "kit-verified",
+      "sourceId": "leanny-splat3",
+      "checkedAt": "2026-10-07"
+    },
+    {
+      "weaponId": "main-1",
+      "subId": "squid-beakon",
+      "specialId": "killer-wail-5.1",
+      "recommendedPreset": null,
+      "verification": "kit-verified",
+      "sourceId": "leanny-splat3",
+      "checkedAt": "2026-10-07"
+    },
+    {
+      "weaponId": "main-10",
+      "subId": "splat-bomb",
+      "specialId": "big-bubbler",
+      "recommendedPreset": null,
+      "verification": "kit-verified",
+      "sourceId": "leanny-splat3",
+      "checkedAt": "2026-10-07"
+    },
+    {
+      "weaponId": "main-11",
+      "subId": "torpedo",
+      "specialId": "wave-breaker",
+      "recommendedPreset": null,
+      "verification": "kit-verified",
+      "sourceId": "leanny-splat3",
+      "checkedAt": "2026-10-07"
+    },
+    {
+      "weaponId": "main-21",
+      "subId": "suction-bomb",
+      "specialId": "triple-inkstrike",
+      "recommendedPreset": null,
+      "verification": "kit-verified",
+      "sourceId": "leanny-splat3",
+      "checkedAt": "2026-10-07"
+    },
+    {
+      "weaponId": "main-22",
+      "subId": "toxic-mist",
+      "specialId": "ink-storm",
+      "recommendedPreset": null,
+      "verification": "kit-verified",
+      "sourceId": "leanny-splat3",
+      "checkedAt": "2026-10-07"
+    },
+    {
+      "weaponId": "main-30",
+      "subId": "fizzy-bomb",
+      "specialId": "reef-slider",
+      "recommendedPreset": null,
+      "verification": "kit-verified",
+      "sourceId": "leanny-splat3",
+      "checkedAt": "2026-10-07"
+    },
+    {
+      "weaponId": "main-31",
+      "subId": "sprinkler",
+      "specialId": "booyah-bomb",
+      "recommendedPreset": null,
+      "verification": "kit-verified",
+      "sourceId": "leanny-splat3",
+      "checkedAt": "2026-10-07"
+    },
+    {
+      "weaponId": "main-32",
+      "subId": "burst-bomb",
+      "specialId": "splattercolor-screen",
+      "recommendedPreset": null,
+      "verification": "kit-verified",
+      "sourceId": "leanny-splat3",
+      "checkedAt": "2026-10-07"
+    },
+    {
+      "weaponId": "main-41",
+      "subId": "splat-bomb",
+      "specialId": "triple-inkstrike",
+      "recommendedPreset": null,
+      "verification": "kit-verified",
+      "sourceId": "leanny-splat3",
+      "checkedAt": "2026-10-07"
+    },
+    {
+      "weaponId": "main-42",
+      "subId": "burst-bomb",
+      "specialId": "kraken-royale",
+      "recommendedPreset": null,
+      "verification": "kit-verified",
+      "sourceId": "leanny-splat3",
+      "checkedAt": "2026-10-07"
+    },
+    {
+      "weaponId": "main-45",
+      "subId": "suction-bomb",
+      "specialId": "trizooka",
+      "recommendedPreset": null,
+      "verification": "kit-verified",
+      "sourceId": "leanny-splat3",
+      "checkedAt": "2026-10-07"
+    },
+    {
+      "weaponId": "main-46",
+      "subId": "splat-bomb",
+      "specialId": "triple-inkstrike",
+      "recommendedPreset": null,
+      "verification": "kit-verified",
+      "sourceId": "leanny-splat3",
+      "checkedAt": "2026-10-07"
+    },
+    {
+      "weaponId": "main-47",
+      "subId": "suction-bomb",
+      "specialId": "trizooka",
+      "recommendedPreset": null,
+      "verification": "kit-verified",
+      "sourceId": "leanny-splat3",
+      "checkedAt": "2026-10-07"
+    },
+    {
+      "weaponId": "main-48",
+      "subId": "splat-bomb",
+      "specialId": "triple-inkstrike",
+      "recommendedPreset": null,
+      "verification": "kit-verified",
+      "sourceId": "leanny-splat3",
+      "checkedAt": "2026-10-07"
+    },
+    {
+      "weaponId": "main-50",
+      "subId": "splash-wall",
+      "specialId": "killer-wail-5.1",
+      "recommendedPreset": null,
+      "verification": "kit-verified",
+      "sourceId": "leanny-splat3",
+      "checkedAt": "2026-10-07"
+    },
+    {
+      "weaponId": "main-51",
+      "subId": "curling-bomb",
+      "specialId": "splattercolor-screen",
+      "recommendedPreset": null,
+      "verification": "kit-verified",
+      "sourceId": "leanny-splat3",
+      "checkedAt": "2026-10-07"
+    },
+    {
+      "weaponId": "main-60",
+      "subId": "suction-bomb",
+      "specialId": "tacticooler",
+      "recommendedPreset": null,
+      "verification": "kit-verified",
+      "sourceId": "leanny-splat3",
+      "checkedAt": "2026-10-07"
+    },
+    {
+      "weaponId": "main-70",
+      "subId": "angle-shooter",
+      "specialId": "crab-tank",
+      "recommendedPreset": null,
+      "verification": "kit-verified",
+      "sourceId": "leanny-splat3",
+      "checkedAt": "2026-10-07"
+    },
+    {
+      "weaponId": "main-71",
+      "subId": "suction-bomb",
+      "specialId": "booyah-bomb",
+      "recommendedPreset": null,
+      "verification": "kit-verified",
+      "sourceId": "leanny-splat3",
+      "checkedAt": "2026-10-07"
+    },
+    {
+      "weaponId": "main-72",
+      "subId": "splat-bomb",
+      "specialId": "tenta-missiles",
+      "recommendedPreset": null,
+      "verification": "kit-verified",
+      "sourceId": "leanny-splat3",
+      "checkedAt": "2026-10-07"
+    },
+    {
+      "weaponId": "main-80",
+      "subId": "sprinkler",
+      "specialId": "ink-vac",
+      "recommendedPreset": null,
+      "verification": "kit-verified",
+      "sourceId": "leanny-splat3",
+      "checkedAt": "2026-10-07"
+    },
+    {
+      "weaponId": "main-81",
+      "subId": "splash-wall",
+      "specialId": "kraken-royale",
+      "recommendedPreset": null,
+      "verification": "kit-verified",
+      "sourceId": "leanny-splat3",
+      "checkedAt": "2026-10-07"
+    },
+    {
+      "weaponId": "main-82",
+      "subId": "angle-shooter",
+      "specialId": "tacticooler",
+      "recommendedPreset": null,
+      "verification": "kit-verified",
+      "sourceId": "leanny-splat3",
+      "checkedAt": "2026-10-07"
+    },
+    {
+      "weaponId": "main-90",
+      "subId": "angle-shooter",
+      "specialId": "ink-vac",
+      "recommendedPreset": null,
+      "verification": "kit-verified",
+      "sourceId": "leanny-splat3",
+      "checkedAt": "2026-10-07"
+    },
+    {
+      "weaponId": "main-91",
+      "subId": "toxic-mist",
+      "specialId": "ink-storm",
+      "recommendedPreset": null,
+      "verification": "kit-verified",
+      "sourceId": "leanny-splat3",
+      "checkedAt": "2026-10-07"
+    },
+    {
+      "weaponId": "main-92",
+      "subId": "burst-bomb",
+      "specialId": "triple-splashdown",
+      "recommendedPreset": null,
+      "verification": "kit-verified",
+      "sourceId": "leanny-splat3",
+      "checkedAt": "2026-10-07"
+    },
+    {
+      "weaponId": "main-100",
+      "subId": "point-sensor",
+      "specialId": "killer-wail-5.1",
+      "recommendedPreset": null,
+      "verification": "kit-verified",
+      "sourceId": "leanny-splat3",
+      "checkedAt": "2026-10-07"
+    },
+    {
+      "weaponId": "main-101",
+      "subId": "ink-mine",
+      "specialId": "inkjet",
+      "recommendedPreset": null,
+      "verification": "kit-verified",
+      "sourceId": "leanny-splat3",
+      "checkedAt": "2026-10-07"
+    },
+    {
+      "weaponId": "main-300",
+      "subId": "curling-bomb",
+      "specialId": "crab-tank",
+      "recommendedPreset": null,
+      "verification": "kit-verified",
+      "sourceId": "leanny-splat3",
+      "checkedAt": "2026-10-07"
+    },
+    {
+      "weaponId": "main-301",
+      "subId": "burst-bomb",
+      "specialId": "ultra-stamp",
+      "recommendedPreset": null,
+      "verification": "kit-verified",
+      "sourceId": "leanny-splat3",
+      "checkedAt": "2026-10-07"
+    },
+    {
+      "weaponId": "main-302",
+      "subId": "splat-bomb",
+      "specialId": "inkjet",
+      "recommendedPreset": null,
+      "verification": "kit-verified",
+      "sourceId": "leanny-splat3",
+      "checkedAt": "2026-10-07"
+    },
+    {
+      "weaponId": "main-310",
+      "subId": "point-sensor",
+      "specialId": "tacticooler",
+      "recommendedPreset": null,
+      "verification": "kit-verified",
+      "sourceId": "leanny-splat3",
+      "checkedAt": "2026-10-07"
+    },
+    {
+      "weaponId": "main-311",
+      "subId": "splash-wall",
+      "specialId": "big-bubbler",
+      "recommendedPreset": null,
+      "verification": "kit-verified",
+      "sourceId": "leanny-splat3",
+      "checkedAt": "2026-10-07"
+    },
+    {
+      "weaponId": "main-312",
+      "subId": "suction-bomb",
+      "specialId": "triple-inkstrike",
+      "recommendedPreset": null,
+      "verification": "kit-verified",
+      "sourceId": "leanny-splat3",
+      "checkedAt": "2026-10-07"
+    },
+    {
+      "weaponId": "main-400",
+      "subId": "splash-wall",
+      "specialId": "trizooka",
+      "recommendedPreset": null,
+      "verification": "kit-verified",
+      "sourceId": "leanny-splat3",
+      "checkedAt": "2026-10-07"
+    },
+    {
+      "weaponId": "main-401",
+      "subId": "autobomb",
+      "specialId": "splattercolor-screen",
+      "recommendedPreset": null,
+      "verification": "kit-verified",
+      "sourceId": "leanny-splat3",
+      "checkedAt": "2026-10-07"
+    },
+    {
+      "weaponId": "main-200",
+      "subId": "splat-bomb",
+      "specialId": "zipcaster",
+      "recommendedPreset": null,
+      "verification": "kit-verified",
+      "sourceId": "leanny-splat3",
+      "checkedAt": "2026-10-07"
+    },
+    {
+      "weaponId": "main-201",
+      "subId": "fizzy-bomb",
+      "specialId": "ultra-stamp",
+      "recommendedPreset": null,
+      "verification": "kit-verified",
+      "sourceId": "leanny-splat3",
+      "checkedAt": "2026-10-07"
+    },
+    {
+      "weaponId": "main-205",
+      "subId": "splat-bomb",
+      "specialId": "zipcaster",
+      "recommendedPreset": null,
+      "verification": "kit-verified",
+      "sourceId": "leanny-splat3",
+      "checkedAt": "2026-10-07"
+    },
+    {
+      "weaponId": "main-210",
+      "subId": "autobomb",
+      "specialId": "big-bubbler",
+      "recommendedPreset": null,
+      "verification": "kit-verified",
+      "sourceId": "leanny-splat3",
+      "checkedAt": "2026-10-07"
+    },
+    {
+      "weaponId": "main-211",
+      "subId": "point-sensor",
+      "specialId": "triple-splashdown",
+      "recommendedPreset": null,
+      "verification": "kit-verified",
+      "sourceId": "leanny-splat3",
+      "checkedAt": "2026-10-07"
+    },
+    {
+      "weaponId": "main-212",
+      "subId": "squid-beakon",
+      "specialId": "crab-tank",
+      "recommendedPreset": null,
+      "verification": "kit-verified",
+      "sourceId": "leanny-splat3",
+      "checkedAt": "2026-10-07"
+    },
+    {
+      "weaponId": "main-220",
+      "subId": "suction-bomb",
+      "specialId": "wave-breaker",
+      "recommendedPreset": null,
+      "verification": "kit-verified",
+      "sourceId": "leanny-splat3",
+      "checkedAt": "2026-10-07"
+    },
+    {
+      "weaponId": "main-221",
+      "subId": "splat-bomb",
+      "specialId": "kraken-royale",
+      "recommendedPreset": null,
+      "verification": "kit-verified",
+      "sourceId": "leanny-splat3",
+      "checkedAt": "2026-10-07"
+    },
+    {
+      "weaponId": "main-230",
+      "subId": "splat-bomb",
+      "specialId": "trizooka",
+      "recommendedPreset": null,
+      "verification": "kit-verified",
+      "sourceId": "leanny-splat3",
+      "checkedAt": "2026-10-07"
+    },
+    {
+      "weaponId": "main-231",
+      "subId": "curling-bomb",
+      "specialId": "decoy",
+      "recommendedPreset": null,
+      "verification": "kit-verified",
+      "sourceId": "leanny-splat3",
+      "checkedAt": "2026-10-07"
+    },
+    {
+      "weaponId": "main-240",
+      "subId": "ink-mine",
+      "specialId": "triple-inkstrike",
+      "recommendedPreset": null,
+      "verification": "kit-verified",
+      "sourceId": "leanny-splat3",
+      "checkedAt": "2026-10-07"
+    },
+    {
+      "weaponId": "main-241",
+      "subId": "torpedo",
+      "specialId": "inkjet",
+      "recommendedPreset": null,
+      "verification": "kit-verified",
+      "sourceId": "leanny-splat3",
+      "checkedAt": "2026-10-07"
+    },
+    {
+      "weaponId": "main-250",
+      "subId": "toxic-mist",
+      "specialId": "ink-vac",
+      "recommendedPreset": null,
+      "verification": "kit-verified",
+      "sourceId": "leanny-splat3",
+      "checkedAt": "2026-10-07"
+    },
+    {
+      "weaponId": "main-251",
+      "subId": "angle-shooter",
+      "specialId": "killer-wail-5.1",
+      "recommendedPreset": null,
+      "verification": "kit-verified",
+      "sourceId": "leanny-splat3",
+      "checkedAt": "2026-10-07"
+    },
+    {
+      "weaponId": "main-252",
+      "subId": "suction-bomb",
+      "specialId": "tacticooler",
+      "recommendedPreset": null,
+      "verification": "kit-verified",
+      "sourceId": "leanny-splat3",
+      "checkedAt": "2026-10-07"
+    },
+    {
+      "weaponId": "main-260",
+      "subId": "sprinkler",
+      "specialId": "reef-slider",
+      "recommendedPreset": null,
+      "verification": "kit-verified",
+      "sourceId": "leanny-splat3",
+      "checkedAt": "2026-10-07"
+    },
+    {
+      "weaponId": "main-261",
+      "subId": "burst-bomb",
+      "specialId": "booyah-bomb",
+      "recommendedPreset": null,
+      "verification": "kit-verified",
+      "sourceId": "leanny-splat3",
+      "checkedAt": "2026-10-07"
+    },
+    {
+      "weaponId": "main-1000",
+      "subId": "autobomb",
+      "specialId": "zipcaster",
+      "recommendedPreset": null,
+      "verification": "kit-verified",
+      "sourceId": "leanny-splat3",
+      "checkedAt": "2026-10-07"
+    },
+    {
+      "weaponId": "main-1001",
+      "subId": "burst-bomb",
+      "specialId": "trizooka",
+      "recommendedPreset": null,
+      "verification": "kit-verified",
+      "sourceId": "leanny-splat3",
+      "checkedAt": "2026-10-07"
+    },
+    {
+      "weaponId": "main-1002",
+      "subId": "fizzy-bomb",
+      "specialId": "decoy",
+      "recommendedPreset": null,
+      "verification": "kit-verified",
+      "sourceId": "leanny-splat3",
+      "checkedAt": "2026-10-07"
+    },
+    {
+      "weaponId": "main-1011",
+      "subId": "squid-beakon",
+      "specialId": "kraken-royale",
+      "recommendedPreset": null,
+      "verification": "kit-verified",
+      "sourceId": "leanny-splat3",
+      "checkedAt": "2026-10-07"
+    },
+    {
+      "weaponId": "main-1015",
+      "subId": "curling-bomb",
+      "specialId": "big-bubbler",
+      "recommendedPreset": null,
+      "verification": "kit-verified",
+      "sourceId": "leanny-splat3",
+      "checkedAt": "2026-10-07"
+    },
+    {
+      "weaponId": "main-1020",
+      "subId": "sprinkler",
+      "specialId": "tacticooler",
+      "recommendedPreset": null,
+      "verification": "kit-verified",
+      "sourceId": "leanny-splat3",
+      "checkedAt": "2026-10-07"
+    },
+    {
+      "weaponId": "main-1021",
+      "subId": "splat-bomb",
+      "specialId": "decoy",
+      "recommendedPreset": null,
+      "verification": "kit-verified",
+      "sourceId": "leanny-splat3",
+      "checkedAt": "2026-10-07"
+    },
+    {
+      "weaponId": "main-1022",
+      "subId": "point-sensor",
+      "specialId": "killer-wail-5.1",
+      "recommendedPreset": null,
+      "verification": "kit-verified",
+      "sourceId": "leanny-splat3",
+      "checkedAt": "2026-10-07"
+    },
+    {
+      "weaponId": "main-1030",
+      "subId": "ink-mine",
+      "specialId": "tenta-missiles",
+      "recommendedPreset": null,
+      "verification": "kit-verified",
+      "sourceId": "leanny-splat3",
+      "checkedAt": "2026-10-07"
+    },
+    {
+      "weaponId": "main-1031",
+      "subId": "suction-bomb",
+      "specialId": "splattercolor-screen",
+      "recommendedPreset": null,
+      "verification": "kit-verified",
+      "sourceId": "leanny-splat3",
+      "checkedAt": "2026-10-07"
+    },
+    {
+      "weaponId": "main-1040",
+      "subId": "splash-wall",
+      "specialId": "ink-vac",
+      "recommendedPreset": null,
+      "verification": "kit-verified",
+      "sourceId": "leanny-splat3",
+      "checkedAt": "2026-10-07"
+    },
+    {
+      "weaponId": "main-1041",
+      "subId": "angle-shooter",
+      "specialId": "ink-storm",
+      "recommendedPreset": null,
+      "verification": "kit-verified",
+      "sourceId": "leanny-splat3",
+      "checkedAt": "2026-10-07"
+    },
+    {
+      "weaponId": "main-1042",
+      "subId": "torpedo",
+      "specialId": "triple-splashdown",
+      "recommendedPreset": null,
+      "verification": "kit-verified",
+      "sourceId": "leanny-splat3",
+      "checkedAt": "2026-10-07"
+    },
+    {
+      "weaponId": "main-1100",
+      "subId": "splat-bomb",
+      "specialId": "killer-wail-5.1",
+      "recommendedPreset": null,
+      "verification": "kit-verified",
+      "sourceId": "leanny-splat3",
+      "checkedAt": "2026-10-07"
+    },
+    {
+      "weaponId": "main-1101",
+      "subId": "ink-mine",
+      "specialId": "ultra-stamp",
+      "recommendedPreset": null,
+      "verification": "kit-verified",
+      "sourceId": "leanny-splat3",
+      "checkedAt": "2026-10-07"
+    },
+    {
+      "weaponId": "main-1110",
+      "subId": "suction-bomb",
+      "specialId": "zipcaster",
+      "recommendedPreset": null,
+      "verification": "kit-verified",
+      "sourceId": "leanny-splat3",
+      "checkedAt": "2026-10-07"
+    },
+    {
+      "weaponId": "main-1111",
+      "subId": "squid-beakon",
+      "specialId": "ink-storm",
+      "recommendedPreset": null,
+      "verification": "kit-verified",
+      "sourceId": "leanny-splat3",
+      "checkedAt": "2026-10-07"
+    },
+    {
+      "weaponId": "main-1112",
+      "subId": "autobomb",
+      "specialId": "kraken-royale",
+      "recommendedPreset": null,
+      "verification": "kit-verified",
+      "sourceId": "leanny-splat3",
+      "checkedAt": "2026-10-07"
+    },
+    {
+      "weaponId": "main-1115",
+      "subId": "suction-bomb",
+      "specialId": "zipcaster",
+      "recommendedPreset": null,
+      "verification": "kit-verified",
+      "sourceId": "leanny-splat3",
+      "checkedAt": "2026-10-07"
+    },
+    {
+      "weaponId": "main-1120",
+      "subId": "curling-bomb",
+      "specialId": "wave-breaker",
+      "recommendedPreset": null,
+      "verification": "kit-verified",
+      "sourceId": "leanny-splat3",
+      "checkedAt": "2026-10-07"
+    },
+    {
+      "weaponId": "main-1121",
+      "subId": "point-sensor",
+      "specialId": "tenta-missiles",
+      "recommendedPreset": null,
+      "verification": "kit-verified",
+      "sourceId": "leanny-splat3",
+      "checkedAt": "2026-10-07"
+    },
+    {
+      "weaponId": "main-1122",
+      "subId": "splash-wall",
+      "specialId": "trizooka",
+      "recommendedPreset": null,
+      "verification": "kit-verified",
+      "sourceId": "leanny-splat3",
+      "checkedAt": "2026-10-07"
+    },
+    {
+      "weaponId": "main-2000",
+      "subId": "point-sensor",
+      "specialId": "big-bubbler",
+      "recommendedPreset": null,
+      "verification": "kit-verified",
+      "sourceId": "leanny-splat3",
+      "checkedAt": "2026-10-07"
+    },
+    {
+      "weaponId": "main-2001",
+      "subId": "autobomb",
+      "specialId": "zipcaster",
+      "recommendedPreset": null,
+      "verification": "kit-verified",
+      "sourceId": "leanny-splat3",
+      "checkedAt": "2026-10-07"
+    },
+    {
+      "weaponId": "main-2011",
+      "subId": "splash-wall",
+      "specialId": "triple-inkstrike",
+      "recommendedPreset": null,
+      "verification": "kit-verified",
+      "sourceId": "leanny-splat3",
+      "checkedAt": "2026-10-07"
+    },
+    {
+      "weaponId": "main-2012",
+      "subId": "sprinkler",
+      "specialId": "crab-tank",
+      "recommendedPreset": null,
+      "verification": "kit-verified",
+      "sourceId": "leanny-splat3",
+      "checkedAt": "2026-10-07"
+    },
+    {
+      "weaponId": "main-2015",
+      "subId": "splat-bomb",
+      "specialId": "ink-vac",
+      "recommendedPreset": null,
+      "verification": "kit-verified",
+      "sourceId": "leanny-splat3",
+      "checkedAt": "2026-10-07"
+    },
+    {
+      "weaponId": "main-2020",
+      "subId": "splat-bomb",
+      "specialId": "ink-vac",
+      "recommendedPreset": null,
+      "verification": "kit-verified",
+      "sourceId": "leanny-splat3",
+      "checkedAt": "2026-10-07"
+    },
+    {
+      "weaponId": "main-2021",
+      "subId": "splash-wall",
+      "specialId": "triple-inkstrike",
+      "recommendedPreset": null,
+      "verification": "kit-verified",
+      "sourceId": "leanny-splat3",
+      "checkedAt": "2026-10-07"
+    },
+    {
+      "weaponId": "main-2022",
+      "subId": "sprinkler",
+      "specialId": "crab-tank",
+      "recommendedPreset": null,
+      "verification": "kit-verified",
+      "sourceId": "leanny-splat3",
+      "checkedAt": "2026-10-07"
+    },
+    {
+      "weaponId": "main-2030",
+      "subId": "ink-mine",
+      "specialId": "wave-breaker",
+      "recommendedPreset": null,
+      "verification": "kit-verified",
+      "sourceId": "leanny-splat3",
+      "checkedAt": "2026-10-07"
+    },
+    {
+      "weaponId": "main-2031",
+      "subId": "squid-beakon",
+      "specialId": "kraken-royale",
+      "recommendedPreset": null,
+      "verification": "kit-verified",
+      "sourceId": "leanny-splat3",
+      "checkedAt": "2026-10-07"
+    },
+    {
+      "weaponId": "main-2040",
+      "subId": "ink-mine",
+      "specialId": "wave-breaker",
+      "recommendedPreset": null,
+      "verification": "kit-verified",
+      "sourceId": "leanny-splat3",
+      "checkedAt": "2026-10-07"
+    },
+    {
+      "weaponId": "main-2041",
+      "subId": "squid-beakon",
+      "specialId": "kraken-royale",
+      "recommendedPreset": null,
+      "verification": "kit-verified",
+      "sourceId": "leanny-splat3",
+      "checkedAt": "2026-10-07"
+    },
+    {
+      "weaponId": "main-2050",
+      "subId": "autobomb",
+      "specialId": "killer-wail-5.1",
+      "recommendedPreset": null,
+      "verification": "kit-verified",
+      "sourceId": "leanny-splat3",
+      "checkedAt": "2026-10-07"
+    },
+    {
+      "weaponId": "main-2051",
+      "subId": "fizzy-bomb",
+      "specialId": "decoy",
+      "recommendedPreset": null,
+      "verification": "kit-verified",
+      "sourceId": "leanny-splat3",
+      "checkedAt": "2026-10-07"
+    },
+    {
+      "weaponId": "main-2060",
+      "subId": "torpedo",
+      "specialId": "tenta-missiles",
+      "recommendedPreset": null,
+      "verification": "kit-verified",
+      "sourceId": "leanny-splat3",
+      "checkedAt": "2026-10-07"
+    },
+    {
+      "weaponId": "main-2061",
+      "subId": "fizzy-bomb",
+      "specialId": "ultra-stamp",
+      "recommendedPreset": null,
+      "verification": "kit-verified",
+      "sourceId": "leanny-splat3",
+      "checkedAt": "2026-10-07"
+    },
+    {
+      "weaponId": "main-2070",
+      "subId": "sprinkler",
+      "specialId": "tacticooler",
+      "recommendedPreset": null,
+      "verification": "kit-verified",
+      "sourceId": "leanny-splat3",
+      "checkedAt": "2026-10-07"
+    },
+    {
+      "weaponId": "main-2071",
+      "subId": "splash-wall",
+      "specialId": "ink-storm",
+      "recommendedPreset": null,
+      "verification": "kit-verified",
+      "sourceId": "leanny-splat3",
+      "checkedAt": "2026-10-07"
+    },
+    {
+      "weaponId": "main-3000",
+      "subId": "splat-bomb",
+      "specialId": "triple-inkstrike",
+      "recommendedPreset": null,
+      "verification": "kit-verified",
+      "sourceId": "leanny-splat3",
+      "checkedAt": "2026-10-07"
+    },
+    {
+      "weaponId": "main-3001",
+      "subId": "angle-shooter",
+      "specialId": "zipcaster",
+      "recommendedPreset": null,
+      "verification": "kit-verified",
+      "sourceId": "leanny-splat3",
+      "checkedAt": "2026-10-07"
+    },
+    {
+      "weaponId": "main-3005",
+      "subId": "splat-bomb",
+      "specialId": "triple-inkstrike",
+      "recommendedPreset": null,
+      "verification": "kit-verified",
+      "sourceId": "leanny-splat3",
+      "checkedAt": "2026-10-07"
+    },
+    {
+      "weaponId": "main-3010",
+      "subId": "toxic-mist",
+      "specialId": "inkjet",
+      "recommendedPreset": null,
+      "verification": "kit-verified",
+      "sourceId": "leanny-splat3",
+      "checkedAt": "2026-10-07"
+    },
+    {
+      "weaponId": "main-3011",
+      "subId": "fizzy-bomb",
+      "specialId": "tacticooler",
+      "recommendedPreset": null,
+      "verification": "kit-verified",
+      "sourceId": "leanny-splat3",
+      "checkedAt": "2026-10-07"
+    },
+    {
+      "weaponId": "main-3012",
+      "subId": "splat-bomb",
+      "specialId": "splattercolor-screen",
+      "recommendedPreset": null,
+      "verification": "kit-verified",
+      "sourceId": "leanny-splat3",
+      "checkedAt": "2026-10-07"
+    },
+    {
+      "weaponId": "main-3020",
+      "subId": "fizzy-bomb",
+      "specialId": "booyah-bomb",
+      "recommendedPreset": null,
+      "verification": "kit-verified",
+      "sourceId": "leanny-splat3",
+      "checkedAt": "2026-10-07"
+    },
+    {
+      "weaponId": "main-3021",
+      "subId": "point-sensor",
+      "specialId": "trizooka",
+      "recommendedPreset": null,
+      "verification": "kit-verified",
+      "sourceId": "leanny-splat3",
+      "checkedAt": "2026-10-07"
+    },
+    {
+      "weaponId": "main-3030",
+      "subId": "sprinkler",
+      "specialId": "ink-storm",
+      "recommendedPreset": null,
+      "verification": "kit-verified",
+      "sourceId": "leanny-splat3",
+      "checkedAt": "2026-10-07"
+    },
+    {
+      "weaponId": "main-3031",
+      "subId": "angle-shooter",
+      "specialId": "kraken-royale",
+      "recommendedPreset": null,
+      "verification": "kit-verified",
+      "sourceId": "leanny-splat3",
+      "checkedAt": "2026-10-07"
+    },
+    {
+      "weaponId": "main-3040",
+      "subId": "point-sensor",
+      "specialId": "ink-storm",
+      "recommendedPreset": null,
+      "verification": "kit-verified",
+      "sourceId": "leanny-splat3",
+      "checkedAt": "2026-10-07"
+    },
+    {
+      "weaponId": "main-3041",
+      "subId": "splash-wall",
+      "specialId": "triple-splashdown",
+      "recommendedPreset": null,
+      "verification": "kit-verified",
+      "sourceId": "leanny-splat3",
+      "checkedAt": "2026-10-07"
+    },
+    {
+      "weaponId": "main-3050",
+      "subId": "suction-bomb",
+      "specialId": "reef-slider",
+      "recommendedPreset": null,
+      "verification": "kit-verified",
+      "sourceId": "leanny-splat3",
+      "checkedAt": "2026-10-07"
+    },
+    {
+      "weaponId": "main-3051",
+      "subId": "squid-beakon",
+      "specialId": "wave-breaker",
+      "recommendedPreset": null,
+      "verification": "kit-verified",
+      "sourceId": "leanny-splat3",
+      "checkedAt": "2026-10-07"
+    },
+    {
+      "weaponId": "main-3052",
+      "subId": "curling-bomb",
+      "specialId": "crab-tank",
+      "recommendedPreset": null,
+      "verification": "kit-verified",
+      "sourceId": "leanny-splat3",
+      "checkedAt": "2026-10-07"
+    },
+    {
+      "weaponId": "main-4000",
+      "subId": "burst-bomb",
+      "specialId": "ultra-stamp",
+      "recommendedPreset": null,
+      "verification": "kit-verified",
+      "sourceId": "leanny-splat3",
+      "checkedAt": "2026-10-07"
+    },
+    {
+      "weaponId": "main-4001",
+      "subId": "toxic-mist",
+      "specialId": "big-bubbler",
+      "recommendedPreset": null,
+      "verification": "kit-verified",
+      "sourceId": "leanny-splat3",
+      "checkedAt": "2026-10-07"
+    },
+    {
+      "weaponId": "main-4002",
+      "subId": "squid-beakon",
+      "specialId": "trizooka",
+      "recommendedPreset": null,
+      "verification": "kit-verified",
+      "sourceId": "leanny-splat3",
+      "checkedAt": "2026-10-07"
+    },
+    {
+      "weaponId": "main-4011",
+      "subId": "point-sensor",
+      "specialId": "kraken-royale",
+      "recommendedPreset": null,
+      "verification": "kit-verified",
+      "sourceId": "leanny-splat3",
+      "checkedAt": "2026-10-07"
+    },
+    {
+      "weaponId": "main-4015",
+      "subId": "sprinkler",
+      "specialId": "wave-breaker",
+      "recommendedPreset": null,
+      "verification": "kit-verified",
+      "sourceId": "leanny-splat3",
+      "checkedAt": "2026-10-07"
+    },
+    {
+      "weaponId": "main-4020",
+      "subId": "autobomb",
+      "specialId": "booyah-bomb",
+      "recommendedPreset": null,
+      "verification": "kit-verified",
+      "sourceId": "leanny-splat3",
+      "checkedAt": "2026-10-07"
+    },
+    {
+      "weaponId": "main-4021",
+      "subId": "ink-mine",
+      "specialId": "splattercolor-screen",
+      "recommendedPreset": null,
+      "verification": "kit-verified",
+      "sourceId": "leanny-splat3",
+      "checkedAt": "2026-10-07"
+    },
+    {
+      "weaponId": "main-4022",
+      "subId": "sprinkler",
+      "specialId": "big-bubbler",
+      "recommendedPreset": null,
+      "verification": "kit-verified",
+      "sourceId": "leanny-splat3",
+      "checkedAt": "2026-10-07"
+    },
+    {
+      "weaponId": "main-4030",
+      "subId": "fizzy-bomb",
+      "specialId": "inkjet",
+      "recommendedPreset": null,
+      "verification": "kit-verified",
+      "sourceId": "leanny-splat3",
+      "checkedAt": "2026-10-07"
+    },
+    {
+      "weaponId": "main-4031",
+      "subId": "ink-mine",
+      "specialId": "ink-vac",
+      "recommendedPreset": null,
+      "verification": "kit-verified",
+      "sourceId": "leanny-splat3",
+      "checkedAt": "2026-10-07"
+    },
+    {
+      "weaponId": "main-4040",
+      "subId": "point-sensor",
+      "specialId": "ink-storm",
+      "recommendedPreset": null,
+      "verification": "kit-verified",
+      "sourceId": "leanny-splat3",
+      "checkedAt": "2026-10-07"
+    },
+    {
+      "weaponId": "main-4041",
+      "subId": "suction-bomb",
+      "specialId": "triple-splashdown",
+      "recommendedPreset": null,
+      "verification": "kit-verified",
+      "sourceId": "leanny-splat3",
+      "checkedAt": "2026-10-07"
+    },
+    {
+      "weaponId": "main-4050",
+      "subId": "curling-bomb",
+      "specialId": "tacticooler",
+      "recommendedPreset": null,
+      "verification": "kit-verified",
+      "sourceId": "leanny-splat3",
+      "checkedAt": "2026-10-07"
+    },
+    {
+      "weaponId": "main-4051",
+      "subId": "splat-bomb",
+      "specialId": "crab-tank",
+      "recommendedPreset": null,
+      "verification": "kit-verified",
+      "sourceId": "leanny-splat3",
+      "checkedAt": "2026-10-07"
+    },
+    {
+      "weaponId": "main-5000",
+      "subId": "squid-beakon",
+      "specialId": "tacticooler",
+      "recommendedPreset": null,
+      "verification": "kit-verified",
+      "sourceId": "leanny-splat3",
+      "checkedAt": "2026-10-07"
+    },
+    {
+      "weaponId": "main-5001",
+      "subId": "torpedo",
+      "specialId": "reef-slider",
+      "recommendedPreset": null,
+      "verification": "kit-verified",
+      "sourceId": "leanny-splat3",
+      "checkedAt": "2026-10-07"
+    },
+    {
+      "weaponId": "main-5002",
+      "subId": "splat-bomb",
+      "specialId": "killer-wail-5.1",
+      "recommendedPreset": null,
+      "verification": "kit-verified",
+      "sourceId": "leanny-splat3",
+      "checkedAt": "2026-10-07"
+    },
+    {
+      "weaponId": "main-5010",
+      "subId": "suction-bomb",
+      "specialId": "crab-tank",
+      "recommendedPreset": null,
+      "verification": "kit-verified",
+      "sourceId": "leanny-splat3",
+      "checkedAt": "2026-10-07"
+    },
+    {
+      "weaponId": "main-5011",
+      "subId": "curling-bomb",
+      "specialId": "triple-splashdown",
+      "recommendedPreset": null,
+      "verification": "kit-verified",
+      "sourceId": "leanny-splat3",
+      "checkedAt": "2026-10-07"
+    },
+    {
+      "weaponId": "main-5012",
+      "subId": "fizzy-bomb",
+      "specialId": "big-bubbler",
+      "recommendedPreset": null,
+      "verification": "kit-verified",
+      "sourceId": "leanny-splat3",
+      "checkedAt": "2026-10-07"
+    },
+    {
+      "weaponId": "main-5015",
+      "subId": "suction-bomb",
+      "specialId": "crab-tank",
+      "recommendedPreset": null,
+      "verification": "kit-verified",
+      "sourceId": "leanny-splat3",
+      "checkedAt": "2026-10-07"
+    },
+    {
+      "weaponId": "main-5020",
+      "subId": "splash-wall",
+      "specialId": "booyah-bomb",
+      "recommendedPreset": null,
+      "verification": "kit-verified",
+      "sourceId": "leanny-splat3",
+      "checkedAt": "2026-10-07"
+    },
+    {
+      "weaponId": "main-5021",
+      "subId": "point-sensor",
+      "specialId": "trizooka",
+      "recommendedPreset": null,
+      "verification": "kit-verified",
+      "sourceId": "leanny-splat3",
+      "checkedAt": "2026-10-07"
+    },
+    {
+      "weaponId": "main-5030",
+      "subId": "splat-bomb",
+      "specialId": "wave-breaker",
+      "recommendedPreset": null,
+      "verification": "kit-verified",
+      "sourceId": "leanny-splat3",
+      "checkedAt": "2026-10-07"
+    },
+    {
+      "weaponId": "main-5031",
+      "subId": "squid-beakon",
+      "specialId": "decoy",
+      "recommendedPreset": null,
+      "verification": "kit-verified",
+      "sourceId": "leanny-splat3",
+      "checkedAt": "2026-10-07"
+    },
+    {
+      "weaponId": "main-5032",
+      "subId": "point-sensor",
+      "specialId": "splattercolor-screen",
+      "recommendedPreset": null,
+      "verification": "kit-verified",
+      "sourceId": "leanny-splat3",
+      "checkedAt": "2026-10-07"
+    },
+    {
+      "weaponId": "main-5040",
+      "subId": "autobomb",
+      "specialId": "reef-slider",
+      "recommendedPreset": null,
+      "verification": "kit-verified",
+      "sourceId": "leanny-splat3",
+      "checkedAt": "2026-10-07"
+    },
+    {
+      "weaponId": "main-5041",
+      "subId": "sprinkler",
+      "specialId": "zipcaster",
+      "recommendedPreset": null,
+      "verification": "kit-verified",
+      "sourceId": "leanny-splat3",
+      "checkedAt": "2026-10-07"
+    },
+    {
+      "weaponId": "main-5050",
+      "subId": "ink-mine",
+      "specialId": "killer-wail-5.1",
+      "recommendedPreset": null,
+      "verification": "kit-verified",
+      "sourceId": "leanny-splat3",
+      "checkedAt": "2026-10-07"
+    },
+    {
+      "weaponId": "main-5051",
+      "subId": "burst-bomb",
+      "specialId": "triple-inkstrike",
+      "recommendedPreset": null,
+      "verification": "kit-verified",
+      "sourceId": "leanny-splat3",
+      "checkedAt": "2026-10-07"
+    },
+    {
+      "weaponId": "main-6000",
+      "subId": "sprinkler",
+      "specialId": "triple-inkstrike",
+      "recommendedPreset": null,
+      "verification": "kit-verified",
+      "sourceId": "leanny-splat3",
+      "checkedAt": "2026-10-07"
+    },
+    {
+      "weaponId": "main-6001",
+      "subId": "autobomb",
+      "specialId": "inkjet",
+      "recommendedPreset": null,
+      "verification": "kit-verified",
+      "sourceId": "leanny-splat3",
+      "checkedAt": "2026-10-07"
+    },
+    {
+      "weaponId": "main-6005",
+      "subId": "sprinkler",
+      "specialId": "triple-inkstrike",
+      "recommendedPreset": null,
+      "verification": "kit-verified",
+      "sourceId": "leanny-splat3",
+      "checkedAt": "2026-10-07"
+    },
+    {
+      "weaponId": "main-6010",
+      "subId": "squid-beakon",
+      "specialId": "ink-vac",
+      "recommendedPreset": null,
+      "verification": "kit-verified",
+      "sourceId": "leanny-splat3",
+      "checkedAt": "2026-10-07"
+    },
+    {
+      "weaponId": "main-6011",
+      "subId": "ink-mine",
+      "specialId": "trizooka",
+      "recommendedPreset": null,
+      "verification": "kit-verified",
+      "sourceId": "leanny-splat3",
+      "checkedAt": "2026-10-07"
+    },
+    {
+      "weaponId": "main-6012",
+      "subId": "toxic-mist",
+      "specialId": "decoy",
+      "recommendedPreset": null,
+      "verification": "kit-verified",
+      "sourceId": "leanny-splat3",
+      "checkedAt": "2026-10-07"
+    },
+    {
+      "weaponId": "main-6020",
+      "subId": "ink-mine",
+      "specialId": "reef-slider",
+      "recommendedPreset": null,
+      "verification": "kit-verified",
+      "sourceId": "leanny-splat3",
+      "checkedAt": "2026-10-07"
+    },
+    {
+      "weaponId": "main-6021",
+      "subId": "torpedo",
+      "specialId": "splattercolor-screen",
+      "recommendedPreset": null,
+      "verification": "kit-verified",
+      "sourceId": "leanny-splat3",
+      "checkedAt": "2026-10-07"
+    },
+    {
+      "weaponId": "main-6022",
+      "subId": "curling-bomb",
+      "specialId": "killer-wail-5.1",
+      "recommendedPreset": null,
+      "verification": "kit-verified",
+      "sourceId": "leanny-splat3",
+      "checkedAt": "2026-10-07"
+    },
+    {
+      "weaponId": "main-6030",
+      "subId": "angle-shooter",
+      "specialId": "big-bubbler",
+      "recommendedPreset": null,
+      "verification": "kit-verified",
+      "sourceId": "leanny-splat3",
+      "checkedAt": "2026-10-07"
+    },
+    {
+      "weaponId": "main-6031",
+      "subId": "toxic-mist",
+      "specialId": "triple-splashdown",
+      "recommendedPreset": null,
+      "verification": "kit-verified",
+      "sourceId": "leanny-splat3",
+      "checkedAt": "2026-10-07"
+    },
+    {
+      "weaponId": "main-7010",
+      "subId": "toxic-mist",
+      "specialId": "killer-wail-5.1",
+      "recommendedPreset": null,
+      "verification": "kit-verified",
+      "sourceId": "leanny-splat3",
+      "checkedAt": "2026-10-07"
+    },
+    {
+      "weaponId": "main-7011",
+      "subId": "sprinkler",
+      "specialId": "decoy",
+      "recommendedPreset": null,
+      "verification": "kit-verified",
+      "sourceId": "leanny-splat3",
+      "checkedAt": "2026-10-07"
+    },
+    {
+      "weaponId": "main-7012",
+      "subId": "angle-shooter",
+      "specialId": "inkjet",
+      "recommendedPreset": null,
+      "verification": "kit-verified",
+      "sourceId": "leanny-splat3",
+      "checkedAt": "2026-10-07"
+    },
+    {
+      "weaponId": "main-7015",
+      "subId": "toxic-mist",
+      "specialId": "killer-wail-5.1",
+      "recommendedPreset": null,
+      "verification": "kit-verified",
+      "sourceId": "leanny-splat3",
+      "checkedAt": "2026-10-07"
+    },
+    {
+      "weaponId": "main-7020",
+      "subId": "curling-bomb",
+      "specialId": "tenta-missiles",
+      "recommendedPreset": null,
+      "verification": "kit-verified",
+      "sourceId": "leanny-splat3",
+      "checkedAt": "2026-10-07"
+    },
+    {
+      "weaponId": "main-7021",
+      "subId": "splash-wall",
+      "specialId": "reef-slider",
+      "recommendedPreset": null,
+      "verification": "kit-verified",
+      "sourceId": "leanny-splat3",
+      "checkedAt": "2026-10-07"
+    },
+    {
+      "weaponId": "main-7022",
+      "subId": "torpedo",
+      "specialId": "booyah-bomb",
+      "recommendedPreset": null,
+      "verification": "kit-verified",
+      "sourceId": "leanny-splat3",
+      "checkedAt": "2026-10-07"
+    },
+    {
+      "weaponId": "main-7030",
+      "subId": "autobomb",
+      "specialId": "ultra-stamp",
+      "recommendedPreset": null,
+      "verification": "kit-verified",
+      "sourceId": "leanny-splat3",
+      "checkedAt": "2026-10-07"
+    },
+    {
+      "weaponId": "main-7031",
+      "subId": "point-sensor",
+      "specialId": "wave-breaker",
+      "recommendedPreset": null,
+      "verification": "kit-verified",
+      "sourceId": "leanny-splat3",
+      "checkedAt": "2026-10-07"
+    },
+    {
+      "weaponId": "main-8000",
+      "subId": "burst-bomb",
+      "specialId": "zipcaster",
+      "recommendedPreset": null,
+      "verification": "kit-verified",
+      "sourceId": "leanny-splat3",
+      "checkedAt": "2026-10-07"
+    },
+    {
+      "weaponId": "main-8001",
+      "subId": "toxic-mist",
+      "specialId": "crab-tank",
+      "recommendedPreset": null,
+      "verification": "kit-verified",
+      "sourceId": "leanny-splat3",
+      "checkedAt": "2026-10-07"
+    },
+    {
+      "weaponId": "main-8002",
+      "subId": "autobomb",
+      "specialId": "booyah-bomb",
+      "recommendedPreset": null,
+      "verification": "kit-verified",
+      "sourceId": "leanny-splat3",
+      "checkedAt": "2026-10-07"
+    },
+    {
+      "weaponId": "main-8005",
+      "subId": "burst-bomb",
+      "specialId": "zipcaster",
+      "recommendedPreset": null,
+      "verification": "kit-verified",
+      "sourceId": "leanny-splat3",
+      "checkedAt": "2026-10-07"
+    },
+    {
+      "weaponId": "main-8010",
+      "subId": "torpedo",
+      "specialId": "ultra-stamp",
+      "recommendedPreset": null,
+      "verification": "kit-verified",
+      "sourceId": "leanny-splat3",
+      "checkedAt": "2026-10-07"
+    },
+    {
+      "weaponId": "main-8011",
+      "subId": "squid-beakon",
+      "specialId": "tenta-missiles",
+      "recommendedPreset": null,
+      "verification": "kit-verified",
+      "sourceId": "leanny-splat3",
+      "checkedAt": "2026-10-07"
+    },
+    {
+      "weaponId": "main-8012",
+      "subId": "curling-bomb",
+      "specialId": "trizooka",
+      "recommendedPreset": null,
+      "verification": "kit-verified",
+      "sourceId": "leanny-splat3",
+      "checkedAt": "2026-10-07"
+    },
+    {
+      "weaponId": "main-8020",
+      "subId": "suction-bomb",
+      "specialId": "big-bubbler",
+      "recommendedPreset": null,
+      "verification": "kit-verified",
+      "sourceId": "leanny-splat3",
+      "checkedAt": "2026-10-07"
+    },
+    {
+      "weaponId": "main-8021",
+      "subId": "splash-wall",
+      "specialId": "inkjet",
+      "recommendedPreset": null,
+      "verification": "kit-verified",
+      "sourceId": "leanny-splat3",
+      "checkedAt": "2026-10-07"
     }
   ]
 }

@@ -1,0 +1,44 @@
+{
+  "gameVersion": "11.3.0",
+  "importedAt": "2026-10-08",
+  "sourceId": "leanny-splat3",
+  "sourceCommit": "7280ff9cde8bb1c5dcef46c700c326471584d2e6",
+  "attribution": "Data provided by Lean",
+  "scope": "Blaster family explicit fields only",
+  "inputs": [
+    {
+      "upstreamPath": "data/parameter/1130/weapon/WeaponBlasterLight.game__GameParameterTable.json",
+      "sha256": "e749fc9ccd6919f71c1a9287f9351710f48cfd81e260fc1ba759db157986cae1"
+    },
+    {
+      "upstreamPath": "data/parameter/1130/weapon/WeaponBlasterLightLong.game__GameParameterTable.json",
+      "sha256": "b9eceef9a3f5d95445a338cd6086fb258512389b5b0ecd4eac9ae703abd02783"
+    },
+    {
+      "upstreamPath": "data/parameter/1130/weapon/WeaponBlasterLightShort.game__GameParameterTable.json",
+      "sha256": "d1d896eeb9553b409e24c9d7882f6fd4af318a5e58b72c397146714f741f778c"
+    },
+    {
+      "upstreamPath": "data/parameter/1130/weapon/WeaponBlasterLong.game__GameParameterTable.json",
+      "sha256": "a383cab64ce28ec184a300ed387f63218c92cc426713308767473b256cfa18f1"
+    },
+    {
+      "upstreamPath": "data/parameter/1130/weapon/WeaponBlasterMiddle.game__GameParameterTable.json",
+      "sha256": "36139282d2bd915f675424d99d5641800f184bcc9a9d1b0c94be533d38f64e18"
+    },
+    {
+      "upstreamPath": "data/parameter/1130/weapon/WeaponBlasterPrecision.game__GameParameterTable.json",
+      "sha256": "a169ffe86f5e896a38e064f535111b1349f4661220d3aeb87904c9103ca17cf3"
+    },
+    {
+      "upstreamPath": "data/parameter/1130/weapon/WeaponBlasterShort.game__GameParameterTable.json",
+      "sha256": "edb21c5d3f1cc5073f26a04879b70242de5e5d7f27edde48d4c5a6caf9dc40e3"
+    }
+  ],
+  "outputCounts": {
+    "blasterWeapons": 17,
+    "blasterParameterClasses": 7,
+    "recordsWithVerifiedFields": 60,
+    "pendingOnlyRecords": 114
+  }
+}

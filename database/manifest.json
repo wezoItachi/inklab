@@ -2,15 +2,21 @@
   "schemaVersion": 1,
   "databaseId": "inklab-core",
   "gameVersion": "11.3.0",
-  "updatedAt": "2026-10-06",
-  "scope": "representative-weapon-test-set",
+  "updatedAt": "2026-10-08",
+  "scope": "full-weapon-catalog-partial-parameters",
   "records": {
     "mainWeapons": "main-weapons.v11.3.0.json",
     "mainWeaponParameters": "main-weapon-parameters.v11.3.0.json",
     "subWeapons": "sub-weapons.v11.3.0.json",
     "specialWeapons": "special-weapons.v11.3.0.json",
     "weaponKits": "weapon-kits.v11.3.0.json",
-    "sources": "sources.json"
+    "sources": "sources.json",
+    "importReport": "import-report.v11.3.0.json",
+    "parameterImportReport": "parameter-import-report.v11.3.0.json",
+    "blasterParameterImportReport": "blaster-parameter-import-report.v11.3.0.json",
+    "rollerParameterImportReport": "roller-parameter-import-report.v11.3.0.json",
+    "chargerParameterImportReport": "charger-parameter-import-report.v11.3.0.json",
+    "remainingFamilyParameterImportReport": "remaining-family-parameter-import-report.v11.3.0.json"
   },
   "authorization": {
     "leannySplat3": "permission-with-attribution",

@@ -6,8 +6,22 @@ export type AuthorizationStatus =
   | 'pending';
 export type VerificationStatus = 'kit-verified' | 'pending' | 'demo';
 
-export type WeaponFamily = '射击枪' | '蓄力枪' | '滚筒' | '加特林';
-export type DatasetStatus = 'representative-test-set' | 'complete';
+export type WeaponFamily =
+  | '射击枪'
+  | '爆破枪'
+  | '滚筒'
+  | '画笔'
+  | '蓄力枪'
+  | '泼桶'
+  | '加特林'
+  | '双枪'
+  | '伞'
+  | '弓'
+  | '刮水刀';
+export type DatasetStatus =
+  | 'representative-test-set'
+  | 'full-weapon-catalog-partial-parameters'
+  | 'complete';
 
 type Provenance = {
   verification: VerificationStatus;
@@ -17,6 +31,8 @@ type Provenance = {
 
 export type MainWeaponRecord = Provenance & {
   id: string;
+  upstreamId: number;
+  upstreamRowId: string;
   name: string;
   badge: string;
   family: WeaponFamily;
@@ -25,14 +41,16 @@ export type MainWeaponRecord = Provenance & {
 
 export type SubWeaponRecord = Provenance & {
   id: string;
+  upstreamId: string;
   name: string;
-  baseInkCost: number;
-  subPowerEffect: string;
+  baseInkCost: number | null;
+  subPowerEffect: string | null;
   subPowerDoesNotChange: string[];
 };
 
 export type SpecialWeaponRecord = Provenance & {
   id: string;
+  upstreamId: string;
   name: string;
 };
 
@@ -40,7 +58,7 @@ export type WeaponKitRecord = Provenance & {
   weaponId: string;
   subId: string;
   specialId: string;
-  recommendedPreset: number;
+  recommendedPreset: number | null;
 };
 
 export type VersionedRecordSet<TName extends string, TRecord> = {
@@ -93,7 +111,7 @@ export type WeaponRecord = MainWeaponRecord & {
     'id' | 'name' | 'baseInkCost' | 'subPowerEffect' | 'subPowerDoesNotChange'
   >;
   special: string;
-  recommendedPreset: number;
+  recommendedPreset: number | null;
 };
 
 function validateVersionedDocument(document: {
@@ -151,9 +169,15 @@ export function validateGameDatabase(
   for (const weapon of weapons.weapons) validateProvenance(weapon, weapon.id);
   for (const sub of subWeapons.subWeapons) {
     validateProvenance(sub, sub.id);
-    if (sub.baseInkCost <= 0 || sub.baseInkCost > 100)
+    if (
+      sub.baseInkCost !== null &&
+      (sub.baseInkCost <= 0 || sub.baseInkCost > 100)
+    )
       throw new Error(`Invalid sub ink cost: ${sub.id}`);
-    if (!sub.subPowerEffect || sub.subPowerDoesNotChange.length < 1)
+    if (
+      sub.verification === 'kit-verified' &&
+      (!sub.subPowerEffect || sub.subPowerDoesNotChange.length < 1)
+    )
       throw new Error(`Missing sub power context: ${sub.id}`);
   }
   for (const special of specialWeapons.specialWeapons)
@@ -173,7 +197,10 @@ export function validateGameDatabase(
       throw new Error(`Unknown special weapon reference: ${kit.specialId}`);
     if (kitWeaponIds.has(kit.weaponId))
       throw new Error(`Duplicate weapon kit: ${kit.weaponId}`);
-    if (kit.recommendedPreset < 0 || kit.recommendedPreset > 2)
+    if (
+      kit.recommendedPreset !== null &&
+      (kit.recommendedPreset < 0 || kit.recommendedPreset > 2)
+    )
       throw new Error(`Invalid preset index: ${kit.weaponId}`);
     kitWeaponIds.add(kit.weaponId);
   }
