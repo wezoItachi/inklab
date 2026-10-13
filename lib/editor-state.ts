@@ -1,4 +1,4 @@
-import { clonePresetSlots, type LoadoutSlot } from './loadouts.ts';
+import { clonePresetSlots, type EditableLoadoutSlot } from './loadouts.ts';
 import { decodeLoadoutQuery, type ShareableLoadout } from './loadout-share.ts';
 
 export type EditorState = ShareableLoadout & {
@@ -16,10 +16,10 @@ function customEditorState(loadout: ShareableLoadout): EditorState {
   return {
     ...loadout,
     slots: loadout.slots.map(
-      ([abilityId, ap]) => [abilityId, ap] as LoadoutSlot,
+      ([abilityId, ap]) => [abilityId, ap] as EditableLoadoutSlot,
     ),
     activePreset: -1,
-    focus: loadout.slots[0][0],
+    focus: loadout.slots.find(([abilityId]) => abilityId !== null)?.[0] ?? 'iss',
     selectedSlot: 0,
   };
 }

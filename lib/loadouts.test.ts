@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import { calculateAbilityTotals, clonePresetSlots, presets, replaceLoadoutSlot, setAbilityAp, totalAp } from './loadouts.ts';
+import { calculateAbilityTotals, clearLoadout, clearLoadoutSlot, clonePresetSlots, getNextLoadoutSlotIndex, presets, replaceLoadoutSlot, setAbilityAp, totalAp } from './loadouts.ts';
 
 void test('every preset is a complete 57 AP loadout', () => {
   presets.forEach((_, index) => {
@@ -38,4 +38,22 @@ void test('slot replacement preserves slot AP and the complete loadout', () => {
   assert.equal(totalAp(changed), 57);
   assert.notDeepEqual(changed, original);
   assert.throws(() => replaceLoadoutSlot(original, 12, 'iss'), RangeError);
+});
+
+void test('clearing a slot removes its ability and AP from the editable loadout', () => {
+  const original = clonePresetSlots(0);
+  const changed = clearLoadoutSlot(original, 1);
+  assert.deepEqual(changed[1], [null, 3]);
+  assert.equal(totalAp(changed), 54);
+  assert.equal(calculateAbilityTotals(changed).find(({ id }) => id === 'ssu')?.ap, 13);
+  assert.throws(() => clearLoadoutSlot(original, -1), RangeError);
+});
+
+void test('an empty editor keeps its 12-slot structure and sequential cursor', () => {
+  const empty = clearLoadout(clonePresetSlots(0));
+  assert.equal(empty.length, 12);
+  assert.equal(empty.every(([id]) => id === null), true);
+  assert.equal(totalAp(empty), 0);
+  assert.equal(getNextLoadoutSlotIndex(0), 1);
+  assert.equal(getNextLoadoutSlotIndex(11), 11);
 });

@@ -1,4 +1,5 @@
 export type LoadoutSlot = [abilityId: string, ap: 3 | 10];
+export type EditableLoadoutSlot = [abilityId: string | null, ap: 3 | 10];
 
 export const presets = [
   {
@@ -28,19 +29,43 @@ export function clonePresetSlots(index: number): LoadoutSlot[] {
 
 /** Replace one gear slot while preserving whether it is a 10 AP main or 3 AP sub slot. */
 export function replaceLoadoutSlot(
-  slots: readonly LoadoutSlot[],
+  slots: readonly EditableLoadoutSlot[],
   slotIndex: number,
   abilityId: string,
-): LoadoutSlot[] {
+): EditableLoadoutSlot[] {
   if (!Number.isInteger(slotIndex) || slotIndex < 0 || slotIndex >= slots.length) {
     throw new RangeError(`Slot index ${slotIndex} is outside the loadout`);
   }
   return slots.map(([id, ap], index) => index === slotIndex ? [abilityId, ap] : [id, ap]);
 }
 
-export function calculateAbilityTotals(slots: readonly LoadoutSlot[]) {
+/** Empty one editable gear slot while preserving its main/sub AP capacity. */
+export function clearLoadoutSlot(
+  slots: readonly EditableLoadoutSlot[],
+  slotIndex: number,
+): EditableLoadoutSlot[] {
+  if (!Number.isInteger(slotIndex) || slotIndex < 0 || slotIndex >= slots.length) {
+    throw new RangeError(`Slot index ${slotIndex} is outside the loadout`);
+  }
+  return slots.map(([id, ap], index) => index === slotIndex ? [null, ap] : [id, ap]);
+}
+
+export function clearLoadout(slots: readonly EditableLoadoutSlot[]): EditableLoadoutSlot[] {
+  return slots.map(([, ap]) => [null, ap]);
+}
+
+export function getNextLoadoutSlotIndex(slotIndex: number, slotCount = 12) {
+  if (!Number.isInteger(slotIndex) || slotIndex < 0 || slotIndex >= slotCount) {
+    throw new RangeError(`Slot index ${slotIndex} is outside the loadout`);
+  }
+  return Math.min(slotIndex + 1, slotCount - 1);
+}
+
+export function calculateAbilityTotals(slots: readonly EditableLoadoutSlot[]) {
   const totals = new Map<string, number>();
-  for (const [id, ap] of slots) totals.set(id, (totals.get(id) ?? 0) + ap);
+  for (const [id, ap] of slots) {
+    if (id !== null) totals.set(id, (totals.get(id) ?? 0) + ap);
+  }
   return [...totals].map(([id, ap]) => ({ id, ap })).sort((a, b) => b.ap - a.ap);
 }
 
@@ -72,6 +97,6 @@ export function setAbilityAp(
   return next;
 }
 
-export function totalAp(slots: readonly LoadoutSlot[]) {
-  return slots.reduce((sum, [, ap]) => sum + ap, 0);
+export function totalAp(slots: readonly EditableLoadoutSlot[]) {
+  return slots.reduce((sum, [id, ap]) => sum + (id === null ? 0 : ap), 0);
 }

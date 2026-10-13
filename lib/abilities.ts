@@ -37,6 +37,17 @@ export const abilities: readonly Ability[] = [
 
 export const abilityGroups = ['全部', '机动', '续航', '副武', '特殊', '生存', '头部限定', '服装限定', '鞋子限定'] as const;
 
+export const abilityParts = [
+  { id: 'head', label: '头部', exclusiveGroup: '头部限定', firstSlot: 0 },
+  { id: 'clothes', label: '服装', exclusiveGroup: '服装限定', firstSlot: 4 },
+  { id: 'shoes', label: '鞋子', exclusiveGroup: '鞋子限定', firstSlot: 8 },
+] as const;
+
+export const abilityFilterGroups = ['全部', '机动', '续航', '副武', '特殊', '生存', '限定'] as const;
+
+export type AbilityPartId = typeof abilityParts[number]['id'];
+export type AbilityFilterGroup = typeof abilityFilterGroups[number];
+
 export const abilityAliases: Readonly<Record<string, string>> = {
   inkres: '安全鞋 粘脚 粘脚抗性',
   subr: '副防',
@@ -63,5 +74,72 @@ export function getAbility(abilityId: string) {
 export function getAbilityAssetUrl(abilityId: string) {
   const code = abilityAssetCodes[abilityId];
   return code ? `/assets/abilities/${code}.avif` : undefined;
+}
+
+export function getAbilityPartForSlot(slotIndex: number) {
+  return abilityParts[Math.max(0, Math.min(2, Math.floor(slotIndex / 4)))];
+}
+
+export function canPlaceAbilityInSlot(abilityId: string, slotIndex: number) {
+  const ability = getAbility(abilityId);
+  if (!ability || !Number.isInteger(slotIndex) || slotIndex < 0 || slotIndex > 11) return false;
+  if (!ability.group.endsWith('限定')) return true;
+  const part = getAbilityPartForSlot(slotIndex);
+  return slotIndex % 4 === 0 && ability.group === part.exclusiveGroup;
+}
+
+export function toggleSelectedPart(currentSlot: number | null, firstSlot: number) {
+  if (currentSlot === null) return firstSlot;
+  return getAbilityPartForSlot(currentSlot).firstSlot === firstSlot ? null : firstSlot;
+}
+
+export function filterAbilitiesForSlot({
+  slotIndex,
+  filterGroup,
+  query = '',
+}: {
+  slotIndex: number;
+  filterGroup: AbilityFilterGroup;
+  query?: string;
+}) {
+  const part = getAbilityPartForSlot(slotIndex);
+  const isMainSlot = slotIndex % 4 === 0;
+  const normalizedQuery = query.trim();
+
+  return abilities.filter((ability) => {
+    const isExclusive = ability.group.endsWith('限定');
+    const isAvailable = !isExclusive || (isMainSlot && ability.group === part.exclusiveGroup);
+    const matchesGroup = filterGroup === '全部'
+      ? true
+      : filterGroup === '限定'
+        ? ability.group === part.exclusiveGroup
+        : ability.group === filterGroup;
+    const matchesQuery = !normalizedQuery
+      || ability.name.includes(normalizedQuery)
+      || ability.short.includes(normalizedQuery)
+      || (abilityAliases[ability.id] ?? '').includes(normalizedQuery);
+    return isAvailable && matchesGroup && matchesQuery;
+  });
+}
+
+export function filterExclusiveAbilitiesForPart({
+  partId,
+  filterGroup,
+  query = '',
+}: {
+  partId: AbilityPartId;
+  filterGroup: AbilityFilterGroup;
+  query?: string;
+}) {
+  if (filterGroup !== '全部' && filterGroup !== '限定') return [];
+  const part = abilityParts.find(({ id }) => id === partId);
+  if (!part) return [];
+  const normalizedQuery = query.trim();
+  return abilities.filter((ability) => ability.group === part.exclusiveGroup && (
+    !normalizedQuery
+    || ability.name.includes(normalizedQuery)
+    || ability.short.includes(normalizedQuery)
+    || (abilityAliases[ability.id] ?? '').includes(normalizedQuery)
+  ));
 }
 
