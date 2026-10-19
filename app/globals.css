@@ -24,6 +24,13 @@ input {
 button {
   cursor: pointer;
 }
+:where(button, a, input, select, textarea, [tabindex]):focus-visible {
+  outline: 2px solid transparent;
+  outline-offset: 3px;
+  box-shadow:
+    0 0 0 2px #fff,
+    0 0 0 5px var(--purple) !important;
+}
 .topbar {
   height: 68px;
   display: flex;
@@ -229,9 +236,11 @@ button {
   display: flex;
   align-items: center;
   gap: 4px;
+  min-height: 32px;
   border: 0;
   background: none;
   color: #888;
+  padding: 6px 8px;
   font-size: 10px;
 }
 .title > small {
@@ -1843,6 +1852,10 @@ button {
   color: #fff;
 }
 .legal-footer a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 28px;
+  padding: 4px 2px;
   color: var(--acid);
   text-decoration: none;
 }
@@ -3917,7 +3930,8 @@ button {
     flex-direction: column-reverse;
   }
   .loadout-actions button {
-    padding: 2px;
+    min-height: 32px;
+    padding: 6px 8px;
   }
 }
 .parameter-audit {
