@@ -2,6 +2,11 @@
 
 ## Unreleased
 
+- 增加 GitHub Actions、Dependabot 与公开内容扫描器，公开源码前可自动检查测试、构建、敏感文件名和常见凭据／本机路径。
+- 完成 2026-10-18 生产依赖漏洞与许可证复核，并记录旧 Git 历史仍需清理的本机路径阻塞项。
+
+- 接入首条正式 AP 效果曲线：主武器省墨现在按当前武器的已核对基础耗墨计算倍率、满墨完整动作次数和下一个可实现临界点。
+
 - Recorded Leanny's permission condition and added the required “Data provided by Lean” repository attribution in the app and project documentation.
 - Recorded Sendouc's response permitting the requested 26-icon repository and website use without attribution to him, while preserving the separate Nintendo-rights boundary and `Leanny/splat3` source note.
 - Adopted AGPL-3.0-only for INKLAB-owned code before the first public release, added an in-product source/license notice, and kept third-party data and assets outside that code license.
