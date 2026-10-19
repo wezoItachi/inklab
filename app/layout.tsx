@@ -14,7 +14,8 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: 'INKLAB · Splatoon 3 配装实验室',
-  description: '用标签快速构建 Splatoon 3 配装的交互原型。',
+  description:
+    '面向 Splatoon 3 玩家的非官方配装研究工具：比较装备能力收益、关键 AP 档位与武器参数。',
 };
 
 export default function RootLayout({

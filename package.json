@@ -25,7 +25,8 @@
     "data:import-remaining-parameters": "node scripts/import-leanny-remaining-parameters.mjs",
     "typecheck": "tsc --noEmit --incremental false",
     "lint": "oxlint",
-    "format": "oxfmt"
+    "format": "oxfmt",
+    "check:public": "node scripts/check-public-readiness.mjs"
   },
   "dependencies": {
     "react": "19.2.8",

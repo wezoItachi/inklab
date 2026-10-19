@@ -36,6 +36,7 @@ next-env.d.ts
 /.wrangler/
 /outputs/
 /work/
+/.chrome-qa/
 
 # internal handoff notes (archived outside the public repository)
 /docs/HANDOFF*.md
