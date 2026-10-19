@@ -4,7 +4,7 @@ import {
   type Weapon,
 } from './weapons.ts';
 
-export type VerificationStatus = 'verified' | 'pending' | 'demo';
+export type VerificationStatus = 'verified' | 'partial' | 'pending' | 'demo';
 
 export type ParameterField = {
   label: string;
@@ -22,6 +22,7 @@ export type WeaponParameterSnapshot = {
 
 export const verificationStatusLabels: Record<VerificationStatus, string> = {
   verified: '已核对',
+  partial: '部分已核对',
   pending: '待验证',
   demo: '原型演示',
 };
@@ -59,9 +60,7 @@ export function getWeaponParameterSnapshot(
         label: '武器套装',
         status: 'verified',
         source:
-          weapon.sourceId === 'leanny-splat3'
-            ? 'leanny1130'
-            : 'internalReview',
+          weapon.sourceId === 'leanny-splat3' ? 'leanny1130' : 'internalReview',
         note: `${weapon.sub.name} · ${weapon.special}`,
       },
       {
@@ -78,8 +77,7 @@ export function getWeaponParameterSnapshot(
         status: weapon.sub.subPowerEffect === null ? 'pending' : 'verified',
         source:
           weapon.sub.subPowerEffect === null ? undefined : 'internalReview',
-        note:
-          weapon.sub.subPowerEffect ?? '副武增强作用对象尚未逐字段核对',
+        note: weapon.sub.subPowerEffect ?? '副武增强作用对象尚未逐字段核对',
       },
       {
         label: '主武参数',
@@ -91,8 +89,8 @@ export function getWeaponParameterSnapshot(
       },
       {
         label: 'AP 效果曲线',
-        status: 'pending',
-        note: '公式与版本参数尚未完成双重核对',
+        status: 'partial',
+        note: '主武器墨水效率提升已核对；其余能力效果曲线待验证',
       },
       {
         label: '系统建议',
@@ -111,6 +109,6 @@ export function summarizeParameterStatuses(
       summary[field.status] += 1;
       return summary;
     },
-    { verified: 0, pending: 0, demo: 0 },
+    { verified: 0, partial: 0, pending: 0, demo: 0 },
   );
 }

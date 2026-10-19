@@ -14,9 +14,18 @@ void test('creates an honest versioned snapshot for every catalog weapon', () =>
     assert.equal(snapshot.gameVersion, '11.3.0');
     assert.equal(snapshot.upstreamSnapshotVersion, '11.3.0');
     const summary = summarizeParameterStatuses(snapshot.fields);
-    assert.equal(summary.verified + summary.pending + summary.demo, 6);
-    assert.equal(snapshot.fields.find(({ label }) => label === '武器套装')?.status, 'verified');
-    assert.equal(snapshot.fields.find(({ label }) => label === 'AP 效果曲线')?.status, 'pending');
+    assert.equal(
+      summary.verified + summary.partial + summary.pending + summary.demo,
+      6,
+    );
+    assert.equal(
+      snapshot.fields.find(({ label }) => label === '武器套装')?.status,
+      'verified',
+    );
+    assert.equal(
+      snapshot.fields.find(({ label }) => label === 'AP 效果曲线')?.status,
+      'partial',
+    );
     assert.equal(
       snapshot.fields.find(({ label }) => label === '系统建议')?.status,
       'demo',
