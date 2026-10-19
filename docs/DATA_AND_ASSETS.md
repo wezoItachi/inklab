@@ -48,6 +48,7 @@ Ver. 11.3.0 的 174 把对战武器名称直接取自固定上游快照的 `Comm
 - `database/roller-parameter-import-report.v11.3.0.json`：滚筒参数文件、固定提交、输入哈希和输出计数。
 - `database/charger-parameter-import-report.v11.3.0.json`：蓄力枪参数文件、固定提交、输入哈希和输出计数。
 - `database/remaining-family-parameter-import-report.v11.3.0.json`：其余七个武器类别的参数文件、固定提交、输入哈希和输出计数。
+- `database/salmon-parameter-source-report.v11.3.0.json`：首批四把鲑鱼跑试算使用的 8 个普通／`_Coop` 参数文件、固定提交和输入哈希。
 - `database/schema.ts`：字段类型与自动校验规则。
 
 该目录是随源码维护的版本化数据源，适合当前无账号、无服务器存储的 Web 阶段。它不表示 INKLAB 拥有第三方事实或素材；Leanny 已同意项目按指定署名使用所需数据，INKLAB 会保留仓库链接、导入输入哈希与字段级来源记录。当前仅选取并规范化产品需要的武器目录、套装关系和参数字段，不保存完整上游数据库镜像。未来若开放账号和社区功能，再把用户数据迁移到服务端数据库。
@@ -81,4 +82,4 @@ Nintendo 官方更新公告用于确认版本发布和公开平衡调整；Sendo
 
 Leanny Ver. 11.3.0 参数快照中已存在 8 个熊武 `_Coop` 文件：`WeaponBlasterBear`、`WeaponChargerBear`、`WeaponManeuverBear`、`WeaponRollerBear`、`WeaponSaberBear`、`WeaponShelterBear`、`WeaponSlosherBear` 和 `WeaponStringerBear`。当前只记录“参数源存在”，尚未规范化为 INKLAB 字段，也没有导入精确 DPS。上游页面按 `Path_Wst_<RowId>.png` 规则引用武器图，但 Leanny 对 INKLAB 的回复明确涵盖数据使用，不应自动扩大解释为图片素材授权，因此本轮不复制熊武图标。
 
-打工专用参数已开始小批量导入：首批试算广域标记枪、窄域标记枪、`.96加仑` 与三发猎鱼弓，并同时保留普通参数文件和 `_Coop` 覆盖文件的字段路径。纯输出模型比较“理论极限／日常动作基准”；三发猎鱼弓会按核验后的最高 DPS 动作选择一段蓄力，而不是默认满蓄力。同步／错峰循环在打工回墨、射后墨锁和鱿鱼滚行回墨核验前保持禁用。副武器与特殊武器暂不计算；WAVE、危险度与出怪速率尚未接入，因此不输出持续 DPS、过线或通关结论。具体口径见 [`verification/Salmon-pressure-draft-v11.3.0.md`](verification/Salmon-pressure-draft-v11.3.0.md)。
+打工专用参数已开始小批量导入：首批试算广域标记枪、窄域标记枪、`.96加仑` 与三发猎鱼弓，并同时保留普通参数文件和 `_Coop` 覆盖文件的字段路径、固定提交及 SHA-256。纯输出模型比较“理论极限／日常动作基准”；三发猎鱼弓会按核验后的最高 DPS 动作选择一段蓄力，而不是默认满蓄力。同步／错峰循环在打工回墨、射后墨锁和鱿鱼滚行回墨核验前保持禁用。副武器与特殊武器暂不计算；WAVE、危险度与出怪速率尚未接入，因此不输出持续 DPS、过线或通关结论。具体口径见 [`verification/Salmon-pressure-draft-v11.3.0.md`](verification/Salmon-pressure-draft-v11.3.0.md)，输入证据见 `database/salmon-parameter-source-report.v11.3.0.json`。

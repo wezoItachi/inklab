@@ -9,6 +9,7 @@ import blasterParameterImportReport from '../database/blaster-parameter-import-r
 import rollerParameterImportReport from '../database/roller-parameter-import-report.v11.3.0.json' with { type: 'json' };
 import chargerParameterImportReport from '../database/charger-parameter-import-report.v11.3.0.json' with { type: 'json' };
 import remainingFamilyParameterImportReport from '../database/remaining-family-parameter-import-report.v11.3.0.json' with { type: 'json' };
+import salmonParameterSourceReport from '../database/salmon-parameter-source-report.v11.3.0.json' with { type: 'json' };
 import specialWeaponDocument from '../database/special-weapons.v11.3.0.json' with { type: 'json' };
 import sourcesDocument from '../database/sources.json' with { type: 'json' };
 import subWeaponDocument from '../database/sub-weapons.v11.3.0.json' with { type: 'json' };
@@ -54,6 +55,10 @@ void test('database manifest keeps game data and authorization boundaries explic
     manifest.records.remainingFamilyParameterImportReport,
     'remaining-family-parameter-import-report.v11.3.0.json',
   );
+  assert.equal(
+    manifest.records.salmonParameterSourceReport,
+    'salmon-parameter-source-report.v11.3.0.json',
+  );
   assert.equal(manifest.scope, 'full-weapon-catalog-partial-parameters');
   assert.equal(
     manifest.authorization.leannySplat3,
@@ -80,6 +85,7 @@ void test('11.3 import report matches the normalized catalog', () => {
   });
   for (const input of importReport.inputs)
     assert.match(input.sha256, /^[a-f0-9]{64}$/);
+  assert.equal(importReport.sourceCommit.length, 40);
   assert.equal(parameterImportReport.sourceCommit.length, 40);
   assert.equal(parameterImportReport.inputs.length, 14);
   assert.deepEqual(parameterImportReport.outputCounts, {
@@ -135,6 +141,10 @@ void test('11.3 import report matches the normalized catalog', () => {
     pendingOnlyRecords: 0,
   });
   for (const input of remainingFamilyParameterImportReport.inputs)
+    assert.match(input.sha256, /^[a-f0-9]{64}$/);
+  assert.equal(salmonParameterSourceReport.sourceCommit.length, 40);
+  assert.equal(salmonParameterSourceReport.inputs.length, 8);
+  for (const input of salmonParameterSourceReport.inputs)
     assert.match(input.sha256, /^[a-f0-9]{64}$/);
 });
 

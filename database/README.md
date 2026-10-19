@@ -15,6 +15,7 @@
 - `roller-parameter-import-report.v11.3.0.json`：滚筒参数输入文件、固定提交、哈希与核验计数。
 - `charger-parameter-import-report.v11.3.0.json`：蓄力枪参数输入文件、固定提交、哈希与核验计数。
 - `remaining-family-parameter-import-report.v11.3.0.json`：画笔、泼桶、加特林、双枪、伞、弓和刮水刀的参数输入文件、固定提交、哈希与核验计数。
+- `salmon-parameter-source-report.v11.3.0.json`：首批四把鲑鱼跑试算使用的普通／`_Coop` 输入文件、固定提交与哈希。
 - `schema.ts`：数据结构与运行前校验。
 
 全量目录由 `scripts/import-leanny-weapons.mjs` 离线生成。脚本需要显式传入包含 `WeaponInfoMain.json` 与 `CNzh.json` 的本地目录，例如：

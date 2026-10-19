@@ -16,7 +16,8 @@
     "blasterParameterImportReport": "blaster-parameter-import-report.v11.3.0.json",
     "rollerParameterImportReport": "roller-parameter-import-report.v11.3.0.json",
     "chargerParameterImportReport": "charger-parameter-import-report.v11.3.0.json",
-    "remainingFamilyParameterImportReport": "remaining-family-parameter-import-report.v11.3.0.json"
+    "remainingFamilyParameterImportReport": "remaining-family-parameter-import-report.v11.3.0.json",
+    "salmonParameterSourceReport": "salmon-parameter-source-report.v11.3.0.json"
   },
   "authorization": {
     "leannySplat3": "permission-with-attribution",

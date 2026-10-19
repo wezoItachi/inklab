@@ -6,6 +6,7 @@ const GAME_VERSION = '11.3.0';
 const CHECKED_AT = '2026-10-07';
 const DATASET_STATUS = 'full-weapon-catalog-partial-parameters';
 const SOURCE_ID = 'leanny-splat3';
+const SOURCE_COMMIT = '7280ff9cde8bb1c5dcef46c700c326471584d2e6';
 const REPRESENTATIVE_ID_BY_UPSTREAM_ID = new Map([
   [61, 'shooter-quickmiddle-cstm01'],
   [40, 'shooter-normalt'],
@@ -69,7 +70,9 @@ const SPECIAL_ID_BY_UPSTREAM_ID = {
 
 const sourceFlagIndex = process.argv.indexOf('--source-dir');
 if (sourceFlagIndex < 0 || !process.argv[sourceFlagIndex + 1]) {
-  throw new Error('Usage: node scripts/import-leanny-weapons.mjs --source-dir <directory>');
+  throw new Error(
+    'Usage: node scripts/import-leanny-weapons.mjs --source-dir <directory>',
+  );
 }
 
 const projectRoot = resolve(import.meta.dirname, '..');
@@ -108,8 +111,7 @@ const previousKitsById = new Map(
   previousKits.kits.map((kit) => [kit.weaponId, kit]),
 );
 
-const upstreamIdFromPath = (value) =>
-  value.split('/').at(-1).split('.')[0];
+const upstreamIdFromPath = (value) => value.split('/').at(-1).split('.')[0];
 const projectWeaponId = (upstreamId) =>
   REPRESENTATIVE_ID_BY_UPSTREAM_ID.get(upstreamId) ?? `main-${upstreamId}`;
 const badgeFor = (name, upstreamId) => {
@@ -117,7 +119,8 @@ const badgeFor = (name, upstreamId) => {
   return digits ? digits.slice(-2) : String(upstreamId).slice(-2);
 };
 const normalizeLocalizedName = (value, label) => {
-  if (typeof value !== 'string') throw new Error(`Missing localized name: ${label}`);
+  if (typeof value !== 'string')
+    throw new Error(`Missing localized name: ${label}`);
   const normalized = value.normalize('NFC').trim();
   if (
     !normalized ||
@@ -129,20 +132,21 @@ const normalizeLocalizedName = (value, label) => {
   }
   return normalized;
 };
-const pendingParameterTemplate = () => [
-  ['damageProfile', '伤害模型'],
-  ['inkConsumption', '主武器耗墨'],
-  ['actionInterval', '射击／挥击／蓄力间隔'],
-  ['effectiveRange', '有效射程'],
-  ['classMechanic', '武器类别机制'],
-].map(([key, label]) => ({
-  key,
-  label,
-  value: null,
-  unit: null,
-  status: 'pending',
-  note: '已完成武器身份与套装导入；此参数需按武器类别逐字段核对后才能用于计算',
-}));
+const pendingParameterTemplate = () =>
+  [
+    ['damageProfile', '伤害模型'],
+    ['inkConsumption', '主武器耗墨'],
+    ['actionInterval', '射击／挥击／蓄力间隔'],
+    ['effectiveRange', '有效射程'],
+    ['classMechanic', '武器类别机制'],
+  ].map(([key, label]) => ({
+    key,
+    label,
+    value: null,
+    unit: null,
+    status: 'pending',
+    note: '已完成武器身份与套装导入；此参数需按武器类别逐字段核对后才能用于计算',
+  }));
 
 const versusWeapons = upstreamWeapons
   .filter((weapon) => weapon.Type === 'Versus' && weapon.Id < 10000)
@@ -164,15 +168,21 @@ const versusWeapons = upstreamWeapons
   });
 
 if (versusWeapons.length !== 174) {
-  throw new Error(`Expected 174 versus weapons, received ${versusWeapons.length}`);
+  throw new Error(
+    `Expected 174 versus weapons, received ${versusWeapons.length}`,
+  );
 }
 
-const upstreamSubIds = [...new Set(versusWeapons.map((weapon) =>
-  upstreamIdFromPath(weapon.SubWeapon),
-))].sort((left, right) => left.localeCompare(right));
-const upstreamSpecialIds = [...new Set(versusWeapons.map((weapon) =>
-  upstreamIdFromPath(weapon.SpecialWeapon),
-))].sort((left, right) => left.localeCompare(right));
+const upstreamSubIds = [
+  ...new Set(
+    versusWeapons.map((weapon) => upstreamIdFromPath(weapon.SubWeapon)),
+  ),
+].sort((left, right) => left.localeCompare(right));
+const upstreamSpecialIds = [
+  ...new Set(
+    versusWeapons.map((weapon) => upstreamIdFromPath(weapon.SpecialWeapon)),
+  ),
+].sort((left, right) => left.localeCompare(right));
 for (const upstreamId of upstreamSubIds) {
   if (!SUB_ID_BY_UPSTREAM_ID[upstreamId] || !subNames[upstreamId])
     throw new Error(`Missing sub weapon mapping: ${upstreamId}`);
@@ -187,7 +197,8 @@ const weapons = versusWeapons.map((upstream) => {
   const previous = previousWeaponsById.get(id);
   const family = FAMILY_BY_PREFIX[upstream.__RowId.split('_')[0]];
   const rawName = mainNames[upstream.__RowId];
-  if (!family || !rawName) throw new Error(`Missing weapon metadata: ${upstream.Id}`);
+  if (!family || !rawName)
+    throw new Error(`Missing weapon metadata: ${upstream.Id}`);
   const name = normalizeLocalizedName(rawName, upstream.__RowId);
   return {
     id,
@@ -264,7 +275,10 @@ const versioned = (key, value) => ({
   [key]: value,
 });
 const writeDatabase = (name, value) =>
-  writeFileSync(resolve(databaseDir, name), `${JSON.stringify(value, null, 2)}\n`);
+  writeFileSync(
+    resolve(databaseDir, name),
+    `${JSON.stringify(value, null, 2)}\n`,
+  );
 const sha256 = (value) => createHash('sha256').update(value).digest('hex');
 
 writeDatabase('main-weapons.v11.3.0.json', versioned('weapons', weapons));
@@ -282,6 +296,7 @@ writeDatabase('import-report.v11.3.0.json', {
   gameVersion: GAME_VERSION,
   importedAt: CHECKED_AT,
   sourceId: SOURCE_ID,
+  sourceCommit: SOURCE_COMMIT,
   attribution: 'Data provided by Lean',
   inputs: [
     {

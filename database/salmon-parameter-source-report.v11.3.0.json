@@ -1,0 +1,48 @@
+{
+  "gameVersion": "11.3.0",
+  "checkedAt": "2026-10-19",
+  "sourceId": "leanny-splat3",
+  "sourceCommit": "7280ff9cde8bb1c5dcef46c700c326471584d2e6",
+  "attribution": "Data provided by Lean",
+  "scope": "First four Salmon Run calculations: explicit base fields plus _Coop overrides",
+  "inputs": [
+    {
+      "upstreamPath": "data/parameter/1130/weapon/WeaponShooterShort.game__GameParameterTable.json",
+      "sha256": "4766d778180949833438b93fd945131cd76835adfda6a11feb6f7b2b3803c315"
+    },
+    {
+      "upstreamPath": "data/parameter/1130/weapon/WeaponShooterShort_Coop.game__GameParameterTable.json",
+      "sha256": "e4d34efedacb296f24958e6f493d606ad6da4030f69e69cd8c71d1addfc35bdc"
+    },
+    {
+      "upstreamPath": "data/parameter/1130/weapon/WeaponShooterPrecision.game__GameParameterTable.json",
+      "sha256": "317493845cbdb503a49015451b0e5b2f00cdf90f748b07e44e81ff1cca036f1d"
+    },
+    {
+      "upstreamPath": "data/parameter/1130/weapon/WeaponShooterPrecision_Coop.game__GameParameterTable.json",
+      "sha256": "9398e66dfb75fe6ab1f16e0e930796caebacf5fc4a1544a0f50158b66d7653cf"
+    },
+    {
+      "upstreamPath": "data/parameter/1130/weapon/WeaponShooterHeavy.game__GameParameterTable.json",
+      "sha256": "1389dbae6854cc2e5ca19dbc38f26254390141a28726e5cdb860e3cadd69fe66"
+    },
+    {
+      "upstreamPath": "data/parameter/1130/weapon/WeaponShooterHeavy_Coop.game__GameParameterTable.json",
+      "sha256": "253885ceb6d4352aea3a76ac37e9c8fd7e1872e7e5afd6d9b9f1a8b882b69fc7"
+    },
+    {
+      "upstreamPath": "data/parameter/1130/weapon/WeaponStringerNormal.game__GameParameterTable.json",
+      "sha256": "cb61af8d568193c5c3af677ca8a324aae2afe92a9a681c0483a15f6266e5317f"
+    },
+    {
+      "upstreamPath": "data/parameter/1130/weapon/WeaponStringerNormal_Coop.game__GameParameterTable.json",
+      "sha256": "bd230b3f7cc3a5773b688ee4e934246b0ea6e6d691ad640e462dd037315bfce5"
+    }
+  ],
+  "derivedModels": [
+    "广域标记枪理论极限／日常动作基准",
+    "窄域标记枪理论极限／日常动作基准",
+    ".96加仑理论极限／日常动作基准",
+    "三发猎鱼弓一段蓄力极限与一段／满蓄力混合日常基准"
+  ]
+}

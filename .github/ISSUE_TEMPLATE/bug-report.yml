@@ -1,0 +1,45 @@
+name: 页面或功能问题
+description: 报告可以稳定复现的页面、交互或浏览器兼容问题
+title: '[Bug] '
+labels:
+  - bug
+body:
+  - type: checkboxes
+    attributes:
+      label: 提交前确认
+      options:
+        - label: 我没有在此 Issue 中附上密码、令牌、个人数据或未修复漏洞的完整利用步骤。
+          required: true
+  - type: dropdown
+    attributes:
+      label: 所在栏目
+      options:
+        - 实验室
+        - 鲑鱼跑实验室
+        - 能力百科
+        - 玩家方案
+        - 操作实验
+        - 其他
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: 复现步骤
+      description: 请按顺序说明如何稳定看到问题。
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: 预期结果与实际结果
+    validations:
+      required: true
+  - type: input
+    attributes:
+      label: 浏览器、设备与屏幕尺寸
+      placeholder: 例如 Edge 版本、Windows 11、390 px
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: 补充信息
+      description: 可以附上不含个人信息的截图或录屏。

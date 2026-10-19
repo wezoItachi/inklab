@@ -18,20 +18,50 @@
       "scope": "三发猎鱼弓的三向发射说明与邦普V的一次五发说明"
     },
     {
+      "id": "nintendo-gear-basics",
+      "kind": "official-ability-description",
+      "label": "Nintendo 装备能力基础说明",
+      "url": "https://splatoon.nintendo.com/en/news/beginner-basics-for-splatoon-3-choosing-the-right-gear/",
+      "checkedAt": "2026-10-19",
+      "authorization": "public-reference",
+      "scope": "主武器墨水效率提升的能力用途说明"
+    },
+    {
+      "id": "inkipedia-ink-saver-main",
+      "kind": "community-ability-reference",
+      "label": "Inkipedia Ink Saver (Main)",
+      "url": "https://splatoonwiki.org/wiki/Ink_Saver_(Main)",
+      "checkedAt": "2026-10-19",
+      "authorization": "public-reference-with-citation",
+      "scope": "Splatoon 3 主武器墨水效率提升堆叠表的交叉核对"
+    },
+    {
       "id": "leanny-splat3",
       "kind": "structured-upstream",
       "label": "Leanny/splat3",
       "url": "https://github.com/Leanny/splat3",
-      "checkedAt": "2026-10-07",
+      "checkedAt": "2026-10-19",
       "latestObservedVersion": "11.3.0",
-      "scope": "Ver. 11.3.0 main-weapon identities, localized names, categories, kit relationships, and selected explicit main-weapon parameter fields",
+      "sourceCommit": "7280ff9cde8bb1c5dcef46c700c326471584d2e6",
+      "scope": "Ver. 11.3.0 weapon identities, localized names, categories, kit relationships, selected explicit battle parameter fields, and the eight base/Coop files used by the first four Salmon Run calculations",
       "upstreamPaths": [
         "data/mush/1130/WeaponInfoMain.json",
         "data/language/CNzh.json",
         "data/parameter/1130/weapon/WeaponShooter*.game__GameParameterTable.json",
         "data/parameter/1130/weapon/WeaponBlaster*.game__GameParameterTable.json",
         "data/parameter/1130/weapon/WeaponRoller*.game__GameParameterTable.json",
-        "data/parameter/1130/weapon/WeaponCharger*.game__GameParameterTable.json"
+        "data/parameter/1130/weapon/WeaponCharger*.game__GameParameterTable.json",
+        "data/parameter/1130/weapon/WeaponBrush*.game__GameParameterTable.json",
+        "data/parameter/1130/weapon/WeaponSlosher*.game__GameParameterTable.json",
+        "data/parameter/1130/weapon/WeaponSpinner*.game__GameParameterTable.json",
+        "data/parameter/1130/weapon/WeaponManeuver*.game__GameParameterTable.json",
+        "data/parameter/1130/weapon/WeaponShelter*.game__GameParameterTable.json",
+        "data/parameter/1130/weapon/WeaponStringer*.game__GameParameterTable.json",
+        "data/parameter/1130/weapon/WeaponSaber*.game__GameParameterTable.json",
+        "data/parameter/1130/weapon/WeaponShooterShort_Coop.game__GameParameterTable.json",
+        "data/parameter/1130/weapon/WeaponShooterPrecision_Coop.game__GameParameterTable.json",
+        "data/parameter/1130/weapon/WeaponShooterHeavy_Coop.game__GameParameterTable.json",
+        "data/parameter/1130/weapon/WeaponStringerNormal_Coop.game__GameParameterTable.json"
       ],
       "authorization": "permission-with-attribution",
       "attribution": "Data provided by Lean",
@@ -48,6 +78,17 @@
       "scope": "26 ability icons copied into the public INKLAB repository and served from the INKLAB website",
       "attribution": "No attribution to Sendouc required",
       "upstreamSource": "https://github.com/Leanny/splat3"
+    },
+    {
+      "id": "splatoon3-ink-schedule",
+      "kind": "live-salmon-run-schedule",
+      "label": "splatoon3.ink Salmon Run schedule",
+      "url": "https://splatoon3.ink/data/schedules.json",
+      "projectUrl": "https://github.com/misenhower/splatoon3.ink",
+      "detailsUrl": "https://splatoon3.ink/salmonrun",
+      "checkedAt": "2026-10-19",
+      "authorization": "MIT-upstream-read-only-endpoint",
+      "scope": "浏览器只读获取当前常规轮换的地图和四把武器名称；不复制或托管图片"
     },
     {
       "id": "inklab-manual-review",

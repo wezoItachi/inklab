@@ -1,0 +1,40 @@
+name: 数据、名称或参数核对
+description: 提交可追溯的游戏版本、名称、参数或公式更正
+title: '[Data] '
+labels:
+  - data
+body:
+  - type: checkboxes
+    attributes:
+      label: 提交前确认
+      options:
+        - label: 我会区分官方公告、版本化参数、社区资料和个人实测，不把近似值写成官方精确数据。
+          required: true
+        - label: 我没有复制其他网站的文章、数据库、代码或图片文件。
+          required: true
+  - type: input
+    attributes:
+      label: 游戏版本
+      placeholder: 例如 Ver. 11.3.0
+    validations:
+      required: true
+  - type: input
+    attributes:
+      label: 武器、能力或字段
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: 当前结果与建议更正
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: 可追溯来源或复现实测方法
+      description: 请附公开链接、上游文件路径、字段名，或足以重复的实机测试步骤。
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: 适用范围与不确定性
+      description: 说明是否只适用于特定模式、动作、蓄力档位、潮位或其他条件。
