@@ -40,7 +40,7 @@
       "kind": "structured-upstream",
       "label": "Leanny/splat3",
       "url": "https://github.com/Leanny/splat3",
-      "checkedAt": "2026-10-19",
+      "checkedAt": "2026-10-20",
       "latestObservedVersion": "11.3.0",
       "sourceCommit": "7280ff9cde8bb1c5dcef46c700c326471584d2e6",
       "scope": "Ver. 11.3.0 weapon identities, localized names, categories, kit relationships, selected explicit battle parameter fields, and the eight base/Coop files used by the first four Salmon Run calculations",
@@ -65,7 +65,10 @@
       ],
       "authorization": "permission-with-attribution",
       "attribution": "Data provided by Lean",
-      "permissionRecord": "https://github.com/Leanny/splat3/issues/7#issuecomment-5566028905"
+      "permissionRecord": "https://github.com/Leanny/splat3/issues/7#issuecomment-5566028905",
+      "followUpPermissionRequest": "https://github.com/Leanny/splat3/issues/7#issuecomment-6260193156",
+      "followUpStatus": "pending",
+      "followUpScope": "future game versions; remaining Salmon Run and common player parameters; selected weapon, enemy, event-target and stage images"
     },
     {
       "id": "sendou-ability-assets",
