@@ -4,12 +4,12 @@ INKLAB 是一个面向《Splatoon 3》玩家的非官方配装研究工具，帮
 
 项目形态确定为 Web-only：桌面与手机浏览器使用同一网站，手机端通过响应式排版和触控适配支持，不规划原生 App、桌面客户端或安装包。
 
-> 当前项目处于公开源码预览准备阶段，Public Alpha 仍在开发中，网站尚未正式上线。部分数值和武器数据仅用于验证体验，不应作为正式游戏攻略使用。
+> 当前仓库已作为 Public Alpha 源码公开，网站尚未正式上线。部分数值和武器数据仅用于验证体验，不应作为正式游戏攻略使用。
 
 ## 项目维护者
 
 - GitHub：[`wezoItachi`](https://github.com/wezoItachi)
-- 项目仓库：[`wezoItachi/inklab`](https://github.com/wezoItachi/inklab)（公开源码预览准备中）
+- 项目仓库：[`wezoItachi/inklab`](https://github.com/wezoItachi/inklab)（Public Alpha 源码）
 
 ## 项目目标
 
