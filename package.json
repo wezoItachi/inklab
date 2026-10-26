@@ -25,6 +25,7 @@
     "data:import-remaining-parameters": "node scripts/import-leanny-remaining-parameters.mjs",
     "data:import-salmon-parameters": "node scripts/import-leanny-salmon-parameters.mjs",
     "data:import-salmon-ink-cycle": "node scripts/import-leanny-salmon-ink-cycle.mjs",
+    "data:audit-battle-gaps": "node scripts/audit-battle-parameter-gaps.mjs",
     "typecheck": "tsc --noEmit --incremental false",
     "lint": "oxlint",
     "format": "oxfmt",

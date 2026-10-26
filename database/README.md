@@ -19,6 +19,7 @@
 - `salmon-parameter-source-report.v11.3.0.json`：上述 71 把武器实际读取的普通／`_Coop` 输入文件、固定提交、哈希、导入计数与边界。
 - `salmon-ink-cycle-evidence.v11.3.0.json`：回墨、主武／副武墨锁与鱿鱼滚行相关字段的证据表；把“字段存在”“打工适用”和“机制已验证”分开标记。
 - `salmon-targets.v11.3.0.json`：自由目标实验的 14 个生命值目标；保留社区数据页修订号、敌人内部类型与弱点／装甲／分体边界。
+- `battle-parameter-gap-report.v11.3.0.json`：全 174 把对战武器的待验证字段、类别计数和可能涉及缺省／继承规则的候选组；由本地规范化参数表重复生成。
 - `schema.ts`：数据结构与运行前校验。
 
 全量目录由 `scripts/import-leanny-weapons.mjs` 离线生成。脚本需要显式传入包含 `WeaponInfoMain.json` 与 `CNzh.json` 的本地目录，例如：
@@ -38,6 +39,7 @@ pnpm data:import-roller-parameters -- --source-dir <1130/weapon 参数目录>
 pnpm data:import-charger-parameters -- --source-dir <1130/weapon 参数目录>
 pnpm data:import-remaining-parameters -- --source-dir <1130/weapon 参数目录>
 pnpm data:import-salmon-ink-cycle -- --source-dir <1130 参数目录>
+pnpm data:audit-battle-gaps
 ```
 
 第三方授权标记为 `pending` 时，只能保留人工独立核对的数据和来源记录，不批量镜像上游数据库。新增正式参数必须记录来源、游戏版本和核对日期，并通过测试后才能在界面标为“已核对”。

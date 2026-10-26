@@ -22,7 +22,44 @@ import {
   type SpinnerEfficiency,
   type StringerEfficiency,
 } from '@/lib/main-weapon-analysis';
+import {
+  analyzeMainWeaponRangeEvidence,
+  type MainWeaponRangeEvidence,
+} from '@/lib/main-weapon-range-evidence';
 import { getMainWeaponParameters, getWeapon } from '@/lib/weapons';
+
+function RangeEvidenceContent({
+  evidence,
+}: {
+  evidence: MainWeaponRangeEvidence;
+}) {
+  return (
+    <section
+      className="main-range-evidence"
+      data-status={evidence.status}
+      aria-label="射程证据"
+    >
+      <header>
+        <span>RANGE EVIDENCE / 射程证据</span>
+        <b>{evidence.modelLabel}</b>
+      </header>
+      {evidence.metrics.length > 0 ? (
+        <div className="main-range-evidence-values">
+          {evidence.metrics.map((item) => (
+            <span key={item.key}>
+              <small>{item.label}</small>
+              <strong>{item.value}</strong>
+              <em>{item.unit}</em>
+            </span>
+          ))}
+        </div>
+      ) : (
+        <strong className="main-range-evidence-pending">暂无可安全合并的距离字段</strong>
+      )}
+      <p>{evidence.limitation}</p>
+    </section>
+  );
+}
 
 function ShooterContent({ analysis }: { analysis: MainWeaponEfficiency }) {
   return (
@@ -819,6 +856,7 @@ function SlosherContent({ analysis }: { analysis: SlosherEfficiency }) {
 export function MainWeaponEfficiencyPanel({ weaponId }: { weaponId: string }) {
   const record = getMainWeaponParameters(weaponId);
   const family = getWeapon(weaponId).family;
+  const rangeEvidence = analyzeMainWeaponRangeEvidence(record, family);
   const spinnerAnalysis =
     family === '加特林' ? analyzeSpinnerEfficiency(record) : null;
   const shooterAnalysis =
@@ -895,6 +933,7 @@ export function MainWeaponEfficiencyPanel({ weaponId }: { weaponId: string }) {
             : '参数待验证'}
         </b>
       </summary>
+      <RangeEvidenceContent evidence={rangeEvidence} />
       {spinnerAnalysis ? (
         <SpinnerContent analysis={spinnerAnalysis} />
       ) : shooterAnalysis ? (

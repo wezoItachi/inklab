@@ -6,6 +6,7 @@ import mainWeaponDocument from '../database/main-weapons.v11.3.0.json' with { ty
 import importReport from '../database/import-report.v11.3.0.json' with { type: 'json' };
 import parameterImportReport from '../database/parameter-import-report.v11.3.0.json' with { type: 'json' };
 import blasterParameterImportReport from '../database/blaster-parameter-import-report.v11.3.0.json' with { type: 'json' };
+import battleParameterGapReport from '../database/battle-parameter-gap-report.v11.3.0.json' with { type: 'json' };
 import rollerParameterImportReport from '../database/roller-parameter-import-report.v11.3.0.json' with { type: 'json' };
 import chargerParameterImportReport from '../database/charger-parameter-import-report.v11.3.0.json' with { type: 'json' };
 import remainingFamilyParameterImportReport from '../database/remaining-family-parameter-import-report.v11.3.0.json' with { type: 'json' };
@@ -71,6 +72,10 @@ void test('database manifest keeps game data and authorization boundaries explic
     'salmon-ink-cycle-evidence.v11.3.0.json',
   );
   assert.equal(manifest.records.salmonTargets, 'salmon-targets.v11.3.0.json');
+  assert.equal(
+    manifest.records.battleParameterGapReport,
+    'battle-parameter-gap-report.v11.3.0.json',
+  );
   assert.equal(manifest.scope, 'full-weapon-catalog-partial-parameters');
   assert.equal(
     manifest.authorization.leannySplat3,
@@ -79,6 +84,32 @@ void test('database manifest keeps game data and authorization boundaries explic
   assert.equal(
     manifest.authorization.sendouAbilityAssets,
     'permission-without-attribution',
+  );
+});
+
+void test('battle parameter gap audit accounts for every normalized field', () => {
+  assert.equal(battleParameterGapReport.gameVersion, '11.3.0');
+  assert.equal(battleParameterGapReport.summary.weaponCount, 174);
+  assert.equal(battleParameterGapReport.summary.totalFields, 2279);
+  assert.equal(battleParameterGapReport.summary.verifiedFields, 1827);
+  assert.equal(battleParameterGapReport.summary.pendingFields, 452);
+  assert.equal(battleParameterGapReport.summary.demoFields, 0);
+  assert.equal(battleParameterGapReport.byFamily.length, 11);
+  assert.equal(
+    battleParameterGapReport.summary.verifiedFields +
+      battleParameterGapReport.summary.pendingFields +
+      battleParameterGapReport.summary.demoFields,
+    battleParameterGapReport.summary.totalFields,
+  );
+  assert.equal(
+    battleParameterGapReport.unresolvedInheritanceCandidates.length,
+    battleParameterGapReport.summary.inheritanceCandidateGroups,
+  );
+  assert.ok(
+    battleParameterGapReport.unresolvedInheritanceCandidates.some(
+      ({ family, key, count }) =>
+        family === '射击枪' && key === 'fireIntervalFrames' && count === 7,
+    ),
   );
 });
 
