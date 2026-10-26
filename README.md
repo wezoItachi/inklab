@@ -71,10 +71,10 @@ pnpm check:public
 
 INKLAB 是非官方玩家工具，与 Nintendo 无隶属、授权或合作关系。Splatoon、游戏名称、游戏内图标和其他相关素材的商标与版权归 Nintendo 及相应权利人所有。详细来源和使用范围见 [数据与素材来源](docs/DATA_AND_ASSETS.md)。
 
-武器目录与参数上游来源为 [`Leanny/splat3`](https://github.com/Leanny/splat3)，按维护者要求标注：**Data provided by Lean**。INKLAB 仅维护当前功能所需的版本化字段与来源记录，不镜像完整上游数据库。
+武器目录与参数上游来源为 [`Leanny/splat3`](https://github.com/Leanny/splat3)，按维护者要求标注：**Data provided by Lean**。维护者已分别确认[数据使用与署名](https://github.com/Leanny/splat3/issues/7#issuecomment-5566028905)，以及[追加请求中列出的鲑鱼跑／通用参数、未来版本更新和选定图片用途](https://github.com/Leanny/splat3/issues/7#issuecomment-6402785216)。INKLAB 仅维护当前功能所需的版本化字段、实际使用的素材与来源记录，不镜像完整上游数据库。
 
 ## 许可证
 
 INKLAB 自有代码采用 [GNU Affero General Public License v3.0 only](LICENSE)。通过网络向用户提供修改版 INKLAB 时，也必须向这些用户提供对应源码。第三方数据、游戏图标及其他第三方素材不包含在 INKLAB 自有代码的 AGPL 授权范围内，其来源和使用边界见 [数据与素材来源](docs/DATA_AND_ASSETS.md)。
 
-提交问题或建议前，请阅读 [参与指南](CONTRIBUTING.md)。公开前状态与人工检查见 [公开检查清单](docs/PUBLIC_RELEASE_CHECKLIST.md)，隐私与免责声明分别见 [隐私说明](docs/PRIVACY.md)和[免责声明](docs/DISCLAIMER.md)。
+提交问题或建议前，请阅读 [参与指南](CONTRIBUTING.md)。公开状态与人工检查见 [公开检查清单](docs/PUBLIC_RELEASE_CHECKLIST.md)，隐私与免责声明分别见 [隐私说明](docs/PRIVACY.md)和[免责声明](docs/DISCLAIMER.md)。

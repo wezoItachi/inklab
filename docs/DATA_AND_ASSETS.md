@@ -32,7 +32,8 @@ Ver. 11.3.0 的 174 把对战武器名称直接取自固定上游快照的 `Comm
 - 用途：基础参数、武器套装关系及版本化数据
 - 要求署名：**Data provided by Lean**
 - 许可记录：[`Leanny/splat3#7` 回复](https://github.com/Leanny/splat3/issues/7#issuecomment-5566028905)
-- 追加确认：[`Leanny/splat3#7` 后续请求](https://github.com/Leanny/splat3/issues/7#issuecomment-6260193156)（2026-10-20 状态：等待回复）
+- 追加请求：[`Leanny/splat3#7` 后续请求](https://github.com/Leanny/splat3/issues/7#issuecomment-6260193156)
+- 追加许可：[`Leanny/splat3#7` 回复](https://github.com/Leanny/splat3/issues/7#issuecomment-6402785216)（2026-10-26：请求所列数据与图片范围均可使用）
 
 ### INKLAB 本地数据仓库
 
@@ -71,7 +72,7 @@ Ver. 11.3.0 的 174 把对战武器名称直接取自固定上游快照的 `Comm
 - 版本状态：Nintendo 已发布 Ver. 11.3.0；截至 2026-10-03，Leanny 已公开 `data/parameter/1130` 参数快照。当前字段固定核对到上游提交 `7280ff9cde8bb1c5dcef46c700c326471584d2e6`，详见 `docs/verification/`。
 - `lib/weapon-parameter-status.ts`：把每个字段分为“已核对 / 待验证 / 原型演示”，界面按字段展示状态。已核对字段必须带来源记录；待验证字段不得输出精确攻略结论。
 
-Nintendo 官方更新公告用于确认版本发布和公开平衡调整；Sendou.ink 的公开实现仅用于公式与显示结果的交叉验证。正式数值导入时将保留版本、上游路径、参数字段和验证状态，不把第三方数据误标为 INKLAB 自有内容。Leanny 数据按其回复要求使用 **Data provided by Lean** 并链接 [`Leanny/splat3`](https://github.com/Leanny/splat3)；该申请和回复针对 INKLAB 选取、规范化并用于计算的数据，不应扩大解释为对全部图标、全部仓库内容或 Nintendo 权利的授权。2026-10-19 提交的追加请求正在等待回复，在收到明确答复前不接入其中新增的参数与图片范围。Sendouc 关于图标实际来源的说明是单独的来源证据。源码仓库已于 2026-10-20 公开，项目不包含完整上游数据库镜像，网站仍未部署。
+Nintendo 官方更新公告用于确认版本发布和公开平衡调整；Sendou.ink 的公开实现仅用于公式与显示结果的交叉验证。正式数值导入时将保留版本、上游路径、参数字段和验证状态，不把第三方数据误标为 INKLAB 自有内容。Leanny 数据按其回复要求使用 **Data provided by Lean** 并链接 [`Leanny/splat3`](https://github.com/Leanny/splat3)。2026-10-26 的追加回复确认了请求中列出的鲑鱼跑／通用参数、未来版本更新和选定图片用途；这不应扩大解释为可以镜像完整上游仓库，也不代表 Nintendo 对游戏素材、名称和商标的底层权利已经转移。Sendouc 关于能力图标实际来源的说明仍作为单独证据保留。源码仓库已于 2026-10-20 公开，网站仍未部署。
 
 ## 鲑鱼跑日程
 
@@ -81,6 +82,6 @@ Nintendo 官方更新公告用于确认版本发布和公开平衡调整；Sendo
 
 鲑鱼跑实验室当前在浏览器中读取当期常规轮换的地图与四把武器名称，不将远程响应写入本地数据库，不复制或托管上游地图、武器图片。手动编成目录包含 63 把常规武器和 8 把熊先生印章武器；熊武简中名称来自 Leanny Ver. 11.3.0 语言数据的 `CommonMsg/Weapon/WeaponName_Main`。
 
-Leanny Ver. 11.3.0 参数快照中已存在 8 个熊武 `_Coop` 文件：`WeaponBlasterBear`、`WeaponChargerBear`、`WeaponManeuverBear`、`WeaponRollerBear`、`WeaponSaberBear`、`WeaponShelterBear`、`WeaponSlosherBear` 和 `WeaponStringerBear`。当前只记录“参数源存在”，尚未规范化为 INKLAB 字段，也没有导入精确 DPS。上游页面按 `Path_Wst_<RowId>.png` 规则引用武器图，但 Leanny 对 INKLAB 的回复明确涵盖数据使用，不应自动扩大解释为图片素材授权，因此本轮不复制熊武图标。
+Leanny Ver. 11.3.0 参数快照中已存在 8 个熊武 `_Coop` 文件：`WeaponBlasterBear`、`WeaponChargerBear`、`WeaponManeuverBear`、`WeaponRollerBear`、`WeaponSaberBear`、`WeaponShelterBear`、`WeaponSlosherBear` 和 `WeaponStringerBear`。当前只记录“参数源存在”，尚未规范化为 INKLAB 字段，也没有导入精确 DPS。2026-10-26 的追加许可已覆盖这些参数与熊武图片；后续可以按需导入，但必须为实际使用文件补齐固定提交、路径、哈希、转换记录和验证状态。
 
 打工专用参数已开始小批量导入：首批试算广域标记枪、窄域标记枪、`.96加仑` 与三发猎鱼弓，并同时保留普通参数文件和 `_Coop` 覆盖文件的字段路径、固定提交及 SHA-256。纯输出模型比较“理论极限／日常动作基准”；三发猎鱼弓会按核验后的最高 DPS 动作选择一段蓄力，而不是默认满蓄力。同步／错峰循环在打工回墨、射后墨锁和鱿鱼滚行回墨核验前保持禁用。副武器与特殊武器暂不计算；WAVE、危险度与出怪速率尚未接入，因此不输出持续 DPS、过线或通关结论。具体口径见 [`verification/Salmon-pressure-draft-v11.3.0.md`](verification/Salmon-pressure-draft-v11.3.0.md)，输入证据见 `database/salmon-parameter-source-report.v11.3.0.json`。
