@@ -8,6 +8,9 @@ const SOURCE_ID = 'leanny-splat3';
 const NINTENDO_WEAPON_SOURCE_ID = 'nintendo-splatoon-base-weapons';
 const NINTENDO_WEAPON_SOURCE_URL =
   'https://www.nintendo.com/jp/character/splatoon/en/fashion/index.html#weapons';
+const NINTENDO_REEF_LUX_SOURCE_ID = 'nintendo-reef-lux-guide';
+const NINTENDO_REEF_LUX_SOURCE_URL =
+  'https://www.nintendo.com/jp/ichikara/av5ja/index_en.html';
 const SOURCE_COMMIT = '7280ff9cde8bb1c5dcef46c700c326471584d2e6';
 const UPSTREAM_ROOT = 'data/parameter/1130/weapon';
 
@@ -906,6 +909,27 @@ function stringerFields(fileName, game) {
     projectileCount.upstreamPath = NINTENDO_WEAPON_SOURCE_URL;
     projectileCount.checkedAt = '2026-10-10';
   }
+  const canStoreCharge = fileName.includes('StringerShort')
+    ? {
+        key: 'canStoreCharge',
+        label: '可储存蓄力',
+        value: true,
+        unit: null,
+        status: 'verified',
+        note: 'Nintendo 官方 REEF-LUX 450 入门说明明确写明支持 Charge Storage；同参数类的三套武器共享该主武器机制',
+        sourceId: NINTENDO_REEF_LUX_SOURCE_ID,
+        upstreamPath: NINTENDO_REEF_LUX_SOURCE_URL,
+        checkedAt: '2026-10-26',
+      }
+    : explicitOrPending({
+        key: 'canStoreCharge',
+        label: '可储存蓄力',
+        value: weapon?.IsEnableChargeKeep,
+        unit: null,
+        fileName,
+        path: 'GameParameters.spl__WeaponStringerParam.IsEnableChargeKeep',
+        note: '直接记录布尔开关',
+      });
   return [
     projectileCount,
     explicitOrPending({
@@ -1016,15 +1040,7 @@ function stringerFields(fileName, game) {
       path: 'GameParameters.spl__BulletStringerParam.DetonationParam.DetonationFrame',
       note: '直接记录箭矢爆炸等待帧',
     }),
-    explicitOrPending({
-      key: 'canStoreCharge',
-      label: '可储存蓄力',
-      value: weapon?.IsEnableChargeKeep,
-      unit: null,
-      fileName,
-      path: 'GameParameters.spl__WeaponStringerParam.IsEnableChargeKeep',
-      note: '直接记录布尔开关',
-    }),
+    canStoreCharge,
     pendingField(
       'effectiveRange',
       '有效射程',

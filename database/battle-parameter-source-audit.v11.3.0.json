@@ -13,12 +13,12 @@
     "external-semantic-evidence-required": "The value is not represented by this parameter schema and requires an official description or another auditable source."
   },
   "summary": {
-    "candidateGroups": 32,
-    "fieldOccurrences": 244,
+    "candidateGroups": 31,
+    "fieldOccurrences": 241,
     "sourceFiles": 29,
     "dispositionCounts": {
       "external-semantic-evidence-required": 3,
-      "leaf-omitted-schema-default-unresolved": 90,
+      "leaf-omitted-schema-default-unresolved": 87,
       "optional-mechanism-object-absent": 151
     }
   },
@@ -2639,45 +2639,6 @@
           "missingAt": "GameParameters.spl__WeaponShelterShotgunParam.InkRecoverStop",
           "chain": [
             "WeaponShelterNormal.game__GameParameterTable.json"
-          ]
-        }
-      ]
-    },
-    {
-      "family": "弓",
-      "key": "canStoreCharge",
-      "label": "可储存蓄力",
-      "occurrenceCount": 3,
-      "inspectedPath": "GameParameters.spl__WeaponStringerParam.IsEnableChargeKeep",
-      "dispositionCounts": {
-        "leaf-omitted-schema-default-unresolved": 3
-      },
-      "occurrences": [
-        {
-          "weaponId": "main-7020",
-          "fileName": "WeaponStringerShort.game__GameParameterTable.json",
-          "disposition": "leaf-omitted-schema-default-unresolved",
-          "missingAt": "GameParameters.spl__WeaponStringerParam.IsEnableChargeKeep",
-          "chain": [
-            "WeaponStringerShort.game__GameParameterTable.json"
-          ]
-        },
-        {
-          "weaponId": "main-7021",
-          "fileName": "WeaponStringerShort.game__GameParameterTable.json",
-          "disposition": "leaf-omitted-schema-default-unresolved",
-          "missingAt": "GameParameters.spl__WeaponStringerParam.IsEnableChargeKeep",
-          "chain": [
-            "WeaponStringerShort.game__GameParameterTable.json"
-          ]
-        },
-        {
-          "weaponId": "main-7022",
-          "fileName": "WeaponStringerShort.game__GameParameterTable.json",
-          "disposition": "leaf-omitted-schema-default-unresolved",
-          "missingAt": "GameParameters.spl__WeaponStringerParam.IsEnableChargeKeep",
-          "chain": [
-            "WeaponStringerShort.game__GameParameterTable.json"
           ]
         }
       ]

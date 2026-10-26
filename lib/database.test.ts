@@ -101,8 +101,8 @@ void test('battle parameter gap audit accounts for every normalized field', () =
   assert.equal(battleParameterGapReport.gameVersion, '11.3.0');
   assert.equal(battleParameterGapReport.summary.weaponCount, 174);
   assert.equal(battleParameterGapReport.summary.totalFields, 2279);
-  assert.equal(battleParameterGapReport.summary.verifiedFields, 1827);
-  assert.equal(battleParameterGapReport.summary.pendingFields, 335);
+  assert.equal(battleParameterGapReport.summary.verifiedFields, 1830);
+  assert.equal(battleParameterGapReport.summary.pendingFields, 332);
   assert.equal(battleParameterGapReport.summary.notApplicableFields, 117);
   assert.equal(battleParameterGapReport.summary.demoFields, 0);
   assert.equal(battleParameterGapReport.byFamily.length, 11);
@@ -134,8 +134,8 @@ void test('battle applicability resolution only closes absent optional mechanics
 
 void test('battle source audit covers every inheritance candidate occurrence', () => {
   assert.equal(battleParameterSourceAudit.gameVersion, '11.3.0');
-  assert.equal(battleParameterSourceAudit.summary.candidateGroups, 32);
-  assert.equal(battleParameterSourceAudit.summary.fieldOccurrences, 244);
+  assert.equal(battleParameterSourceAudit.summary.candidateGroups, 31);
+  assert.equal(battleParameterSourceAudit.summary.fieldOccurrences, 241);
   assert.equal(battleParameterSourceAudit.summary.sourceFiles, 29);
   assert.equal(
     Object.values(battleParameterSourceAudit.summary.dispositionCounts).reduce(
@@ -148,7 +148,7 @@ void test('battle source audit covers every inheritance candidate occurrence', (
     battleParameterSourceAudit.summary.dispositionCounts[
       'leaf-omitted-schema-default-unresolved'
     ],
-    90,
+    87,
   );
   assert.equal(
     battleParameterSourceAudit.summary.dispositionCounts[

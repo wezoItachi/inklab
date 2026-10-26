@@ -22466,10 +22466,13 @@
         {
           "key": "canStoreCharge",
           "label": "可储存蓄力",
-          "value": null,
+          "value": true,
           "unit": null,
-          "status": "pending",
-          "note": "GameParameters.spl__WeaponStringerParam.IsEnableChargeKeep 未显式提供可用值"
+          "status": "verified",
+          "note": "Nintendo 官方 REEF-LUX 450 入门说明明确写明支持 Charge Storage；同参数类的三套武器共享该主武器机制",
+          "sourceId": "nintendo-reef-lux-guide",
+          "upstreamPath": "https://www.nintendo.com/jp/ichikara/av5ja/index_en.html",
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "effectiveRange",
@@ -22627,10 +22630,13 @@
         {
           "key": "canStoreCharge",
           "label": "可储存蓄力",
-          "value": null,
+          "value": true,
           "unit": null,
-          "status": "pending",
-          "note": "GameParameters.spl__WeaponStringerParam.IsEnableChargeKeep 未显式提供可用值"
+          "status": "verified",
+          "note": "Nintendo 官方 REEF-LUX 450 入门说明明确写明支持 Charge Storage；同参数类的三套武器共享该主武器机制",
+          "sourceId": "nintendo-reef-lux-guide",
+          "upstreamPath": "https://www.nintendo.com/jp/ichikara/av5ja/index_en.html",
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "effectiveRange",
@@ -22788,10 +22794,13 @@
         {
           "key": "canStoreCharge",
           "label": "可储存蓄力",
-          "value": null,
+          "value": true,
           "unit": null,
-          "status": "pending",
-          "note": "GameParameters.spl__WeaponStringerParam.IsEnableChargeKeep 未显式提供可用值"
+          "status": "verified",
+          "note": "Nintendo 官方 REEF-LUX 450 入门说明明确写明支持 Charge Storage；同参数类的三套武器共享该主武器机制",
+          "sourceId": "nintendo-reef-lux-guide",
+          "upstreamPath": "https://www.nintendo.com/jp/ichikara/av5ja/index_en.html",
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "effectiveRange",

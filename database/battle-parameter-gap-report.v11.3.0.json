@@ -5,12 +5,12 @@
   "summary": {
     "weaponCount": 174,
     "totalFields": 2279,
-    "verifiedFields": 1827,
-    "pendingFields": 335,
+    "verifiedFields": 1830,
+    "pendingFields": 332,
     "notApplicableFields": 117,
     "demoFields": 0,
     "weaponsWithPending": 174,
-    "inheritanceCandidateGroups": 23
+    "inheritanceCandidateGroups": 22
   },
   "byFamily": [
     {
@@ -763,7 +763,7 @@
       "family": "弓",
       "weaponCount": 9,
       "weaponsWithPending": 9,
-      "pendingFieldOccurrences": 15,
+      "pendingFieldOccurrences": 12,
       "fields": [
         {
           "key": "effectiveRange",
@@ -783,20 +783,6 @@
           ],
           "notes": [
             "需要区分最低、一段、满蓄力初速及散射角后再定义统一口径"
-          ]
-        },
-        {
-          "key": "canStoreCharge",
-          "label": "可储存蓄力",
-          "unit": null,
-          "count": 3,
-          "weaponIds": [
-            "main-7020",
-            "main-7021",
-            "main-7022"
-          ],
-          "notes": [
-            "GameParameters.spl__WeaponStringerParam.IsEnableChargeKeep 未显式提供可用值"
           ]
         },
         {
@@ -1195,20 +1181,6 @@
       ],
       "notes": [
         "GameParameters.spl__WeaponShelterShotgunParam.InkRecoverStop 未显式提供可用值"
-      ]
-    },
-    {
-      "family": "弓",
-      "key": "canStoreCharge",
-      "label": "可储存蓄力",
-      "count": 3,
-      "weaponIds": [
-        "main-7020",
-        "main-7021",
-        "main-7022"
-      ],
-      "notes": [
-        "GameParameters.spl__WeaponStringerParam.IsEnableChargeKeep 未显式提供可用值"
       ]
     },
     {

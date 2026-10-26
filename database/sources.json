@@ -27,6 +27,15 @@
       "scope": "主武器墨水效率提升的能力用途说明"
     },
     {
+      "id": "nintendo-reef-lux-guide",
+      "kind": "official-weapon-description",
+      "label": "Nintendo REEF-LUX 450 入门说明",
+      "url": "https://www.nintendo.com/jp/ichikara/av5ja/index_en.html",
+      "checkedAt": "2026-10-26",
+      "authorization": "public-reference",
+      "scope": "REEF-LUX 450 支持 Charge Storage 的官方说明"
+    },
+    {
       "id": "inkipedia-ink-saver-main",
       "kind": "community-ability-reference",
       "label": "Inkipedia Ink Saver (Main)",
