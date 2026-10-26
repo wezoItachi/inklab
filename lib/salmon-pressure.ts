@@ -1,3 +1,4 @@
+import salmonTargetDocument from '../database/salmon-targets.v11.3.0.json' with {type:'json'};
 import {salmonRecoveryModelGate} from './salmon-ink-cycle.ts';
 
 export type SalmonPressureStrategy='synchronized'|'staggered';
@@ -19,6 +20,17 @@ export type SalmonWeaponPerformance={
   sourcePaths:readonly string[];
 };
 
+export type SalmonTarget={
+  id:string;
+  name:string;
+  health:number;
+  category:'狂潮'|'大鲑鱼'|'特殊事件';
+  note:string;
+  healthExpression:string;
+  upstreamType:string;
+  healthStatus:'reviewed-community-reference';
+};
+
 export const SALMON_MODEL_VERSION='draft-2026-10-08';
 
 const shooterPattern=(damage:number,frames:number,ink:number):SalmonAttackPattern=>({label:'连续射击',damagePerAction:damage,actionFrames:frames,inkConsumptionPerAction:ink,note:'保持射击并假设全部命中'});
@@ -37,22 +49,7 @@ export const salmonPressurePresets=[
   {id:'tri-stringer-four',label:'4×三发猎鱼弓',weaponIds:['tri-stringer','tri-stringer','tri-stringer','tri-stringer']},
 ] as const;
 
-export const salmonTargets=[
-  {id:'rush-chum',name:'狂潮中鲑鱼',health:50,category:'狂潮',note:'狂潮状态生命值'},
-  {id:'rush-goldie',name:'狂潮金鲑鱼',health:500,category:'狂潮',note:'狂潮状态生命值'},
-  {id:'steelhead-bomb',name:'炸弹鱼炸弹',health:300,category:'大鲑鱼',note:'只计算暴露的炸弹'},
-  {id:'flyfish-basket',name:'垫肩飞鱼单侧垃圾桶',health:300,category:'大鲑鱼',note:'单侧目标；普通主武通常不能直接处理'},
-  {id:'scrapper-driver',name:'铁板鱼本体',health:500,category:'大鲑鱼',note:'不含正面装甲 600 HP'},
-  {id:'steel-eel',name:'蛇鱼操纵者',health:500,category:'大鲑鱼',note:'尾部操纵者'},
-  {id:'stinger',name:'塔鱼整座',health:420,category:'大鲑鱼',note:'7 个锅，每个 60 HP'},
-  {id:'maws',name:'鼹鼠鱼',health:1200,category:'大鲑鱼',note:'仅用于主武器直打比较'},
-  {id:'drizzler',name:'蝙蝠鱼',health:900,category:'大鲑鱼',note:'不计弹回雨弹造成的伤害'},
-  {id:'fish-stick',name:'柱鱼群',health:256,category:'大鲑鱼',note:'8 条小鱼，每条 32 HP'},
-  {id:'slammin-lid',name:'锅盖鱼',health:500,category:'大鲑鱼',note:'本体生命值'},
-  {id:'flipper-flopper',name:'潜水鱼',health:1200,category:'大鲑鱼',note:'不计涂圈破甲时间'},
-  {id:'big-shot',name:'铁球鱼',health:1200,category:'大鲑鱼',note:'本体生命值'},
-  {id:'griller',name:'烤架鱼',health:2200,category:'特殊事件',note:'不计 400 HP 的眩晕阈值'},
-] as const;
+export const salmonTargets=salmonTargetDocument.records as readonly SalmonTarget[];
 
 export const rushTargets=salmonTargets.filter(target=>target.category==='狂潮');
 

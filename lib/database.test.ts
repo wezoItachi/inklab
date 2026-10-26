@@ -11,6 +11,7 @@ import chargerParameterImportReport from '../database/charger-parameter-import-r
 import remainingFamilyParameterImportReport from '../database/remaining-family-parameter-import-report.v11.3.0.json' with { type: 'json' };
 import salmonParameterSourceReport from '../database/salmon-parameter-source-report.v11.3.0.json' with { type: 'json' };
 import salmonInkCycleEvidence from '../database/salmon-ink-cycle-evidence.v11.3.0.json' with { type: 'json' };
+import salmonTargetDocument from '../database/salmon-targets.v11.3.0.json' with { type: 'json' };
 import salmonWeaponParameterDocument from '../database/salmon-weapon-parameters.v11.3.0.json' with { type: 'json' };
 import specialWeaponDocument from '../database/special-weapons.v11.3.0.json' with { type: 'json' };
 import sourcesDocument from '../database/sources.json' with { type: 'json' };
@@ -69,6 +70,7 @@ void test('database manifest keeps game data and authorization boundaries explic
     manifest.records.salmonInkCycleEvidence,
     'salmon-ink-cycle-evidence.v11.3.0.json',
   );
+  assert.equal(manifest.records.salmonTargets, 'salmon-targets.v11.3.0.json');
   assert.equal(manifest.scope, 'full-weapon-catalog-partial-parameters');
   assert.equal(
     manifest.authorization.leannySplat3,
@@ -78,6 +80,37 @@ void test('database manifest keeps game data and authorization boundaries explic
     manifest.authorization.sendouAbilityAssets,
     'permission-without-attribution',
   );
+});
+
+void test('Salmon Run targets retain reviewed health and identity provenance', () => {
+  assert.equal(salmonTargetDocument.gameVersion, '11.3.0');
+  assert.equal(
+    salmonTargetDocument.datasetStatus,
+    'reviewed-community-reference',
+  );
+  assert.equal(salmonTargetDocument.sourceRevision, 738411);
+  assert.equal(salmonTargetDocument.records.length, 14);
+  assert.equal(
+    new Set(salmonTargetDocument.records.map(({ id }) => id)).size,
+    salmonTargetDocument.records.length,
+  );
+  assert.equal(
+    salmonTargetDocument.records.every(
+      ({ health, healthStatus, upstreamType }) =>
+        health > 0 &&
+        healthStatus === 'reviewed-community-reference' &&
+        upstreamType.length > 0,
+    ),
+    true,
+  );
+  assert.equal(
+    salmonTargetDocument.records.find(({ id }) => id === 'drizzler')
+      ?.upstreamType,
+    'Sakerocket',
+  );
+  const sourceIds = new Set(sourcesDocument.sources.map(({ id }) => id));
+  assert.ok(sourceIds.has(salmonTargetDocument.defaultSourceId));
+  assert.ok(sourceIds.has(salmonTargetDocument.identitySourceId));
 });
 
 void test('11.3 import report matches the normalized catalog', () => {

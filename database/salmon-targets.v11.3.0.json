@@ -1,0 +1,150 @@
+{
+  "gameVersion": "11.3.0",
+  "datasetStatus": "reviewed-community-reference",
+  "defaultSourceId": "inkipedia-salmon-run-next-wave-data",
+  "identitySourceId": "leanny-splat3",
+  "checkedAt": "2026-10-26",
+  "sourceRevision": 738411,
+  "records": [
+    {
+      "id": "rush-chum",
+      "name": "狂潮中鲑鱼",
+      "health": 50,
+      "category": "狂潮",
+      "note": "狂潮状态生命值；普通状态为 100 HP",
+      "healthExpression": "50",
+      "upstreamType": "SakelienStandard",
+      "healthStatus": "reviewed-community-reference"
+    },
+    {
+      "id": "rush-goldie",
+      "name": "狂潮金鲑鱼",
+      "health": 500,
+      "category": "狂潮",
+      "note": "仅限狂潮；雾与寻找金鲑鱼事件使用不同语境",
+      "healthExpression": "500",
+      "upstreamType": "SakelienGolden",
+      "healthStatus": "reviewed-community-reference"
+    },
+    {
+      "id": "steelhead-bomb",
+      "name": "炸弹鱼炸弹",
+      "health": 300,
+      "category": "大鲑鱼",
+      "note": "只计算暴露的炸弹；可贯穿本体为 500 HP",
+      "healthExpression": "300",
+      "upstreamType": "SakelienBomber",
+      "healthStatus": "reviewed-community-reference"
+    },
+    {
+      "id": "flyfish-basket",
+      "name": "垫肩飞鱼单侧垃圾桶",
+      "health": 300,
+      "category": "大鲑鱼",
+      "note": "单侧目标；可伤害垃圾桶的攻击具有 10 倍倍率，等效为 30 HP",
+      "healthExpression": "300",
+      "upstreamType": "SakelienCupTwins",
+      "healthStatus": "reviewed-community-reference"
+    },
+    {
+      "id": "scrapper-driver",
+      "name": "铁板鱼本体",
+      "health": 500,
+      "category": "大鲑鱼",
+      "note": "驾驶员本体；正面装甲另有 600 HP",
+      "healthExpression": "500",
+      "upstreamType": "SakelienShield",
+      "healthStatus": "reviewed-community-reference"
+    },
+    {
+      "id": "steel-eel",
+      "name": "蛇鱼操纵者",
+      "health": 500,
+      "category": "大鲑鱼",
+      "note": "尾部操纵者生命值",
+      "healthExpression": "500",
+      "upstreamType": "SakelienSnake",
+      "healthStatus": "reviewed-community-reference"
+    },
+    {
+      "id": "stinger",
+      "name": "塔鱼整座",
+      "health": 420,
+      "category": "大鲑鱼",
+      "note": "本体无敌；7 个锅分别为 60 HP",
+      "healthExpression": "60 × 7",
+      "upstreamType": "SakelienTower",
+      "healthStatus": "reviewed-community-reference"
+    },
+    {
+      "id": "maws",
+      "name": "鼹鼠鱼",
+      "health": 1200,
+      "category": "大鲑鱼",
+      "note": "仅用于主武器直打比较，不计三角雷吞食机制",
+      "healthExpression": "1200",
+      "upstreamType": "Sakediver",
+      "healthStatus": "reviewed-community-reference"
+    },
+    {
+      "id": "drizzler",
+      "name": "蝙蝠鱼",
+      "health": 900,
+      "category": "大鲑鱼",
+      "note": "不计弹回雨弹造成的伤害；雨弹本身为 100 HP",
+      "healthExpression": "900",
+      "upstreamType": "Sakerocket",
+      "healthStatus": "reviewed-community-reference"
+    },
+    {
+      "id": "fish-stick",
+      "name": "柱鱼群",
+      "health": 256,
+      "category": "大鲑鱼",
+      "note": "8 条小鱼分别为 32 HP",
+      "healthExpression": "32 × 8",
+      "upstreamType": "SakePillar",
+      "healthStatus": "reviewed-community-reference"
+    },
+    {
+      "id": "slammin-lid",
+      "name": "锅盖鱼",
+      "health": 500,
+      "category": "大鲑鱼",
+      "note": "本体生命值",
+      "healthExpression": "500",
+      "upstreamType": "SakeSaucer",
+      "healthStatus": "reviewed-community-reference"
+    },
+    {
+      "id": "flipper-flopper",
+      "name": "潜水鱼",
+      "health": 1200,
+      "category": "大鲑鱼",
+      "note": "不计涂圈破甲时间",
+      "healthExpression": "1200",
+      "upstreamType": "SakeDolphin",
+      "healthStatus": "reviewed-community-reference"
+    },
+    {
+      "id": "big-shot",
+      "name": "铁球鱼",
+      "health": 1200,
+      "category": "大鲑鱼",
+      "note": "本体生命值",
+      "healthExpression": "1200",
+      "upstreamType": "SakeArtillery",
+      "healthStatus": "reviewed-community-reference"
+    },
+    {
+      "id": "griller",
+      "name": "烤架鱼",
+      "health": 2200,
+      "category": "特殊事件",
+      "note": "本体生命值；眩晕阈值另为 400 HP",
+      "healthExpression": "2200",
+      "upstreamType": "Sakedozer",
+      "healthStatus": "reviewed-community-reference"
+    }
+  ]
+}

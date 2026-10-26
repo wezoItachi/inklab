@@ -8,6 +8,9 @@ void test('first Salmon Run pressure samples retain traceable weapon values',()=
   assert.equal(salmonWeaponPerformance.every(item=>item.sourcePaths.length===2),true);
   assert.equal(salmonTargets.length,14);
   assert.equal(salmonTargets.every(target=>target.health>0&&target.note.length>0),true);
+  assert.equal(salmonTargets.every(target=>target.healthStatus==='reviewed-community-reference'),true);
+  assert.equal(salmonTargets.find(target=>target.id==='stinger')?.healthExpression,'60 × 7');
+  assert.match(salmonTargets.find(target=>target.id==='flyfish-basket')?.note??'',/10 倍/);
 });
 
 void test('action window exposes source-backed output without inventing recovery time',()=>{

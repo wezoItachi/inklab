@@ -52,6 +52,8 @@ Ver. 11.3.0 的 174 把对战武器名称直接取自固定上游快照的 `Comm
 - `database/remaining-family-parameter-import-report.v11.3.0.json`：其余七个武器类别的参数文件、固定提交、输入哈希和输出计数。
 - `database/salmon-weapon-parameters.v11.3.0.json`：63 把常规打工武器和 8 把熊武的来源可追溯部分参数，逐字段区分 `_Coop` 显式覆盖与父类继承。
 - `database/salmon-parameter-source-report.v11.3.0.json`：上述打工参数实际读取的普通／`_Coop` 文件、固定提交、输入哈希和输出计数。
+- `database/salmon-ink-cycle-evidence.v11.3.0.json`：普通回墨、主武／副武墨锁与鱿鱼滚行相关字段的证据分层和持续输出模型门禁。
+- `database/salmon-targets.v11.3.0.json`：14 个自由目标的生命值、复合生命值表达、本体／弱点／分体边界、社区数据页固定修订号与 Leanny 敌人内部身份。
 - `database/schema.ts`：字段类型与自动校验规则。
 
 该目录是随源码维护的版本化数据源，适合当前无账号、无服务器存储的 Web 阶段。它不表示 INKLAB 拥有第三方事实或素材；Leanny 已同意项目按指定署名使用所需数据，INKLAB 会保留仓库链接、导入输入哈希与字段级来源记录。当前仅选取并规范化产品需要的武器目录、套装关系和参数字段，不保存完整上游数据库镜像。未来若开放账号和社区功能，再把用户数据迁移到服务端数据库。
@@ -85,4 +87,4 @@ Nintendo 官方更新公告用于确认版本发布和公开平衡调整；Sendo
 
 Leanny Ver. 11.3.0 参数快照中的 8 个熊武 `_Coop` 文件已纳入部分参数表：`WeaponBlasterBear`、`WeaponChargerBear`、`WeaponManeuverBear`、`WeaponRollerBear`、`WeaponSaberBear`、`WeaponShelterBear`、`WeaponSlosherBear` 和 `WeaponStringerBear`。导入器只接受已在对应对战武器族模型中登记过语义的字段；有显式父类的熊武继续区分父类继承与熊武覆盖。该数据表不直接等于精确 DPS，复杂动作周期仍需单独建模。
 
-打工参数表现已覆盖 63 把常规武器底盘和 8 把熊武，共 71 条记录。常规武器从已核验的对战基础字段出发，只在 `_Coop` 文件显式出现同一路径时应用打工覆盖；N-ZAP85 在固定提交中没有专用 `_Coop` 文件，因此只记录普通基础值，不推测隐藏覆盖。当前纯输出界面仍只启用动作周期已经解释清楚的广域标记枪、窄域标记枪、`.96加仑` 与三发猎鱼弓，比较“理论极限／日常动作基准”；数据入库不会自动扩大为可用 DPS。普通无能力回墨曲线、打工三角雷 70% 耗墨／60 帧墨锁和广域标记枪 15 帧射击墨锁已经进入独立证据表，但普通回墨曲线的打工适用性、其他三把首批武器的缺省墨锁，以及鱿鱼滚行空中回墨机制仍未验证。同步／错峰循环因此继续禁用。副武器与特殊武器暂不计算；WAVE、危险度与出怪速率尚未接入，因此不输出持续 DPS、过线或通关结论。具体口径见 [`verification/Salmon-pressure-draft-v11.3.0.md`](verification/Salmon-pressure-draft-v11.3.0.md)，批量导入边界见 [`verification/Salmon-weapon-parameter-import-v11.3.0.md`](verification/Salmon-weapon-parameter-import-v11.3.0.md)。
+打工参数表现已覆盖 63 把常规武器底盘和 8 把熊武，共 71 条记录。常规武器从已核验的对战基础字段出发，只在 `_Coop` 文件显式出现同一路径时应用打工覆盖；N-ZAP85 在固定提交中没有专用 `_Coop` 文件，因此只记录普通基础值，不推测隐藏覆盖。当前纯输出界面仍只启用动作周期已经解释清楚的广域标记枪、窄域标记枪、`.96加仑` 与三发猎鱼弓，比较“理论极限／日常动作基准”；数据入库不会自动扩大为可用 DPS。自由目标实验的 14 组生命值已经逐项对照 Inkipedia 的固定修订版，Leanny 的 `CoopEnemyInfo.json` 用于核对敌人内部身份；该文件不含基础生命值，因此这些 HP 明确标作社区数据页复核，而非 Leanny 参数直接导入。普通无能力回墨曲线、打工三角雷 70% 耗墨／60 帧墨锁和广域标记枪 15 帧射击墨锁已经进入独立证据表，但普通回墨曲线的打工适用性、其他三把首批武器的缺省墨锁，以及鱿鱼滚行空中回墨机制仍未验证。同步／错峰循环因此继续禁用。副武器与特殊武器暂不计算；WAVE、危险度与出怪速率尚未接入，因此不输出持续 DPS、过线或通关结论。具体口径见 [`verification/Salmon-pressure-draft-v11.3.0.md`](verification/Salmon-pressure-draft-v11.3.0.md)，批量导入边界见 [`verification/Salmon-weapon-parameter-import-v11.3.0.md`](verification/Salmon-weapon-parameter-import-v11.3.0.md)。
