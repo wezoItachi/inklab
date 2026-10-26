@@ -7,6 +7,7 @@ import importReport from '../database/import-report.v11.3.0.json' with { type: '
 import parameterImportReport from '../database/parameter-import-report.v11.3.0.json' with { type: 'json' };
 import blasterParameterImportReport from '../database/blaster-parameter-import-report.v11.3.0.json' with { type: 'json' };
 import battleParameterGapReport from '../database/battle-parameter-gap-report.v11.3.0.json' with { type: 'json' };
+import battleParameterSourceAudit from '../database/battle-parameter-source-audit.v11.3.0.json' with { type: 'json' };
 import rollerParameterImportReport from '../database/roller-parameter-import-report.v11.3.0.json' with { type: 'json' };
 import chargerParameterImportReport from '../database/charger-parameter-import-report.v11.3.0.json' with { type: 'json' };
 import remainingFamilyParameterImportReport from '../database/remaining-family-parameter-import-report.v11.3.0.json' with { type: 'json' };
@@ -76,6 +77,10 @@ void test('database manifest keeps game data and authorization boundaries explic
     manifest.records.battleParameterGapReport,
     'battle-parameter-gap-report.v11.3.0.json',
   );
+  assert.equal(
+    manifest.records.battleParameterSourceAudit,
+    'battle-parameter-source-audit.v11.3.0.json',
+  );
   assert.equal(manifest.scope, 'full-weapon-catalog-partial-parameters');
   assert.equal(
     manifest.authorization.leannySplat3,
@@ -110,6 +115,32 @@ void test('battle parameter gap audit accounts for every normalized field', () =
       ({ family, key, count }) =>
         family === '射击枪' && key === 'fireIntervalFrames' && count === 7,
     ),
+  );
+});
+
+void test('battle source audit covers every inheritance candidate occurrence', () => {
+  assert.equal(battleParameterSourceAudit.gameVersion, '11.3.0');
+  assert.equal(battleParameterSourceAudit.summary.candidateGroups, 32);
+  assert.equal(battleParameterSourceAudit.summary.fieldOccurrences, 244);
+  assert.equal(battleParameterSourceAudit.summary.sourceFiles, 29);
+  assert.equal(
+    Object.values(battleParameterSourceAudit.summary.dispositionCounts).reduce(
+      (total, count) => total + count,
+      0,
+    ),
+    battleParameterSourceAudit.summary.fieldOccurrences,
+  );
+  assert.equal(
+    battleParameterSourceAudit.summary.dispositionCounts[
+      'leaf-omitted-schema-default-unresolved'
+    ],
+    90,
+  );
+  assert.equal(
+    battleParameterSourceAudit.summary.dispositionCounts[
+      'optional-mechanism-object-absent'
+    ],
+    151,
   );
 });
 
