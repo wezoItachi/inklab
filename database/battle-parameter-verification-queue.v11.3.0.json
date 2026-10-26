@@ -1,0 +1,706 @@
+{
+  "gameVersion": "11.3.0",
+  "generatedAt": "2026-10-26",
+  "sourceFile": "database/main-weapon-parameters.v11.3.0.json",
+  "sourceAudit": "database/battle-parameter-source-audit.v11.3.0.json",
+  "policy": "Every remaining pending occurrence receives one evidence requirement. This queue records what would close the field; it does not promote assumptions to verified values.",
+  "summary": {
+    "pendingFieldOccurrences": 332,
+    "categories": 6,
+    "groupedTasks": 36
+  },
+  "categories": [
+    {
+      "category": "action-cycle-model-required",
+      "fieldOccurrences": 39,
+      "groups": [
+        {
+          "family": "滚筒",
+          "key": "horizontalSwingFrames",
+          "label": "完整连续横挥间隔",
+          "count": 14,
+          "weaponIds": [
+            "roller-normalt",
+            "main-1000",
+            "main-1001",
+            "main-1002",
+            "main-1011",
+            "main-1015",
+            "main-1020",
+            "main-1021",
+            "main-1022",
+            "main-1030",
+            "main-1031",
+            "main-1040",
+            "main-1041",
+            "main-1042"
+          ],
+          "nextEvidence": "Define the action boundary and validate it with source fields plus a frame-by-frame capture."
+        },
+        {
+          "family": "滚筒",
+          "key": "verticalSwingFrames",
+          "label": "完整连续竖挥间隔",
+          "count": 14,
+          "weaponIds": [
+            "roller-normalt",
+            "main-1000",
+            "main-1001",
+            "main-1002",
+            "main-1011",
+            "main-1015",
+            "main-1020",
+            "main-1021",
+            "main-1022",
+            "main-1030",
+            "main-1031",
+            "main-1040",
+            "main-1041",
+            "main-1042"
+          ],
+          "nextEvidence": "Define the action boundary and validate it with source fields plus a frame-by-frame capture."
+        },
+        {
+          "family": "伞",
+          "key": "completeFireCycleFrames",
+          "label": "完整射击周期",
+          "count": 11,
+          "weaponIds": [
+            "main-6000",
+            "main-6001",
+            "main-6005",
+            "main-6010",
+            "main-6011",
+            "main-6012",
+            "main-6020",
+            "main-6021",
+            "main-6022",
+            "main-6030",
+            "main-6031"
+          ],
+          "nextEvidence": "Define the action boundary and validate it with source fields plus a frame-by-frame capture."
+        }
+      ]
+    },
+    {
+      "category": "capability-or-inheritance-semantics-required",
+      "fieldOccurrences": 34,
+      "groups": [
+        {
+          "family": "加特林",
+          "key": "canStoreCharge",
+          "label": "能否储存蓄力",
+          "count": 13,
+          "weaponIds": [
+            "spinner-standardt",
+            "main-4000",
+            "main-4001",
+            "main-4002",
+            "main-4011",
+            "main-4015",
+            "main-4020",
+            "main-4021",
+            "main-4022",
+            "main-4030",
+            "main-4031",
+            "main-4050",
+            "main-4051"
+          ],
+          "nextEvidence": "Verify whether object absence means false, ordinary-state inheritance, or another runtime default before assigning a value."
+        },
+        {
+          "family": "双枪",
+          "key": "postDodgeDamagePerShot",
+          "label": "翻滚后单发伤害",
+          "count": 12,
+          "weaponIds": [
+            "main-5000",
+            "main-5001",
+            "main-5002",
+            "main-5010",
+            "main-5011",
+            "main-5012",
+            "main-5015",
+            "main-5030",
+            "main-5031",
+            "main-5032",
+            "main-5040",
+            "main-5041"
+          ],
+          "nextEvidence": "Verify whether object absence means false, ordinary-state inheritance, or another runtime default before assigning a value."
+        },
+        {
+          "family": "蓄力枪",
+          "key": "chargeHold",
+          "label": "是否支持储存蓄力",
+          "count": 9,
+          "weaponIds": [
+            "main-2020",
+            "main-2021",
+            "main-2022",
+            "main-2040",
+            "main-2041",
+            "main-2050",
+            "main-2051",
+            "main-2070",
+            "main-2071"
+          ],
+          "nextEvidence": "Verify whether object absence means false, ordinary-state inheritance, or another runtime default before assigning a value."
+        }
+      ]
+    },
+    {
+      "category": "explicit-source-or-controlled-capture-required",
+      "fieldOccurrences": 9,
+      "groups": [
+        {
+          "family": "蓄力枪",
+          "key": "chargeHoldFrames",
+          "label": "满蓄力储存窗口",
+          "count": 9,
+          "weaponIds": [
+            "main-2020",
+            "main-2021",
+            "main-2022",
+            "main-2040",
+            "main-2041",
+            "main-2050",
+            "main-2051",
+            "main-2070",
+            "main-2071"
+          ],
+          "nextEvidence": "Find an explicit source field or perform a controlled capture; do not copy a related weapon value."
+        }
+      ]
+    },
+    {
+      "category": "external-semantic-source-required",
+      "fieldOccurrences": 3,
+      "groups": [
+        {
+          "family": "弓",
+          "key": "projectileCount",
+          "label": "每次发射箭数",
+          "count": 3,
+          "weaponIds": [
+            "main-7020",
+            "main-7021",
+            "main-7022"
+          ],
+          "nextEvidence": "Locate an official description or another auditable source that states the missing game meaning directly."
+        }
+      ]
+    },
+    {
+      "category": "range-definition-and-model-required",
+      "fieldOccurrences": 160,
+      "groups": [
+        {
+          "family": "射击枪",
+          "key": "effectiveRange",
+          "label": "有效射程",
+          "count": 40,
+          "weaponIds": [
+            "shooter-quickmiddle-cstm01",
+            "shooter-normalt",
+            "shooter-precision",
+            "main-0",
+            "main-1",
+            "main-10",
+            "main-11",
+            "main-21",
+            "main-22",
+            "main-30",
+            "main-31",
+            "main-32",
+            "main-41",
+            "main-42",
+            "main-45",
+            "main-46",
+            "main-47",
+            "main-48",
+            "main-50",
+            "main-51",
+            "main-60",
+            "main-70",
+            "main-71",
+            "main-72",
+            "main-80",
+            "main-81",
+            "main-82",
+            "main-90",
+            "main-91",
+            "main-92",
+            "main-100",
+            "main-101",
+            "main-300",
+            "main-301",
+            "main-302",
+            "main-310",
+            "main-311",
+            "main-312",
+            "main-400",
+            "main-401"
+          ],
+          "nextEvidence": "Choose a family-specific range definition and validate its conversion against controlled in-game measurements."
+        },
+        {
+          "family": "蓄力枪",
+          "key": "effectiveRange",
+          "label": "满蓄力有效射程",
+          "count": 19,
+          "weaponIds": [
+            "charger-normalt",
+            "main-2000",
+            "main-2001",
+            "main-2011",
+            "main-2012",
+            "main-2015",
+            "main-2020",
+            "main-2021",
+            "main-2022",
+            "main-2030",
+            "main-2031",
+            "main-2040",
+            "main-2041",
+            "main-2050",
+            "main-2051",
+            "main-2060",
+            "main-2061",
+            "main-2070",
+            "main-2071"
+          ],
+          "nextEvidence": "Choose a family-specific range definition and validate its conversion against controlled in-game measurements."
+        },
+        {
+          "family": "爆破枪",
+          "key": "effectiveRange",
+          "label": "有效射程",
+          "count": 17,
+          "weaponIds": [
+            "main-200",
+            "main-201",
+            "main-205",
+            "main-210",
+            "main-211",
+            "main-212",
+            "main-220",
+            "main-221",
+            "main-230",
+            "main-231",
+            "main-240",
+            "main-241",
+            "main-250",
+            "main-251",
+            "main-252",
+            "main-260",
+            "main-261"
+          ],
+          "nextEvidence": "Choose a family-specific range definition and validate its conversion against controlled in-game measurements."
+        },
+        {
+          "family": "双枪",
+          "key": "effectiveRange",
+          "label": "有效射程",
+          "count": 16,
+          "weaponIds": [
+            "main-5000",
+            "main-5001",
+            "main-5002",
+            "main-5010",
+            "main-5011",
+            "main-5012",
+            "main-5015",
+            "main-5020",
+            "main-5021",
+            "main-5030",
+            "main-5031",
+            "main-5032",
+            "main-5040",
+            "main-5041",
+            "main-5050",
+            "main-5051"
+          ],
+          "nextEvidence": "Choose a family-specific range definition and validate its conversion against controlled in-game measurements."
+        },
+        {
+          "family": "加特林",
+          "key": "effectiveRange",
+          "label": "有效射程",
+          "count": 15,
+          "weaponIds": [
+            "spinner-standardt",
+            "main-4000",
+            "main-4001",
+            "main-4002",
+            "main-4011",
+            "main-4015",
+            "main-4020",
+            "main-4021",
+            "main-4022",
+            "main-4030",
+            "main-4031",
+            "main-4040",
+            "main-4041",
+            "main-4050",
+            "main-4051"
+          ],
+          "nextEvidence": "Choose a family-specific range definition and validate its conversion against controlled in-game measurements."
+        },
+        {
+          "family": "泼桶",
+          "key": "effectiveRange",
+          "label": "有效射程",
+          "count": 15,
+          "weaponIds": [
+            "main-3000",
+            "main-3001",
+            "main-3005",
+            "main-3010",
+            "main-3011",
+            "main-3012",
+            "main-3020",
+            "main-3021",
+            "main-3030",
+            "main-3031",
+            "main-3040",
+            "main-3041",
+            "main-3050",
+            "main-3051",
+            "main-3052"
+          ],
+          "nextEvidence": "Choose a family-specific range definition and validate its conversion against controlled in-game measurements."
+        },
+        {
+          "family": "伞",
+          "key": "effectiveRange",
+          "label": "有效射程",
+          "count": 11,
+          "weaponIds": [
+            "main-6000",
+            "main-6001",
+            "main-6005",
+            "main-6010",
+            "main-6011",
+            "main-6012",
+            "main-6020",
+            "main-6021",
+            "main-6022",
+            "main-6030",
+            "main-6031"
+          ],
+          "nextEvidence": "Choose a family-specific range definition and validate its conversion against controlled in-game measurements."
+        },
+        {
+          "family": "画笔",
+          "key": "effectiveRange",
+          "label": "有效射程",
+          "count": 9,
+          "weaponIds": [
+            "main-1100",
+            "main-1101",
+            "main-1110",
+            "main-1111",
+            "main-1112",
+            "main-1115",
+            "main-1120",
+            "main-1121",
+            "main-1122"
+          ],
+          "nextEvidence": "Choose a family-specific range definition and validate its conversion against controlled in-game measurements."
+        },
+        {
+          "family": "弓",
+          "key": "effectiveRange",
+          "label": "有效射程",
+          "count": 9,
+          "weaponIds": [
+            "main-7010",
+            "main-7011",
+            "main-7012",
+            "main-7015",
+            "main-7020",
+            "main-7021",
+            "main-7022",
+            "main-7030",
+            "main-7031"
+          ],
+          "nextEvidence": "Choose a family-specific range definition and validate its conversion against controlled in-game measurements."
+        },
+        {
+          "family": "刮水刀",
+          "key": "effectiveRange",
+          "label": "有效射程",
+          "count": 9,
+          "weaponIds": [
+            "main-8000",
+            "main-8001",
+            "main-8002",
+            "main-8005",
+            "main-8010",
+            "main-8011",
+            "main-8012",
+            "main-8020",
+            "main-8021"
+          ],
+          "nextEvidence": "Choose a family-specific range definition and validate its conversion against controlled in-game measurements."
+        }
+      ]
+    },
+    {
+      "category": "runtime-schema-default-required",
+      "fieldOccurrences": 87,
+      "groups": [
+        {
+          "family": "伞",
+          "key": "canopyShotInkRecoveryLockFrames",
+          "label": "伞面发射后回墨锁帧",
+          "count": 9,
+          "weaponIds": [
+            "main-6000",
+            "main-6001",
+            "main-6005",
+            "main-6010",
+            "main-6011",
+            "main-6012",
+            "main-6020",
+            "main-6021",
+            "main-6022"
+          ],
+          "nextEvidence": "Obtain a schema/runtime default dump or a reproducible frame capture; sibling weapon values are not sufficient."
+        },
+        {
+          "family": "加特林",
+          "key": "canRecharge",
+          "label": "射击中能否续蓄",
+          "count": 9,
+          "weaponIds": [
+            "spinner-standardt",
+            "main-4000",
+            "main-4001",
+            "main-4002",
+            "main-4011",
+            "main-4015",
+            "main-4020",
+            "main-4021",
+            "main-4022"
+          ],
+          "nextEvidence": "Obtain a schema/runtime default dump or a reproducible frame capture; sibling weapon values are not sufficient."
+        },
+        {
+          "family": "射击枪",
+          "key": "fireIntervalFrames",
+          "label": "射击间隔",
+          "count": 7,
+          "weaponIds": [
+            "shooter-normalt",
+            "main-41",
+            "main-42",
+            "main-45",
+            "main-46",
+            "main-47",
+            "main-48"
+          ],
+          "nextEvidence": "Obtain a schema/runtime default dump or a reproducible frame capture; sibling weapon values are not sufficient."
+        },
+        {
+          "family": "蓄力枪",
+          "key": "fullChargeFrames",
+          "label": "满蓄力时间",
+          "count": 7,
+          "weaponIds": [
+            "charger-normalt",
+            "main-2011",
+            "main-2012",
+            "main-2015",
+            "main-2020",
+            "main-2021",
+            "main-2022"
+          ],
+          "nextEvidence": "Obtain a schema/runtime default dump or a reproducible frame capture; sibling weapon values are not sufficient."
+        },
+        {
+          "family": "伞",
+          "key": "canLaunchCanopy",
+          "label": "能否发射伞面",
+          "count": 6,
+          "weaponIds": [
+            "main-6000",
+            "main-6001",
+            "main-6005",
+            "main-6010",
+            "main-6011",
+            "main-6012"
+          ],
+          "nextEvidence": "Obtain a schema/runtime default dump or a reproducible frame capture; sibling weapon values are not sufficient."
+        },
+        {
+          "family": "伞",
+          "key": "canopyLaunchFrames",
+          "label": "伞面发射阶段帧",
+          "count": 6,
+          "weaponIds": [
+            "main-6000",
+            "main-6001",
+            "main-6005",
+            "main-6020",
+            "main-6021",
+            "main-6022"
+          ],
+          "nextEvidence": "Obtain a schema/runtime default dump or a reproducible frame capture; sibling weapon values are not sufficient."
+        },
+        {
+          "family": "画笔",
+          "key": "rollingInkRecoveryLockFrames",
+          "label": "刷地后回墨锁帧",
+          "count": 6,
+          "weaponIds": [
+            "main-1100",
+            "main-1101",
+            "main-1110",
+            "main-1111",
+            "main-1112",
+            "main-1115"
+          ],
+          "nextEvidence": "Obtain a schema/runtime default dump or a reproducible frame capture; sibling weapon values are not sufficient."
+        },
+        {
+          "family": "双枪",
+          "key": "dodgeMoveFrames",
+          "label": "翻滚移动帧",
+          "count": 4,
+          "weaponIds": [
+            "main-5020",
+            "main-5021",
+            "main-5040",
+            "main-5041"
+          ],
+          "nextEvidence": "Obtain a schema/runtime default dump or a reproducible frame capture; sibling weapon values are not sufficient."
+        },
+        {
+          "family": "画笔",
+          "key": "rollingPaintStartFrames",
+          "label": "进入刷地涂墨阶段帧",
+          "count": 4,
+          "weaponIds": [
+            "main-1110",
+            "main-1111",
+            "main-1112",
+            "main-1115"
+          ],
+          "nextEvidence": "Obtain a schema/runtime default dump or a reproducible frame capture; sibling weapon values are not sufficient."
+        },
+        {
+          "family": "画笔",
+          "key": "rollingSpeed",
+          "label": "刷地移动速度",
+          "count": 4,
+          "weaponIds": [
+            "main-1110",
+            "main-1111",
+            "main-1112",
+            "main-1115"
+          ],
+          "nextEvidence": "Obtain a schema/runtime default dump or a reproducible frame capture; sibling weapon values are not sufficient."
+        },
+        {
+          "family": "画笔",
+          "key": "swingRepeatFrames",
+          "label": "连续挥击间隔",
+          "count": 4,
+          "weaponIds": [
+            "main-1110",
+            "main-1111",
+            "main-1112",
+            "main-1115"
+          ],
+          "nextEvidence": "Obtain a schema/runtime default dump or a reproducible frame capture; sibling weapon values are not sufficient."
+        },
+        {
+          "family": "爆破枪",
+          "key": "burstFrame",
+          "label": "爆炸发生帧",
+          "count": 3,
+          "weaponIds": [
+            "main-210",
+            "main-211",
+            "main-212"
+          ],
+          "nextEvidence": "Obtain a schema/runtime default dump or a reproducible frame capture; sibling weapon values are not sufficient."
+        },
+        {
+          "family": "伞",
+          "key": "canopyChargeFrames",
+          "label": "长按至开伞准备帧",
+          "count": 3,
+          "weaponIds": [
+            "main-6000",
+            "main-6001",
+            "main-6005"
+          ],
+          "nextEvidence": "Obtain a schema/runtime default dump or a reproducible frame capture; sibling weapon values are not sufficient."
+        },
+        {
+          "family": "伞",
+          "key": "canopyDurability",
+          "label": "伞面耐久",
+          "count": 3,
+          "weaponIds": [
+            "main-6000",
+            "main-6001",
+            "main-6005"
+          ],
+          "nextEvidence": "Obtain a schema/runtime default dump or a reproducible frame capture; sibling weapon values are not sufficient."
+        },
+        {
+          "family": "伞",
+          "key": "canopyOpenFrames",
+          "label": "伞面展开帧",
+          "count": 3,
+          "weaponIds": [
+            "main-6000",
+            "main-6001",
+            "main-6005"
+          ],
+          "nextEvidence": "Obtain a schema/runtime default dump or a reproducible frame capture; sibling weapon values are not sufficient."
+        },
+        {
+          "family": "泼桶",
+          "key": "movementLimitFrames",
+          "label": "挥桶移动限制帧",
+          "count": 3,
+          "weaponIds": [
+            "main-3000",
+            "main-3001",
+            "main-3005"
+          ],
+          "nextEvidence": "Obtain a schema/runtime default dump or a reproducible frame capture; sibling weapon values are not sufficient."
+        },
+        {
+          "family": "泼桶",
+          "key": "postDelayFrames",
+          "label": "挥桶后摇帧",
+          "count": 3,
+          "weaponIds": [
+            "main-3000",
+            "main-3001",
+            "main-3005"
+          ],
+          "nextEvidence": "Obtain a schema/runtime default dump or a reproducible frame capture; sibling weapon values are not sufficient."
+        },
+        {
+          "family": "伞",
+          "key": "shotInkRecoveryLockFrames",
+          "label": "射击后回墨锁帧",
+          "count": 3,
+          "weaponIds": [
+            "main-6000",
+            "main-6001",
+            "main-6005"
+          ],
+          "nextEvidence": "Obtain a schema/runtime default dump or a reproducible frame capture; sibling weapon values are not sufficient."
+        }
+      ]
+    }
+  ]
+}

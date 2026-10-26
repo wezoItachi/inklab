@@ -22,6 +22,7 @@
 - `battle-parameter-gap-report.v11.3.0.json`：全 174 把对战武器的待验证字段、类别计数和可能涉及缺省／继承规则的候选组；由本地规范化参数表重复生成。
 - `battle-parameter-source-audit.v11.3.0.json`：把当前 31 组缺省／继承候选逐项追溯到固定上游文件，区分叶字段省略、可选机制对象缺失与必须另找语义来源的情况。
 - `battle-parameter-applicability-report.v11.3.0.json`：依据来源审计，把可选机制对象整体不存在时的 117 个从属数值字段标为“不适用”；能力布尔值、普通状态继承和运行时默认值仍保持待验证。
+- `battle-parameter-verification-queue.v11.3.0.json`：为剩余 332 次待验证字段逐项指定所需证据，并归并为 6 类、36 组可执行核验任务。
 - `schema.ts`：数据结构与运行前校验。
 
 全量目录由 `scripts/import-leanny-weapons.mjs` 离线生成。脚本需要显式传入包含 `WeaponInfoMain.json` 与 `CNzh.json` 的本地目录，例如：

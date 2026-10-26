@@ -9,6 +9,7 @@ import blasterParameterImportReport from '../database/blaster-parameter-import-r
 import battleParameterGapReport from '../database/battle-parameter-gap-report.v11.3.0.json' with { type: 'json' };
 import battleParameterSourceAudit from '../database/battle-parameter-source-audit.v11.3.0.json' with { type: 'json' };
 import battleParameterApplicabilityReport from '../database/battle-parameter-applicability-report.v11.3.0.json' with { type: 'json' };
+import battleParameterVerificationQueue from '../database/battle-parameter-verification-queue.v11.3.0.json' with { type: 'json' };
 import rollerParameterImportReport from '../database/roller-parameter-import-report.v11.3.0.json' with { type: 'json' };
 import chargerParameterImportReport from '../database/charger-parameter-import-report.v11.3.0.json' with { type: 'json' };
 import remainingFamilyParameterImportReport from '../database/remaining-family-parameter-import-report.v11.3.0.json' with { type: 'json' };
@@ -86,6 +87,10 @@ void test('database manifest keeps game data and authorization boundaries explic
     manifest.records.battleParameterApplicabilityReport,
     'battle-parameter-applicability-report.v11.3.0.json',
   );
+  assert.equal(
+    manifest.records.battleParameterVerificationQueue,
+    'battle-parameter-verification-queue.v11.3.0.json',
+  );
   assert.equal(manifest.scope, 'full-weapon-catalog-partial-parameters');
   assert.equal(
     manifest.authorization.leannySplat3,
@@ -130,6 +135,23 @@ void test('battle applicability resolution only closes absent optional mechanics
   assert.equal(battleParameterApplicabilityReport.summary.resolvedFields, 117);
   assert.equal(battleParameterApplicabilityReport.summary.affectedWeapons, 28);
   assert.equal(battleParameterApplicabilityReport.resolutions.length, 117);
+});
+
+void test('battle verification queue accounts for every remaining pending field', () => {
+  assert.equal(battleParameterVerificationQueue.gameVersion, '11.3.0');
+  assert.equal(
+    battleParameterVerificationQueue.summary.pendingFieldOccurrences,
+    332,
+  );
+  assert.equal(battleParameterVerificationQueue.summary.categories, 6);
+  assert.equal(battleParameterVerificationQueue.summary.groupedTasks, 36);
+  assert.equal(
+    battleParameterVerificationQueue.categories.reduce(
+      (total, category) => total + category.fieldOccurrences,
+      0,
+    ),
+    battleParameterVerificationQueue.summary.pendingFieldOccurrences,
+  );
 });
 
 void test('battle source audit covers every inheritance candidate occurrence', () => {
