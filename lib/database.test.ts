@@ -10,6 +10,7 @@ import rollerParameterImportReport from '../database/roller-parameter-import-rep
 import chargerParameterImportReport from '../database/charger-parameter-import-report.v11.3.0.json' with { type: 'json' };
 import remainingFamilyParameterImportReport from '../database/remaining-family-parameter-import-report.v11.3.0.json' with { type: 'json' };
 import salmonParameterSourceReport from '../database/salmon-parameter-source-report.v11.3.0.json' with { type: 'json' };
+import salmonInkCycleEvidence from '../database/salmon-ink-cycle-evidence.v11.3.0.json' with { type: 'json' };
 import salmonWeaponParameterDocument from '../database/salmon-weapon-parameters.v11.3.0.json' with { type: 'json' };
 import specialWeaponDocument from '../database/special-weapons.v11.3.0.json' with { type: 'json' };
 import sourcesDocument from '../database/sources.json' with { type: 'json' };
@@ -63,6 +64,10 @@ void test('database manifest keeps game data and authorization boundaries explic
   assert.equal(
     manifest.records.salmonWeaponParameters,
     'salmon-weapon-parameters.v11.3.0.json',
+  );
+  assert.equal(
+    manifest.records.salmonInkCycleEvidence,
+    'salmon-ink-cycle-evidence.v11.3.0.json',
   );
   assert.equal(manifest.scope, 'full-weapon-catalog-partial-parameters');
   assert.equal(
@@ -170,6 +175,30 @@ void test('11.3 import report matches the normalized catalog', () => {
   assert.ok(salmonParameterSourceReport.inputs.length > 100);
   for (const input of salmonParameterSourceReport.inputs)
     assert.match(input.sha256, /^[a-f0-9]{64}$/);
+  assert.equal(salmonInkCycleEvidence.sourceCommit.length, 40);
+  assert.equal(salmonInkCycleEvidence.modelGate.sustainedOutput, 'blocked');
+  assert.equal(salmonInkCycleEvidence.inputs.length, 4);
+  for (const input of salmonInkCycleEvidence.inputs)
+    assert.match(input.sha256, /^[a-f0-9]{64}$/);
+  assert.deepEqual(
+    salmonInkCycleEvidence.evidence.salmonSplatBomb.fields.map(
+      ({ key, value }) => [key, value],
+    ),
+    [
+      ['inkConsumption', 70],
+      ['inkRecoveryLock', 60],
+    ],
+  );
+  assert.equal(
+    salmonInkCycleEvidence.evidence.commonRecoveryCurve.fields.every(
+      ({ salmonApplicability }) => salmonApplicability === 'pending',
+    ),
+    true,
+  );
+  assert.equal(
+    salmonInkCycleEvidence.evidence.squidRoll.recoveryFieldStatus,
+    'not-located',
+  );
   for (const record of salmonWeaponParameterDocument.records) {
     assert.ok(record.parameters.length > 0, record.id);
     assert.equal(

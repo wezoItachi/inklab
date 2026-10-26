@@ -18,7 +18,8 @@
     "chargerParameterImportReport": "charger-parameter-import-report.v11.3.0.json",
     "remainingFamilyParameterImportReport": "remaining-family-parameter-import-report.v11.3.0.json",
     "salmonWeaponParameters": "salmon-weapon-parameters.v11.3.0.json",
-    "salmonParameterSourceReport": "salmon-parameter-source-report.v11.3.0.json"
+    "salmonParameterSourceReport": "salmon-parameter-source-report.v11.3.0.json",
+    "salmonInkCycleEvidence": "salmon-ink-cycle-evidence.v11.3.0.json"
   },
   "authorization": {
     "leannySplat3": "permission-with-attribution",

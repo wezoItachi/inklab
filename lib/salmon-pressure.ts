@@ -1,3 +1,5 @@
+import {salmonRecoveryModelGate} from './salmon-ink-cycle.ts';
+
 export type SalmonPressureStrategy='synchronized'|'staggered';
 export type SalmonOutputProfile='limit'|'routine';
 
@@ -73,7 +75,7 @@ export function analyzeSalmonPressure(weaponIds:readonly string[],strategy:Salmo
   if(missingWeaponIds.length)return{ready:false as const,missingWeaponIds,weaponResults:performances};
   const actionWindows=performances.map(item=>getWeaponActionWindow(item!,profile));
   const combinedActionDps=actionWindows.reduce((sum,item)=>sum+item.actionDps,0);
-  return{ready:true as const,strategy,profile,actionWindows,combinedActionDps,recoveryModelReady:false as const};
+  return{ready:true as const,strategy,profile,actionWindows,combinedActionDps,recoveryModelReady:salmonRecoveryModelGate.ready,recoveryModelBlockers:salmonRecoveryModelGate.blockers};
 }
 
 export function compareSalmonPressure(weaponIds:readonly string[],strategy:SalmonPressureStrategy){

@@ -1,0 +1,122 @@
+{
+  "gameVersion": "11.3.0",
+  "datasetStatus": "evidence-only",
+  "defaultSourceId": "leanny-splat3",
+  "sourceCommit": "7280ff9cde8bb1c5dcef46c700c326471584d2e6",
+  "checkedAt": "2026-10-26",
+  "modelGate": {
+    "sustainedOutput": "blocked",
+    "reasons": [
+      "未找到明确的 Ver. 11.3.0 打工玩家通用回墨覆盖字段。",
+      "普通回墨曲线的打工适用性尚未通过源码或实机验证。",
+      "四把首批试算武器中只有广域标记枪暴露了明确的主武墨锁字段。",
+      "鱿鱼滚行空中回墨与绕过墨锁的底层字段尚未定位。"
+    ]
+  },
+  "evidence": {
+    "commonRecoveryCurve": {
+      "scope": "普通模式无装备能力曲线；打工适用性待验证",
+      "fields": [
+        {
+          "key": "standingFullTankRecoveryFrames",
+          "label": "人形／非潜墨状态回满一管墨的帧数",
+          "value": 600,
+          "upstreamPath": "data/parameter/1130/misc/params.json#InkRecoverFrm_Std[2]",
+          "unit": "frames",
+          "sourceStatus": "verified",
+          "salmonApplicability": "pending"
+        },
+        {
+          "key": "submergedFullTankRecoveryFrames",
+          "label": "潜墨状态回满一管墨的帧数",
+          "value": 180,
+          "upstreamPath": "data/parameter/1130/misc/params.json#InkRecoverFrm_Stealth[2]",
+          "unit": "frames",
+          "sourceStatus": "verified",
+          "salmonApplicability": "pending"
+        }
+      ]
+    },
+    "salmonSplatBomb": {
+      "scope": "打工固定副武器三角雷",
+      "inheritance": "打工文件只覆盖耗墨；墨锁来自其普通父参数文件",
+      "fields": [
+        {
+          "key": "inkConsumption",
+          "label": "打工三角雷耗墨",
+          "value": 70,
+          "upstreamPath": "data/parameter/1130/weapon/WeaponBombSplash_coop.game__GameParameterTable.json#GameParameters.WeaponParam.InkConsume",
+          "unit": "percent",
+          "sourceStatus": "verified",
+          "salmonApplicability": "verified"
+        },
+        {
+          "key": "inkRecoveryLock",
+          "label": "投掷后三角雷墨锁",
+          "value": 60,
+          "upstreamPath": "data/parameter/1130/weapon/WeaponBombSplash.game__GameParameterTable.json#GameParameters.WeaponParam.InkRecoverStop",
+          "unit": "frames",
+          "sourceStatus": "verified",
+          "salmonApplicability": "inherited"
+        }
+      ]
+    },
+    "mainWeaponRecoveryLockSamples": {
+      "scope": "首批压力试算武器的显式字段覆盖",
+      "fields": [
+        {
+          "weaponId": "salmon-shooter-short-00",
+          "key": "inkRecoveryLock",
+          "label": "广域标记枪射击墨锁",
+          "value": 15,
+          "upstreamPath": "data/parameter/1130/weapon/WeaponShooterShort.game__GameParameterTable.json#GameParameters.WeaponParam.InkRecoverStop",
+          "unit": "frames",
+          "sourceStatus": "verified",
+          "salmonApplicability": "base-inherited"
+        }
+      ],
+      "unresolvedWeaponIds": [
+        "splash-o-matic",
+        "salmon-shooter-heavy-00",
+        "tri-stringer"
+      ]
+    },
+    "squidRoll": {
+      "scope": "鱿鱼滚行与墨锁交互",
+      "sourceFieldsLocated": [
+        {
+          "key": "somersaultMovementSpeedCurve",
+          "value": [
+            1,
+            0.925,
+            0.85
+          ],
+          "upstreamPath": "data/parameter/1130/misc/params.json#Somersault_MoveVelKd",
+          "unit": "curve",
+          "sourceStatus": "verified"
+        }
+      ],
+      "recoveryFieldStatus": "not-located",
+      "communityObservationStatus": "hypothesis-pending-source-or-capture",
+      "note": "已知字段只描述 Somersault 动作速度曲线，不能证明空中按潜墨速率回墨或绕过墨锁。"
+    }
+  },
+  "inputs": [
+    {
+      "upstreamPath": "data/parameter/1130/misc/params.json",
+      "sha256": "7d01dc1542316bc496425a35efe1a7ece553b2e1b8140ebc4b465555e754788e"
+    },
+    {
+      "upstreamPath": "data/parameter/1130/weapon/WeaponBombSplash_coop.game__GameParameterTable.json",
+      "sha256": "b1b54bfcd99ef7111f186d8b23ed72f3f7153c843b9385f4b0d7302dc87a9c47"
+    },
+    {
+      "upstreamPath": "data/parameter/1130/weapon/WeaponBombSplash.game__GameParameterTable.json",
+      "sha256": "d2a7e096d8e3ba3b5bef7774c7b62d1e9cb252b054650317955fa38f90658f97"
+    },
+    {
+      "upstreamPath": "data/parameter/1130/weapon/WeaponShooterShort.game__GameParameterTable.json",
+      "sha256": "4766d778180949833438b93fd945131cd76835adfda6a11feb6f7b2b3803c315"
+    }
+  ]
+}

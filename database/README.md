@@ -17,6 +17,7 @@
 - `remaining-family-parameter-import-report.v11.3.0.json`：画笔、泼桶、加特林、双枪、伞、弓和刮水刀的参数输入文件、固定提交、哈希与核验计数。
 - `salmon-weapon-parameters.v11.3.0.json`：63 把常规打工武器与 8 把熊武的来源可追溯部分参数；区分 `_Coop` 显式覆盖、普通参数继承、熊武显式字段和熊武父类继承。
 - `salmon-parameter-source-report.v11.3.0.json`：上述 71 把武器实际读取的普通／`_Coop` 输入文件、固定提交、哈希、导入计数与边界。
+- `salmon-ink-cycle-evidence.v11.3.0.json`：回墨、主武／副武墨锁与鱿鱼滚行相关字段的证据表；把“字段存在”“打工适用”和“机制已验证”分开标记。
 - `schema.ts`：数据结构与运行前校验。
 
 全量目录由 `scripts/import-leanny-weapons.mjs` 离线生成。脚本需要显式传入包含 `WeaponInfoMain.json` 与 `CNzh.json` 的本地目录，例如：
@@ -35,6 +36,7 @@ pnpm data:import-blaster-parameters -- --source-dir <1130/weapon 参数目录>
 pnpm data:import-roller-parameters -- --source-dir <1130/weapon 参数目录>
 pnpm data:import-charger-parameters -- --source-dir <1130/weapon 参数目录>
 pnpm data:import-remaining-parameters -- --source-dir <1130/weapon 参数目录>
+pnpm data:import-salmon-ink-cycle -- --source-dir <1130 参数目录>
 ```
 
 第三方授权标记为 `pending` 时，只能保留人工独立核对的数据和来源记录，不批量镜像上游数据库。新增正式参数必须记录来源、游戏版本和核对日期，并通过测试后才能在界面标为“已核对”。

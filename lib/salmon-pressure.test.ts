@@ -1,5 +1,6 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
+import {salmonRecoveryModelGate,salmonSplatBombCycle} from './salmon-ink-cycle.ts';
 import {analyzeSalmonPressure,analyzeTargetActions,compareSalmonPressure,getSalmonWeaponPerformance,getWeaponActionWindow,salmonTargets,salmonWeaponPerformance} from './salmon-pressure.ts';
 
 void test('first Salmon Run pressure samples retain traceable weapon values',()=>{
@@ -37,6 +38,13 @@ void test('pressure comparison exposes limit and explicit routine profiles',()=>
   assert.equal(result.routine.profile,'routine');
   assert.equal(result.limit.combinedActionDps>result.routine.combinedActionDps,true);
   assert.equal(result.limit.recoveryModelReady,false);
+  assert.equal(result.limit.recoveryModelBlockers.length,4);
+});
+
+void test('source-backed ink-cycle evidence keeps sustained output gated',()=>{
+  assert.equal(salmonRecoveryModelGate.ready,false);
+  assert.equal(salmonSplatBombCycle.inkConsumptionPercent,70);
+  assert.equal(salmonSplatBombCycle.inkRecoveryLockFrames,60);
 });
 
 void test('target solver reports fractional equivalents and real action count',()=>{

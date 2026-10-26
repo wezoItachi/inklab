@@ -24,6 +24,7 @@
     "data:import-charger-parameters": "node scripts/import-leanny-charger-parameters.mjs",
     "data:import-remaining-parameters": "node scripts/import-leanny-remaining-parameters.mjs",
     "data:import-salmon-parameters": "node scripts/import-leanny-salmon-parameters.mjs",
+    "data:import-salmon-ink-cycle": "node scripts/import-leanny-salmon-ink-cycle.mjs",
     "typecheck": "tsc --noEmit --incremental false",
     "lint": "oxlint",
     "format": "oxfmt",
