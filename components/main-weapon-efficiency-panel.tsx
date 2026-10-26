@@ -65,10 +65,23 @@ function ShooterContent({ analysis }: { analysis: MainWeaponEfficiency }) {
               : `${analysis.splatTimeFrames} 帧`}
           </em>
         </span>
+        <span>
+          <small>伤害衰减帧</small>
+          <strong>
+            {analysis.damageFalloffStartFrames ?? '待验证'} →{' '}
+            {analysis.damageFalloffEndFrames ?? '待验证'}
+          </strong>
+          <em>开始衰减 / 到达最低伤害层</em>
+        </span>
+        <span>
+          <small>弹丸初速</small>
+          <strong>{analysis.projectileSpawnSpeed ?? '待验证'}</strong>
+          <em>上游内部单位 · 未换算为射程</em>
+        </span>
       </div>
       <p>
         按 60 帧和 100 HP
-        目标计算；时间从第一发命中/射出计至最后一发，未计入瞄准、弹道飞行、伤害衰减、墨水回复或主武器省墨能力。
+        目标计算；时间从第一发命中/射出计至最后一发，未计入瞄准、弹道飞行、伤害衰减、墨水回复或主武器省墨能力。衰减帧与初速是可核对的射程基础证据，但在完整运动阶段尚未积分前不冒充“有效射程”。
       </p>
     </div>
   );
@@ -855,7 +868,7 @@ export function MainWeaponEfficiencyPanel({ weaponId }: { weaponId: string }) {
   const coreInputCount = spinnerAnalysis
     ? 23
     : shooterAnalysis
-      ? 3
+      ? 6
       : blasterAnalysis
         ? 8
         : chargerAnalysis

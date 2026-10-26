@@ -15,7 +15,7 @@
           "note": "上游 ValueMax=300，按游戏伤害定点值除以 10 规范化",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterQuickMiddle.game__GameParameterTable.json#GameParameters.DamageParam.ValueMax",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "fireIntervalFrames",
@@ -26,7 +26,7 @@
           "note": "直接记录参数文件中显式存在的 RepeatFrame",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterQuickMiddle.game__GameParameterTable.json#GameParameters.WeaponParam.RepeatFrame",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "inkConsumptionPerShot",
@@ -37,7 +37,7 @@
           "note": "上游 InkConsume=0.008，乘以 100 规范化为墨水槽百分比",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterQuickMiddle.game__GameParameterTable.json#GameParameters.WeaponParam.InkConsume",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "effectiveRange",
@@ -48,6 +48,39 @@
           "note": "需要先统一最大伤害距离、衰减起点、弹丸寿命与界面射程之间的定义和换算"
         },
         {
+          "key": "damageFalloffStartFrames",
+          "label": "伤害开始衰减帧",
+          "value": 8,
+          "unit": "frames",
+          "status": "verified",
+          "note": "弹丸生成后开始进入伤害衰减的显式帧数；不是距离值",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponShooterQuickMiddle.game__GameParameterTable.json#GameParameters.DamageParam.ReduceStartFrame",
+          "checkedAt": "2026-10-26"
+        },
+        {
+          "key": "damageFalloffEndFrames",
+          "label": "伤害衰减结束帧",
+          "value": 24,
+          "unit": "frames",
+          "status": "verified",
+          "note": "弹丸生成后到达最低伤害层的显式帧数；不是弹丸寿命",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponShooterQuickMiddle.game__GameParameterTable.json#GameParameters.DamageParam.ReduceEndFrame",
+          "checkedAt": "2026-10-26"
+        },
+        {
+          "key": "projectileSpawnSpeed",
+          "label": "弹丸初速",
+          "value": 2.2,
+          "unit": "internal",
+          "status": "verified",
+          "note": "直接记录 SpawnSpeed 内部值；尚未与后续运动阶段积分成距离",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponShooterQuickMiddle.game__GameParameterTable.json#GameParameters.MoveParam.SpawnSpeed",
+          "checkedAt": "2026-10-26"
+        },
+        {
           "key": "groundShotSpreadDegrees",
           "label": "地面射击扩散",
           "value": 4.75,
@@ -56,7 +89,7 @@
           "note": "直接记录 Stand_DegSwerve；连续射击偏移累积另行建模",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterQuickMiddle.game__GameParameterTable.json#GameParameters.WeaponParam.Stand_DegSwerve",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "jumpShotSpreadDegrees",
@@ -67,7 +100,7 @@
           "note": "直接记录 Jump_DegSwerve；行动强化与跳跃偏移变化过程另行建模",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterQuickMiddle.game__GameParameterTable.json#GameParameters.WeaponParam.Jump_DegSwerve",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "movementSpeedWhileFiring",
@@ -78,7 +111,7 @@
           "note": "直接记录未叠加人速能力效果的 MoveSpeed 基础内部值",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterQuickMiddle.game__GameParameterTable.json#GameParameters.WeaponParam.MoveSpeed",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         }
       ]
     },
@@ -94,7 +127,7 @@
           "note": "上游 ValueMax=360，按游戏伤害定点值除以 10 规范化",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterNormal.game__GameParameterTable.json#GameParameters.DamageParam.ValueMax",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "fireIntervalFrames",
@@ -113,7 +146,7 @@
           "note": "上游 InkConsume=0.0092，乘以 100 规范化为墨水槽百分比",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterNormal.game__GameParameterTable.json#GameParameters.WeaponParam.InkConsume",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "effectiveRange",
@@ -124,6 +157,39 @@
           "note": "需要先统一最大伤害距离、衰减起点、弹丸寿命与界面射程之间的定义和换算"
         },
         {
+          "key": "damageFalloffStartFrames",
+          "label": "伤害开始衰减帧",
+          "value": 8,
+          "unit": "frames",
+          "status": "verified",
+          "note": "弹丸生成后开始进入伤害衰减的显式帧数；不是距离值",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponShooterNormal.game__GameParameterTable.json#GameParameters.DamageParam.ReduceStartFrame",
+          "checkedAt": "2026-10-26"
+        },
+        {
+          "key": "damageFalloffEndFrames",
+          "label": "伤害衰减结束帧",
+          "value": 40,
+          "unit": "frames",
+          "status": "verified",
+          "note": "弹丸生成后到达最低伤害层的显式帧数；不是弹丸寿命",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponShooterNormal.game__GameParameterTable.json#GameParameters.DamageParam.ReduceEndFrame",
+          "checkedAt": "2026-10-26"
+        },
+        {
+          "key": "projectileSpawnSpeed",
+          "label": "弹丸初速",
+          "value": 2.266,
+          "unit": "internal",
+          "status": "verified",
+          "note": "直接记录 SpawnSpeed 内部值；尚未与后续运动阶段积分成距离",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponShooterNormal.game__GameParameterTable.json#GameParameters.MoveParam.SpawnSpeed",
+          "checkedAt": "2026-10-26"
+        },
+        {
           "key": "groundShotSpreadDegrees",
           "label": "地面射击扩散",
           "value": 4.86,
@@ -132,7 +198,7 @@
           "note": "直接记录 Stand_DegSwerve；连续射击偏移累积另行建模",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterNormal.game__GameParameterTable.json#GameParameters.WeaponParam.Stand_DegSwerve",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "jumpShotSpreadDegrees",
@@ -143,7 +209,7 @@
           "note": "直接记录 Jump_DegSwerve；行动强化与跳跃偏移变化过程另行建模",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterNormal.game__GameParameterTable.json#GameParameters.WeaponParam.Jump_DegSwerve",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "movementSpeedWhileFiring",
@@ -154,7 +220,7 @@
           "note": "直接记录未叠加人速能力效果的 MoveSpeed 基础内部值",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterNormal.game__GameParameterTable.json#GameParameters.WeaponParam.MoveSpeed",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         }
       ]
     },
@@ -170,7 +236,7 @@
           "note": "上游 ValueMax=280，按游戏伤害定点值除以 10 规范化",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterPrecision.game__GameParameterTable.json#GameParameters.DamageParam.ValueMax",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "fireIntervalFrames",
@@ -181,7 +247,7 @@
           "note": "直接记录参数文件中显式存在的 RepeatFrame",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterPrecision.game__GameParameterTable.json#GameParameters.WeaponParam.RepeatFrame",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "inkConsumptionPerShot",
@@ -192,7 +258,7 @@
           "note": "上游 InkConsume=0.008，乘以 100 规范化为墨水槽百分比",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterPrecision.game__GameParameterTable.json#GameParameters.WeaponParam.InkConsume",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "effectiveRange",
@@ -203,6 +269,39 @@
           "note": "需要先统一最大伤害距离、衰减起点、弹丸寿命与界面射程之间的定义和换算"
         },
         {
+          "key": "damageFalloffStartFrames",
+          "label": "伤害开始衰减帧",
+          "value": 4,
+          "unit": "frames",
+          "status": "verified",
+          "note": "弹丸生成后开始进入伤害衰减的显式帧数；不是距离值",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponShooterPrecision.game__GameParameterTable.json#GameParameters.DamageParam.ReduceStartFrame",
+          "checkedAt": "2026-10-26"
+        },
+        {
+          "key": "damageFalloffEndFrames",
+          "label": "伤害衰减结束帧",
+          "value": 20,
+          "unit": "frames",
+          "status": "verified",
+          "note": "弹丸生成后到达最低伤害层的显式帧数；不是弹丸寿命",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponShooterPrecision.game__GameParameterTable.json#GameParameters.DamageParam.ReduceEndFrame",
+          "checkedAt": "2026-10-26"
+        },
+        {
+          "key": "projectileSpawnSpeed",
+          "label": "弹丸初速",
+          "value": 4.0376,
+          "unit": "internal",
+          "status": "verified",
+          "note": "直接记录 SpawnSpeed 内部值；尚未与后续运动阶段积分成距离",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponShooterPrecision.game__GameParameterTable.json#GameParameters.MoveParam.SpawnSpeed",
+          "checkedAt": "2026-10-26"
+        },
+        {
           "key": "groundShotSpreadDegrees",
           "label": "地面射击扩散",
           "value": 0,
@@ -211,7 +310,7 @@
           "note": "直接记录 Stand_DegSwerve；连续射击偏移累积另行建模",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterPrecision.game__GameParameterTable.json#GameParameters.WeaponParam.Stand_DegSwerve",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "jumpShotSpreadDegrees",
@@ -222,7 +321,7 @@
           "note": "直接记录 Jump_DegSwerve；行动强化与跳跃偏移变化过程另行建模",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterPrecision.game__GameParameterTable.json#GameParameters.WeaponParam.Jump_DegSwerve",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "movementSpeedWhileFiring",
@@ -233,7 +332,7 @@
           "note": "直接记录未叠加人速能力效果的 MoveSpeed 基础内部值",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterPrecision.game__GameParameterTable.json#GameParameters.WeaponParam.MoveSpeed",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         }
       ]
     },
@@ -706,7 +805,7 @@
           "note": "上游 ValueMax=380，按游戏伤害定点值除以 10 规范化",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterShort.game__GameParameterTable.json#GameParameters.DamageParam.ValueMax",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "fireIntervalFrames",
@@ -717,7 +816,7 @@
           "note": "直接记录参数文件中显式存在的 RepeatFrame",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterShort.game__GameParameterTable.json#GameParameters.WeaponParam.RepeatFrame",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "inkConsumptionPerShot",
@@ -728,7 +827,7 @@
           "note": "上游 InkConsume=0.008，乘以 100 规范化为墨水槽百分比",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterShort.game__GameParameterTable.json#GameParameters.WeaponParam.InkConsume",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "effectiveRange",
@@ -739,6 +838,39 @@
           "note": "需要先统一最大伤害距离、衰减起点、弹丸寿命与界面射程之间的定义和换算"
         },
         {
+          "key": "damageFalloffStartFrames",
+          "label": "伤害开始衰减帧",
+          "value": 6,
+          "unit": "frames",
+          "status": "verified",
+          "note": "弹丸生成后开始进入伤害衰减的显式帧数；不是距离值",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponShooterShort.game__GameParameterTable.json#GameParameters.DamageParam.ReduceStartFrame",
+          "checkedAt": "2026-10-26"
+        },
+        {
+          "key": "damageFalloffEndFrames",
+          "label": "伤害衰减结束帧",
+          "value": 22,
+          "unit": "frames",
+          "status": "verified",
+          "note": "弹丸生成后到达最低伤害层的显式帧数；不是弹丸寿命",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponShooterShort.game__GameParameterTable.json#GameParameters.DamageParam.ReduceEndFrame",
+          "checkedAt": "2026-10-26"
+        },
+        {
+          "key": "projectileSpawnSpeed",
+          "label": "弹丸初速",
+          "value": 2.06,
+          "unit": "internal",
+          "status": "verified",
+          "note": "直接记录 SpawnSpeed 内部值；尚未与后续运动阶段积分成距离",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponShooterShort.game__GameParameterTable.json#GameParameters.MoveParam.SpawnSpeed",
+          "checkedAt": "2026-10-26"
+        },
+        {
           "key": "groundShotSpreadDegrees",
           "label": "地面射击扩散",
           "value": 11.66,
@@ -747,7 +879,7 @@
           "note": "直接记录 Stand_DegSwerve；连续射击偏移累积另行建模",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterShort.game__GameParameterTable.json#GameParameters.WeaponParam.Stand_DegSwerve",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "jumpShotSpreadDegrees",
@@ -758,7 +890,7 @@
           "note": "直接记录 Jump_DegSwerve；行动强化与跳跃偏移变化过程另行建模",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterShort.game__GameParameterTable.json#GameParameters.WeaponParam.Jump_DegSwerve",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "movementSpeedWhileFiring",
@@ -769,7 +901,7 @@
           "note": "直接记录未叠加人速能力效果的 MoveSpeed 基础内部值",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterShort.game__GameParameterTable.json#GameParameters.WeaponParam.MoveSpeed",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         }
       ]
     },
@@ -785,7 +917,7 @@
           "note": "上游 ValueMax=380，按游戏伤害定点值除以 10 规范化",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterShort.game__GameParameterTable.json#GameParameters.DamageParam.ValueMax",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "fireIntervalFrames",
@@ -796,7 +928,7 @@
           "note": "直接记录参数文件中显式存在的 RepeatFrame",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterShort.game__GameParameterTable.json#GameParameters.WeaponParam.RepeatFrame",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "inkConsumptionPerShot",
@@ -807,7 +939,7 @@
           "note": "上游 InkConsume=0.008，乘以 100 规范化为墨水槽百分比",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterShort.game__GameParameterTable.json#GameParameters.WeaponParam.InkConsume",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "effectiveRange",
@@ -818,6 +950,39 @@
           "note": "需要先统一最大伤害距离、衰减起点、弹丸寿命与界面射程之间的定义和换算"
         },
         {
+          "key": "damageFalloffStartFrames",
+          "label": "伤害开始衰减帧",
+          "value": 6,
+          "unit": "frames",
+          "status": "verified",
+          "note": "弹丸生成后开始进入伤害衰减的显式帧数；不是距离值",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponShooterShort.game__GameParameterTable.json#GameParameters.DamageParam.ReduceStartFrame",
+          "checkedAt": "2026-10-26"
+        },
+        {
+          "key": "damageFalloffEndFrames",
+          "label": "伤害衰减结束帧",
+          "value": 22,
+          "unit": "frames",
+          "status": "verified",
+          "note": "弹丸生成后到达最低伤害层的显式帧数；不是弹丸寿命",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponShooterShort.game__GameParameterTable.json#GameParameters.DamageParam.ReduceEndFrame",
+          "checkedAt": "2026-10-26"
+        },
+        {
+          "key": "projectileSpawnSpeed",
+          "label": "弹丸初速",
+          "value": 2.06,
+          "unit": "internal",
+          "status": "verified",
+          "note": "直接记录 SpawnSpeed 内部值；尚未与后续运动阶段积分成距离",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponShooterShort.game__GameParameterTable.json#GameParameters.MoveParam.SpawnSpeed",
+          "checkedAt": "2026-10-26"
+        },
+        {
           "key": "groundShotSpreadDegrees",
           "label": "地面射击扩散",
           "value": 11.66,
@@ -826,7 +991,7 @@
           "note": "直接记录 Stand_DegSwerve；连续射击偏移累积另行建模",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterShort.game__GameParameterTable.json#GameParameters.WeaponParam.Stand_DegSwerve",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "jumpShotSpreadDegrees",
@@ -837,7 +1002,7 @@
           "note": "直接记录 Jump_DegSwerve；行动强化与跳跃偏移变化过程另行建模",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterShort.game__GameParameterTable.json#GameParameters.WeaponParam.Jump_DegSwerve",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "movementSpeedWhileFiring",
@@ -848,7 +1013,7 @@
           "note": "直接记录未叠加人速能力效果的 MoveSpeed 基础内部值",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterShort.game__GameParameterTable.json#GameParameters.WeaponParam.MoveSpeed",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         }
       ]
     },
@@ -864,7 +1029,7 @@
           "note": "上游 ValueMax=280，按游戏伤害定点值除以 10 规范化",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterFirst.game__GameParameterTable.json#GameParameters.DamageParam.ValueMax",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "fireIntervalFrames",
@@ -875,7 +1040,7 @@
           "note": "直接记录参数文件中显式存在的 RepeatFrame",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterFirst.game__GameParameterTable.json#GameParameters.WeaponParam.RepeatFrame",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "inkConsumptionPerShot",
@@ -886,7 +1051,7 @@
           "note": "上游 InkConsume=0.0043，乘以 100 规范化为墨水槽百分比",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterFirst.game__GameParameterTable.json#GameParameters.WeaponParam.InkConsume",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "effectiveRange",
@@ -897,6 +1062,39 @@
           "note": "需要先统一最大伤害距离、衰减起点、弹丸寿命与界面射程之间的定义和换算"
         },
         {
+          "key": "damageFalloffStartFrames",
+          "label": "伤害开始衰减帧",
+          "value": 8,
+          "unit": "frames",
+          "status": "verified",
+          "note": "弹丸生成后开始进入伤害衰减的显式帧数；不是距离值",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponShooterFirst.game__GameParameterTable.json#GameParameters.DamageParam.ReduceStartFrame",
+          "checkedAt": "2026-10-26"
+        },
+        {
+          "key": "damageFalloffEndFrames",
+          "label": "伤害衰减结束帧",
+          "value": 24,
+          "unit": "frames",
+          "status": "verified",
+          "note": "弹丸生成后到达最低伤害层的显式帧数；不是弹丸寿命",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponShooterFirst.game__GameParameterTable.json#GameParameters.DamageParam.ReduceEndFrame",
+          "checkedAt": "2026-10-26"
+        },
+        {
+          "key": "projectileSpawnSpeed",
+          "label": "弹丸初速",
+          "value": 2.266,
+          "unit": "internal",
+          "status": "verified",
+          "note": "直接记录 SpawnSpeed 内部值；尚未与后续运动阶段积分成距离",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponShooterFirst.game__GameParameterTable.json#GameParameters.MoveParam.SpawnSpeed",
+          "checkedAt": "2026-10-26"
+        },
+        {
           "key": "groundShotSpreadDegrees",
           "label": "地面射击扩散",
           "value": 11.66,
@@ -905,7 +1103,7 @@
           "note": "直接记录 Stand_DegSwerve；连续射击偏移累积另行建模",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterFirst.game__GameParameterTable.json#GameParameters.WeaponParam.Stand_DegSwerve",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "jumpShotSpreadDegrees",
@@ -916,7 +1114,7 @@
           "note": "直接记录 Jump_DegSwerve；行动强化与跳跃偏移变化过程另行建模",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterFirst.game__GameParameterTable.json#GameParameters.WeaponParam.Jump_DegSwerve",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "movementSpeedWhileFiring",
@@ -927,7 +1125,7 @@
           "note": "直接记录未叠加人速能力效果的 MoveSpeed 基础内部值",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterFirst.game__GameParameterTable.json#GameParameters.WeaponParam.MoveSpeed",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         }
       ]
     },
@@ -943,7 +1141,7 @@
           "note": "上游 ValueMax=280，按游戏伤害定点值除以 10 规范化",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterFirst.game__GameParameterTable.json#GameParameters.DamageParam.ValueMax",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "fireIntervalFrames",
@@ -954,7 +1152,7 @@
           "note": "直接记录参数文件中显式存在的 RepeatFrame",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterFirst.game__GameParameterTable.json#GameParameters.WeaponParam.RepeatFrame",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "inkConsumptionPerShot",
@@ -965,7 +1163,7 @@
           "note": "上游 InkConsume=0.0043，乘以 100 规范化为墨水槽百分比",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterFirst.game__GameParameterTable.json#GameParameters.WeaponParam.InkConsume",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "effectiveRange",
@@ -976,6 +1174,39 @@
           "note": "需要先统一最大伤害距离、衰减起点、弹丸寿命与界面射程之间的定义和换算"
         },
         {
+          "key": "damageFalloffStartFrames",
+          "label": "伤害开始衰减帧",
+          "value": 8,
+          "unit": "frames",
+          "status": "verified",
+          "note": "弹丸生成后开始进入伤害衰减的显式帧数；不是距离值",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponShooterFirst.game__GameParameterTable.json#GameParameters.DamageParam.ReduceStartFrame",
+          "checkedAt": "2026-10-26"
+        },
+        {
+          "key": "damageFalloffEndFrames",
+          "label": "伤害衰减结束帧",
+          "value": 24,
+          "unit": "frames",
+          "status": "verified",
+          "note": "弹丸生成后到达最低伤害层的显式帧数；不是弹丸寿命",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponShooterFirst.game__GameParameterTable.json#GameParameters.DamageParam.ReduceEndFrame",
+          "checkedAt": "2026-10-26"
+        },
+        {
+          "key": "projectileSpawnSpeed",
+          "label": "弹丸初速",
+          "value": 2.266,
+          "unit": "internal",
+          "status": "verified",
+          "note": "直接记录 SpawnSpeed 内部值；尚未与后续运动阶段积分成距离",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponShooterFirst.game__GameParameterTable.json#GameParameters.MoveParam.SpawnSpeed",
+          "checkedAt": "2026-10-26"
+        },
+        {
           "key": "groundShotSpreadDegrees",
           "label": "地面射击扩散",
           "value": 11.66,
@@ -984,7 +1215,7 @@
           "note": "直接记录 Stand_DegSwerve；连续射击偏移累积另行建模",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterFirst.game__GameParameterTable.json#GameParameters.WeaponParam.Stand_DegSwerve",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "jumpShotSpreadDegrees",
@@ -995,7 +1226,7 @@
           "note": "直接记录 Jump_DegSwerve；行动强化与跳跃偏移变化过程另行建模",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterFirst.game__GameParameterTable.json#GameParameters.WeaponParam.Jump_DegSwerve",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "movementSpeedWhileFiring",
@@ -1006,7 +1237,7 @@
           "note": "直接记录未叠加人速能力效果的 MoveSpeed 基础内部值",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterFirst.game__GameParameterTable.json#GameParameters.WeaponParam.MoveSpeed",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         }
       ]
     },
@@ -1022,7 +1253,7 @@
           "note": "上游 ValueMax=280，按游戏伤害定点值除以 10 规范化",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterPrecision.game__GameParameterTable.json#GameParameters.DamageParam.ValueMax",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "fireIntervalFrames",
@@ -1033,7 +1264,7 @@
           "note": "直接记录参数文件中显式存在的 RepeatFrame",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterPrecision.game__GameParameterTable.json#GameParameters.WeaponParam.RepeatFrame",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "inkConsumptionPerShot",
@@ -1044,7 +1275,7 @@
           "note": "上游 InkConsume=0.008，乘以 100 规范化为墨水槽百分比",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterPrecision.game__GameParameterTable.json#GameParameters.WeaponParam.InkConsume",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "effectiveRange",
@@ -1055,6 +1286,39 @@
           "note": "需要先统一最大伤害距离、衰减起点、弹丸寿命与界面射程之间的定义和换算"
         },
         {
+          "key": "damageFalloffStartFrames",
+          "label": "伤害开始衰减帧",
+          "value": 4,
+          "unit": "frames",
+          "status": "verified",
+          "note": "弹丸生成后开始进入伤害衰减的显式帧数；不是距离值",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponShooterPrecision.game__GameParameterTable.json#GameParameters.DamageParam.ReduceStartFrame",
+          "checkedAt": "2026-10-26"
+        },
+        {
+          "key": "damageFalloffEndFrames",
+          "label": "伤害衰减结束帧",
+          "value": 20,
+          "unit": "frames",
+          "status": "verified",
+          "note": "弹丸生成后到达最低伤害层的显式帧数；不是弹丸寿命",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponShooterPrecision.game__GameParameterTable.json#GameParameters.DamageParam.ReduceEndFrame",
+          "checkedAt": "2026-10-26"
+        },
+        {
+          "key": "projectileSpawnSpeed",
+          "label": "弹丸初速",
+          "value": 4.0376,
+          "unit": "internal",
+          "status": "verified",
+          "note": "直接记录 SpawnSpeed 内部值；尚未与后续运动阶段积分成距离",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponShooterPrecision.game__GameParameterTable.json#GameParameters.MoveParam.SpawnSpeed",
+          "checkedAt": "2026-10-26"
+        },
+        {
           "key": "groundShotSpreadDegrees",
           "label": "地面射击扩散",
           "value": 0,
@@ -1063,7 +1327,7 @@
           "note": "直接记录 Stand_DegSwerve；连续射击偏移累积另行建模",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterPrecision.game__GameParameterTable.json#GameParameters.WeaponParam.Stand_DegSwerve",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "jumpShotSpreadDegrees",
@@ -1074,7 +1338,7 @@
           "note": "直接记录 Jump_DegSwerve；行动强化与跳跃偏移变化过程另行建模",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterPrecision.game__GameParameterTable.json#GameParameters.WeaponParam.Jump_DegSwerve",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "movementSpeedWhileFiring",
@@ -1085,7 +1349,7 @@
           "note": "直接记录未叠加人速能力效果的 MoveSpeed 基础内部值",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterPrecision.game__GameParameterTable.json#GameParameters.WeaponParam.MoveSpeed",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         }
       ]
     },
@@ -1101,7 +1365,7 @@
           "note": "上游 ValueMax=280，按游戏伤害定点值除以 10 规范化",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterPrecision.game__GameParameterTable.json#GameParameters.DamageParam.ValueMax",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "fireIntervalFrames",
@@ -1112,7 +1376,7 @@
           "note": "直接记录参数文件中显式存在的 RepeatFrame",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterPrecision.game__GameParameterTable.json#GameParameters.WeaponParam.RepeatFrame",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "inkConsumptionPerShot",
@@ -1123,7 +1387,7 @@
           "note": "上游 InkConsume=0.008，乘以 100 规范化为墨水槽百分比",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterPrecision.game__GameParameterTable.json#GameParameters.WeaponParam.InkConsume",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "effectiveRange",
@@ -1134,6 +1398,39 @@
           "note": "需要先统一最大伤害距离、衰减起点、弹丸寿命与界面射程之间的定义和换算"
         },
         {
+          "key": "damageFalloffStartFrames",
+          "label": "伤害开始衰减帧",
+          "value": 4,
+          "unit": "frames",
+          "status": "verified",
+          "note": "弹丸生成后开始进入伤害衰减的显式帧数；不是距离值",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponShooterPrecision.game__GameParameterTable.json#GameParameters.DamageParam.ReduceStartFrame",
+          "checkedAt": "2026-10-26"
+        },
+        {
+          "key": "damageFalloffEndFrames",
+          "label": "伤害衰减结束帧",
+          "value": 20,
+          "unit": "frames",
+          "status": "verified",
+          "note": "弹丸生成后到达最低伤害层的显式帧数；不是弹丸寿命",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponShooterPrecision.game__GameParameterTable.json#GameParameters.DamageParam.ReduceEndFrame",
+          "checkedAt": "2026-10-26"
+        },
+        {
+          "key": "projectileSpawnSpeed",
+          "label": "弹丸初速",
+          "value": 4.0376,
+          "unit": "internal",
+          "status": "verified",
+          "note": "直接记录 SpawnSpeed 内部值；尚未与后续运动阶段积分成距离",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponShooterPrecision.game__GameParameterTable.json#GameParameters.MoveParam.SpawnSpeed",
+          "checkedAt": "2026-10-26"
+        },
+        {
           "key": "groundShotSpreadDegrees",
           "label": "地面射击扩散",
           "value": 0,
@@ -1142,7 +1439,7 @@
           "note": "直接记录 Stand_DegSwerve；连续射击偏移累积另行建模",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterPrecision.game__GameParameterTable.json#GameParameters.WeaponParam.Stand_DegSwerve",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "jumpShotSpreadDegrees",
@@ -1153,7 +1450,7 @@
           "note": "直接记录 Jump_DegSwerve；行动强化与跳跃偏移变化过程另行建模",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterPrecision.game__GameParameterTable.json#GameParameters.WeaponParam.Jump_DegSwerve",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "movementSpeedWhileFiring",
@@ -1164,7 +1461,7 @@
           "note": "直接记录未叠加人速能力效果的 MoveSpeed 基础内部值",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterPrecision.game__GameParameterTable.json#GameParameters.WeaponParam.MoveSpeed",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         }
       ]
     },
@@ -1180,7 +1477,7 @@
           "note": "上游 ValueMax=240，按游戏伤害定点值除以 10 规范化",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterBlaze.game__GameParameterTable.json#GameParameters.DamageParam.ValueMax",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "fireIntervalFrames",
@@ -1191,7 +1488,7 @@
           "note": "直接记录参数文件中显式存在的 RepeatFrame",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterBlaze.game__GameParameterTable.json#GameParameters.WeaponParam.RepeatFrame",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "inkConsumptionPerShot",
@@ -1202,7 +1499,7 @@
           "note": "上游 InkConsume=0.005，乘以 100 规范化为墨水槽百分比",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterBlaze.game__GameParameterTable.json#GameParameters.WeaponParam.InkConsume",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "effectiveRange",
@@ -1213,6 +1510,39 @@
           "note": "需要先统一最大伤害距离、衰减起点、弹丸寿命与界面射程之间的定义和换算"
         },
         {
+          "key": "damageFalloffStartFrames",
+          "label": "伤害开始衰减帧",
+          "value": 8,
+          "unit": "frames",
+          "status": "verified",
+          "note": "弹丸生成后开始进入伤害衰减的显式帧数；不是距离值",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponShooterBlaze.game__GameParameterTable.json#GameParameters.DamageParam.ReduceStartFrame",
+          "checkedAt": "2026-10-26"
+        },
+        {
+          "key": "damageFalloffEndFrames",
+          "label": "伤害衰减结束帧",
+          "value": 24,
+          "unit": "frames",
+          "status": "verified",
+          "note": "弹丸生成后到达最低伤害层的显式帧数；不是弹丸寿命",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponShooterBlaze.game__GameParameterTable.json#GameParameters.DamageParam.ReduceEndFrame",
+          "checkedAt": "2026-10-26"
+        },
+        {
+          "key": "projectileSpawnSpeed",
+          "label": "弹丸初速",
+          "value": 2.266,
+          "unit": "internal",
+          "status": "verified",
+          "note": "直接记录 SpawnSpeed 内部值；尚未与后续运动阶段积分成距离",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponShooterBlaze.game__GameParameterTable.json#GameParameters.MoveParam.SpawnSpeed",
+          "checkedAt": "2026-10-26"
+        },
+        {
           "key": "groundShotSpreadDegrees",
           "label": "地面射击扩散",
           "value": 12.63,
@@ -1221,7 +1551,7 @@
           "note": "直接记录 Stand_DegSwerve；连续射击偏移累积另行建模",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterBlaze.game__GameParameterTable.json#GameParameters.WeaponParam.Stand_DegSwerve",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "jumpShotSpreadDegrees",
@@ -1232,7 +1562,7 @@
           "note": "直接记录 Jump_DegSwerve；行动强化与跳跃偏移变化过程另行建模",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterBlaze.game__GameParameterTable.json#GameParameters.WeaponParam.Jump_DegSwerve",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "movementSpeedWhileFiring",
@@ -1243,7 +1573,7 @@
           "note": "直接记录未叠加人速能力效果的 MoveSpeed 基础内部值",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterBlaze.game__GameParameterTable.json#GameParameters.WeaponParam.MoveSpeed",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         }
       ]
     },
@@ -1259,7 +1589,7 @@
           "note": "上游 ValueMax=240，按游戏伤害定点值除以 10 规范化",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterBlaze.game__GameParameterTable.json#GameParameters.DamageParam.ValueMax",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "fireIntervalFrames",
@@ -1270,7 +1600,7 @@
           "note": "直接记录参数文件中显式存在的 RepeatFrame",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterBlaze.game__GameParameterTable.json#GameParameters.WeaponParam.RepeatFrame",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "inkConsumptionPerShot",
@@ -1281,7 +1611,7 @@
           "note": "上游 InkConsume=0.005，乘以 100 规范化为墨水槽百分比",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterBlaze.game__GameParameterTable.json#GameParameters.WeaponParam.InkConsume",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "effectiveRange",
@@ -1292,6 +1622,39 @@
           "note": "需要先统一最大伤害距离、衰减起点、弹丸寿命与界面射程之间的定义和换算"
         },
         {
+          "key": "damageFalloffStartFrames",
+          "label": "伤害开始衰减帧",
+          "value": 8,
+          "unit": "frames",
+          "status": "verified",
+          "note": "弹丸生成后开始进入伤害衰减的显式帧数；不是距离值",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponShooterBlaze.game__GameParameterTable.json#GameParameters.DamageParam.ReduceStartFrame",
+          "checkedAt": "2026-10-26"
+        },
+        {
+          "key": "damageFalloffEndFrames",
+          "label": "伤害衰减结束帧",
+          "value": 24,
+          "unit": "frames",
+          "status": "verified",
+          "note": "弹丸生成后到达最低伤害层的显式帧数；不是弹丸寿命",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponShooterBlaze.game__GameParameterTable.json#GameParameters.DamageParam.ReduceEndFrame",
+          "checkedAt": "2026-10-26"
+        },
+        {
+          "key": "projectileSpawnSpeed",
+          "label": "弹丸初速",
+          "value": 2.266,
+          "unit": "internal",
+          "status": "verified",
+          "note": "直接记录 SpawnSpeed 内部值；尚未与后续运动阶段积分成距离",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponShooterBlaze.game__GameParameterTable.json#GameParameters.MoveParam.SpawnSpeed",
+          "checkedAt": "2026-10-26"
+        },
+        {
           "key": "groundShotSpreadDegrees",
           "label": "地面射击扩散",
           "value": 12.63,
@@ -1300,7 +1663,7 @@
           "note": "直接记录 Stand_DegSwerve；连续射击偏移累积另行建模",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterBlaze.game__GameParameterTable.json#GameParameters.WeaponParam.Stand_DegSwerve",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "jumpShotSpreadDegrees",
@@ -1311,7 +1674,7 @@
           "note": "直接记录 Jump_DegSwerve；行动强化与跳跃偏移变化过程另行建模",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterBlaze.game__GameParameterTable.json#GameParameters.WeaponParam.Jump_DegSwerve",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "movementSpeedWhileFiring",
@@ -1322,7 +1685,7 @@
           "note": "直接记录未叠加人速能力效果的 MoveSpeed 基础内部值",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterBlaze.game__GameParameterTable.json#GameParameters.WeaponParam.MoveSpeed",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         }
       ]
     },
@@ -1338,7 +1701,7 @@
           "note": "上游 ValueMax=240，按游戏伤害定点值除以 10 规范化",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterBlaze.game__GameParameterTable.json#GameParameters.DamageParam.ValueMax",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "fireIntervalFrames",
@@ -1349,7 +1712,7 @@
           "note": "直接记录参数文件中显式存在的 RepeatFrame",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterBlaze.game__GameParameterTable.json#GameParameters.WeaponParam.RepeatFrame",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "inkConsumptionPerShot",
@@ -1360,7 +1723,7 @@
           "note": "上游 InkConsume=0.005，乘以 100 规范化为墨水槽百分比",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterBlaze.game__GameParameterTable.json#GameParameters.WeaponParam.InkConsume",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "effectiveRange",
@@ -1371,6 +1734,39 @@
           "note": "需要先统一最大伤害距离、衰减起点、弹丸寿命与界面射程之间的定义和换算"
         },
         {
+          "key": "damageFalloffStartFrames",
+          "label": "伤害开始衰减帧",
+          "value": 8,
+          "unit": "frames",
+          "status": "verified",
+          "note": "弹丸生成后开始进入伤害衰减的显式帧数；不是距离值",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponShooterBlaze.game__GameParameterTable.json#GameParameters.DamageParam.ReduceStartFrame",
+          "checkedAt": "2026-10-26"
+        },
+        {
+          "key": "damageFalloffEndFrames",
+          "label": "伤害衰减结束帧",
+          "value": 24,
+          "unit": "frames",
+          "status": "verified",
+          "note": "弹丸生成后到达最低伤害层的显式帧数；不是弹丸寿命",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponShooterBlaze.game__GameParameterTable.json#GameParameters.DamageParam.ReduceEndFrame",
+          "checkedAt": "2026-10-26"
+        },
+        {
+          "key": "projectileSpawnSpeed",
+          "label": "弹丸初速",
+          "value": 2.266,
+          "unit": "internal",
+          "status": "verified",
+          "note": "直接记录 SpawnSpeed 内部值；尚未与后续运动阶段积分成距离",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponShooterBlaze.game__GameParameterTable.json#GameParameters.MoveParam.SpawnSpeed",
+          "checkedAt": "2026-10-26"
+        },
+        {
           "key": "groundShotSpreadDegrees",
           "label": "地面射击扩散",
           "value": 12.63,
@@ -1379,7 +1775,7 @@
           "note": "直接记录 Stand_DegSwerve；连续射击偏移累积另行建模",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterBlaze.game__GameParameterTable.json#GameParameters.WeaponParam.Stand_DegSwerve",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "jumpShotSpreadDegrees",
@@ -1390,7 +1786,7 @@
           "note": "直接记录 Jump_DegSwerve；行动强化与跳跃偏移变化过程另行建模",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterBlaze.game__GameParameterTable.json#GameParameters.WeaponParam.Jump_DegSwerve",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "movementSpeedWhileFiring",
@@ -1401,7 +1797,7 @@
           "note": "直接记录未叠加人速能力效果的 MoveSpeed 基础内部值",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterBlaze.game__GameParameterTable.json#GameParameters.WeaponParam.MoveSpeed",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         }
       ]
     },
@@ -1417,7 +1813,7 @@
           "note": "上游 ValueMax=360，按游戏伤害定点值除以 10 规范化",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterNormal.game__GameParameterTable.json#GameParameters.DamageParam.ValueMax",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "fireIntervalFrames",
@@ -1436,7 +1832,7 @@
           "note": "上游 InkConsume=0.0092，乘以 100 规范化为墨水槽百分比",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterNormal.game__GameParameterTable.json#GameParameters.WeaponParam.InkConsume",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "effectiveRange",
@@ -1447,6 +1843,39 @@
           "note": "需要先统一最大伤害距离、衰减起点、弹丸寿命与界面射程之间的定义和换算"
         },
         {
+          "key": "damageFalloffStartFrames",
+          "label": "伤害开始衰减帧",
+          "value": 8,
+          "unit": "frames",
+          "status": "verified",
+          "note": "弹丸生成后开始进入伤害衰减的显式帧数；不是距离值",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponShooterNormal.game__GameParameterTable.json#GameParameters.DamageParam.ReduceStartFrame",
+          "checkedAt": "2026-10-26"
+        },
+        {
+          "key": "damageFalloffEndFrames",
+          "label": "伤害衰减结束帧",
+          "value": 40,
+          "unit": "frames",
+          "status": "verified",
+          "note": "弹丸生成后到达最低伤害层的显式帧数；不是弹丸寿命",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponShooterNormal.game__GameParameterTable.json#GameParameters.DamageParam.ReduceEndFrame",
+          "checkedAt": "2026-10-26"
+        },
+        {
+          "key": "projectileSpawnSpeed",
+          "label": "弹丸初速",
+          "value": 2.266,
+          "unit": "internal",
+          "status": "verified",
+          "note": "直接记录 SpawnSpeed 内部值；尚未与后续运动阶段积分成距离",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponShooterNormal.game__GameParameterTable.json#GameParameters.MoveParam.SpawnSpeed",
+          "checkedAt": "2026-10-26"
+        },
+        {
           "key": "groundShotSpreadDegrees",
           "label": "地面射击扩散",
           "value": 4.86,
@@ -1455,7 +1884,7 @@
           "note": "直接记录 Stand_DegSwerve；连续射击偏移累积另行建模",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterNormal.game__GameParameterTable.json#GameParameters.WeaponParam.Stand_DegSwerve",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "jumpShotSpreadDegrees",
@@ -1466,7 +1895,7 @@
           "note": "直接记录 Jump_DegSwerve；行动强化与跳跃偏移变化过程另行建模",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterNormal.game__GameParameterTable.json#GameParameters.WeaponParam.Jump_DegSwerve",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "movementSpeedWhileFiring",
@@ -1477,7 +1906,7 @@
           "note": "直接记录未叠加人速能力效果的 MoveSpeed 基础内部值",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterNormal.game__GameParameterTable.json#GameParameters.WeaponParam.MoveSpeed",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         }
       ]
     },
@@ -1493,7 +1922,7 @@
           "note": "上游 ValueMax=360，按游戏伤害定点值除以 10 规范化",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterNormal.game__GameParameterTable.json#GameParameters.DamageParam.ValueMax",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "fireIntervalFrames",
@@ -1512,7 +1941,7 @@
           "note": "上游 InkConsume=0.0092，乘以 100 规范化为墨水槽百分比",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterNormal.game__GameParameterTable.json#GameParameters.WeaponParam.InkConsume",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "effectiveRange",
@@ -1523,6 +1952,39 @@
           "note": "需要先统一最大伤害距离、衰减起点、弹丸寿命与界面射程之间的定义和换算"
         },
         {
+          "key": "damageFalloffStartFrames",
+          "label": "伤害开始衰减帧",
+          "value": 8,
+          "unit": "frames",
+          "status": "verified",
+          "note": "弹丸生成后开始进入伤害衰减的显式帧数；不是距离值",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponShooterNormal.game__GameParameterTable.json#GameParameters.DamageParam.ReduceStartFrame",
+          "checkedAt": "2026-10-26"
+        },
+        {
+          "key": "damageFalloffEndFrames",
+          "label": "伤害衰减结束帧",
+          "value": 40,
+          "unit": "frames",
+          "status": "verified",
+          "note": "弹丸生成后到达最低伤害层的显式帧数；不是弹丸寿命",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponShooterNormal.game__GameParameterTable.json#GameParameters.DamageParam.ReduceEndFrame",
+          "checkedAt": "2026-10-26"
+        },
+        {
+          "key": "projectileSpawnSpeed",
+          "label": "弹丸初速",
+          "value": 2.266,
+          "unit": "internal",
+          "status": "verified",
+          "note": "直接记录 SpawnSpeed 内部值；尚未与后续运动阶段积分成距离",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponShooterNormal.game__GameParameterTable.json#GameParameters.MoveParam.SpawnSpeed",
+          "checkedAt": "2026-10-26"
+        },
+        {
           "key": "groundShotSpreadDegrees",
           "label": "地面射击扩散",
           "value": 4.86,
@@ -1531,7 +1993,7 @@
           "note": "直接记录 Stand_DegSwerve；连续射击偏移累积另行建模",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterNormal.game__GameParameterTable.json#GameParameters.WeaponParam.Stand_DegSwerve",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "jumpShotSpreadDegrees",
@@ -1542,7 +2004,7 @@
           "note": "直接记录 Jump_DegSwerve；行动强化与跳跃偏移变化过程另行建模",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterNormal.game__GameParameterTable.json#GameParameters.WeaponParam.Jump_DegSwerve",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "movementSpeedWhileFiring",
@@ -1553,7 +2015,7 @@
           "note": "直接记录未叠加人速能力效果的 MoveSpeed 基础内部值",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterNormal.game__GameParameterTable.json#GameParameters.WeaponParam.MoveSpeed",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         }
       ]
     },
@@ -1569,7 +2031,7 @@
           "note": "上游 ValueMax=360，按游戏伤害定点值除以 10 规范化",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterNormal.game__GameParameterTable.json#GameParameters.DamageParam.ValueMax",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "fireIntervalFrames",
@@ -1588,7 +2050,7 @@
           "note": "上游 InkConsume=0.0092，乘以 100 规范化为墨水槽百分比",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterNormal.game__GameParameterTable.json#GameParameters.WeaponParam.InkConsume",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "effectiveRange",
@@ -1599,6 +2061,39 @@
           "note": "需要先统一最大伤害距离、衰减起点、弹丸寿命与界面射程之间的定义和换算"
         },
         {
+          "key": "damageFalloffStartFrames",
+          "label": "伤害开始衰减帧",
+          "value": 8,
+          "unit": "frames",
+          "status": "verified",
+          "note": "弹丸生成后开始进入伤害衰减的显式帧数；不是距离值",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponShooterNormal.game__GameParameterTable.json#GameParameters.DamageParam.ReduceStartFrame",
+          "checkedAt": "2026-10-26"
+        },
+        {
+          "key": "damageFalloffEndFrames",
+          "label": "伤害衰减结束帧",
+          "value": 40,
+          "unit": "frames",
+          "status": "verified",
+          "note": "弹丸生成后到达最低伤害层的显式帧数；不是弹丸寿命",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponShooterNormal.game__GameParameterTable.json#GameParameters.DamageParam.ReduceEndFrame",
+          "checkedAt": "2026-10-26"
+        },
+        {
+          "key": "projectileSpawnSpeed",
+          "label": "弹丸初速",
+          "value": 2.266,
+          "unit": "internal",
+          "status": "verified",
+          "note": "直接记录 SpawnSpeed 内部值；尚未与后续运动阶段积分成距离",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponShooterNormal.game__GameParameterTable.json#GameParameters.MoveParam.SpawnSpeed",
+          "checkedAt": "2026-10-26"
+        },
+        {
           "key": "groundShotSpreadDegrees",
           "label": "地面射击扩散",
           "value": 4.86,
@@ -1607,7 +2102,7 @@
           "note": "直接记录 Stand_DegSwerve；连续射击偏移累积另行建模",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterNormal.game__GameParameterTable.json#GameParameters.WeaponParam.Stand_DegSwerve",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "jumpShotSpreadDegrees",
@@ -1618,7 +2113,7 @@
           "note": "直接记录 Jump_DegSwerve；行动强化与跳跃偏移变化过程另行建模",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterNormal.game__GameParameterTable.json#GameParameters.WeaponParam.Jump_DegSwerve",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "movementSpeedWhileFiring",
@@ -1629,7 +2124,7 @@
           "note": "直接记录未叠加人速能力效果的 MoveSpeed 基础内部值",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterNormal.game__GameParameterTable.json#GameParameters.WeaponParam.MoveSpeed",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         }
       ]
     },
@@ -1645,7 +2140,7 @@
           "note": "上游 ValueMax=360，按游戏伤害定点值除以 10 规范化",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterNormal.game__GameParameterTable.json#GameParameters.DamageParam.ValueMax",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "fireIntervalFrames",
@@ -1664,7 +2159,7 @@
           "note": "上游 InkConsume=0.0092，乘以 100 规范化为墨水槽百分比",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterNormal.game__GameParameterTable.json#GameParameters.WeaponParam.InkConsume",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "effectiveRange",
@@ -1675,6 +2170,39 @@
           "note": "需要先统一最大伤害距离、衰减起点、弹丸寿命与界面射程之间的定义和换算"
         },
         {
+          "key": "damageFalloffStartFrames",
+          "label": "伤害开始衰减帧",
+          "value": 8,
+          "unit": "frames",
+          "status": "verified",
+          "note": "弹丸生成后开始进入伤害衰减的显式帧数；不是距离值",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponShooterNormal.game__GameParameterTable.json#GameParameters.DamageParam.ReduceStartFrame",
+          "checkedAt": "2026-10-26"
+        },
+        {
+          "key": "damageFalloffEndFrames",
+          "label": "伤害衰减结束帧",
+          "value": 40,
+          "unit": "frames",
+          "status": "verified",
+          "note": "弹丸生成后到达最低伤害层的显式帧数；不是弹丸寿命",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponShooterNormal.game__GameParameterTable.json#GameParameters.DamageParam.ReduceEndFrame",
+          "checkedAt": "2026-10-26"
+        },
+        {
+          "key": "projectileSpawnSpeed",
+          "label": "弹丸初速",
+          "value": 2.266,
+          "unit": "internal",
+          "status": "verified",
+          "note": "直接记录 SpawnSpeed 内部值；尚未与后续运动阶段积分成距离",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponShooterNormal.game__GameParameterTable.json#GameParameters.MoveParam.SpawnSpeed",
+          "checkedAt": "2026-10-26"
+        },
+        {
           "key": "groundShotSpreadDegrees",
           "label": "地面射击扩散",
           "value": 4.86,
@@ -1683,7 +2211,7 @@
           "note": "直接记录 Stand_DegSwerve；连续射击偏移累积另行建模",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterNormal.game__GameParameterTable.json#GameParameters.WeaponParam.Stand_DegSwerve",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "jumpShotSpreadDegrees",
@@ -1694,7 +2222,7 @@
           "note": "直接记录 Jump_DegSwerve；行动强化与跳跃偏移变化过程另行建模",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterNormal.game__GameParameterTable.json#GameParameters.WeaponParam.Jump_DegSwerve",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "movementSpeedWhileFiring",
@@ -1705,7 +2233,7 @@
           "note": "直接记录未叠加人速能力效果的 MoveSpeed 基础内部值",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterNormal.game__GameParameterTable.json#GameParameters.WeaponParam.MoveSpeed",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         }
       ]
     },
@@ -1721,7 +2249,7 @@
           "note": "上游 ValueMax=360，按游戏伤害定点值除以 10 规范化",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterNormal.game__GameParameterTable.json#GameParameters.DamageParam.ValueMax",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "fireIntervalFrames",
@@ -1740,7 +2268,7 @@
           "note": "上游 InkConsume=0.0092，乘以 100 规范化为墨水槽百分比",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterNormal.game__GameParameterTable.json#GameParameters.WeaponParam.InkConsume",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "effectiveRange",
@@ -1751,6 +2279,39 @@
           "note": "需要先统一最大伤害距离、衰减起点、弹丸寿命与界面射程之间的定义和换算"
         },
         {
+          "key": "damageFalloffStartFrames",
+          "label": "伤害开始衰减帧",
+          "value": 8,
+          "unit": "frames",
+          "status": "verified",
+          "note": "弹丸生成后开始进入伤害衰减的显式帧数；不是距离值",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponShooterNormal.game__GameParameterTable.json#GameParameters.DamageParam.ReduceStartFrame",
+          "checkedAt": "2026-10-26"
+        },
+        {
+          "key": "damageFalloffEndFrames",
+          "label": "伤害衰减结束帧",
+          "value": 40,
+          "unit": "frames",
+          "status": "verified",
+          "note": "弹丸生成后到达最低伤害层的显式帧数；不是弹丸寿命",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponShooterNormal.game__GameParameterTable.json#GameParameters.DamageParam.ReduceEndFrame",
+          "checkedAt": "2026-10-26"
+        },
+        {
+          "key": "projectileSpawnSpeed",
+          "label": "弹丸初速",
+          "value": 2.266,
+          "unit": "internal",
+          "status": "verified",
+          "note": "直接记录 SpawnSpeed 内部值；尚未与后续运动阶段积分成距离",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponShooterNormal.game__GameParameterTable.json#GameParameters.MoveParam.SpawnSpeed",
+          "checkedAt": "2026-10-26"
+        },
+        {
           "key": "groundShotSpreadDegrees",
           "label": "地面射击扩散",
           "value": 4.86,
@@ -1759,7 +2320,7 @@
           "note": "直接记录 Stand_DegSwerve；连续射击偏移累积另行建模",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterNormal.game__GameParameterTable.json#GameParameters.WeaponParam.Stand_DegSwerve",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "jumpShotSpreadDegrees",
@@ -1770,7 +2331,7 @@
           "note": "直接记录 Jump_DegSwerve；行动强化与跳跃偏移变化过程另行建模",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterNormal.game__GameParameterTable.json#GameParameters.WeaponParam.Jump_DegSwerve",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "movementSpeedWhileFiring",
@@ -1781,7 +2342,7 @@
           "note": "直接记录未叠加人速能力效果的 MoveSpeed 基础内部值",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterNormal.game__GameParameterTable.json#GameParameters.WeaponParam.MoveSpeed",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         }
       ]
     },
@@ -1797,7 +2358,7 @@
           "note": "上游 ValueMax=360，按游戏伤害定点值除以 10 规范化",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterNormal.game__GameParameterTable.json#GameParameters.DamageParam.ValueMax",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "fireIntervalFrames",
@@ -1816,7 +2377,7 @@
           "note": "上游 InkConsume=0.0092，乘以 100 规范化为墨水槽百分比",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterNormal.game__GameParameterTable.json#GameParameters.WeaponParam.InkConsume",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "effectiveRange",
@@ -1827,6 +2388,39 @@
           "note": "需要先统一最大伤害距离、衰减起点、弹丸寿命与界面射程之间的定义和换算"
         },
         {
+          "key": "damageFalloffStartFrames",
+          "label": "伤害开始衰减帧",
+          "value": 8,
+          "unit": "frames",
+          "status": "verified",
+          "note": "弹丸生成后开始进入伤害衰减的显式帧数；不是距离值",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponShooterNormal.game__GameParameterTable.json#GameParameters.DamageParam.ReduceStartFrame",
+          "checkedAt": "2026-10-26"
+        },
+        {
+          "key": "damageFalloffEndFrames",
+          "label": "伤害衰减结束帧",
+          "value": 40,
+          "unit": "frames",
+          "status": "verified",
+          "note": "弹丸生成后到达最低伤害层的显式帧数；不是弹丸寿命",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponShooterNormal.game__GameParameterTable.json#GameParameters.DamageParam.ReduceEndFrame",
+          "checkedAt": "2026-10-26"
+        },
+        {
+          "key": "projectileSpawnSpeed",
+          "label": "弹丸初速",
+          "value": 2.266,
+          "unit": "internal",
+          "status": "verified",
+          "note": "直接记录 SpawnSpeed 内部值；尚未与后续运动阶段积分成距离",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponShooterNormal.game__GameParameterTable.json#GameParameters.MoveParam.SpawnSpeed",
+          "checkedAt": "2026-10-26"
+        },
+        {
           "key": "groundShotSpreadDegrees",
           "label": "地面射击扩散",
           "value": 4.86,
@@ -1835,7 +2429,7 @@
           "note": "直接记录 Stand_DegSwerve；连续射击偏移累积另行建模",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterNormal.game__GameParameterTable.json#GameParameters.WeaponParam.Stand_DegSwerve",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "jumpShotSpreadDegrees",
@@ -1846,7 +2440,7 @@
           "note": "直接记录 Jump_DegSwerve；行动强化与跳跃偏移变化过程另行建模",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterNormal.game__GameParameterTable.json#GameParameters.WeaponParam.Jump_DegSwerve",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "movementSpeedWhileFiring",
@@ -1857,7 +2451,7 @@
           "note": "直接记录未叠加人速能力效果的 MoveSpeed 基础内部值",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterNormal.game__GameParameterTable.json#GameParameters.WeaponParam.MoveSpeed",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         }
       ]
     },
@@ -1873,7 +2467,7 @@
           "note": "上游 ValueMax=520，按游戏伤害定点值除以 10 规范化",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterGravity.game__GameParameterTable.json#GameParameters.DamageParam.ValueMax",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "fireIntervalFrames",
@@ -1884,7 +2478,7 @@
           "note": "直接记录参数文件中显式存在的 RepeatFrame",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterGravity.game__GameParameterTable.json#GameParameters.WeaponParam.RepeatFrame",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "inkConsumptionPerShot",
@@ -1895,7 +2489,7 @@
           "note": "上游 InkConsume=0.015，乘以 100 规范化为墨水槽百分比",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterGravity.game__GameParameterTable.json#GameParameters.WeaponParam.InkConsume",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "effectiveRange",
@@ -1906,6 +2500,39 @@
           "note": "需要先统一最大伤害距离、衰减起点、弹丸寿命与界面射程之间的定义和换算"
         },
         {
+          "key": "damageFalloffStartFrames",
+          "label": "伤害开始衰减帧",
+          "value": 11,
+          "unit": "frames",
+          "status": "verified",
+          "note": "弹丸生成后开始进入伤害衰减的显式帧数；不是距离值",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponShooterGravity.game__GameParameterTable.json#GameParameters.DamageParam.ReduceStartFrame",
+          "checkedAt": "2026-10-26"
+        },
+        {
+          "key": "damageFalloffEndFrames",
+          "label": "伤害衰减结束帧",
+          "value": 27,
+          "unit": "frames",
+          "status": "verified",
+          "note": "弹丸生成后到达最低伤害层的显式帧数；不是弹丸寿命",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponShooterGravity.game__GameParameterTable.json#GameParameters.DamageParam.ReduceEndFrame",
+          "checkedAt": "2026-10-26"
+        },
+        {
+          "key": "projectileSpawnSpeed",
+          "label": "弹丸初速",
+          "value": 3.06,
+          "unit": "internal",
+          "status": "verified",
+          "note": "直接记录 SpawnSpeed 内部值；尚未与后续运动阶段积分成距离",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponShooterGravity.game__GameParameterTable.json#GameParameters.MoveParam.SpawnSpeed",
+          "checkedAt": "2026-10-26"
+        },
+        {
           "key": "groundShotSpreadDegrees",
           "label": "地面射击扩散",
           "value": 6,
@@ -1914,7 +2541,7 @@
           "note": "直接记录 Stand_DegSwerve；连续射击偏移累积另行建模",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterGravity.game__GameParameterTable.json#GameParameters.WeaponParam.Stand_DegSwerve",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "jumpShotSpreadDegrees",
@@ -1925,7 +2552,7 @@
           "note": "直接记录 Jump_DegSwerve；行动强化与跳跃偏移变化过程另行建模",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterGravity.game__GameParameterTable.json#GameParameters.WeaponParam.Jump_DegSwerve",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "movementSpeedWhileFiring",
@@ -1936,7 +2563,7 @@
           "note": "直接记录未叠加人速能力效果的 MoveSpeed 基础内部值",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterGravity.game__GameParameterTable.json#GameParameters.WeaponParam.MoveSpeed",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         }
       ]
     },
@@ -1952,7 +2579,7 @@
           "note": "上游 ValueMax=520，按游戏伤害定点值除以 10 规范化",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterGravity.game__GameParameterTable.json#GameParameters.DamageParam.ValueMax",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "fireIntervalFrames",
@@ -1963,7 +2590,7 @@
           "note": "直接记录参数文件中显式存在的 RepeatFrame",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterGravity.game__GameParameterTable.json#GameParameters.WeaponParam.RepeatFrame",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "inkConsumptionPerShot",
@@ -1974,7 +2601,7 @@
           "note": "上游 InkConsume=0.015，乘以 100 规范化为墨水槽百分比",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterGravity.game__GameParameterTable.json#GameParameters.WeaponParam.InkConsume",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "effectiveRange",
@@ -1985,6 +2612,39 @@
           "note": "需要先统一最大伤害距离、衰减起点、弹丸寿命与界面射程之间的定义和换算"
         },
         {
+          "key": "damageFalloffStartFrames",
+          "label": "伤害开始衰减帧",
+          "value": 11,
+          "unit": "frames",
+          "status": "verified",
+          "note": "弹丸生成后开始进入伤害衰减的显式帧数；不是距离值",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponShooterGravity.game__GameParameterTable.json#GameParameters.DamageParam.ReduceStartFrame",
+          "checkedAt": "2026-10-26"
+        },
+        {
+          "key": "damageFalloffEndFrames",
+          "label": "伤害衰减结束帧",
+          "value": 27,
+          "unit": "frames",
+          "status": "verified",
+          "note": "弹丸生成后到达最低伤害层的显式帧数；不是弹丸寿命",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponShooterGravity.game__GameParameterTable.json#GameParameters.DamageParam.ReduceEndFrame",
+          "checkedAt": "2026-10-26"
+        },
+        {
+          "key": "projectileSpawnSpeed",
+          "label": "弹丸初速",
+          "value": 3.06,
+          "unit": "internal",
+          "status": "verified",
+          "note": "直接记录 SpawnSpeed 内部值；尚未与后续运动阶段积分成距离",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponShooterGravity.game__GameParameterTable.json#GameParameters.MoveParam.SpawnSpeed",
+          "checkedAt": "2026-10-26"
+        },
+        {
           "key": "groundShotSpreadDegrees",
           "label": "地面射击扩散",
           "value": 6,
@@ -1993,7 +2653,7 @@
           "note": "直接记录 Stand_DegSwerve；连续射击偏移累积另行建模",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterGravity.game__GameParameterTable.json#GameParameters.WeaponParam.Stand_DegSwerve",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "jumpShotSpreadDegrees",
@@ -2004,7 +2664,7 @@
           "note": "直接记录 Jump_DegSwerve；行动强化与跳跃偏移变化过程另行建模",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterGravity.game__GameParameterTable.json#GameParameters.WeaponParam.Jump_DegSwerve",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "movementSpeedWhileFiring",
@@ -2015,7 +2675,7 @@
           "note": "直接记录未叠加人速能力效果的 MoveSpeed 基础内部值",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterGravity.game__GameParameterTable.json#GameParameters.WeaponParam.MoveSpeed",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         }
       ]
     },
@@ -2031,7 +2691,7 @@
           "note": "上游 ValueMax=300，按游戏伤害定点值除以 10 规范化",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterQuickMiddle.game__GameParameterTable.json#GameParameters.DamageParam.ValueMax",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "fireIntervalFrames",
@@ -2042,7 +2702,7 @@
           "note": "直接记录参数文件中显式存在的 RepeatFrame",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterQuickMiddle.game__GameParameterTable.json#GameParameters.WeaponParam.RepeatFrame",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "inkConsumptionPerShot",
@@ -2053,7 +2713,7 @@
           "note": "上游 InkConsume=0.008，乘以 100 规范化为墨水槽百分比",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterQuickMiddle.game__GameParameterTable.json#GameParameters.WeaponParam.InkConsume",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "effectiveRange",
@@ -2064,6 +2724,39 @@
           "note": "需要先统一最大伤害距离、衰减起点、弹丸寿命与界面射程之间的定义和换算"
         },
         {
+          "key": "damageFalloffStartFrames",
+          "label": "伤害开始衰减帧",
+          "value": 8,
+          "unit": "frames",
+          "status": "verified",
+          "note": "弹丸生成后开始进入伤害衰减的显式帧数；不是距离值",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponShooterQuickMiddle.game__GameParameterTable.json#GameParameters.DamageParam.ReduceStartFrame",
+          "checkedAt": "2026-10-26"
+        },
+        {
+          "key": "damageFalloffEndFrames",
+          "label": "伤害衰减结束帧",
+          "value": 24,
+          "unit": "frames",
+          "status": "verified",
+          "note": "弹丸生成后到达最低伤害层的显式帧数；不是弹丸寿命",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponShooterQuickMiddle.game__GameParameterTable.json#GameParameters.DamageParam.ReduceEndFrame",
+          "checkedAt": "2026-10-26"
+        },
+        {
+          "key": "projectileSpawnSpeed",
+          "label": "弹丸初速",
+          "value": 2.2,
+          "unit": "internal",
+          "status": "verified",
+          "note": "直接记录 SpawnSpeed 内部值；尚未与后续运动阶段积分成距离",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponShooterQuickMiddle.game__GameParameterTable.json#GameParameters.MoveParam.SpawnSpeed",
+          "checkedAt": "2026-10-26"
+        },
+        {
           "key": "groundShotSpreadDegrees",
           "label": "地面射击扩散",
           "value": 4.75,
@@ -2072,7 +2765,7 @@
           "note": "直接记录 Stand_DegSwerve；连续射击偏移累积另行建模",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterQuickMiddle.game__GameParameterTable.json#GameParameters.WeaponParam.Stand_DegSwerve",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "jumpShotSpreadDegrees",
@@ -2083,7 +2776,7 @@
           "note": "直接记录 Jump_DegSwerve；行动强化与跳跃偏移变化过程另行建模",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterQuickMiddle.game__GameParameterTable.json#GameParameters.WeaponParam.Jump_DegSwerve",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "movementSpeedWhileFiring",
@@ -2094,7 +2787,7 @@
           "note": "直接记录未叠加人速能力效果的 MoveSpeed 基础内部值",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterQuickMiddle.game__GameParameterTable.json#GameParameters.WeaponParam.MoveSpeed",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         }
       ]
     },
@@ -2110,7 +2803,7 @@
           "note": "上游 ValueMax=450，按游戏伤害定点值除以 10 规范化",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterExpert.game__GameParameterTable.json#GameParameters.DamageParam.ValueMax",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "fireIntervalFrames",
@@ -2121,7 +2814,7 @@
           "note": "直接记录参数文件中显式存在的 RepeatFrame",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterExpert.game__GameParameterTable.json#GameParameters.WeaponParam.RepeatFrame",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "inkConsumptionPerShot",
@@ -2132,7 +2825,7 @@
           "note": "上游 InkConsume=0.02，乘以 100 规范化为墨水槽百分比",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterExpert.game__GameParameterTable.json#GameParameters.WeaponParam.InkConsume",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "effectiveRange",
@@ -2143,6 +2836,39 @@
           "note": "需要先统一最大伤害距离、衰减起点、弹丸寿命与界面射程之间的定义和换算"
         },
         {
+          "key": "damageFalloffStartFrames",
+          "label": "伤害开始衰减帧",
+          "value": 7,
+          "unit": "frames",
+          "status": "verified",
+          "note": "弹丸生成后开始进入伤害衰减的显式帧数；不是距离值",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponShooterExpert.game__GameParameterTable.json#GameParameters.DamageParam.ReduceStartFrame",
+          "checkedAt": "2026-10-26"
+        },
+        {
+          "key": "damageFalloffEndFrames",
+          "label": "伤害衰减结束帧",
+          "value": 23,
+          "unit": "frames",
+          "status": "verified",
+          "note": "弹丸生成后到达最低伤害层的显式帧数；不是弹丸寿命",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponShooterExpert.game__GameParameterTable.json#GameParameters.DamageParam.ReduceEndFrame",
+          "checkedAt": "2026-10-26"
+        },
+        {
+          "key": "projectileSpawnSpeed",
+          "label": "弹丸初速",
+          "value": 3.833333,
+          "unit": "internal",
+          "status": "verified",
+          "note": "直接记录 SpawnSpeed 内部值；尚未与后续运动阶段积分成距离",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponShooterExpert.game__GameParameterTable.json#GameParameters.MoveParam.SpawnSpeed",
+          "checkedAt": "2026-10-26"
+        },
+        {
           "key": "groundShotSpreadDegrees",
           "label": "地面射击扩散",
           "value": 2.5,
@@ -2151,7 +2877,7 @@
           "note": "直接记录 Stand_DegSwerve；连续射击偏移累积另行建模",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterExpert.game__GameParameterTable.json#GameParameters.WeaponParam.Stand_DegSwerve",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "jumpShotSpreadDegrees",
@@ -2162,7 +2888,7 @@
           "note": "直接记录 Jump_DegSwerve；行动强化与跳跃偏移变化过程另行建模",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterExpert.game__GameParameterTable.json#GameParameters.WeaponParam.Jump_DegSwerve",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "movementSpeedWhileFiring",
@@ -2173,7 +2899,7 @@
           "note": "直接记录未叠加人速能力效果的 MoveSpeed 基础内部值",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterExpert.game__GameParameterTable.json#GameParameters.WeaponParam.MoveSpeed",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         }
       ]
     },
@@ -2189,7 +2915,7 @@
           "note": "上游 ValueMax=450，按游戏伤害定点值除以 10 规范化",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterExpert.game__GameParameterTable.json#GameParameters.DamageParam.ValueMax",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "fireIntervalFrames",
@@ -2200,7 +2926,7 @@
           "note": "直接记录参数文件中显式存在的 RepeatFrame",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterExpert.game__GameParameterTable.json#GameParameters.WeaponParam.RepeatFrame",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "inkConsumptionPerShot",
@@ -2211,7 +2937,7 @@
           "note": "上游 InkConsume=0.02，乘以 100 规范化为墨水槽百分比",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterExpert.game__GameParameterTable.json#GameParameters.WeaponParam.InkConsume",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "effectiveRange",
@@ -2222,6 +2948,39 @@
           "note": "需要先统一最大伤害距离、衰减起点、弹丸寿命与界面射程之间的定义和换算"
         },
         {
+          "key": "damageFalloffStartFrames",
+          "label": "伤害开始衰减帧",
+          "value": 7,
+          "unit": "frames",
+          "status": "verified",
+          "note": "弹丸生成后开始进入伤害衰减的显式帧数；不是距离值",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponShooterExpert.game__GameParameterTable.json#GameParameters.DamageParam.ReduceStartFrame",
+          "checkedAt": "2026-10-26"
+        },
+        {
+          "key": "damageFalloffEndFrames",
+          "label": "伤害衰减结束帧",
+          "value": 23,
+          "unit": "frames",
+          "status": "verified",
+          "note": "弹丸生成后到达最低伤害层的显式帧数；不是弹丸寿命",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponShooterExpert.game__GameParameterTable.json#GameParameters.DamageParam.ReduceEndFrame",
+          "checkedAt": "2026-10-26"
+        },
+        {
+          "key": "projectileSpawnSpeed",
+          "label": "弹丸初速",
+          "value": 3.833333,
+          "unit": "internal",
+          "status": "verified",
+          "note": "直接记录 SpawnSpeed 内部值；尚未与后续运动阶段积分成距离",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponShooterExpert.game__GameParameterTable.json#GameParameters.MoveParam.SpawnSpeed",
+          "checkedAt": "2026-10-26"
+        },
+        {
           "key": "groundShotSpreadDegrees",
           "label": "地面射击扩散",
           "value": 2.5,
@@ -2230,7 +2989,7 @@
           "note": "直接记录 Stand_DegSwerve；连续射击偏移累积另行建模",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterExpert.game__GameParameterTable.json#GameParameters.WeaponParam.Stand_DegSwerve",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "jumpShotSpreadDegrees",
@@ -2241,7 +3000,7 @@
           "note": "直接记录 Jump_DegSwerve；行动强化与跳跃偏移变化过程另行建模",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterExpert.game__GameParameterTable.json#GameParameters.WeaponParam.Jump_DegSwerve",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "movementSpeedWhileFiring",
@@ -2252,7 +3011,7 @@
           "note": "直接记录未叠加人速能力效果的 MoveSpeed 基础内部值",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterExpert.game__GameParameterTable.json#GameParameters.WeaponParam.MoveSpeed",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         }
       ]
     },
@@ -2268,7 +3027,7 @@
           "note": "上游 ValueMax=450，按游戏伤害定点值除以 10 规范化",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterExpert.game__GameParameterTable.json#GameParameters.DamageParam.ValueMax",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "fireIntervalFrames",
@@ -2279,7 +3038,7 @@
           "note": "直接记录参数文件中显式存在的 RepeatFrame",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterExpert.game__GameParameterTable.json#GameParameters.WeaponParam.RepeatFrame",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "inkConsumptionPerShot",
@@ -2290,7 +3049,7 @@
           "note": "上游 InkConsume=0.02，乘以 100 规范化为墨水槽百分比",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterExpert.game__GameParameterTable.json#GameParameters.WeaponParam.InkConsume",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "effectiveRange",
@@ -2301,6 +3060,39 @@
           "note": "需要先统一最大伤害距离、衰减起点、弹丸寿命与界面射程之间的定义和换算"
         },
         {
+          "key": "damageFalloffStartFrames",
+          "label": "伤害开始衰减帧",
+          "value": 7,
+          "unit": "frames",
+          "status": "verified",
+          "note": "弹丸生成后开始进入伤害衰减的显式帧数；不是距离值",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponShooterExpert.game__GameParameterTable.json#GameParameters.DamageParam.ReduceStartFrame",
+          "checkedAt": "2026-10-26"
+        },
+        {
+          "key": "damageFalloffEndFrames",
+          "label": "伤害衰减结束帧",
+          "value": 23,
+          "unit": "frames",
+          "status": "verified",
+          "note": "弹丸生成后到达最低伤害层的显式帧数；不是弹丸寿命",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponShooterExpert.game__GameParameterTable.json#GameParameters.DamageParam.ReduceEndFrame",
+          "checkedAt": "2026-10-26"
+        },
+        {
+          "key": "projectileSpawnSpeed",
+          "label": "弹丸初速",
+          "value": 3.833333,
+          "unit": "internal",
+          "status": "verified",
+          "note": "直接记录 SpawnSpeed 内部值；尚未与后续运动阶段积分成距离",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponShooterExpert.game__GameParameterTable.json#GameParameters.MoveParam.SpawnSpeed",
+          "checkedAt": "2026-10-26"
+        },
+        {
           "key": "groundShotSpreadDegrees",
           "label": "地面射击扩散",
           "value": 2.5,
@@ -2309,7 +3101,7 @@
           "note": "直接记录 Stand_DegSwerve；连续射击偏移累积另行建模",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterExpert.game__GameParameterTable.json#GameParameters.WeaponParam.Stand_DegSwerve",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "jumpShotSpreadDegrees",
@@ -2320,7 +3112,7 @@
           "note": "直接记录 Jump_DegSwerve；行动强化与跳跃偏移变化过程另行建模",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterExpert.game__GameParameterTable.json#GameParameters.WeaponParam.Jump_DegSwerve",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "movementSpeedWhileFiring",
@@ -2331,7 +3123,7 @@
           "note": "直接记录未叠加人速能力效果的 MoveSpeed 基础内部值",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterExpert.game__GameParameterTable.json#GameParameters.WeaponParam.MoveSpeed",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         }
       ]
     },
@@ -2347,7 +3139,7 @@
           "note": "上游 ValueMax=620，按游戏伤害定点值除以 10 规范化",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterHeavy.game__GameParameterTable.json#GameParameters.DamageParam.ValueMax",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "fireIntervalFrames",
@@ -2358,7 +3150,7 @@
           "note": "直接记录参数文件中显式存在的 RepeatFrame",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterHeavy.game__GameParameterTable.json#GameParameters.WeaponParam.RepeatFrame",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "inkConsumptionPerShot",
@@ -2369,7 +3161,7 @@
           "note": "上游 InkConsume=0.023，乘以 100 规范化为墨水槽百分比",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterHeavy.game__GameParameterTable.json#GameParameters.WeaponParam.InkConsume",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "effectiveRange",
@@ -2380,6 +3172,39 @@
           "note": "需要先统一最大伤害距离、衰减起点、弹丸寿命与界面射程之间的定义和换算"
         },
         {
+          "key": "damageFalloffStartFrames",
+          "label": "伤害开始衰减帧",
+          "value": 9,
+          "unit": "frames",
+          "status": "verified",
+          "note": "弹丸生成后开始进入伤害衰减的显式帧数；不是距离值",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponShooterHeavy.game__GameParameterTable.json#GameParameters.DamageParam.ReduceStartFrame",
+          "checkedAt": "2026-10-26"
+        },
+        {
+          "key": "damageFalloffEndFrames",
+          "label": "伤害衰减结束帧",
+          "value": 25,
+          "unit": "frames",
+          "status": "verified",
+          "note": "弹丸生成后到达最低伤害层的显式帧数；不是弹丸寿命",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponShooterHeavy.game__GameParameterTable.json#GameParameters.DamageParam.ReduceEndFrame",
+          "checkedAt": "2026-10-26"
+        },
+        {
+          "key": "projectileSpawnSpeed",
+          "label": "弹丸初速",
+          "value": 2.45,
+          "unit": "internal",
+          "status": "verified",
+          "note": "直接记录 SpawnSpeed 内部值；尚未与后续运动阶段积分成距离",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponShooterHeavy.game__GameParameterTable.json#GameParameters.MoveParam.SpawnSpeed",
+          "checkedAt": "2026-10-26"
+        },
+        {
           "key": "groundShotSpreadDegrees",
           "label": "地面射击扩散",
           "value": 4,
@@ -2388,7 +3213,7 @@
           "note": "直接记录 Stand_DegSwerve；连续射击偏移累积另行建模",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterHeavy.game__GameParameterTable.json#GameParameters.WeaponParam.Stand_DegSwerve",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "jumpShotSpreadDegrees",
@@ -2399,7 +3224,7 @@
           "note": "直接记录 Jump_DegSwerve；行动强化与跳跃偏移变化过程另行建模",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterHeavy.game__GameParameterTable.json#GameParameters.WeaponParam.Jump_DegSwerve",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "movementSpeedWhileFiring",
@@ -2410,7 +3235,7 @@
           "note": "直接记录未叠加人速能力效果的 MoveSpeed 基础内部值",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterHeavy.game__GameParameterTable.json#GameParameters.WeaponParam.MoveSpeed",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         }
       ]
     },
@@ -2426,7 +3251,7 @@
           "note": "上游 ValueMax=620，按游戏伤害定点值除以 10 规范化",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterHeavy.game__GameParameterTable.json#GameParameters.DamageParam.ValueMax",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "fireIntervalFrames",
@@ -2437,7 +3262,7 @@
           "note": "直接记录参数文件中显式存在的 RepeatFrame",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterHeavy.game__GameParameterTable.json#GameParameters.WeaponParam.RepeatFrame",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "inkConsumptionPerShot",
@@ -2448,7 +3273,7 @@
           "note": "上游 InkConsume=0.023，乘以 100 规范化为墨水槽百分比",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterHeavy.game__GameParameterTable.json#GameParameters.WeaponParam.InkConsume",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "effectiveRange",
@@ -2459,6 +3284,39 @@
           "note": "需要先统一最大伤害距离、衰减起点、弹丸寿命与界面射程之间的定义和换算"
         },
         {
+          "key": "damageFalloffStartFrames",
+          "label": "伤害开始衰减帧",
+          "value": 9,
+          "unit": "frames",
+          "status": "verified",
+          "note": "弹丸生成后开始进入伤害衰减的显式帧数；不是距离值",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponShooterHeavy.game__GameParameterTable.json#GameParameters.DamageParam.ReduceStartFrame",
+          "checkedAt": "2026-10-26"
+        },
+        {
+          "key": "damageFalloffEndFrames",
+          "label": "伤害衰减结束帧",
+          "value": 25,
+          "unit": "frames",
+          "status": "verified",
+          "note": "弹丸生成后到达最低伤害层的显式帧数；不是弹丸寿命",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponShooterHeavy.game__GameParameterTable.json#GameParameters.DamageParam.ReduceEndFrame",
+          "checkedAt": "2026-10-26"
+        },
+        {
+          "key": "projectileSpawnSpeed",
+          "label": "弹丸初速",
+          "value": 2.45,
+          "unit": "internal",
+          "status": "verified",
+          "note": "直接记录 SpawnSpeed 内部值；尚未与后续运动阶段积分成距离",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponShooterHeavy.game__GameParameterTable.json#GameParameters.MoveParam.SpawnSpeed",
+          "checkedAt": "2026-10-26"
+        },
+        {
           "key": "groundShotSpreadDegrees",
           "label": "地面射击扩散",
           "value": 4,
@@ -2467,7 +3325,7 @@
           "note": "直接记录 Stand_DegSwerve；连续射击偏移累积另行建模",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterHeavy.game__GameParameterTable.json#GameParameters.WeaponParam.Stand_DegSwerve",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "jumpShotSpreadDegrees",
@@ -2478,7 +3336,7 @@
           "note": "直接记录 Jump_DegSwerve；行动强化与跳跃偏移变化过程另行建模",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterHeavy.game__GameParameterTable.json#GameParameters.WeaponParam.Jump_DegSwerve",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "movementSpeedWhileFiring",
@@ -2489,7 +3347,7 @@
           "note": "直接记录未叠加人速能力效果的 MoveSpeed 基础内部值",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterHeavy.game__GameParameterTable.json#GameParameters.WeaponParam.MoveSpeed",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         }
       ]
     },
@@ -2505,7 +3363,7 @@
           "note": "上游 ValueMax=620，按游戏伤害定点值除以 10 规范化",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterHeavy.game__GameParameterTable.json#GameParameters.DamageParam.ValueMax",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "fireIntervalFrames",
@@ -2516,7 +3374,7 @@
           "note": "直接记录参数文件中显式存在的 RepeatFrame",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterHeavy.game__GameParameterTable.json#GameParameters.WeaponParam.RepeatFrame",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "inkConsumptionPerShot",
@@ -2527,7 +3385,7 @@
           "note": "上游 InkConsume=0.023，乘以 100 规范化为墨水槽百分比",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterHeavy.game__GameParameterTable.json#GameParameters.WeaponParam.InkConsume",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "effectiveRange",
@@ -2538,6 +3396,39 @@
           "note": "需要先统一最大伤害距离、衰减起点、弹丸寿命与界面射程之间的定义和换算"
         },
         {
+          "key": "damageFalloffStartFrames",
+          "label": "伤害开始衰减帧",
+          "value": 9,
+          "unit": "frames",
+          "status": "verified",
+          "note": "弹丸生成后开始进入伤害衰减的显式帧数；不是距离值",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponShooterHeavy.game__GameParameterTable.json#GameParameters.DamageParam.ReduceStartFrame",
+          "checkedAt": "2026-10-26"
+        },
+        {
+          "key": "damageFalloffEndFrames",
+          "label": "伤害衰减结束帧",
+          "value": 25,
+          "unit": "frames",
+          "status": "verified",
+          "note": "弹丸生成后到达最低伤害层的显式帧数；不是弹丸寿命",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponShooterHeavy.game__GameParameterTable.json#GameParameters.DamageParam.ReduceEndFrame",
+          "checkedAt": "2026-10-26"
+        },
+        {
+          "key": "projectileSpawnSpeed",
+          "label": "弹丸初速",
+          "value": 2.45,
+          "unit": "internal",
+          "status": "verified",
+          "note": "直接记录 SpawnSpeed 内部值；尚未与后续运动阶段积分成距离",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponShooterHeavy.game__GameParameterTable.json#GameParameters.MoveParam.SpawnSpeed",
+          "checkedAt": "2026-10-26"
+        },
+        {
           "key": "groundShotSpreadDegrees",
           "label": "地面射击扩散",
           "value": 4,
@@ -2546,7 +3437,7 @@
           "note": "直接记录 Stand_DegSwerve；连续射击偏移累积另行建模",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterHeavy.game__GameParameterTable.json#GameParameters.WeaponParam.Stand_DegSwerve",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "jumpShotSpreadDegrees",
@@ -2557,7 +3448,7 @@
           "note": "直接记录 Jump_DegSwerve；行动强化与跳跃偏移变化过程另行建模",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterHeavy.game__GameParameterTable.json#GameParameters.WeaponParam.Jump_DegSwerve",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "movementSpeedWhileFiring",
@@ -2568,7 +3459,7 @@
           "note": "直接记录未叠加人速能力效果的 MoveSpeed 基础内部值",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterHeavy.game__GameParameterTable.json#GameParameters.WeaponParam.MoveSpeed",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         }
       ]
     },
@@ -2584,7 +3475,7 @@
           "note": "上游 ValueMax=320，按游戏伤害定点值除以 10 规范化",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterLong.game__GameParameterTable.json#GameParameters.DamageParam.ValueMax",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "fireIntervalFrames",
@@ -2595,7 +3486,7 @@
           "note": "直接记录参数文件中显式存在的 RepeatFrame",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterLong.game__GameParameterTable.json#GameParameters.WeaponParam.RepeatFrame",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "inkConsumptionPerShot",
@@ -2606,7 +3497,7 @@
           "note": "上游 InkConsume=0.016，乘以 100 规范化为墨水槽百分比",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterLong.game__GameParameterTable.json#GameParameters.WeaponParam.InkConsume",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "effectiveRange",
@@ -2617,6 +3508,39 @@
           "note": "需要先统一最大伤害距离、衰减起点、弹丸寿命与界面射程之间的定义和换算"
         },
         {
+          "key": "damageFalloffStartFrames",
+          "label": "伤害开始衰减帧",
+          "value": 9,
+          "unit": "frames",
+          "status": "verified",
+          "note": "弹丸生成后开始进入伤害衰减的显式帧数；不是距离值",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponShooterLong.game__GameParameterTable.json#GameParameters.DamageParam.ReduceStartFrame",
+          "checkedAt": "2026-10-26"
+        },
+        {
+          "key": "damageFalloffEndFrames",
+          "label": "伤害衰减结束帧",
+          "value": 25,
+          "unit": "frames",
+          "status": "verified",
+          "note": "弹丸生成后到达最低伤害层的显式帧数；不是弹丸寿命",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponShooterLong.game__GameParameterTable.json#GameParameters.DamageParam.ReduceEndFrame",
+          "checkedAt": "2026-10-26"
+        },
+        {
+          "key": "projectileSpawnSpeed",
+          "label": "弹丸初速",
+          "value": 3.36,
+          "unit": "internal",
+          "status": "verified",
+          "note": "直接记录 SpawnSpeed 内部值；尚未与后续运动阶段积分成距离",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponShooterLong.game__GameParameterTable.json#GameParameters.MoveParam.SpawnSpeed",
+          "checkedAt": "2026-10-26"
+        },
+        {
           "key": "groundShotSpreadDegrees",
           "label": "地面射击扩散",
           "value": 2.5,
@@ -2625,7 +3549,7 @@
           "note": "直接记录 Stand_DegSwerve；连续射击偏移累积另行建模",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterLong.game__GameParameterTable.json#GameParameters.WeaponParam.Stand_DegSwerve",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "jumpShotSpreadDegrees",
@@ -2636,7 +3560,7 @@
           "note": "直接记录 Jump_DegSwerve；行动强化与跳跃偏移变化过程另行建模",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterLong.game__GameParameterTable.json#GameParameters.WeaponParam.Jump_DegSwerve",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "movementSpeedWhileFiring",
@@ -2647,7 +3571,7 @@
           "note": "直接记录未叠加人速能力效果的 MoveSpeed 基础内部值",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterLong.game__GameParameterTable.json#GameParameters.WeaponParam.MoveSpeed",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         }
       ]
     },
@@ -2663,7 +3587,7 @@
           "note": "上游 ValueMax=320，按游戏伤害定点值除以 10 规范化",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterLong.game__GameParameterTable.json#GameParameters.DamageParam.ValueMax",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "fireIntervalFrames",
@@ -2674,7 +3598,7 @@
           "note": "直接记录参数文件中显式存在的 RepeatFrame",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterLong.game__GameParameterTable.json#GameParameters.WeaponParam.RepeatFrame",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "inkConsumptionPerShot",
@@ -2685,7 +3609,7 @@
           "note": "上游 InkConsume=0.016，乘以 100 规范化为墨水槽百分比",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterLong.game__GameParameterTable.json#GameParameters.WeaponParam.InkConsume",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "effectiveRange",
@@ -2696,6 +3620,39 @@
           "note": "需要先统一最大伤害距离、衰减起点、弹丸寿命与界面射程之间的定义和换算"
         },
         {
+          "key": "damageFalloffStartFrames",
+          "label": "伤害开始衰减帧",
+          "value": 9,
+          "unit": "frames",
+          "status": "verified",
+          "note": "弹丸生成后开始进入伤害衰减的显式帧数；不是距离值",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponShooterLong.game__GameParameterTable.json#GameParameters.DamageParam.ReduceStartFrame",
+          "checkedAt": "2026-10-26"
+        },
+        {
+          "key": "damageFalloffEndFrames",
+          "label": "伤害衰减结束帧",
+          "value": 25,
+          "unit": "frames",
+          "status": "verified",
+          "note": "弹丸生成后到达最低伤害层的显式帧数；不是弹丸寿命",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponShooterLong.game__GameParameterTable.json#GameParameters.DamageParam.ReduceEndFrame",
+          "checkedAt": "2026-10-26"
+        },
+        {
+          "key": "projectileSpawnSpeed",
+          "label": "弹丸初速",
+          "value": 3.36,
+          "unit": "internal",
+          "status": "verified",
+          "note": "直接记录 SpawnSpeed 内部值；尚未与后续运动阶段积分成距离",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponShooterLong.game__GameParameterTable.json#GameParameters.MoveParam.SpawnSpeed",
+          "checkedAt": "2026-10-26"
+        },
+        {
           "key": "groundShotSpreadDegrees",
           "label": "地面射击扩散",
           "value": 2.5,
@@ -2704,7 +3661,7 @@
           "note": "直接记录 Stand_DegSwerve；连续射击偏移累积另行建模",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterLong.game__GameParameterTable.json#GameParameters.WeaponParam.Stand_DegSwerve",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "jumpShotSpreadDegrees",
@@ -2715,7 +3672,7 @@
           "note": "直接记录 Jump_DegSwerve；行动强化与跳跃偏移变化过程另行建模",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterLong.game__GameParameterTable.json#GameParameters.WeaponParam.Jump_DegSwerve",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "movementSpeedWhileFiring",
@@ -2726,7 +3683,7 @@
           "note": "直接记录未叠加人速能力效果的 MoveSpeed 基础内部值",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterLong.game__GameParameterTable.json#GameParameters.WeaponParam.MoveSpeed",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         }
       ]
     },
@@ -2742,7 +3699,7 @@
           "note": "上游 ValueMax=320，按游戏伤害定点值除以 10 规范化",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterLong.game__GameParameterTable.json#GameParameters.DamageParam.ValueMax",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "fireIntervalFrames",
@@ -2753,7 +3710,7 @@
           "note": "直接记录参数文件中显式存在的 RepeatFrame",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterLong.game__GameParameterTable.json#GameParameters.WeaponParam.RepeatFrame",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "inkConsumptionPerShot",
@@ -2764,7 +3721,7 @@
           "note": "上游 InkConsume=0.016，乘以 100 规范化为墨水槽百分比",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterLong.game__GameParameterTable.json#GameParameters.WeaponParam.InkConsume",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "effectiveRange",
@@ -2775,6 +3732,39 @@
           "note": "需要先统一最大伤害距离、衰减起点、弹丸寿命与界面射程之间的定义和换算"
         },
         {
+          "key": "damageFalloffStartFrames",
+          "label": "伤害开始衰减帧",
+          "value": 9,
+          "unit": "frames",
+          "status": "verified",
+          "note": "弹丸生成后开始进入伤害衰减的显式帧数；不是距离值",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponShooterLong.game__GameParameterTable.json#GameParameters.DamageParam.ReduceStartFrame",
+          "checkedAt": "2026-10-26"
+        },
+        {
+          "key": "damageFalloffEndFrames",
+          "label": "伤害衰减结束帧",
+          "value": 25,
+          "unit": "frames",
+          "status": "verified",
+          "note": "弹丸生成后到达最低伤害层的显式帧数；不是弹丸寿命",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponShooterLong.game__GameParameterTable.json#GameParameters.DamageParam.ReduceEndFrame",
+          "checkedAt": "2026-10-26"
+        },
+        {
+          "key": "projectileSpawnSpeed",
+          "label": "弹丸初速",
+          "value": 3.36,
+          "unit": "internal",
+          "status": "verified",
+          "note": "直接记录 SpawnSpeed 内部值；尚未与后续运动阶段积分成距离",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponShooterLong.game__GameParameterTable.json#GameParameters.MoveParam.SpawnSpeed",
+          "checkedAt": "2026-10-26"
+        },
+        {
           "key": "groundShotSpreadDegrees",
           "label": "地面射击扩散",
           "value": 2.5,
@@ -2783,7 +3773,7 @@
           "note": "直接记录 Stand_DegSwerve；连续射击偏移累积另行建模",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterLong.game__GameParameterTable.json#GameParameters.WeaponParam.Stand_DegSwerve",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "jumpShotSpreadDegrees",
@@ -2794,7 +3784,7 @@
           "note": "直接记录 Jump_DegSwerve；行动强化与跳跃偏移变化过程另行建模",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterLong.game__GameParameterTable.json#GameParameters.WeaponParam.Jump_DegSwerve",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "movementSpeedWhileFiring",
@@ -2805,7 +3795,7 @@
           "note": "直接记录未叠加人速能力效果的 MoveSpeed 基础内部值",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterLong.game__GameParameterTable.json#GameParameters.WeaponParam.MoveSpeed",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         }
       ]
     },
@@ -2821,7 +3811,7 @@
           "note": "上游 ValueMax=240，按游戏伤害定点值除以 10 规范化",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterQuickLong.game__GameParameterTable.json#GameParameters.DamageParam.ValueMax",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "fireIntervalFrames",
@@ -2832,7 +3822,7 @@
           "note": "直接记录参数文件中显式存在的 RepeatFrame",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterQuickLong.game__GameParameterTable.json#GameParameters.WeaponParam.RepeatFrame",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "inkConsumptionPerShot",
@@ -2843,7 +3833,7 @@
           "note": "上游 InkConsume=0.0096，乘以 100 规范化为墨水槽百分比",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterQuickLong.game__GameParameterTable.json#GameParameters.WeaponParam.InkConsume",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "effectiveRange",
@@ -2854,6 +3844,39 @@
           "note": "需要先统一最大伤害距离、衰减起点、弹丸寿命与界面射程之间的定义和换算"
         },
         {
+          "key": "damageFalloffStartFrames",
+          "label": "伤害开始衰减帧",
+          "value": 9,
+          "unit": "frames",
+          "status": "verified",
+          "note": "弹丸生成后开始进入伤害衰减的显式帧数；不是距离值",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponShooterQuickLong.game__GameParameterTable.json#GameParameters.DamageParam.ReduceStartFrame",
+          "checkedAt": "2026-10-26"
+        },
+        {
+          "key": "damageFalloffEndFrames",
+          "label": "伤害衰减结束帧",
+          "value": 25,
+          "unit": "frames",
+          "status": "verified",
+          "note": "弹丸生成后到达最低伤害层的显式帧数；不是弹丸寿命",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponShooterQuickLong.game__GameParameterTable.json#GameParameters.DamageParam.ReduceEndFrame",
+          "checkedAt": "2026-10-26"
+        },
+        {
+          "key": "projectileSpawnSpeed",
+          "label": "弹丸初速",
+          "value": 2.75,
+          "unit": "internal",
+          "status": "verified",
+          "note": "直接记录 SpawnSpeed 内部值；尚未与后续运动阶段积分成距离",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponShooterQuickLong.game__GameParameterTable.json#GameParameters.MoveParam.SpawnSpeed",
+          "checkedAt": "2026-10-26"
+        },
+        {
           "key": "groundShotSpreadDegrees",
           "label": "地面射击扩散",
           "value": 4.5,
@@ -2862,7 +3885,7 @@
           "note": "直接记录 Stand_DegSwerve；连续射击偏移累积另行建模",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterQuickLong.game__GameParameterTable.json#GameParameters.WeaponParam.Stand_DegSwerve",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "jumpShotSpreadDegrees",
@@ -2873,7 +3896,7 @@
           "note": "直接记录 Jump_DegSwerve；行动强化与跳跃偏移变化过程另行建模",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterQuickLong.game__GameParameterTable.json#GameParameters.WeaponParam.Jump_DegSwerve",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "movementSpeedWhileFiring",
@@ -2884,7 +3907,7 @@
           "note": "直接记录未叠加人速能力效果的 MoveSpeed 基础内部值",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterQuickLong.game__GameParameterTable.json#GameParameters.WeaponParam.MoveSpeed",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         }
       ]
     },
@@ -2900,7 +3923,7 @@
           "note": "上游 ValueMax=240，按游戏伤害定点值除以 10 规范化",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterQuickLong.game__GameParameterTable.json#GameParameters.DamageParam.ValueMax",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "fireIntervalFrames",
@@ -2911,7 +3934,7 @@
           "note": "直接记录参数文件中显式存在的 RepeatFrame",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterQuickLong.game__GameParameterTable.json#GameParameters.WeaponParam.RepeatFrame",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "inkConsumptionPerShot",
@@ -2922,7 +3945,7 @@
           "note": "上游 InkConsume=0.0096，乘以 100 规范化为墨水槽百分比",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterQuickLong.game__GameParameterTable.json#GameParameters.WeaponParam.InkConsume",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "effectiveRange",
@@ -2933,6 +3956,39 @@
           "note": "需要先统一最大伤害距离、衰减起点、弹丸寿命与界面射程之间的定义和换算"
         },
         {
+          "key": "damageFalloffStartFrames",
+          "label": "伤害开始衰减帧",
+          "value": 9,
+          "unit": "frames",
+          "status": "verified",
+          "note": "弹丸生成后开始进入伤害衰减的显式帧数；不是距离值",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponShooterQuickLong.game__GameParameterTable.json#GameParameters.DamageParam.ReduceStartFrame",
+          "checkedAt": "2026-10-26"
+        },
+        {
+          "key": "damageFalloffEndFrames",
+          "label": "伤害衰减结束帧",
+          "value": 25,
+          "unit": "frames",
+          "status": "verified",
+          "note": "弹丸生成后到达最低伤害层的显式帧数；不是弹丸寿命",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponShooterQuickLong.game__GameParameterTable.json#GameParameters.DamageParam.ReduceEndFrame",
+          "checkedAt": "2026-10-26"
+        },
+        {
+          "key": "projectileSpawnSpeed",
+          "label": "弹丸初速",
+          "value": 2.75,
+          "unit": "internal",
+          "status": "verified",
+          "note": "直接记录 SpawnSpeed 内部值；尚未与后续运动阶段积分成距离",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponShooterQuickLong.game__GameParameterTable.json#GameParameters.MoveParam.SpawnSpeed",
+          "checkedAt": "2026-10-26"
+        },
+        {
           "key": "groundShotSpreadDegrees",
           "label": "地面射击扩散",
           "value": 4.5,
@@ -2941,7 +3997,7 @@
           "note": "直接记录 Stand_DegSwerve；连续射击偏移累积另行建模",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterQuickLong.game__GameParameterTable.json#GameParameters.WeaponParam.Stand_DegSwerve",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "jumpShotSpreadDegrees",
@@ -2952,7 +4008,7 @@
           "note": "直接记录 Jump_DegSwerve；行动强化与跳跃偏移变化过程另行建模",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterQuickLong.game__GameParameterTable.json#GameParameters.WeaponParam.Jump_DegSwerve",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "movementSpeedWhileFiring",
@@ -2963,7 +4019,7 @@
           "note": "直接记录未叠加人速能力效果的 MoveSpeed 基础内部值",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterQuickLong.game__GameParameterTable.json#GameParameters.WeaponParam.MoveSpeed",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         }
       ]
     },
@@ -2979,7 +4035,7 @@
           "note": "上游 ValueMax=310，按游戏伤害定点值除以 10 规范化",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterTripleQuick.game__GameParameterTable.json#GameParameters.DamageParam.ValueMax",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "fireIntervalFrames",
@@ -2990,7 +4046,7 @@
           "note": "直接记录参数文件中显式存在的 RepeatFrame",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterTripleQuick.game__GameParameterTable.json#GameParameters.WeaponParam.RepeatFrame",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "inkConsumptionPerShot",
@@ -3001,7 +4057,7 @@
           "note": "上游 InkConsume=0.011，乘以 100 规范化为墨水槽百分比",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterTripleQuick.game__GameParameterTable.json#GameParameters.WeaponParam.InkConsume",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "effectiveRange",
@@ -3012,6 +4068,39 @@
           "note": "需要先统一最大伤害距离、衰减起点、弹丸寿命与界面射程之间的定义和换算"
         },
         {
+          "key": "damageFalloffStartFrames",
+          "label": "伤害开始衰减帧",
+          "value": 8,
+          "unit": "frames",
+          "status": "verified",
+          "note": "弹丸生成后开始进入伤害衰减的显式帧数；不是距离值",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponShooterTripleQuick.game__GameParameterTable.json#GameParameters.DamageParam.ReduceStartFrame",
+          "checkedAt": "2026-10-26"
+        },
+        {
+          "key": "damageFalloffEndFrames",
+          "label": "伤害衰减结束帧",
+          "value": 40,
+          "unit": "frames",
+          "status": "verified",
+          "note": "弹丸生成后到达最低伤害层的显式帧数；不是弹丸寿命",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponShooterTripleQuick.game__GameParameterTable.json#GameParameters.DamageParam.ReduceEndFrame",
+          "checkedAt": "2026-10-26"
+        },
+        {
+          "key": "projectileSpawnSpeed",
+          "label": "弹丸初速",
+          "value": 3.567,
+          "unit": "internal",
+          "status": "verified",
+          "note": "直接记录 SpawnSpeed 内部值；尚未与后续运动阶段积分成距离",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponShooterTripleQuick.game__GameParameterTable.json#GameParameters.MoveParam.SpawnSpeed",
+          "checkedAt": "2026-10-26"
+        },
+        {
           "key": "groundShotSpreadDegrees",
           "label": "地面射击扩散",
           "value": 1,
@@ -3020,7 +4109,7 @@
           "note": "直接记录 Stand_DegSwerve；连续射击偏移累积另行建模",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterTripleQuick.game__GameParameterTable.json#GameParameters.WeaponParam.Stand_DegSwerve",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "jumpShotSpreadDegrees",
@@ -3031,7 +4120,7 @@
           "note": "直接记录 Jump_DegSwerve；行动强化与跳跃偏移变化过程另行建模",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterTripleQuick.game__GameParameterTable.json#GameParameters.WeaponParam.Jump_DegSwerve",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "movementSpeedWhileFiring",
@@ -3042,7 +4131,7 @@
           "note": "直接记录未叠加人速能力效果的 MoveSpeed 基础内部值",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterTripleQuick.game__GameParameterTable.json#GameParameters.WeaponParam.MoveSpeed",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         }
       ]
     },
@@ -3058,7 +4147,7 @@
           "note": "上游 ValueMax=310，按游戏伤害定点值除以 10 规范化",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterTripleQuick.game__GameParameterTable.json#GameParameters.DamageParam.ValueMax",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "fireIntervalFrames",
@@ -3069,7 +4158,7 @@
           "note": "直接记录参数文件中显式存在的 RepeatFrame",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterTripleQuick.game__GameParameterTable.json#GameParameters.WeaponParam.RepeatFrame",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "inkConsumptionPerShot",
@@ -3080,7 +4169,7 @@
           "note": "上游 InkConsume=0.011，乘以 100 规范化为墨水槽百分比",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterTripleQuick.game__GameParameterTable.json#GameParameters.WeaponParam.InkConsume",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "effectiveRange",
@@ -3091,6 +4180,39 @@
           "note": "需要先统一最大伤害距离、衰减起点、弹丸寿命与界面射程之间的定义和换算"
         },
         {
+          "key": "damageFalloffStartFrames",
+          "label": "伤害开始衰减帧",
+          "value": 8,
+          "unit": "frames",
+          "status": "verified",
+          "note": "弹丸生成后开始进入伤害衰减的显式帧数；不是距离值",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponShooterTripleQuick.game__GameParameterTable.json#GameParameters.DamageParam.ReduceStartFrame",
+          "checkedAt": "2026-10-26"
+        },
+        {
+          "key": "damageFalloffEndFrames",
+          "label": "伤害衰减结束帧",
+          "value": 40,
+          "unit": "frames",
+          "status": "verified",
+          "note": "弹丸生成后到达最低伤害层的显式帧数；不是弹丸寿命",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponShooterTripleQuick.game__GameParameterTable.json#GameParameters.DamageParam.ReduceEndFrame",
+          "checkedAt": "2026-10-26"
+        },
+        {
+          "key": "projectileSpawnSpeed",
+          "label": "弹丸初速",
+          "value": 3.567,
+          "unit": "internal",
+          "status": "verified",
+          "note": "直接记录 SpawnSpeed 内部值；尚未与后续运动阶段积分成距离",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponShooterTripleQuick.game__GameParameterTable.json#GameParameters.MoveParam.SpawnSpeed",
+          "checkedAt": "2026-10-26"
+        },
+        {
           "key": "groundShotSpreadDegrees",
           "label": "地面射击扩散",
           "value": 1,
@@ -3099,7 +4221,7 @@
           "note": "直接记录 Stand_DegSwerve；连续射击偏移累积另行建模",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterTripleQuick.game__GameParameterTable.json#GameParameters.WeaponParam.Stand_DegSwerve",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "jumpShotSpreadDegrees",
@@ -3110,7 +4232,7 @@
           "note": "直接记录 Jump_DegSwerve；行动强化与跳跃偏移变化过程另行建模",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterTripleQuick.game__GameParameterTable.json#GameParameters.WeaponParam.Jump_DegSwerve",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "movementSpeedWhileFiring",
@@ -3121,7 +4243,7 @@
           "note": "直接记录未叠加人速能力效果的 MoveSpeed 基础内部值",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterTripleQuick.game__GameParameterTable.json#GameParameters.WeaponParam.MoveSpeed",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         }
       ]
     },
@@ -3137,7 +4259,7 @@
           "note": "上游 ValueMax=310，按游戏伤害定点值除以 10 规范化",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterTripleQuick.game__GameParameterTable.json#GameParameters.DamageParam.ValueMax",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "fireIntervalFrames",
@@ -3148,7 +4270,7 @@
           "note": "直接记录参数文件中显式存在的 RepeatFrame",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterTripleQuick.game__GameParameterTable.json#GameParameters.WeaponParam.RepeatFrame",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "inkConsumptionPerShot",
@@ -3159,7 +4281,7 @@
           "note": "上游 InkConsume=0.011，乘以 100 规范化为墨水槽百分比",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterTripleQuick.game__GameParameterTable.json#GameParameters.WeaponParam.InkConsume",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "effectiveRange",
@@ -3170,6 +4292,39 @@
           "note": "需要先统一最大伤害距离、衰减起点、弹丸寿命与界面射程之间的定义和换算"
         },
         {
+          "key": "damageFalloffStartFrames",
+          "label": "伤害开始衰减帧",
+          "value": 8,
+          "unit": "frames",
+          "status": "verified",
+          "note": "弹丸生成后开始进入伤害衰减的显式帧数；不是距离值",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponShooterTripleQuick.game__GameParameterTable.json#GameParameters.DamageParam.ReduceStartFrame",
+          "checkedAt": "2026-10-26"
+        },
+        {
+          "key": "damageFalloffEndFrames",
+          "label": "伤害衰减结束帧",
+          "value": 40,
+          "unit": "frames",
+          "status": "verified",
+          "note": "弹丸生成后到达最低伤害层的显式帧数；不是弹丸寿命",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponShooterTripleQuick.game__GameParameterTable.json#GameParameters.DamageParam.ReduceEndFrame",
+          "checkedAt": "2026-10-26"
+        },
+        {
+          "key": "projectileSpawnSpeed",
+          "label": "弹丸初速",
+          "value": 3.567,
+          "unit": "internal",
+          "status": "verified",
+          "note": "直接记录 SpawnSpeed 内部值；尚未与后续运动阶段积分成距离",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponShooterTripleQuick.game__GameParameterTable.json#GameParameters.MoveParam.SpawnSpeed",
+          "checkedAt": "2026-10-26"
+        },
+        {
           "key": "groundShotSpreadDegrees",
           "label": "地面射击扩散",
           "value": 1,
@@ -3178,7 +4333,7 @@
           "note": "直接记录 Stand_DegSwerve；连续射击偏移累积另行建模",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterTripleQuick.game__GameParameterTable.json#GameParameters.WeaponParam.Stand_DegSwerve",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "jumpShotSpreadDegrees",
@@ -3189,7 +4344,7 @@
           "note": "直接记录 Jump_DegSwerve；行动强化与跳跃偏移变化过程另行建模",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterTripleQuick.game__GameParameterTable.json#GameParameters.WeaponParam.Jump_DegSwerve",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "movementSpeedWhileFiring",
@@ -3200,7 +4355,7 @@
           "note": "直接记录未叠加人速能力效果的 MoveSpeed 基础内部值",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterTripleQuick.game__GameParameterTable.json#GameParameters.WeaponParam.MoveSpeed",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         }
       ]
     },
@@ -3216,7 +4371,7 @@
           "note": "上游 ValueMax=450，按游戏伤害定点值除以 10 规范化",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterTripleMiddle.game__GameParameterTable.json#GameParameters.DamageParam.ValueMax",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "fireIntervalFrames",
@@ -3227,7 +4382,7 @@
           "note": "直接记录参数文件中显式存在的 RepeatFrame",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterTripleMiddle.game__GameParameterTable.json#GameParameters.WeaponParam.RepeatFrame",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "inkConsumptionPerShot",
@@ -3238,7 +4393,7 @@
           "note": "上游 InkConsume=0.0208，乘以 100 规范化为墨水槽百分比",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterTripleMiddle.game__GameParameterTable.json#GameParameters.WeaponParam.InkConsume",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "effectiveRange",
@@ -3249,6 +4404,39 @@
           "note": "需要先统一最大伤害距离、衰减起点、弹丸寿命与界面射程之间的定义和换算"
         },
         {
+          "key": "damageFalloffStartFrames",
+          "label": "伤害开始衰减帧",
+          "value": 8,
+          "unit": "frames",
+          "status": "verified",
+          "note": "弹丸生成后开始进入伤害衰减的显式帧数；不是距离值",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponShooterTripleMiddle.game__GameParameterTable.json#GameParameters.DamageParam.ReduceStartFrame",
+          "checkedAt": "2026-10-26"
+        },
+        {
+          "key": "damageFalloffEndFrames",
+          "label": "伤害衰减结束帧",
+          "value": 40,
+          "unit": "frames",
+          "status": "verified",
+          "note": "弹丸生成后到达最低伤害层的显式帧数；不是弹丸寿命",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponShooterTripleMiddle.game__GameParameterTable.json#GameParameters.DamageParam.ReduceEndFrame",
+          "checkedAt": "2026-10-26"
+        },
+        {
+          "key": "projectileSpawnSpeed",
+          "label": "弹丸初速",
+          "value": 2.875,
+          "unit": "internal",
+          "status": "verified",
+          "note": "直接记录 SpawnSpeed 内部值；尚未与后续运动阶段积分成距离",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponShooterTripleMiddle.game__GameParameterTable.json#GameParameters.MoveParam.SpawnSpeed",
+          "checkedAt": "2026-10-26"
+        },
+        {
           "key": "groundShotSpreadDegrees",
           "label": "地面射击扩散",
           "value": 1,
@@ -3257,7 +4445,7 @@
           "note": "直接记录 Stand_DegSwerve；连续射击偏移累积另行建模",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterTripleMiddle.game__GameParameterTable.json#GameParameters.WeaponParam.Stand_DegSwerve",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "jumpShotSpreadDegrees",
@@ -3268,7 +4456,7 @@
           "note": "直接记录 Jump_DegSwerve；行动强化与跳跃偏移变化过程另行建模",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterTripleMiddle.game__GameParameterTable.json#GameParameters.WeaponParam.Jump_DegSwerve",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "movementSpeedWhileFiring",
@@ -3279,7 +4467,7 @@
           "note": "直接记录未叠加人速能力效果的 MoveSpeed 基础内部值",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterTripleMiddle.game__GameParameterTable.json#GameParameters.WeaponParam.MoveSpeed",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         }
       ]
     },
@@ -3295,7 +4483,7 @@
           "note": "上游 ValueMax=450，按游戏伤害定点值除以 10 规范化",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterTripleMiddle.game__GameParameterTable.json#GameParameters.DamageParam.ValueMax",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "fireIntervalFrames",
@@ -3306,7 +4494,7 @@
           "note": "直接记录参数文件中显式存在的 RepeatFrame",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterTripleMiddle.game__GameParameterTable.json#GameParameters.WeaponParam.RepeatFrame",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "inkConsumptionPerShot",
@@ -3317,7 +4505,7 @@
           "note": "上游 InkConsume=0.0208，乘以 100 规范化为墨水槽百分比",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterTripleMiddle.game__GameParameterTable.json#GameParameters.WeaponParam.InkConsume",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "effectiveRange",
@@ -3328,6 +4516,39 @@
           "note": "需要先统一最大伤害距离、衰减起点、弹丸寿命与界面射程之间的定义和换算"
         },
         {
+          "key": "damageFalloffStartFrames",
+          "label": "伤害开始衰减帧",
+          "value": 8,
+          "unit": "frames",
+          "status": "verified",
+          "note": "弹丸生成后开始进入伤害衰减的显式帧数；不是距离值",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponShooterTripleMiddle.game__GameParameterTable.json#GameParameters.DamageParam.ReduceStartFrame",
+          "checkedAt": "2026-10-26"
+        },
+        {
+          "key": "damageFalloffEndFrames",
+          "label": "伤害衰减结束帧",
+          "value": 40,
+          "unit": "frames",
+          "status": "verified",
+          "note": "弹丸生成后到达最低伤害层的显式帧数；不是弹丸寿命",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponShooterTripleMiddle.game__GameParameterTable.json#GameParameters.DamageParam.ReduceEndFrame",
+          "checkedAt": "2026-10-26"
+        },
+        {
+          "key": "projectileSpawnSpeed",
+          "label": "弹丸初速",
+          "value": 2.875,
+          "unit": "internal",
+          "status": "verified",
+          "note": "直接记录 SpawnSpeed 内部值；尚未与后续运动阶段积分成距离",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponShooterTripleMiddle.game__GameParameterTable.json#GameParameters.MoveParam.SpawnSpeed",
+          "checkedAt": "2026-10-26"
+        },
+        {
           "key": "groundShotSpreadDegrees",
           "label": "地面射击扩散",
           "value": 1,
@@ -3336,7 +4557,7 @@
           "note": "直接记录 Stand_DegSwerve；连续射击偏移累积另行建模",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterTripleMiddle.game__GameParameterTable.json#GameParameters.WeaponParam.Stand_DegSwerve",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "jumpShotSpreadDegrees",
@@ -3347,7 +4568,7 @@
           "note": "直接记录 Jump_DegSwerve；行动强化与跳跃偏移变化过程另行建模",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterTripleMiddle.game__GameParameterTable.json#GameParameters.WeaponParam.Jump_DegSwerve",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "movementSpeedWhileFiring",
@@ -3358,7 +4579,7 @@
           "note": "直接记录未叠加人速能力效果的 MoveSpeed 基础内部值",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterTripleMiddle.game__GameParameterTable.json#GameParameters.WeaponParam.MoveSpeed",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         }
       ]
     },
@@ -3374,7 +4595,7 @@
           "note": "上游 ValueMax=450，按游戏伤害定点值除以 10 规范化",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterTripleMiddle.game__GameParameterTable.json#GameParameters.DamageParam.ValueMax",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "fireIntervalFrames",
@@ -3385,7 +4606,7 @@
           "note": "直接记录参数文件中显式存在的 RepeatFrame",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterTripleMiddle.game__GameParameterTable.json#GameParameters.WeaponParam.RepeatFrame",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "inkConsumptionPerShot",
@@ -3396,7 +4617,7 @@
           "note": "上游 InkConsume=0.0208，乘以 100 规范化为墨水槽百分比",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterTripleMiddle.game__GameParameterTable.json#GameParameters.WeaponParam.InkConsume",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "effectiveRange",
@@ -3407,6 +4628,39 @@
           "note": "需要先统一最大伤害距离、衰减起点、弹丸寿命与界面射程之间的定义和换算"
         },
         {
+          "key": "damageFalloffStartFrames",
+          "label": "伤害开始衰减帧",
+          "value": 8,
+          "unit": "frames",
+          "status": "verified",
+          "note": "弹丸生成后开始进入伤害衰减的显式帧数；不是距离值",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponShooterTripleMiddle.game__GameParameterTable.json#GameParameters.DamageParam.ReduceStartFrame",
+          "checkedAt": "2026-10-26"
+        },
+        {
+          "key": "damageFalloffEndFrames",
+          "label": "伤害衰减结束帧",
+          "value": 40,
+          "unit": "frames",
+          "status": "verified",
+          "note": "弹丸生成后到达最低伤害层的显式帧数；不是弹丸寿命",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponShooterTripleMiddle.game__GameParameterTable.json#GameParameters.DamageParam.ReduceEndFrame",
+          "checkedAt": "2026-10-26"
+        },
+        {
+          "key": "projectileSpawnSpeed",
+          "label": "弹丸初速",
+          "value": 2.875,
+          "unit": "internal",
+          "status": "verified",
+          "note": "直接记录 SpawnSpeed 内部值；尚未与后续运动阶段积分成距离",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponShooterTripleMiddle.game__GameParameterTable.json#GameParameters.MoveParam.SpawnSpeed",
+          "checkedAt": "2026-10-26"
+        },
+        {
           "key": "groundShotSpreadDegrees",
           "label": "地面射击扩散",
           "value": 1,
@@ -3415,7 +4669,7 @@
           "note": "直接记录 Stand_DegSwerve；连续射击偏移累积另行建模",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterTripleMiddle.game__GameParameterTable.json#GameParameters.WeaponParam.Stand_DegSwerve",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "jumpShotSpreadDegrees",
@@ -3426,7 +4680,7 @@
           "note": "直接记录 Jump_DegSwerve；行动强化与跳跃偏移变化过程另行建模",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterTripleMiddle.game__GameParameterTable.json#GameParameters.WeaponParam.Jump_DegSwerve",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "movementSpeedWhileFiring",
@@ -3437,7 +4691,7 @@
           "note": "直接记录未叠加人速能力效果的 MoveSpeed 基础内部值",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterTripleMiddle.game__GameParameterTable.json#GameParameters.WeaponParam.MoveSpeed",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         }
       ]
     },
@@ -3453,7 +4707,7 @@
           "note": "上游 ValueMax=380，按游戏伤害定点值除以 10 规范化",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterFlash.game__GameParameterTable.json#GameParameters.DamageParam.ValueMax",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "fireIntervalFrames",
@@ -3464,7 +4718,7 @@
           "note": "直接记录参数文件中显式存在的 RepeatFrame",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterFlash.game__GameParameterTable.json#GameParameters.WeaponParam.RepeatFrame",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "inkConsumptionPerShot",
@@ -3475,7 +4729,7 @@
           "note": "上游 InkConsume=0.024，乘以 100 规范化为墨水槽百分比",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterFlash.game__GameParameterTable.json#GameParameters.WeaponParam.InkConsume",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "effectiveRange",
@@ -3486,6 +4740,39 @@
           "note": "需要先统一最大伤害距离、衰减起点、弹丸寿命与界面射程之间的定义和换算"
         },
         {
+          "key": "damageFalloffStartFrames",
+          "label": "伤害开始衰减帧",
+          "value": 8,
+          "unit": "frames",
+          "status": "verified",
+          "note": "弹丸生成后开始进入伤害衰减的显式帧数；不是距离值",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponShooterFlash.game__GameParameterTable.json#GameParameters.DamageParam.ReduceStartFrame",
+          "checkedAt": "2026-10-26"
+        },
+        {
+          "key": "damageFalloffEndFrames",
+          "label": "伤害衰减结束帧",
+          "value": 24,
+          "unit": "frames",
+          "status": "verified",
+          "note": "弹丸生成后到达最低伤害层的显式帧数；不是弹丸寿命",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponShooterFlash.game__GameParameterTable.json#GameParameters.DamageParam.ReduceEndFrame",
+          "checkedAt": "2026-10-26"
+        },
+        {
+          "key": "projectileSpawnSpeed",
+          "label": "弹丸初速",
+          "value": 3.05,
+          "unit": "internal",
+          "status": "verified",
+          "note": "直接记录 SpawnSpeed 内部值；尚未与后续运动阶段积分成距离",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponShooterFlash.game__GameParameterTable.json#GameParameters.MoveParam.SpawnSpeed",
+          "checkedAt": "2026-10-26"
+        },
+        {
           "key": "groundShotSpreadDegrees",
           "label": "地面射击扩散",
           "value": 0,
@@ -3494,7 +4781,7 @@
           "note": "直接记录 Stand_DegSwerve；连续射击偏移累积另行建模",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterFlash.game__GameParameterTable.json#GameParameters.WeaponParam.Stand_DegSwerve",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "jumpShotSpreadDegrees",
@@ -3505,7 +4792,7 @@
           "note": "直接记录 Jump_DegSwerve；行动强化与跳跃偏移变化过程另行建模",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterFlash.game__GameParameterTable.json#GameParameters.WeaponParam.Jump_DegSwerve",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "movementSpeedWhileFiring",
@@ -3516,7 +4803,7 @@
           "note": "直接记录未叠加人速能力效果的 MoveSpeed 基础内部值",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterFlash.game__GameParameterTable.json#GameParameters.WeaponParam.MoveSpeed",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         }
       ]
     },
@@ -3532,7 +4819,7 @@
           "note": "上游 ValueMax=380，按游戏伤害定点值除以 10 规范化",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterFlash.game__GameParameterTable.json#GameParameters.DamageParam.ValueMax",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "fireIntervalFrames",
@@ -3543,7 +4830,7 @@
           "note": "直接记录参数文件中显式存在的 RepeatFrame",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterFlash.game__GameParameterTable.json#GameParameters.WeaponParam.RepeatFrame",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "inkConsumptionPerShot",
@@ -3554,7 +4841,7 @@
           "note": "上游 InkConsume=0.024，乘以 100 规范化为墨水槽百分比",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterFlash.game__GameParameterTable.json#GameParameters.WeaponParam.InkConsume",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "effectiveRange",
@@ -3565,6 +4852,39 @@
           "note": "需要先统一最大伤害距离、衰减起点、弹丸寿命与界面射程之间的定义和换算"
         },
         {
+          "key": "damageFalloffStartFrames",
+          "label": "伤害开始衰减帧",
+          "value": 8,
+          "unit": "frames",
+          "status": "verified",
+          "note": "弹丸生成后开始进入伤害衰减的显式帧数；不是距离值",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponShooterFlash.game__GameParameterTable.json#GameParameters.DamageParam.ReduceStartFrame",
+          "checkedAt": "2026-10-26"
+        },
+        {
+          "key": "damageFalloffEndFrames",
+          "label": "伤害衰减结束帧",
+          "value": 24,
+          "unit": "frames",
+          "status": "verified",
+          "note": "弹丸生成后到达最低伤害层的显式帧数；不是弹丸寿命",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponShooterFlash.game__GameParameterTable.json#GameParameters.DamageParam.ReduceEndFrame",
+          "checkedAt": "2026-10-26"
+        },
+        {
+          "key": "projectileSpawnSpeed",
+          "label": "弹丸初速",
+          "value": 3.05,
+          "unit": "internal",
+          "status": "verified",
+          "note": "直接记录 SpawnSpeed 内部值；尚未与后续运动阶段积分成距离",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponShooterFlash.game__GameParameterTable.json#GameParameters.MoveParam.SpawnSpeed",
+          "checkedAt": "2026-10-26"
+        },
+        {
           "key": "groundShotSpreadDegrees",
           "label": "地面射击扩散",
           "value": 0,
@@ -3573,7 +4893,7 @@
           "note": "直接记录 Stand_DegSwerve；连续射击偏移累积另行建模",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterFlash.game__GameParameterTable.json#GameParameters.WeaponParam.Stand_DegSwerve",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "jumpShotSpreadDegrees",
@@ -3584,7 +4904,7 @@
           "note": "直接记录 Jump_DegSwerve；行动强化与跳跃偏移变化过程另行建模",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterFlash.game__GameParameterTable.json#GameParameters.WeaponParam.Jump_DegSwerve",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "movementSpeedWhileFiring",
@@ -3595,7 +4915,7 @@
           "note": "直接记录未叠加人速能力效果的 MoveSpeed 基础内部值",
           "sourceId": "leanny-splat3",
           "upstreamPath": "data/parameter/1130/weapon/WeaponShooterFlash.game__GameParameterTable.json#GameParameters.WeaponParam.MoveSpeed",
-          "checkedAt": "2026-10-07"
+          "checkedAt": "2026-10-26"
         }
       ]
     },

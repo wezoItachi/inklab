@@ -134,8 +134,8 @@ void test('11.3 import report matches the normalized catalog', () => {
   assert.deepEqual(parameterImportReport.outputCounts, {
     shooterWeapons: 40,
     shooterParameterClasses: 14,
-    recordsWithVerifiedFields: 43,
-    pendingOnlyRecords: 131,
+    recordsWithVerifiedFields: 40,
+    pendingOnlyRecords: 0,
   });
   for (const input of parameterImportReport.inputs)
     assert.match(input.sha256, /^[a-f0-9]{64}$/);
@@ -325,6 +325,9 @@ void test('main weapon parameters expose values only after field-level verificat
         'fireIntervalFrames',
         'inkConsumptionPerShot',
         'effectiveRange',
+        'damageFalloffStartFrames',
+        'damageFalloffEndFrames',
+        'projectileSpawnSpeed',
         'groundShotSpreadDegrees',
         'jumpShotSpreadDegrees',
         'movementSpeedWhileFiring',
@@ -334,6 +337,29 @@ void test('main weapon parameters expose values only after field-level verificat
     assert.equal(
       record.parameters.find(({ key }) => key === 'effectiveRange')?.status,
       'pending',
+      record.weaponId,
+    );
+    for (const key of [
+      'damageFalloffStartFrames',
+      'damageFalloffEndFrames',
+      'projectileSpawnSpeed',
+    ]) {
+      assert.equal(
+        record.parameters.find((parameter) => parameter.key === key)?.status,
+        'verified',
+        `${record.weaponId}.${key}`,
+      );
+    }
+    const falloffStart = record.parameters.find(
+      ({ key }) => key === 'damageFalloffStartFrames',
+    )?.value;
+    const falloffEnd = record.parameters.find(
+      ({ key }) => key === 'damageFalloffEndFrames',
+    )?.value;
+    assert.equal(typeof falloffStart, 'number', record.weaponId);
+    assert.equal(typeof falloffEnd, 'number', record.weaponId);
+    assert.ok(
+      (falloffEnd as number) >= (falloffStart as number),
       record.weaponId,
     );
   }
@@ -478,7 +504,7 @@ void test('main weapon parameters expose values only after field-level verificat
   assert.ok(nzap89);
   assert.equal(
     nzap89.parameters.filter(({ status }) => status === 'verified').length,
-    6,
+    9,
   );
   assert.equal(
     nzap89.parameters.filter(({ status }) => status === 'pending').length,

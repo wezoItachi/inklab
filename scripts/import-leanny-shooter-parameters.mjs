@@ -3,7 +3,7 @@ import { readFileSync, writeFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 
 const GAME_VERSION = '11.3.0';
-const CHECKED_AT = '2026-10-07';
+const CHECKED_AT = '2026-10-26';
 const SOURCE_ID = 'leanny-splat3';
 const UPSTREAM_ROOT = 'data/parameter/1130/weapon';
 
@@ -71,10 +71,15 @@ const shooterParameters = new Map(
     const sourceText = readFileSync(sourcePath, 'utf8');
     sourceFiles.set(fileName, sourceText);
     const gameParameters = JSON.parse(sourceText).GameParameters;
-    const damage = gameParameters?.DamageParam?.ValueMax;
+    const damageParam = gameParameters?.DamageParam;
+    const damage = damageParam?.ValueMax;
+    const moveParam = gameParameters?.MoveParam;
     const weaponParam = gameParameters?.WeaponParam;
     if (
       typeof damage !== 'number' ||
+      typeof damageParam?.ReduceStartFrame !== 'number' ||
+      typeof damageParam?.ReduceEndFrame !== 'number' ||
+      typeof moveParam?.SpawnSpeed !== 'number' ||
       typeof weaponParam?.InkConsume !== 'number' ||
       typeof weaponParam?.Stand_DegSwerve !== 'number' ||
       typeof weaponParam?.Jump_DegSwerve !== 'number' ||
@@ -125,6 +130,33 @@ const shooterParameters = new Map(
         '需要先统一最大伤害距离、衰减起点、弹丸寿命与界面射程之间的定义和换算',
       ),
       verifiedField({
+        key: 'damageFalloffStartFrames',
+        label: '伤害开始衰减帧',
+        value: damageParam.ReduceStartFrame,
+        unit: 'frames',
+        fileName,
+        path: 'GameParameters.DamageParam.ReduceStartFrame',
+        note: '弹丸生成后开始进入伤害衰减的显式帧数；不是距离值',
+      }),
+      verifiedField({
+        key: 'damageFalloffEndFrames',
+        label: '伤害衰减结束帧',
+        value: damageParam.ReduceEndFrame,
+        unit: 'frames',
+        fileName,
+        path: 'GameParameters.DamageParam.ReduceEndFrame',
+        note: '弹丸生成后到达最低伤害层的显式帧数；不是弹丸寿命',
+      }),
+      verifiedField({
+        key: 'projectileSpawnSpeed',
+        label: '弹丸初速',
+        value: moveParam.SpawnSpeed,
+        unit: 'internal',
+        fileName,
+        path: 'GameParameters.MoveParam.SpawnSpeed',
+        note: '直接记录 SpawnSpeed 内部值；尚未与后续运动阶段积分成距离',
+      }),
+      verifiedField({
         key: 'groundShotSpreadDegrees',
         label: '地面射击扩散',
         value: weaponParam.Stand_DegSwerve,
@@ -164,10 +196,13 @@ for (const weapon of shooterWeapons) {
     throw new Error(`Missing shooter parameter record: ${weapon.id}`);
 }
 
-const recordsWithVerifiedFields = records.filter((record) =>
+const importedShooterRecords = records.filter((record) =>
+  shooterParameters.has(record.weaponId),
+);
+const recordsWithVerifiedFields = importedShooterRecords.filter((record) =>
   record.parameters.some((parameter) => parameter.status === 'verified'),
 ).length;
-const pendingOnlyRecords = records.filter((record) =>
+const pendingOnlyRecords = importedShooterRecords.filter((record) =>
   record.parameters.every((parameter) => parameter.status === 'pending'),
 ).length;
 
@@ -181,7 +216,7 @@ writeDatabase('parameter-import-report.v11.3.0.json', {
   sourceId: SOURCE_ID,
   sourceCommit: '7280ff9cde8bb1c5dcef46c700c326471584d2e6',
   attribution: 'Data provided by Lean',
-  scope: 'Shooter family explicit fields only',
+  scope: 'Shooter family explicit damage, cadence, ink, spread, movement, and range-evidence fields only',
   inputs: [...sourceFiles.entries()]
     .sort(([left], [right]) => left.localeCompare(right))
     .map(([fileName, sourceText]) => ({
@@ -199,8 +234,12 @@ writeDatabase('import-report.v11.3.0.json', {
   ...catalogImportReport,
   outputCounts: {
     ...catalogImportReport.outputCounts,
-    preservedVerifiedParameterRecords: recordsWithVerifiedFields,
-    pendingParameterRecords: pendingOnlyRecords,
+    preservedVerifiedParameterRecords: records.filter((record) =>
+      record.parameters.some((parameter) => parameter.status === 'verified'),
+    ).length,
+    pendingParameterRecords: records.filter((record) =>
+      record.parameters.every((parameter) => parameter.status === 'pending'),
+    ).length,
   },
 });
 

@@ -11,6 +11,9 @@ export type MainWeaponEfficiency = {
   damagePerShot: number | null;
   fireIntervalFrames: number | null;
   inkConsumptionPerShot: number | null;
+  damageFalloffStartFrames: number | null;
+  damageFalloffEndFrames: number | null;
+  projectileSpawnSpeed: number | null;
   shotsPerFullTank: number | null;
   fullTankFiringWindowFrames: number | null;
   fullTankFiringWindowSeconds: number | null;
@@ -320,10 +323,25 @@ export function analyzeMainWeaponEfficiency(
     record.parameters,
     'inkConsumptionPerShot',
   );
+  const damageFalloffStartFrames = getVerifiedNonNegativeNumber(
+    record.parameters,
+    'damageFalloffStartFrames',
+  );
+  const damageFalloffEndFrames = getVerifiedNonNegativeNumber(
+    record.parameters,
+    'damageFalloffEndFrames',
+  );
+  const projectileSpawnSpeed = getVerifiedNumber(
+    record.parameters,
+    'projectileSpawnSpeed',
+  );
   const verifiedInputCount = [
     damagePerShot,
     fireIntervalFrames,
     inkConsumptionPerShot,
+    damageFalloffStartFrames,
+    damageFalloffEndFrames,
+    projectileSpawnSpeed,
   ].filter((value) => value !== null).length;
   if (verifiedInputCount === 0) return null;
 
@@ -347,6 +365,9 @@ export function analyzeMainWeaponEfficiency(
     damagePerShot,
     fireIntervalFrames,
     inkConsumptionPerShot,
+    damageFalloffStartFrames,
+    damageFalloffEndFrames,
+    projectileSpawnSpeed,
     shotsPerFullTank,
     fullTankFiringWindowFrames,
     fullTankFiringWindowSeconds:

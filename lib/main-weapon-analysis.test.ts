@@ -22,10 +22,13 @@ void test('derives N-ZAP89 efficiency only from verified 11.3.0 fields', () => {
   );
   assert.ok(result);
   assert.deepEqual(result, {
-    verifiedInputCount: 3,
+    verifiedInputCount: 6,
     damagePerShot: 30,
     fireIntervalFrames: 5,
     inkConsumptionPerShot: 0.8,
+    damageFalloffStartFrames: 8,
+    damageFalloffEndFrames: 24,
+    projectileSpawnSpeed: 2.2,
     shotsPerFullTank: 125,
     fullTankFiringWindowFrames: 620,
     fullTankFiringWindowSeconds: 620 / 60,
@@ -42,10 +45,13 @@ void test('derives partial Splattershot results without guessing its omitted fir
   );
   assert.ok(result);
   assert.deepEqual(result, {
-    verifiedInputCount: 2,
+    verifiedInputCount: 5,
     damagePerShot: 36,
     fireIntervalFrames: null,
     inkConsumptionPerShot: 0.92,
+    damageFalloffStartFrames: 8,
+    damageFalloffEndFrames: 40,
+    projectileSpawnSpeed: 2.266,
     shotsPerFullTank: 108,
     fullTankFiringWindowFrames: null,
     fullTankFiringWindowSeconds: null,
@@ -62,10 +68,13 @@ void test('derives complete Splash-o-matic results from the corrected weapon ide
   );
   assert.ok(result);
   assert.deepEqual(result, {
-    verifiedInputCount: 3,
+    verifiedInputCount: 6,
     damagePerShot: 28,
     fireIntervalFrames: 5,
     inkConsumptionPerShot: 0.8,
+    damageFalloffStartFrames: 4,
+    damageFalloffEndFrames: 20,
+    projectileSpawnSpeed: 4.0376,
     shotsPerFullTank: 125,
     fullTankFiringWindowFrames: 620,
     fullTankFiringWindowSeconds: 620 / 60,

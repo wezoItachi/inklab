@@ -1,10 +1,10 @@
 {
   "gameVersion": "11.3.0",
-  "importedAt": "2026-10-07",
+  "importedAt": "2026-10-26",
   "sourceId": "leanny-splat3",
   "sourceCommit": "7280ff9cde8bb1c5dcef46c700c326471584d2e6",
   "attribution": "Data provided by Lean",
-  "scope": "Shooter family explicit fields only",
+  "scope": "Shooter family explicit damage, cadence, ink, spread, movement, and range-evidence fields only",
   "inputs": [
     {
       "upstreamPath": "data/parameter/1130/weapon/WeaponShooterBlaze.game__GameParameterTable.json",
@@ -66,7 +66,7 @@
   "outputCounts": {
     "shooterWeapons": 40,
     "shooterParameterClasses": 14,
-    "recordsWithVerifiedFields": 43,
-    "pendingOnlyRecords": 131
+    "recordsWithVerifiedFields": 40,
+    "pendingOnlyRecords": 0
   }
 }

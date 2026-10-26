@@ -61,11 +61,11 @@ void test('every catalog weapon exposes honest parameter audit progress', () => 
     assert.equal(parameters.weaponId, weapon.id);
     assert.equal(summary.total, parameters.parameters.length);
     if (weapon.id === 'shooter-quickmiddle-cstm01') {
-      assert.deepEqual(summary, { total: 7, verified: 6, pending: 1, demo: 0 });
+      assert.deepEqual(summary, { total: 10, verified: 9, pending: 1, demo: 0 });
     } else if (weapon.id === 'shooter-normalt') {
-      assert.deepEqual(summary, { total: 7, verified: 5, pending: 2, demo: 0 });
+      assert.deepEqual(summary, { total: 10, verified: 8, pending: 2, demo: 0 });
     } else if (weapon.id === 'shooter-precision') {
-      assert.deepEqual(summary, { total: 7, verified: 6, pending: 1, demo: 0 });
+      assert.deepEqual(summary, { total: 10, verified: 9, pending: 1, demo: 0 });
     } else if (weapon.id === 'charger-normalt') {
       assert.deepEqual(summary, { total: 7, verified: 5, pending: 2, demo: 0 });
     } else if (weapon.id === 'roller-normalt') {
@@ -86,8 +86,8 @@ void test('every catalog weapon exposes honest parameter audit progress', () => 
       const usesNormalParameterClass =
         weapon.upstreamRowId.startsWith('Shooter_Normal_');
       assert.deepEqual(summary, {
-        total: 7,
-        verified: usesNormalParameterClass ? 5 : 6,
+        total: 10,
+        verified: usesNormalParameterClass ? 8 : 9,
         pending: usesNormalParameterClass ? 2 : 1,
         demo: 0,
       });
