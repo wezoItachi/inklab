@@ -26,6 +26,13 @@ void test('creates an honest versioned snapshot for every catalog weapon', () =>
       snapshot.fields.find(({ label }) => label === 'AP 效果曲线')?.status,
       'partial',
     );
+    const mainParameterField = snapshot.fields.find(
+      ({ label }) => label === '主武参数',
+    );
+    assert.equal(mainParameterField?.status, 'partial');
+    assert.match(mainParameterField?.note ?? '', /已核对/);
+    assert.match(mainParameterField?.note ?? '', /不适用/);
+    assert.match(mainParameterField?.note ?? '', /待验证/);
     assert.equal(
       snapshot.fields.find(({ label }) => label === '系统建议')?.status,
       'demo',

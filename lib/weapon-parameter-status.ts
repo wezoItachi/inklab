@@ -57,6 +57,13 @@ export function getWeaponParameterSnapshot(
   const verifiedMainParameters = mainParameters.filter(
     ({ status }) => status === 'verified',
   ).length;
+  const notApplicableMainParameters = mainParameters.filter(
+    ({ status }) => status === 'not-applicable',
+  ).length;
+  const pendingMainParameters =
+    mainParameters.length -
+    verifiedMainParameters -
+    notApplicableMainParameters;
   return {
     weaponId: weapon.id,
     gameVersion: DATA_VERSION,
@@ -88,10 +95,13 @@ export function getWeaponParameterSnapshot(
       {
         label: '主武参数',
         status:
-          verifiedMainParameters === mainParameters.length
+          pendingMainParameters === 0
             ? 'verified'
-            : 'pending',
-        note: `已建 ${mainParameters.length} 个字段 · ${verifiedMainParameters} 个已核对`,
+            : verifiedMainParameters > 0 || notApplicableMainParameters > 0
+              ? 'partial'
+              : 'pending',
+        source: pendingMainParameters === 0 ? 'leanny1130' : undefined,
+        note: `已建 ${mainParameters.length} 个字段 · ${verifiedMainParameters} 个已核对 · ${notApplicableMainParameters} 个不适用 · ${pendingMainParameters} 个待验证`,
       },
       {
         label: 'AP 效果曲线',
