@@ -732,56 +732,77 @@
           "label": "蓄力储存时限",
           "value": null,
           "unit": "frames",
-          "status": "pending",
-          "note": "GameParameters.WeaponKeepChargeParam.KeepChargeFullFrame 未显式提供可用值"
+          "status": "not-applicable",
+          "note": "固定上游文件未包含 WeaponKeepChargeParam 可选机制对象，因此该对象的从属字段对本武器不适用；未由此推断任何布尔能力或数值默认值",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponSpinnerStandard.game__GameParameterTable.json",
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "fullChargeOverrideFiringDurationFrames",
           "label": "满蓄力覆盖射击窗口",
           "value": null,
           "unit": "frames",
-          "status": "pending",
-          "note": "GameParameters.WeaponFullChargeParam.MaxShootingFrame_Second 未显式提供可用值"
+          "status": "not-applicable",
+          "note": "固定上游文件未包含 WeaponFullChargeParam 可选机制对象，因此该对象的从属字段对本武器不适用；未由此推断任何布尔能力或数值默认值",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponSpinnerStandard.game__GameParameterTable.json",
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "fullChargeOverrideFireIntervalFrames",
           "label": "满蓄力覆盖射击间隔",
           "value": null,
           "unit": "frames",
-          "status": "pending",
-          "note": "GameParameters.WeaponFullChargeParam.RepeatFrame 未显式提供可用值"
+          "status": "not-applicable",
+          "note": "固定上游文件未包含 WeaponFullChargeParam 可选机制对象，因此该对象的从属字段对本武器不适用；未由此推断任何布尔能力或数值默认值",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponSpinnerStandard.game__GameParameterTable.json",
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "variableDamagePerShot",
           "label": "可变射击状态单发伤害",
           "value": null,
           "unit": "damage",
-          "status": "pending",
-          "note": "GameParameters.VariableDamageParam.ValueFullChargeMax|ValueMax 未显式提供可用值"
+          "status": "not-applicable",
+          "note": "固定上游文件未包含 VariableDamageParam 可选机制对象，因此该对象的从属字段对本武器不适用；未由此推断任何布尔能力或数值默认值",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponSpinnerStandard.game__GameParameterTable.json",
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "variableFireIntervalFrames",
           "label": "可变射击状态间隔",
           "value": null,
           "unit": "frames",
-          "status": "pending",
-          "note": "GameParameters.VariableShotParam.RepeatFrame 未显式提供可用值"
+          "status": "not-applicable",
+          "note": "固定上游文件未包含 VariableShotParam 可选机制对象，因此该对象的从属字段对本武器不适用；未由此推断任何布尔能力或数值默认值",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponSpinnerStandard.game__GameParameterTable.json",
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "variableMovementSpeedWhileFiring",
           "label": "可变射击状态移动速度",
           "value": null,
           "unit": "internal",
-          "status": "pending",
-          "note": "GameParameters.VariableShotParam.MoveSpeed 未显式提供可用值"
+          "status": "not-applicable",
+          "note": "固定上游文件未包含 VariableShotParam 可选机制对象，因此该对象的从属字段对本武器不适用；未由此推断任何布尔能力或数值默认值",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponSpinnerStandard.game__GameParameterTable.json",
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "variableTransitionFrames",
           "label": "可变射击状态过渡帧",
           "value": null,
           "unit": "frames",
-          "status": "pending",
-          "note": "GameParameters.VariableShotParam.VariableInterpolatedFrame 未显式提供可用值"
+          "status": "not-applicable",
+          "note": "固定上游文件未包含 VariableShotParam 可选机制对象，因此该对象的从属字段对本武器不适用；未由此推断任何布尔能力或数值默认值",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponSpinnerStandard.game__GameParameterTable.json",
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "effectiveRange",
@@ -11846,16 +11867,22 @@
           "label": "爆风伤害",
           "value": null,
           "unit": "damage",
-          "status": "pending",
-          "note": "GameParameters.BlastParam.BlastParam.DistanceDamage[0].Damage 未显式提供可用值"
+          "status": "not-applicable",
+          "note": "固定上游文件未包含 BlastParam 可选机制对象，因此该对象的从属字段对本武器不适用；未由此推断任何布尔能力或数值默认值",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponSlosherStrong.game__GameParameterTable.json",
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "blastDamageRadius",
           "label": "爆风伤害范围",
           "value": null,
           "unit": "internal",
-          "status": "pending",
-          "note": "GameParameters.BlastParam.BlastParam.DistanceDamage[0].Distance 未显式提供可用值"
+          "status": "not-applicable",
+          "note": "固定上游文件未包含 BlastParam 可选机制对象，因此该对象的从属字段对本武器不适用；未由此推断任何布尔能力或数值默认值",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponSlosherStrong.game__GameParameterTable.json",
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "effectiveRange",
@@ -11990,16 +12017,22 @@
           "label": "爆风伤害",
           "value": null,
           "unit": "damage",
-          "status": "pending",
-          "note": "GameParameters.BlastParam.BlastParam.DistanceDamage[0].Damage 未显式提供可用值"
+          "status": "not-applicable",
+          "note": "固定上游文件未包含 BlastParam 可选机制对象，因此该对象的从属字段对本武器不适用；未由此推断任何布尔能力或数值默认值",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponSlosherStrong.game__GameParameterTable.json",
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "blastDamageRadius",
           "label": "爆风伤害范围",
           "value": null,
           "unit": "internal",
-          "status": "pending",
-          "note": "GameParameters.BlastParam.BlastParam.DistanceDamage[0].Distance 未显式提供可用值"
+          "status": "not-applicable",
+          "note": "固定上游文件未包含 BlastParam 可选机制对象，因此该对象的从属字段对本武器不适用；未由此推断任何布尔能力或数值默认值",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponSlosherStrong.game__GameParameterTable.json",
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "effectiveRange",
@@ -12134,16 +12167,22 @@
           "label": "爆风伤害",
           "value": null,
           "unit": "damage",
-          "status": "pending",
-          "note": "GameParameters.BlastParam.BlastParam.DistanceDamage[0].Damage 未显式提供可用值"
+          "status": "not-applicable",
+          "note": "固定上游文件未包含 BlastParam 可选机制对象，因此该对象的从属字段对本武器不适用；未由此推断任何布尔能力或数值默认值",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponSlosherStrong.game__GameParameterTable.json",
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "blastDamageRadius",
           "label": "爆风伤害范围",
           "value": null,
           "unit": "internal",
-          "status": "pending",
-          "note": "GameParameters.BlastParam.BlastParam.DistanceDamage[0].Distance 未显式提供可用值"
+          "status": "not-applicable",
+          "note": "固定上游文件未包含 BlastParam 可选机制对象，因此该对象的从属字段对本武器不适用；未由此推断任何布尔能力或数值默认值",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponSlosherStrong.game__GameParameterTable.json",
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "effectiveRange",
@@ -12284,16 +12323,22 @@
           "label": "爆风伤害",
           "value": null,
           "unit": "damage",
-          "status": "pending",
-          "note": "GameParameters.BlastParam.BlastParam.DistanceDamage[0].Damage 未显式提供可用值"
+          "status": "not-applicable",
+          "note": "固定上游文件未包含 BlastParam 可选机制对象，因此该对象的从属字段对本武器不适用；未由此推断任何布尔能力或数值默认值",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponSlosherDiffusion.game__GameParameterTable.json",
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "blastDamageRadius",
           "label": "爆风伤害范围",
           "value": null,
           "unit": "internal",
-          "status": "pending",
-          "note": "GameParameters.BlastParam.BlastParam.DistanceDamage[0].Distance 未显式提供可用值"
+          "status": "not-applicable",
+          "note": "固定上游文件未包含 BlastParam 可选机制对象，因此该对象的从属字段对本武器不适用；未由此推断任何布尔能力或数值默认值",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponSlosherDiffusion.game__GameParameterTable.json",
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "effectiveRange",
@@ -12434,16 +12479,22 @@
           "label": "爆风伤害",
           "value": null,
           "unit": "damage",
-          "status": "pending",
-          "note": "GameParameters.BlastParam.BlastParam.DistanceDamage[0].Damage 未显式提供可用值"
+          "status": "not-applicable",
+          "note": "固定上游文件未包含 BlastParam 可选机制对象，因此该对象的从属字段对本武器不适用；未由此推断任何布尔能力或数值默认值",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponSlosherDiffusion.game__GameParameterTable.json",
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "blastDamageRadius",
           "label": "爆风伤害范围",
           "value": null,
           "unit": "internal",
-          "status": "pending",
-          "note": "GameParameters.BlastParam.BlastParam.DistanceDamage[0].Distance 未显式提供可用值"
+          "status": "not-applicable",
+          "note": "固定上游文件未包含 BlastParam 可选机制对象，因此该对象的从属字段对本武器不适用；未由此推断任何布尔能力或数值默认值",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponSlosherDiffusion.game__GameParameterTable.json",
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "effectiveRange",
@@ -12584,16 +12635,22 @@
           "label": "爆风伤害",
           "value": null,
           "unit": "damage",
-          "status": "pending",
-          "note": "GameParameters.BlastParam.BlastParam.DistanceDamage[0].Damage 未显式提供可用值"
+          "status": "not-applicable",
+          "note": "固定上游文件未包含 BlastParam 可选机制对象，因此该对象的从属字段对本武器不适用；未由此推断任何布尔能力或数值默认值",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponSlosherDiffusion.game__GameParameterTable.json",
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "blastDamageRadius",
           "label": "爆风伤害范围",
           "value": null,
           "unit": "internal",
-          "status": "pending",
-          "note": "GameParameters.BlastParam.BlastParam.DistanceDamage[0].Distance 未显式提供可用值"
+          "status": "not-applicable",
+          "note": "固定上游文件未包含 BlastParam 可选机制对象，因此该对象的从属字段对本武器不适用；未由此推断任何布尔能力或数值默认值",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponSlosherDiffusion.game__GameParameterTable.json",
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "effectiveRange",
@@ -12734,16 +12791,22 @@
           "label": "爆风伤害",
           "value": null,
           "unit": "damage",
-          "status": "pending",
-          "note": "GameParameters.BlastParam.BlastParam.DistanceDamage[0].Damage 未显式提供可用值"
+          "status": "not-applicable",
+          "note": "固定上游文件未包含 BlastParam 可选机制对象，因此该对象的从属字段对本武器不适用；未由此推断任何布尔能力或数值默认值",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponSlosherLauncher.game__GameParameterTable.json",
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "blastDamageRadius",
           "label": "爆风伤害范围",
           "value": null,
           "unit": "internal",
-          "status": "pending",
-          "note": "GameParameters.BlastParam.BlastParam.DistanceDamage[0].Distance 未显式提供可用值"
+          "status": "not-applicable",
+          "note": "固定上游文件未包含 BlastParam 可选机制对象，因此该对象的从属字段对本武器不适用；未由此推断任何布尔能力或数值默认值",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponSlosherLauncher.game__GameParameterTable.json",
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "effectiveRange",
@@ -12884,16 +12947,22 @@
           "label": "爆风伤害",
           "value": null,
           "unit": "damage",
-          "status": "pending",
-          "note": "GameParameters.BlastParam.BlastParam.DistanceDamage[0].Damage 未显式提供可用值"
+          "status": "not-applicable",
+          "note": "固定上游文件未包含 BlastParam 可选机制对象，因此该对象的从属字段对本武器不适用；未由此推断任何布尔能力或数值默认值",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponSlosherLauncher.game__GameParameterTable.json",
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "blastDamageRadius",
           "label": "爆风伤害范围",
           "value": null,
           "unit": "internal",
-          "status": "pending",
-          "note": "GameParameters.BlastParam.BlastParam.DistanceDamage[0].Distance 未显式提供可用值"
+          "status": "not-applicable",
+          "note": "固定上游文件未包含 BlastParam 可选机制对象，因此该对象的从属字段对本武器不适用；未由此推断任何布尔能力或数值默认值",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponSlosherLauncher.game__GameParameterTable.json",
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "effectiveRange",
@@ -13034,16 +13103,22 @@
           "label": "爆风伤害",
           "value": null,
           "unit": "damage",
-          "status": "pending",
-          "note": "GameParameters.BlastParam.BlastParam.DistanceDamage[0].Damage 未显式提供可用值"
+          "status": "not-applicable",
+          "note": "固定上游文件未包含 BlastParam 可选机制对象，因此该对象的从属字段对本武器不适用；未由此推断任何布尔能力或数值默认值",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponSlosherBathtub.game__GameParameterTable.json",
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "blastDamageRadius",
           "label": "爆风伤害范围",
           "value": null,
           "unit": "internal",
-          "status": "pending",
-          "note": "GameParameters.BlastParam.BlastParam.DistanceDamage[0].Distance 未显式提供可用值"
+          "status": "not-applicable",
+          "note": "固定上游文件未包含 BlastParam 可选机制对象，因此该对象的从属字段对本武器不适用；未由此推断任何布尔能力或数值默认值",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponSlosherBathtub.game__GameParameterTable.json",
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "effectiveRange",
@@ -13184,16 +13259,22 @@
           "label": "爆风伤害",
           "value": null,
           "unit": "damage",
-          "status": "pending",
-          "note": "GameParameters.BlastParam.BlastParam.DistanceDamage[0].Damage 未显式提供可用值"
+          "status": "not-applicable",
+          "note": "固定上游文件未包含 BlastParam 可选机制对象，因此该对象的从属字段对本武器不适用；未由此推断任何布尔能力或数值默认值",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponSlosherBathtub.game__GameParameterTable.json",
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "blastDamageRadius",
           "label": "爆风伤害范围",
           "value": null,
           "unit": "internal",
-          "status": "pending",
-          "note": "GameParameters.BlastParam.BlastParam.DistanceDamage[0].Distance 未显式提供可用值"
+          "status": "not-applicable",
+          "note": "固定上游文件未包含 BlastParam 可选机制对象，因此该对象的从属字段对本武器不适用；未由此推断任何布尔能力或数值默认值",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponSlosherBathtub.game__GameParameterTable.json",
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "effectiveRange",
@@ -13646,16 +13727,22 @@
           "label": "爆风伤害",
           "value": null,
           "unit": "damage",
-          "status": "pending",
-          "note": "GameParameters.BlastParam.BlastParam.DistanceDamage[0].Damage 未显式提供可用值"
+          "status": "not-applicable",
+          "note": "固定上游文件未包含 BlastParam 可选机制对象，因此该对象的从属字段对本武器不适用；未由此推断任何布尔能力或数值默认值",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponSlosherDouble.game__GameParameterTable.json",
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "blastDamageRadius",
           "label": "爆风伤害范围",
           "value": null,
           "unit": "internal",
-          "status": "pending",
-          "note": "GameParameters.BlastParam.BlastParam.DistanceDamage[0].Distance 未显式提供可用值"
+          "status": "not-applicable",
+          "note": "固定上游文件未包含 BlastParam 可选机制对象，因此该对象的从属字段对本武器不适用；未由此推断任何布尔能力或数值默认值",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponSlosherDouble.game__GameParameterTable.json",
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "effectiveRange",
@@ -13796,16 +13883,22 @@
           "label": "爆风伤害",
           "value": null,
           "unit": "damage",
-          "status": "pending",
-          "note": "GameParameters.BlastParam.BlastParam.DistanceDamage[0].Damage 未显式提供可用值"
+          "status": "not-applicable",
+          "note": "固定上游文件未包含 BlastParam 可选机制对象，因此该对象的从属字段对本武器不适用；未由此推断任何布尔能力或数值默认值",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponSlosherDouble.game__GameParameterTable.json",
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "blastDamageRadius",
           "label": "爆风伤害范围",
           "value": null,
           "unit": "internal",
-          "status": "pending",
-          "note": "GameParameters.BlastParam.BlastParam.DistanceDamage[0].Distance 未显式提供可用值"
+          "status": "not-applicable",
+          "note": "固定上游文件未包含 BlastParam 可选机制对象，因此该对象的从属字段对本武器不适用；未由此推断任何布尔能力或数值默认值",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponSlosherDouble.game__GameParameterTable.json",
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "effectiveRange",
@@ -13946,16 +14039,22 @@
           "label": "爆风伤害",
           "value": null,
           "unit": "damage",
-          "status": "pending",
-          "note": "GameParameters.BlastParam.BlastParam.DistanceDamage[0].Damage 未显式提供可用值"
+          "status": "not-applicable",
+          "note": "固定上游文件未包含 BlastParam 可选机制对象，因此该对象的从属字段对本武器不适用；未由此推断任何布尔能力或数值默认值",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponSlosherDouble.game__GameParameterTable.json",
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "blastDamageRadius",
           "label": "爆风伤害范围",
           "value": null,
           "unit": "internal",
-          "status": "pending",
-          "note": "GameParameters.BlastParam.BlastParam.DistanceDamage[0].Distance 未显式提供可用值"
+          "status": "not-applicable",
+          "note": "固定上游文件未包含 BlastParam 可选机制对象，因此该对象的从属字段对本武器不适用；未由此推断任何布尔能力或数值默认值",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponSlosherDouble.game__GameParameterTable.json",
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "effectiveRange",
@@ -14145,56 +14244,77 @@
           "label": "蓄力储存时限",
           "value": null,
           "unit": "frames",
-          "status": "pending",
-          "note": "GameParameters.WeaponKeepChargeParam.KeepChargeFullFrame 未显式提供可用值"
+          "status": "not-applicable",
+          "note": "固定上游文件未包含 WeaponKeepChargeParam 可选机制对象，因此该对象的从属字段对本武器不适用；未由此推断任何布尔能力或数值默认值",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponSpinnerQuick.game__GameParameterTable.json",
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "fullChargeOverrideFiringDurationFrames",
           "label": "满蓄力覆盖射击窗口",
           "value": null,
           "unit": "frames",
-          "status": "pending",
-          "note": "GameParameters.WeaponFullChargeParam.MaxShootingFrame_Second 未显式提供可用值"
+          "status": "not-applicable",
+          "note": "固定上游文件未包含 WeaponFullChargeParam 可选机制对象，因此该对象的从属字段对本武器不适用；未由此推断任何布尔能力或数值默认值",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponSpinnerQuick.game__GameParameterTable.json",
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "fullChargeOverrideFireIntervalFrames",
           "label": "满蓄力覆盖射击间隔",
           "value": null,
           "unit": "frames",
-          "status": "pending",
-          "note": "GameParameters.WeaponFullChargeParam.RepeatFrame 未显式提供可用值"
+          "status": "not-applicable",
+          "note": "固定上游文件未包含 WeaponFullChargeParam 可选机制对象，因此该对象的从属字段对本武器不适用；未由此推断任何布尔能力或数值默认值",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponSpinnerQuick.game__GameParameterTable.json",
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "variableDamagePerShot",
           "label": "可变射击状态单发伤害",
           "value": null,
           "unit": "damage",
-          "status": "pending",
-          "note": "GameParameters.VariableDamageParam.ValueFullChargeMax|ValueMax 未显式提供可用值"
+          "status": "not-applicable",
+          "note": "固定上游文件未包含 VariableDamageParam 可选机制对象，因此该对象的从属字段对本武器不适用；未由此推断任何布尔能力或数值默认值",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponSpinnerQuick.game__GameParameterTable.json",
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "variableFireIntervalFrames",
           "label": "可变射击状态间隔",
           "value": null,
           "unit": "frames",
-          "status": "pending",
-          "note": "GameParameters.VariableShotParam.RepeatFrame 未显式提供可用值"
+          "status": "not-applicable",
+          "note": "固定上游文件未包含 VariableShotParam 可选机制对象，因此该对象的从属字段对本武器不适用；未由此推断任何布尔能力或数值默认值",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponSpinnerQuick.game__GameParameterTable.json",
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "variableMovementSpeedWhileFiring",
           "label": "可变射击状态移动速度",
           "value": null,
           "unit": "internal",
-          "status": "pending",
-          "note": "GameParameters.VariableShotParam.MoveSpeed 未显式提供可用值"
+          "status": "not-applicable",
+          "note": "固定上游文件未包含 VariableShotParam 可选机制对象，因此该对象的从属字段对本武器不适用；未由此推断任何布尔能力或数值默认值",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponSpinnerQuick.game__GameParameterTable.json",
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "variableTransitionFrames",
           "label": "可变射击状态过渡帧",
           "value": null,
           "unit": "frames",
-          "status": "pending",
-          "note": "GameParameters.VariableShotParam.VariableInterpolatedFrame 未显式提供可用值"
+          "status": "not-applicable",
+          "note": "固定上游文件未包含 VariableShotParam 可选机制对象，因此该对象的从属字段对本武器不适用；未由此推断任何布尔能力或数值默认值",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponSpinnerQuick.game__GameParameterTable.json",
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "effectiveRange",
@@ -14384,56 +14504,77 @@
           "label": "蓄力储存时限",
           "value": null,
           "unit": "frames",
-          "status": "pending",
-          "note": "GameParameters.WeaponKeepChargeParam.KeepChargeFullFrame 未显式提供可用值"
+          "status": "not-applicable",
+          "note": "固定上游文件未包含 WeaponKeepChargeParam 可选机制对象，因此该对象的从属字段对本武器不适用；未由此推断任何布尔能力或数值默认值",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponSpinnerQuick.game__GameParameterTable.json",
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "fullChargeOverrideFiringDurationFrames",
           "label": "满蓄力覆盖射击窗口",
           "value": null,
           "unit": "frames",
-          "status": "pending",
-          "note": "GameParameters.WeaponFullChargeParam.MaxShootingFrame_Second 未显式提供可用值"
+          "status": "not-applicable",
+          "note": "固定上游文件未包含 WeaponFullChargeParam 可选机制对象，因此该对象的从属字段对本武器不适用；未由此推断任何布尔能力或数值默认值",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponSpinnerQuick.game__GameParameterTable.json",
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "fullChargeOverrideFireIntervalFrames",
           "label": "满蓄力覆盖射击间隔",
           "value": null,
           "unit": "frames",
-          "status": "pending",
-          "note": "GameParameters.WeaponFullChargeParam.RepeatFrame 未显式提供可用值"
+          "status": "not-applicable",
+          "note": "固定上游文件未包含 WeaponFullChargeParam 可选机制对象，因此该对象的从属字段对本武器不适用；未由此推断任何布尔能力或数值默认值",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponSpinnerQuick.game__GameParameterTable.json",
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "variableDamagePerShot",
           "label": "可变射击状态单发伤害",
           "value": null,
           "unit": "damage",
-          "status": "pending",
-          "note": "GameParameters.VariableDamageParam.ValueFullChargeMax|ValueMax 未显式提供可用值"
+          "status": "not-applicable",
+          "note": "固定上游文件未包含 VariableDamageParam 可选机制对象，因此该对象的从属字段对本武器不适用；未由此推断任何布尔能力或数值默认值",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponSpinnerQuick.game__GameParameterTable.json",
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "variableFireIntervalFrames",
           "label": "可变射击状态间隔",
           "value": null,
           "unit": "frames",
-          "status": "pending",
-          "note": "GameParameters.VariableShotParam.RepeatFrame 未显式提供可用值"
+          "status": "not-applicable",
+          "note": "固定上游文件未包含 VariableShotParam 可选机制对象，因此该对象的从属字段对本武器不适用；未由此推断任何布尔能力或数值默认值",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponSpinnerQuick.game__GameParameterTable.json",
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "variableMovementSpeedWhileFiring",
           "label": "可变射击状态移动速度",
           "value": null,
           "unit": "internal",
-          "status": "pending",
-          "note": "GameParameters.VariableShotParam.MoveSpeed 未显式提供可用值"
+          "status": "not-applicable",
+          "note": "固定上游文件未包含 VariableShotParam 可选机制对象，因此该对象的从属字段对本武器不适用；未由此推断任何布尔能力或数值默认值",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponSpinnerQuick.game__GameParameterTable.json",
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "variableTransitionFrames",
           "label": "可变射击状态过渡帧",
           "value": null,
           "unit": "frames",
-          "status": "pending",
-          "note": "GameParameters.VariableShotParam.VariableInterpolatedFrame 未显式提供可用值"
+          "status": "not-applicable",
+          "note": "固定上游文件未包含 VariableShotParam 可选机制对象，因此该对象的从属字段对本武器不适用；未由此推断任何布尔能力或数值默认值",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponSpinnerQuick.game__GameParameterTable.json",
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "effectiveRange",
@@ -14623,56 +14764,77 @@
           "label": "蓄力储存时限",
           "value": null,
           "unit": "frames",
-          "status": "pending",
-          "note": "GameParameters.WeaponKeepChargeParam.KeepChargeFullFrame 未显式提供可用值"
+          "status": "not-applicable",
+          "note": "固定上游文件未包含 WeaponKeepChargeParam 可选机制对象，因此该对象的从属字段对本武器不适用；未由此推断任何布尔能力或数值默认值",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponSpinnerQuick.game__GameParameterTable.json",
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "fullChargeOverrideFiringDurationFrames",
           "label": "满蓄力覆盖射击窗口",
           "value": null,
           "unit": "frames",
-          "status": "pending",
-          "note": "GameParameters.WeaponFullChargeParam.MaxShootingFrame_Second 未显式提供可用值"
+          "status": "not-applicable",
+          "note": "固定上游文件未包含 WeaponFullChargeParam 可选机制对象，因此该对象的从属字段对本武器不适用；未由此推断任何布尔能力或数值默认值",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponSpinnerQuick.game__GameParameterTable.json",
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "fullChargeOverrideFireIntervalFrames",
           "label": "满蓄力覆盖射击间隔",
           "value": null,
           "unit": "frames",
-          "status": "pending",
-          "note": "GameParameters.WeaponFullChargeParam.RepeatFrame 未显式提供可用值"
+          "status": "not-applicable",
+          "note": "固定上游文件未包含 WeaponFullChargeParam 可选机制对象，因此该对象的从属字段对本武器不适用；未由此推断任何布尔能力或数值默认值",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponSpinnerQuick.game__GameParameterTable.json",
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "variableDamagePerShot",
           "label": "可变射击状态单发伤害",
           "value": null,
           "unit": "damage",
-          "status": "pending",
-          "note": "GameParameters.VariableDamageParam.ValueFullChargeMax|ValueMax 未显式提供可用值"
+          "status": "not-applicable",
+          "note": "固定上游文件未包含 VariableDamageParam 可选机制对象，因此该对象的从属字段对本武器不适用；未由此推断任何布尔能力或数值默认值",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponSpinnerQuick.game__GameParameterTable.json",
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "variableFireIntervalFrames",
           "label": "可变射击状态间隔",
           "value": null,
           "unit": "frames",
-          "status": "pending",
-          "note": "GameParameters.VariableShotParam.RepeatFrame 未显式提供可用值"
+          "status": "not-applicable",
+          "note": "固定上游文件未包含 VariableShotParam 可选机制对象，因此该对象的从属字段对本武器不适用；未由此推断任何布尔能力或数值默认值",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponSpinnerQuick.game__GameParameterTable.json",
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "variableMovementSpeedWhileFiring",
           "label": "可变射击状态移动速度",
           "value": null,
           "unit": "internal",
-          "status": "pending",
-          "note": "GameParameters.VariableShotParam.MoveSpeed 未显式提供可用值"
+          "status": "not-applicable",
+          "note": "固定上游文件未包含 VariableShotParam 可选机制对象，因此该对象的从属字段对本武器不适用；未由此推断任何布尔能力或数值默认值",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponSpinnerQuick.game__GameParameterTable.json",
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "variableTransitionFrames",
           "label": "可变射击状态过渡帧",
           "value": null,
           "unit": "frames",
-          "status": "pending",
-          "note": "GameParameters.VariableShotParam.VariableInterpolatedFrame 未显式提供可用值"
+          "status": "not-applicable",
+          "note": "固定上游文件未包含 VariableShotParam 可选机制对象，因此该对象的从属字段对本武器不适用；未由此推断任何布尔能力或数值默认值",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponSpinnerQuick.game__GameParameterTable.json",
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "effectiveRange",
@@ -14862,56 +15024,77 @@
           "label": "蓄力储存时限",
           "value": null,
           "unit": "frames",
-          "status": "pending",
-          "note": "GameParameters.WeaponKeepChargeParam.KeepChargeFullFrame 未显式提供可用值"
+          "status": "not-applicable",
+          "note": "固定上游文件未包含 WeaponKeepChargeParam 可选机制对象，因此该对象的从属字段对本武器不适用；未由此推断任何布尔能力或数值默认值",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponSpinnerStandard.game__GameParameterTable.json",
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "fullChargeOverrideFiringDurationFrames",
           "label": "满蓄力覆盖射击窗口",
           "value": null,
           "unit": "frames",
-          "status": "pending",
-          "note": "GameParameters.WeaponFullChargeParam.MaxShootingFrame_Second 未显式提供可用值"
+          "status": "not-applicable",
+          "note": "固定上游文件未包含 WeaponFullChargeParam 可选机制对象，因此该对象的从属字段对本武器不适用；未由此推断任何布尔能力或数值默认值",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponSpinnerStandard.game__GameParameterTable.json",
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "fullChargeOverrideFireIntervalFrames",
           "label": "满蓄力覆盖射击间隔",
           "value": null,
           "unit": "frames",
-          "status": "pending",
-          "note": "GameParameters.WeaponFullChargeParam.RepeatFrame 未显式提供可用值"
+          "status": "not-applicable",
+          "note": "固定上游文件未包含 WeaponFullChargeParam 可选机制对象，因此该对象的从属字段对本武器不适用；未由此推断任何布尔能力或数值默认值",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponSpinnerStandard.game__GameParameterTable.json",
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "variableDamagePerShot",
           "label": "可变射击状态单发伤害",
           "value": null,
           "unit": "damage",
-          "status": "pending",
-          "note": "GameParameters.VariableDamageParam.ValueFullChargeMax|ValueMax 未显式提供可用值"
+          "status": "not-applicable",
+          "note": "固定上游文件未包含 VariableDamageParam 可选机制对象，因此该对象的从属字段对本武器不适用；未由此推断任何布尔能力或数值默认值",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponSpinnerStandard.game__GameParameterTable.json",
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "variableFireIntervalFrames",
           "label": "可变射击状态间隔",
           "value": null,
           "unit": "frames",
-          "status": "pending",
-          "note": "GameParameters.VariableShotParam.RepeatFrame 未显式提供可用值"
+          "status": "not-applicable",
+          "note": "固定上游文件未包含 VariableShotParam 可选机制对象，因此该对象的从属字段对本武器不适用；未由此推断任何布尔能力或数值默认值",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponSpinnerStandard.game__GameParameterTable.json",
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "variableMovementSpeedWhileFiring",
           "label": "可变射击状态移动速度",
           "value": null,
           "unit": "internal",
-          "status": "pending",
-          "note": "GameParameters.VariableShotParam.MoveSpeed 未显式提供可用值"
+          "status": "not-applicable",
+          "note": "固定上游文件未包含 VariableShotParam 可选机制对象，因此该对象的从属字段对本武器不适用；未由此推断任何布尔能力或数值默认值",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponSpinnerStandard.game__GameParameterTable.json",
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "variableTransitionFrames",
           "label": "可变射击状态过渡帧",
           "value": null,
           "unit": "frames",
-          "status": "pending",
-          "note": "GameParameters.VariableShotParam.VariableInterpolatedFrame 未显式提供可用值"
+          "status": "not-applicable",
+          "note": "固定上游文件未包含 VariableShotParam 可选机制对象，因此该对象的从属字段对本武器不适用；未由此推断任何布尔能力或数值默认值",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponSpinnerStandard.game__GameParameterTable.json",
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "effectiveRange",
@@ -15101,56 +15284,77 @@
           "label": "蓄力储存时限",
           "value": null,
           "unit": "frames",
-          "status": "pending",
-          "note": "GameParameters.WeaponKeepChargeParam.KeepChargeFullFrame 未显式提供可用值"
+          "status": "not-applicable",
+          "note": "固定上游文件未包含 WeaponKeepChargeParam 可选机制对象，因此该对象的从属字段对本武器不适用；未由此推断任何布尔能力或数值默认值",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponSpinnerStandard.game__GameParameterTable.json",
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "fullChargeOverrideFiringDurationFrames",
           "label": "满蓄力覆盖射击窗口",
           "value": null,
           "unit": "frames",
-          "status": "pending",
-          "note": "GameParameters.WeaponFullChargeParam.MaxShootingFrame_Second 未显式提供可用值"
+          "status": "not-applicable",
+          "note": "固定上游文件未包含 WeaponFullChargeParam 可选机制对象，因此该对象的从属字段对本武器不适用；未由此推断任何布尔能力或数值默认值",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponSpinnerStandard.game__GameParameterTable.json",
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "fullChargeOverrideFireIntervalFrames",
           "label": "满蓄力覆盖射击间隔",
           "value": null,
           "unit": "frames",
-          "status": "pending",
-          "note": "GameParameters.WeaponFullChargeParam.RepeatFrame 未显式提供可用值"
+          "status": "not-applicable",
+          "note": "固定上游文件未包含 WeaponFullChargeParam 可选机制对象，因此该对象的从属字段对本武器不适用；未由此推断任何布尔能力或数值默认值",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponSpinnerStandard.game__GameParameterTable.json",
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "variableDamagePerShot",
           "label": "可变射击状态单发伤害",
           "value": null,
           "unit": "damage",
-          "status": "pending",
-          "note": "GameParameters.VariableDamageParam.ValueFullChargeMax|ValueMax 未显式提供可用值"
+          "status": "not-applicable",
+          "note": "固定上游文件未包含 VariableDamageParam 可选机制对象，因此该对象的从属字段对本武器不适用；未由此推断任何布尔能力或数值默认值",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponSpinnerStandard.game__GameParameterTable.json",
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "variableFireIntervalFrames",
           "label": "可变射击状态间隔",
           "value": null,
           "unit": "frames",
-          "status": "pending",
-          "note": "GameParameters.VariableShotParam.RepeatFrame 未显式提供可用值"
+          "status": "not-applicable",
+          "note": "固定上游文件未包含 VariableShotParam 可选机制对象，因此该对象的从属字段对本武器不适用；未由此推断任何布尔能力或数值默认值",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponSpinnerStandard.game__GameParameterTable.json",
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "variableMovementSpeedWhileFiring",
           "label": "可变射击状态移动速度",
           "value": null,
           "unit": "internal",
-          "status": "pending",
-          "note": "GameParameters.VariableShotParam.MoveSpeed 未显式提供可用值"
+          "status": "not-applicable",
+          "note": "固定上游文件未包含 VariableShotParam 可选机制对象，因此该对象的从属字段对本武器不适用；未由此推断任何布尔能力或数值默认值",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponSpinnerStandard.game__GameParameterTable.json",
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "variableTransitionFrames",
           "label": "可变射击状态过渡帧",
           "value": null,
           "unit": "frames",
-          "status": "pending",
-          "note": "GameParameters.VariableShotParam.VariableInterpolatedFrame 未显式提供可用值"
+          "status": "not-applicable",
+          "note": "固定上游文件未包含 VariableShotParam 可选机制对象，因此该对象的从属字段对本武器不适用；未由此推断任何布尔能力或数值默认值",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponSpinnerStandard.game__GameParameterTable.json",
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "effectiveRange",
@@ -15340,56 +15544,77 @@
           "label": "蓄力储存时限",
           "value": null,
           "unit": "frames",
-          "status": "pending",
-          "note": "GameParameters.WeaponKeepChargeParam.KeepChargeFullFrame 未显式提供可用值"
+          "status": "not-applicable",
+          "note": "固定上游文件未包含 WeaponKeepChargeParam 可选机制对象，因此该对象的从属字段对本武器不适用；未由此推断任何布尔能力或数值默认值",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponSpinnerHyper.game__GameParameterTable.json",
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "fullChargeOverrideFiringDurationFrames",
           "label": "满蓄力覆盖射击窗口",
           "value": null,
           "unit": "frames",
-          "status": "pending",
-          "note": "GameParameters.WeaponFullChargeParam.MaxShootingFrame_Second 未显式提供可用值"
+          "status": "not-applicable",
+          "note": "固定上游文件未包含 WeaponFullChargeParam 可选机制对象，因此该对象的从属字段对本武器不适用；未由此推断任何布尔能力或数值默认值",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponSpinnerHyper.game__GameParameterTable.json",
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "fullChargeOverrideFireIntervalFrames",
           "label": "满蓄力覆盖射击间隔",
           "value": null,
           "unit": "frames",
-          "status": "pending",
-          "note": "GameParameters.WeaponFullChargeParam.RepeatFrame 未显式提供可用值"
+          "status": "not-applicable",
+          "note": "固定上游文件未包含 WeaponFullChargeParam 可选机制对象，因此该对象的从属字段对本武器不适用；未由此推断任何布尔能力或数值默认值",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponSpinnerHyper.game__GameParameterTable.json",
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "variableDamagePerShot",
           "label": "可变射击状态单发伤害",
           "value": null,
           "unit": "damage",
-          "status": "pending",
-          "note": "GameParameters.VariableDamageParam.ValueFullChargeMax|ValueMax 未显式提供可用值"
+          "status": "not-applicable",
+          "note": "固定上游文件未包含 VariableDamageParam 可选机制对象，因此该对象的从属字段对本武器不适用；未由此推断任何布尔能力或数值默认值",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponSpinnerHyper.game__GameParameterTable.json",
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "variableFireIntervalFrames",
           "label": "可变射击状态间隔",
           "value": null,
           "unit": "frames",
-          "status": "pending",
-          "note": "GameParameters.VariableShotParam.RepeatFrame 未显式提供可用值"
+          "status": "not-applicable",
+          "note": "固定上游文件未包含 VariableShotParam 可选机制对象，因此该对象的从属字段对本武器不适用；未由此推断任何布尔能力或数值默认值",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponSpinnerHyper.game__GameParameterTable.json",
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "variableMovementSpeedWhileFiring",
           "label": "可变射击状态移动速度",
           "value": null,
           "unit": "internal",
-          "status": "pending",
-          "note": "GameParameters.VariableShotParam.MoveSpeed 未显式提供可用值"
+          "status": "not-applicable",
+          "note": "固定上游文件未包含 VariableShotParam 可选机制对象，因此该对象的从属字段对本武器不适用；未由此推断任何布尔能力或数值默认值",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponSpinnerHyper.game__GameParameterTable.json",
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "variableTransitionFrames",
           "label": "可变射击状态过渡帧",
           "value": null,
           "unit": "frames",
-          "status": "pending",
-          "note": "GameParameters.VariableShotParam.VariableInterpolatedFrame 未显式提供可用值"
+          "status": "not-applicable",
+          "note": "固定上游文件未包含 VariableShotParam 可选机制对象，因此该对象的从属字段对本武器不适用；未由此推断任何布尔能力或数值默认值",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponSpinnerHyper.game__GameParameterTable.json",
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "effectiveRange",
@@ -15579,56 +15804,77 @@
           "label": "蓄力储存时限",
           "value": null,
           "unit": "frames",
-          "status": "pending",
-          "note": "GameParameters.WeaponKeepChargeParam.KeepChargeFullFrame 未显式提供可用值"
+          "status": "not-applicable",
+          "note": "固定上游文件未包含 WeaponKeepChargeParam 可选机制对象，因此该对象的从属字段对本武器不适用；未由此推断任何布尔能力或数值默认值",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponSpinnerHyper.game__GameParameterTable.json",
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "fullChargeOverrideFiringDurationFrames",
           "label": "满蓄力覆盖射击窗口",
           "value": null,
           "unit": "frames",
-          "status": "pending",
-          "note": "GameParameters.WeaponFullChargeParam.MaxShootingFrame_Second 未显式提供可用值"
+          "status": "not-applicable",
+          "note": "固定上游文件未包含 WeaponFullChargeParam 可选机制对象，因此该对象的从属字段对本武器不适用；未由此推断任何布尔能力或数值默认值",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponSpinnerHyper.game__GameParameterTable.json",
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "fullChargeOverrideFireIntervalFrames",
           "label": "满蓄力覆盖射击间隔",
           "value": null,
           "unit": "frames",
-          "status": "pending",
-          "note": "GameParameters.WeaponFullChargeParam.RepeatFrame 未显式提供可用值"
+          "status": "not-applicable",
+          "note": "固定上游文件未包含 WeaponFullChargeParam 可选机制对象，因此该对象的从属字段对本武器不适用；未由此推断任何布尔能力或数值默认值",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponSpinnerHyper.game__GameParameterTable.json",
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "variableDamagePerShot",
           "label": "可变射击状态单发伤害",
           "value": null,
           "unit": "damage",
-          "status": "pending",
-          "note": "GameParameters.VariableDamageParam.ValueFullChargeMax|ValueMax 未显式提供可用值"
+          "status": "not-applicable",
+          "note": "固定上游文件未包含 VariableDamageParam 可选机制对象，因此该对象的从属字段对本武器不适用；未由此推断任何布尔能力或数值默认值",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponSpinnerHyper.game__GameParameterTable.json",
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "variableFireIntervalFrames",
           "label": "可变射击状态间隔",
           "value": null,
           "unit": "frames",
-          "status": "pending",
-          "note": "GameParameters.VariableShotParam.RepeatFrame 未显式提供可用值"
+          "status": "not-applicable",
+          "note": "固定上游文件未包含 VariableShotParam 可选机制对象，因此该对象的从属字段对本武器不适用；未由此推断任何布尔能力或数值默认值",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponSpinnerHyper.game__GameParameterTable.json",
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "variableMovementSpeedWhileFiring",
           "label": "可变射击状态移动速度",
           "value": null,
           "unit": "internal",
-          "status": "pending",
-          "note": "GameParameters.VariableShotParam.MoveSpeed 未显式提供可用值"
+          "status": "not-applicable",
+          "note": "固定上游文件未包含 VariableShotParam 可选机制对象，因此该对象的从属字段对本武器不适用；未由此推断任何布尔能力或数值默认值",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponSpinnerHyper.game__GameParameterTable.json",
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "variableTransitionFrames",
           "label": "可变射击状态过渡帧",
           "value": null,
           "unit": "frames",
-          "status": "pending",
-          "note": "GameParameters.VariableShotParam.VariableInterpolatedFrame 未显式提供可用值"
+          "status": "not-applicable",
+          "note": "固定上游文件未包含 VariableShotParam 可选机制对象，因此该对象的从属字段对本武器不适用；未由此推断任何布尔能力或数值默认值",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponSpinnerHyper.game__GameParameterTable.json",
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "effectiveRange",
@@ -15818,56 +16064,77 @@
           "label": "蓄力储存时限",
           "value": null,
           "unit": "frames",
-          "status": "pending",
-          "note": "GameParameters.WeaponKeepChargeParam.KeepChargeFullFrame 未显式提供可用值"
+          "status": "not-applicable",
+          "note": "固定上游文件未包含 WeaponKeepChargeParam 可选机制对象，因此该对象的从属字段对本武器不适用；未由此推断任何布尔能力或数值默认值",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponSpinnerHyper.game__GameParameterTable.json",
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "fullChargeOverrideFiringDurationFrames",
           "label": "满蓄力覆盖射击窗口",
           "value": null,
           "unit": "frames",
-          "status": "pending",
-          "note": "GameParameters.WeaponFullChargeParam.MaxShootingFrame_Second 未显式提供可用值"
+          "status": "not-applicable",
+          "note": "固定上游文件未包含 WeaponFullChargeParam 可选机制对象，因此该对象的从属字段对本武器不适用；未由此推断任何布尔能力或数值默认值",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponSpinnerHyper.game__GameParameterTable.json",
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "fullChargeOverrideFireIntervalFrames",
           "label": "满蓄力覆盖射击间隔",
           "value": null,
           "unit": "frames",
-          "status": "pending",
-          "note": "GameParameters.WeaponFullChargeParam.RepeatFrame 未显式提供可用值"
+          "status": "not-applicable",
+          "note": "固定上游文件未包含 WeaponFullChargeParam 可选机制对象，因此该对象的从属字段对本武器不适用；未由此推断任何布尔能力或数值默认值",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponSpinnerHyper.game__GameParameterTable.json",
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "variableDamagePerShot",
           "label": "可变射击状态单发伤害",
           "value": null,
           "unit": "damage",
-          "status": "pending",
-          "note": "GameParameters.VariableDamageParam.ValueFullChargeMax|ValueMax 未显式提供可用值"
+          "status": "not-applicable",
+          "note": "固定上游文件未包含 VariableDamageParam 可选机制对象，因此该对象的从属字段对本武器不适用；未由此推断任何布尔能力或数值默认值",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponSpinnerHyper.game__GameParameterTable.json",
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "variableFireIntervalFrames",
           "label": "可变射击状态间隔",
           "value": null,
           "unit": "frames",
-          "status": "pending",
-          "note": "GameParameters.VariableShotParam.RepeatFrame 未显式提供可用值"
+          "status": "not-applicable",
+          "note": "固定上游文件未包含 VariableShotParam 可选机制对象，因此该对象的从属字段对本武器不适用；未由此推断任何布尔能力或数值默认值",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponSpinnerHyper.game__GameParameterTable.json",
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "variableMovementSpeedWhileFiring",
           "label": "可变射击状态移动速度",
           "value": null,
           "unit": "internal",
-          "status": "pending",
-          "note": "GameParameters.VariableShotParam.MoveSpeed 未显式提供可用值"
+          "status": "not-applicable",
+          "note": "固定上游文件未包含 VariableShotParam 可选机制对象，因此该对象的从属字段对本武器不适用；未由此推断任何布尔能力或数值默认值",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponSpinnerHyper.game__GameParameterTable.json",
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "variableTransitionFrames",
           "label": "可变射击状态过渡帧",
           "value": null,
           "unit": "frames",
-          "status": "pending",
-          "note": "GameParameters.VariableShotParam.VariableInterpolatedFrame 未显式提供可用值"
+          "status": "not-applicable",
+          "note": "固定上游文件未包含 VariableShotParam 可选机制对象，因此该对象的从属字段对本武器不适用；未由此推断任何布尔能力或数值默认值",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponSpinnerHyper.game__GameParameterTable.json",
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "effectiveRange",
@@ -16060,24 +16327,33 @@
           "label": "蓄力储存时限",
           "value": null,
           "unit": "frames",
-          "status": "pending",
-          "note": "GameParameters.WeaponKeepChargeParam.KeepChargeFullFrame 未显式提供可用值"
+          "status": "not-applicable",
+          "note": "固定上游文件未包含 WeaponKeepChargeParam 可选机制对象，因此该对象的从属字段对本武器不适用；未由此推断任何布尔能力或数值默认值",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponSpinnerDownpour.game__GameParameterTable.json",
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "fullChargeOverrideFiringDurationFrames",
           "label": "满蓄力覆盖射击窗口",
           "value": null,
           "unit": "frames",
-          "status": "pending",
-          "note": "GameParameters.WeaponFullChargeParam.MaxShootingFrame_Second 未显式提供可用值"
+          "status": "not-applicable",
+          "note": "固定上游文件未包含 WeaponFullChargeParam 可选机制对象，因此该对象的从属字段对本武器不适用；未由此推断任何布尔能力或数值默认值",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponSpinnerDownpour.game__GameParameterTable.json",
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "fullChargeOverrideFireIntervalFrames",
           "label": "满蓄力覆盖射击间隔",
           "value": null,
           "unit": "frames",
-          "status": "pending",
-          "note": "GameParameters.WeaponFullChargeParam.RepeatFrame 未显式提供可用值"
+          "status": "not-applicable",
+          "note": "固定上游文件未包含 WeaponFullChargeParam 可选机制对象，因此该对象的从属字段对本武器不适用；未由此推断任何布尔能力或数值默认值",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponSpinnerDownpour.game__GameParameterTable.json",
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "variableDamagePerShot",
@@ -16314,24 +16590,33 @@
           "label": "蓄力储存时限",
           "value": null,
           "unit": "frames",
-          "status": "pending",
-          "note": "GameParameters.WeaponKeepChargeParam.KeepChargeFullFrame 未显式提供可用值"
+          "status": "not-applicable",
+          "note": "固定上游文件未包含 WeaponKeepChargeParam 可选机制对象，因此该对象的从属字段对本武器不适用；未由此推断任何布尔能力或数值默认值",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponSpinnerDownpour.game__GameParameterTable.json",
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "fullChargeOverrideFiringDurationFrames",
           "label": "满蓄力覆盖射击窗口",
           "value": null,
           "unit": "frames",
-          "status": "pending",
-          "note": "GameParameters.WeaponFullChargeParam.MaxShootingFrame_Second 未显式提供可用值"
+          "status": "not-applicable",
+          "note": "固定上游文件未包含 WeaponFullChargeParam 可选机制对象，因此该对象的从属字段对本武器不适用；未由此推断任何布尔能力或数值默认值",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponSpinnerDownpour.game__GameParameterTable.json",
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "fullChargeOverrideFireIntervalFrames",
           "label": "满蓄力覆盖射击间隔",
           "value": null,
           "unit": "frames",
-          "status": "pending",
-          "note": "GameParameters.WeaponFullChargeParam.RepeatFrame 未显式提供可用值"
+          "status": "not-applicable",
+          "note": "固定上游文件未包含 WeaponFullChargeParam 可选机制对象，因此该对象的从属字段对本武器不适用；未由此推断任何布尔能力或数值默认值",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponSpinnerDownpour.game__GameParameterTable.json",
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "variableDamagePerShot",
@@ -16582,48 +16867,66 @@
           "label": "满蓄力覆盖射击窗口",
           "value": null,
           "unit": "frames",
-          "status": "pending",
-          "note": "GameParameters.WeaponFullChargeParam.MaxShootingFrame_Second 未显式提供可用值"
+          "status": "not-applicable",
+          "note": "固定上游文件未包含 WeaponFullChargeParam 可选机制对象，因此该对象的从属字段对本武器不适用；未由此推断任何布尔能力或数值默认值",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponSpinnerSerein.game__GameParameterTable.json",
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "fullChargeOverrideFireIntervalFrames",
           "label": "满蓄力覆盖射击间隔",
           "value": null,
           "unit": "frames",
-          "status": "pending",
-          "note": "GameParameters.WeaponFullChargeParam.RepeatFrame 未显式提供可用值"
+          "status": "not-applicable",
+          "note": "固定上游文件未包含 WeaponFullChargeParam 可选机制对象，因此该对象的从属字段对本武器不适用；未由此推断任何布尔能力或数值默认值",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponSpinnerSerein.game__GameParameterTable.json",
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "variableDamagePerShot",
           "label": "可变射击状态单发伤害",
           "value": null,
           "unit": "damage",
-          "status": "pending",
-          "note": "GameParameters.VariableDamageParam.ValueFullChargeMax|ValueMax 未显式提供可用值"
+          "status": "not-applicable",
+          "note": "固定上游文件未包含 VariableDamageParam 可选机制对象，因此该对象的从属字段对本武器不适用；未由此推断任何布尔能力或数值默认值",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponSpinnerSerein.game__GameParameterTable.json",
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "variableFireIntervalFrames",
           "label": "可变射击状态间隔",
           "value": null,
           "unit": "frames",
-          "status": "pending",
-          "note": "GameParameters.VariableShotParam.RepeatFrame 未显式提供可用值"
+          "status": "not-applicable",
+          "note": "固定上游文件未包含 VariableShotParam 可选机制对象，因此该对象的从属字段对本武器不适用；未由此推断任何布尔能力或数值默认值",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponSpinnerSerein.game__GameParameterTable.json",
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "variableMovementSpeedWhileFiring",
           "label": "可变射击状态移动速度",
           "value": null,
           "unit": "internal",
-          "status": "pending",
-          "note": "GameParameters.VariableShotParam.MoveSpeed 未显式提供可用值"
+          "status": "not-applicable",
+          "note": "固定上游文件未包含 VariableShotParam 可选机制对象，因此该对象的从属字段对本武器不适用；未由此推断任何布尔能力或数值默认值",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponSpinnerSerein.game__GameParameterTable.json",
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "variableTransitionFrames",
           "label": "可变射击状态过渡帧",
           "value": null,
           "unit": "frames",
-          "status": "pending",
-          "note": "GameParameters.VariableShotParam.VariableInterpolatedFrame 未显式提供可用值"
+          "status": "not-applicable",
+          "note": "固定上游文件未包含 VariableShotParam 可选机制对象，因此该对象的从属字段对本武器不适用；未由此推断任何布尔能力或数值默认值",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponSpinnerSerein.game__GameParameterTable.json",
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "effectiveRange",
@@ -16830,48 +17133,66 @@
           "label": "满蓄力覆盖射击窗口",
           "value": null,
           "unit": "frames",
-          "status": "pending",
-          "note": "GameParameters.WeaponFullChargeParam.MaxShootingFrame_Second 未显式提供可用值"
+          "status": "not-applicable",
+          "note": "固定上游文件未包含 WeaponFullChargeParam 可选机制对象，因此该对象的从属字段对本武器不适用；未由此推断任何布尔能力或数值默认值",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponSpinnerSerein.game__GameParameterTable.json",
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "fullChargeOverrideFireIntervalFrames",
           "label": "满蓄力覆盖射击间隔",
           "value": null,
           "unit": "frames",
-          "status": "pending",
-          "note": "GameParameters.WeaponFullChargeParam.RepeatFrame 未显式提供可用值"
+          "status": "not-applicable",
+          "note": "固定上游文件未包含 WeaponFullChargeParam 可选机制对象，因此该对象的从属字段对本武器不适用；未由此推断任何布尔能力或数值默认值",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponSpinnerSerein.game__GameParameterTable.json",
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "variableDamagePerShot",
           "label": "可变射击状态单发伤害",
           "value": null,
           "unit": "damage",
-          "status": "pending",
-          "note": "GameParameters.VariableDamageParam.ValueFullChargeMax|ValueMax 未显式提供可用值"
+          "status": "not-applicable",
+          "note": "固定上游文件未包含 VariableDamageParam 可选机制对象，因此该对象的从属字段对本武器不适用；未由此推断任何布尔能力或数值默认值",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponSpinnerSerein.game__GameParameterTable.json",
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "variableFireIntervalFrames",
           "label": "可变射击状态间隔",
           "value": null,
           "unit": "frames",
-          "status": "pending",
-          "note": "GameParameters.VariableShotParam.RepeatFrame 未显式提供可用值"
+          "status": "not-applicable",
+          "note": "固定上游文件未包含 VariableShotParam 可选机制对象，因此该对象的从属字段对本武器不适用；未由此推断任何布尔能力或数值默认值",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponSpinnerSerein.game__GameParameterTable.json",
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "variableMovementSpeedWhileFiring",
           "label": "可变射击状态移动速度",
           "value": null,
           "unit": "internal",
-          "status": "pending",
-          "note": "GameParameters.VariableShotParam.MoveSpeed 未显式提供可用值"
+          "status": "not-applicable",
+          "note": "固定上游文件未包含 VariableShotParam 可选机制对象，因此该对象的从属字段对本武器不适用；未由此推断任何布尔能力或数值默认值",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponSpinnerSerein.game__GameParameterTable.json",
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "variableTransitionFrames",
           "label": "可变射击状态过渡帧",
           "value": null,
           "unit": "frames",
-          "status": "pending",
-          "note": "GameParameters.VariableShotParam.VariableInterpolatedFrame 未显式提供可用值"
+          "status": "not-applicable",
+          "note": "固定上游文件未包含 VariableShotParam 可选机制对象，因此该对象的从属字段对本武器不适用；未由此推断任何布尔能力或数值默认值",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponSpinnerSerein.game__GameParameterTable.json",
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "effectiveRange",
@@ -17064,8 +17385,11 @@
           "label": "蓄力储存时限",
           "value": null,
           "unit": "frames",
-          "status": "pending",
-          "note": "GameParameters.WeaponKeepChargeParam.KeepChargeFullFrame 未显式提供可用值"
+          "status": "not-applicable",
+          "note": "固定上游文件未包含 WeaponKeepChargeParam 可选机制对象，因此该对象的从属字段对本武器不适用；未由此推断任何布尔能力或数值默认值",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponSpinnerHyperShort.game__GameParameterTable.json",
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "fullChargeOverrideFiringDurationFrames",
@@ -17094,32 +17418,44 @@
           "label": "可变射击状态单发伤害",
           "value": null,
           "unit": "damage",
-          "status": "pending",
-          "note": "GameParameters.VariableDamageParam.ValueFullChargeMax|ValueMax 未显式提供可用值"
+          "status": "not-applicable",
+          "note": "固定上游文件未包含 VariableDamageParam 可选机制对象，因此该对象的从属字段对本武器不适用；未由此推断任何布尔能力或数值默认值",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponSpinnerHyperShort.game__GameParameterTable.json",
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "variableFireIntervalFrames",
           "label": "可变射击状态间隔",
           "value": null,
           "unit": "frames",
-          "status": "pending",
-          "note": "GameParameters.VariableShotParam.RepeatFrame 未显式提供可用值"
+          "status": "not-applicable",
+          "note": "固定上游文件未包含 VariableShotParam 可选机制对象，因此该对象的从属字段对本武器不适用；未由此推断任何布尔能力或数值默认值",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponSpinnerHyperShort.game__GameParameterTable.json",
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "variableMovementSpeedWhileFiring",
           "label": "可变射击状态移动速度",
           "value": null,
           "unit": "internal",
-          "status": "pending",
-          "note": "GameParameters.VariableShotParam.MoveSpeed 未显式提供可用值"
+          "status": "not-applicable",
+          "note": "固定上游文件未包含 VariableShotParam 可选机制对象，因此该对象的从属字段对本武器不适用；未由此推断任何布尔能力或数值默认值",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponSpinnerHyperShort.game__GameParameterTable.json",
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "variableTransitionFrames",
           "label": "可变射击状态过渡帧",
           "value": null,
           "unit": "frames",
-          "status": "pending",
-          "note": "GameParameters.VariableShotParam.VariableInterpolatedFrame 未显式提供可用值"
+          "status": "not-applicable",
+          "note": "固定上游文件未包含 VariableShotParam 可选机制对象，因此该对象的从属字段对本武器不适用；未由此推断任何布尔能力或数值默认值",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponSpinnerHyperShort.game__GameParameterTable.json",
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "effectiveRange",
@@ -17312,8 +17648,11 @@
           "label": "蓄力储存时限",
           "value": null,
           "unit": "frames",
-          "status": "pending",
-          "note": "GameParameters.WeaponKeepChargeParam.KeepChargeFullFrame 未显式提供可用值"
+          "status": "not-applicable",
+          "note": "固定上游文件未包含 WeaponKeepChargeParam 可选机制对象，因此该对象的从属字段对本武器不适用；未由此推断任何布尔能力或数值默认值",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponSpinnerHyperShort.game__GameParameterTable.json",
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "fullChargeOverrideFiringDurationFrames",
@@ -17342,32 +17681,44 @@
           "label": "可变射击状态单发伤害",
           "value": null,
           "unit": "damage",
-          "status": "pending",
-          "note": "GameParameters.VariableDamageParam.ValueFullChargeMax|ValueMax 未显式提供可用值"
+          "status": "not-applicable",
+          "note": "固定上游文件未包含 VariableDamageParam 可选机制对象，因此该对象的从属字段对本武器不适用；未由此推断任何布尔能力或数值默认值",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponSpinnerHyperShort.game__GameParameterTable.json",
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "variableFireIntervalFrames",
           "label": "可变射击状态间隔",
           "value": null,
           "unit": "frames",
-          "status": "pending",
-          "note": "GameParameters.VariableShotParam.RepeatFrame 未显式提供可用值"
+          "status": "not-applicable",
+          "note": "固定上游文件未包含 VariableShotParam 可选机制对象，因此该对象的从属字段对本武器不适用；未由此推断任何布尔能力或数值默认值",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponSpinnerHyperShort.game__GameParameterTable.json",
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "variableMovementSpeedWhileFiring",
           "label": "可变射击状态移动速度",
           "value": null,
           "unit": "internal",
-          "status": "pending",
-          "note": "GameParameters.VariableShotParam.MoveSpeed 未显式提供可用值"
+          "status": "not-applicable",
+          "note": "固定上游文件未包含 VariableShotParam 可选机制对象，因此该对象的从属字段对本武器不适用；未由此推断任何布尔能力或数值默认值",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponSpinnerHyperShort.game__GameParameterTable.json",
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "variableTransitionFrames",
           "label": "可变射击状态过渡帧",
           "value": null,
           "unit": "frames",
-          "status": "pending",
-          "note": "GameParameters.VariableShotParam.VariableInterpolatedFrame 未显式提供可用值"
+          "status": "not-applicable",
+          "note": "固定上游文件未包含 VariableShotParam 可选机制对象，因此该对象的从属字段对本武器不适用；未由此推断任何布尔能力或数值默认值",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1130/weapon/WeaponSpinnerHyperShort.game__GameParameterTable.json",
+          "checkedAt": "2026-10-26"
         },
         {
           "key": "effectiveRange",

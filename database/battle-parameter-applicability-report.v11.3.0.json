@@ -1,0 +1,839 @@
+{
+  "gameVersion": "11.3.0",
+  "resolvedAt": "2026-10-26",
+  "sourceAudit": "battle-parameter-source-audit.v11.3.0.json",
+  "policy": "Only dependent numeric fields under a wholly absent optional mechanism object are marked not applicable. Capability booleans, inherited ordinary-state values, and omitted runtime defaults remain pending.",
+  "summary": {
+    "resolvedFields": 117,
+    "affectedWeapons": 28,
+    "retainedPendingCapabilityGroups": [
+      "蓄力枪:chargeHold",
+      "加特林:canStoreCharge",
+      "加特林:canRecharge",
+      "双枪:postDodgeDamagePerShot",
+      "伞:canLaunchCanopy",
+      "弓:canStoreCharge"
+    ]
+  },
+  "resolutions": [
+    {
+      "family": "泼桶",
+      "key": "blastDamage",
+      "weaponId": "main-3000",
+      "fileName": "WeaponSlosherStrong.game__GameParameterTable.json",
+      "inspectedPath": "GameParameters.BlastParam.BlastParam.DistanceDamage.0.Damage"
+    },
+    {
+      "family": "泼桶",
+      "key": "blastDamageRadius",
+      "weaponId": "main-3000",
+      "fileName": "WeaponSlosherStrong.game__GameParameterTable.json",
+      "inspectedPath": "GameParameters.BlastParam.BlastParam.DistanceDamage.0.Distance"
+    },
+    {
+      "family": "泼桶",
+      "key": "blastDamage",
+      "weaponId": "main-3001",
+      "fileName": "WeaponSlosherStrong.game__GameParameterTable.json",
+      "inspectedPath": "GameParameters.BlastParam.BlastParam.DistanceDamage.0.Damage"
+    },
+    {
+      "family": "泼桶",
+      "key": "blastDamageRadius",
+      "weaponId": "main-3001",
+      "fileName": "WeaponSlosherStrong.game__GameParameterTable.json",
+      "inspectedPath": "GameParameters.BlastParam.BlastParam.DistanceDamage.0.Distance"
+    },
+    {
+      "family": "泼桶",
+      "key": "blastDamage",
+      "weaponId": "main-3005",
+      "fileName": "WeaponSlosherStrong.game__GameParameterTable.json",
+      "inspectedPath": "GameParameters.BlastParam.BlastParam.DistanceDamage.0.Damage"
+    },
+    {
+      "family": "泼桶",
+      "key": "blastDamageRadius",
+      "weaponId": "main-3005",
+      "fileName": "WeaponSlosherStrong.game__GameParameterTable.json",
+      "inspectedPath": "GameParameters.BlastParam.BlastParam.DistanceDamage.0.Distance"
+    },
+    {
+      "family": "泼桶",
+      "key": "blastDamage",
+      "weaponId": "main-3010",
+      "fileName": "WeaponSlosherDiffusion.game__GameParameterTable.json",
+      "inspectedPath": "GameParameters.BlastParam.BlastParam.DistanceDamage.0.Damage"
+    },
+    {
+      "family": "泼桶",
+      "key": "blastDamageRadius",
+      "weaponId": "main-3010",
+      "fileName": "WeaponSlosherDiffusion.game__GameParameterTable.json",
+      "inspectedPath": "GameParameters.BlastParam.BlastParam.DistanceDamage.0.Distance"
+    },
+    {
+      "family": "泼桶",
+      "key": "blastDamage",
+      "weaponId": "main-3011",
+      "fileName": "WeaponSlosherDiffusion.game__GameParameterTable.json",
+      "inspectedPath": "GameParameters.BlastParam.BlastParam.DistanceDamage.0.Damage"
+    },
+    {
+      "family": "泼桶",
+      "key": "blastDamageRadius",
+      "weaponId": "main-3011",
+      "fileName": "WeaponSlosherDiffusion.game__GameParameterTable.json",
+      "inspectedPath": "GameParameters.BlastParam.BlastParam.DistanceDamage.0.Distance"
+    },
+    {
+      "family": "泼桶",
+      "key": "blastDamage",
+      "weaponId": "main-3012",
+      "fileName": "WeaponSlosherDiffusion.game__GameParameterTable.json",
+      "inspectedPath": "GameParameters.BlastParam.BlastParam.DistanceDamage.0.Damage"
+    },
+    {
+      "family": "泼桶",
+      "key": "blastDamageRadius",
+      "weaponId": "main-3012",
+      "fileName": "WeaponSlosherDiffusion.game__GameParameterTable.json",
+      "inspectedPath": "GameParameters.BlastParam.BlastParam.DistanceDamage.0.Distance"
+    },
+    {
+      "family": "泼桶",
+      "key": "blastDamage",
+      "weaponId": "main-3020",
+      "fileName": "WeaponSlosherLauncher.game__GameParameterTable.json",
+      "inspectedPath": "GameParameters.BlastParam.BlastParam.DistanceDamage.0.Damage"
+    },
+    {
+      "family": "泼桶",
+      "key": "blastDamageRadius",
+      "weaponId": "main-3020",
+      "fileName": "WeaponSlosherLauncher.game__GameParameterTable.json",
+      "inspectedPath": "GameParameters.BlastParam.BlastParam.DistanceDamage.0.Distance"
+    },
+    {
+      "family": "泼桶",
+      "key": "blastDamage",
+      "weaponId": "main-3021",
+      "fileName": "WeaponSlosherLauncher.game__GameParameterTable.json",
+      "inspectedPath": "GameParameters.BlastParam.BlastParam.DistanceDamage.0.Damage"
+    },
+    {
+      "family": "泼桶",
+      "key": "blastDamageRadius",
+      "weaponId": "main-3021",
+      "fileName": "WeaponSlosherLauncher.game__GameParameterTable.json",
+      "inspectedPath": "GameParameters.BlastParam.BlastParam.DistanceDamage.0.Distance"
+    },
+    {
+      "family": "泼桶",
+      "key": "blastDamage",
+      "weaponId": "main-3030",
+      "fileName": "WeaponSlosherBathtub.game__GameParameterTable.json",
+      "inspectedPath": "GameParameters.BlastParam.BlastParam.DistanceDamage.0.Damage"
+    },
+    {
+      "family": "泼桶",
+      "key": "blastDamageRadius",
+      "weaponId": "main-3030",
+      "fileName": "WeaponSlosherBathtub.game__GameParameterTable.json",
+      "inspectedPath": "GameParameters.BlastParam.BlastParam.DistanceDamage.0.Distance"
+    },
+    {
+      "family": "泼桶",
+      "key": "blastDamage",
+      "weaponId": "main-3031",
+      "fileName": "WeaponSlosherBathtub.game__GameParameterTable.json",
+      "inspectedPath": "GameParameters.BlastParam.BlastParam.DistanceDamage.0.Damage"
+    },
+    {
+      "family": "泼桶",
+      "key": "blastDamageRadius",
+      "weaponId": "main-3031",
+      "fileName": "WeaponSlosherBathtub.game__GameParameterTable.json",
+      "inspectedPath": "GameParameters.BlastParam.BlastParam.DistanceDamage.0.Distance"
+    },
+    {
+      "family": "泼桶",
+      "key": "blastDamage",
+      "weaponId": "main-3050",
+      "fileName": "WeaponSlosherDouble.game__GameParameterTable.json",
+      "inspectedPath": "GameParameters.BlastParam.BlastParam.DistanceDamage.0.Damage"
+    },
+    {
+      "family": "泼桶",
+      "key": "blastDamageRadius",
+      "weaponId": "main-3050",
+      "fileName": "WeaponSlosherDouble.game__GameParameterTable.json",
+      "inspectedPath": "GameParameters.BlastParam.BlastParam.DistanceDamage.0.Distance"
+    },
+    {
+      "family": "泼桶",
+      "key": "blastDamage",
+      "weaponId": "main-3051",
+      "fileName": "WeaponSlosherDouble.game__GameParameterTable.json",
+      "inspectedPath": "GameParameters.BlastParam.BlastParam.DistanceDamage.0.Damage"
+    },
+    {
+      "family": "泼桶",
+      "key": "blastDamageRadius",
+      "weaponId": "main-3051",
+      "fileName": "WeaponSlosherDouble.game__GameParameterTable.json",
+      "inspectedPath": "GameParameters.BlastParam.BlastParam.DistanceDamage.0.Distance"
+    },
+    {
+      "family": "泼桶",
+      "key": "blastDamage",
+      "weaponId": "main-3052",
+      "fileName": "WeaponSlosherDouble.game__GameParameterTable.json",
+      "inspectedPath": "GameParameters.BlastParam.BlastParam.DistanceDamage.0.Damage"
+    },
+    {
+      "family": "泼桶",
+      "key": "blastDamageRadius",
+      "weaponId": "main-3052",
+      "fileName": "WeaponSlosherDouble.game__GameParameterTable.json",
+      "inspectedPath": "GameParameters.BlastParam.BlastParam.DistanceDamage.0.Distance"
+    },
+    {
+      "family": "加特林",
+      "key": "chargeHoldFrames",
+      "weaponId": "main-4000",
+      "fileName": "WeaponSpinnerQuick.game__GameParameterTable.json",
+      "inspectedPath": "GameParameters.WeaponKeepChargeParam.KeepChargeFullFrame"
+    },
+    {
+      "family": "加特林",
+      "key": "fullChargeOverrideFireIntervalFrames",
+      "weaponId": "main-4000",
+      "fileName": "WeaponSpinnerQuick.game__GameParameterTable.json",
+      "inspectedPath": "GameParameters.WeaponFullChargeParam.RepeatFrame"
+    },
+    {
+      "family": "加特林",
+      "key": "fullChargeOverrideFiringDurationFrames",
+      "weaponId": "main-4000",
+      "fileName": "WeaponSpinnerQuick.game__GameParameterTable.json",
+      "inspectedPath": "GameParameters.WeaponFullChargeParam.MaxShootingFrame_Second"
+    },
+    {
+      "family": "加特林",
+      "key": "variableDamagePerShot",
+      "weaponId": "main-4000",
+      "fileName": "WeaponSpinnerQuick.game__GameParameterTable.json",
+      "inspectedPath": "GameParameters.VariableDamageParam.ValueFullChargeMax"
+    },
+    {
+      "family": "加特林",
+      "key": "variableFireIntervalFrames",
+      "weaponId": "main-4000",
+      "fileName": "WeaponSpinnerQuick.game__GameParameterTable.json",
+      "inspectedPath": "GameParameters.VariableShotParam.RepeatFrame"
+    },
+    {
+      "family": "加特林",
+      "key": "variableMovementSpeedWhileFiring",
+      "weaponId": "main-4000",
+      "fileName": "WeaponSpinnerQuick.game__GameParameterTable.json",
+      "inspectedPath": "GameParameters.VariableShotParam.MoveSpeed"
+    },
+    {
+      "family": "加特林",
+      "key": "variableTransitionFrames",
+      "weaponId": "main-4000",
+      "fileName": "WeaponSpinnerQuick.game__GameParameterTable.json",
+      "inspectedPath": "GameParameters.VariableShotParam.VariableInterpolatedFrame"
+    },
+    {
+      "family": "加特林",
+      "key": "chargeHoldFrames",
+      "weaponId": "main-4001",
+      "fileName": "WeaponSpinnerQuick.game__GameParameterTable.json",
+      "inspectedPath": "GameParameters.WeaponKeepChargeParam.KeepChargeFullFrame"
+    },
+    {
+      "family": "加特林",
+      "key": "fullChargeOverrideFireIntervalFrames",
+      "weaponId": "main-4001",
+      "fileName": "WeaponSpinnerQuick.game__GameParameterTable.json",
+      "inspectedPath": "GameParameters.WeaponFullChargeParam.RepeatFrame"
+    },
+    {
+      "family": "加特林",
+      "key": "fullChargeOverrideFiringDurationFrames",
+      "weaponId": "main-4001",
+      "fileName": "WeaponSpinnerQuick.game__GameParameterTable.json",
+      "inspectedPath": "GameParameters.WeaponFullChargeParam.MaxShootingFrame_Second"
+    },
+    {
+      "family": "加特林",
+      "key": "variableDamagePerShot",
+      "weaponId": "main-4001",
+      "fileName": "WeaponSpinnerQuick.game__GameParameterTable.json",
+      "inspectedPath": "GameParameters.VariableDamageParam.ValueFullChargeMax"
+    },
+    {
+      "family": "加特林",
+      "key": "variableFireIntervalFrames",
+      "weaponId": "main-4001",
+      "fileName": "WeaponSpinnerQuick.game__GameParameterTable.json",
+      "inspectedPath": "GameParameters.VariableShotParam.RepeatFrame"
+    },
+    {
+      "family": "加特林",
+      "key": "variableMovementSpeedWhileFiring",
+      "weaponId": "main-4001",
+      "fileName": "WeaponSpinnerQuick.game__GameParameterTable.json",
+      "inspectedPath": "GameParameters.VariableShotParam.MoveSpeed"
+    },
+    {
+      "family": "加特林",
+      "key": "variableTransitionFrames",
+      "weaponId": "main-4001",
+      "fileName": "WeaponSpinnerQuick.game__GameParameterTable.json",
+      "inspectedPath": "GameParameters.VariableShotParam.VariableInterpolatedFrame"
+    },
+    {
+      "family": "加特林",
+      "key": "chargeHoldFrames",
+      "weaponId": "main-4002",
+      "fileName": "WeaponSpinnerQuick.game__GameParameterTable.json",
+      "inspectedPath": "GameParameters.WeaponKeepChargeParam.KeepChargeFullFrame"
+    },
+    {
+      "family": "加特林",
+      "key": "fullChargeOverrideFireIntervalFrames",
+      "weaponId": "main-4002",
+      "fileName": "WeaponSpinnerQuick.game__GameParameterTable.json",
+      "inspectedPath": "GameParameters.WeaponFullChargeParam.RepeatFrame"
+    },
+    {
+      "family": "加特林",
+      "key": "fullChargeOverrideFiringDurationFrames",
+      "weaponId": "main-4002",
+      "fileName": "WeaponSpinnerQuick.game__GameParameterTable.json",
+      "inspectedPath": "GameParameters.WeaponFullChargeParam.MaxShootingFrame_Second"
+    },
+    {
+      "family": "加特林",
+      "key": "variableDamagePerShot",
+      "weaponId": "main-4002",
+      "fileName": "WeaponSpinnerQuick.game__GameParameterTable.json",
+      "inspectedPath": "GameParameters.VariableDamageParam.ValueFullChargeMax"
+    },
+    {
+      "family": "加特林",
+      "key": "variableFireIntervalFrames",
+      "weaponId": "main-4002",
+      "fileName": "WeaponSpinnerQuick.game__GameParameterTable.json",
+      "inspectedPath": "GameParameters.VariableShotParam.RepeatFrame"
+    },
+    {
+      "family": "加特林",
+      "key": "variableMovementSpeedWhileFiring",
+      "weaponId": "main-4002",
+      "fileName": "WeaponSpinnerQuick.game__GameParameterTable.json",
+      "inspectedPath": "GameParameters.VariableShotParam.MoveSpeed"
+    },
+    {
+      "family": "加特林",
+      "key": "variableTransitionFrames",
+      "weaponId": "main-4002",
+      "fileName": "WeaponSpinnerQuick.game__GameParameterTable.json",
+      "inspectedPath": "GameParameters.VariableShotParam.VariableInterpolatedFrame"
+    },
+    {
+      "family": "加特林",
+      "key": "chargeHoldFrames",
+      "weaponId": "main-4011",
+      "fileName": "WeaponSpinnerStandard.game__GameParameterTable.json",
+      "inspectedPath": "GameParameters.WeaponKeepChargeParam.KeepChargeFullFrame"
+    },
+    {
+      "family": "加特林",
+      "key": "fullChargeOverrideFireIntervalFrames",
+      "weaponId": "main-4011",
+      "fileName": "WeaponSpinnerStandard.game__GameParameterTable.json",
+      "inspectedPath": "GameParameters.WeaponFullChargeParam.RepeatFrame"
+    },
+    {
+      "family": "加特林",
+      "key": "fullChargeOverrideFiringDurationFrames",
+      "weaponId": "main-4011",
+      "fileName": "WeaponSpinnerStandard.game__GameParameterTable.json",
+      "inspectedPath": "GameParameters.WeaponFullChargeParam.MaxShootingFrame_Second"
+    },
+    {
+      "family": "加特林",
+      "key": "variableDamagePerShot",
+      "weaponId": "main-4011",
+      "fileName": "WeaponSpinnerStandard.game__GameParameterTable.json",
+      "inspectedPath": "GameParameters.VariableDamageParam.ValueFullChargeMax"
+    },
+    {
+      "family": "加特林",
+      "key": "variableFireIntervalFrames",
+      "weaponId": "main-4011",
+      "fileName": "WeaponSpinnerStandard.game__GameParameterTable.json",
+      "inspectedPath": "GameParameters.VariableShotParam.RepeatFrame"
+    },
+    {
+      "family": "加特林",
+      "key": "variableMovementSpeedWhileFiring",
+      "weaponId": "main-4011",
+      "fileName": "WeaponSpinnerStandard.game__GameParameterTable.json",
+      "inspectedPath": "GameParameters.VariableShotParam.MoveSpeed"
+    },
+    {
+      "family": "加特林",
+      "key": "variableTransitionFrames",
+      "weaponId": "main-4011",
+      "fileName": "WeaponSpinnerStandard.game__GameParameterTable.json",
+      "inspectedPath": "GameParameters.VariableShotParam.VariableInterpolatedFrame"
+    },
+    {
+      "family": "加特林",
+      "key": "chargeHoldFrames",
+      "weaponId": "main-4015",
+      "fileName": "WeaponSpinnerStandard.game__GameParameterTable.json",
+      "inspectedPath": "GameParameters.WeaponKeepChargeParam.KeepChargeFullFrame"
+    },
+    {
+      "family": "加特林",
+      "key": "fullChargeOverrideFireIntervalFrames",
+      "weaponId": "main-4015",
+      "fileName": "WeaponSpinnerStandard.game__GameParameterTable.json",
+      "inspectedPath": "GameParameters.WeaponFullChargeParam.RepeatFrame"
+    },
+    {
+      "family": "加特林",
+      "key": "fullChargeOverrideFiringDurationFrames",
+      "weaponId": "main-4015",
+      "fileName": "WeaponSpinnerStandard.game__GameParameterTable.json",
+      "inspectedPath": "GameParameters.WeaponFullChargeParam.MaxShootingFrame_Second"
+    },
+    {
+      "family": "加特林",
+      "key": "variableDamagePerShot",
+      "weaponId": "main-4015",
+      "fileName": "WeaponSpinnerStandard.game__GameParameterTable.json",
+      "inspectedPath": "GameParameters.VariableDamageParam.ValueFullChargeMax"
+    },
+    {
+      "family": "加特林",
+      "key": "variableFireIntervalFrames",
+      "weaponId": "main-4015",
+      "fileName": "WeaponSpinnerStandard.game__GameParameterTable.json",
+      "inspectedPath": "GameParameters.VariableShotParam.RepeatFrame"
+    },
+    {
+      "family": "加特林",
+      "key": "variableMovementSpeedWhileFiring",
+      "weaponId": "main-4015",
+      "fileName": "WeaponSpinnerStandard.game__GameParameterTable.json",
+      "inspectedPath": "GameParameters.VariableShotParam.MoveSpeed"
+    },
+    {
+      "family": "加特林",
+      "key": "variableTransitionFrames",
+      "weaponId": "main-4015",
+      "fileName": "WeaponSpinnerStandard.game__GameParameterTable.json",
+      "inspectedPath": "GameParameters.VariableShotParam.VariableInterpolatedFrame"
+    },
+    {
+      "family": "加特林",
+      "key": "chargeHoldFrames",
+      "weaponId": "main-4020",
+      "fileName": "WeaponSpinnerHyper.game__GameParameterTable.json",
+      "inspectedPath": "GameParameters.WeaponKeepChargeParam.KeepChargeFullFrame"
+    },
+    {
+      "family": "加特林",
+      "key": "fullChargeOverrideFireIntervalFrames",
+      "weaponId": "main-4020",
+      "fileName": "WeaponSpinnerHyper.game__GameParameterTable.json",
+      "inspectedPath": "GameParameters.WeaponFullChargeParam.RepeatFrame"
+    },
+    {
+      "family": "加特林",
+      "key": "fullChargeOverrideFiringDurationFrames",
+      "weaponId": "main-4020",
+      "fileName": "WeaponSpinnerHyper.game__GameParameterTable.json",
+      "inspectedPath": "GameParameters.WeaponFullChargeParam.MaxShootingFrame_Second"
+    },
+    {
+      "family": "加特林",
+      "key": "variableDamagePerShot",
+      "weaponId": "main-4020",
+      "fileName": "WeaponSpinnerHyper.game__GameParameterTable.json",
+      "inspectedPath": "GameParameters.VariableDamageParam.ValueFullChargeMax"
+    },
+    {
+      "family": "加特林",
+      "key": "variableFireIntervalFrames",
+      "weaponId": "main-4020",
+      "fileName": "WeaponSpinnerHyper.game__GameParameterTable.json",
+      "inspectedPath": "GameParameters.VariableShotParam.RepeatFrame"
+    },
+    {
+      "family": "加特林",
+      "key": "variableMovementSpeedWhileFiring",
+      "weaponId": "main-4020",
+      "fileName": "WeaponSpinnerHyper.game__GameParameterTable.json",
+      "inspectedPath": "GameParameters.VariableShotParam.MoveSpeed"
+    },
+    {
+      "family": "加特林",
+      "key": "variableTransitionFrames",
+      "weaponId": "main-4020",
+      "fileName": "WeaponSpinnerHyper.game__GameParameterTable.json",
+      "inspectedPath": "GameParameters.VariableShotParam.VariableInterpolatedFrame"
+    },
+    {
+      "family": "加特林",
+      "key": "chargeHoldFrames",
+      "weaponId": "main-4021",
+      "fileName": "WeaponSpinnerHyper.game__GameParameterTable.json",
+      "inspectedPath": "GameParameters.WeaponKeepChargeParam.KeepChargeFullFrame"
+    },
+    {
+      "family": "加特林",
+      "key": "fullChargeOverrideFireIntervalFrames",
+      "weaponId": "main-4021",
+      "fileName": "WeaponSpinnerHyper.game__GameParameterTable.json",
+      "inspectedPath": "GameParameters.WeaponFullChargeParam.RepeatFrame"
+    },
+    {
+      "family": "加特林",
+      "key": "fullChargeOverrideFiringDurationFrames",
+      "weaponId": "main-4021",
+      "fileName": "WeaponSpinnerHyper.game__GameParameterTable.json",
+      "inspectedPath": "GameParameters.WeaponFullChargeParam.MaxShootingFrame_Second"
+    },
+    {
+      "family": "加特林",
+      "key": "variableDamagePerShot",
+      "weaponId": "main-4021",
+      "fileName": "WeaponSpinnerHyper.game__GameParameterTable.json",
+      "inspectedPath": "GameParameters.VariableDamageParam.ValueFullChargeMax"
+    },
+    {
+      "family": "加特林",
+      "key": "variableFireIntervalFrames",
+      "weaponId": "main-4021",
+      "fileName": "WeaponSpinnerHyper.game__GameParameterTable.json",
+      "inspectedPath": "GameParameters.VariableShotParam.RepeatFrame"
+    },
+    {
+      "family": "加特林",
+      "key": "variableMovementSpeedWhileFiring",
+      "weaponId": "main-4021",
+      "fileName": "WeaponSpinnerHyper.game__GameParameterTable.json",
+      "inspectedPath": "GameParameters.VariableShotParam.MoveSpeed"
+    },
+    {
+      "family": "加特林",
+      "key": "variableTransitionFrames",
+      "weaponId": "main-4021",
+      "fileName": "WeaponSpinnerHyper.game__GameParameterTable.json",
+      "inspectedPath": "GameParameters.VariableShotParam.VariableInterpolatedFrame"
+    },
+    {
+      "family": "加特林",
+      "key": "chargeHoldFrames",
+      "weaponId": "main-4022",
+      "fileName": "WeaponSpinnerHyper.game__GameParameterTable.json",
+      "inspectedPath": "GameParameters.WeaponKeepChargeParam.KeepChargeFullFrame"
+    },
+    {
+      "family": "加特林",
+      "key": "fullChargeOverrideFireIntervalFrames",
+      "weaponId": "main-4022",
+      "fileName": "WeaponSpinnerHyper.game__GameParameterTable.json",
+      "inspectedPath": "GameParameters.WeaponFullChargeParam.RepeatFrame"
+    },
+    {
+      "family": "加特林",
+      "key": "fullChargeOverrideFiringDurationFrames",
+      "weaponId": "main-4022",
+      "fileName": "WeaponSpinnerHyper.game__GameParameterTable.json",
+      "inspectedPath": "GameParameters.WeaponFullChargeParam.MaxShootingFrame_Second"
+    },
+    {
+      "family": "加特林",
+      "key": "variableDamagePerShot",
+      "weaponId": "main-4022",
+      "fileName": "WeaponSpinnerHyper.game__GameParameterTable.json",
+      "inspectedPath": "GameParameters.VariableDamageParam.ValueFullChargeMax"
+    },
+    {
+      "family": "加特林",
+      "key": "variableFireIntervalFrames",
+      "weaponId": "main-4022",
+      "fileName": "WeaponSpinnerHyper.game__GameParameterTable.json",
+      "inspectedPath": "GameParameters.VariableShotParam.RepeatFrame"
+    },
+    {
+      "family": "加特林",
+      "key": "variableMovementSpeedWhileFiring",
+      "weaponId": "main-4022",
+      "fileName": "WeaponSpinnerHyper.game__GameParameterTable.json",
+      "inspectedPath": "GameParameters.VariableShotParam.MoveSpeed"
+    },
+    {
+      "family": "加特林",
+      "key": "variableTransitionFrames",
+      "weaponId": "main-4022",
+      "fileName": "WeaponSpinnerHyper.game__GameParameterTable.json",
+      "inspectedPath": "GameParameters.VariableShotParam.VariableInterpolatedFrame"
+    },
+    {
+      "family": "加特林",
+      "key": "chargeHoldFrames",
+      "weaponId": "main-4030",
+      "fileName": "WeaponSpinnerDownpour.game__GameParameterTable.json",
+      "inspectedPath": "GameParameters.WeaponKeepChargeParam.KeepChargeFullFrame"
+    },
+    {
+      "family": "加特林",
+      "key": "fullChargeOverrideFireIntervalFrames",
+      "weaponId": "main-4030",
+      "fileName": "WeaponSpinnerDownpour.game__GameParameterTable.json",
+      "inspectedPath": "GameParameters.WeaponFullChargeParam.RepeatFrame"
+    },
+    {
+      "family": "加特林",
+      "key": "fullChargeOverrideFiringDurationFrames",
+      "weaponId": "main-4030",
+      "fileName": "WeaponSpinnerDownpour.game__GameParameterTable.json",
+      "inspectedPath": "GameParameters.WeaponFullChargeParam.MaxShootingFrame_Second"
+    },
+    {
+      "family": "加特林",
+      "key": "chargeHoldFrames",
+      "weaponId": "main-4031",
+      "fileName": "WeaponSpinnerDownpour.game__GameParameterTable.json",
+      "inspectedPath": "GameParameters.WeaponKeepChargeParam.KeepChargeFullFrame"
+    },
+    {
+      "family": "加特林",
+      "key": "fullChargeOverrideFireIntervalFrames",
+      "weaponId": "main-4031",
+      "fileName": "WeaponSpinnerDownpour.game__GameParameterTable.json",
+      "inspectedPath": "GameParameters.WeaponFullChargeParam.RepeatFrame"
+    },
+    {
+      "family": "加特林",
+      "key": "fullChargeOverrideFiringDurationFrames",
+      "weaponId": "main-4031",
+      "fileName": "WeaponSpinnerDownpour.game__GameParameterTable.json",
+      "inspectedPath": "GameParameters.WeaponFullChargeParam.MaxShootingFrame_Second"
+    },
+    {
+      "family": "加特林",
+      "key": "fullChargeOverrideFireIntervalFrames",
+      "weaponId": "main-4040",
+      "fileName": "WeaponSpinnerSerein.game__GameParameterTable.json",
+      "inspectedPath": "GameParameters.WeaponFullChargeParam.RepeatFrame"
+    },
+    {
+      "family": "加特林",
+      "key": "fullChargeOverrideFiringDurationFrames",
+      "weaponId": "main-4040",
+      "fileName": "WeaponSpinnerSerein.game__GameParameterTable.json",
+      "inspectedPath": "GameParameters.WeaponFullChargeParam.MaxShootingFrame_Second"
+    },
+    {
+      "family": "加特林",
+      "key": "variableDamagePerShot",
+      "weaponId": "main-4040",
+      "fileName": "WeaponSpinnerSerein.game__GameParameterTable.json",
+      "inspectedPath": "GameParameters.VariableDamageParam.ValueFullChargeMax"
+    },
+    {
+      "family": "加特林",
+      "key": "variableFireIntervalFrames",
+      "weaponId": "main-4040",
+      "fileName": "WeaponSpinnerSerein.game__GameParameterTable.json",
+      "inspectedPath": "GameParameters.VariableShotParam.RepeatFrame"
+    },
+    {
+      "family": "加特林",
+      "key": "variableMovementSpeedWhileFiring",
+      "weaponId": "main-4040",
+      "fileName": "WeaponSpinnerSerein.game__GameParameterTable.json",
+      "inspectedPath": "GameParameters.VariableShotParam.MoveSpeed"
+    },
+    {
+      "family": "加特林",
+      "key": "variableTransitionFrames",
+      "weaponId": "main-4040",
+      "fileName": "WeaponSpinnerSerein.game__GameParameterTable.json",
+      "inspectedPath": "GameParameters.VariableShotParam.VariableInterpolatedFrame"
+    },
+    {
+      "family": "加特林",
+      "key": "fullChargeOverrideFireIntervalFrames",
+      "weaponId": "main-4041",
+      "fileName": "WeaponSpinnerSerein.game__GameParameterTable.json",
+      "inspectedPath": "GameParameters.WeaponFullChargeParam.RepeatFrame"
+    },
+    {
+      "family": "加特林",
+      "key": "fullChargeOverrideFiringDurationFrames",
+      "weaponId": "main-4041",
+      "fileName": "WeaponSpinnerSerein.game__GameParameterTable.json",
+      "inspectedPath": "GameParameters.WeaponFullChargeParam.MaxShootingFrame_Second"
+    },
+    {
+      "family": "加特林",
+      "key": "variableDamagePerShot",
+      "weaponId": "main-4041",
+      "fileName": "WeaponSpinnerSerein.game__GameParameterTable.json",
+      "inspectedPath": "GameParameters.VariableDamageParam.ValueFullChargeMax"
+    },
+    {
+      "family": "加特林",
+      "key": "variableFireIntervalFrames",
+      "weaponId": "main-4041",
+      "fileName": "WeaponSpinnerSerein.game__GameParameterTable.json",
+      "inspectedPath": "GameParameters.VariableShotParam.RepeatFrame"
+    },
+    {
+      "family": "加特林",
+      "key": "variableMovementSpeedWhileFiring",
+      "weaponId": "main-4041",
+      "fileName": "WeaponSpinnerSerein.game__GameParameterTable.json",
+      "inspectedPath": "GameParameters.VariableShotParam.MoveSpeed"
+    },
+    {
+      "family": "加特林",
+      "key": "variableTransitionFrames",
+      "weaponId": "main-4041",
+      "fileName": "WeaponSpinnerSerein.game__GameParameterTable.json",
+      "inspectedPath": "GameParameters.VariableShotParam.VariableInterpolatedFrame"
+    },
+    {
+      "family": "加特林",
+      "key": "chargeHoldFrames",
+      "weaponId": "main-4050",
+      "fileName": "WeaponSpinnerHyperShort.game__GameParameterTable.json",
+      "inspectedPath": "GameParameters.WeaponKeepChargeParam.KeepChargeFullFrame"
+    },
+    {
+      "family": "加特林",
+      "key": "variableDamagePerShot",
+      "weaponId": "main-4050",
+      "fileName": "WeaponSpinnerHyperShort.game__GameParameterTable.json",
+      "inspectedPath": "GameParameters.VariableDamageParam.ValueFullChargeMax"
+    },
+    {
+      "family": "加特林",
+      "key": "variableFireIntervalFrames",
+      "weaponId": "main-4050",
+      "fileName": "WeaponSpinnerHyperShort.game__GameParameterTable.json",
+      "inspectedPath": "GameParameters.VariableShotParam.RepeatFrame"
+    },
+    {
+      "family": "加特林",
+      "key": "variableMovementSpeedWhileFiring",
+      "weaponId": "main-4050",
+      "fileName": "WeaponSpinnerHyperShort.game__GameParameterTable.json",
+      "inspectedPath": "GameParameters.VariableShotParam.MoveSpeed"
+    },
+    {
+      "family": "加特林",
+      "key": "variableTransitionFrames",
+      "weaponId": "main-4050",
+      "fileName": "WeaponSpinnerHyperShort.game__GameParameterTable.json",
+      "inspectedPath": "GameParameters.VariableShotParam.VariableInterpolatedFrame"
+    },
+    {
+      "family": "加特林",
+      "key": "chargeHoldFrames",
+      "weaponId": "main-4051",
+      "fileName": "WeaponSpinnerHyperShort.game__GameParameterTable.json",
+      "inspectedPath": "GameParameters.WeaponKeepChargeParam.KeepChargeFullFrame"
+    },
+    {
+      "family": "加特林",
+      "key": "variableDamagePerShot",
+      "weaponId": "main-4051",
+      "fileName": "WeaponSpinnerHyperShort.game__GameParameterTable.json",
+      "inspectedPath": "GameParameters.VariableDamageParam.ValueFullChargeMax"
+    },
+    {
+      "family": "加特林",
+      "key": "variableFireIntervalFrames",
+      "weaponId": "main-4051",
+      "fileName": "WeaponSpinnerHyperShort.game__GameParameterTable.json",
+      "inspectedPath": "GameParameters.VariableShotParam.RepeatFrame"
+    },
+    {
+      "family": "加特林",
+      "key": "variableMovementSpeedWhileFiring",
+      "weaponId": "main-4051",
+      "fileName": "WeaponSpinnerHyperShort.game__GameParameterTable.json",
+      "inspectedPath": "GameParameters.VariableShotParam.MoveSpeed"
+    },
+    {
+      "family": "加特林",
+      "key": "variableTransitionFrames",
+      "weaponId": "main-4051",
+      "fileName": "WeaponSpinnerHyperShort.game__GameParameterTable.json",
+      "inspectedPath": "GameParameters.VariableShotParam.VariableInterpolatedFrame"
+    },
+    {
+      "family": "加特林",
+      "key": "chargeHoldFrames",
+      "weaponId": "spinner-standardt",
+      "fileName": "WeaponSpinnerStandard.game__GameParameterTable.json",
+      "inspectedPath": "GameParameters.WeaponKeepChargeParam.KeepChargeFullFrame"
+    },
+    {
+      "family": "加特林",
+      "key": "fullChargeOverrideFireIntervalFrames",
+      "weaponId": "spinner-standardt",
+      "fileName": "WeaponSpinnerStandard.game__GameParameterTable.json",
+      "inspectedPath": "GameParameters.WeaponFullChargeParam.RepeatFrame"
+    },
+    {
+      "family": "加特林",
+      "key": "fullChargeOverrideFiringDurationFrames",
+      "weaponId": "spinner-standardt",
+      "fileName": "WeaponSpinnerStandard.game__GameParameterTable.json",
+      "inspectedPath": "GameParameters.WeaponFullChargeParam.MaxShootingFrame_Second"
+    },
+    {
+      "family": "加特林",
+      "key": "variableDamagePerShot",
+      "weaponId": "spinner-standardt",
+      "fileName": "WeaponSpinnerStandard.game__GameParameterTable.json",
+      "inspectedPath": "GameParameters.VariableDamageParam.ValueFullChargeMax"
+    },
+    {
+      "family": "加特林",
+      "key": "variableFireIntervalFrames",
+      "weaponId": "spinner-standardt",
+      "fileName": "WeaponSpinnerStandard.game__GameParameterTable.json",
+      "inspectedPath": "GameParameters.VariableShotParam.RepeatFrame"
+    },
+    {
+      "family": "加特林",
+      "key": "variableMovementSpeedWhileFiring",
+      "weaponId": "spinner-standardt",
+      "fileName": "WeaponSpinnerStandard.game__GameParameterTable.json",
+      "inspectedPath": "GameParameters.VariableShotParam.MoveSpeed"
+    },
+    {
+      "family": "加特林",
+      "key": "variableTransitionFrames",
+      "weaponId": "spinner-standardt",
+      "fileName": "WeaponSpinnerStandard.game__GameParameterTable.json",
+      "inspectedPath": "GameParameters.VariableShotParam.VariableInterpolatedFrame"
+    }
+  ]
+}

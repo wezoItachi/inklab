@@ -104,6 +104,12 @@ export function summarizeMainWeaponParameters(weaponId: string) {
       summary[parameter.status] += 1;
       return summary;
     },
-    { total: parameters.length, verified: 0, pending: 0, demo: 0 },
+    {
+      total: parameters.length,
+      verified: 0,
+      pending: 0,
+      'not-applicable': 0,
+      demo: 0,
+    },
   );
 }

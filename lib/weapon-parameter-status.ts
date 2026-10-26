@@ -4,7 +4,12 @@ import {
   type Weapon,
 } from './weapons.ts';
 
-export type VerificationStatus = 'verified' | 'partial' | 'pending' | 'demo';
+export type VerificationStatus =
+  | 'verified'
+  | 'partial'
+  | 'pending'
+  | 'not-applicable'
+  | 'demo';
 
 export type ParameterField = {
   label: string;
@@ -24,6 +29,7 @@ export const verificationStatusLabels: Record<VerificationStatus, string> = {
   verified: '已核对',
   partial: '部分已核对',
   pending: '待验证',
+  'not-applicable': '不适用',
   demo: '原型演示',
 };
 
@@ -109,6 +115,12 @@ export function summarizeParameterStatuses(
       summary[field.status] += 1;
       return summary;
     },
-    { verified: 0, partial: 0, pending: 0, demo: 0 },
+    {
+      verified: 0,
+      partial: 0,
+      pending: 0,
+      'not-applicable': 0,
+      demo: 0,
+    },
   );
 }

@@ -39,7 +39,11 @@ export function MainWeaponParameterAudit({ weaponId }: { weaponId: string }) {
               <code>{parameter.key}</code>
             </span>
             <strong>
-              {parameter.value === null ? '待录入' : String(parameter.value)}
+              {parameter.status === 'not-applicable'
+                ? '不适用'
+                : parameter.value === null
+                  ? '待录入'
+                  : String(parameter.value)}
             </strong>
             <small>{parameter.unit ?? '—'}</small>
             <em>{verificationStatusLabels[parameter.status]}</em>

@@ -22,7 +22,8 @@
     "salmonInkCycleEvidence": "salmon-ink-cycle-evidence.v11.3.0.json",
     "salmonTargets": "salmon-targets.v11.3.0.json",
     "battleParameterGapReport": "battle-parameter-gap-report.v11.3.0.json",
-    "battleParameterSourceAudit": "battle-parameter-source-audit.v11.3.0.json"
+    "battleParameterSourceAudit": "battle-parameter-source-audit.v11.3.0.json",
+    "battleParameterApplicabilityReport": "battle-parameter-applicability-report.v11.3.0.json"
   },
   "authorization": {
     "leannySplat3": "permission-with-attribution",

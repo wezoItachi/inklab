@@ -8,6 +8,7 @@ import parameterImportReport from '../database/parameter-import-report.v11.3.0.j
 import blasterParameterImportReport from '../database/blaster-parameter-import-report.v11.3.0.json' with { type: 'json' };
 import battleParameterGapReport from '../database/battle-parameter-gap-report.v11.3.0.json' with { type: 'json' };
 import battleParameterSourceAudit from '../database/battle-parameter-source-audit.v11.3.0.json' with { type: 'json' };
+import battleParameterApplicabilityReport from '../database/battle-parameter-applicability-report.v11.3.0.json' with { type: 'json' };
 import rollerParameterImportReport from '../database/roller-parameter-import-report.v11.3.0.json' with { type: 'json' };
 import chargerParameterImportReport from '../database/charger-parameter-import-report.v11.3.0.json' with { type: 'json' };
 import remainingFamilyParameterImportReport from '../database/remaining-family-parameter-import-report.v11.3.0.json' with { type: 'json' };
@@ -81,6 +82,10 @@ void test('database manifest keeps game data and authorization boundaries explic
     manifest.records.battleParameterSourceAudit,
     'battle-parameter-source-audit.v11.3.0.json',
   );
+  assert.equal(
+    manifest.records.battleParameterApplicabilityReport,
+    'battle-parameter-applicability-report.v11.3.0.json',
+  );
   assert.equal(manifest.scope, 'full-weapon-catalog-partial-parameters');
   assert.equal(
     manifest.authorization.leannySplat3,
@@ -97,12 +102,14 @@ void test('battle parameter gap audit accounts for every normalized field', () =
   assert.equal(battleParameterGapReport.summary.weaponCount, 174);
   assert.equal(battleParameterGapReport.summary.totalFields, 2279);
   assert.equal(battleParameterGapReport.summary.verifiedFields, 1827);
-  assert.equal(battleParameterGapReport.summary.pendingFields, 452);
+  assert.equal(battleParameterGapReport.summary.pendingFields, 335);
+  assert.equal(battleParameterGapReport.summary.notApplicableFields, 117);
   assert.equal(battleParameterGapReport.summary.demoFields, 0);
   assert.equal(battleParameterGapReport.byFamily.length, 11);
   assert.equal(
     battleParameterGapReport.summary.verifiedFields +
       battleParameterGapReport.summary.pendingFields +
+      battleParameterGapReport.summary.notApplicableFields +
       battleParameterGapReport.summary.demoFields,
     battleParameterGapReport.summary.totalFields,
   );
@@ -116,6 +123,13 @@ void test('battle parameter gap audit accounts for every normalized field', () =
         family === '射击枪' && key === 'fireIntervalFrames' && count === 7,
     ),
   );
+});
+
+void test('battle applicability resolution only closes absent optional mechanics', () => {
+  assert.equal(battleParameterApplicabilityReport.gameVersion, '11.3.0');
+  assert.equal(battleParameterApplicabilityReport.summary.resolvedFields, 117);
+  assert.equal(battleParameterApplicabilityReport.summary.affectedWeapons, 28);
+  assert.equal(battleParameterApplicabilityReport.resolutions.length, 117);
 });
 
 void test('battle source audit covers every inheritance candidate occurrence', () => {
@@ -536,6 +550,19 @@ void test('main weapon parameters expose values only after field-level verificat
           `${record.weaponId}.${parameter.key}`,
         );
       }
+      if (parameter.status === 'not-applicable') {
+        assert.equal(
+          parameter.value,
+          null,
+          `${record.weaponId}.${parameter.key}`,
+        );
+        assert.equal(parameter.sourceId, 'leanny-splat3');
+        assert.ok(
+          parameter.upstreamPath,
+          `${record.weaponId}.${parameter.key}`,
+        );
+        assert.match(parameter.checkedAt ?? '', /^\d{4}-\d{2}-\d{2}$/);
+      }
       if (parameter.status === 'verified') {
         assert.notEqual(
           parameter.value,
@@ -585,6 +612,12 @@ void test('main weapon parameters expose values only after field-level verificat
   assert.equal(
     heavySplatling.parameters.filter(({ status }) => status === 'pending')
       .length,
-    10,
+    3,
+  );
+  assert.equal(
+    heavySplatling.parameters.filter(
+      ({ status }) => status === 'not-applicable',
+    ).length,
+    7,
   );
 });

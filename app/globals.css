@@ -4036,6 +4036,10 @@ button {
   .parameter-audit-row > em {
     grid-column: 2;
   }
+  .parameter-audit-row.not-applicable > em {
+    background: #eceaf2;
+    color: #625f70;
+  }
   .parameter-audit-row > p {
     grid-column: 1/-1;
   }

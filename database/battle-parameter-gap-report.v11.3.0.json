@@ -6,10 +6,11 @@
     "weaponCount": 174,
     "totalFields": 2279,
     "verifiedFields": 1827,
-    "pendingFields": 452,
+    "pendingFields": 335,
+    "notApplicableFields": 117,
     "demoFields": 0,
     "weaponsWithPending": 174,
-    "inheritanceCandidateGroups": 32
+    "inheritanceCandidateGroups": 23
   },
   "byFamily": [
     {
@@ -247,7 +248,7 @@
       "family": "加特林",
       "weaponCount": 15,
       "weaponsWithPending": 15,
-      "pendingFieldOccurrences": 128,
+      "pendingFieldOccurrences": 37,
       "fields": [
         {
           "key": "effectiveRange",
@@ -297,174 +298,6 @@
           ],
           "notes": [
             "GameParameters.WeaponKeepChargeParam.EnableKeepChargeAnytime 未显式提供可用值"
-          ]
-        },
-        {
-          "key": "chargeHoldFrames",
-          "label": "蓄力储存时限",
-          "unit": "frames",
-          "count": 13,
-          "weaponIds": [
-            "spinner-standardt",
-            "main-4000",
-            "main-4001",
-            "main-4002",
-            "main-4011",
-            "main-4015",
-            "main-4020",
-            "main-4021",
-            "main-4022",
-            "main-4030",
-            "main-4031",
-            "main-4050",
-            "main-4051"
-          ],
-          "notes": [
-            "GameParameters.WeaponKeepChargeParam.KeepChargeFullFrame 未显式提供可用值"
-          ]
-        },
-        {
-          "key": "fullChargeOverrideFireIntervalFrames",
-          "label": "满蓄力覆盖射击间隔",
-          "unit": "frames",
-          "count": 13,
-          "weaponIds": [
-            "spinner-standardt",
-            "main-4000",
-            "main-4001",
-            "main-4002",
-            "main-4011",
-            "main-4015",
-            "main-4020",
-            "main-4021",
-            "main-4022",
-            "main-4030",
-            "main-4031",
-            "main-4040",
-            "main-4041"
-          ],
-          "notes": [
-            "GameParameters.WeaponFullChargeParam.RepeatFrame 未显式提供可用值"
-          ]
-        },
-        {
-          "key": "fullChargeOverrideFiringDurationFrames",
-          "label": "满蓄力覆盖射击窗口",
-          "unit": "frames",
-          "count": 13,
-          "weaponIds": [
-            "spinner-standardt",
-            "main-4000",
-            "main-4001",
-            "main-4002",
-            "main-4011",
-            "main-4015",
-            "main-4020",
-            "main-4021",
-            "main-4022",
-            "main-4030",
-            "main-4031",
-            "main-4040",
-            "main-4041"
-          ],
-          "notes": [
-            "GameParameters.WeaponFullChargeParam.MaxShootingFrame_Second 未显式提供可用值"
-          ]
-        },
-        {
-          "key": "variableDamagePerShot",
-          "label": "可变射击状态单发伤害",
-          "unit": "damage",
-          "count": 13,
-          "weaponIds": [
-            "spinner-standardt",
-            "main-4000",
-            "main-4001",
-            "main-4002",
-            "main-4011",
-            "main-4015",
-            "main-4020",
-            "main-4021",
-            "main-4022",
-            "main-4040",
-            "main-4041",
-            "main-4050",
-            "main-4051"
-          ],
-          "notes": [
-            "GameParameters.VariableDamageParam.ValueFullChargeMax|ValueMax 未显式提供可用值"
-          ]
-        },
-        {
-          "key": "variableFireIntervalFrames",
-          "label": "可变射击状态间隔",
-          "unit": "frames",
-          "count": 13,
-          "weaponIds": [
-            "spinner-standardt",
-            "main-4000",
-            "main-4001",
-            "main-4002",
-            "main-4011",
-            "main-4015",
-            "main-4020",
-            "main-4021",
-            "main-4022",
-            "main-4040",
-            "main-4041",
-            "main-4050",
-            "main-4051"
-          ],
-          "notes": [
-            "GameParameters.VariableShotParam.RepeatFrame 未显式提供可用值"
-          ]
-        },
-        {
-          "key": "variableMovementSpeedWhileFiring",
-          "label": "可变射击状态移动速度",
-          "unit": "internal",
-          "count": 13,
-          "weaponIds": [
-            "spinner-standardt",
-            "main-4000",
-            "main-4001",
-            "main-4002",
-            "main-4011",
-            "main-4015",
-            "main-4020",
-            "main-4021",
-            "main-4022",
-            "main-4040",
-            "main-4041",
-            "main-4050",
-            "main-4051"
-          ],
-          "notes": [
-            "GameParameters.VariableShotParam.MoveSpeed 未显式提供可用值"
-          ]
-        },
-        {
-          "key": "variableTransitionFrames",
-          "label": "可变射击状态过渡帧",
-          "unit": "frames",
-          "count": 13,
-          "weaponIds": [
-            "spinner-standardt",
-            "main-4000",
-            "main-4001",
-            "main-4002",
-            "main-4011",
-            "main-4015",
-            "main-4020",
-            "main-4021",
-            "main-4022",
-            "main-4040",
-            "main-4041",
-            "main-4050",
-            "main-4051"
-          ],
-          "notes": [
-            "GameParameters.VariableShotParam.VariableInterpolatedFrame 未显式提供可用值"
           ]
         },
         {
@@ -633,7 +466,7 @@
       "family": "泼桶",
       "weaponCount": 15,
       "weaponsWithPending": 15,
-      "pendingFieldOccurrences": 47,
+      "pendingFieldOccurrences": 21,
       "fields": [
         {
           "key": "effectiveRange",
@@ -659,54 +492,6 @@
           ],
           "notes": [
             "不同泼桶的多段轨迹和衰减结构不同，需另行定义统一射程口径"
-          ]
-        },
-        {
-          "key": "blastDamage",
-          "label": "爆风伤害",
-          "unit": "damage",
-          "count": 13,
-          "weaponIds": [
-            "main-3000",
-            "main-3001",
-            "main-3005",
-            "main-3010",
-            "main-3011",
-            "main-3012",
-            "main-3020",
-            "main-3021",
-            "main-3030",
-            "main-3031",
-            "main-3050",
-            "main-3051",
-            "main-3052"
-          ],
-          "notes": [
-            "GameParameters.BlastParam.BlastParam.DistanceDamage[0].Damage 未显式提供可用值"
-          ]
-        },
-        {
-          "key": "blastDamageRadius",
-          "label": "爆风伤害范围",
-          "unit": "internal",
-          "count": 13,
-          "weaponIds": [
-            "main-3000",
-            "main-3001",
-            "main-3005",
-            "main-3010",
-            "main-3011",
-            "main-3012",
-            "main-3020",
-            "main-3021",
-            "main-3030",
-            "main-3031",
-            "main-3050",
-            "main-3051",
-            "main-3052"
-          ],
-          "notes": [
-            "GameParameters.BlastParam.BlastParam.DistanceDamage[0].Distance 未显式提供可用值"
           ]
         },
         {
@@ -1142,174 +927,6 @@
     },
     {
       "family": "加特林",
-      "key": "chargeHoldFrames",
-      "label": "蓄力储存时限",
-      "count": 13,
-      "weaponIds": [
-        "spinner-standardt",
-        "main-4000",
-        "main-4001",
-        "main-4002",
-        "main-4011",
-        "main-4015",
-        "main-4020",
-        "main-4021",
-        "main-4022",
-        "main-4030",
-        "main-4031",
-        "main-4050",
-        "main-4051"
-      ],
-      "notes": [
-        "GameParameters.WeaponKeepChargeParam.KeepChargeFullFrame 未显式提供可用值"
-      ]
-    },
-    {
-      "family": "加特林",
-      "key": "fullChargeOverrideFireIntervalFrames",
-      "label": "满蓄力覆盖射击间隔",
-      "count": 13,
-      "weaponIds": [
-        "spinner-standardt",
-        "main-4000",
-        "main-4001",
-        "main-4002",
-        "main-4011",
-        "main-4015",
-        "main-4020",
-        "main-4021",
-        "main-4022",
-        "main-4030",
-        "main-4031",
-        "main-4040",
-        "main-4041"
-      ],
-      "notes": [
-        "GameParameters.WeaponFullChargeParam.RepeatFrame 未显式提供可用值"
-      ]
-    },
-    {
-      "family": "加特林",
-      "key": "fullChargeOverrideFiringDurationFrames",
-      "label": "满蓄力覆盖射击窗口",
-      "count": 13,
-      "weaponIds": [
-        "spinner-standardt",
-        "main-4000",
-        "main-4001",
-        "main-4002",
-        "main-4011",
-        "main-4015",
-        "main-4020",
-        "main-4021",
-        "main-4022",
-        "main-4030",
-        "main-4031",
-        "main-4040",
-        "main-4041"
-      ],
-      "notes": [
-        "GameParameters.WeaponFullChargeParam.MaxShootingFrame_Second 未显式提供可用值"
-      ]
-    },
-    {
-      "family": "加特林",
-      "key": "variableDamagePerShot",
-      "label": "可变射击状态单发伤害",
-      "count": 13,
-      "weaponIds": [
-        "spinner-standardt",
-        "main-4000",
-        "main-4001",
-        "main-4002",
-        "main-4011",
-        "main-4015",
-        "main-4020",
-        "main-4021",
-        "main-4022",
-        "main-4040",
-        "main-4041",
-        "main-4050",
-        "main-4051"
-      ],
-      "notes": [
-        "GameParameters.VariableDamageParam.ValueFullChargeMax|ValueMax 未显式提供可用值"
-      ]
-    },
-    {
-      "family": "加特林",
-      "key": "variableFireIntervalFrames",
-      "label": "可变射击状态间隔",
-      "count": 13,
-      "weaponIds": [
-        "spinner-standardt",
-        "main-4000",
-        "main-4001",
-        "main-4002",
-        "main-4011",
-        "main-4015",
-        "main-4020",
-        "main-4021",
-        "main-4022",
-        "main-4040",
-        "main-4041",
-        "main-4050",
-        "main-4051"
-      ],
-      "notes": [
-        "GameParameters.VariableShotParam.RepeatFrame 未显式提供可用值"
-      ]
-    },
-    {
-      "family": "加特林",
-      "key": "variableMovementSpeedWhileFiring",
-      "label": "可变射击状态移动速度",
-      "count": 13,
-      "weaponIds": [
-        "spinner-standardt",
-        "main-4000",
-        "main-4001",
-        "main-4002",
-        "main-4011",
-        "main-4015",
-        "main-4020",
-        "main-4021",
-        "main-4022",
-        "main-4040",
-        "main-4041",
-        "main-4050",
-        "main-4051"
-      ],
-      "notes": [
-        "GameParameters.VariableShotParam.MoveSpeed 未显式提供可用值"
-      ]
-    },
-    {
-      "family": "加特林",
-      "key": "variableTransitionFrames",
-      "label": "可变射击状态过渡帧",
-      "count": 13,
-      "weaponIds": [
-        "spinner-standardt",
-        "main-4000",
-        "main-4001",
-        "main-4002",
-        "main-4011",
-        "main-4015",
-        "main-4020",
-        "main-4021",
-        "main-4022",
-        "main-4040",
-        "main-4041",
-        "main-4050",
-        "main-4051"
-      ],
-      "notes": [
-        "GameParameters.VariableShotParam.VariableInterpolatedFrame 未显式提供可用值"
-      ]
-    },
-    {
-      "family": "加特林",
       "key": "canRecharge",
       "label": "射击中能否续蓄",
       "count": 9,
@@ -1402,54 +1019,6 @@
       ],
       "notes": [
         "GameParameters.WeaponRollParam.SwingRepeatFrame 未显式提供可用值"
-      ]
-    },
-    {
-      "family": "泼桶",
-      "key": "blastDamage",
-      "label": "爆风伤害",
-      "count": 13,
-      "weaponIds": [
-        "main-3000",
-        "main-3001",
-        "main-3005",
-        "main-3010",
-        "main-3011",
-        "main-3012",
-        "main-3020",
-        "main-3021",
-        "main-3030",
-        "main-3031",
-        "main-3050",
-        "main-3051",
-        "main-3052"
-      ],
-      "notes": [
-        "GameParameters.BlastParam.BlastParam.DistanceDamage[0].Damage 未显式提供可用值"
-      ]
-    },
-    {
-      "family": "泼桶",
-      "key": "blastDamageRadius",
-      "label": "爆风伤害范围",
-      "count": 13,
-      "weaponIds": [
-        "main-3000",
-        "main-3001",
-        "main-3005",
-        "main-3010",
-        "main-3011",
-        "main-3012",
-        "main-3020",
-        "main-3021",
-        "main-3030",
-        "main-3031",
-        "main-3050",
-        "main-3051",
-        "main-3052"
-      ],
-      "notes": [
-        "GameParameters.BlastParam.BlastParam.DistanceDamage[0].Distance 未显式提供可用值"
       ]
     },
     {

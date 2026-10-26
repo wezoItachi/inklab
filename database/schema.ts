@@ -81,7 +81,11 @@ export type SpecialWeaponDatabase = VersionedRecordSet<
 >;
 export type WeaponKitDatabase = VersionedRecordSet<'kits', WeaponKitRecord>;
 
-export type ParameterVerificationStatus = 'verified' | 'pending' | 'demo';
+export type ParameterVerificationStatus =
+  | 'verified'
+  | 'pending'
+  | 'not-applicable'
+  | 'demo';
 
 export type MainWeaponParameterField = {
   key: string;
@@ -234,6 +238,16 @@ export function validateGameDatabase(
         if (parameter.status === 'pending' && parameter.value !== null)
           throw new Error(
             `Pending parameter must not contain a value: ${record.weaponId}.${parameter.key}`,
+          );
+        if (
+          parameter.status === 'not-applicable' &&
+          (parameter.value !== null ||
+            !parameter.sourceId ||
+            !parameter.upstreamPath ||
+            !parameter.checkedAt)
+        )
+          throw new Error(
+            `Not-applicable parameter is missing provenance: ${record.weaponId}.${parameter.key}`,
           );
         if (parameter.status === 'verified') {
           if (

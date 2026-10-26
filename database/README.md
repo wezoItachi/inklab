@@ -21,6 +21,7 @@
 - `salmon-targets.v11.3.0.json`：自由目标实验的 14 个生命值目标；保留社区数据页修订号、敌人内部类型与弱点／装甲／分体边界。
 - `battle-parameter-gap-report.v11.3.0.json`：全 174 把对战武器的待验证字段、类别计数和可能涉及缺省／继承规则的候选组；由本地规范化参数表重复生成。
 - `battle-parameter-source-audit.v11.3.0.json`：把 32 组缺省／继承候选逐项追溯到固定上游文件，区分叶字段省略、可选机制对象缺失与必须另找语义来源的情况。
+- `battle-parameter-applicability-report.v11.3.0.json`：依据来源审计，把可选机制对象整体不存在时的 117 个从属数值字段标为“不适用”；能力布尔值、普通状态继承和运行时默认值仍保持待验证。
 - `schema.ts`：数据结构与运行前校验。
 
 全量目录由 `scripts/import-leanny-weapons.mjs` 离线生成。脚本需要显式传入包含 `WeaponInfoMain.json` 与 `CNzh.json` 的本地目录，例如：

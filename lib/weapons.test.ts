@@ -61,25 +61,51 @@ void test('every catalog weapon exposes honest parameter audit progress', () => 
     assert.equal(parameters.weaponId, weapon.id);
     assert.equal(summary.total, parameters.parameters.length);
     if (weapon.id === 'shooter-quickmiddle-cstm01') {
-      assert.deepEqual(summary, { total: 10, verified: 9, pending: 1, demo: 0 });
+      assert.deepEqual(summary, {
+        total: 10,
+        verified: 9,
+        pending: 1,
+        'not-applicable': 0,
+        demo: 0,
+      });
     } else if (weapon.id === 'shooter-normalt') {
-      assert.deepEqual(summary, { total: 10, verified: 8, pending: 2, demo: 0 });
+      assert.deepEqual(summary, {
+        total: 10,
+        verified: 8,
+        pending: 2,
+        'not-applicable': 0,
+        demo: 0,
+      });
     } else if (weapon.id === 'shooter-precision') {
-      assert.deepEqual(summary, { total: 10, verified: 9, pending: 1, demo: 0 });
+      assert.deepEqual(summary, {
+        total: 10,
+        verified: 9,
+        pending: 1,
+        'not-applicable': 0,
+        demo: 0,
+      });
     } else if (weapon.id === 'charger-normalt') {
-      assert.deepEqual(summary, { total: 7, verified: 5, pending: 2, demo: 0 });
+      assert.deepEqual(summary, {
+        total: 7,
+        verified: 5,
+        pending: 2,
+        'not-applicable': 0,
+        demo: 0,
+      });
     } else if (weapon.id === 'roller-normalt') {
       assert.deepEqual(summary, {
         total: 13,
         verified: 11,
         pending: 2,
+        'not-applicable': 0,
         demo: 0,
       });
     } else if (weapon.id === 'spinner-standardt') {
       assert.deepEqual(summary, {
         total: 24,
         verified: 14,
-        pending: 10,
+        pending: 3,
+        'not-applicable': 7,
         demo: 0,
       });
     } else if (weapon.family === '射击枪') {
@@ -89,6 +115,7 @@ void test('every catalog weapon exposes honest parameter audit progress', () => 
         total: 10,
         verified: usesNormalParameterClass ? 8 : 9,
         pending: usesNormalParameterClass ? 2 : 1,
+        'not-applicable': 0,
         demo: 0,
       });
     } else if (weapon.family === '爆破枪') {
@@ -98,6 +125,7 @@ void test('every catalog weapon exposes honest parameter audit progress', () => 
         total: isSBlast ? 16 : 12,
         verified: isSBlast ? 15 : isMiddle ? 10 : 11,
         pending: isMiddle ? 2 : 1,
+        'not-applicable': 0,
         demo: 0,
       });
     } else if (weapon.family === '滚筒') {
@@ -105,6 +133,7 @@ void test('every catalog weapon exposes honest parameter audit progress', () => 
         total: 13,
         verified: 11,
         pending: 2,
+        'not-applicable': 0,
         demo: 0,
       });
     } else if (weapon.family === '蓄力枪') {
@@ -129,13 +158,14 @@ void test('every catalog weapon exposes honest parameter audit progress', () => 
         total: 7,
         verified,
         pending: 7 - verified,
+        'not-applicable': 0,
         demo: 0,
       });
     } else {
       assert.ok(summary.verified > 0, weapon.id);
       assert.equal(
         summary.total,
-        summary.verified + summary.pending,
+        summary.verified + summary.pending + summary['not-applicable'],
         weapon.id,
       );
       assert.equal(summary.demo, 0, weapon.id);

@@ -27,6 +27,7 @@
     "data:import-salmon-ink-cycle": "node scripts/import-leanny-salmon-ink-cycle.mjs",
     "data:audit-battle-gaps": "node scripts/audit-battle-parameter-gaps.mjs",
     "data:audit-battle-source": "node scripts/audit-battle-source-omissions.mjs",
+    "data:resolve-battle-applicability": "node scripts/resolve-battle-parameter-applicability.mjs",
     "typecheck": "tsc --noEmit --incremental false",
     "lint": "oxlint",
     "format": "oxfmt",
