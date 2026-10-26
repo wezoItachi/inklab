@@ -12,7 +12,7 @@
   },
   "categories": [
     {
-      "category": "action-cycle-model-required",
+      "category": "action-cycle-controlled-capture-required",
       "fieldOccurrences": 39,
       "groups": [
         {
@@ -36,7 +36,7 @@
             "main-1041",
             "main-1042"
           ],
-          "nextEvidence": "Define the action boundary and validate it with source fields plus a frame-by-frame capture."
+          "nextEvidence": "Apply docs/verification/Action-cycle-capture-protocol-v11.3.0.md and validate the defined release-to-release boundary with a frame-by-frame capture."
         },
         {
           "family": "滚筒",
@@ -59,7 +59,7 @@
             "main-1041",
             "main-1042"
           ],
-          "nextEvidence": "Define the action boundary and validate it with source fields plus a frame-by-frame capture."
+          "nextEvidence": "Apply docs/verification/Action-cycle-capture-protocol-v11.3.0.md and validate the defined release-to-release boundary with a frame-by-frame capture."
         },
         {
           "family": "伞",
@@ -79,7 +79,7 @@
             "main-6030",
             "main-6031"
           ],
-          "nextEvidence": "Define the action boundary and validate it with source fields plus a frame-by-frame capture."
+          "nextEvidence": "Apply docs/verification/Action-cycle-capture-protocol-v11.3.0.md and validate the defined release-to-release boundary with a frame-by-frame capture."
         }
       ]
     },

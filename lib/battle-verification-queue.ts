@@ -1,4 +1,4 @@
-import queueDocument from '../database/battle-parameter-verification-queue.v11.3.0.json' with { type: 'json' };
+import summaryDocument from '../database/battle-parameter-verification-summary.v11.3.0.json' with { type: 'json' };
 
 export type VerificationRouteSummary = {
   total: number;
@@ -11,7 +11,7 @@ export type VerificationRouteSummary = {
 };
 
 const categoryLabels: Record<string, string> = {
-  'action-cycle-model-required': '动作周期',
+  'action-cycle-controlled-capture-required': '动作周期/逐帧',
   'capability-or-inheritance-semantics-required': '能力/继承',
   'explicit-source-or-controlled-capture-required': '显式来源/录像',
   'external-semantic-source-required': '外部语义',
@@ -21,20 +21,19 @@ const categoryLabels: Record<string, string> = {
   'runtime-default-or-frame-capture-required': '默认值/逐帧',
 };
 
-const routeCountsByWeapon = new Map<string, Map<string, number>>();
-for (const category of queueDocument.categories) {
-  for (const group of category.groups) {
-    for (const weaponId of group.weaponIds) {
-      const weaponCounts =
-        routeCountsByWeapon.get(weaponId) ?? new Map<string, number>();
-      weaponCounts.set(
-        category.category,
-        (weaponCounts.get(category.category) ?? 0) + 1,
-      );
-      routeCountsByWeapon.set(weaponId, weaponCounts);
-    }
-  }
-}
+const routeCountsByWeapon = new Map(
+  Object.entries(summaryDocument.countsByWeapon).map(
+    ([weaponId, indexedCounts]) => [
+      weaponId,
+      new Map(
+        indexedCounts.map(([categoryIndex, count]) => [
+          summaryDocument.categoryKeys[categoryIndex],
+          count,
+        ]),
+      ),
+    ],
+  ),
+);
 
 export function getWeaponVerificationRouteSummary(
   weaponId: string,

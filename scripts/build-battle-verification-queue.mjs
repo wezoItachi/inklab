@@ -102,9 +102,9 @@ function classify(record, field) {
     /完整|周期|时序|起手|后摇/.test(field.note)
   ) {
     return {
-      category: 'action-cycle-model-required',
+      category: 'action-cycle-controlled-capture-required',
       nextEvidence:
-        'Define the action boundary and validate it with source fields plus a frame-by-frame capture.',
+        'Apply docs/verification/Action-cycle-capture-protocol-v11.3.0.md and validate the defined release-to-release boundary with a frame-by-frame capture.',
     };
   }
   return {
@@ -180,9 +180,55 @@ const report = {
   categories,
 };
 
+const summaryByWeapon = new Map();
+for (const item of items) {
+  const summary = summaryByWeapon.get(item.weaponId) ?? {
+    weaponId: item.weaponId,
+    pendingFieldOccurrences: 0,
+    categories: new Map(),
+  };
+  summary.pendingFieldOccurrences += 1;
+  summary.categories.set(
+    item.category,
+    (summary.categories.get(item.category) ?? 0) + 1,
+  );
+  summaryByWeapon.set(item.weaponId, summary);
+}
+
+const summaryCategoryKeys = categories.map(({ category }) => category);
+const compactSummary = {
+  gameVersion: GAME_VERSION,
+  generatedAt: GENERATED_AT,
+  sourceQueue: 'database/battle-parameter-verification-queue.v11.3.0.json',
+  policy:
+    'Client-facing per-weapon counts only. Detailed evidence instructions remain in the full verification queue.',
+  summary: {
+    weaponsWithPendingFields: summaryByWeapon.size,
+    pendingFieldOccurrences: items.length,
+  },
+  categoryKeys: summaryCategoryKeys,
+  countsByWeapon: Object.fromEntries(
+    [...summaryByWeapon.values()]
+      .sort((left, right) => left.weaponId.localeCompare(right.weaponId))
+      .map((entry) => [
+        entry.weaponId,
+        [...entry.categories.entries()]
+          .map(([category, count]) => [
+            summaryCategoryKeys.indexOf(category),
+            count,
+          ])
+          .sort(([left], [right]) => left - right),
+      ]),
+  ),
+};
+
 writeFileSync(
   resolve(databaseDir, 'battle-parameter-verification-queue.v11.3.0.json'),
   `${JSON.stringify(report, null, 2)}\n`,
+);
+writeFileSync(
+  resolve(databaseDir, 'battle-parameter-verification-summary.v11.3.0.json'),
+  `${JSON.stringify(compactSummary, null, 2)}\n`,
 );
 console.log(
   `Queued ${report.summary.pendingFieldOccurrences} pending fields as ${report.summary.groupedTasks} grouped tasks in ${report.summary.categories} evidence categories.`,

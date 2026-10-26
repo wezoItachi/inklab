@@ -10,6 +10,7 @@ import battleParameterGapReport from '../database/battle-parameter-gap-report.v1
 import battleParameterSourceAudit from '../database/battle-parameter-source-audit.v11.3.0.json' with { type: 'json' };
 import battleParameterApplicabilityReport from '../database/battle-parameter-applicability-report.v11.3.0.json' with { type: 'json' };
 import battleParameterVerificationQueue from '../database/battle-parameter-verification-queue.v11.3.0.json' with { type: 'json' };
+import battleParameterVerificationSummary from '../database/battle-parameter-verification-summary.v11.3.0.json' with { type: 'json' };
 import rollerParameterImportReport from '../database/roller-parameter-import-report.v11.3.0.json' with { type: 'json' };
 import chargerParameterImportReport from '../database/charger-parameter-import-report.v11.3.0.json' with { type: 'json' };
 import remainingFamilyParameterImportReport from '../database/remaining-family-parameter-import-report.v11.3.0.json' with { type: 'json' };
@@ -90,6 +91,10 @@ void test('database manifest keeps game data and authorization boundaries explic
   assert.equal(
     manifest.records.battleParameterVerificationQueue,
     'battle-parameter-verification-queue.v11.3.0.json',
+  );
+  assert.equal(
+    manifest.records.battleParameterVerificationSummary,
+    'battle-parameter-verification-summary.v11.3.0.json',
   );
   assert.equal(manifest.scope, 'full-weapon-catalog-partial-parameters');
   assert.equal(
@@ -195,6 +200,27 @@ void test('battle verification queue accounts for every remaining pending field'
   assert.equal(
     categoryCounts['runtime-default-or-calibrated-measurement-required'],
     7,
+  );
+  assert.equal(categoryCounts['action-cycle-controlled-capture-required'], 39);
+});
+
+void test('compact battle verification summary matches the full queue', () => {
+  assert.equal(battleParameterVerificationSummary.gameVersion, '11.3.0');
+  assert.equal(
+    battleParameterVerificationSummary.summary.pendingFieldOccurrences,
+    battleParameterVerificationQueue.summary.pendingFieldOccurrences,
+  );
+  assert.equal(
+    Object.values(battleParameterVerificationSummary.countsByWeapon).reduce(
+      (total, indexedCounts) =>
+        total + indexedCounts.reduce((sum, [, count]) => sum + count, 0),
+      0,
+    ),
+    332,
+  );
+  assert.equal(
+    battleParameterVerificationSummary.categoryKeys.length,
+    battleParameterVerificationQueue.summary.categories,
   );
 });
 
