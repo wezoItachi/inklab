@@ -22,6 +22,49 @@ for (const group of sourceAudit.groups) {
   }
 }
 
+const frameCaptureDefaultKeys = new Set([
+  'burstFrame',
+  'canopyChargeFrames',
+  'canopyLaunchFrames',
+  'canopyOpenFrames',
+  'canopyShotInkRecoveryLockFrames',
+  'dodgeMoveFrames',
+  'fireIntervalFrames',
+  'fullChargeFrames',
+  'movementLimitFrames',
+  'postDelayFrames',
+  'rollingInkRecoveryLockFrames',
+  'rollingPaintStartFrames',
+  'shotInkRecoveryLockFrames',
+  'swingRepeatFrames',
+]);
+const capabilityObservationDefaultKeys = new Set([
+  'canLaunchCanopy',
+  'canRecharge',
+]);
+
+function classifyRuntimeDefault(field) {
+  if (frameCaptureDefaultKeys.has(field.key)) {
+    return {
+      category: 'runtime-default-or-frame-capture-required',
+      nextEvidence:
+        'Obtain the runtime/schema default or close the value with a reproducible 60 fps frame capture using a stated action boundary.',
+    };
+  }
+  if (capabilityObservationDefaultKeys.has(field.key)) {
+    return {
+      category: 'runtime-default-or-capability-observation-required',
+      nextEvidence:
+        'Obtain the runtime/schema default or document a reproducible in-game capability observation; object omission alone is not false.',
+    };
+  }
+  return {
+    category: 'runtime-default-or-calibrated-measurement-required',
+    nextEvidence:
+      'Obtain the runtime/schema default or perform a calibrated measurement with units, repeated trials, and recorded uncertainty.',
+  };
+}
+
 function classify(record, field) {
   const sourceDisposition = sourceDispositionByField.get(
     `${record.weaponId}:${field.key}`,
@@ -38,11 +81,7 @@ function classify(record, field) {
   if (
     sourceDisposition?.disposition === 'leaf-omitted-schema-default-unresolved'
   ) {
-    return {
-      category: 'runtime-schema-default-required',
-      nextEvidence:
-        'Obtain a schema/runtime default dump or a reproducible frame capture; sibling weapon values are not sufficient.',
-    };
+    return classifyRuntimeDefault(field);
   }
   if (sourceDisposition?.disposition === 'optional-mechanism-object-absent') {
     return {

@@ -3545,7 +3545,18 @@ button {
   background: #fff;
 }
 .parameter-field span {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 2px;
   font-size: 11px;
+}
+.parameter-field span small {
+  overflow: hidden;
+  color: #777;
+  font: 700 7px monospace;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 .parameter-field b {
   white-space: nowrap;

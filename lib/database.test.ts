@@ -135,6 +135,29 @@ void test('battle applicability resolution only closes absent optional mechanics
   assert.equal(battleParameterApplicabilityReport.summary.resolvedFields, 117);
   assert.equal(battleParameterApplicabilityReport.summary.affectedWeapons, 28);
   assert.equal(battleParameterApplicabilityReport.resolutions.length, 117);
+  const resolvedGroupCounts = new Map<string, number>();
+  for (const resolution of battleParameterApplicabilityReport.resolutions) {
+    const group = `${resolution.family}:${resolution.key}`;
+    resolvedGroupCounts.set(group, (resolvedGroupCounts.get(group) ?? 0) + 1);
+  }
+  assert.deepEqual(
+    Object.fromEntries(
+      [...resolvedGroupCounts.entries()].sort(([left], [right]) =>
+        left.localeCompare(right),
+      ),
+    ),
+    {
+      '加特林:chargeHoldFrames': 13,
+      '加特林:fullChargeOverrideFireIntervalFrames': 13,
+      '加特林:fullChargeOverrideFiringDurationFrames': 13,
+      '加特林:variableDamagePerShot': 13,
+      '加特林:variableFireIntervalFrames': 13,
+      '加特林:variableMovementSpeedWhileFiring': 13,
+      '加特林:variableTransitionFrames': 13,
+      '泼桶:blastDamage': 13,
+      '泼桶:blastDamageRadius': 13,
+    },
+  );
 });
 
 void test('battle verification queue accounts for every remaining pending field', () => {
@@ -143,7 +166,7 @@ void test('battle verification queue accounts for every remaining pending field'
     battleParameterVerificationQueue.summary.pendingFieldOccurrences,
     332,
   );
-  assert.equal(battleParameterVerificationQueue.summary.categories, 6);
+  assert.equal(battleParameterVerificationQueue.summary.categories, 8);
   assert.equal(battleParameterVerificationQueue.summary.groupedTasks, 36);
   assert.equal(
     battleParameterVerificationQueue.categories.reduce(
@@ -158,6 +181,20 @@ void test('battle verification queue accounts for every remaining pending field'
         category === 'range-model-or-controlled-measurement-required',
     )?.fieldOccurrences,
     160,
+  );
+  const categoryCounts = Object.fromEntries(
+    battleParameterVerificationQueue.categories.map(
+      ({ category, fieldOccurrences }) => [category, fieldOccurrences],
+    ),
+  );
+  assert.equal(categoryCounts['runtime-default-or-frame-capture-required'], 65);
+  assert.equal(
+    categoryCounts['runtime-default-or-capability-observation-required'],
+    15,
+  );
+  assert.equal(
+    categoryCounts['runtime-default-or-calibrated-measurement-required'],
+    7,
   );
 });
 

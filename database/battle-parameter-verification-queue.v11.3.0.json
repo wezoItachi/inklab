@@ -7,7 +7,7 @@
   "policy": "Every remaining pending occurrence receives one evidence requirement. This queue records what would close the field; it does not promote assumptions to verified values.",
   "summary": {
     "pendingFieldOccurrences": 332,
-    "categories": 6,
+    "categories": 8,
     "groupedTasks": 36
   },
   "categories": [
@@ -449,8 +449,78 @@
       ]
     },
     {
-      "category": "runtime-schema-default-required",
-      "fieldOccurrences": 87,
+      "category": "runtime-default-or-calibrated-measurement-required",
+      "fieldOccurrences": 7,
+      "groups": [
+        {
+          "family": "画笔",
+          "key": "rollingSpeed",
+          "label": "刷地移动速度",
+          "count": 4,
+          "weaponIds": [
+            "main-1110",
+            "main-1111",
+            "main-1112",
+            "main-1115"
+          ],
+          "nextEvidence": "Obtain the runtime/schema default or perform a calibrated measurement with units, repeated trials, and recorded uncertainty."
+        },
+        {
+          "family": "伞",
+          "key": "canopyDurability",
+          "label": "伞面耐久",
+          "count": 3,
+          "weaponIds": [
+            "main-6000",
+            "main-6001",
+            "main-6005"
+          ],
+          "nextEvidence": "Obtain the runtime/schema default or perform a calibrated measurement with units, repeated trials, and recorded uncertainty."
+        }
+      ]
+    },
+    {
+      "category": "runtime-default-or-capability-observation-required",
+      "fieldOccurrences": 15,
+      "groups": [
+        {
+          "family": "加特林",
+          "key": "canRecharge",
+          "label": "射击中能否续蓄",
+          "count": 9,
+          "weaponIds": [
+            "spinner-standardt",
+            "main-4000",
+            "main-4001",
+            "main-4002",
+            "main-4011",
+            "main-4015",
+            "main-4020",
+            "main-4021",
+            "main-4022"
+          ],
+          "nextEvidence": "Obtain the runtime/schema default or document a reproducible in-game capability observation; object omission alone is not false."
+        },
+        {
+          "family": "伞",
+          "key": "canLaunchCanopy",
+          "label": "能否发射伞面",
+          "count": 6,
+          "weaponIds": [
+            "main-6000",
+            "main-6001",
+            "main-6005",
+            "main-6010",
+            "main-6011",
+            "main-6012"
+          ],
+          "nextEvidence": "Obtain the runtime/schema default or document a reproducible in-game capability observation; object omission alone is not false."
+        }
+      ]
+    },
+    {
+      "category": "runtime-default-or-frame-capture-required",
+      "fieldOccurrences": 65,
       "groups": [
         {
           "family": "伞",
@@ -468,25 +538,7 @@
             "main-6021",
             "main-6022"
           ],
-          "nextEvidence": "Obtain a schema/runtime default dump or a reproducible frame capture; sibling weapon values are not sufficient."
-        },
-        {
-          "family": "加特林",
-          "key": "canRecharge",
-          "label": "射击中能否续蓄",
-          "count": 9,
-          "weaponIds": [
-            "spinner-standardt",
-            "main-4000",
-            "main-4001",
-            "main-4002",
-            "main-4011",
-            "main-4015",
-            "main-4020",
-            "main-4021",
-            "main-4022"
-          ],
-          "nextEvidence": "Obtain a schema/runtime default dump or a reproducible frame capture; sibling weapon values are not sufficient."
+          "nextEvidence": "Obtain the runtime/schema default or close the value with a reproducible 60 fps frame capture using a stated action boundary."
         },
         {
           "family": "射击枪",
@@ -502,7 +554,7 @@
             "main-47",
             "main-48"
           ],
-          "nextEvidence": "Obtain a schema/runtime default dump or a reproducible frame capture; sibling weapon values are not sufficient."
+          "nextEvidence": "Obtain the runtime/schema default or close the value with a reproducible 60 fps frame capture using a stated action boundary."
         },
         {
           "family": "蓄力枪",
@@ -518,22 +570,7 @@
             "main-2021",
             "main-2022"
           ],
-          "nextEvidence": "Obtain a schema/runtime default dump or a reproducible frame capture; sibling weapon values are not sufficient."
-        },
-        {
-          "family": "伞",
-          "key": "canLaunchCanopy",
-          "label": "能否发射伞面",
-          "count": 6,
-          "weaponIds": [
-            "main-6000",
-            "main-6001",
-            "main-6005",
-            "main-6010",
-            "main-6011",
-            "main-6012"
-          ],
-          "nextEvidence": "Obtain a schema/runtime default dump or a reproducible frame capture; sibling weapon values are not sufficient."
+          "nextEvidence": "Obtain the runtime/schema default or close the value with a reproducible 60 fps frame capture using a stated action boundary."
         },
         {
           "family": "伞",
@@ -548,7 +585,7 @@
             "main-6021",
             "main-6022"
           ],
-          "nextEvidence": "Obtain a schema/runtime default dump or a reproducible frame capture; sibling weapon values are not sufficient."
+          "nextEvidence": "Obtain the runtime/schema default or close the value with a reproducible 60 fps frame capture using a stated action boundary."
         },
         {
           "family": "画笔",
@@ -563,7 +600,7 @@
             "main-1112",
             "main-1115"
           ],
-          "nextEvidence": "Obtain a schema/runtime default dump or a reproducible frame capture; sibling weapon values are not sufficient."
+          "nextEvidence": "Obtain the runtime/schema default or close the value with a reproducible 60 fps frame capture using a stated action boundary."
         },
         {
           "family": "双枪",
@@ -576,7 +613,7 @@
             "main-5040",
             "main-5041"
           ],
-          "nextEvidence": "Obtain a schema/runtime default dump or a reproducible frame capture; sibling weapon values are not sufficient."
+          "nextEvidence": "Obtain the runtime/schema default or close the value with a reproducible 60 fps frame capture using a stated action boundary."
         },
         {
           "family": "画笔",
@@ -589,20 +626,7 @@
             "main-1112",
             "main-1115"
           ],
-          "nextEvidence": "Obtain a schema/runtime default dump or a reproducible frame capture; sibling weapon values are not sufficient."
-        },
-        {
-          "family": "画笔",
-          "key": "rollingSpeed",
-          "label": "刷地移动速度",
-          "count": 4,
-          "weaponIds": [
-            "main-1110",
-            "main-1111",
-            "main-1112",
-            "main-1115"
-          ],
-          "nextEvidence": "Obtain a schema/runtime default dump or a reproducible frame capture; sibling weapon values are not sufficient."
+          "nextEvidence": "Obtain the runtime/schema default or close the value with a reproducible 60 fps frame capture using a stated action boundary."
         },
         {
           "family": "画笔",
@@ -615,7 +639,7 @@
             "main-1112",
             "main-1115"
           ],
-          "nextEvidence": "Obtain a schema/runtime default dump or a reproducible frame capture; sibling weapon values are not sufficient."
+          "nextEvidence": "Obtain the runtime/schema default or close the value with a reproducible 60 fps frame capture using a stated action boundary."
         },
         {
           "family": "爆破枪",
@@ -627,7 +651,7 @@
             "main-211",
             "main-212"
           ],
-          "nextEvidence": "Obtain a schema/runtime default dump or a reproducible frame capture; sibling weapon values are not sufficient."
+          "nextEvidence": "Obtain the runtime/schema default or close the value with a reproducible 60 fps frame capture using a stated action boundary."
         },
         {
           "family": "伞",
@@ -639,19 +663,7 @@
             "main-6001",
             "main-6005"
           ],
-          "nextEvidence": "Obtain a schema/runtime default dump or a reproducible frame capture; sibling weapon values are not sufficient."
-        },
-        {
-          "family": "伞",
-          "key": "canopyDurability",
-          "label": "伞面耐久",
-          "count": 3,
-          "weaponIds": [
-            "main-6000",
-            "main-6001",
-            "main-6005"
-          ],
-          "nextEvidence": "Obtain a schema/runtime default dump or a reproducible frame capture; sibling weapon values are not sufficient."
+          "nextEvidence": "Obtain the runtime/schema default or close the value with a reproducible 60 fps frame capture using a stated action boundary."
         },
         {
           "family": "伞",
@@ -663,7 +675,7 @@
             "main-6001",
             "main-6005"
           ],
-          "nextEvidence": "Obtain a schema/runtime default dump or a reproducible frame capture; sibling weapon values are not sufficient."
+          "nextEvidence": "Obtain the runtime/schema default or close the value with a reproducible 60 fps frame capture using a stated action boundary."
         },
         {
           "family": "泼桶",
@@ -675,7 +687,7 @@
             "main-3001",
             "main-3005"
           ],
-          "nextEvidence": "Obtain a schema/runtime default dump or a reproducible frame capture; sibling weapon values are not sufficient."
+          "nextEvidence": "Obtain the runtime/schema default or close the value with a reproducible 60 fps frame capture using a stated action boundary."
         },
         {
           "family": "泼桶",
@@ -687,7 +699,7 @@
             "main-3001",
             "main-3005"
           ],
-          "nextEvidence": "Obtain a schema/runtime default dump or a reproducible frame capture; sibling weapon values are not sufficient."
+          "nextEvidence": "Obtain the runtime/schema default or close the value with a reproducible 60 fps frame capture using a stated action boundary."
         },
         {
           "family": "伞",
@@ -699,7 +711,7 @@
             "main-6001",
             "main-6005"
           ],
-          "nextEvidence": "Obtain a schema/runtime default dump or a reproducible frame capture; sibling weapon values are not sufficient."
+          "nextEvidence": "Obtain the runtime/schema default or close the value with a reproducible 60 fps frame capture using a stated action boundary."
         }
       ]
     }

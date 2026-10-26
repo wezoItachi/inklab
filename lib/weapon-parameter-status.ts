@@ -3,6 +3,7 @@ import {
   getMainWeaponParameters,
   type Weapon,
 } from './weapons.ts';
+import { getWeaponVerificationRouteSummary } from './battle-verification-queue.ts';
 
 export type VerificationStatus =
   | 'verified'
@@ -15,6 +16,7 @@ export type ParameterField = {
   label: string;
   status: VerificationStatus;
   source?: string;
+  shortNote?: string;
   note: string;
 };
 
@@ -64,6 +66,7 @@ export function getWeaponParameterSnapshot(
     mainParameters.length -
     verifiedMainParameters -
     notApplicableMainParameters;
+  const verificationRoutes = getWeaponVerificationRouteSummary(weapon.id);
   return {
     weaponId: weapon.id,
     gameVersion: DATA_VERSION,
@@ -101,6 +104,7 @@ export function getWeaponParameterSnapshot(
               ? 'partial'
               : 'pending',
         source: pendingMainParameters === 0 ? 'leanny1130' : undefined,
+        shortNote: verificationRoutes.shortLabel,
         note: `已建 ${mainParameters.length} 个字段 · ${verifiedMainParameters} 个已核对 · ${notApplicableMainParameters} 个不适用 · ${pendingMainParameters} 个待验证`,
       },
       {
