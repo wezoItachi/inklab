@@ -21,7 +21,7 @@ Nintendo 的 Ver. 11.3.0 更新说明未列出 N-ZAP85 / N-ZAP89 的主武器参
 | `jumpShotSpreadDegrees`    | `WeaponParam.Jump_DegSwerve`  |   12.0 |            12° | 直接记录          |
 | `movementSpeedWhileFiring` | `WeaponParam.MoveSpeed`       |  0.088 | 0.088 internal | 保留内部单位      |
 
-`effectiveRange` 继续为 `pending`：当前还没有确定 INKLAB 的“有效射程”是按最大伤害距离、伤害衰减起点、弹丸寿命还是界面单位表达。定义和换算测试完成前不写入数值。
+`effectiveRange` 继续为 `pending`：INKLAB 已将射击枪拆成最远直击与开始伤害衰减两条边界。弹丸后续运动、训练场换算和受控实测完成前不写入数值。
 
 ## 授权边界
 

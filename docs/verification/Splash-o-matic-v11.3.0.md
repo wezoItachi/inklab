@@ -24,7 +24,7 @@
 | `jumpShotSpreadDegrees`    | `WeaponParam.Jump_DegSwerve`  |    0.0 |             0° | 直接记录          |
 | `movementSpeedWhileFiring` | `WeaponParam.MoveSpeed`       |  0.072 | 0.072 internal | 保留内部单位      |
 
-`effectiveRange` 继续为 `pending`：INKLAB 尚未统一“有效射程”的定义与换算方式。
+`effectiveRange` 继续为 `pending`：INKLAB 已将射击枪拆成最远直击与开始伤害衰减两条边界，但换算方式与受控实测尚未完成。
 
 ## 授权边界
 

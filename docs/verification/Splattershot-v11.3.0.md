@@ -22,7 +22,7 @@ Nintendo 的 Ver. 11.3.0 更新说明没有列出斯普拉射击枪的参数调�
 
 `fireIntervalFrames` 继续为 `pending`：该武器的 11.3.0 文件没有显式包含 `RepeatFrame`。在确认游戏参数结构的默认值来源前，不依据社区常识直接写入数值。
 
-`effectiveRange` 继续为 `pending`：INKLAB 尚未统一“有效射程”的定义与换算方式。
+`effectiveRange` 继续为 `pending`：INKLAB 已将射击枪拆成最远直击与开始伤害衰减两条边界，但换算方式与受控实测尚未完成。
 
 ## 分析器行为
 
