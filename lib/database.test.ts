@@ -10,6 +10,7 @@ import rollerParameterImportReport from '../database/roller-parameter-import-rep
 import chargerParameterImportReport from '../database/charger-parameter-import-report.v11.3.0.json' with { type: 'json' };
 import remainingFamilyParameterImportReport from '../database/remaining-family-parameter-import-report.v11.3.0.json' with { type: 'json' };
 import salmonParameterSourceReport from '../database/salmon-parameter-source-report.v11.3.0.json' with { type: 'json' };
+import salmonWeaponParameterDocument from '../database/salmon-weapon-parameters.v11.3.0.json' with { type: 'json' };
 import specialWeaponDocument from '../database/special-weapons.v11.3.0.json' with { type: 'json' };
 import sourcesDocument from '../database/sources.json' with { type: 'json' };
 import subWeaponDocument from '../database/sub-weapons.v11.3.0.json' with { type: 'json' };
@@ -58,6 +59,10 @@ void test('database manifest keeps game data and authorization boundaries explic
   assert.equal(
     manifest.records.salmonParameterSourceReport,
     'salmon-parameter-source-report.v11.3.0.json',
+  );
+  assert.equal(
+    manifest.records.salmonWeaponParameters,
+    'salmon-weapon-parameters.v11.3.0.json',
   );
   assert.equal(manifest.scope, 'full-weapon-catalog-partial-parameters');
   assert.equal(
@@ -143,9 +148,49 @@ void test('11.3 import report matches the normalized catalog', () => {
   for (const input of remainingFamilyParameterImportReport.inputs)
     assert.match(input.sha256, /^[a-f0-9]{64}$/);
   assert.equal(salmonParameterSourceReport.sourceCommit.length, 40);
-  assert.equal(salmonParameterSourceReport.inputs.length, 8);
+  assert.equal(salmonParameterSourceReport.outputCounts.regularWeapons, 63);
+  assert.equal(salmonParameterSourceReport.outputCounts.grizzcoWeapons, 8);
+  assert.equal(salmonParameterSourceReport.outputCounts.totalWeapons, 71);
+  assert.equal(salmonWeaponParameterDocument.records.length, 71);
+  assert.equal(
+    salmonWeaponParameterDocument.records.filter(
+      ({ kind }) => kind === 'regular',
+    ).length,
+    63,
+  );
+  assert.equal(
+    salmonWeaponParameterDocument.records.filter(
+      ({ kind }) => kind === 'grizzco',
+    ).length,
+    8,
+  );
+  assert.deepEqual(salmonParameterSourceReport.missingCoopOverrideFiles, [
+    { weaponId: 'main-60', name: 'N-ZAP85' },
+  ]);
+  assert.ok(salmonParameterSourceReport.inputs.length > 100);
   for (const input of salmonParameterSourceReport.inputs)
     assert.match(input.sha256, /^[a-f0-9]{64}$/);
+  for (const record of salmonWeaponParameterDocument.records) {
+    assert.ok(record.parameters.length > 0, record.id);
+    assert.equal(
+      new Set(record.parameters.map(({ key }) => key)).size,
+      record.parameters.length,
+      record.id,
+    );
+    for (const parameter of record.parameters) {
+      assert.equal(
+        parameter.status,
+        'verified',
+        `${record.id}.${parameter.key}`,
+      );
+      assert.notEqual(parameter.value, null, `${record.id}.${parameter.key}`);
+      assert.match(
+        parameter.upstreamPath,
+        /^data\/parameter\/1130\/weapon\/.+#GameParameters\./,
+        `${record.id}.${parameter.key}`,
+      );
+    }
+  }
 });
 
 void test('normalized game tables have valid cross references and registered sources', () => {

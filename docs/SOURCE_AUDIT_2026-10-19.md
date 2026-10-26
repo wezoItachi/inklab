@@ -7,7 +7,7 @@
 - Leanny 的原始许可回复仍可访问：允许 INKLAB 自由使用所需数据，可在构建时生成或提交规范化数据；要求使用 **Data provided by Lean** 并链接 `Leanny/splat3`。
 - Leanny 于 2026-10-26 对追加请求回复 “Yes, all of that is fine as well and you are free to use the images as well”，确认请求中逐项列出的鲑鱼跑／通用参数、未来版本更新和选定图片范围；对应 Issue 已由项目维护者回复并按完成关闭。
 - 固定上游提交 `7280ff9cde8bb1c5dcef46c700c326471584d2e6` 仍可解析，提交标题为 `1130`。
-- 174 把对战武器目录、11 类对战参数和首批 4 把鲑鱼跑试算均记录游戏版本、固定提交、上游路径与 SHA-256。
+- 174 把对战武器目录、11 类对战参数、71 把鲑鱼跑武器的部分参数和首批 4 把动作试算均记录游戏版本、固定提交、上游路径与 SHA-256。
 - Sendouc 关于 26 个能力图标的回复仍可访问：不要求向 Sendouc 署名，并指出文件实际来自 `Leanny/splat3`。该回复不解决 Nintendo 对游戏素材的底层权利。
 - Nintendo 更新说明、Nintendo 武器说明、Nintendo 装备能力说明、Leanny 参数浏览器、splatoon3.ink 日程端点／详情页及其 GitHub 仓库均在本次复核时可访问。
 - Inkipedia 的主武器省墨页面会拒绝普通自动 HTTP 客户端，但搜索索引仍可解析到目标页面；项目继续只把它作为有明确链接的社区交叉核对来源，不复制页面正文或图片。
@@ -20,7 +20,8 @@
 - 滚筒参数：`database/roller-parameter-import-report.v11.3.0.json`
 - 蓄力枪参数：`database/charger-parameter-import-report.v11.3.0.json`
 - 其余七类参数：`database/remaining-family-parameter-import-report.v11.3.0.json`
-- 首批鲑鱼跑试算：`database/salmon-parameter-source-report.v11.3.0.json`
+- 鲑鱼跑 71 武器部分参数：`database/salmon-weapon-parameters.v11.3.0.json`
+- 鲑鱼跑批量输入与哈希：`database/salmon-parameter-source-report.v11.3.0.json`
 - 来源索引与许可记录：`database/sources.json`
 
 ## 仍不在当前许可结论内

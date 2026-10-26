@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "databaseId": "inklab-core",
   "gameVersion": "11.3.0",
-  "updatedAt": "2026-10-08",
+  "updatedAt": "2026-10-26",
   "scope": "full-weapon-catalog-partial-parameters",
   "records": {
     "mainWeapons": "main-weapons.v11.3.0.json",
@@ -17,6 +17,7 @@
     "rollerParameterImportReport": "roller-parameter-import-report.v11.3.0.json",
     "chargerParameterImportReport": "charger-parameter-import-report.v11.3.0.json",
     "remainingFamilyParameterImportReport": "remaining-family-parameter-import-report.v11.3.0.json",
+    "salmonWeaponParameters": "salmon-weapon-parameters.v11.3.0.json",
     "salmonParameterSourceReport": "salmon-parameter-source-report.v11.3.0.json"
   },
   "authorization": {

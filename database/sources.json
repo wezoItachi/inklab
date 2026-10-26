@@ -43,7 +43,7 @@
       "checkedAt": "2026-10-26",
       "latestObservedVersion": "11.3.0",
       "sourceCommit": "7280ff9cde8bb1c5dcef46c700c326471584d2e6",
-      "scope": "Ver. 11.3.0 weapon identities, localized names, categories, kit relationships, selected explicit battle parameter fields, and the eight base/Coop files used by the first four Salmon Run calculations",
+      "scope": "Ver. 11.3.0 weapon identities, localized names, categories, kit relationships, selected explicit battle parameter fields, and source-backed partial parameters for all 63 regular Salmon Run weapon chassis plus eight Grizzco weapons",
       "upstreamPaths": [
         "data/mush/1130/WeaponInfoMain.json",
         "data/language/CNzh.json",

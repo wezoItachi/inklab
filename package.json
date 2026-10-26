@@ -23,6 +23,7 @@
     "data:import-roller-parameters": "node scripts/import-leanny-roller-parameters.mjs",
     "data:import-charger-parameters": "node scripts/import-leanny-charger-parameters.mjs",
     "data:import-remaining-parameters": "node scripts/import-leanny-remaining-parameters.mjs",
+    "data:import-salmon-parameters": "node scripts/import-leanny-salmon-parameters.mjs",
     "typecheck": "tsc --noEmit --incremental false",
     "lint": "oxlint",
     "format": "oxfmt",

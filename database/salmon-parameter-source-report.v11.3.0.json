@@ -1,48 +1,563 @@
 {
   "gameVersion": "11.3.0",
-  "checkedAt": "2026-10-19",
+  "checkedAt": "2026-10-26",
   "sourceId": "leanny-splat3",
   "sourceCommit": "7280ff9cde8bb1c5dcef46c700c326471584d2e6",
   "attribution": "Data provided by Lean",
-  "scope": "First four Salmon Run calculations: explicit base fields plus _Coop overrides",
+  "scope": "All 63 regular Salmon Run weapon chassis and eight Grizzco weapons; only source-backed, semantically registered fields are normalized",
   "inputs": [
     {
-      "upstreamPath": "data/parameter/1130/weapon/WeaponShooterShort.game__GameParameterTable.json",
-      "sha256": "4766d778180949833438b93fd945131cd76835adfda6a11feb6f7b2b3803c315"
+      "upstreamPath": "data/parameter/1130/weapon/WeaponBlasterBear_Coop.game__GameParameterTable.json",
+      "sha256": "832c7e967c90faf2069326efcf2a97759d720218c9e2363b2088428b588b6264"
     },
     {
-      "upstreamPath": "data/parameter/1130/weapon/WeaponShooterShort_Coop.game__GameParameterTable.json",
-      "sha256": "e4d34efedacb296f24958e6f493d606ad6da4030f69e69cd8c71d1addfc35bdc"
+      "upstreamPath": "data/parameter/1130/weapon/WeaponBlasterLight_Coop.game__GameParameterTable.json",
+      "sha256": "4988b87b33395893122c9760fb0ab9dd22803a4c4d3a75c6d410ed7ca2c35779"
     },
     {
-      "upstreamPath": "data/parameter/1130/weapon/WeaponShooterPrecision.game__GameParameterTable.json",
-      "sha256": "317493845cbdb503a49015451b0e5b2f00cdf90f748b07e44e81ff1cca036f1d"
+      "upstreamPath": "data/parameter/1130/weapon/WeaponBlasterLight.game__GameParameterTable.json",
+      "sha256": "e749fc9ccd6919f71c1a9287f9351710f48cfd81e260fc1ba759db157986cae1"
     },
     {
-      "upstreamPath": "data/parameter/1130/weapon/WeaponShooterPrecision_Coop.game__GameParameterTable.json",
-      "sha256": "9398e66dfb75fe6ab1f16e0e930796caebacf5fc4a1544a0f50158b66d7653cf"
+      "upstreamPath": "data/parameter/1130/weapon/WeaponBlasterLightLong_Coop.game__GameParameterTable.json",
+      "sha256": "0bb38f5a0b63c7b53bf3f92db3774d4165eff793a3a79243ba5fb00fe6ddd5cd"
     },
     {
-      "upstreamPath": "data/parameter/1130/weapon/WeaponShooterHeavy.game__GameParameterTable.json",
-      "sha256": "1389dbae6854cc2e5ca19dbc38f26254390141a28726e5cdb860e3cadd69fe66"
+      "upstreamPath": "data/parameter/1130/weapon/WeaponBlasterLightLong.game__GameParameterTable.json",
+      "sha256": "b9eceef9a3f5d95445a338cd6086fb258512389b5b0ecd4eac9ae703abd02783"
+    },
+    {
+      "upstreamPath": "data/parameter/1130/weapon/WeaponBlasterLightShort_Coop.game__GameParameterTable.json",
+      "sha256": "3f4d177af524d9aeb8f970953cfd86bb0e2f0f3aad1fe27843b8fd01b3a91e86"
+    },
+    {
+      "upstreamPath": "data/parameter/1130/weapon/WeaponBlasterLightShort.game__GameParameterTable.json",
+      "sha256": "d1d896eeb9553b409e24c9d7882f6fd4af318a5e58b72c397146714f741f778c"
+    },
+    {
+      "upstreamPath": "data/parameter/1130/weapon/WeaponBlasterLong_Coop.game__GameParameterTable.json",
+      "sha256": "e229f36bcf5af73e747710fc7d13c146e23fcca18ec682fe4d69261ee9f5bf74"
+    },
+    {
+      "upstreamPath": "data/parameter/1130/weapon/WeaponBlasterLong.game__GameParameterTable.json",
+      "sha256": "a383cab64ce28ec184a300ed387f63218c92cc426713308767473b256cfa18f1"
+    },
+    {
+      "upstreamPath": "data/parameter/1130/weapon/WeaponBlasterMiddle_Coop.game__GameParameterTable.json",
+      "sha256": "cc1db23d406fc435353895b1b5904b7765448133357f5f354805f480eb8375e0"
+    },
+    {
+      "upstreamPath": "data/parameter/1130/weapon/WeaponBlasterMiddle.game__GameParameterTable.json",
+      "sha256": "36139282d2bd915f675424d99d5641800f184bcc9a9d1b0c94be533d38f64e18"
+    },
+    {
+      "upstreamPath": "data/parameter/1130/weapon/WeaponBlasterPrecision_Coop.game__GameParameterTable.json",
+      "sha256": "e588bc4804088628419dfd2a07cf8c1e4b3bb19da7f4e0001d648f318cfb7539"
+    },
+    {
+      "upstreamPath": "data/parameter/1130/weapon/WeaponBlasterPrecision.game__GameParameterTable.json",
+      "sha256": "a169ffe86f5e896a38e064f535111b1349f4661220d3aeb87904c9103ca17cf3"
+    },
+    {
+      "upstreamPath": "data/parameter/1130/weapon/WeaponBlasterShort_Coop.game__GameParameterTable.json",
+      "sha256": "e95954700e0d0e33c38a14dd7d6475fdd86a471660a6dd8d261ed6f0de9d27b8"
+    },
+    {
+      "upstreamPath": "data/parameter/1130/weapon/WeaponBlasterShort.game__GameParameterTable.json",
+      "sha256": "edb21c5d3f1cc5073f26a04879b70242de5e5d7f27edde48d4c5a6caf9dc40e3"
+    },
+    {
+      "upstreamPath": "data/parameter/1130/weapon/WeaponBrushHeavy_Coop.game__GameParameterTable.json",
+      "sha256": "7bf40c4be8bcfebe379e7820610ff0214059f0384ac5284496cf6ecbd1135b3a"
+    },
+    {
+      "upstreamPath": "data/parameter/1130/weapon/WeaponBrushHeavy.game__GameParameterTable.json",
+      "sha256": "411050318967a4188eb1e6cf33c742ef0b11bc3e7fef92856d3dbf50a3b339d5"
+    },
+    {
+      "upstreamPath": "data/parameter/1130/weapon/WeaponBrushMini_Coop.game__GameParameterTable.json",
+      "sha256": "0bd66deb87c4575f338fe5e2b62a95334f930320bc508e3af74fc1251e1d25f9"
+    },
+    {
+      "upstreamPath": "data/parameter/1130/weapon/WeaponBrushMini.game__GameParameterTable.json",
+      "sha256": "dd8424ed0f82ec6b2d972d250bea53ca0eb905e9bc6009e616f92c2c792b58fa"
+    },
+    {
+      "upstreamPath": "data/parameter/1130/weapon/WeaponBrushNormal_Coop.game__GameParameterTable.json",
+      "sha256": "e78f007ae0b2677cca9e84b8e5356355329b18959ae5bd9794b1726619a5f03f"
+    },
+    {
+      "upstreamPath": "data/parameter/1130/weapon/WeaponBrushNormal.game__GameParameterTable.json",
+      "sha256": "8c622a0e5d630982e0bb5cd0c4bb50264c7a3a6258b7d8a988a736643e12a82e"
+    },
+    {
+      "upstreamPath": "data/parameter/1130/weapon/WeaponChargerBear_Coop.game__GameParameterTable.json",
+      "sha256": "a658563d1907532486628def0cd892a6d4e15ba25eb896f2b6018cd290f6d2c5"
+    },
+    {
+      "upstreamPath": "data/parameter/1130/weapon/WeaponChargerKeeper_Coop.game__GameParameterTable.json",
+      "sha256": "b77cd1d8c4fb944691bcbdf5b0868d08a9b49542bff94ae8b09d3dc322ed1301"
+    },
+    {
+      "upstreamPath": "data/parameter/1130/weapon/WeaponChargerKeeper.game__GameParameterTable.json",
+      "sha256": "228e257d89a4aad30d423f7230349a10bb31e121ce96716e3334a3fc4f060803"
+    },
+    {
+      "upstreamPath": "data/parameter/1130/weapon/WeaponChargerLight_Coop.game__GameParameterTable.json",
+      "sha256": "e57a12da9b373a7efd71aa4ffd5d972acdcacb15a0a3a66def715fc66c592b5f"
+    },
+    {
+      "upstreamPath": "data/parameter/1130/weapon/WeaponChargerLight.game__GameParameterTable.json",
+      "sha256": "6678865b3853d30a538ae374c09f7ddee07b32a400296792dfbfbf4d71d52402"
+    },
+    {
+      "upstreamPath": "data/parameter/1130/weapon/WeaponChargerLong_Coop.game__GameParameterTable.json",
+      "sha256": "7de1711de494d1e52dd9b4ea71276bf7f7b8ad195b7b2352e938bd44a158b016"
+    },
+    {
+      "upstreamPath": "data/parameter/1130/weapon/WeaponChargerLong.game__GameParameterTable.json",
+      "sha256": "7aad1211d9934990ff666de960010ceaa05f676212e1e4c2543564cea22b2fa8"
+    },
+    {
+      "upstreamPath": "data/parameter/1130/weapon/WeaponChargerNormal_Coop.game__GameParameterTable.json",
+      "sha256": "031ce0a5c14bc4b714e4c61ff2ef3b61757882846b066f78cb0b04daefda367c"
+    },
+    {
+      "upstreamPath": "data/parameter/1130/weapon/WeaponChargerNormal.game__GameParameterTable.json",
+      "sha256": "dfe4637def507f933b0bbecbc805331f6357bb69ac165608a6e558406a4b72c1"
+    },
+    {
+      "upstreamPath": "data/parameter/1130/weapon/WeaponChargerPencil_Coop.game__GameParameterTable.json",
+      "sha256": "4955dea62b1f85646d1160b654a27a6d571fe77bf85968f5ea557b65e7dcab72"
+    },
+    {
+      "upstreamPath": "data/parameter/1130/weapon/WeaponChargerPencil.game__GameParameterTable.json",
+      "sha256": "b1fa33f41fb36d36d42d849dd0c20516339734dc8946e3cc752402faa30da690"
+    },
+    {
+      "upstreamPath": "data/parameter/1130/weapon/WeaponChargerQuick_Coop.game__GameParameterTable.json",
+      "sha256": "c18d0ba07de79f0f0c098995a91a7051e813665bc7c0c1f1a9f80a48a5e64981"
+    },
+    {
+      "upstreamPath": "data/parameter/1130/weapon/WeaponChargerQuick.game__GameParameterTable.json",
+      "sha256": "9327cad5946b2871bcb8f914382bb32955a644ea3f811d7fba711c2d315ccd57"
+    },
+    {
+      "upstreamPath": "data/parameter/1130/weapon/WeaponManeuverBear_Coop.game__GameParameterTable.json",
+      "sha256": "8e023a2385c946df5e51fd80b8302c1d1065a1df94f4f5fc57d29b44dc547c79"
+    },
+    {
+      "upstreamPath": "data/parameter/1130/weapon/WeaponManeuverDual_Coop.game__GameParameterTable.json",
+      "sha256": "ce0a379df63113a83fe8a479f43062f6ccd0aec34153acfaf6802846a9f714bf"
+    },
+    {
+      "upstreamPath": "data/parameter/1130/weapon/WeaponManeuverDual.game__GameParameterTable.json",
+      "sha256": "c2eb9cd1a15a556f533725fca989412d73f5942ffd31fe8448ca87c2d7693ae6"
+    },
+    {
+      "upstreamPath": "data/parameter/1130/weapon/WeaponManeuverGallon_Coop.game__GameParameterTable.json",
+      "sha256": "2b00355875c8d1e1b58b5fb2215a48751c461ade375245a6d724fdab0b1a418c"
+    },
+    {
+      "upstreamPath": "data/parameter/1130/weapon/WeaponManeuverGallon.game__GameParameterTable.json",
+      "sha256": "a65b5fc265a615263ed826bce09213fa90697bb2cfe44af588625c1887a16c89"
+    },
+    {
+      "upstreamPath": "data/parameter/1130/weapon/WeaponManeuverLong_Coop.game__GameParameterTable.json",
+      "sha256": "a34fff5fd9f77c685e4623f0014f9b2577dbd7b2e8cfd4d329e05681df947a30"
+    },
+    {
+      "upstreamPath": "data/parameter/1130/weapon/WeaponManeuverLong.game__GameParameterTable.json",
+      "sha256": "ca42a0ee6fcb761865496615fc487e17d8529a33369200972ccbc9f8b7855b5f"
+    },
+    {
+      "upstreamPath": "data/parameter/1130/weapon/WeaponManeuverNormal_Coop.game__GameParameterTable.json",
+      "sha256": "934ee6513cfa88e3a49002a2de970d086a4028b87d77fcb75f502ae5b0b4bce8"
+    },
+    {
+      "upstreamPath": "data/parameter/1130/weapon/WeaponManeuverNormal.game__GameParameterTable.json",
+      "sha256": "55e37c4d8db92b63d48f281015a30a9aaccd1ff838edf88ae4103124c365eb07"
+    },
+    {
+      "upstreamPath": "data/parameter/1130/weapon/WeaponManeuverShort_Coop.game__GameParameterTable.json",
+      "sha256": "6f612260b0e7de52c1630cc2bf929fbba893216b02eb9c67f7f9bc16d136b4cd"
+    },
+    {
+      "upstreamPath": "data/parameter/1130/weapon/WeaponManeuverShort.game__GameParameterTable.json",
+      "sha256": "61abee93821489b4fc72b93cc080e3463477f09961aee874c9a521a25812fbb7"
+    },
+    {
+      "upstreamPath": "data/parameter/1130/weapon/WeaponManeuverStepper_Coop.game__GameParameterTable.json",
+      "sha256": "b2ba1da575628db34473fa53787943214a7c164317beb0aacbbc2fd5d6bf1342"
+    },
+    {
+      "upstreamPath": "data/parameter/1130/weapon/WeaponManeuverStepper.game__GameParameterTable.json",
+      "sha256": "c2a33ed35e87ac3efdd88a3e19d53015f57425e536c01405706d5a030a18d536"
+    },
+    {
+      "upstreamPath": "data/parameter/1130/weapon/WeaponRollerBear_Coop.game__GameParameterTable.json",
+      "sha256": "015c052562e7cf79beb96a5c95e229ad82a06be84c579ef1a3b21d7ba51c6f71"
+    },
+    {
+      "upstreamPath": "data/parameter/1130/weapon/WeaponRollerCompact_Coop.game__GameParameterTable.json",
+      "sha256": "11a88c85bf2cf9fa801c4b03960f4f0934fff8cb74531c7c1214cc31625873ab"
+    },
+    {
+      "upstreamPath": "data/parameter/1130/weapon/WeaponRollerCompact.game__GameParameterTable.json",
+      "sha256": "0c586351a0d16bae0fcb416ed053e69790b14ca4660dc3a1771516f740332415"
+    },
+    {
+      "upstreamPath": "data/parameter/1130/weapon/WeaponRollerHeavy_Coop.game__GameParameterTable.json",
+      "sha256": "f53bb353d6e22d4d2d021de26227e08d6284b73befe34393bc24f7c154cbd74f"
+    },
+    {
+      "upstreamPath": "data/parameter/1130/weapon/WeaponRollerHeavy.game__GameParameterTable.json",
+      "sha256": "7206012122ec2faf48713f313ed58002bd77fe4f7e9923aee667bc518102a37a"
+    },
+    {
+      "upstreamPath": "data/parameter/1130/weapon/WeaponRollerHunter_Coop.game__GameParameterTable.json",
+      "sha256": "f34e411adb355dc15fdec55f8c9989075209d38ac709e111bf7bf4722642e016"
+    },
+    {
+      "upstreamPath": "data/parameter/1130/weapon/WeaponRollerHunter.game__GameParameterTable.json",
+      "sha256": "3de9fc1dd3a57939bceac11ddc04f110fad3f51677cec60ff57a83a78f54a23e"
+    },
+    {
+      "upstreamPath": "data/parameter/1130/weapon/WeaponRollerNormal_Coop.game__GameParameterTable.json",
+      "sha256": "f168d9c269dc2e57b4b94dd37eaf2c6ac2ffa0dad1ad5f40c818783f0922aa59"
+    },
+    {
+      "upstreamPath": "data/parameter/1130/weapon/WeaponRollerNormal.game__GameParameterTable.json",
+      "sha256": "5b423eb35d4cac268a1e4085ec8321d27639ddbfc8f3775bb65696af5c2449c7"
+    },
+    {
+      "upstreamPath": "data/parameter/1130/weapon/WeaponRollerWide_Coop.game__GameParameterTable.json",
+      "sha256": "d52bdb403b884133f9bf4d1ae303b65fce01c6fd72f46b769b883e9df7d63852"
+    },
+    {
+      "upstreamPath": "data/parameter/1130/weapon/WeaponRollerWide.game__GameParameterTable.json",
+      "sha256": "3e4d368b04c78ce4ee81dc09862136b9aee214397d96990e98609d91209b2f80"
+    },
+    {
+      "upstreamPath": "data/parameter/1130/weapon/WeaponSaberBear_Coop.game__GameParameterTable.json",
+      "sha256": "b697329ae7f30a73bdf6995318caf00c37fe0b3d8f19c7268e1e1eef5e7e73d7"
+    },
+    {
+      "upstreamPath": "data/parameter/1130/weapon/WeaponSaberHeavy_Coop.game__GameParameterTable.json",
+      "sha256": "781506039dab8200d0e35d488f9225554c56d47f62b4ad340eab8b1ce4921f13"
+    },
+    {
+      "upstreamPath": "data/parameter/1130/weapon/WeaponSaberHeavy.game__GameParameterTable.json",
+      "sha256": "e16c518cdf5fa3180b8b959aa24a80728229de0241f836be854e5cef9431cf6e"
+    },
+    {
+      "upstreamPath": "data/parameter/1130/weapon/WeaponSaberLite_Coop.game__GameParameterTable.json",
+      "sha256": "7aa9810e89e5e2e011eb4d6f9303fc44e9d27c1f00bd5aac684b2c83a3244968"
+    },
+    {
+      "upstreamPath": "data/parameter/1130/weapon/WeaponSaberLite.game__GameParameterTable.json",
+      "sha256": "f6f8238ce0175f50e20bfa8ef70e669179f9da8bda301ecec35f786e0b59d35c"
+    },
+    {
+      "upstreamPath": "data/parameter/1130/weapon/WeaponSaberNormal_Coop.game__GameParameterTable.json",
+      "sha256": "aa31c2af8b078d13eb77b546aa71945fcb759346fea1d938692dd60ce33b347b"
+    },
+    {
+      "upstreamPath": "data/parameter/1130/weapon/WeaponSaberNormal.game__GameParameterTable.json",
+      "sha256": "11d42c2c7616fc2d4318a42d4bcf9ea651fdddc93cb5f9ac75112ea99295c100"
+    },
+    {
+      "upstreamPath": "data/parameter/1130/weapon/WeaponShelterBear_Coop.game__GameParameterTable.json",
+      "sha256": "3f6986427bc2c53788c48e163904b29dc2deb40cb39e5e4e863a25ddb1464dac"
+    },
+    {
+      "upstreamPath": "data/parameter/1130/weapon/WeaponShelterCompact_Coop.game__GameParameterTable.json",
+      "sha256": "b7c0d3460e1949523ea6ef810197a05add5c322af9d5fd7865b8390af7b7df55"
+    },
+    {
+      "upstreamPath": "data/parameter/1130/weapon/WeaponShelterCompact.game__GameParameterTable.json",
+      "sha256": "e53c9b297839e131150d6436bc2844e055728fa1735bf4f15688487d39c713a2"
+    },
+    {
+      "upstreamPath": "data/parameter/1130/weapon/WeaponShelterFocus_Coop.game__GameParameterTable.json",
+      "sha256": "7fa3cc6b948756539fc06d10f666175c94052a1ee34290fd7a44491436d094a4"
+    },
+    {
+      "upstreamPath": "data/parameter/1130/weapon/WeaponShelterFocus.game__GameParameterTable.json",
+      "sha256": "dec8f891b8fae33a9d10837ef592c616471a5de88d2e17cb87c8c4b1a70d5f78"
+    },
+    {
+      "upstreamPath": "data/parameter/1130/weapon/WeaponShelterNormal_Coop.game__GameParameterTable.json",
+      "sha256": "5ca1e2907ca2bae34deae189e93b30484d60c81a3029e6a9819a904e3f50142f"
+    },
+    {
+      "upstreamPath": "data/parameter/1130/weapon/WeaponShelterNormal.game__GameParameterTable.json",
+      "sha256": "a5cfa45bd450b773fd39eccf51ac39cde2cd45367fa6b46eccc8d8c2a2b9b268"
+    },
+    {
+      "upstreamPath": "data/parameter/1130/weapon/WeaponShelterWide_Coop.game__GameParameterTable.json",
+      "sha256": "08eaacb43e3c7d9445a1960bdca23eb6fabb8a0a837d1dfa25c864be7a27ea23"
+    },
+    {
+      "upstreamPath": "data/parameter/1130/weapon/WeaponShelterWide.game__GameParameterTable.json",
+      "sha256": "ec1fa93b80e3736de425d2d8eeaa74991c8d6020a3da3eabf79ba3a1c3c5fc5d"
+    },
+    {
+      "upstreamPath": "data/parameter/1130/weapon/WeaponShooterBlaze_Coop.game__GameParameterTable.json",
+      "sha256": "6ff5512b9098e825d60da72c6e7baa6cfd00243b723a37d49465e03474101a73"
+    },
+    {
+      "upstreamPath": "data/parameter/1130/weapon/WeaponShooterBlaze.game__GameParameterTable.json",
+      "sha256": "287ffb3b99b4bda1d7ccabf8798a19240a9009f136d851c0e348d106c911b857"
+    },
+    {
+      "upstreamPath": "data/parameter/1130/weapon/WeaponShooterExpert_Coop.game__GameParameterTable.json",
+      "sha256": "03a5cd67369b918df8a535629456f570f44be9391a9ac5138631b55cc71c7387"
+    },
+    {
+      "upstreamPath": "data/parameter/1130/weapon/WeaponShooterExpert.game__GameParameterTable.json",
+      "sha256": "fe8613779062558495b4c03088a3986c995bf6c280e894fb5176eda0d6a0c1c3"
+    },
+    {
+      "upstreamPath": "data/parameter/1130/weapon/WeaponShooterFirst_Coop.game__GameParameterTable.json",
+      "sha256": "fe745d5ee66e2459027b162d8ccae500eb45c29844e20ed7504a76bdf7e8438d"
+    },
+    {
+      "upstreamPath": "data/parameter/1130/weapon/WeaponShooterFirst.game__GameParameterTable.json",
+      "sha256": "ffe774bff3c4ce800869295539c1dbb86184621758dee1a2a4d84b2c32b4e759"
+    },
+    {
+      "upstreamPath": "data/parameter/1130/weapon/WeaponShooterFlash_Coop.game__GameParameterTable.json",
+      "sha256": "f245168986e650d208debdbd450c87079d49b0677fca352c6fa26173fdd6cb5a"
+    },
+    {
+      "upstreamPath": "data/parameter/1130/weapon/WeaponShooterFlash.game__GameParameterTable.json",
+      "sha256": "77ca957122d5fffc1769015725fa97ee7be9da1c9fb55cf53547a54e7fc47453"
+    },
+    {
+      "upstreamPath": "data/parameter/1130/weapon/WeaponShooterGravity_Coop.game__GameParameterTable.json",
+      "sha256": "20e9a5666f3a558cc283679fb32cc294d10066b2de7002a8e05b73c1bfda6a43"
+    },
+    {
+      "upstreamPath": "data/parameter/1130/weapon/WeaponShooterGravity.game__GameParameterTable.json",
+      "sha256": "c1a42d516bfb5c1763f4285159456589b7a647ee0862004654c36d604889b838"
     },
     {
       "upstreamPath": "data/parameter/1130/weapon/WeaponShooterHeavy_Coop.game__GameParameterTable.json",
       "sha256": "253885ceb6d4352aea3a76ac37e9c8fd7e1872e7e5afd6d9b9f1a8b882b69fc7"
     },
     {
-      "upstreamPath": "data/parameter/1130/weapon/WeaponStringerNormal.game__GameParameterTable.json",
-      "sha256": "cb61af8d568193c5c3af677ca8a324aae2afe92a9a681c0483a15f6266e5317f"
+      "upstreamPath": "data/parameter/1130/weapon/WeaponShooterHeavy.game__GameParameterTable.json",
+      "sha256": "1389dbae6854cc2e5ca19dbc38f26254390141a28726e5cdb860e3cadd69fe66"
+    },
+    {
+      "upstreamPath": "data/parameter/1130/weapon/WeaponShooterLong_Coop.game__GameParameterTable.json",
+      "sha256": "dce9c2ed868cf89008bae80de888bfe8e9ee8f041f8c06b1bff7209bf23e6ea4"
+    },
+    {
+      "upstreamPath": "data/parameter/1130/weapon/WeaponShooterLong.game__GameParameterTable.json",
+      "sha256": "622d825f0ab428792df84fd62f64ab93bfc376b82e2a36538e41c0856cee9b7c"
+    },
+    {
+      "upstreamPath": "data/parameter/1130/weapon/WeaponShooterNormal_Coop.game__GameParameterTable.json",
+      "sha256": "5b42f0ee38632630f3305ccb2ddbd4d597340fc0decdf8c522c8bfe9983be6ec"
+    },
+    {
+      "upstreamPath": "data/parameter/1130/weapon/WeaponShooterNormal.game__GameParameterTable.json",
+      "sha256": "dfca9f45fd0df3b6afab8f6ec0e47034912f3a6fc411936b9fd7257fe85c4cb9"
+    },
+    {
+      "upstreamPath": "data/parameter/1130/weapon/WeaponShooterPrecision_Coop.game__GameParameterTable.json",
+      "sha256": "9398e66dfb75fe6ab1f16e0e930796caebacf5fc4a1544a0f50158b66d7653cf"
+    },
+    {
+      "upstreamPath": "data/parameter/1130/weapon/WeaponShooterPrecision.game__GameParameterTable.json",
+      "sha256": "317493845cbdb503a49015451b0e5b2f00cdf90f748b07e44e81ff1cca036f1d"
+    },
+    {
+      "upstreamPath": "data/parameter/1130/weapon/WeaponShooterQuickLong_Coop.game__GameParameterTable.json",
+      "sha256": "abd8f6da8a58493f5300330c5853ed04dde326cc18c01d33689ea4c026fdb573"
+    },
+    {
+      "upstreamPath": "data/parameter/1130/weapon/WeaponShooterQuickLong.game__GameParameterTable.json",
+      "sha256": "3533be18562e2926a2601039c944dd1a056c98d13a60e803b4a0c7bd21f72db6"
+    },
+    {
+      "upstreamPath": "data/parameter/1130/weapon/WeaponShooterQuickMiddle.game__GameParameterTable.json",
+      "sha256": "2cb076ebd75165b73dc7a950380838c773b8dd5bb5b85ae70e7204b1dc15f257"
+    },
+    {
+      "upstreamPath": "data/parameter/1130/weapon/WeaponShooterShort_Coop.game__GameParameterTable.json",
+      "sha256": "e4d34efedacb296f24958e6f493d606ad6da4030f69e69cd8c71d1addfc35bdc"
+    },
+    {
+      "upstreamPath": "data/parameter/1130/weapon/WeaponShooterShort.game__GameParameterTable.json",
+      "sha256": "4766d778180949833438b93fd945131cd76835adfda6a11feb6f7b2b3803c315"
+    },
+    {
+      "upstreamPath": "data/parameter/1130/weapon/WeaponShooterTripleMiddle_Coop.game__GameParameterTable.json",
+      "sha256": "058e0c1692df4b445e2770ef07f272554123fb75e04a8db2d680178de72bac1d"
+    },
+    {
+      "upstreamPath": "data/parameter/1130/weapon/WeaponShooterTripleMiddle.game__GameParameterTable.json",
+      "sha256": "172c36279e2fd8c32d6c3a99583939cb4484caeda89c01d0fdfaee7d166a3c5a"
+    },
+    {
+      "upstreamPath": "data/parameter/1130/weapon/WeaponShooterTripleQuick_Coop.game__GameParameterTable.json",
+      "sha256": "1cf5e7dd25397884f5d63033c25e4b02a12b9c8db3ac5f90e9b1e6ccf9c2722d"
+    },
+    {
+      "upstreamPath": "data/parameter/1130/weapon/WeaponShooterTripleQuick.game__GameParameterTable.json",
+      "sha256": "0ce1d682ab866a17d7b4931cbb799faa1a813c350893803a63b0259cfbf47875"
+    },
+    {
+      "upstreamPath": "data/parameter/1130/weapon/WeaponSlosherBathtub_Coop.game__GameParameterTable.json",
+      "sha256": "8eefa6ec54c14d48d4d1d8d63e95dd326e56f09015e60d794ffcf8c9223ea43c"
+    },
+    {
+      "upstreamPath": "data/parameter/1130/weapon/WeaponSlosherBathtub.game__GameParameterTable.json",
+      "sha256": "203ff1f8b529bcda8224d4cd5b247aeb3ebb1b54a62f1838c980957a4718d4af"
+    },
+    {
+      "upstreamPath": "data/parameter/1130/weapon/WeaponSlosherBear_Coop.game__GameParameterTable.json",
+      "sha256": "17295c584c928cce9b1f5b76cb3b0e2f97074fcb16e44feca9cd59ecbdeab7ae"
+    },
+    {
+      "upstreamPath": "data/parameter/1130/weapon/WeaponSlosherDiffusion_Coop.game__GameParameterTable.json",
+      "sha256": "a625e1caac79f2768491b22b87eecd5204d148925b556db9c2ff76391bc1cc5d"
+    },
+    {
+      "upstreamPath": "data/parameter/1130/weapon/WeaponSlosherDiffusion.game__GameParameterTable.json",
+      "sha256": "91b131d145f4a9c50f5223678acb1fe09a01f643dd554857f336bc4a37e1ba02"
+    },
+    {
+      "upstreamPath": "data/parameter/1130/weapon/WeaponSlosherDouble_Coop.game__GameParameterTable.json",
+      "sha256": "69af943e4796d719fa73539b9134ccc58c77b278075ec9341a00945d75d965aa"
+    },
+    {
+      "upstreamPath": "data/parameter/1130/weapon/WeaponSlosherDouble.game__GameParameterTable.json",
+      "sha256": "d89014f37baac02449d5390cd36b281c24fcf1f2643ba7e2b4b05fedc3154e47"
+    },
+    {
+      "upstreamPath": "data/parameter/1130/weapon/WeaponSlosherLauncher_Coop.game__GameParameterTable.json",
+      "sha256": "3c7917a32117d4121b1cbaa5120c11b84c4fad90e894b5a187a656ae63c9d0b0"
+    },
+    {
+      "upstreamPath": "data/parameter/1130/weapon/WeaponSlosherLauncher.game__GameParameterTable.json",
+      "sha256": "3b6d7326f487efd5f8999c7286d0688e97cc5bb9d1e3938fba5e4ea6c69c9a9a"
+    },
+    {
+      "upstreamPath": "data/parameter/1130/weapon/WeaponSlosherStrong_Coop.game__GameParameterTable.json",
+      "sha256": "c8d9cb8ea5df1e52d28fa921b0d4a1facd35d717d19bd55d8686ae73e31c02ec"
+    },
+    {
+      "upstreamPath": "data/parameter/1130/weapon/WeaponSlosherStrong.game__GameParameterTable.json",
+      "sha256": "1d20043ad7efaf2831801afbce601fb1e14bfd11947063903c6fadd6c98f5298"
+    },
+    {
+      "upstreamPath": "data/parameter/1130/weapon/WeaponSlosherWashtub_Coop.game__GameParameterTable.json",
+      "sha256": "91cffad7ea5ab8ef5f2bb74586a141b6a59df61e7108d9d187c88174ed260d82"
+    },
+    {
+      "upstreamPath": "data/parameter/1130/weapon/WeaponSlosherWashtub.game__GameParameterTable.json",
+      "sha256": "d7b73f92338b9e2fa320092b56ca768c395d9a26ec1f0e90ccf1be2dc0fbcf1b"
+    },
+    {
+      "upstreamPath": "data/parameter/1130/weapon/WeaponSpinnerDownpour_Coop.game__GameParameterTable.json",
+      "sha256": "84192e82e238fc3b448414856f5b685248109755557d9191aa80d9eb5dad068c"
+    },
+    {
+      "upstreamPath": "data/parameter/1130/weapon/WeaponSpinnerDownpour.game__GameParameterTable.json",
+      "sha256": "9193fcb40f14a2bc850777a13ee0077e88083700c1d6a366f258ea73d6220e60"
+    },
+    {
+      "upstreamPath": "data/parameter/1130/weapon/WeaponSpinnerHyper_Coop.game__GameParameterTable.json",
+      "sha256": "f214575e41926a5f7c34041549b23239fc1cdc0e07cf5f8fff3ff1164e7e0a37"
+    },
+    {
+      "upstreamPath": "data/parameter/1130/weapon/WeaponSpinnerHyper.game__GameParameterTable.json",
+      "sha256": "1f92f4f4266070e59c7ab3775fb90c75624018899bb3b9bced915a6a3e2630ed"
+    },
+    {
+      "upstreamPath": "data/parameter/1130/weapon/WeaponSpinnerHyperShort_Coop.game__GameParameterTable.json",
+      "sha256": "cbf0140127d910b9d98cf54e7bedb8774c08eb7372dcd4491cd7ac03a538d45a"
+    },
+    {
+      "upstreamPath": "data/parameter/1130/weapon/WeaponSpinnerHyperShort.game__GameParameterTable.json",
+      "sha256": "0eb316039a439354af2923dc75b6725f2a93abd31515b59f399d5fa34100e125"
+    },
+    {
+      "upstreamPath": "data/parameter/1130/weapon/WeaponSpinnerQuick_Coop.game__GameParameterTable.json",
+      "sha256": "4d839195d53edf8869e748e8d301f8636d0d34aefaf4b9598219b3a27124df3e"
+    },
+    {
+      "upstreamPath": "data/parameter/1130/weapon/WeaponSpinnerQuick.game__GameParameterTable.json",
+      "sha256": "36d1af6547a876ed4ce0d1ecd6daa3a1f08290636c2ae95f099e79b06872a56f"
+    },
+    {
+      "upstreamPath": "data/parameter/1130/weapon/WeaponSpinnerSerein_Coop.game__GameParameterTable.json",
+      "sha256": "0f9109db05838102b30f0c8bd1d8b986bfc4136ef5c18e1bb4fe4839fe6a5e8d"
+    },
+    {
+      "upstreamPath": "data/parameter/1130/weapon/WeaponSpinnerSerein.game__GameParameterTable.json",
+      "sha256": "42d9ba656a039606c3d56da7cb1d8b97f556866d260328cb0792c0718ff22eeb"
+    },
+    {
+      "upstreamPath": "data/parameter/1130/weapon/WeaponSpinnerStandard_Coop.game__GameParameterTable.json",
+      "sha256": "a84c44c76567580dabf4faef9c53ad95cab1ace92b7efdd13f259d8e20b73247"
+    },
+    {
+      "upstreamPath": "data/parameter/1130/weapon/WeaponSpinnerStandard.game__GameParameterTable.json",
+      "sha256": "92647d586beee1764ca8984820fa37e0fd7887e2a756f7ca18e10e1aef97fd08"
+    },
+    {
+      "upstreamPath": "data/parameter/1130/weapon/WeaponStringerBear_Coop.game__GameParameterTable.json",
+      "sha256": "7848db97a01ce7c9b4a38af3861ef9d953ac92e711e73abf055ce869ef921d33"
+    },
+    {
+      "upstreamPath": "data/parameter/1130/weapon/WeaponStringerExplosion_Coop.game__GameParameterTable.json",
+      "sha256": "dd1eaff67bf79d5c43a51a035a6b09ad520b5f4a8458069df56f1a54f3440c83"
+    },
+    {
+      "upstreamPath": "data/parameter/1130/weapon/WeaponStringerExplosion.game__GameParameterTable.json",
+      "sha256": "e24399f434d1124229a796e80e57ff5adde94b473d0df40139193237adfdbe89"
     },
     {
       "upstreamPath": "data/parameter/1130/weapon/WeaponStringerNormal_Coop.game__GameParameterTable.json",
       "sha256": "bd230b3f7cc3a5773b688ee4e934246b0ea6e6d691ad640e462dd037315bfce5"
+    },
+    {
+      "upstreamPath": "data/parameter/1130/weapon/WeaponStringerNormal.game__GameParameterTable.json",
+      "sha256": "cb61af8d568193c5c3af677ca8a324aae2afe92a9a681c0483a15f6266e5317f"
+    },
+    {
+      "upstreamPath": "data/parameter/1130/weapon/WeaponStringerShort_Coop.game__GameParameterTable.json",
+      "sha256": "0078faf424a72f9db2f45bb6279697c8ace62684677851845df5d5bfc23110aa"
+    },
+    {
+      "upstreamPath": "data/parameter/1130/weapon/WeaponStringerShort.game__GameParameterTable.json",
+      "sha256": "43be11b5a207160d2c06571bfea70041f1bcc8cc95abe028cae6b8134cf1c5d9"
     }
   ],
-  "derivedModels": [
-    "广域标记枪理论极限／日常动作基准",
-    "窄域标记枪理论极限／日常动作基准",
-    ".96加仑理论极限／日常动作基准",
-    "三发猎鱼弓一段蓄力极限与一段／满蓄力混合日常基准"
+  "outputCounts": {
+    "regularWeapons": 63,
+    "grizzcoWeapons": 8,
+    "totalWeapons": 71,
+    "recordsWithParameters": 71,
+    "verifiedParameters": 674,
+    "coopOverrides": 235,
+    "grizzcoExplicitParameters": 77,
+    "inheritedParameters": 362
+  },
+  "missingCoopOverrideFiles": [
+    {
+      "weaponId": "main-60",
+      "name": "N-ZAP85"
+    }
+  ],
+  "boundaries": [
+    "Permission and source presence do not prove field semantics; only fields already registered by a verified battle-family model are normalized.",
+    "A missing _Coop file means no dedicated override was found at the pinned upstream commit; the verified battle base remains the only recorded value source.",
+    "This dataset does not yet calculate recovery cycles, post-action ink lock, WAVE throughput or practical clear thresholds."
   ]
 }
