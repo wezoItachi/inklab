@@ -53,9 +53,9 @@ function classify(record, field) {
   }
   if (field.key === 'effectiveRange') {
     return {
-      category: 'range-definition-and-model-required',
+      category: 'range-model-or-controlled-measurement-required',
       nextEvidence:
-        'Choose a family-specific range definition and validate its conversion against controlled in-game measurements.',
+        'Apply the established family-specific definition, complete the projectile/trajectory model, and validate it against controlled in-game measurements.',
     };
   }
   if (
@@ -127,6 +127,7 @@ const report = {
   generatedAt: GENERATED_AT,
   sourceFile: 'database/main-weapon-parameters.v11.3.0.json',
   sourceAudit: 'database/battle-parameter-source-audit.v11.3.0.json',
+  rangePolicy: 'lib/main-weapon-range-evidence.ts',
   policy:
     'Every remaining pending occurrence receives one evidence requirement. This queue records what would close the field; it does not promote assumptions to verified values.',
   summary: {

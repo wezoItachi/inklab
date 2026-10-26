@@ -3,6 +3,7 @@
   "generatedAt": "2026-10-26",
   "sourceFile": "database/main-weapon-parameters.v11.3.0.json",
   "sourceAudit": "database/battle-parameter-source-audit.v11.3.0.json",
+  "rangePolicy": "lib/main-weapon-range-evidence.ts",
   "policy": "Every remaining pending occurrence receives one evidence requirement. This queue records what would close the field; it does not promote assumptions to verified values.",
   "summary": {
     "pendingFieldOccurrences": 332,
@@ -192,7 +193,7 @@
       ]
     },
     {
-      "category": "range-definition-and-model-required",
+      "category": "range-model-or-controlled-measurement-required",
       "fieldOccurrences": 160,
       "groups": [
         {
@@ -242,7 +243,7 @@
             "main-400",
             "main-401"
           ],
-          "nextEvidence": "Choose a family-specific range definition and validate its conversion against controlled in-game measurements."
+          "nextEvidence": "Apply the established family-specific definition, complete the projectile/trajectory model, and validate it against controlled in-game measurements."
         },
         {
           "family": "蓄力枪",
@@ -270,7 +271,7 @@
             "main-2070",
             "main-2071"
           ],
-          "nextEvidence": "Choose a family-specific range definition and validate its conversion against controlled in-game measurements."
+          "nextEvidence": "Apply the established family-specific definition, complete the projectile/trajectory model, and validate it against controlled in-game measurements."
         },
         {
           "family": "爆破枪",
@@ -296,7 +297,7 @@
             "main-260",
             "main-261"
           ],
-          "nextEvidence": "Choose a family-specific range definition and validate its conversion against controlled in-game measurements."
+          "nextEvidence": "Apply the established family-specific definition, complete the projectile/trajectory model, and validate it against controlled in-game measurements."
         },
         {
           "family": "双枪",
@@ -321,7 +322,7 @@
             "main-5050",
             "main-5051"
           ],
-          "nextEvidence": "Choose a family-specific range definition and validate its conversion against controlled in-game measurements."
+          "nextEvidence": "Apply the established family-specific definition, complete the projectile/trajectory model, and validate it against controlled in-game measurements."
         },
         {
           "family": "加特林",
@@ -345,7 +346,7 @@
             "main-4050",
             "main-4051"
           ],
-          "nextEvidence": "Choose a family-specific range definition and validate its conversion against controlled in-game measurements."
+          "nextEvidence": "Apply the established family-specific definition, complete the projectile/trajectory model, and validate it against controlled in-game measurements."
         },
         {
           "family": "泼桶",
@@ -369,7 +370,7 @@
             "main-3051",
             "main-3052"
           ],
-          "nextEvidence": "Choose a family-specific range definition and validate its conversion against controlled in-game measurements."
+          "nextEvidence": "Apply the established family-specific definition, complete the projectile/trajectory model, and validate it against controlled in-game measurements."
         },
         {
           "family": "伞",
@@ -389,7 +390,7 @@
             "main-6030",
             "main-6031"
           ],
-          "nextEvidence": "Choose a family-specific range definition and validate its conversion against controlled in-game measurements."
+          "nextEvidence": "Apply the established family-specific definition, complete the projectile/trajectory model, and validate it against controlled in-game measurements."
         },
         {
           "family": "画笔",
@@ -407,7 +408,7 @@
             "main-1121",
             "main-1122"
           ],
-          "nextEvidence": "Choose a family-specific range definition and validate its conversion against controlled in-game measurements."
+          "nextEvidence": "Apply the established family-specific definition, complete the projectile/trajectory model, and validate it against controlled in-game measurements."
         },
         {
           "family": "弓",
@@ -425,7 +426,7 @@
             "main-7030",
             "main-7031"
           ],
-          "nextEvidence": "Choose a family-specific range definition and validate its conversion against controlled in-game measurements."
+          "nextEvidence": "Apply the established family-specific definition, complete the projectile/trajectory model, and validate it against controlled in-game measurements."
         },
         {
           "family": "刮水刀",
@@ -443,7 +444,7 @@
             "main-8020",
             "main-8021"
           ],
-          "nextEvidence": "Choose a family-specific range definition and validate its conversion against controlled in-game measurements."
+          "nextEvidence": "Apply the established family-specific definition, complete the projectile/trajectory model, and validate it against controlled in-game measurements."
         }
       ]
     },

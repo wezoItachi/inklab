@@ -54,8 +54,24 @@ function RangeEvidenceContent({
           ))}
         </div>
       ) : (
-        <strong className="main-range-evidence-pending">暂无可安全合并的距离字段</strong>
+        <strong className="main-range-evidence-pending">
+          定义已建立 · 数值待测量
+        </strong>
       )}
+      <dl className="main-range-evidence-policy">
+        <div>
+          <dt>定义</dt>
+          <dd>{evidence.definition}</dd>
+        </div>
+        <div>
+          <dt>测量边界</dt>
+          <dd>{evidence.measurementBoundary}</dd>
+        </div>
+        <div>
+          <dt>下一证据</dt>
+          <dd>{evidence.nextEvidence}</dd>
+        </div>
+      </dl>
       <p>{evidence.limitation}</p>
     </section>
   );

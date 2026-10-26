@@ -152,6 +152,13 @@ void test('battle verification queue accounts for every remaining pending field'
     ),
     battleParameterVerificationQueue.summary.pendingFieldOccurrences,
   );
+  assert.equal(
+    battleParameterVerificationQueue.categories.find(
+      ({ category }) =>
+        category === 'range-model-or-controlled-measurement-required',
+    )?.fieldOccurrences,
+    160,
+  );
 });
 
 void test('battle source audit covers every inheritance candidate occurrence', () => {
