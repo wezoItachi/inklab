@@ -26,6 +26,14 @@ import {
   analyzeMainWeaponRangeEvidence,
   type MainWeaponRangeEvidence,
 } from '@/lib/main-weapon-range-evidence';
+import {
+  getMainWeaponActionCycleEvidence,
+  type ActionCycleEvidence,
+} from '@/lib/main-weapon-action-cycle-evidence';
+import {
+  getMainWeaponCapabilityEvidence,
+  type CapabilityEvidence,
+} from '@/lib/main-weapon-capability-evidence';
 import { getMainWeaponParameters, getWeapon } from '@/lib/weapons';
 
 function RangeEvidenceContent({
@@ -73,6 +81,85 @@ function RangeEvidenceContent({
         </div>
       </dl>
       <p>{evidence.limitation}</p>
+    </section>
+  );
+}
+
+function ActionCycleEvidenceContent({
+  entries,
+}: {
+  entries: readonly ActionCycleEvidence[];
+}) {
+  if (entries.length === 0) return null;
+  return (
+    <section className="main-action-cycle-evidence" aria-label="动作周期证据">
+      <header>
+        <span>CYCLE DEFINITION / 动作周期口径</span>
+        <b>定义已建立 · 数值待逐帧</b>
+      </header>
+      <div className="main-action-cycle-evidence-list">
+        {entries.map((entry) => (
+          <article key={entry.key}>
+            <h4>{entry.label}</h4>
+            <dl>
+              <div>
+                <dt>边界</dt>
+                <dd>{entry.definition}</dd>
+              </div>
+              <div>
+                <dt>输入</dt>
+                <dd>{entry.inputProtocol}</dd>
+              </div>
+              <div>
+                <dt>排除</dt>
+                <dd>{entry.excluded}</dd>
+              </div>
+            </dl>
+            {entry.sourcePrimitive ? (
+              <p>
+                来源已核对的内部阶段：{entry.sourcePrimitive.value}
+                {entry.sourcePrimitive.unit}；它不是完整连续周期。
+              </p>
+            ) : null}
+          </article>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+function CapabilityEvidenceContent({
+  entries,
+}: {
+  entries: readonly CapabilityEvidence[];
+}) {
+  if (entries.length === 0) return null;
+  return (
+    <section className="main-capability-evidence" aria-label="能力开关验证">
+      <header>
+        <span>CAPABILITY CHECK / 能力开关验证</span>
+        <b>省略不等于 false</b>
+      </header>
+      {entries.map((entry) => (
+        <article key={entry.key}>
+          <h4>{entry.label}</h4>
+          <p>{entry.definition}</p>
+          <dl>
+            <div>
+              <dt>观察方法</dt>
+              <dd>{entry.observationProtocol}</dd>
+            </div>
+            <div>
+              <dt>记为 true</dt>
+              <dd>{entry.positiveResult}</dd>
+            </div>
+            <div>
+              <dt>记为 false</dt>
+              <dd>{entry.negativeResult}</dd>
+            </div>
+          </dl>
+        </article>
+      ))}
     </section>
   );
 }
@@ -873,6 +960,8 @@ export function MainWeaponEfficiencyPanel({ weaponId }: { weaponId: string }) {
   const record = getMainWeaponParameters(weaponId);
   const family = getWeapon(weaponId).family;
   const rangeEvidence = analyzeMainWeaponRangeEvidence(record, family);
+  const actionCycleEvidence = getMainWeaponActionCycleEvidence(record, family);
+  const capabilityEvidence = getMainWeaponCapabilityEvidence(record, family);
   const spinnerAnalysis =
     family === '加特林' ? analyzeSpinnerEfficiency(record) : null;
   const shooterAnalysis =
@@ -950,6 +1039,8 @@ export function MainWeaponEfficiencyPanel({ weaponId }: { weaponId: string }) {
         </b>
       </summary>
       <RangeEvidenceContent evidence={rangeEvidence} />
+      <ActionCycleEvidenceContent entries={actionCycleEvidence} />
+      <CapabilityEvidenceContent entries={capabilityEvidence} />
       {spinnerAnalysis ? (
         <SpinnerContent analysis={spinnerAnalysis} />
       ) : shooterAnalysis ? (
