@@ -122,6 +122,9 @@ export default function Home() {
     'idle',
   );
   const [localReady, setLocalReady] = useState(false);
+  const [storageStatus, setStorageStatus] = useState<
+    'checking' | 'available' | 'unavailable'
+  >('checking');
   const selectedPart =
     selectedSlot === null ? null : getAbilityPartForSlot(selectedSlot);
   const filtered =
@@ -165,8 +168,9 @@ export default function Home() {
       let saved: string | null = null;
       try {
         saved = localStorage.getItem(LOCAL_LOADOUT_KEY);
+        setStorageStatus('available');
       } catch {
-        /* Browser storage can be unavailable in privacy modes. */
+        setStorageStatus('unavailable');
       }
       const restored = resolveInitialEditorState({
         urlSearch: window.location.search,
@@ -187,15 +191,23 @@ export default function Home() {
     return () => window.clearTimeout(timer);
   }, []);
   useEffect(() => {
-    if (localReady)
+    if (localReady) {
+      let nextStorageStatus: 'available' | 'unavailable';
       try {
         localStorage.setItem(
           LOCAL_LOADOUT_KEY,
           encodeLoadoutQuery({ weaponId, slots }),
         );
+        nextStorageStatus = 'available';
       } catch {
-        /* Keep the editor usable when storage is unavailable. */
+        nextStorageStatus = 'unavailable';
       }
+      const timer = window.setTimeout(
+        () => setStorageStatus(nextStorageStatus),
+        0,
+      );
+      return () => window.clearTimeout(timer);
+    }
   }, [localReady, slots, weaponId]);
   const applyRecommendation = (i: number) => {
     const recommendation = recommendations[i];
@@ -326,8 +338,23 @@ export default function Home() {
     library: { code: 'ARCHIVE-04', label: '玩家样本档案', zone: 'city' },
     motion: { code: 'RIG-05', label: '操作校准区', zone: 'field' },
   }[page];
+  const operationAnnouncement =
+    exportStatus === 'saved'
+      ? '配装图片已保存。'
+      : exportStatus === 'error'
+        ? '配装图片保存失败，可以重试。'
+        : shareStatus === 'copied'
+          ? '分享链接已复制。'
+          : shareStatus === 'error'
+            ? '分享链接复制失败，链接已写入浏览器地址栏。'
+            : storageStatus === 'unavailable'
+              ? '浏览器本地存储不可用，本次编辑不会自动保存在此浏览器。'
+              : '';
   return (
     <main className={`lab-surface zone-${pageMeta.zone}`}>
+      <output className="visually-hidden" aria-live="polite" aria-atomic="true">
+        {operationAnnouncement}
+      </output>
       <header className="topbar">
         <div className="brand">
           <span>S3</span>
@@ -445,7 +472,7 @@ export default function Home() {
                     : exportStatus === 'saved'
                       ? '已保存 PNG'
                       : exportStatus === 'error'
-                        ? '重试保存'
+                        ? '保存失败，重试'
                         : '保存配装图'}
                 </button>
               </div>
@@ -592,9 +619,11 @@ export default function Home() {
                     <div>
                       <h3>{currentPresetName}</h3>
                       <small>
-                        {localReady
-                          ? '已自动保存在此浏览器'
-                          : '正在读取本机配装'}
+                        {!localReady || storageStatus === 'checking'
+                          ? '正在读取本机配装'
+                          : storageStatus === 'available'
+                            ? '已自动保存在此浏览器'
+                            : '本地存储不可用 · 可复制链接保留配装'}
                       </small>
                     </div>
                     <div className="loadout-actions">
@@ -1580,6 +1609,13 @@ function SchemeLibrary({
   };
   return (
     <section className="workspace library-page">
+      <output className="visually-hidden" aria-live="polite" aria-atomic="true">
+        {copyStatus?.startsWith('error:')
+          ? '分享链接复制失败。'
+          : copyStatus
+            ? '分享链接已复制。'
+            : ''}
+      </output>
       <div className="intro">
         <div>
           <em>PLAYER BUILDS / SAMPLE</em>
