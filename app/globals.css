@@ -4522,6 +4522,25 @@ button {
   white-space: nowrap !important;
 }
 
+.page-loading-state {
+  min-height: 52vh;
+  display: grid;
+  place-content: center;
+  gap: 0.65rem;
+  text-align: center;
+}
+
+.page-loading-state small {
+  color: var(--violet);
+  font-family: var(--font-mono), monospace;
+  letter-spacing: 0.12em;
+}
+
+.page-loading-state h1,
+.page-loading-state p {
+  margin: 0;
+}
+
 .weapon-picker-trigger {
   display: flex;
   align-items: center;

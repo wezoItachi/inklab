@@ -1,5 +1,13 @@
 'use client';
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import {
+  Suspense,
+  lazy,
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from 'react';
 import {
   Check,
   Copy,
@@ -72,10 +80,16 @@ import {
   type ExampleScheme,
   type SchemeFilters,
 } from '@/lib/schemes';
-import { SalmonRunLab } from '@/components/salmon-run-lab';
 import { WeaponPicker } from '@/components/weapon-picker';
 import { MainInkSaverPanel } from '@/components/main-ink-saver-panel';
 import type { WeaponPickerItem } from '@/lib/weapon-picker';
+
+const SalmonRunLab = lazy(() =>
+  import('@/components/salmon-run-lab').then(({ SalmonRunLab }) => ({
+    default: SalmonRunLab,
+  })),
+);
+
 const initialRecommendations = getSystemRecommendations(
   getWeapon(weapons[0].id),
 );
@@ -417,7 +431,20 @@ export default function Home() {
         <span>SESSION / LOCAL</span>
       </div>
       {page === 'salmon' ? (
-        <SalmonRunLab />
+        <Suspense
+          fallback={
+            <section
+              className="workspace page-loading-state"
+              aria-live="polite"
+            >
+              <small>SALMON RUN LAB / LOADING</small>
+              <h1>正在载入鲑鱼跑实验室…</h1>
+              <p>正在准备打工武器、轮换与压力实验数据。</p>
+            </section>
+          }
+        >
+          <SalmonRunLab />
+        </Suspense>
       ) : page === 'wiki' ? (
         <AbilityWiki focus={focus} setFocus={setFocus} />
       ) : page === 'library' ? (
