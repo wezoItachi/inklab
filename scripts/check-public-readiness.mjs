@@ -54,6 +54,13 @@ function scanContent(file, content, scope) {
 const trackedFiles = git('ls-files', '-z').split('\0').filter(Boolean);
 const failures = scanNames(trackedFiles, '当前文件名');
 
+const projectNpmrc = readFileSync('.npmrc', 'utf8');
+if (!/^store-dir=\.\.\/\.pnpm-store$/m.test(projectNpmrc)) {
+  failures.push(
+    '当前配置: .npmrc 必须把 pnpm store 固定在工作区 .pnpm-store，避免回退到磁盘根目录',
+  );
+}
+
 for (const file of trackedFiles) {
   try {
     failures.push(...scanContent(file, readFileSync(file, 'utf8'), '当前内容'));
