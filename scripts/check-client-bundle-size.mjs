@@ -39,3 +39,13 @@ if (!salmonChunk) {
 }
 
 console.log(`按需模块检查通过：${salmonChunk}。`);
+
+const abilityWikiChunk = readdirSync(chunkDirectory).find((name) =>
+  /^ability-wiki-[^.]+\.js$/.test(name),
+);
+
+if (!abilityWikiChunk) {
+  throw new Error('能力百科未生成独立脚本，按需加载可能已经回退。');
+}
+
+console.log(`按需模块检查通过：${abilityWikiChunk}。`);
