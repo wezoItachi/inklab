@@ -32,7 +32,8 @@
     "typecheck": "tsc --noEmit --incremental false",
     "lint": "oxlint",
     "format": "oxfmt",
-    "check:public": "node scripts/check-public-readiness.mjs"
+    "check:public": "node scripts/check-public-readiness.mjs",
+    "check:bundle": "node scripts/check-client-bundle-size.mjs"
   },
   "dependencies": {
     "react": "19.2.8",
