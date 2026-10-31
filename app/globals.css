@@ -4537,6 +4537,36 @@ button {
   margin: 0;
 }
 
+.section-error-state {
+  min-height: 52vh;
+  display: grid;
+  place-content: center;
+  justify-items: center;
+  gap: 0.7rem;
+  text-align: center;
+}
+
+.section-error-state > svg,
+.section-error-state small {
+  color: #b84b42;
+}
+
+.section-error-state h1,
+.section-error-state p {
+  margin: 0;
+}
+
+.section-error-state button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  margin-top: 0.35rem;
+  border: 1px solid var(--ink);
+  background: var(--ink);
+  color: #fff;
+  padding: 0.7rem 1rem;
+}
+
 .weapon-picker-trigger {
   display: flex;
   align-items: center;

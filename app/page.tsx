@@ -82,6 +82,7 @@ import {
 } from '@/lib/schemes';
 import { WeaponPicker } from '@/components/weapon-picker';
 import { MainInkSaverPanel } from '@/components/main-ink-saver-panel';
+import { SectionErrorBoundary } from '@/components/section-error-boundary';
 import type { WeaponPickerItem } from '@/lib/weapon-picker';
 import { getPageHash, parsePageHash, type PageId } from '@/lib/page-navigation';
 
@@ -436,10 +437,7 @@ export default function Home() {
             操作实验
           </button>
         </nav>
-        <output
-          className="ghost lab-system-status"
-          aria-label="本地系统在线"
-        >
+        <output className="ghost lab-system-status" aria-label="本地系统在线">
           <i /> 系统在线 <small>LOCAL</small>
         </output>
       </header>
@@ -453,394 +451,436 @@ export default function Home() {
         <span>DATASET / VER.{DATA_VERSION}</span>
         <span>SESSION / LOCAL</span>
       </div>
-      {page === 'salmon' ? (
-        <Suspense
-          fallback={
-            <section
-              className="workspace page-loading-state"
-              aria-live="polite"
-            >
-              <small>SALMON RUN LAB / LOADING</small>
-              <h1>正在载入鲑鱼跑实验室…</h1>
-              <p>正在准备打工武器、轮换与压力实验数据。</p>
-            </section>
-          }
-        >
-          <SalmonRunLab />
-        </Suspense>
-      ) : page === 'wiki' ? (
-        <AbilityWiki
-          focus={focus}
-          setFocus={setFocus}
-          onOpenLab={() => {
-            navigatePage('lab');
-            setLabMode('single');
-            setSelectedSlot(0);
-          }}
-        />
-      ) : page === 'library' ? (
-        <SchemeLibrary onOpen={openScheme} />
-      ) : page === 'motion' ? (
-        <MotionLab />
-      ) : (
-        <>
-          <div className="lab-switch">
-            <button
-              type="button"
-              className={labMode === 'single' ? 'active' : ''}
-              onClick={() => setLabMode('single')}
-            >
-              <Zap size={15} /> 单套配装分析
-            </button>
-            <button
-              type="button"
-              className={labMode === 'planner' ? 'active' : ''}
-              onClick={() => setLabMode('planner')}
-            >
-              <Layers size={15} /> 通用装备规划
-            </button>
-          </div>
-          {labMode === 'planner' ? (
-            <UniversalPlanner />
-          ) : (
-            <section className="workspace analyzer-workspace">
-              <div className="intro">
-                <div>
-                  <em>WEAPON LAB / EXP-001</em>
-                  <h1>武器配装分析器</h1>
-                  <p>左侧调整实验条件，右侧读取与当前武器绑定的实际收益。</p>
-                  <div className="lab-protocol">
-                    <span>
-                      <i /> 实验运行中
-                    </span>
-                    <b>PROTOCOL / LOADOUT-ANALYSIS</b>
-                    <small>输入可随时修改</small>
-                  </div>
-                </div>
-                <button
-                  className="primary compact"
-                  disabled={exportStatus === 'working'}
-                  onClick={savePng}
-                >
-                  {exportStatus === 'saved' ? (
-                    <Check size={15} />
-                  ) : (
-                    <Download size={15} />
-                  )}{' '}
-                  {exportStatus === 'working'
-                    ? '正在生成'
-                    : exportStatus === 'saved'
-                      ? '已保存 PNG'
-                      : exportStatus === 'error'
-                        ? '保存失败，重试'
-                        : '保存配装图'}
-                </button>
-              </div>
-              <div className="layout analyzer-layout">
-                <section className="builder control-column">
-                  <Title n="01" text="要分析的武器">
-                    <small>
-                      {weapons.length} 把可选 ·{' '}
-                      {PARAMETER_VERIFIED_WEAPON_COUNT} 把已有核验字段
-                    </small>
-                  </Title>
-                  <div className="weapon-kit-card">
-                    <div className="specimen-meta">
+      <SectionErrorBoundary key={page} sectionLabel={pageMeta.label}>
+        {page === 'salmon' ? (
+          <Suspense
+            fallback={
+              <section
+                className="workspace page-loading-state"
+                aria-live="polite"
+              >
+                <small>SALMON RUN LAB / LOADING</small>
+                <h1>正在载入鲑鱼跑实验室…</h1>
+                <p>正在准备打工武器、轮换与压力实验数据。</p>
+              </section>
+            }
+          >
+            <SalmonRunLab />
+          </Suspense>
+        ) : page === 'wiki' ? (
+          <AbilityWiki
+            focus={focus}
+            setFocus={setFocus}
+            onOpenLab={() => {
+              navigatePage('lab');
+              setLabMode('single');
+              setSelectedSlot(0);
+            }}
+          />
+        ) : page === 'library' ? (
+          <SchemeLibrary onOpen={openScheme} />
+        ) : page === 'motion' ? (
+          <MotionLab />
+        ) : (
+          <>
+            <div className="lab-switch">
+              <button
+                type="button"
+                className={labMode === 'single' ? 'active' : ''}
+                onClick={() => setLabMode('single')}
+              >
+                <Zap size={15} /> 单套配装分析
+              </button>
+              <button
+                type="button"
+                className={labMode === 'planner' ? 'active' : ''}
+                onClick={() => setLabMode('planner')}
+              >
+                <Layers size={15} /> 通用装备规划
+              </button>
+            </div>
+            {labMode === 'planner' ? (
+              <UniversalPlanner />
+            ) : (
+              <section className="workspace analyzer-workspace">
+                <div className="intro">
+                  <div>
+                    <em>WEAPON LAB / EXP-001</em>
+                    <h1>武器配装分析器</h1>
+                    <p>左侧调整实验条件，右侧读取与当前武器绑定的实际收益。</p>
+                    <div className="lab-protocol">
                       <span>
-                        SAMPLE / WPN-
-                        {String(weapon.upstreamId).padStart(4, '0')}
+                        <i /> 实验运行中
                       </span>
-                      <b>
-                        <i /> 数据样本已装载
-                      </b>
-                    </div>
-                    <header className="weapon-kit-title">
-                      <WeaponPicker
-                        items={mainWeaponPickerItems}
-                        value={weaponId}
-                        onChange={selectWeapon}
-                        title="选择要分析的武器"
-                        description="按武器种类浏览，或搜索名称、副武器、特殊武器与定位标签。"
-                        triggerClassName="weapon-title-picker"
-                        triggerLabel={`更换武器，当前为${weapon.name}`}
-                        trigger={<span>{weapon.name}</span>}
-                      />
-                    </header>
-                    <div className="weapon-kit-visual">
-                      <div
-                        className="weapon-main-visual"
-                        aria-label={`主武器：${weapon.name}`}
-                      >
-                        <div className="weapon-image-placeholder">
-                          <span>MAIN WEAPON / 主武器大图</span>
-                          <strong>{weapon.badge}</strong>
-                          <em>图像通道待接入</em>
-                        </div>
-                        <p>
-                          <b>{weapon.family}</b>
-                          <span>{weapon.role}</span>
-                        </p>
-                      </div>
-                      <div className="weapon-side-visuals">
-                        <div aria-label={`副武器：${weapon.sub.name}`}>
-                          <span>SUB / 副武器</span>
-                          <strong>{weapon.sub.name}</strong>
-                          <small>图像通道待接入</small>
-                        </div>
-                        <div aria-label={`特殊武器：${weapon.special}`}>
-                          <span>SPECIAL / 特殊武器</span>
-                          <strong>{weapon.special}</strong>
-                          <small>图像通道待接入</small>
-                        </div>
-                      </div>
+                      <b>PROTOCOL / LOADOUT-ANALYSIS</b>
+                      <small>输入可随时修改</small>
                     </div>
                   </div>
-                  <Title n="02" text="推荐配装">
-                    {recommendationSource === 'system' ? (
-                      <button onClick={() => applyRecommendation(0)}>
-                        <RotateCcw size={14} />
-                        应用主武基础型
-                      </button>
-                    ) : (
-                      <small>社区模块预留</small>
-                    )}
-                  </Title>
-                  <div
-                    className="recommendation-source-tabs"
-                    role="tablist"
-                    aria-label="推荐来源"
+                  <button
+                    className="primary compact"
+                    disabled={exportStatus === 'working'}
+                    onClick={savePng}
                   >
-                    <button
-                      role="tab"
-                      aria-selected={recommendationSource === 'system'}
-                      className={
-                        recommendationSource === 'system' ? 'active' : ''
-                      }
-                      onClick={() => setRecommendationSource('system')}
-                    >
-                      系统建议<small>规则生成</small>
-                    </button>
-                    <button
-                      role="tab"
-                      aria-selected={recommendationSource === 'community'}
-                      className={
-                        recommendationSource === 'community' ? 'active' : ''
-                      }
-                      onClick={() => setRecommendationSource('community')}
-                    >
-                      玩家样本<small>投稿聚类</small>
-                    </button>
-                  </div>
-                  {recommendationSource === 'system' ? (
-                    <>
-                      <div className="system-recommendation-note">
-                        <b>原型推断</b>
+                    {exportStatus === 'saved' ? (
+                      <Check size={15} />
+                    ) : (
+                      <Download size={15} />
+                    )}{' '}
+                    {exportStatus === 'working'
+                      ? '正在生成'
+                      : exportStatus === 'saved'
+                        ? '已保存 PNG'
+                        : exportStatus === 'error'
+                          ? '保存失败，重试'
+                          : '保存配装图'}
+                  </button>
+                </div>
+                <div className="layout analyzer-layout">
+                  <section className="builder control-column">
+                    <Title n="01" text="要分析的武器">
+                      <small>
+                        {weapons.length} 把可选 ·{' '}
+                        {PARAMETER_VERIFIED_WEAPON_COUNT} 把已有核验字段
+                      </small>
+                    </Title>
+                    <div className="weapon-kit-card">
+                      <div className="specimen-meta">
                         <span>
-                          仅使用武器族与已核对套装，不含外部或内测样本
+                          SAMPLE / WPN-
+                          {String(weapon.upstreamId).padStart(4, '0')}
                         </span>
+                        <b>
+                          <i /> 数据样本已装载
+                        </b>
                       </div>
-                      <div className="presets vertical system-presets">
-                        {recommendations.map((recommendation, i) => (
-                          <button
-                            className={activePreset === i ? 'picked' : ''}
-                            key={recommendation.id}
-                            onClick={() => applyRecommendation(i)}
-                          >
-                            <b>0{i + 1}</b>
-                            <div>
-                              <strong>{recommendation.name}</strong>
-                              <small>{recommendation.desc}</small>
-                              <em>{recommendation.rationale}</em>
-                            </div>
-                            {activePreset === i ? (
-                              <Check size={17} />
-                            ) : (
-                              <Plus size={17} />
+                      <header className="weapon-kit-title">
+                        <WeaponPicker
+                          items={mainWeaponPickerItems}
+                          value={weaponId}
+                          onChange={selectWeapon}
+                          title="选择要分析的武器"
+                          description="按武器种类浏览，或搜索名称、副武器、特殊武器与定位标签。"
+                          triggerClassName="weapon-title-picker"
+                          triggerLabel={`更换武器，当前为${weapon.name}`}
+                          trigger={<span>{weapon.name}</span>}
+                        />
+                      </header>
+                      <div className="weapon-kit-visual">
+                        <div
+                          className="weapon-main-visual"
+                          aria-label={`主武器：${weapon.name}`}
+                        >
+                          <div className="weapon-image-placeholder">
+                            <span>MAIN WEAPON / 主武器大图</span>
+                            <strong>{weapon.badge}</strong>
+                            <em>图像通道待接入</em>
+                          </div>
+                          <p>
+                            <b>{weapon.family}</b>
+                            <span>{weapon.role}</span>
+                          </p>
+                        </div>
+                        <div className="weapon-side-visuals">
+                          <div aria-label={`副武器：${weapon.sub.name}`}>
+                            <span>SUB / 副武器</span>
+                            <strong>{weapon.sub.name}</strong>
+                            <small>图像通道待接入</small>
+                          </div>
+                          <div aria-label={`特殊武器：${weapon.special}`}>
+                            <span>SPECIAL / 特殊武器</span>
+                            <strong>{weapon.special}</strong>
+                            <small>图像通道待接入</small>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <Title n="02" text="推荐配装">
+                      {recommendationSource === 'system' ? (
+                        <button onClick={() => applyRecommendation(0)}>
+                          <RotateCcw size={14} />
+                          应用主武基础型
+                        </button>
+                      ) : (
+                        <small>社区模块预留</small>
+                      )}
+                    </Title>
+                    <div
+                      className="recommendation-source-tabs"
+                      role="tablist"
+                      aria-label="推荐来源"
+                    >
+                      <button
+                        role="tab"
+                        aria-selected={recommendationSource === 'system'}
+                        className={
+                          recommendationSource === 'system' ? 'active' : ''
+                        }
+                        onClick={() => setRecommendationSource('system')}
+                      >
+                        系统建议<small>规则生成</small>
+                      </button>
+                      <button
+                        role="tab"
+                        aria-selected={recommendationSource === 'community'}
+                        className={
+                          recommendationSource === 'community' ? 'active' : ''
+                        }
+                        onClick={() => setRecommendationSource('community')}
+                      >
+                        玩家样本<small>投稿聚类</small>
+                      </button>
+                    </div>
+                    {recommendationSource === 'system' ? (
+                      <>
+                        <div className="system-recommendation-note">
+                          <b>原型推断</b>
+                          <span>
+                            仅使用武器族与已核对套装，不含外部或内测样本
+                          </span>
+                        </div>
+                        <div className="presets vertical system-presets">
+                          {recommendations.map((recommendation, i) => (
+                            <button
+                              className={activePreset === i ? 'picked' : ''}
+                              key={recommendation.id}
+                              onClick={() => applyRecommendation(i)}
+                            >
+                              <b>0{i + 1}</b>
+                              <div>
+                                <strong>{recommendation.name}</strong>
+                                <small>{recommendation.desc}</small>
+                                <em>{recommendation.rationale}</em>
+                              </div>
+                              {activePreset === i ? (
+                                <Check size={17} />
+                              ) : (
+                                <Plus size={17} />
+                              )}
+                            </button>
+                          ))}
+                        </div>
+                        {activePreset >= 0 && (
+                          <div className="system-evidence">
+                            <b>这套建议为什么出现</b>
+                            {recommendations[activePreset].evidence.map(
+                              (item) => (
+                                <span key={item}>· {item}</span>
+                              ),
                             )}
+                            <small>建议强度尚未由对局或玩家样本验证</small>
+                          </div>
+                        )}
+                      </>
+                    ) : (
+                      <CommunitySamplePanel weaponId={weapon.id} />
+                    )}
+                    <div className="loadout-title">
+                      <div>
+                        <h3>{currentPresetName}</h3>
+                        <small>
+                          {!localReady || storageStatus === 'checking'
+                            ? '正在读取本机配装'
+                            : storageStatus === 'available'
+                              ? '已自动保存在此浏览器'
+                              : '本地存储不可用 · 可复制链接保留配装'}
+                        </small>
+                      </div>
+                      <div className="loadout-actions">
+                        <button onClick={resetLoadout}>
+                          <Eraser size={13} />
+                          清空配装
+                        </button>
+                        <button onClick={copyShareLink}>
+                          <Copy size={13} />
+                          {shareStatus === 'copied'
+                            ? '链接已复制'
+                            : shareStatus === 'error'
+                              ? '复制失败'
+                              : '复制分享链接'}
+                        </button>
+                        <b>{equippedAp} / 57 AP</b>
+                      </div>
+                    </div>
+                    <div className="gear-stack compact-gears">
+                      {['头部', '服装', '鞋子'].map((g, r) => (
+                        <div className="gear" key={g}>
+                          <div>
+                            <span>{['帽', '衣', '鞋'][r]}</span>
+                            <small>{g}</small>
+                          </div>
+                          <section>
+                            {slots
+                              .slice(r * 4, r * 4 + 4)
+                              .map(([id, ap], i) => {
+                                const index = r * 4 + i,
+                                  isSelected = selectedSlot === index,
+                                  canDrop =
+                                    draggedAbilityId !== null &&
+                                    canPlaceAbilityInSlot(
+                                      draggedAbilityId,
+                                      index,
+                                    );
+                                return (
+                                  <button
+                                    data-slot-index={index}
+                                    aria-label={`${g}${i === 0 ? '主技能' : '小技能'}槽位${id ? '，当前已装备' : '，当前为空'}`}
+                                    aria-pressed={isSelected}
+                                    title={
+                                      isSelected && id
+                                        ? `再次点击移除${g}${i === 0 ? '主技能' : '小技能'}`
+                                        : `选择${g}${i === 0 ? '主技能' : '小技能'}槽位`
+                                    }
+                                    className={`${i === 0 ? 'main ' : ''}${isSelected ? 'selected-slot ' : ''}${id === null ? 'empty-slot ' : ''}${canDrop ? 'drag-available' : ''}`}
+                                    key={index}
+                                    onClick={() => selectLoadoutSlot(index)}
+                                    onDragOver={(event) => {
+                                      if (canDrop) {
+                                        event.preventDefault();
+                                        event.dataTransfer.dropEffect = 'copy';
+                                      }
+                                    }}
+                                    onDrop={(event) => {
+                                      event.preventDefault();
+                                      const abilityId =
+                                        event.dataTransfer.getData(
+                                          'text/plain',
+                                        );
+                                      if (abilityId)
+                                        placeAbility(abilityId, index, false);
+                                      setDraggedAbilityId(null);
+                                    }}
+                                  >
+                                    <AbilityIcon
+                                      small
+                                      ability={abilities.find(
+                                        (a) => a.id === id,
+                                      )}
+                                    />
+                                    {id !== null && <em>{ap}</em>}
+                                  </button>
+                                );
+                              })}
+                          </section>
+                        </div>
+                      ))}
+                    </div>
+                    <Title n="03" text="装备能力碎片">
+                      <small>
+                        {selectedPart && selectedSlot !== null
+                          ? `${selectedPart.label} · 第 ${(selectedSlot % 4) + 1} 槽 · 点击连续填装，或拖到任意槽位`
+                          : '未选择槽位 · 点击配装槽或装备部位开始'}
+                      </small>
+                    </Title>
+                    <div
+                      className="ability-part-tabs"
+                      role="tablist"
+                      aria-label="装备部位"
+                    >
+                      {abilityParts.map((part) => {
+                        const active = selectedPart?.id === part.id;
+                        return (
+                          <button
+                            role="tab"
+                            aria-selected={active}
+                            className={active ? 'active' : ''}
+                            key={part.id}
+                            onClick={() => selectAbilityPart(part.firstSlot)}
+                          >
+                            <b>{part.label}</b>
+                            <small>
+                              {part.id === 'head'
+                                ? '头'
+                                : part.id === 'clothes'
+                                  ? '身'
+                                  : '脚'}
+                            </small>
+                          </button>
+                        );
+                      })}
+                    </div>
+                    <div className="filter mini-filter ability-category-filter">
+                      <div>
+                        {abilityFilterGroups.map((filterGroup) => (
+                          <button
+                            key={filterGroup}
+                            className={group === filterGroup ? 'active' : ''}
+                            onClick={() => selectAbilityGroup(filterGroup)}
+                          >
+                            {filterGroup}
                           </button>
                         ))}
                       </div>
-                      {activePreset >= 0 && (
-                        <div className="system-evidence">
-                          <b>这套建议为什么出现</b>
-                          {recommendations[activePreset].evidence.map(
-                            (item) => (
-                              <span key={item}>· {item}</span>
-                            ),
-                          )}
-                          <small>建议强度尚未由对局或玩家样本验证</small>
-                        </div>
-                      )}
-                    </>
-                  ) : (
-                    <CommunitySamplePanel weaponId={weapon.id} />
-                  )}
-                  <div className="loadout-title">
-                    <div>
-                      <h3>{currentPresetName}</h3>
-                      <small>
-                        {!localReady || storageStatus === 'checking'
-                          ? '正在读取本机配装'
-                          : storageStatus === 'available'
-                            ? '已自动保存在此浏览器'
-                            : '本地存储不可用 · 可复制链接保留配装'}
-                      </small>
+                      <label>
+                        <Search size={14} />
+                        <input
+                          value={query}
+                          onChange={(e) => setQuery(e.target.value)}
+                          placeholder="搜索碎片"
+                        />
+                      </label>
                     </div>
-                    <div className="loadout-actions">
-                      <button onClick={resetLoadout}>
-                        <Eraser size={13} />
-                        清空配装
-                      </button>
-                      <button onClick={copyShareLink}>
-                        <Copy size={13} />
-                        {shareStatus === 'copied'
-                          ? '链接已复制'
-                          : shareStatus === 'error'
-                            ? '复制失败'
-                            : '复制分享链接'}
-                      </button>
-                      <b>{equippedAp} / 57 AP</b>
-                    </div>
-                  </div>
-                  <div className="gear-stack compact-gears">
-                    {['头部', '服装', '鞋子'].map((g, r) => (
-                      <div className="gear" key={g}>
-                        <div>
-                          <span>{['帽', '衣', '鞋'][r]}</span>
-                          <small>{g}</small>
-                        </div>
-                        <section>
-                          {slots.slice(r * 4, r * 4 + 4).map(([id, ap], i) => {
-                            const index = r * 4 + i,
-                              isSelected = selectedSlot === index,
-                              canDrop =
-                                draggedAbilityId !== null &&
-                                canPlaceAbilityInSlot(draggedAbilityId, index);
-                            return (
-                              <button
-                                data-slot-index={index}
-                                aria-label={`${g}${i === 0 ? '主技能' : '小技能'}槽位${id ? '，当前已装备' : '，当前为空'}`}
-                                aria-pressed={isSelected}
-                                title={
-                                  isSelected && id
-                                    ? `再次点击移除${g}${i === 0 ? '主技能' : '小技能'}`
-                                    : `选择${g}${i === 0 ? '主技能' : '小技能'}槽位`
-                                }
-                                className={`${i === 0 ? 'main ' : ''}${isSelected ? 'selected-slot ' : ''}${id === null ? 'empty-slot ' : ''}${canDrop ? 'drag-available' : ''}`}
-                                key={index}
-                                onClick={() => selectLoadoutSlot(index)}
-                                onDragOver={(event) => {
-                                  if (canDrop) {
-                                    event.preventDefault();
-                                    event.dataTransfer.dropEffect = 'copy';
-                                  }
-                                }}
-                                onDrop={(event) => {
-                                  event.preventDefault();
-                                  const abilityId =
-                                    event.dataTransfer.getData('text/plain');
-                                  if (abilityId)
-                                    placeAbility(abilityId, index, false);
-                                  setDraggedAbilityId(null);
-                                }}
-                              >
-                                <AbilityIcon
-                                  small
-                                  ability={abilities.find((a) => a.id === id)}
-                                />
-                                {id !== null && <em>{ap}</em>}
-                              </button>
-                            );
-                          })}
-                        </section>
+                    {selectedSlot === null ? (
+                      <div className="stone-pool-empty">
+                        <b>当前没有选中槽位</b>
+                        <span>
+                          选择上方头部、服装、鞋子，或直接点击配装中的能力槽。
+                        </span>
                       </div>
-                    ))}
-                  </div>
-                  <Title n="03" text="装备能力碎片">
-                    <small>
-                      {selectedPart && selectedSlot !== null
-                        ? `${selectedPart.label} · 第 ${(selectedSlot % 4) + 1} 槽 · 点击连续填装，或拖到任意槽位`
-                        : '未选择槽位 · 点击配装槽或装备部位开始'}
-                    </small>
-                  </Title>
-                  <div
-                    className="ability-part-tabs"
-                    role="tablist"
-                    aria-label="装备部位"
-                  >
-                    {abilityParts.map((part) => {
-                      const active = selectedPart?.id === part.id;
-                      return (
-                        <button
-                          role="tab"
-                          aria-selected={active}
-                          className={active ? 'active' : ''}
-                          key={part.id}
-                          onClick={() => selectAbilityPart(part.firstSlot)}
-                        >
-                          <b>{part.label}</b>
-                          <small>
-                            {part.id === 'head'
-                              ? '头'
-                              : part.id === 'clothes'
-                                ? '身'
-                                : '脚'}
-                          </small>
-                        </button>
-                      );
-                    })}
-                  </div>
-                  <div className="filter mini-filter ability-category-filter">
-                    <div>
-                      {abilityFilterGroups.map((filterGroup) => (
-                        <button
-                          key={filterGroup}
-                          className={group === filterGroup ? 'active' : ''}
-                          onClick={() => selectAbilityGroup(filterGroup)}
-                        >
-                          {filterGroup}
-                        </button>
-                      ))}
-                    </div>
-                    <label>
-                      <Search size={14} />
-                      <input
-                        value={query}
-                        onChange={(e) => setQuery(e.target.value)}
-                        placeholder="搜索碎片"
-                      />
-                    </label>
-                  </div>
-                  {selectedSlot === null ? (
-                    <div className="stone-pool-empty">
-                      <b>当前没有选中槽位</b>
-                      <span>
-                        选择上方头部、服装、鞋子，或直接点击配装中的能力槽。
-                      </span>
-                    </div>
-                  ) : (
-                    <div className="stone-pool-groups">
-                      {exclusiveAbilities.length > 0 && (
-                        <section className="exclusive-ability-shelf">
-                          <header>
-                            <b>{selectedPart?.label}限定能力</b>
-                            <span>仅可装入对应部位的主技能格</span>
-                          </header>
-                          <div className="stone-pool stone-pool-exclusive">
-                            {exclusiveAbilities.map((a) => (
+                    ) : (
+                      <div className="stone-pool-groups">
+                        {exclusiveAbilities.length > 0 && (
+                          <section className="exclusive-ability-shelf">
+                            <header>
+                              <b>{selectedPart?.label}限定能力</b>
+                              <span>仅可装入对应部位的主技能格</span>
+                            </header>
+                            <div className="stone-pool stone-pool-exclusive">
+                              {exclusiveAbilities.map((a) => (
+                                <button
+                                  draggable
+                                  aria-label={a.name}
+                                  title={`${a.name}：点击装入${selectedPart?.label}主技能格，或拖动放入`}
+                                  key={a.id}
+                                  onClick={() =>
+                                    selectedPart &&
+                                    placeAbility(
+                                      a.id,
+                                      selectedPart.firstSlot,
+                                      true,
+                                    )
+                                  }
+                                  onDragStart={(event) => {
+                                    event.dataTransfer.setData(
+                                      'text/plain',
+                                      a.id,
+                                    );
+                                    event.dataTransfer.effectAllowed = 'copy';
+                                    setDraggedAbilityId(a.id);
+                                  }}
+                                  onDragEnd={() => setDraggedAbilityId(null)}
+                                >
+                                  <AbilityIcon ability={a} />
+                                  <small>{a.name}</small>
+                                </button>
+                              ))}
+                            </div>
+                          </section>
+                        )}
+                        {exclusiveAbilities.length > 0 &&
+                          filtered.length > 0 && (
+                            <div className="stone-pool-divider">
+                              <span>通用能力碎片</span>
+                            </div>
+                          )}
+                        {filtered.length > 0 && (
+                          <div className="stone-pool">
+                            {filtered.map((a) => (
                               <button
                                 draggable
                                 aria-label={a.name}
-                                title={`${a.name}：点击装入${selectedPart?.label}主技能格，或拖动放入`}
+                                title={`${a.name}：点击填入第 ${selectedSlot + 1} 槽，或拖到其他槽位`}
                                 key={a.id}
-                                onClick={() =>
-                                  selectedPart &&
-                                  placeAbility(
-                                    a.id,
-                                    selectedPart.firstSlot,
-                                    true,
-                                  )
-                                }
+                                onClick={() => replaceSelectedSlot(a.id)}
                                 onDragStart={(event) => {
                                   event.dataTransfer.setData(
                                     'text/plain',
@@ -856,193 +896,167 @@ export default function Home() {
                               </button>
                             ))}
                           </div>
-                        </section>
-                      )}
-                      {exclusiveAbilities.length > 0 && filtered.length > 0 && (
-                        <div className="stone-pool-divider">
-                          <span>通用能力碎片</span>
-                        </div>
-                      )}
-                      {filtered.length > 0 && (
-                        <div className="stone-pool">
-                          {filtered.map((a) => (
-                            <button
-                              draggable
-                              aria-label={a.name}
-                              title={`${a.name}：点击填入第 ${selectedSlot + 1} 槽，或拖到其他槽位`}
-                              key={a.id}
-                              onClick={() => replaceSelectedSlot(a.id)}
-                              onDragStart={(event) => {
-                                event.dataTransfer.setData('text/plain', a.id);
-                                event.dataTransfer.effectAllowed = 'copy';
-                                setDraggedAbilityId(a.id);
-                              }}
-                              onDragEnd={() => setDraggedAbilityId(null)}
-                            >
-                              <AbilityIcon ability={a} />
-                              <small>{a.name}</small>
-                            </button>
-                          ))}
-                        </div>
-                      )}
-                      {exclusiveAbilities.length === 0 &&
-                        filtered.length === 0 && (
-                          <div className="stone-pool-empty">
-                            <b>没有符合条件的碎片</b>
-                            <span>切换分类或清除搜索词后再试。</span>
-                          </div>
                         )}
-                    </div>
-                  )}
-                </section>
-                <aside className="analysis-column">
-                  <div className="analysis-head">
-                    <div>
-                      <small>MEASUREMENT CONSOLE / LIVE</small>
-                      <h2>{weapon.name} 的配装结果</h2>
-                    </div>
-                    <span>
-                      <i /> 游戏版本 {DATA_VERSION}
-                    </span>
-                  </div>
-                  <div className="context-strip">
-                    <div>
-                      <b>主要武器</b>
-                      <span>{weapon.name}</span>
-                    </div>
-                    <div>
-                      <b>次要武器</b>
-                      <span>{weapon.sub.name}</span>
-                    </div>
-                    <div>
-                      <b>特殊武器</b>
-                      <span>{weapon.special}</span>
-                    </div>
-                  </div>
-                  <ParameterStatusStrip snapshot={parameterSnapshot} />
-                  <MainWeaponParameterAudit weaponId={weapon.id} />
-                  <details className="export-settings export-settings-collapsible">
-                    <summary>
-                      <div>
-                        <Download size={16} />
-                        <span>
-                          <b>配装图片信息</b>
-                          <small>可选 · 留空会自动生成</small>
-                        </span>
+                        {exclusiveAbilities.length === 0 &&
+                          filtered.length === 0 && (
+                            <div className="stone-pool-empty">
+                              <b>没有符合条件的碎片</b>
+                              <span>切换分类或清除搜索词后再试。</span>
+                            </div>
+                          )}
                       </div>
-                      <em>展开填写</em>
-                    </summary>
-                    <div className="export-fields">
-                      <label>
-                        标题
-                        <input
-                          maxLength={30}
-                          value={cardTitle}
-                          onChange={(e) => setCardTitle(e.target.value)}
-                          placeholder={`${weapon.name} · ${currentPresetName}`}
-                        />
-                      </label>
-                      <label>
-                        作者
-                        <input
-                          maxLength={18}
-                          value={cardAuthor}
-                          onChange={(e) => setCardAuthor(e.target.value)}
-                          placeholder="匿名玩家"
-                        />
-                      </label>
-                      <label className="wide">
-                        标签
-                        <input
-                          maxLength={40}
-                          value={cardTags}
-                          onChange={(e) => setCardTags(e.target.value)}
-                          placeholder={`${weapon.family}，${currentPresetName}，${equippedAp}AP`}
-                        />
-                      </label>
-                      <label className="wide">
-                        一句话
-                        <textarea
-                          maxLength={70}
-                          rows={2}
-                          value={cardNote}
-                          onChange={(e) => setCardNote(e.target.value)}
-                          placeholder={`围绕 ${weapon.name} 的 ${currentPresetName} 方向继续微调。`}
-                        />
-                      </label>
-                      <p>这些内容只用于生成本机 PNG，不会上传服务器。</p>
+                    )}
+                  </section>
+                  <aside className="analysis-column">
+                    <div className="analysis-head">
+                      <div>
+                        <small>MEASUREMENT CONSOLE / LIVE</small>
+                        <h2>{weapon.name} 的配装结果</h2>
+                      </div>
+                      <span>
+                        <i /> 游戏版本 {DATA_VERSION}
+                      </span>
                     </div>
-                  </details>
-                  <div className="analysis-summary">
-                    <h3>
-                      选择要分析的能力 <small>仅影响右侧说明，不修改配装</small>
-                    </h3>
-                    <div>
-                      {totals.map((x) => (
-                        <button
-                          aria-pressed={focus === x.a?.id}
-                          className={
-                            focus === x.a?.id ? 'selected-analysis' : ''
-                          }
-                          key={x.a?.id}
-                          onClick={() => selectAnalysis(x.a?.id || 'iss')}
-                        >
-                          <AbilityIcon small ability={x.a} />
-                          <span>{x.a?.short}</span>
-                          <b>{x.ap}AP</b>
-                        </button>
+                    <div className="context-strip">
+                      <div>
+                        <b>主要武器</b>
+                        <span>{weapon.name}</span>
+                      </div>
+                      <div>
+                        <b>次要武器</b>
+                        <span>{weapon.sub.name}</span>
+                      </div>
+                      <div>
+                        <b>特殊武器</b>
+                        <span>{weapon.special}</span>
+                      </div>
+                    </div>
+                    <ParameterStatusStrip snapshot={parameterSnapshot} />
+                    <MainWeaponParameterAudit weaponId={weapon.id} />
+                    <details className="export-settings export-settings-collapsible">
+                      <summary>
+                        <div>
+                          <Download size={16} />
+                          <span>
+                            <b>配装图片信息</b>
+                            <small>可选 · 留空会自动生成</small>
+                          </span>
+                        </div>
+                        <em>展开填写</em>
+                      </summary>
+                      <div className="export-fields">
+                        <label>
+                          标题
+                          <input
+                            maxLength={30}
+                            value={cardTitle}
+                            onChange={(e) => setCardTitle(e.target.value)}
+                            placeholder={`${weapon.name} · ${currentPresetName}`}
+                          />
+                        </label>
+                        <label>
+                          作者
+                          <input
+                            maxLength={18}
+                            value={cardAuthor}
+                            onChange={(e) => setCardAuthor(e.target.value)}
+                            placeholder="匿名玩家"
+                          />
+                        </label>
+                        <label className="wide">
+                          标签
+                          <input
+                            maxLength={40}
+                            value={cardTags}
+                            onChange={(e) => setCardTags(e.target.value)}
+                            placeholder={`${weapon.family}，${currentPresetName}，${equippedAp}AP`}
+                          />
+                        </label>
+                        <label className="wide">
+                          一句话
+                          <textarea
+                            maxLength={70}
+                            rows={2}
+                            value={cardNote}
+                            onChange={(e) => setCardNote(e.target.value)}
+                            placeholder={`围绕 ${weapon.name} 的 ${currentPresetName} 方向继续微调。`}
+                          />
+                        </label>
+                        <p>这些内容只用于生成本机 PNG，不会上传服务器。</p>
+                      </div>
+                    </details>
+                    <div className="analysis-summary">
+                      <h3>
+                        选择要分析的能力{' '}
+                        <small>仅影响右侧说明，不修改配装</small>
+                      </h3>
+                      <div>
+                        {totals.map((x) => (
+                          <button
+                            aria-pressed={focus === x.a?.id}
+                            className={
+                              focus === x.a?.id ? 'selected-analysis' : ''
+                            }
+                            key={x.a?.id}
+                            onClick={() => selectAnalysis(x.a?.id || 'iss')}
+                          >
+                            <AbilityIcon small ability={x.a} />
+                            <span>{x.a?.short}</span>
+                            <b>{x.ap}AP</b>
+                          </button>
+                        ))}
+                      </div>
+                    </div>
+                    <EffectPanel
+                      weapon={weapon}
+                      id={focus}
+                      ap={currentAp}
+                      setAp={setAnalysisApPreview}
+                    />
+                    <div className="accordions">
+                      <MainWeaponEfficiencyPanel weaponId={weapon.id} />
+                      {[
+                        '次要武器实际影响',
+                        '特殊武器循环',
+                        '移动与返场',
+                        '生存与抗性',
+                        '其他能力',
+                      ].map((x, i) => (
+                        <details open={i === 0} key={x}>
+                          <summary>
+                            <span>{x}</span>
+                            <b>
+                              {i === 0 ? weapon.sub.name + ' · 当前套装' : ''}
+                            </b>
+                          </summary>
+                          <div>
+                            {i === 0
+                              ? `已根据 ${weapon.sub.name} 自动筛选：${weapon.sub.baseInkCost === null ? '基础耗墨待验证' : `基础耗墨 ${weapon.sub.baseInkCost}%`}；${weapon.sub.subPowerEffect === null ? '副武增强对象待验证' : `副武增强影响${weapon.sub.subPowerEffect}`}。`
+                              : '正式参数导入后，将在这里展示当前武器的数值、关键阈值、边际收益和机会成本。'}
+                          </div>
+                        </details>
                       ))}
                     </div>
-                  </div>
-                  <EffectPanel
-                    weapon={weapon}
-                    id={focus}
-                    ap={currentAp}
-                    setAp={setAnalysisApPreview}
-                  />
-                  <div className="accordions">
-                    <MainWeaponEfficiencyPanel weaponId={weapon.id} />
-                    {[
-                      '次要武器实际影响',
-                      '特殊武器循环',
-                      '移动与返场',
-                      '生存与抗性',
-                      '其他能力',
-                    ].map((x, i) => (
-                      <details open={i === 0} key={x}>
-                        <summary>
-                          <span>{x}</span>
-                          <b>
-                            {i === 0 ? weapon.sub.name + ' · 当前套装' : ''}
-                          </b>
-                        </summary>
-                        <div>
-                          {i === 0
-                            ? `已根据 ${weapon.sub.name} 自动筛选：${weapon.sub.baseInkCost === null ? '基础耗墨待验证' : `基础耗墨 ${weapon.sub.baseInkCost}%`}；${weapon.sub.subPowerEffect === null ? '副武增强对象待验证' : `副武增强影响${weapon.sub.subPowerEffect}`}。`
-                            : '正式参数导入后，将在这里展示当前武器的数值、关键阈值、边际收益和机会成本。'}
-                        </div>
-                      </details>
-                    ))}
-                  </div>
-                  <div className="notice">
-                    <Check size={15} />
-                    <p>
-                      <b>分析上下文已由 weaponId 驱动</b>
-                      <br />
-                      当前结论以 {weapon.name}、{weapon.sub.name}、
-                      {weapon.special} 与现有 {equippedAp}AP 配装为前提。
+                    <div className="notice">
+                      <Check size={15} />
+                      <p>
+                        <b>分析上下文已由 weaponId 驱动</b>
+                        <br />
+                        当前结论以 {weapon.name}、{weapon.sub.name}、
+                        {weapon.special} 与现有 {equippedAp}AP 配装为前提。
+                      </p>
+                    </div>
+                    <p className="note">
+                      套装关系已核对 · 主武省墨曲线已核对 · 其余 AP
+                      效果曲线仍在验证
                     </p>
-                  </div>
-                  <p className="note">
-                    套装关系已核对 · 主武省墨曲线已核对 · 其余 AP
-                    效果曲线仍在验证
-                  </p>
-                </aside>
-              </div>
-            </section>
-          )}
-        </>
-      )}
+                  </aside>
+                </div>
+              </section>
+            )}
+          </>
+        )}
+      </SectionErrorBoundary>
       <footer className="legal-footer">
         <b>INKLAB 是非官方玩家工具</b>
         <span>
