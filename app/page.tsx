@@ -83,6 +83,7 @@ import {
 import { WeaponPicker } from '@/components/weapon-picker';
 import { MainInkSaverPanel } from '@/components/main-ink-saver-panel';
 import type { WeaponPickerItem } from '@/lib/weapon-picker';
+import { getPageHash, parsePageHash, type PageId } from '@/lib/page-navigation';
 
 const SalmonRunLab = lazy(() =>
   import('@/components/salmon-run-lab').then(({ SalmonRunLab }) => ({
@@ -107,9 +108,7 @@ const mainWeaponPickerItems: readonly WeaponPickerItem[] = weapons.map(
   }),
 );
 export default function Home() {
-  const [page, setPage] = useState<
-      'lab' | 'salmon' | 'wiki' | 'library' | 'motion'
-    >('lab'),
+  const [page, setPage] = useState<PageId>('lab'),
     [labMode, setLabMode] = useState<'planner' | 'single'>('single');
   const [weaponId, setWeaponId] = useState(weapons[0].id);
   const [group, setGroup] = useState<AbilityFilterGroup>('全部'),
@@ -139,6 +138,12 @@ export default function Home() {
   const [storageStatus, setStorageStatus] = useState<
     'checking' | 'available' | 'unavailable'
   >('checking');
+  useEffect(() => {
+    const syncPageFromHash = () => setPage(parsePageHash(window.location.hash));
+    syncPageFromHash();
+    window.addEventListener('hashchange', syncPageFromHash);
+    return () => window.removeEventListener('hashchange', syncPageFromHash);
+  }, []);
   const selectedPart =
     selectedSlot === null ? null : getAbilityPartForSlot(selectedSlot);
   const filtered =
@@ -238,6 +243,11 @@ export default function Home() {
     setWeaponId(nextWeaponId);
     setActivePreset(-1);
     setAnalysisApPreview(null);
+  };
+  const navigatePage = (nextPage: PageId) => {
+    setPage(nextPage);
+    const nextHash = getPageHash(nextPage);
+    if (window.location.hash !== nextHash) window.location.hash = nextHash;
   };
   const openScheme = (scheme: ExampleScheme) => {
     const nextSlots = cloneSchemeSlots(scheme);
@@ -378,47 +388,60 @@ export default function Home() {
         </div>
         <nav>
           <button
+            type="button"
             data-code="01"
             className={page === 'lab' ? 'active' : ''}
+            aria-pressed={page === 'lab'}
             onClick={() => {
-              setPage('lab');
+              navigatePage('lab');
               setLabMode('single');
             }}
           >
             实验室
           </button>
           <button
+            type="button"
             data-code="02"
             className={page === 'salmon' ? 'active' : ''}
-            onClick={() => setPage('salmon')}
+            aria-pressed={page === 'salmon'}
+            onClick={() => navigatePage('salmon')}
           >
             鲑鱼跑实验室
           </button>
           <button
+            type="button"
             data-code="03"
             className={page === 'wiki' ? 'active' : ''}
-            onClick={() => setPage('wiki')}
+            aria-pressed={page === 'wiki'}
+            onClick={() => navigatePage('wiki')}
           >
             能力百科
           </button>
           <button
+            type="button"
             data-code="04"
             className={page === 'library' ? 'active' : ''}
-            onClick={() => setPage('library')}
+            aria-pressed={page === 'library'}
+            onClick={() => navigatePage('library')}
           >
             玩家方案
           </button>
           <button
+            type="button"
             data-code="05"
             className={page === 'motion' ? 'active' : ''}
-            onClick={() => setPage('motion')}
+            aria-pressed={page === 'motion'}
+            onClick={() => navigatePage('motion')}
           >
             操作实验
           </button>
         </nav>
-        <button className="ghost lab-system-status">
+        <output
+          className="ghost lab-system-status"
+          aria-label="本地系统在线"
+        >
           <i /> 系统在线 <small>LOCAL</small>
-        </button>
+        </output>
       </header>
       <div className="lab-telemetry" aria-label="当前实验室状态">
         <span>
@@ -446,7 +469,15 @@ export default function Home() {
           <SalmonRunLab />
         </Suspense>
       ) : page === 'wiki' ? (
-        <AbilityWiki focus={focus} setFocus={setFocus} />
+        <AbilityWiki
+          focus={focus}
+          setFocus={setFocus}
+          onOpenLab={() => {
+            navigatePage('lab');
+            setLabMode('single');
+            setSelectedSlot(0);
+          }}
+        />
       ) : page === 'library' ? (
         <SchemeLibrary onOpen={openScheme} />
       ) : page === 'motion' ? (
@@ -455,12 +486,14 @@ export default function Home() {
         <>
           <div className="lab-switch">
             <button
+              type="button"
               className={labMode === 'single' ? 'active' : ''}
               onClick={() => setLabMode('single')}
             >
               <Zap size={15} /> 单套配装分析
             </button>
             <button
+              type="button"
               className={labMode === 'planner' ? 'active' : ''}
               onClick={() => setLabMode('planner')}
             >
@@ -1448,22 +1481,32 @@ function UniversalPlanner() {
 function AbilityWiki({
   focus,
   setFocus,
+  onOpenLab,
 }: {
   focus: string;
   setFocus: (id: string) => void;
+  onOpenLab: () => void;
 }) {
   const [filters, setFilters] = useState<string[]>([]),
     [q, setQ] = useState('');
   const tags = [
-    '全部',
-    '头部限定',
-    '服装限定',
-    '鞋子限定',
-    '副武器',
-    '墨水续航',
-    '机动',
-    '少量投入有效',
-    '关键临界点',
+    { label: '全部' },
+    { label: '头部限定' },
+    { label: '服装限定' },
+    { label: '鞋子限定' },
+    { label: '副武器' },
+    { label: '墨水续航' },
+    { label: '机动' },
+    {
+      label: '少量投入有效',
+      disabled: true,
+      title: '等待各能力 AP 曲线逐项核验后开放',
+    },
+    {
+      label: '关键临界点',
+      disabled: true,
+      title: '当前仅主武器省墨具备正式临界点模型',
+    },
   ];
   const toggle = (t: string) =>
     setFilters(
@@ -1503,17 +1546,22 @@ function AbilityWiki({
         </label>
       </div>
       <div className="tag-board">
-        {tags.map((t) => (
+        {tags.map((tag) => (
           <button
-            key={t}
+            type="button"
+            key={tag.label}
+            disabled={tag.disabled}
+            title={tag.title}
             className={
-              (t === '全部' && !filters.length) || filters.includes(t)
+              (tag.label === '全部' && !filters.length) ||
+              filters.includes(tag.label)
                 ? 'active'
                 : ''
             }
-            onClick={() => toggle(t)}
+            onClick={() => toggle(tag.label)}
           >
-            {t}
+            {tag.label}
+            {tag.disabled ? <small>待核验</small> : null}
           </button>
         ))}
       </div>
@@ -1525,6 +1573,7 @@ function AbilityWiki({
           <div className="wiki-abilities">
             {shown.map((a) => (
               <button
+                type="button"
                 className={focus === a.id ? 'active' : ''}
                 onClick={() => setFocus(a.id)}
                 key={a.id}
@@ -1548,37 +1597,43 @@ function AbilityWiki({
             </div>
           </div>
           <div className="detail-tags">
-            <span>可作为小技能</span>
+            <span>
+              {current.group.endsWith('限定')
+                ? '仅对应部位主能力槽'
+                : '可用于主能力与追加能力槽'}
+            </span>
             <span>{current.group}</span>
-            <span>存在边际收益</span>
+            <span>
+              {current.id === 'ism' ? '正式 AP 曲线已接入' : 'AP 曲线待核验'}
+            </span>
           </div>
           <div className="wiki-callout">
-            <b>对 N-ZAP89 的意义</b>
+            <b>在实验室中的用途</b>
             <p>
-              {current.id === 'iss'
-                ? '降低机器人炸弹耗墨，并增加投掷后可以继续射击的次数。若目标是双投，需要直接规划到关键 AP 档位。'
-                : '选择武器后，这里将转换成实际动作、阈值与机会成本，而不只显示抽象参数。'}
+              {current.id === 'ism'
+                ? '主武器省墨已接入正式效果曲线；进入实验室后会按当前武器的已核对基础耗墨展示完整动作次数与下一临界点。'
+                : '这项能力可以用于配装编辑和分类；完整 AP 效果、最小有效投入与关键临界点仍待逐项核验，目前不输出未经核对的阈值结论。'}
             </p>
           </div>
-          <h3>常见投入方式</h3>
+          <h3>投入结构示意</h3>
           <div className="ap-recipes">
-            <button>
+            <article>
               <b>3AP</b>
               <span>轻量投入</span>
               <small>占用 1 个追加能力槽</small>
-            </button>
-            <button className="active">
+            </article>
+            <article>
               <b>6AP</b>
-              <span>平衡投入</span>
-              <small>适合通用装备</small>
-            </button>
-            <button>
+              <span>两个追加槽</span>
+              <small>是否有效取决于能力曲线</small>
+            </article>
+            <article>
               <b>专项</b>
               <span>围绕临界点</span>
-              <small>按武器计算</small>
-            </button>
+              <small>仅在已有核验模型时计算</small>
+            </article>
           </div>
-          <button className="primary">
+          <button type="button" className="primary" onClick={onOpenLab}>
             <Zap size={15} />
             围绕此能力进入实验室
           </button>

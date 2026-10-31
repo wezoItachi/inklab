@@ -1723,7 +1723,7 @@ button {
   gap: 6px;
   margin-bottom: 15px;
 }
-.ap-recipes button {
+.ap-recipes article {
   display: flex;
   flex-direction: column;
   gap: 3px;
@@ -1731,10 +1731,6 @@ button {
   border: 1px solid var(--line);
   background: #fff;
   padding: 9px;
-}
-.ap-recipes button.active {
-  border-color: var(--purple);
-  background: #f7f4ff;
 }
 .ap-recipes b {
   font: 800 11px monospace;
@@ -5179,6 +5175,16 @@ button {
 }
 .lab-system-status {
   border-radius: 7px;
+}
+
+.tag-board button:disabled {
+  cursor: not-allowed;
+  opacity: 0.58;
+}
+
+.tag-board button small {
+  margin-left: 0.35rem;
+  font: 700 7px monospace;
 }
 .lab-system-status i,
 .lab-telemetry i,
