@@ -79,6 +79,7 @@ export function SchemeLibrary({
           <p>选择一套完整的 57AP 示例，再带回实验室继续比较和微调。</p>
         </div>
         <button
+          type="button"
           className="primary compact"
           disabled
           title="账号与投稿将在 Community Beta 开放"
@@ -88,7 +89,7 @@ export function SchemeLibrary({
       </div>
       <div className="library-toolbar">
         <div>
-          <button className="active">全部示例</button>
+          <span className="library-scope-label">全部示例</span>
           <span>
             {visibleSchemes.length} / {exampleSchemes.length}
           </span>
@@ -108,13 +109,18 @@ export function SchemeLibrary({
             <b>组合标签筛选</b>
             <span>同组内任一符合 · 不同组同时符合</span>
           </div>
-          <button onClick={clearFilters} disabled={activeFilterCount === 0}>
+          <button
+            type="button"
+            onClick={clearFilters}
+            disabled={activeFilterCount === 0}
+          >
             清除筛选 {activeFilterCount > 0 ? `(${activeFilterCount})` : ''}
           </button>
         </header>
         <FilterRow label="方案标签">
           {allTags.map((tag) => (
             <button
+              type="button"
               className={filters.tags.includes(tag) ? 'active' : ''}
               key={tag}
               onClick={() => toggleFilter('tags', tag)}
@@ -126,6 +132,7 @@ export function SchemeLibrary({
         <FilterRow label="对战模式">
           {gameModes.map((mode) => (
             <button
+              type="button"
               className={filters.modes.includes(mode.id) ? 'active' : ''}
               key={mode.id}
               onClick={() => toggleFilter('modes', mode.id)}
@@ -137,6 +144,7 @@ export function SchemeLibrary({
         <FilterRow label="使用武器">
           {schemeWeapons.map((weapon) => (
             <button
+              type="button"
               className={filters.weaponIds.includes(weapon.id) ? 'active' : ''}
               key={weapon.id}
               onClick={() => toggleFilter('weaponIds', weapon.id)}
@@ -157,6 +165,7 @@ export function SchemeLibrary({
                   <div>
                     {scheme.tags.map((tag) => (
                       <button
+                        type="button"
                         className={filters.tags.includes(tag) ? 'active' : ''}
                         onClick={() => toggleFilter('tags', tag)}
                         key={tag}
@@ -169,6 +178,7 @@ export function SchemeLibrary({
                     <div className="build-modes">
                       {scheme.modes.map((modeId) => (
                         <button
+                          type="button"
                           className={`build-mode mode-${modeId} ${filters.modes.includes(modeId) ? 'active' : ''}`}
                           onClick={() => toggleFilter('modes', modeId)}
                           key={modeId}
@@ -190,6 +200,7 @@ export function SchemeLibrary({
                   <div>
                     <small>使用武器</small>
                     <button
+                      type="button"
                       className={
                         filters.weaponIds.includes(schemeWeapon.id)
                           ? 'active'
@@ -244,7 +255,7 @@ export function SchemeLibrary({
                   <p>{scheme.note}</p>
                 </div>
                 <div className="build-actions">
-                  <button onClick={() => copyScheme(scheme)}>
+                  <button type="button" onClick={() => copyScheme(scheme)}>
                     <Copy size={14} />{' '}
                     {copyStatus === scheme.id
                       ? '链接已复制'
@@ -253,6 +264,7 @@ export function SchemeLibrary({
                         : '复制分享链接'}
                   </button>
                   <button
+                    type="button"
                     className="lab-action"
                     onClick={() =>
                       onOpen(scheme.weaponId, cloneSchemeSlots(scheme))

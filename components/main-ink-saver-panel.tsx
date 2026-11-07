@@ -114,6 +114,7 @@ export function MainInkSaverPanel({
       <div className="breakpoints">
         {quickAp.map((value) => (
           <button
+            type="button"
             className={analysis.ap === value ? 'active' : ''}
             onClick={() => setAp(value)}
             key={value}

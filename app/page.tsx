@@ -5,9 +5,7 @@ import {
   Copy,
   Download,
   Eraser,
-  Footprints,
   Layers,
-  Lock,
   Plus,
   RotateCcw,
   Search,
@@ -80,6 +78,12 @@ const SchemeLibrary = lazy(() =>
 const MotionLab = lazy(() =>
   import('@/components/motion-lab').then(({ MotionLab }) => ({
     default: MotionLab,
+  })),
+);
+
+const UniversalPlanner = lazy(() =>
+  import('@/components/universal-planner').then(({ UniversalPlanner }) => ({
+    default: UniversalPlanner,
   })),
 );
 
@@ -532,7 +536,20 @@ export default function Home() {
               </button>
             </div>
             {labMode === 'planner' ? (
-              <UniversalPlanner />
+              <Suspense
+                fallback={
+                  <section
+                    className="workspace page-loading-state"
+                    aria-live="polite"
+                  >
+                    <small>SHARED GEAR / LOADING</small>
+                    <h1>正在载入通用装备规划…</h1>
+                    <p>正在准备多武器需求与实验分支草案。</p>
+                  </section>
+                }
+              >
+                <UniversalPlanner />
+              </Suspense>
             ) : (
               <section className="workspace analyzer-workspace">
                 <div className="intro">
@@ -549,6 +566,7 @@ export default function Home() {
                     </div>
                   </div>
                   <button
+                    type="button"
                     className="primary compact"
                     disabled={exportStatus === 'working'}
                     onClick={savePng}
@@ -628,7 +646,10 @@ export default function Home() {
                     </div>
                     <Title n="02" text="推荐配装">
                       {recommendationSource === 'system' ? (
-                        <button onClick={() => applyRecommendation(0)}>
+                        <button
+                          type="button"
+                          onClick={() => applyRecommendation(0)}
+                        >
                           <RotateCcw size={14} />
                           应用主武基础型
                         </button>
@@ -642,6 +663,7 @@ export default function Home() {
                       aria-label="推荐来源"
                     >
                       <button
+                        type="button"
                         role="tab"
                         aria-selected={recommendationSource === 'system'}
                         className={
@@ -652,6 +674,7 @@ export default function Home() {
                         系统建议<small>规则生成</small>
                       </button>
                       <button
+                        type="button"
                         role="tab"
                         aria-selected={recommendationSource === 'community'}
                         className={
@@ -673,6 +696,7 @@ export default function Home() {
                         <div className="presets vertical system-presets">
                           {recommendations.map((recommendation, i) => (
                             <button
+                              type="button"
                               className={activePreset === i ? 'picked' : ''}
                               key={recommendation.id}
                               onClick={() => applyRecommendation(i)}
@@ -718,11 +742,11 @@ export default function Home() {
                         </small>
                       </div>
                       <div className="loadout-actions">
-                        <button onClick={resetLoadout}>
+                        <button type="button" onClick={resetLoadout}>
                           <Eraser size={13} />
                           清空配装
                         </button>
-                        <button onClick={copyShareLink}>
+                        <button type="button" onClick={copyShareLink}>
                           <Copy size={13} />
                           {shareStatus === 'copied'
                             ? '链接已复制'
@@ -754,6 +778,7 @@ export default function Home() {
                                     );
                                 return (
                                   <button
+                                    type="button"
                                     data-slot-index={index}
                                     aria-label={`${g}${i === 0 ? '主技能' : '小技能'}槽位${id ? '，当前已装备' : '，当前为空'}`}
                                     aria-pressed={isSelected}
@@ -812,6 +837,7 @@ export default function Home() {
                         const active = selectedPart?.id === part.id;
                         return (
                           <button
+                            type="button"
                             role="tab"
                             aria-selected={active}
                             className={active ? 'active' : ''}
@@ -834,6 +860,7 @@ export default function Home() {
                       <div>
                         {abilityFilterGroups.map((filterGroup) => (
                           <button
+                            type="button"
                             key={filterGroup}
                             className={group === filterGroup ? 'active' : ''}
                             onClick={() => selectAbilityGroup(filterGroup)}
@@ -869,6 +896,7 @@ export default function Home() {
                             <div className="stone-pool stone-pool-exclusive">
                               {exclusiveAbilities.map((a) => (
                                 <button
+                                  type="button"
                                   draggable
                                   aria-label={a.name}
                                   title={`${a.name}：点击装入${selectedPart?.label}主技能格，或拖动放入`}
@@ -908,6 +936,7 @@ export default function Home() {
                           <div className="stone-pool">
                             {filtered.map((a) => (
                               <button
+                                type="button"
                                 draggable
                                 aria-label={a.name}
                                 title={`${a.name}：点击填入第 ${selectedSlot + 1} 槽，或拖到其他槽位`}
@@ -1025,6 +1054,7 @@ export default function Home() {
                       <div>
                         {totals.map((x) => (
                           <button
+                            type="button"
                             aria-pressed={focus === x.a?.id}
                             className={
                               focus === x.a?.id ? 'selected-analysis' : ''
@@ -1201,6 +1231,7 @@ function EffectPanel({
           <div className="breakpoints">
             {[3, 6, 12].map((n) => (
               <button
+                type="button"
                 className={ap === n ? 'active' : ''}
                 onClick={() => setAp(n)}
                 key={n}
@@ -1289,6 +1320,7 @@ function SubPowerPanel({
       <div className="breakpoints">
         {[3, 6, 10].map((n) => (
           <button
+            type="button"
             className={ap === n ? 'active' : ''}
             onClick={() => setAp(n)}
             key={n}
@@ -1323,203 +1355,5 @@ function SubPowerPanel({
         的频率判断是否投入；精确 AP 收益将在版本参数通过测试后补充。
       </p>
     </>
-  );
-}
-
-const planningWeapons = [
-  {
-    id: 'zap',
-    name: 'N-ZAP89',
-    role: '副武压制',
-    accent: '#f1c40f',
-    needs: ['副省 12AP', '游速 6AP', '快跳 3AP'],
-  },
-  {
-    id: 'shot',
-    name: '斯普拉射击枪',
-    role: '前线泛用',
-    accent: '#8b5cf6',
-    needs: ['游速 6AP', '快跳 3AP', '安全鞋 3AP'],
-  },
-  {
-    id: 'leaf',
-    name: '枫叶射击枪',
-    role: '骚扰续航',
-    accent: '#22c55e',
-    needs: ['副省 9AP', '游速 6AP', '快跳 3AP'],
-  },
-];
-function UniversalPlanner() {
-  const [chosen, setChosen] = useState(['zap', 'shot', 'leaf']),
-    [goal, setGoal] = useState('省碎片'),
-    [applied, setApplied] = useState(false);
-  const toggle = (id: string) =>
-    setChosen((s) => (s.includes(id) ? s.filter((x) => x !== id) : [...s, id]));
-  return (
-    <section className="workspace planner-page">
-      <div className="intro">
-        <div>
-          <em>SHARED GEAR / 002</em>
-          <h1>多武器通用装备规划</h1>
-          <p>把共同需求放进同一件装备，减少重复制作和能力碎片消耗。</p>
-        </div>
-        <span className="version-pill">规划草案 · 3把武器</span>
-      </div>
-      <div className="planner-grid">
-        <section className="planner-controls">
-          <Title n="01" text="选择你常用的配装">
-            <button>
-              <Plus size={14} />
-              添加武器
-            </button>
-          </Title>
-          <div className="weapon-list">
-            {planningWeapons.map((w, i) => (
-              <button
-                key={w.id}
-                className={chosen.includes(w.id) ? 'selected' : ''}
-                onClick={() => toggle(w.id)}
-              >
-                <span className="weapon-dot" style={{ background: w.accent }}>
-                  {i === 0 ? '89' : i === 1 ? '枪' : '叶'}
-                </span>
-                <div>
-                  <b>{w.name}</b>
-                  <small>{w.role}</small>
-                  <em>{w.needs.join(' · ')}</em>
-                </div>
-                <span className="tick">
-                  {chosen.includes(w.id) ? (
-                    <Check size={14} />
-                  ) : (
-                    <Plus size={14} />
-                  )}
-                </span>
-              </button>
-            ))}
-          </div>
-          <Title n="02" text="这次优先考虑什么">
-            <small>可随时重新计算</small>
-          </Title>
-          <div className="goal-pills">
-            {['省碎片', '最少妥协', '容易购买'].map((x) => (
-              <button
-                className={goal === x ? 'active' : ''}
-                onClick={() => setGoal(x)}
-                key={x}
-              >
-                {x}
-              </button>
-            ))}
-          </div>
-          <Title n="03" text="固定条件">
-            <small>锁定后不会被方案替换</small>
-          </Title>
-          <div className="locks">
-            <button className="on">
-              <Lock size={14} />
-              <span>
-                <b>头部与服装保持可变</b>
-                <small>允许不同武器使用专属大技能</small>
-              </span>
-            </button>
-            <button>
-              <Lock size={14} />
-              <span>
-                <b>至少保留 3AP 快跳</b>
-                <small>作为所有前线配装的安全垫</small>
-              </span>
-            </button>
-          </div>
-        </section>
-        <aside className="planner-result">
-          <div className="result-kicker">RECOMMENDATION / {goal}</div>
-          <div className="recommend-title">
-            <div className="gear-symbol">
-              <Footprints />
-            </div>
-            <div>
-              <small>最适合固定为通用件</small>
-              <h2>优先制作一双通用鞋</h2>
-            </div>
-            <b>匹配度 92%</b>
-          </div>
-          <div className="why-grid">
-            <div>
-              <span>共同需求</span>
-              <b>游速 6AP</b>
-              <b>快跳 3AP</b>
-            </div>
-            <div>
-              <span>部位冲突</span>
-              <b className="good">鞋子最低</b>
-              <small>头、服装需要随玩法变化</small>
-            </div>
-            <div>
-              <span>预计节省</span>
-              <b className="big">≈ 36</b>
-              <small>能力碎片 · 原型估算</small>
-            </div>
-          </div>
-          <div className="decision">
-            <h3>为什么是鞋子？</h3>
-            <p>
-              三套配装都需要少量游速和快跳；而头部可能在最后冲刺、回归之间切换，服装还要考虑隐游。把共同的小技能固定在鞋子，换武器时只需调整头和服装。
-            </p>
-            <div className="trade">
-              <Check size={15} />
-              <span>
-                <b>N-ZAP89</b> 保留副武压制核心，鞋子负责通用机动
-              </span>
-            </div>
-            <div className="trade">
-              <Check size={15} />
-              <span>
-                <b>斯普拉射击枪</b> 无需重复制作 6AP 游速
-              </span>
-            </div>
-            <div className="trade">
-              <Check size={15} />
-              <span>
-                <b>枫叶射击枪</b> 只需在头、服装补足副省
-              </span>
-            </div>
-          </div>
-          <h3 className="candidate-title">
-            装备参考 <small>根据原始大技能与改造成本排序</small>
-          </h3>
-          <div className="gear-candidates">
-            <button className="best">
-              <span className="shoe-art">鞋</span>
-              <div>
-                <b>通用鞋胚 A</b>
-                <small>原始大技能：隐形跳跃</small>
-                <em>推荐 · 只需制作 3 个小槽</em>
-              </div>
-              <Check />
-            </button>
-            <button>
-              <span className="shoe-art alt">鞋</span>
-              <div>
-                <b>通用鞋胚 B</b>
-                <small>原始大技能：受身术</small>
-                <em>备选 · 适合回场倾向</em>
-              </div>
-              <Plus />
-            </button>
-          </div>
-          <button
-            className="primary plan-action"
-            onClick={() => setApplied(true)}
-          >
-            {applied ? <Check size={16} /> : <Layers size={16} />}{' '}
-            {applied ? '已保存为实验分支' : '用此鞋生成三套实验分支'}
-          </button>
-          <p className="note">
-            装备名称与碎片成本暂为交互示例，正式版将绑定玩家库存与版本数据。
-          </p>
-        </aside>
-      </div>
-    </section>
   );
 }

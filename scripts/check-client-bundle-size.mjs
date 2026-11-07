@@ -17,8 +17,8 @@ const pageChunk = pageChunks[0];
 const source = readFileSync(join(chunkDirectory, pageChunk));
 const rawBytes = source.byteLength;
 const gzipBytes = gzipSync(source).byteLength;
-const rawLimit = 990_000;
-const gzipLimit = 75_000;
+const rawLimit = 980_000;
+const gzipLimit = 70_000;
 
 console.log(
   `首页脚本 ${pageChunk}：${(rawBytes / 1000).toFixed(1)} kB，gzip ${(gzipBytes / 1000).toFixed(1)} kB。`,
@@ -35,6 +35,7 @@ const lazySections = [
   ['ability-wiki', '能力百科'],
   ['scheme-library', '玩家方案库'],
   ['motion-lab', '鱿鱼滚行练习器'],
+  ['universal-planner', '通用装备规划'],
 ];
 
 for (const [prefix, label] of lazySections) {

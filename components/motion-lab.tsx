@@ -255,7 +255,7 @@ export function MotionLab() {
               <small>建议：先向前推住，再在一次干净动作中反拉并跳跃</small>
             </div>
           </div>
-          <button className="primary jump-button" onClick={jump}>
+          <button type="button" className="primary jump-button" onClick={jump}>
             模拟跳跃 <kbd>Space</kbd>
           </button>
         </section>
@@ -266,11 +266,11 @@ export function MotionLab() {
               <h2>行动轨迹</h2>
             </div>
             <div>
-              <button onClick={() => setRunning((v) => !v)}>
+              <button type="button" onClick={() => setRunning((v) => !v)}>
                 {running ? <Pause size={14} /> : <Play size={14} />}{' '}
                 {running ? '暂停' : '继续'}
               </button>
-              <button onClick={reset}>
+              <button type="button" onClick={reset}>
                 <RotateCcw size={14} /> 重置
               </button>
             </div>

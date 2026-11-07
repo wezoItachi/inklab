@@ -1909,16 +1909,14 @@ button {
   font: 700 8px monospace;
   color: #888;
 }
-.library-toolbar button {
+.library-toolbar .library-scope-label {
+  display: inline-block;
   border: 0;
-  background: transparent;
+  background: var(--ink);
+  color: var(--acid);
   padding: 8px 11px;
   font-size: 9px;
   font-weight: 800;
-}
-.library-toolbar button.active {
-  background: var(--ink);
-  color: var(--acid);
 }
 .library-toolbar label {
   display: flex;
@@ -5466,8 +5464,7 @@ button {
 .lab-switch button,
 .recommendation-source-tabs button,
 .goal-pills button,
-.ability-part-tabs button,
-.library-toolbar button {
+.ability-part-tabs button {
   transition:
     transform 0.14s ease,
     box-shadow 0.14s ease,
