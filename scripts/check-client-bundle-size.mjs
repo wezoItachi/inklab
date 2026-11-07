@@ -17,8 +17,8 @@ const pageChunk = pageChunks[0];
 const source = readFileSync(join(chunkDirectory, pageChunk));
 const rawBytes = source.byteLength;
 const gzipBytes = gzipSync(source).byteLength;
-const rawLimit = 1_050_000;
-const gzipLimit = 82_000;
+const rawLimit = 990_000;
+const gzipLimit = 75_000;
 
 console.log(
   `首页脚本 ${pageChunk}：${(rawBytes / 1000).toFixed(1)} kB，gzip ${(gzipBytes / 1000).toFixed(1)} kB。`,
@@ -30,22 +30,21 @@ if (rawBytes > rawLimit || gzipBytes > gzipLimit) {
   );
 }
 
-const salmonChunk = readdirSync(chunkDirectory).find((name) =>
-  /^salmon-run-lab-[^.]+\.js$/.test(name),
-);
+const lazySections = [
+  ['salmon-run-lab', '鲑鱼跑实验室'],
+  ['ability-wiki', '能力百科'],
+  ['scheme-library', '玩家方案库'],
+  ['motion-lab', '鱿鱼滚行练习器'],
+];
 
-if (!salmonChunk) {
-  throw new Error('鲑鱼跑实验室未生成独立脚本，按需加载可能已经回退。');
+for (const [prefix, label] of lazySections) {
+  const chunk = readdirSync(chunkDirectory).find((name) =>
+    new RegExp(`^${prefix}-[^.]+\\.js$`).test(name),
+  );
+
+  if (!chunk) {
+    throw new Error(`${label}未生成独立脚本，按需加载可能已经回退。`);
+  }
+
+  console.log(`按需模块检查通过：${chunk}。`);
 }
-
-console.log(`按需模块检查通过：${salmonChunk}。`);
-
-const abilityWikiChunk = readdirSync(chunkDirectory).find((name) =>
-  /^ability-wiki-[^.]+\.js$/.test(name),
-);
-
-if (!abilityWikiChunk) {
-  throw new Error('能力百科未生成独立脚本，按需加载可能已经回退。');
-}
-
-console.log(`按需模块检查通过：${abilityWikiChunk}。`);
