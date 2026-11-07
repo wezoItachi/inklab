@@ -1,28 +1,16 @@
 'use client';
-import {
-  Suspense,
-  lazy,
-  useCallback,
-  useEffect,
-  useMemo,
-  useRef,
-  useState,
-} from 'react';
+import { Suspense, lazy, useEffect, useMemo, useState } from 'react';
 import {
   Check,
   Copy,
   Download,
   Eraser,
   Footprints,
-  Gamepad2,
   Layers,
   Lock,
-  Pause,
-  Play,
   Plus,
   RotateCcw,
   Search,
-  Sparkles,
   TrendingUp,
   Zap,
 } from 'lucide-react';
@@ -43,11 +31,6 @@ import {
   type EditableLoadoutSlot,
 } from '@/lib/loadouts';
 import { getSystemRecommendations } from '@/lib/system-recommendations';
-import {
-  angleDifferenceDegrees,
-  isRollJumpTiming,
-  isRollReverse,
-} from '@/lib/analysis';
 import { exportLoadoutPng, normalizeTags } from '@/lib/export-loadout-png';
 import {
   abilities,
@@ -70,15 +53,6 @@ import { MainWeaponEfficiencyPanel } from '@/components/main-weapon-efficiency-p
 import { CommunitySamplePanel } from '@/components/community-sample-panel';
 import { encodeLoadoutQuery, LOCAL_LOADOUT_KEY } from '@/lib/loadout-share';
 import { resolveInitialEditorState } from '@/lib/editor-state';
-import {
-  cloneSchemeSlots,
-  exampleSchemes,
-  gameModes,
-  schemeMatchesFilters,
-  schemeMatchesQuery,
-  type ExampleScheme,
-  type SchemeFilters,
-} from '@/lib/schemes';
 import { WeaponPicker } from '@/components/weapon-picker';
 import { MainInkSaverPanel } from '@/components/main-ink-saver-panel';
 import { SectionErrorBoundary } from '@/components/section-error-boundary';
@@ -94,6 +68,18 @@ const SalmonRunLab = lazy(() =>
 const AbilityWiki = lazy(() =>
   import('@/components/ability-wiki').then(({ AbilityWiki }) => ({
     default: AbilityWiki,
+  })),
+);
+
+const SchemeLibrary = lazy(() =>
+  import('@/components/scheme-library').then(({ SchemeLibrary }) => ({
+    default: SchemeLibrary,
+  })),
+);
+
+const MotionLab = lazy(() =>
+  import('@/components/motion-lab').then(({ MotionLab }) => ({
+    default: MotionLab,
   })),
 );
 
@@ -255,13 +241,15 @@ export default function Home() {
     const nextHash = getPageHash(nextPage);
     if (window.location.hash !== nextHash) window.location.hash = nextHash;
   };
-  const openScheme = (scheme: ExampleScheme) => {
-    const nextSlots = cloneSchemeSlots(scheme);
-    setWeaponId(scheme.weaponId);
+  const openScheme = (
+    nextWeaponId: string,
+    nextSlots: EditableLoadoutSlot[],
+  ) => {
+    setWeaponId(nextWeaponId);
     setSlots(nextSlots);
     setActivePreset(-1);
     setSelectedSlot(0);
-    setFocus(nextSlots[0][0]);
+    setFocus(nextSlots[0]?.[0] ?? 'iss');
     setAnalysisApPreview(null);
     setPage('lab');
     setLabMode('single');
@@ -496,9 +484,35 @@ export default function Home() {
             />
           </Suspense>
         ) : page === 'library' ? (
-          <SchemeLibrary onOpen={openScheme} />
+          <Suspense
+            fallback={
+              <section
+                className="workspace page-loading-state"
+                aria-live="polite"
+              >
+                <small>PLAYER BUILDS / LOADING</small>
+                <h1>正在载入玩家方案库…</h1>
+                <p>正在准备组合标签、完整配装与分享入口。</p>
+              </section>
+            }
+          >
+            <SchemeLibrary onOpen={openScheme} />
+          </Suspense>
         ) : page === 'motion' ? (
-          <MotionLab />
+          <Suspense
+            fallback={
+              <section
+                className="workspace page-loading-state"
+                aria-live="polite"
+              >
+                <small>CONTROL LAB / LOADING</small>
+                <h1>正在载入鱿鱼滚行练习器…</h1>
+                <p>正在准备输入监听、练习判定与行动轨迹。</p>
+              </section>
+            }
+          >
+            <MotionLab />
+          </Suspense>
         ) : (
           <>
             <div className="lab-switch">
@@ -1507,634 +1521,5 @@ function UniversalPlanner() {
         </aside>
       </div>
     </section>
-  );
-}
-
-function SchemeLibrary({
-  onOpen,
-}: {
-  onOpen: (scheme: ExampleScheme) => void;
-}) {
-  const [query, setQuery] = useState(''),
-    [copyStatus, setCopyStatus] = useState<string | null>(null);
-  const [filters, setFilters] = useState<SchemeFilters>({
-    tags: [],
-    modes: [],
-    weaponIds: [],
-  });
-  const allTags = [...new Set(exampleSchemes.flatMap((scheme) => scheme.tags))];
-  const schemeWeapons = [
-    ...new Set(exampleSchemes.map((scheme) => scheme.weaponId)),
-  ].map(getWeapon);
-  const activeFilterCount = Object.values(filters).reduce(
-    (total, values) => total + values.length,
-    0,
-  );
-  const toggleFilter = (key: keyof SchemeFilters, value: string) =>
-    setFilters((current) => {
-      const values = current[key] as readonly string[];
-      return {
-        ...current,
-        [key]: values.includes(value)
-          ? values.filter((item) => item !== value)
-          : [...values, value],
-      } as SchemeFilters;
-    });
-  const clearFilters = () => setFilters({ tags: [], modes: [], weaponIds: [] });
-  const visibleSchemes = exampleSchemes.filter(
-    (scheme) =>
-      schemeMatchesFilters(scheme, filters) &&
-      schemeMatchesQuery(scheme, getWeapon(scheme.weaponId).name, query),
-  );
-  const copyScheme = async (scheme: ExampleScheme) => {
-    const url = `${window.location.origin}${window.location.pathname}?${encodeLoadoutQuery({ weaponId: scheme.weaponId, slots: cloneSchemeSlots(scheme) })}`;
-    try {
-      await navigator.clipboard.writeText(url);
-      setCopyStatus(scheme.id);
-      setTimeout(() => setCopyStatus(null), 1800);
-    } catch {
-      setCopyStatus('error:' + scheme.id);
-    }
-  };
-  return (
-    <section className="workspace library-page">
-      <output className="visually-hidden" aria-live="polite" aria-atomic="true">
-        {copyStatus?.startsWith('error:')
-          ? '分享链接复制失败。'
-          : copyStatus
-            ? '分享链接已复制。'
-            : ''}
-      </output>
-      <div className="intro">
-        <div>
-          <em>PLAYER BUILDS / SAMPLE</em>
-          <h1>玩家方案示例库</h1>
-          <p>选择一套完整的 57AP 示例，再带回实验室继续比较和微调。</p>
-        </div>
-        <button
-          className="primary compact"
-          disabled
-          title="账号与投稿将在 Community Beta 开放"
-        >
-          <Plus size={15} /> 投稿暂未开放
-        </button>
-      </div>
-      <div className="library-toolbar">
-        <div>
-          <button className="active">全部示例</button>
-          <span>
-            {visibleSchemes.length} / {exampleSchemes.length}
-          </span>
-        </div>
-        <label>
-          <Search size={14} />
-          <input
-            value={query}
-            onChange={(event) => setQuery(event.target.value)}
-            placeholder="搜索武器、标签或说明"
-          />
-        </label>
-      </div>
-      <section className="scheme-filter-board">
-        <header>
-          <div>
-            <b>组合标签筛选</b>
-            <span>同组内任一符合 · 不同组同时符合</span>
-          </div>
-          <button onClick={clearFilters} disabled={activeFilterCount === 0}>
-            清除筛选 {activeFilterCount > 0 ? `(${activeFilterCount})` : ''}
-          </button>
-        </header>
-        <FilterRow label="方案标签">
-          {allTags.map((tag) => (
-            <button
-              className={filters.tags.includes(tag) ? 'active' : ''}
-              key={tag}
-              onClick={() => toggleFilter('tags', tag)}
-            >
-              {tag}
-            </button>
-          ))}
-        </FilterRow>
-        <FilterRow label="对战模式">
-          {gameModes.map((mode) => (
-            <button
-              className={filters.modes.includes(mode.id) ? 'active' : ''}
-              key={mode.id}
-              onClick={() => toggleFilter('modes', mode.id)}
-            >
-              {mode.label}
-            </button>
-          ))}
-        </FilterRow>
-        <FilterRow label="使用武器">
-          {schemeWeapons.map((weapon) => (
-            <button
-              className={filters.weaponIds.includes(weapon.id) ? 'active' : ''}
-              key={weapon.id}
-              onClick={() => toggleFilter('weaponIds', weapon.id)}
-            >
-              <span>{weapon.badge}</span>
-              {weapon.name}
-            </button>
-          ))}
-        </FilterRow>
-      </section>
-      <div className="build-gallery">
-        <div className="build-list">
-          {visibleSchemes.map((scheme) => {
-            const schemeWeapon = getWeapon(scheme.weaponId);
-            return (
-              <article className="build-card" key={scheme.id}>
-                <div className="build-card-title">
-                  <div>
-                    {scheme.tags.map((tag) => (
-                      <button
-                        className={filters.tags.includes(tag) ? 'active' : ''}
-                        onClick={() => toggleFilter('tags', tag)}
-                        key={tag}
-                      >
-                        {tag}
-                      </button>
-                    ))}
-                  </div>
-                  <div className="build-card-side">
-                    <div className="build-modes">
-                      {scheme.modes.map((modeId) => (
-                        <button
-                          className={`build-mode mode-${modeId} ${filters.modes.includes(modeId) ? 'active' : ''}`}
-                          onClick={() => toggleFilter('modes', modeId)}
-                          key={modeId}
-                        >
-                          {gameModes.find(({ id }) => id === modeId)?.label}
-                        </button>
-                      ))}
-                    </div>
-                    <small>内置示例 · 非攻略结论</small>
-                  </div>
-                </div>
-                <div className="build-meta">
-                  <b>INKLAB 示例</b>
-                  <span>{scheme.id.replace('sample-', '方案 #')}</span>
-                  <time>Ver. {DATA_VERSION}</time>
-                </div>
-                <div className="build-weapon">
-                  <span className="weapon-badge">{schemeWeapon.badge}</span>
-                  <div>
-                    <small>使用武器</small>
-                    <button
-                      className={
-                        filters.weaponIds.includes(schemeWeapon.id)
-                          ? 'active'
-                          : ''
-                      }
-                      onClick={() => toggleFilter('weaponIds', schemeWeapon.id)}
-                    >
-                      {schemeWeapon.name}
-                    </button>
-                    <em>
-                      {schemeWeapon.sub.name} · {schemeWeapon.special}
-                    </em>
-                  </div>
-                </div>
-                <div className="submitted-gears">
-                  {['头部', '服装', '鞋子'].map((part, row) => (
-                    <div className="submitted-gear" key={part}>
-                      <div
-                        className={
-                          'gear-reference ' +
-                          (row === 2 ? 'with-reference' : '')
-                        }
-                      >
-                        <span>
-                          {row === 0 ? '帽' : row === 1 ? '衣' : '鞋'}
-                        </span>
-                        <small>
-                          {row === 2 ? '可作为微调起点' : part + ' · 57AP 结构'}
-                        </small>
-                      </div>
-                      <section>
-                        {scheme.slots
-                          .slice(row * 4, row * 4 + 4)
-                          .map(([id, ap], i) => (
-                            <div
-                              className={i === 0 ? 'main' : ''}
-                              key={`${id}-${i}`}
-                            >
-                              <AbilityIcon
-                                ability={abilities.find((a) => a.id === id)}
-                                small
-                              />
-                              <em>{ap}</em>
-                            </div>
-                          ))}
-                      </section>
-                    </div>
-                  ))}
-                </div>
-                <div className="author-note">
-                  <b>示例边界</b>
-                  <p>{scheme.note}</p>
-                </div>
-                <div className="build-actions">
-                  <button onClick={() => copyScheme(scheme)}>
-                    <Copy size={14} />{' '}
-                    {copyStatus === scheme.id
-                      ? '链接已复制'
-                      : copyStatus === 'error:' + scheme.id
-                        ? '复制失败'
-                        : '复制分享链接'}
-                  </button>
-                  <button className="lab-action" onClick={() => onOpen(scheme)}>
-                    <Zap size={14} /> 打开实验室微调
-                  </button>
-                </div>
-              </article>
-            );
-          })}
-          {visibleSchemes.length === 0 ? (
-            <div className="library-empty">
-              <Search size={20} />
-              <b>没有匹配的示例</b>
-              <span>换一个武器名称或玩法标签试试。</span>
-            </div>
-          ) : null}
-        </div>
-        <aside className="card-anatomy">
-          <small>真实可用的示例流程</small>
-          <ol>
-            <li>
-              <b>01 搜索与标签</b>
-              <span>按武器、玩法标签和说明筛选</span>
-            </li>
-            <li>
-              <b>02 完整结构</b>
-              <span>每套都包含 3 个主技能和 9 个小技能</span>
-            </li>
-            <li>
-              <b>03 分享链接</b>
-              <span>复制后可直接恢复武器与 57AP 配装</span>
-            </li>
-            <li>
-              <b>04 带回实验室</b>
-              <span>一键载入为自定义配装并继续替换能力</span>
-            </li>
-          </ol>
-          <div>
-            <Sparkles size={15} />
-            <p>
-              这里暂时只提供经过结构校验的内置示例；账号、投稿和审核仍留在
-              Community Beta。
-            </p>
-          </div>
-        </aside>
-      </div>
-    </section>
-  );
-}
-
-type MotionPoint = { x: number; y: number };
-function MotionLab() {
-  const [stick, setStick] = useState({ x: 0, y: 0 }),
-    stickRef = useRef({ x: 0, y: 0 });
-  const [trail, setTrail] = useState<MotionPoint[]>([{ x: 50, y: 78 }]),
-    posRef = useRef({ x: 50, y: 78 });
-  const [running, setRunning] = useState(true),
-    runningRef = useRef(true);
-  const [controller, setController] = useState('未连接'),
-    [status, setStatus] = useState('先保持一个方向，再快速反向'),
-    [source, setSource] = useState('键鼠');
-  const [stats, setStats] = useState({
-    angle: 0,
-    strength: 0,
-    reverse: 0,
-    delay: 0,
-    attempts: 0,
-    success: 0,
-  });
-  const previousRef = useRef({ x: 0, y: -1, time: 0 }),
-    reverseAtRef = useRef(0),
-    sourceRef = useRef('键鼠');
-  const setInput = useCallback(
-    (rawX: number, rawY: number, source = '键鼠') => {
-      const length = Math.hypot(rawX, rawY),
-        scale = length > 1 ? 1 / length : 1;
-      const x = rawX * scale,
-        y = rawY * scale,
-        magnitude = Math.min(1, length);
-      stickRef.current = { x, y };
-      setStick({ x, y });
-      sourceRef.current = source;
-      setSource(source);
-      if (magnitude > 0.5) {
-        const prev = previousRef.current;
-        const difference = angleDifferenceDegrees(prev, { x, y });
-        if (isRollReverse(difference, Date.now() - prev.time)) {
-          reverseAtRef.current = Date.now();
-          setStatus('反向完成：现在按跳跃');
-        }
-        previousRef.current = { x, y, time: Date.now() };
-        setStats((s) => ({
-          ...s,
-          angle: ((Math.atan2(x, -y) * 180) / Math.PI + 360) % 360,
-          strength: magnitude * 100,
-          reverse: difference,
-        }));
-      } else setStats((s) => ({ ...s, strength: magnitude * 100 }));
-    },
-    [],
-  );
-  const jump = useCallback(() => {
-    const delay = reverseAtRef.current ? Date.now() - reverseAtRef.current : 0,
-      success = isRollJumpTiming(delay);
-    setStats((s) => ({
-      ...s,
-      delay,
-      attempts: s.attempts + 1,
-      success: s.success + (success ? 1 : 0),
-    }));
-    setStatus(
-      success
-        ? '滚行时机命中！继续尝试稳定复现'
-        : '未命中：先快速反向，再于 350ms 内跳跃',
-    );
-    reverseAtRef.current = 0;
-  }, []);
-  useEffect(() => {
-    runningRef.current = running;
-  }, [running]);
-  useEffect(() => {
-    let frame = 0,
-      lastButton = false;
-    const tick = () => {
-      const pads = navigator.getGamepads?.() || [],
-        pad = Array.from(pads).find(Boolean);
-      if (pad) {
-        setController(pad.id);
-        const x = Math.abs(pad.axes[0] || 0) > 0.07 ? pad.axes[0] || 0 : 0,
-          y = Math.abs(pad.axes[1] || 0) > 0.07 ? pad.axes[1] || 0 : 0;
-        if (x || y || sourceRef.current === '手柄') setInput(x, y, '手柄');
-        const pressed = !!pad.buttons[0]?.pressed;
-        if (pressed && !lastButton) jump();
-        lastButton = pressed;
-      }
-      if (runningRef.current && ++frame % 3 === 0) {
-        const v = stickRef.current;
-        if (Math.hypot(v.x, v.y) > 0.08) {
-          const next = {
-            x: Math.max(3, Math.min(97, posRef.current.x + v.x * 1.05)),
-            y: Math.max(4, Math.min(96, posRef.current.y + v.y * 1.05)),
-          };
-          posRef.current = next;
-          setTrail((t) => [...t.slice(-179), next]);
-        }
-      }
-      id = requestAnimationFrame(tick);
-    };
-    let id = requestAnimationFrame(tick);
-    return () => cancelAnimationFrame(id);
-  }, [jump, setInput]);
-  useEffect(() => {
-    const keys = new Set<string>();
-    const update = () =>
-      setInput(
-        (keys.has('d') || keys.has('arrowright') ? 1 : 0) -
-          (keys.has('a') || keys.has('arrowleft') ? 1 : 0),
-        (keys.has('s') || keys.has('arrowdown') ? 1 : 0) -
-          (keys.has('w') || keys.has('arrowup') ? 1 : 0),
-        '键盘',
-      );
-    const down = (e: KeyboardEvent) => {
-      if (
-        ['input', 'textarea'].includes(
-          (e.target as HTMLElement)?.tagName?.toLowerCase(),
-        )
-      )
-        return;
-      const key = e.key.toLowerCase();
-      if (key === ' ') {
-        e.preventDefault();
-        jump();
-        return;
-      }
-      keys.add(key);
-      update();
-    };
-    const up = (e: KeyboardEvent) => {
-      keys.delete(e.key.toLowerCase());
-      update();
-    };
-    window.addEventListener('keydown', down);
-    window.addEventListener('keyup', up);
-    return () => {
-      window.removeEventListener('keydown', down);
-      window.removeEventListener('keyup', up);
-    };
-  }, [jump, setInput]);
-  const pointer = (e: React.PointerEvent<HTMLDivElement>) => {
-    const r = e.currentTarget.getBoundingClientRect();
-    setInput(
-      (e.clientX - r.left - r.width / 2) / (r.width * 0.42),
-      (e.clientY - r.top - r.height / 2) / (r.height * 0.42),
-      '触摸 / 鼠标',
-    );
-  };
-  const reset = () => {
-    posRef.current = { x: 50, y: 78 };
-    setTrail([{ x: 50, y: 78 }]);
-    setStats({
-      angle: 0,
-      strength: 0,
-      reverse: 0,
-      delay: 0,
-      attempts: 0,
-      success: 0,
-    });
-    setStatus('先保持一个方向，再快速反向');
-  };
-  const points = trail.map((p) => `${p.x},${p.y}`).join(' ');
-  const currentPosition = trail.at(-1) ?? { x: 50, y: 78 };
-  return (
-    <section className="workspace motion-page">
-      <div className="intro">
-        <div>
-          <em>CONTROL LAB / EXPERIMENT 01</em>
-          <h1>鱿鱼滚行练习器</h1>
-          <p>观察摇杆反向与跳跃时机，把操作手感转换成可以复盘的轨迹。</p>
-        </div>
-        <span className="version-pill">独立实验原型</span>
-      </div>
-      <div className="motion-grid">
-        <section className="motion-controls">
-          <Title n="01" text="输入设备">
-            <small>三种方式任选</small>
-          </Title>
-          <div className="device-card">
-            <Gamepad2 />
-            <div>
-              <b>
-                {controller === '未连接'
-                  ? '连接 PC 手柄即可自动识别'
-                  : '手柄已连接'}
-              </b>
-              <small title={controller}>
-                {controller === '未连接'
-                  ? '也可直接使用 WASD / 方向键'
-                  : controller}
-              </small>
-            </div>
-            <span>{source}</span>
-          </div>
-          <Title n="02" text="模拟摇杆">
-            <small>拖动圆盘，Space / 手柄 A 跳跃</small>
-          </Title>
-          <div
-            className="stick-zone"
-            onPointerDown={(e) => {
-              e.currentTarget.setPointerCapture(e.pointerId);
-              pointer(e);
-            }}
-            onPointerMove={(e) => {
-              if (e.currentTarget.hasPointerCapture(e.pointerId)) pointer(e);
-            }}
-            onPointerUp={(e) => {
-              e.currentTarget.releasePointerCapture(e.pointerId);
-              setInput(0, 0, '触摸 / 鼠标');
-            }}
-          >
-            <i />
-            <b
-              style={{
-                transform: `translate(calc(-50% + ${stick.x * 82}px),calc(-50% + ${stick.y * 82}px))`,
-              }}
-            >
-              <span />
-            </b>
-          </div>
-          <div
-            className={
-              'motion-status ' +
-              (status.startsWith('滚行时机命中')
-                ? 'success'
-                : status.startsWith('未命中')
-                  ? 'error'
-                  : '')
-            }
-          >
-            <span>
-              {status.startsWith('滚行时机命中')
-                ? '✓'
-                : status.startsWith('未命中')
-                  ? '×'
-                  : '→'}
-            </span>
-            <div>
-              <b>{status}</b>
-              <small>建议：先向前推住，再在一次干净动作中反拉并跳跃</small>
-            </div>
-          </div>
-          <button className="primary jump-button" onClick={jump}>
-            模拟跳跃 <kbd>Space</kbd>
-          </button>
-        </section>
-        <aside className="motion-result">
-          <div className="motion-head">
-            <div>
-              <small>ESTIMATED MOVEMENT PATH</small>
-              <h2>行动轨迹</h2>
-            </div>
-            <div>
-              <button onClick={() => setRunning((v) => !v)}>
-                {running ? <Pause size={14} /> : <Play size={14} />}{' '}
-                {running ? '暂停' : '继续'}
-              </button>
-              <button onClick={reset}>
-                <RotateCcw size={14} /> 重置
-              </button>
-            </div>
-          </div>
-          <div className="path-board">
-            <svg
-              viewBox="0 0 100 100"
-              preserveAspectRatio="none"
-              aria-label="估算行动轨迹"
-            >
-              <defs>
-                <pattern
-                  id="motion-grid"
-                  width="10"
-                  height="10"
-                  patternUnits="userSpaceOnUse"
-                >
-                  <path
-                    d="M 10 0 L 0 0 0 10"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth=".18"
-                  />
-                </pattern>
-              </defs>
-              <rect width="100" height="100" fill="url(#motion-grid)" />
-              <line x1="50" y1="0" x2="50" y2="100" />
-              <line x1="0" y1="50" x2="100" y2="50" />
-              <polyline points={points} fill="none" />
-              <circle cx={currentPosition.x} cy={currentPosition.y} r="1.8" />
-            </svg>
-            <span>起点</span>
-            <b>当前朝向 {Math.round(stats.angle)}°</b>
-          </div>
-          <div className="motion-metrics">
-            <div>
-              <span>摇杆力度</span>
-              <b>{Math.round(stats.strength)}%</b>
-              <i>
-                <em style={{ width: `${stats.strength}%` }} />
-              </i>
-            </div>
-            <div>
-              <span>本次反向角</span>
-              <b>{Math.round(stats.reverse)}°</b>
-              <small>目标 ≥ 120°</small>
-            </div>
-            <div>
-              <span>反向 → 跳跃</span>
-              <b>{stats.delay ? stats.delay + 'ms' : '—'}</b>
-              <small>练习窗 ≤ 350ms</small>
-            </div>
-            <div>
-              <span>命中次数</span>
-              <b>
-                {stats.success} / {stats.attempts}
-              </b>
-              <small>仅为练习判定</small>
-            </div>
-          </div>
-          <div className="motion-disclaimer">
-            <Sparkles size={16} />
-            <p>
-              <b>原型边界</b>　摇杆输入来自浏览器 Gamepad
-              API；右侧角色路径是二维估算，不读取 Nintendo
-              Switch、游戏画面或游戏物理。后续可接入武器重量、游速 AP
-              与动作阶段模型。
-            </p>
-          </div>
-        </aside>
-      </div>
-    </section>
-  );
-}
-
-function FilterRow({
-  label,
-  children,
-}: {
-  label: string;
-  children: React.ReactNode;
-}) {
-  return (
-    <div className="scheme-filter-row">
-      <b>{label}</b>
-      <div>{children}</div>
-    </div>
   );
 }
