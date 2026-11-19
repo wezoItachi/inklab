@@ -2,16 +2,16 @@ import { createHash } from 'node:crypto';
 import { readFileSync, writeFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 
-const GAME_VERSION = '11.3.0';
-const CHECKED_AT = '2026-10-26';
+const GAME_VERSION = '12.0.0';
+const CHECKED_AT = '2026-11-19';
 const SOURCE_ID = 'leanny-splat3';
-const SOURCE_COMMIT = '7280ff9cde8bb1c5dcef46c700c326471584d2e6';
-const UPSTREAM_ROOT = 'data/parameter/1130';
+const SOURCE_COMMIT = 'b669d55e0eef1f1a7f18cb7468c636ed7746c189';
+const UPSTREAM_ROOT = 'data/parameter/1200';
 
 const sourceFlagIndex = process.argv.indexOf('--source-dir');
 if (sourceFlagIndex < 0 || !process.argv[sourceFlagIndex + 1]) {
   throw new Error(
-    'Usage: node scripts/import-leanny-salmon-ink-cycle.mjs --source-dir <1130 parameter directory>',
+    'Usage: node scripts/import-leanny-salmon-ink-cycle.mjs --source-dir <1200 parameter directory>',
   );
 }
 
@@ -19,7 +19,7 @@ const projectRoot = resolve(import.meta.dirname, '..');
 const sourceDir = resolve(process.argv[sourceFlagIndex + 1]);
 const outputPath = resolve(
   projectRoot,
-  'database/salmon-ink-cycle-evidence.v11.3.0.json',
+  'database/salmon-ink-cycle-evidence.v12.0.0.json',
 );
 const sha256 = (value) => createHash('sha256').update(value).digest('hex');
 const inputs = new Map();
@@ -84,7 +84,7 @@ const document = {
   modelGate: {
     sustainedOutput: 'blocked',
     reasons: [
-      '未找到明确的 Ver. 11.3.0 打工玩家通用回墨覆盖字段。',
+      '未找到明确的 Ver. 12.0.0 打工玩家通用回墨覆盖字段。',
       '普通回墨曲线的打工适用性尚未通过源码或实机验证。',
       '四把首批试算武器中只有广域标记枪暴露了明确的主武墨锁字段。',
       '鱿鱼滚行空中回墨与绕过墨锁的底层字段尚未定位。',

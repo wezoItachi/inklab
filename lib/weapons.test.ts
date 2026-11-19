@@ -9,8 +9,8 @@ import {
   weapons,
 } from './weapons.ts';
 
-void test('complete 11.3 weapon catalog covers all families', () => {
-  assert.equal(DATA_VERSION, '11.3.0');
+void test('complete 12.0 weapon catalog covers all families', () => {
+  assert.equal(DATA_VERSION, '12.0.0');
   assert.equal(DATASET_STATUS, 'full-weapon-catalog-partial-parameters');
   assert.equal(weapons.length, 174);
   assert.deepEqual(
@@ -62,24 +62,24 @@ void test('every catalog weapon exposes honest parameter audit progress', () => 
     assert.equal(summary.total, parameters.parameters.length);
     if (weapon.id === 'shooter-quickmiddle-cstm01') {
       assert.deepEqual(summary, {
-        total: 10,
-        verified: 9,
+        total: 12,
+        verified: 11,
         pending: 1,
         'not-applicable': 0,
         demo: 0,
       });
     } else if (weapon.id === 'shooter-normalt') {
       assert.deepEqual(summary, {
-        total: 10,
-        verified: 8,
+        total: 12,
+        verified: 10,
         pending: 2,
         'not-applicable': 0,
         demo: 0,
       });
     } else if (weapon.id === 'shooter-precision') {
       assert.deepEqual(summary, {
-        total: 10,
-        verified: 9,
+        total: 12,
+        verified: 11,
         pending: 1,
         'not-applicable': 0,
         demo: 0,
@@ -94,8 +94,8 @@ void test('every catalog weapon exposes honest parameter audit progress', () => 
       });
     } else if (weapon.id === 'roller-normalt') {
       assert.deepEqual(summary, {
-        total: 13,
-        verified: 11,
+        total: 14,
+        verified: 12,
         pending: 2,
         'not-applicable': 0,
         demo: 0,
@@ -112,8 +112,8 @@ void test('every catalog weapon exposes honest parameter audit progress', () => 
       const usesNormalParameterClass =
         weapon.upstreamRowId.startsWith('Shooter_Normal_');
       assert.deepEqual(summary, {
-        total: 10,
-        verified: usesNormalParameterClass ? 8 : 9,
+        total: 12,
+        verified: usesNormalParameterClass ? 10 : 11,
         pending: usesNormalParameterClass ? 2 : 1,
         'not-applicable': 0,
         demo: 0,
@@ -122,16 +122,16 @@ void test('every catalog weapon exposes honest parameter audit progress', () => 
       const isSBlast = weapon.upstreamRowId.startsWith('Blaster_Precision_');
       const isMiddle = weapon.upstreamRowId.startsWith('Blaster_Middle_');
       assert.deepEqual(summary, {
-        total: isSBlast ? 16 : 12,
-        verified: isSBlast ? 15 : isMiddle ? 10 : 11,
+        total: isSBlast ? 17 : 13,
+        verified: isSBlast ? 16 : isMiddle ? 11 : 12,
         pending: isMiddle ? 2 : 1,
         'not-applicable': 0,
         demo: 0,
       });
     } else if (weapon.family === '滚筒') {
       assert.deepEqual(summary, {
-        total: 13,
-        verified: 11,
+        total: 14,
+        verified: 12,
         pending: 2,
         'not-applicable': 0,
         demo: 0,

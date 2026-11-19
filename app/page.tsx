@@ -14,11 +14,10 @@ import {
 } from 'lucide-react';
 import {
   DATA_VERSION,
-  PARAMETER_VERIFIED_WEAPON_COUNT,
   getWeapon,
   weapons,
   type Weapon,
-} from '@/lib/weapons';
+} from '@/lib/weapon-catalog';
 import {
   calculateAbilityTotals,
   clearLoadout,
@@ -44,15 +43,10 @@ import {
   type AbilityFilterGroup,
 } from '@/lib/abilities';
 import { AbilityIcon } from '@/components/ability-icon';
-import { getWeaponParameterSnapshot } from '@/lib/weapon-parameter-status';
-import { ParameterStatusStrip } from '@/components/parameter-status-strip';
-import { MainWeaponParameterAudit } from '@/components/main-weapon-parameter-audit';
-import { MainWeaponEfficiencyPanel } from '@/components/main-weapon-efficiency-panel';
 import { CommunitySamplePanel } from '@/components/community-sample-panel';
 import { encodeLoadoutQuery, LOCAL_LOADOUT_KEY } from '@/lib/loadout-share';
 import { resolveInitialEditorState } from '@/lib/editor-state';
 import { WeaponPicker } from '@/components/weapon-picker';
-import { MainInkSaverPanel } from '@/components/main-ink-saver-panel';
 import { SectionErrorBoundary } from '@/components/section-error-boundary';
 import type { WeaponPickerItem } from '@/lib/weapon-picker';
 import { getPageHash, parsePageHash, type PageId } from '@/lib/page-navigation';
@@ -84,6 +78,24 @@ const MotionLab = lazy(() =>
 const UniversalPlanner = lazy(() =>
   import('@/components/universal-planner').then(({ UniversalPlanner }) => ({
     default: UniversalPlanner,
+  })),
+);
+
+const MainWeaponVerification = lazy(() =>
+  import('@/components/main-weapon-verification').then(
+    ({ MainWeaponVerification }) => ({ default: MainWeaponVerification }),
+  ),
+);
+
+const MainWeaponEfficiencyPanel = lazy(() =>
+  import('@/components/main-weapon-efficiency-panel').then(
+    ({ MainWeaponEfficiencyPanel }) => ({ default: MainWeaponEfficiencyPanel }),
+  ),
+);
+
+const MainInkSaverPanel = lazy(() =>
+  import('@/components/main-ink-saver-panel').then(({ MainInkSaverPanel }) => ({
+    default: MainInkSaverPanel,
   })),
 );
 
@@ -174,7 +186,6 @@ export default function Home() {
     () => getSystemRecommendations(weapon),
     [weapon],
   );
-  const parameterSnapshot = getWeaponParameterSnapshot(weapon);
   const currentPresetName = recommendations[activePreset]?.name ?? '自定义配装';
   useEffect(() => {
     const timer = window.setTimeout(() => {
@@ -590,7 +601,7 @@ export default function Home() {
                     <Title n="01" text="要分析的武器">
                       <small>
                         {weapons.length} 把可选 ·{' '}
-                        {PARAMETER_VERIFIED_WEAPON_COUNT} 把已有核验字段
+                        {weapons.length} 把已有核验字段
                       </small>
                     </Title>
                     <div className="weapon-kit-card">
@@ -992,8 +1003,9 @@ export default function Home() {
                         <span>{weapon.special}</span>
                       </div>
                     </div>
-                    <ParameterStatusStrip snapshot={parameterSnapshot} />
-                    <MainWeaponParameterAudit weaponId={weapon.id} />
+                    <Suspense fallback={<p className="parameter-public-note">正在读取参数核验状态…</p>}>
+                      <MainWeaponVerification weaponId={weapon.id} />
+                    </Suspense>
                     <details className="export-settings export-settings-collapsible">
                       <summary>
                         <div>
@@ -1076,7 +1088,9 @@ export default function Home() {
                       setAp={setAnalysisApPreview}
                     />
                     <div className="accordions">
-                      <MainWeaponEfficiencyPanel weaponId={weapon.id} />
+                      <Suspense fallback={<p className="parameter-public-note">正在载入武器分析…</p>}>
+                        <MainWeaponEfficiencyPanel weaponId={weapon.id} />
+                      </Suspense>
                       {[
                         '次要武器实际影响',
                         '特殊武器循环',
@@ -1156,7 +1170,7 @@ export default function Home() {
           >
             Data provided by Lean
           </a>
-          <em>Ver. 11.3.0</em>
+          <em>Ver. {DATA_VERSION}</em>
         </span>
       </footer>
     </main>
@@ -1208,7 +1222,9 @@ function EffectPanel({
         </b>
       </div>
       {isMain ? (
-        <MainInkSaverPanel weapon={weapon} ability={a} ap={ap} setAp={setAp} />
+        <Suspense fallback={<p className="parameter-public-note">正在计算主武省墨…</p>}>
+          <MainInkSaverPanel weapon={weapon} ability={a} ap={ap} setAp={setAp} />
+        </Suspense>
       ) : isSub ? (
         <>
           <div className="effect-main">

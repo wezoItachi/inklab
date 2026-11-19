@@ -36,6 +36,9 @@ const lazySections = [
   ['scheme-library', '玩家方案库'],
   ['motion-lab', '鱿鱼滚行练习器'],
   ['universal-planner', '通用装备规划'],
+  ['main-weapon-verification', '主武参数核验状态'],
+  ['main-weapon-efficiency-panel', '主武参数分析'],
+  ['main-ink-saver-panel', '主武省墨分析'],
 ];
 
 for (const [prefix, label] of lazySections) {

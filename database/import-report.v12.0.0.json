@@ -1,0 +1,25 @@
+{
+  "gameVersion": "12.0.0",
+  "importedAt": "2026-11-19",
+  "sourceId": "leanny-splat3",
+  "sourceCommit": "b669d55e0eef1f1a7f18cb7468c636ed7746c189",
+  "attribution": "Data provided by Lean",
+  "inputs": [
+    {
+      "upstreamPath": "data/mush/1200/WeaponInfoMain.json",
+      "sha256": "f07fcee7015e7fd59389b1b357319b0b7af3e20226db7ad6743f69ffa2dfa179"
+    },
+    {
+      "upstreamPath": "data/language/CNzh.json",
+      "sha256": "b068060c3958f893ca8650a5136785937b20a3e9ff445c97d270e5a8f3139a43"
+    }
+  ],
+  "outputCounts": {
+    "mainWeapons": 174,
+    "subWeapons": 14,
+    "specialWeapons": 19,
+    "weaponKits": 174,
+    "preservedVerifiedParameterRecords": 174,
+    "pendingParameterRecords": 0
+  }
+}

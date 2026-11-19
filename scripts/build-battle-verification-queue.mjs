@@ -1,16 +1,16 @@
 import { readFileSync, writeFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 
-const GAME_VERSION = '11.3.0';
-const GENERATED_AT = '2026-10-26';
+const GAME_VERSION = '12.0.0';
+const GENERATED_AT = '2026-11-19';
 const projectRoot = resolve(import.meta.dirname, '..');
 const databaseDir = resolve(projectRoot, 'database');
 const readDatabase = (name) =>
   JSON.parse(readFileSync(resolve(databaseDir, name), 'utf8'));
 
-const weapons = readDatabase('main-weapons.v11.3.0.json').weapons;
-const parameterDatabase = readDatabase('main-weapon-parameters.v11.3.0.json');
-const sourceAudit = readDatabase('battle-parameter-source-audit.v11.3.0.json');
+const weapons = readDatabase('main-weapons.v12.0.0.json').weapons;
+const parameterDatabase = readDatabase('main-weapon-parameters.v12.0.0.json');
+const sourceAudit = readDatabase('battle-parameter-source-audit.v12.0.0.json');
 const weaponById = new Map(weapons.map((weapon) => [weapon.id, weapon]));
 const sourceDispositionByField = new Map();
 for (const group of sourceAudit.groups) {
@@ -104,7 +104,7 @@ function classify(record, field) {
     return {
       category: 'action-cycle-controlled-capture-required',
       nextEvidence:
-        'Apply docs/verification/Action-cycle-capture-protocol-v11.3.0.md and validate the defined release-to-release boundary with a frame-by-frame capture.',
+        'Apply docs/verification/Action-cycle-capture-protocol-v11.3.0.md as the existing capture method, then validate the Ver. 12.0.0 release-to-release boundary with a frame-by-frame capture.',
     };
   }
   return {
@@ -164,8 +164,8 @@ const categories = [...new Set(items.map(({ category }) => category))]
 const report = {
   gameVersion: GAME_VERSION,
   generatedAt: GENERATED_AT,
-  sourceFile: 'database/main-weapon-parameters.v11.3.0.json',
-  sourceAudit: 'database/battle-parameter-source-audit.v11.3.0.json',
+  sourceFile: 'database/main-weapon-parameters.v12.0.0.json',
+  sourceAudit: 'database/battle-parameter-source-audit.v12.0.0.json',
   rangePolicy: 'lib/main-weapon-range-evidence.ts',
   policy:
     'Every remaining pending occurrence receives one evidence requirement. This queue records what would close the field; it does not promote assumptions to verified values.',
@@ -199,7 +199,7 @@ const summaryCategoryKeys = categories.map(({ category }) => category);
 const compactSummary = {
   gameVersion: GAME_VERSION,
   generatedAt: GENERATED_AT,
-  sourceQueue: 'database/battle-parameter-verification-queue.v11.3.0.json',
+  sourceQueue: 'database/battle-parameter-verification-queue.v12.0.0.json',
   policy:
     'Client-facing per-weapon counts only. Detailed evidence instructions remain in the full verification queue.',
   summary: {
@@ -223,11 +223,11 @@ const compactSummary = {
 };
 
 writeFileSync(
-  resolve(databaseDir, 'battle-parameter-verification-queue.v11.3.0.json'),
+  resolve(databaseDir, 'battle-parameter-verification-queue.v12.0.0.json'),
   `${JSON.stringify(report, null, 2)}\n`,
 );
 writeFileSync(
-  resolve(databaseDir, 'battle-parameter-verification-summary.v11.3.0.json'),
+  resolve(databaseDir, 'battle-parameter-verification-summary.v12.0.0.json'),
   `${JSON.stringify(compactSummary, null, 2)}\n`,
 );
 console.log(

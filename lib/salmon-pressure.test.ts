@@ -15,9 +15,9 @@ void test('first Salmon Run pressure samples retain traceable weapon values',()=
 
 void test('action window exposes source-backed output without inventing recovery time',()=>{
   const window=getWeaponActionWindow(salmonWeaponPerformance[1]);
-  assert.equal(window.actionDps,336);
+  assert.equal(window.actionDps,348);
   assert.equal(window.actionsPerTank,125);
-  assert.equal(Math.round(window.damagePerTank),3500);
+  assert.equal(Math.round(window.damagePerTank),3625);
   assert.equal('sustainedDps' in window,false);
 });
 

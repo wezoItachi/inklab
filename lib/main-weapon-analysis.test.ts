@@ -16,7 +16,7 @@ import {
 } from './main-weapon-analysis.ts';
 import { getMainWeaponParameters } from './weapons.ts';
 
-void test('derives N-ZAP89 efficiency only from verified 11.3.0 fields', () => {
+void test('derives N-ZAP89 efficiency only from verified 12.0.0 fields', () => {
   const result = analyzeMainWeaponEfficiency(
     getMainWeaponParameters('shooter-quickmiddle-cstm01'),
   );
@@ -69,17 +69,17 @@ void test('derives complete Splash-o-matic results from the corrected weapon ide
   assert.ok(result);
   assert.deepEqual(result, {
     verifiedInputCount: 6,
-    damagePerShot: 28,
+    damagePerShot: 29,
     fireIntervalFrames: 5,
-    inkConsumptionPerShot: 0.8,
+    inkConsumptionPerShot: 0.84,
     damageFalloffStartFrames: 4,
     damageFalloffEndFrames: 20,
     projectileSpawnSpeed: 4.0376,
-    shotsPerFullTank: 125,
-    fullTankFiringWindowFrames: 620,
-    fullTankFiringWindowSeconds: 620 / 60,
+    shotsPerFullTank: 119,
+    fullTankFiringWindowFrames: 590,
+    fullTankFiringWindowSeconds: 590 / 60,
     shotsToSplat: 4,
-    inkConsumptionPerSplat: 3.2,
+    inkConsumptionPerSplat: 3.36,
     splatTimeFrames: 15,
     splatTimeSeconds: 0.25,
   });

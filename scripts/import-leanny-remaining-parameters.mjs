@@ -2,8 +2,8 @@ import { createHash } from 'node:crypto';
 import { readFileSync, writeFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 
-const GAME_VERSION = '11.3.0';
-const CHECKED_AT = '2026-10-08';
+const GAME_VERSION = '12.0.0';
+const CHECKED_AT = '2026-11-19';
 const SOURCE_ID = 'leanny-splat3';
 const NINTENDO_WEAPON_SOURCE_ID = 'nintendo-splatoon-base-weapons';
 const NINTENDO_WEAPON_SOURCE_URL =
@@ -11,13 +11,13 @@ const NINTENDO_WEAPON_SOURCE_URL =
 const NINTENDO_REEF_LUX_SOURCE_ID = 'nintendo-reef-lux-guide';
 const NINTENDO_REEF_LUX_SOURCE_URL =
   'https://www.nintendo.com/jp/ichikara/av5ja/index_en.html';
-const SOURCE_COMMIT = '7280ff9cde8bb1c5dcef46c700c326471584d2e6';
-const UPSTREAM_ROOT = 'data/parameter/1130/weapon';
+const SOURCE_COMMIT = 'b669d55e0eef1f1a7f18cb7468c636ed7746c189';
+const UPSTREAM_ROOT = 'data/parameter/1200/weapon';
 
 const sourceFlagIndex = process.argv.indexOf('--source-dir');
 if (sourceFlagIndex < 0 || !process.argv[sourceFlagIndex + 1]) {
   throw new Error(
-    'Usage: node scripts/import-leanny-remaining-parameters.mjs --source-dir <1130 weapon parameter directory>',
+    'Usage: node scripts/import-leanny-remaining-parameters.mjs --source-dir <1200 weapon parameter directory>',
   );
 }
 
@@ -44,9 +44,9 @@ const sum = (...values) =>
 const numericValues = (values) =>
   values.filter((value) => typeof value === 'number');
 
-const mainWeapons = readDatabase('main-weapons.v11.3.0.json');
-const parameterDatabase = readDatabase('main-weapon-parameters.v11.3.0.json');
-const catalogImportReport = readDatabase('import-report.v11.3.0.json');
+const mainWeapons = readDatabase('main-weapons.v12.0.0.json');
+const parameterDatabase = readDatabase('main-weapon-parameters.v12.0.0.json');
+const catalogImportReport = readDatabase('import-report.v12.0.0.json');
 const sourceFiles = new Map();
 
 const familySpecs = {
@@ -876,6 +876,7 @@ function stringerFields(fileName, game) {
   const bullet = game.spl__BulletStringerParam;
   const weapon = game.spl__WeaponStringerParam;
   const charge = weapon?.ChargeParam;
+  const paint = bullet?.PaintParam;
   const detonation = bullet?.DetonationParam;
   const blast = detonation?.BlastParam?.DistanceDamage?.[0];
   const projectileCount = fileName.includes('StringerNormal')
@@ -1022,6 +1023,45 @@ function stringerFields(fileName, game) {
       path: 'GameParameters.spl__WeaponStringerParam.ChargeParam.PostDelayFrame',
       note: '直接记录显式射击后摇',
     }),
+    ...(typeof paint?.WidthHalfMin === 'number'
+      ? [
+          verifiedField({
+            key: 'minimumChargePaintHalfWidth',
+            label: '最低蓄力着弹涂墨半径',
+            value: paint.WidthHalfMin,
+            unit: 'internal',
+            fileName,
+            path: 'GameParameters.spl__BulletStringerParam.PaintParam.WidthHalfMin',
+            note: '直接记录最低蓄力着弹涂墨的内部半宽',
+          }),
+        ]
+      : []),
+    ...(typeof paint?.WidthHalfMid === 'number'
+      ? [
+          verifiedField({
+            key: 'middleChargePaintHalfWidth',
+            label: '一段蓄力着弹涂墨半径',
+            value: paint.WidthHalfMid,
+            unit: 'internal',
+            fileName,
+            path: 'GameParameters.spl__BulletStringerParam.PaintParam.WidthHalfMid',
+            note: '直接记录一段蓄力着弹涂墨的内部半宽',
+          }),
+        ]
+      : []),
+    ...(typeof paint?.WidthHalfMax === 'number'
+      ? [
+          verifiedField({
+            key: 'fullChargePaintHalfWidth',
+            label: '满蓄力着弹涂墨半径',
+            value: paint.WidthHalfMax,
+            unit: 'internal',
+            fileName,
+            path: 'GameParameters.spl__BulletStringerParam.PaintParam.WidthHalfMax',
+            note: '直接记录满蓄力着弹涂墨的内部半宽',
+          }),
+        ]
+      : []),
     explicitOrPending({
       key: 'detonationDamage',
       label: '爆炸伤害',
@@ -1266,11 +1306,11 @@ const pendingOnlyRecords = records.filter((record) =>
   record.parameters.every((parameter) => parameter.status === 'pending'),
 ).length;
 
-writeDatabase('main-weapon-parameters.v11.3.0.json', {
+writeDatabase('main-weapon-parameters.v12.0.0.json', {
   ...parameterDatabase,
   records,
 });
-writeDatabase('remaining-family-parameter-import-report.v11.3.0.json', {
+writeDatabase('remaining-family-parameter-import-report.v12.0.0.json', {
   gameVersion: GAME_VERSION,
   importedAt: CHECKED_AT,
   sourceId: SOURCE_ID,
@@ -1292,7 +1332,7 @@ writeDatabase('remaining-family-parameter-import-report.v11.3.0.json', {
     pendingOnlyRecords,
   },
 });
-writeDatabase('import-report.v11.3.0.json', {
+writeDatabase('import-report.v12.0.0.json', {
   ...catalogImportReport,
   outputCounts: {
     ...catalogImportReport.outputCounts,

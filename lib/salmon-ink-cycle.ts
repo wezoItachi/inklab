@@ -1,4 +1,4 @@
-import document from '../database/salmon-ink-cycle-evidence.v11.3.0.json' with { type: 'json' };
+import document from '../database/salmon-ink-cycle-evidence.v12.0.0.json' with { type: 'json' };
 
 export type SalmonEvidenceApplicability =
   | 'verified'

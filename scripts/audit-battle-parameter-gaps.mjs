@@ -1,14 +1,14 @@
 import { readFileSync, writeFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 
-const GAME_VERSION = '11.3.0';
-const GENERATED_AT = '2026-10-26';
+const GAME_VERSION = '12.0.0';
+const GENERATED_AT = '2026-11-19';
 const projectRoot = resolve(import.meta.dirname, '..');
 const databaseDir = resolve(projectRoot, 'database');
 const readDatabase = (name) =>
   JSON.parse(readFileSync(resolve(databaseDir, name), 'utf8'));
-const mainWeapons = readDatabase('main-weapons.v11.3.0.json');
-const parameterDatabase = readDatabase('main-weapon-parameters.v11.3.0.json');
+const mainWeapons = readDatabase('main-weapons.v12.0.0.json');
+const parameterDatabase = readDatabase('main-weapon-parameters.v12.0.0.json');
 const weaponById = new Map(
   mainWeapons.weapons.map((weapon) => [weapon.id, weapon]),
 );
@@ -95,7 +95,7 @@ const unresolvedInheritanceCandidates = byFamily.flatMap((group) =>
 const report = {
   gameVersion: GAME_VERSION,
   generatedAt: GENERATED_AT,
-  sourceFile: 'database/main-weapon-parameters.v11.3.0.json',
+  sourceFile: 'database/main-weapon-parameters.v12.0.0.json',
   summary: {
     weaponCount: parameterDatabase.records.length,
     totalFields,
@@ -111,7 +111,7 @@ const report = {
 };
 
 writeFileSync(
-  resolve(databaseDir, 'battle-parameter-gap-report.v11.3.0.json'),
+  resolve(databaseDir, 'battle-parameter-gap-report.v12.0.0.json'),
   `${JSON.stringify(report, null, 2)}\n`,
 );
 console.log(

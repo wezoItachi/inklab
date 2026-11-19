@@ -2,16 +2,16 @@ import { createHash } from 'node:crypto';
 import { existsSync, readFileSync, writeFileSync } from 'node:fs';
 import { basename, resolve } from 'node:path';
 
-const GAME_VERSION = '11.3.0';
-const CHECKED_AT = '2026-10-26';
+const GAME_VERSION = '12.0.0';
+const CHECKED_AT = '2026-11-19';
 const SOURCE_ID = 'leanny-splat3';
-const SOURCE_COMMIT = '7280ff9cde8bb1c5dcef46c700c326471584d2e6';
-const UPSTREAM_ROOT = 'data/parameter/1130/weapon';
+const SOURCE_COMMIT = 'b669d55e0eef1f1a7f18cb7468c636ed7746c189';
+const UPSTREAM_ROOT = 'data/parameter/1200/weapon';
 
 const sourceFlagIndex = process.argv.indexOf('--source-dir');
 if (sourceFlagIndex < 0 || !process.argv[sourceFlagIndex + 1]) {
   throw new Error(
-    'Usage: node scripts/import-leanny-salmon-parameters.mjs --source-dir <1130 weapon parameter directory>',
+    'Usage: node scripts/import-leanny-salmon-parameters.mjs --source-dir <1200 weapon parameter directory>',
   );
 }
 
@@ -29,8 +29,8 @@ const sha256 = (value) => createHash('sha256').update(value).digest('hex');
 const normalize = (value) =>
   typeof value === 'number' ? Math.round(value * 1_000_000) / 1_000_000 : value;
 
-const mainWeapons = readDatabase('main-weapons.v11.3.0.json');
-const battleParameters = readDatabase('main-weapon-parameters.v11.3.0.json');
+const mainWeapons = readDatabase('main-weapons.v12.0.0.json');
+const battleParameters = readDatabase('main-weapon-parameters.v12.0.0.json');
 const parameterByWeaponId = new Map(
   battleParameters.records.map((record) => [record.weaponId, record]),
 );
@@ -396,8 +396,8 @@ const report = {
   ],
 };
 
-writeDatabase('salmon-weapon-parameters.v11.3.0.json', parameterDocument);
-writeDatabase('salmon-parameter-source-report.v11.3.0.json', report);
+writeDatabase('salmon-weapon-parameters.v12.0.0.json', parameterDocument);
+writeDatabase('salmon-parameter-source-report.v12.0.0.json', report);
 
 console.log(
   `Imported ${records.length} Salmon Run weapons with ${allParameters.length} source-backed parameters.`,

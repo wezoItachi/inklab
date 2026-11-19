@@ -23,7 +23,7 @@ export type ParameterField = {
 export type WeaponParameterSnapshot = {
   weaponId: string;
   gameVersion: typeof DATA_VERSION;
-  upstreamSnapshotVersion: '11.3.0';
+  upstreamSnapshotVersion: '12.0.0';
   fields: readonly ParameterField[];
 };
 
@@ -36,15 +36,15 @@ export const verificationStatusLabels: Record<VerificationStatus, string> = {
 };
 
 export const parameterSources = {
-  nintendo1130: {
-    label: 'Nintendo Ver. 11.3.0 更新公告',
-    url: 'https://www.nintendo.com/en-gb/Support/Nintendo-Switch/Game-Updates/How-to-Update-Splatoon-3-2266003.html',
-    checkedAt: '2026-09-27',
+  nintendo1200: {
+    label: 'Nintendo Ver. 12.0.0 更新公告',
+    url: 'https://support.nintendo.com/jp/switch/software_support/av5ja/1200.html',
+    checkedAt: '2026-11-19',
   },
-  leanny1130: {
-    label: 'Leanny/splat3 11.3.0 参数快照',
-    url: 'https://github.com/Leanny/splat3/tree/main/data/parameter/1130',
-    checkedAt: '2026-10-07',
+  leanny1200: {
+    label: 'Leanny/splat3 12.0.0 参数快照',
+    url: 'https://github.com/Leanny/splat3/tree/b669d55e0eef1f1a7f18cb7468c636ed7746c189/data/parameter/1200',
+    checkedAt: '2026-11-19',
   },
   internalReview: {
     label: 'INKLAB 六武器参数人工核对记录',
@@ -70,13 +70,13 @@ export function getWeaponParameterSnapshot(
   return {
     weaponId: weapon.id,
     gameVersion: DATA_VERSION,
-    upstreamSnapshotVersion: '11.3.0',
+    upstreamSnapshotVersion: '12.0.0',
     fields: [
       {
         label: '武器套装',
         status: 'verified',
         source:
-          weapon.sourceId === 'leanny-splat3' ? 'leanny1130' : 'internalReview',
+          weapon.sourceId === 'leanny-splat3' ? 'leanny1200' : 'internalReview',
         note: `${weapon.sub.name} · ${weapon.special}`,
       },
       {
@@ -103,7 +103,7 @@ export function getWeaponParameterSnapshot(
             : verifiedMainParameters > 0 || notApplicableMainParameters > 0
               ? 'partial'
               : 'pending',
-        source: pendingMainParameters === 0 ? 'leanny1130' : undefined,
+        source: pendingMainParameters === 0 ? 'leanny1200' : undefined,
         shortNote: verificationRoutes.shortLabel,
         note: `已建 ${mainParameters.length} 个字段 · ${verifiedMainParameters} 个已核对 · ${notApplicableMainParameters} 个不适用 · ${pendingMainParameters} 个待验证`,
       },

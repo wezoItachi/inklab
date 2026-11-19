@@ -1,4 +1,4 @@
-import document from '../database/salmon-weapon-parameters.v11.3.0.json' with { type: 'json' };
+import document from '../database/salmon-weapon-parameters.v12.0.0.json' with { type: 'json' };
 
 export type SalmonParameterSourceMode =
   | 'coop-override'

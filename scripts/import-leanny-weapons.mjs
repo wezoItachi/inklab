@@ -2,11 +2,11 @@ import { createHash } from 'node:crypto';
 import { readFileSync, writeFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 
-const GAME_VERSION = '11.3.0';
-const CHECKED_AT = '2026-10-07';
+const GAME_VERSION = '12.0.0';
+const CHECKED_AT = '2026-11-19';
 const DATASET_STATUS = 'full-weapon-catalog-partial-parameters';
 const SOURCE_ID = 'leanny-splat3';
-const SOURCE_COMMIT = '7280ff9cde8bb1c5dcef46c700c326471584d2e6';
+const SOURCE_COMMIT = 'b669d55e0eef1f1a7f18cb7468c636ed7746c189';
 const REPRESENTATIVE_ID_BY_UPSTREAM_ID = new Map([
   [61, 'shooter-quickmiddle-cstm01'],
   [40, 'shooter-normalt'],
@@ -90,11 +90,11 @@ const specialNames = language['CommonMsg/Weapon/WeaponName_Special'];
 
 const readDatabase = (name) =>
   JSON.parse(readFileSync(resolve(databaseDir, name), 'utf8'));
-const previousMainWeapons = readDatabase('main-weapons.v11.3.0.json');
-const previousParameters = readDatabase('main-weapon-parameters.v11.3.0.json');
-const previousSubWeapons = readDatabase('sub-weapons.v11.3.0.json');
-const previousSpecialWeapons = readDatabase('special-weapons.v11.3.0.json');
-const previousKits = readDatabase('weapon-kits.v11.3.0.json');
+const previousMainWeapons = readDatabase('main-weapons.v12.0.0.json');
+const previousParameters = readDatabase('main-weapon-parameters.v12.0.0.json');
+const previousSubWeapons = readDatabase('sub-weapons.v12.0.0.json');
+const previousSpecialWeapons = readDatabase('special-weapons.v12.0.0.json');
+const previousKits = readDatabase('weapon-kits.v12.0.0.json');
 const previousWeaponsById = new Map(
   previousMainWeapons.weapons.map((weapon) => [weapon.id, weapon]),
 );
@@ -281,18 +281,18 @@ const writeDatabase = (name, value) =>
   );
 const sha256 = (value) => createHash('sha256').update(value).digest('hex');
 
-writeDatabase('main-weapons.v11.3.0.json', versioned('weapons', weapons));
+writeDatabase('main-weapons.v12.0.0.json', versioned('weapons', weapons));
 writeDatabase(
-  'main-weapon-parameters.v11.3.0.json',
+  'main-weapon-parameters.v12.0.0.json',
   versioned('records', records),
 );
-writeDatabase('sub-weapons.v11.3.0.json', versioned('subWeapons', subWeapons));
+writeDatabase('sub-weapons.v12.0.0.json', versioned('subWeapons', subWeapons));
 writeDatabase(
-  'special-weapons.v11.3.0.json',
+  'special-weapons.v12.0.0.json',
   versioned('specialWeapons', specialWeapons),
 );
-writeDatabase('weapon-kits.v11.3.0.json', versioned('kits', kits));
-writeDatabase('import-report.v11.3.0.json', {
+writeDatabase('weapon-kits.v12.0.0.json', versioned('kits', kits));
+writeDatabase('import-report.v12.0.0.json', {
   gameVersion: GAME_VERSION,
   importedAt: CHECKED_AT,
   sourceId: SOURCE_ID,
@@ -300,7 +300,7 @@ writeDatabase('import-report.v11.3.0.json', {
   attribution: 'Data provided by Lean',
   inputs: [
     {
-      upstreamPath: 'data/mush/1130/WeaponInfoMain.json',
+      upstreamPath: 'data/mush/1200/WeaponInfoMain.json',
       sha256: sha256(weaponSourceText),
     },
     {

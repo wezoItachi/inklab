@@ -1,0 +1,72 @@
+{
+  "gameVersion": "12.0.0",
+  "importedAt": "2026-11-19",
+  "sourceId": "leanny-splat3",
+  "sourceCommit": "b669d55e0eef1f1a7f18cb7468c636ed7746c189",
+  "attribution": "Data provided by Lean",
+  "scope": "Shooter family explicit damage, cadence, ink, spread, movement, and range-evidence fields only",
+  "inputs": [
+    {
+      "upstreamPath": "data/parameter/1200/weapon/WeaponShooterBlaze.game__GameParameterTable.json",
+      "sha256": "287ffb3b99b4bda1d7ccabf8798a19240a9009f136d851c0e348d106c911b857"
+    },
+    {
+      "upstreamPath": "data/parameter/1200/weapon/WeaponShooterExpert.game__GameParameterTable.json",
+      "sha256": "fe8613779062558495b4c03088a3986c995bf6c280e894fb5176eda0d6a0c1c3"
+    },
+    {
+      "upstreamPath": "data/parameter/1200/weapon/WeaponShooterFirst.game__GameParameterTable.json",
+      "sha256": "ffe774bff3c4ce800869295539c1dbb86184621758dee1a2a4d84b2c32b4e759"
+    },
+    {
+      "upstreamPath": "data/parameter/1200/weapon/WeaponShooterFlash.game__GameParameterTable.json",
+      "sha256": "77ca957122d5fffc1769015725fa97ee7be9da1c9fb55cf53547a54e7fc47453"
+    },
+    {
+      "upstreamPath": "data/parameter/1200/weapon/WeaponShooterGravity.game__GameParameterTable.json",
+      "sha256": "fa93f040522ae0b1dac522315829b94454c731bb57d2523b61a3545803288ede"
+    },
+    {
+      "upstreamPath": "data/parameter/1200/weapon/WeaponShooterHeavy.game__GameParameterTable.json",
+      "sha256": "1389dbae6854cc2e5ca19dbc38f26254390141a28726e5cdb860e3cadd69fe66"
+    },
+    {
+      "upstreamPath": "data/parameter/1200/weapon/WeaponShooterLong.game__GameParameterTable.json",
+      "sha256": "2467484e3c22f3289267f4e4e1967c7ec212959d0181780b8b4dad940ecf3239"
+    },
+    {
+      "upstreamPath": "data/parameter/1200/weapon/WeaponShooterNormal.game__GameParameterTable.json",
+      "sha256": "dfca9f45fd0df3b6afab8f6ec0e47034912f3a6fc411936b9fd7257fe85c4cb9"
+    },
+    {
+      "upstreamPath": "data/parameter/1200/weapon/WeaponShooterPrecision.game__GameParameterTable.json",
+      "sha256": "fca76a8eb0ea49cd8a8904800d6913bcf6be5d30f63ed438c5bef696585f86d5"
+    },
+    {
+      "upstreamPath": "data/parameter/1200/weapon/WeaponShooterQuickLong.game__GameParameterTable.json",
+      "sha256": "3533be18562e2926a2601039c944dd1a056c98d13a60e803b4a0c7bd21f72db6"
+    },
+    {
+      "upstreamPath": "data/parameter/1200/weapon/WeaponShooterQuickMiddle.game__GameParameterTable.json",
+      "sha256": "2cb076ebd75165b73dc7a950380838c773b8dd5bb5b85ae70e7204b1dc15f257"
+    },
+    {
+      "upstreamPath": "data/parameter/1200/weapon/WeaponShooterShort.game__GameParameterTable.json",
+      "sha256": "105c4118acc289a04e839e1fb8d2dbd0da66a4d2fa01a93153c87ec5bca84ef2"
+    },
+    {
+      "upstreamPath": "data/parameter/1200/weapon/WeaponShooterTripleMiddle.game__GameParameterTable.json",
+      "sha256": "172c36279e2fd8c32d6c3a99583939cb4484caeda89c01d0fdfaee7d166a3c5a"
+    },
+    {
+      "upstreamPath": "data/parameter/1200/weapon/WeaponShooterTripleQuick.game__GameParameterTable.json",
+      "sha256": "0ce1d682ab866a17d7b4931cbb799faa1a813c350893803a63b0259cfbf47875"
+    }
+  ],
+  "outputCounts": {
+    "shooterWeapons": 40,
+    "shooterParameterClasses": 14,
+    "recordsWithVerifiedFields": 40,
+    "pendingOnlyRecords": 0
+  }
+}

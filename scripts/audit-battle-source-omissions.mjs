@@ -2,14 +2,14 @@ import { createHash } from 'node:crypto';
 import { readFileSync, writeFileSync } from 'node:fs';
 import { basename, resolve } from 'node:path';
 
-const GAME_VERSION = '11.3.0';
-const GENERATED_AT = '2026-10-26';
-const SOURCE_COMMIT = '7280ff9cde8bb1c5dcef46c700c326471584d2e6';
-const UPSTREAM_ROOT = 'data/parameter/1130/weapon';
+const GAME_VERSION = '12.0.0';
+const GENERATED_AT = '2026-11-19';
+const SOURCE_COMMIT = 'b669d55e0eef1f1a7f18cb7468c636ed7746c189';
+const UPSTREAM_ROOT = 'data/parameter/1200/weapon';
 const sourceFlagIndex = process.argv.indexOf('--source-dir');
 if (sourceFlagIndex < 0 || !process.argv[sourceFlagIndex + 1]) {
   throw new Error(
-    'Usage: node scripts/audit-battle-source-omissions.mjs --source-dir <1130 weapon parameter directory>',
+    'Usage: node scripts/audit-battle-source-omissions.mjs --source-dir <1200 weapon parameter directory>',
   );
 }
 
@@ -150,8 +150,8 @@ const familyFieldPaths = {
   ],
 };
 
-const weapons = readDatabase('main-weapons.v11.3.0.json').weapons;
-const gapReport = readDatabase('battle-parameter-gap-report.v11.3.0.json');
+const weapons = readDatabase('main-weapons.v12.0.0.json').weapons;
+const gapReport = readDatabase('battle-parameter-gap-report.v12.0.0.json');
 const weaponById = new Map(weapons.map((weapon) => [weapon.id, weapon]));
 const sourceFiles = new Map();
 
@@ -302,7 +302,7 @@ const report = {
 };
 
 writeFileSync(
-  resolve(databaseDir, 'battle-parameter-source-audit.v11.3.0.json'),
+  resolve(databaseDir, 'battle-parameter-source-audit.v12.0.0.json'),
   `${JSON.stringify(report, null, 2)}\n`,
 );
 console.log(

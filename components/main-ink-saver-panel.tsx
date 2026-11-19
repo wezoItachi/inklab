@@ -139,7 +139,7 @@ export function MainInkSaverPanel({
       </p>
       <p className="effect-source">
         <Check size={13} />
-        能力曲线按《喷射战士 3》主武省墨表核对；基础耗墨来自 Leanny Ver. 11.3.0
+        能力曲线按《喷射战士 3》主武省墨表核对；基础耗墨来自 Leanny Ver. 12.0.0
         固定快照。未计入最后冲刺、回归或其他临时能力。
       </p>
     </>

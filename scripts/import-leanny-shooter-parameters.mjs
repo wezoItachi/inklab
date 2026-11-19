@@ -2,15 +2,15 @@ import { createHash } from 'node:crypto';
 import { readFileSync, writeFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 
-const GAME_VERSION = '11.3.0';
-const CHECKED_AT = '2026-10-26';
+const GAME_VERSION = '12.0.0';
+const CHECKED_AT = '2026-11-19';
 const SOURCE_ID = 'leanny-splat3';
-const UPSTREAM_ROOT = 'data/parameter/1130/weapon';
+const UPSTREAM_ROOT = 'data/parameter/1200/weapon';
 
 const sourceFlagIndex = process.argv.indexOf('--source-dir');
 if (sourceFlagIndex < 0 || !process.argv[sourceFlagIndex + 1]) {
   throw new Error(
-    'Usage: node scripts/import-leanny-shooter-parameters.mjs --source-dir <1130 weapon parameter directory>',
+    'Usage: node scripts/import-leanny-shooter-parameters.mjs --source-dir <1200 weapon parameter directory>',
   );
 }
 
@@ -24,9 +24,9 @@ const writeDatabase = (name, value) =>
 const sha256 = (value) => createHash('sha256').update(value).digest('hex');
 const normalizeDecimal = (value) => Math.round(value * 1_000_000) / 1_000_000;
 
-const mainWeapons = readDatabase('main-weapons.v11.3.0.json');
-const parameterDatabase = readDatabase('main-weapon-parameters.v11.3.0.json');
-const catalogImportReport = readDatabase('import-report.v11.3.0.json');
+const mainWeapons = readDatabase('main-weapons.v12.0.0.json');
+const parameterDatabase = readDatabase('main-weapon-parameters.v12.0.0.json');
+const catalogImportReport = readDatabase('import-report.v12.0.0.json');
 const weaponsById = new Map(
   mainWeapons.weapons.map((weapon) => [weapon.id, weapon]),
 );
@@ -74,6 +74,7 @@ const shooterParameters = new Map(
     const damageParam = gameParameters?.DamageParam;
     const damage = damageParam?.ValueMax;
     const moveParam = gameParameters?.MoveParam;
+    const splashPaintParam = gameParameters?.SplashPaintParam;
     const weaponParam = gameParameters?.WeaponParam;
     if (
       typeof damage !== 'number' ||
@@ -112,7 +113,7 @@ const shooterParameters = new Map(
             'fireIntervalFrames',
             '射击间隔',
             'frames',
-            '11.3.0 武器文件未显式包含 RepeatFrame；解析默认值来源之前不按社区常识写入',
+            '12.0.0 武器文件未显式包含 RepeatFrame；解析默认值来源之前不按社区常识写入',
           ),
       verifiedField({
         key: 'inkConsumptionPerShot',
@@ -183,6 +184,32 @@ const shooterParameters = new Map(
         path: 'GameParameters.WeaponParam.MoveSpeed',
         note: '直接记录未叠加人速能力效果的 MoveSpeed 基础内部值',
       }),
+      ...(typeof splashPaintParam?.WidthHalf === 'number'
+        ? [
+            verifiedField({
+              key: 'dropletPaintHalfWidth',
+              label: '飞沫涂墨半径',
+              value: splashPaintParam.WidthHalf,
+              unit: 'internal',
+              fileName,
+              path: 'GameParameters.SplashPaintParam.WidthHalf',
+              note: '直接记录飞沫涂墨的内部半宽；不换算为界面射程',
+            }),
+          ]
+        : []),
+      ...(typeof splashPaintParam?.WidthHalfNearest === 'number'
+        ? [
+            verifiedField({
+              key: 'nearestDropletPaintHalfWidth',
+              label: '最近飞沫涂墨半径',
+              value: splashPaintParam.WidthHalfNearest,
+              unit: 'internal',
+              fileName,
+              path: 'GameParameters.SplashPaintParam.WidthHalfNearest',
+              note: '直接记录最近飞沫涂墨的内部半宽',
+            }),
+          ]
+        : []),
     ];
     return [weapon.id, { weaponId: weapon.id, parameters }];
   }),
@@ -206,15 +233,15 @@ const pendingOnlyRecords = importedShooterRecords.filter((record) =>
   record.parameters.every((parameter) => parameter.status === 'pending'),
 ).length;
 
-writeDatabase('main-weapon-parameters.v11.3.0.json', {
+writeDatabase('main-weapon-parameters.v12.0.0.json', {
   ...parameterDatabase,
   records,
 });
-writeDatabase('parameter-import-report.v11.3.0.json', {
+writeDatabase('parameter-import-report.v12.0.0.json', {
   gameVersion: GAME_VERSION,
   importedAt: CHECKED_AT,
   sourceId: SOURCE_ID,
-  sourceCommit: '7280ff9cde8bb1c5dcef46c700c326471584d2e6',
+  sourceCommit: 'b669d55e0eef1f1a7f18cb7468c636ed7746c189',
   attribution: 'Data provided by Lean',
   scope: 'Shooter family explicit damage, cadence, ink, spread, movement, and range-evidence fields only',
   inputs: [...sourceFiles.entries()]
@@ -230,7 +257,7 @@ writeDatabase('parameter-import-report.v11.3.0.json', {
     pendingOnlyRecords,
   },
 });
-writeDatabase('import-report.v11.3.0.json', {
+writeDatabase('import-report.v12.0.0.json', {
   ...catalogImportReport,
   outputCounts: {
     ...catalogImportReport.outputCounts,

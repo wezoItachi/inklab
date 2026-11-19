@@ -2,15 +2,15 @@ import { createHash } from 'node:crypto';
 import { readFileSync, writeFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 
-const GAME_VERSION = '11.3.0';
-const CHECKED_AT = '2026-10-08';
+const GAME_VERSION = '12.0.0';
+const CHECKED_AT = '2026-11-19';
 const SOURCE_ID = 'leanny-splat3';
-const UPSTREAM_ROOT = 'data/parameter/1130/weapon';
+const UPSTREAM_ROOT = 'data/parameter/1200/weapon';
 
 const sourceFlagIndex = process.argv.indexOf('--source-dir');
 if (sourceFlagIndex < 0 || !process.argv[sourceFlagIndex + 1]) {
   throw new Error(
-    'Usage: node scripts/import-leanny-roller-parameters.mjs --source-dir <1130 weapon parameter directory>',
+    'Usage: node scripts/import-leanny-roller-parameters.mjs --source-dir <1200 weapon parameter directory>',
   );
 }
 
@@ -24,9 +24,9 @@ const writeDatabase = (name, value) =>
 const sha256 = (value) => createHash('sha256').update(value).digest('hex');
 const normalizeDecimal = (value) => Math.round(value * 1_000_000) / 1_000_000;
 
-const mainWeapons = readDatabase('main-weapons.v11.3.0.json');
-const parameterDatabase = readDatabase('main-weapon-parameters.v11.3.0.json');
-const catalogImportReport = readDatabase('import-report.v11.3.0.json');
+const mainWeapons = readDatabase('main-weapons.v12.0.0.json');
+const parameterDatabase = readDatabase('main-weapon-parameters.v12.0.0.json');
+const catalogImportReport = readDatabase('import-report.v12.0.0.json');
 const rollerWeapons = mainWeapons.weapons.filter(
   (weapon) => weapon.family === '滚筒',
 );
@@ -132,6 +132,19 @@ const rollerParameters = new Map(
             path: 'GameParameters.WeaponWideSwingParam.InkConsume',
             note: '比例乘以 100 规范化为墨水槽百分比',
           }),
+          ...(typeof wide.InkRecoverStop === 'number'
+            ? [
+                verifiedField({
+                  key: 'horizontalInkRecoveryLockFrames',
+                  label: '横挥回墨锁',
+                  value: wide.InkRecoverStop,
+                  unit: 'frames',
+                  fileName,
+                  path: 'GameParameters.WeaponWideSwingParam.InkRecoverStop',
+                  note: '横挥后开始恢复墨水前的显式等待帧数',
+                }),
+              ]
+            : []),
           verifiedField({
             key: 'verticalSwingDamageMax',
             label: '竖挥近端最大伤害',
@@ -226,15 +239,15 @@ const pendingOnlyRecords = records.filter((record) =>
   record.parameters.every((parameter) => parameter.status === 'pending'),
 ).length;
 
-writeDatabase('main-weapon-parameters.v11.3.0.json', {
+writeDatabase('main-weapon-parameters.v12.0.0.json', {
   ...parameterDatabase,
   records,
 });
-writeDatabase('roller-parameter-import-report.v11.3.0.json', {
+writeDatabase('roller-parameter-import-report.v12.0.0.json', {
   gameVersion: GAME_VERSION,
   importedAt: CHECKED_AT,
   sourceId: SOURCE_ID,
-  sourceCommit: '7280ff9cde8bb1c5dcef46c700c326471584d2e6',
+  sourceCommit: 'b669d55e0eef1f1a7f18cb7468c636ed7746c189',
   attribution: 'Data provided by Lean',
   scope: 'Roller family explicit fields only',
   inputs: [...sourceFiles.entries()]
@@ -250,7 +263,7 @@ writeDatabase('roller-parameter-import-report.v11.3.0.json', {
     pendingOnlyRecords,
   },
 });
-writeDatabase('import-report.v11.3.0.json', {
+writeDatabase('import-report.v12.0.0.json', {
   ...catalogImportReport,
   outputCounts: {
     ...catalogImportReport.outputCounts,

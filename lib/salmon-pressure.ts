@@ -1,4 +1,4 @@
-import salmonTargetDocument from '../database/salmon-targets.v11.3.0.json' with {type:'json'};
+import salmonTargetDocument from '../database/salmon-targets.v12.0.0.json' with { type: 'json' };
 import {salmonRecoveryModelGate} from './salmon-ink-cycle.ts';
 
 export type SalmonPressureStrategy='synchronized'|'staggered';
@@ -36,10 +36,10 @@ export const SALMON_MODEL_VERSION='draft-2026-10-08';
 const shooterPattern=(damage:number,frames:number,ink:number):SalmonAttackPattern=>({label:'连续射击',damagePerAction:damage,actionFrames:frames,inkConsumptionPerAction:ink,note:'保持射击并假设全部命中'});
 
 export const salmonWeaponPerformance:readonly SalmonWeaponPerformance[]=[
-  {weaponId:'salmon-shooter-short-00',name:'广域标记枪',limit:shooterPattern(45,5,.8),routine:shooterPattern(45,5,.8),sourcePaths:['data/parameter/1130/weapon/WeaponShooterShort.game__GameParameterTable.json','data/parameter/1130/weapon/WeaponShooterShort_Coop.game__GameParameterTable.json']},
-  {weaponId:'splash-o-matic',name:'窄域标记枪',limit:shooterPattern(28,5,.8),routine:shooterPattern(28,5,.8),sourcePaths:['data/parameter/1130/weapon/WeaponShooterPrecision.game__GameParameterTable.json','data/parameter/1130/weapon/WeaponShooterPrecision_Coop.game__GameParameterTable.json']},
-  {weaponId:'salmon-shooter-heavy-00',name:'.96加仑',limit:shooterPattern(85,12,2.3),routine:shooterPattern(85,12,2.3),sourcePaths:['data/parameter/1130/weapon/WeaponShooterHeavy.game__GameParameterTable.json','data/parameter/1130/weapon/WeaponShooterHeavy_Coop.game__GameParameterTable.json']},
-  {weaponId:'tri-stringer',name:'三发猎鱼弓',limit:{label:'一段蓄力 · 三箭全中',damagePerAction:300,actionFrames:40,inkConsumptionPerAction:4,note:'30 帧一段蓄力 + 10 帧后摇'},routine:{label:'一段／满蓄力各一次',damagePerAction:750,actionFrames:122,inkConsumptionPerAction:11.5,note:'一段 300 伤害／40 帧与满蓄力 450 伤害／82 帧各一次；不是玩家统计'},sourcePaths:['data/parameter/1130/weapon/WeaponStringerNormal.game__GameParameterTable.json','data/parameter/1130/weapon/WeaponStringerNormal_Coop.game__GameParameterTable.json']},
+  {weaponId:'salmon-shooter-short-00',name:'广域标记枪',limit:shooterPattern(45,5,.8),routine:shooterPattern(45,5,.8),sourcePaths:['data/parameter/1200/weapon/WeaponShooterShort.game__GameParameterTable.json','data/parameter/1200/weapon/WeaponShooterShort_Coop.game__GameParameterTable.json']},
+  {weaponId:'splash-o-matic',name:'窄域标记枪',limit:shooterPattern(29,5,.8),routine:shooterPattern(29,5,.8),sourcePaths:['data/parameter/1200/weapon/WeaponShooterPrecision.game__GameParameterTable.json','data/parameter/1200/weapon/WeaponShooterPrecision_Coop.game__GameParameterTable.json']},
+  {weaponId:'salmon-shooter-heavy-00',name:'.96加仑',limit:shooterPattern(85,12,2.3),routine:shooterPattern(85,12,2.3),sourcePaths:['data/parameter/1200/weapon/WeaponShooterHeavy.game__GameParameterTable.json','data/parameter/1200/weapon/WeaponShooterHeavy_Coop.game__GameParameterTable.json']},
+  {weaponId:'tri-stringer',name:'三发猎鱼弓',limit:{label:'一段蓄力 · 三箭全中',damagePerAction:300,actionFrames:40,inkConsumptionPerAction:4,note:'30 帧一段蓄力 + 10 帧后摇'},routine:{label:'一段／满蓄力各一次',damagePerAction:750,actionFrames:122,inkConsumptionPerAction:11.5,note:'一段 300 伤害／40 帧与满蓄力 450 伤害／82 帧各一次；不是玩家统计'},sourcePaths:['data/parameter/1200/weapon/WeaponStringerNormal.game__GameParameterTable.json','data/parameter/1200/weapon/WeaponStringerNormal_Coop.game__GameParameterTable.json']},
 ] as const;
 
 export const salmonPressurePresets=[

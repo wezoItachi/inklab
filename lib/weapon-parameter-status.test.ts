@@ -11,8 +11,8 @@ void test('creates an honest versioned snapshot for every catalog weapon', () =>
   for (const weapon of weapons) {
     const snapshot = getWeaponParameterSnapshot(weapon);
     assert.equal(snapshot.weaponId, weapon.id);
-    assert.equal(snapshot.gameVersion, '11.3.0');
-    assert.equal(snapshot.upstreamSnapshotVersion, '11.3.0');
+    assert.equal(snapshot.gameVersion, '12.0.0');
+    assert.equal(snapshot.upstreamSnapshotVersion, '12.0.0');
     const summary = summarizeParameterStatuses(snapshot.fields);
     assert.equal(
       summary.verified + summary.partial + summary.pending + summary.demo,

@@ -2,15 +2,15 @@ import { createHash } from 'node:crypto';
 import { readFileSync, writeFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 
-const GAME_VERSION = '11.3.0';
-const CHECKED_AT = '2026-10-08';
+const GAME_VERSION = '12.0.0';
+const CHECKED_AT = '2026-11-19';
 const SOURCE_ID = 'leanny-splat3';
-const UPSTREAM_ROOT = 'data/parameter/1130/weapon';
+const UPSTREAM_ROOT = 'data/parameter/1200/weapon';
 
 const sourceFlagIndex = process.argv.indexOf('--source-dir');
 if (sourceFlagIndex < 0 || !process.argv[sourceFlagIndex + 1]) {
   throw new Error(
-    'Usage: node scripts/import-leanny-blaster-parameters.mjs --source-dir <1130 weapon parameter directory>',
+    'Usage: node scripts/import-leanny-blaster-parameters.mjs --source-dir <1200 weapon parameter directory>',
   );
 }
 
@@ -24,9 +24,9 @@ const writeDatabase = (name, value) =>
 const sha256 = (value) => createHash('sha256').update(value).digest('hex');
 const normalizeDecimal = (value) => Math.round(value * 1_000_000) / 1_000_000;
 
-const mainWeapons = readDatabase('main-weapons.v11.3.0.json');
-const parameterDatabase = readDatabase('main-weapon-parameters.v11.3.0.json');
-const catalogImportReport = readDatabase('import-report.v11.3.0.json');
+const mainWeapons = readDatabase('main-weapons.v12.0.0.json');
+const parameterDatabase = readDatabase('main-weapon-parameters.v12.0.0.json');
+const catalogImportReport = readDatabase('import-report.v12.0.0.json');
 const blasterWeapons = mainWeapons.weapons.filter(
   (weapon) => weapon.family === '爆破枪',
 );
@@ -69,6 +69,8 @@ const blasterParameters = new Map(
     const gameParameters = JSON.parse(sourceText).GameParameters;
     const directDamage = gameParameters?.DamageParam?.ValueMax;
     const distanceDamage = gameParameters?.BlastParam?.DistanceDamage;
+    const movementInheritance =
+      gameParameters?.spl__SpawnBulletAdditionMovePlayerParam;
     const weaponParam = gameParameters?.WeaponParam;
     if (
       typeof directDamage !== 'number' ||
@@ -206,6 +208,19 @@ const blasterParameters = new Map(
         path: 'GameParameters.WeaponParam.MoveSpeed',
         note: '直接记录未叠加人速能力效果的 MoveSpeed 基础内部值',
       }),
+      ...(typeof movementInheritance?.ZRate === 'number'
+        ? [
+            verifiedField({
+              key: 'playerMovementProjectileZRate',
+              label: '玩家移动对纵向弹速的继承率',
+              value: movementInheritance.ZRate,
+              unit: 'ratio',
+              fileName,
+              path: 'GameParameters.spl__SpawnBulletAdditionMovePlayerParam.ZRate',
+              note: '直接记录玩家移动速度对弹丸纵向速度影响的倍率；不是射程值',
+            }),
+          ]
+        : []),
     ];
 
     const jumpDistanceDamage = gameParameters?.BlastJumpParam?.DistanceDamage;
@@ -265,15 +280,15 @@ const pendingOnlyRecords = records.filter((record) =>
   record.parameters.every((parameter) => parameter.status === 'pending'),
 ).length;
 
-writeDatabase('main-weapon-parameters.v11.3.0.json', {
+writeDatabase('main-weapon-parameters.v12.0.0.json', {
   ...parameterDatabase,
   records,
 });
-writeDatabase('blaster-parameter-import-report.v11.3.0.json', {
+writeDatabase('blaster-parameter-import-report.v12.0.0.json', {
   gameVersion: GAME_VERSION,
   importedAt: CHECKED_AT,
   sourceId: SOURCE_ID,
-  sourceCommit: '7280ff9cde8bb1c5dcef46c700c326471584d2e6',
+  sourceCommit: 'b669d55e0eef1f1a7f18cb7468c636ed7746c189',
   attribution: 'Data provided by Lean',
   scope: 'Blaster family explicit fields only',
   inputs: [...sourceFiles.entries()]
@@ -289,7 +304,7 @@ writeDatabase('blaster-parameter-import-report.v11.3.0.json', {
     pendingOnlyRecords,
   },
 });
-writeDatabase('import-report.v11.3.0.json', {
+writeDatabase('import-report.v12.0.0.json', {
   ...catalogImportReport,
   outputCounts: {
     ...catalogImportReport.outputCounts,

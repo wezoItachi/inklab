@@ -237,7 +237,7 @@ const regularSalmonBases = weapons.filter(
     !weapon.upstreamRowId.includes('Scope'),
 );
 
-/** Regular Salmon Run main-weapon chassis for Ver. 11.3.0. */
+/** Regular Salmon Run main-weapon chassis for Ver. 12.0.0. */
 export const regularSalmonWeapons: readonly SalmonWeapon[] =
   regularSalmonBases.map((weapon) => {
     const curated = curatedSalmonWeapons.find(
@@ -263,7 +263,7 @@ export const regularSalmonWeapons: readonly SalmonWeapon[] =
   });
 
 /**
- * The eight Grizzco weapons present in Leanny's Ver. 11.3.0 catalog. Their
+ * The eight Grizzco weapons present in Leanny's Ver. 12.0.0 catalog. Their
  * `_Coop` parameter files exist upstream, but INKLAB has not normalized or
  * verified DPS yet, so exact performance values intentionally remain empty.
  */

@@ -1,27 +1,27 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import manifest from '../database/manifest.json' with { type: 'json' };
-import mainWeaponParameterDocument from '../database/main-weapon-parameters.v11.3.0.json' with { type: 'json' };
-import mainWeaponDocument from '../database/main-weapons.v11.3.0.json' with { type: 'json' };
-import importReport from '../database/import-report.v11.3.0.json' with { type: 'json' };
-import parameterImportReport from '../database/parameter-import-report.v11.3.0.json' with { type: 'json' };
-import blasterParameterImportReport from '../database/blaster-parameter-import-report.v11.3.0.json' with { type: 'json' };
-import battleParameterGapReport from '../database/battle-parameter-gap-report.v11.3.0.json' with { type: 'json' };
-import battleParameterSourceAudit from '../database/battle-parameter-source-audit.v11.3.0.json' with { type: 'json' };
-import battleParameterApplicabilityReport from '../database/battle-parameter-applicability-report.v11.3.0.json' with { type: 'json' };
-import battleParameterVerificationQueue from '../database/battle-parameter-verification-queue.v11.3.0.json' with { type: 'json' };
-import battleParameterVerificationSummary from '../database/battle-parameter-verification-summary.v11.3.0.json' with { type: 'json' };
-import rollerParameterImportReport from '../database/roller-parameter-import-report.v11.3.0.json' with { type: 'json' };
-import chargerParameterImportReport from '../database/charger-parameter-import-report.v11.3.0.json' with { type: 'json' };
-import remainingFamilyParameterImportReport from '../database/remaining-family-parameter-import-report.v11.3.0.json' with { type: 'json' };
-import salmonParameterSourceReport from '../database/salmon-parameter-source-report.v11.3.0.json' with { type: 'json' };
-import salmonInkCycleEvidence from '../database/salmon-ink-cycle-evidence.v11.3.0.json' with { type: 'json' };
-import salmonTargetDocument from '../database/salmon-targets.v11.3.0.json' with { type: 'json' };
-import salmonWeaponParameterDocument from '../database/salmon-weapon-parameters.v11.3.0.json' with { type: 'json' };
-import specialWeaponDocument from '../database/special-weapons.v11.3.0.json' with { type: 'json' };
+import mainWeaponParameterDocument from '../database/main-weapon-parameters.v12.0.0.json' with { type: 'json' };
+import mainWeaponDocument from '../database/main-weapons.v12.0.0.json' with { type: 'json' };
+import importReport from '../database/import-report.v12.0.0.json' with { type: 'json' };
+import parameterImportReport from '../database/parameter-import-report.v12.0.0.json' with { type: 'json' };
+import blasterParameterImportReport from '../database/blaster-parameter-import-report.v12.0.0.json' with { type: 'json' };
+import battleParameterGapReport from '../database/battle-parameter-gap-report.v12.0.0.json' with { type: 'json' };
+import battleParameterSourceAudit from '../database/battle-parameter-source-audit.v12.0.0.json' with { type: 'json' };
+import battleParameterApplicabilityReport from '../database/battle-parameter-applicability-report.v12.0.0.json' with { type: 'json' };
+import battleParameterVerificationQueue from '../database/battle-parameter-verification-queue.v12.0.0.json' with { type: 'json' };
+import battleParameterVerificationSummary from '../database/battle-parameter-verification-summary.v12.0.0.json' with { type: 'json' };
+import rollerParameterImportReport from '../database/roller-parameter-import-report.v12.0.0.json' with { type: 'json' };
+import chargerParameterImportReport from '../database/charger-parameter-import-report.v12.0.0.json' with { type: 'json' };
+import remainingFamilyParameterImportReport from '../database/remaining-family-parameter-import-report.v12.0.0.json' with { type: 'json' };
+import salmonParameterSourceReport from '../database/salmon-parameter-source-report.v12.0.0.json' with { type: 'json' };
+import salmonInkCycleEvidence from '../database/salmon-ink-cycle-evidence.v12.0.0.json' with { type: 'json' };
+import salmonTargetDocument from '../database/salmon-targets.v12.0.0.json' with { type: 'json' };
+import salmonWeaponParameterDocument from '../database/salmon-weapon-parameters.v12.0.0.json' with { type: 'json' };
+import specialWeaponDocument from '../database/special-weapons.v12.0.0.json' with { type: 'json' };
 import sourcesDocument from '../database/sources.json' with { type: 'json' };
-import subWeaponDocument from '../database/sub-weapons.v11.3.0.json' with { type: 'json' };
-import weaponKitDocument from '../database/weapon-kits.v11.3.0.json' with { type: 'json' };
+import subWeaponDocument from '../database/sub-weapons.v12.0.0.json' with { type: 'json' };
+import weaponKitDocument from '../database/weapon-kits.v12.0.0.json' with { type: 'json' };
 import {
   validateGameDatabase,
   type MainWeaponDatabase,
@@ -34,67 +34,67 @@ import {
 void test('database manifest keeps game data and authorization boundaries explicit', () => {
   assert.equal(manifest.databaseId, 'inklab-core');
   assert.equal(manifest.gameVersion, mainWeaponDocument.gameVersion);
-  assert.equal(manifest.records.mainWeapons, 'main-weapons.v11.3.0.json');
+  assert.equal(manifest.records.mainWeapons, 'main-weapons.v12.0.0.json');
   assert.equal(
     manifest.records.mainWeaponParameters,
-    'main-weapon-parameters.v11.3.0.json',
+    'main-weapon-parameters.v12.0.0.json',
   );
-  assert.equal(manifest.records.subWeapons, 'sub-weapons.v11.3.0.json');
-  assert.equal(manifest.records.specialWeapons, 'special-weapons.v11.3.0.json');
-  assert.equal(manifest.records.weaponKits, 'weapon-kits.v11.3.0.json');
-  assert.equal(manifest.records.importReport, 'import-report.v11.3.0.json');
+  assert.equal(manifest.records.subWeapons, 'sub-weapons.v12.0.0.json');
+  assert.equal(manifest.records.specialWeapons, 'special-weapons.v12.0.0.json');
+  assert.equal(manifest.records.weaponKits, 'weapon-kits.v12.0.0.json');
+  assert.equal(manifest.records.importReport, 'import-report.v12.0.0.json');
   assert.equal(
     manifest.records.parameterImportReport,
-    'parameter-import-report.v11.3.0.json',
+    'parameter-import-report.v12.0.0.json',
   );
   assert.equal(
     manifest.records.blasterParameterImportReport,
-    'blaster-parameter-import-report.v11.3.0.json',
+    'blaster-parameter-import-report.v12.0.0.json',
   );
   assert.equal(
     manifest.records.rollerParameterImportReport,
-    'roller-parameter-import-report.v11.3.0.json',
+    'roller-parameter-import-report.v12.0.0.json',
   );
   assert.equal(
     manifest.records.chargerParameterImportReport,
-    'charger-parameter-import-report.v11.3.0.json',
+    'charger-parameter-import-report.v12.0.0.json',
   );
   assert.equal(
     manifest.records.remainingFamilyParameterImportReport,
-    'remaining-family-parameter-import-report.v11.3.0.json',
+    'remaining-family-parameter-import-report.v12.0.0.json',
   );
   assert.equal(
     manifest.records.salmonParameterSourceReport,
-    'salmon-parameter-source-report.v11.3.0.json',
+    'salmon-parameter-source-report.v12.0.0.json',
   );
   assert.equal(
     manifest.records.salmonWeaponParameters,
-    'salmon-weapon-parameters.v11.3.0.json',
+    'salmon-weapon-parameters.v12.0.0.json',
   );
   assert.equal(
     manifest.records.salmonInkCycleEvidence,
-    'salmon-ink-cycle-evidence.v11.3.0.json',
+    'salmon-ink-cycle-evidence.v12.0.0.json',
   );
-  assert.equal(manifest.records.salmonTargets, 'salmon-targets.v11.3.0.json');
+  assert.equal(manifest.records.salmonTargets, 'salmon-targets.v12.0.0.json');
   assert.equal(
     manifest.records.battleParameterGapReport,
-    'battle-parameter-gap-report.v11.3.0.json',
+    'battle-parameter-gap-report.v12.0.0.json',
   );
   assert.equal(
     manifest.records.battleParameterSourceAudit,
-    'battle-parameter-source-audit.v11.3.0.json',
+    'battle-parameter-source-audit.v12.0.0.json',
   );
   assert.equal(
     manifest.records.battleParameterApplicabilityReport,
-    'battle-parameter-applicability-report.v11.3.0.json',
+    'battle-parameter-applicability-report.v12.0.0.json',
   );
   assert.equal(
     manifest.records.battleParameterVerificationQueue,
-    'battle-parameter-verification-queue.v11.3.0.json',
+    'battle-parameter-verification-queue.v12.0.0.json',
   );
   assert.equal(
     manifest.records.battleParameterVerificationSummary,
-    'battle-parameter-verification-summary.v11.3.0.json',
+    'battle-parameter-verification-summary.v12.0.0.json',
   );
   assert.equal(manifest.scope, 'full-weapon-catalog-partial-parameters');
   assert.equal(
@@ -108,10 +108,10 @@ void test('database manifest keeps game data and authorization boundaries explic
 });
 
 void test('battle parameter gap audit accounts for every normalized field', () => {
-  assert.equal(battleParameterGapReport.gameVersion, '11.3.0');
+  assert.equal(battleParameterGapReport.gameVersion, '12.0.0');
   assert.equal(battleParameterGapReport.summary.weaponCount, 174);
-  assert.equal(battleParameterGapReport.summary.totalFields, 2279);
-  assert.equal(battleParameterGapReport.summary.verifiedFields, 1830);
+  assert.equal(battleParameterGapReport.summary.totalFields, 2417);
+  assert.equal(battleParameterGapReport.summary.verifiedFields, 1968);
   assert.equal(battleParameterGapReport.summary.pendingFields, 332);
   assert.equal(battleParameterGapReport.summary.notApplicableFields, 117);
   assert.equal(battleParameterGapReport.summary.demoFields, 0);
@@ -136,7 +136,7 @@ void test('battle parameter gap audit accounts for every normalized field', () =
 });
 
 void test('battle applicability resolution only closes absent optional mechanics', () => {
-  assert.equal(battleParameterApplicabilityReport.gameVersion, '11.3.0');
+  assert.equal(battleParameterApplicabilityReport.gameVersion, '12.0.0');
   assert.equal(battleParameterApplicabilityReport.summary.resolvedFields, 117);
   assert.equal(battleParameterApplicabilityReport.summary.affectedWeapons, 28);
   assert.equal(battleParameterApplicabilityReport.resolutions.length, 117);
@@ -166,7 +166,7 @@ void test('battle applicability resolution only closes absent optional mechanics
 });
 
 void test('battle verification queue accounts for every remaining pending field', () => {
-  assert.equal(battleParameterVerificationQueue.gameVersion, '11.3.0');
+  assert.equal(battleParameterVerificationQueue.gameVersion, '12.0.0');
   assert.equal(
     battleParameterVerificationQueue.summary.pendingFieldOccurrences,
     332,
@@ -205,7 +205,7 @@ void test('battle verification queue accounts for every remaining pending field'
 });
 
 void test('compact battle verification summary matches the full queue', () => {
-  assert.equal(battleParameterVerificationSummary.gameVersion, '11.3.0');
+  assert.equal(battleParameterVerificationSummary.gameVersion, '12.0.0');
   assert.equal(
     battleParameterVerificationSummary.summary.pendingFieldOccurrences,
     battleParameterVerificationQueue.summary.pendingFieldOccurrences,
@@ -225,7 +225,7 @@ void test('compact battle verification summary matches the full queue', () => {
 });
 
 void test('battle source audit covers every inheritance candidate occurrence', () => {
-  assert.equal(battleParameterSourceAudit.gameVersion, '11.3.0');
+  assert.equal(battleParameterSourceAudit.gameVersion, '12.0.0');
   assert.equal(battleParameterSourceAudit.summary.candidateGroups, 31);
   assert.equal(battleParameterSourceAudit.summary.fieldOccurrences, 241);
   assert.equal(battleParameterSourceAudit.summary.sourceFiles, 29);
@@ -251,7 +251,7 @@ void test('battle source audit covers every inheritance candidate occurrence', (
 });
 
 void test('Salmon Run targets retain reviewed health and identity provenance', () => {
-  assert.equal(salmonTargetDocument.gameVersion, '11.3.0');
+  assert.equal(salmonTargetDocument.gameVersion, '12.0.0');
   assert.equal(
     salmonTargetDocument.datasetStatus,
     'reviewed-community-reference',
@@ -281,7 +281,7 @@ void test('Salmon Run targets retain reviewed health and identity provenance', (
   assert.ok(sourceIds.has(salmonTargetDocument.identitySourceId));
 });
 
-void test('11.3 import report matches the normalized catalog', () => {
+void test('12.0 import report matches the normalized catalog', () => {
   assert.equal(mainWeaponDocument.weapons.length, 174);
   assert.equal(subWeaponDocument.subWeapons.length, 14);
   assert.equal(specialWeaponDocument.specialWeapons.length, 19);
@@ -311,8 +311,8 @@ void test('11.3 import report matches the normalized catalog', () => {
   assert.deepEqual(blasterParameterImportReport.outputCounts, {
     blasterWeapons: 17,
     blasterParameterClasses: 7,
-    recordsWithVerifiedFields: 60,
-    pendingOnlyRecords: 114,
+    recordsWithVerifiedFields: 174,
+    pendingOnlyRecords: 0,
   });
   for (const input of blasterParameterImportReport.inputs)
     assert.match(input.sha256, /^[a-f0-9]{64}$/);
@@ -320,8 +320,8 @@ void test('11.3 import report matches the normalized catalog', () => {
   assert.deepEqual(rollerParameterImportReport.outputCounts, {
     rollerWeapons: 14,
     rollerParameterClasses: 5,
-    recordsWithVerifiedFields: 73,
-    pendingOnlyRecords: 101,
+    recordsWithVerifiedFields: 174,
+    pendingOnlyRecords: 0,
   });
   for (const input of rollerParameterImportReport.inputs)
     assert.match(input.sha256, /^[a-f0-9]{64}$/);
@@ -329,8 +329,8 @@ void test('11.3 import report matches the normalized catalog', () => {
   assert.deepEqual(chargerParameterImportReport.outputCounts, {
     chargerWeapons: 19,
     chargerParameterClasses: 8,
-    recordsWithVerifiedFields: 91,
-    pendingOnlyRecords: 83,
+    recordsWithVerifiedFields: 174,
+    pendingOnlyRecords: 0,
   });
   for (const input of chargerParameterImportReport.inputs)
     assert.match(input.sha256, /^[a-f0-9]{64}$/);
@@ -416,7 +416,7 @@ void test('11.3 import report matches the normalized catalog', () => {
       assert.notEqual(parameter.value, null, `${record.id}.${parameter.key}`);
       assert.match(
         parameter.upstreamPath,
-        /^data\/parameter\/1130\/weapon\/.+#GameParameters\./,
+        /^data\/parameter\/1200\/weapon\/.+#GameParameters\./,
         `${record.id}.${parameter.key}`,
       );
     }
@@ -499,6 +499,8 @@ void test('main weapon parameters expose values only after field-level verificat
         'groundShotSpreadDegrees',
         'jumpShotSpreadDegrees',
         'movementSpeedWhileFiring',
+        'dropletPaintHalfWidth',
+        'nearestDropletPaintHalfWidth',
       ],
       record.weaponId,
     );
@@ -567,7 +569,14 @@ void test('main weapon parameters expose values only after field-level verificat
   );
   assert.equal(rollerRecords.length, 14);
   for (const record of rollerRecords) {
-    assert.equal(record.parameters.length, 13, record.weaponId);
+    assert.equal(record.parameters.length, 14, record.weaponId);
+    assert.equal(
+      record.parameters.find(
+        ({ key }) => key === 'horizontalInkRecoveryLockFrames',
+      )?.status,
+      'verified',
+      record.weaponId,
+    );
     assert.equal(
       record.parameters.find(({ key }) => key === 'horizontalSwingFrames')
         ?.status,
@@ -610,7 +619,7 @@ void test('main weapon parameters expose values only after field-level verificat
     ['加特林', 24],
     ['双枪', 12],
     ['伞', 16],
-    ['弓', 15],
+    ['弓', 18],
     ['刮水刀', 18],
   ]);
   for (const [family, fieldCount] of remainingFamilyFields) {
@@ -685,7 +694,7 @@ void test('main weapon parameters expose values only after field-level verificat
   assert.ok(nzap89);
   assert.equal(
     nzap89.parameters.filter(({ status }) => status === 'verified').length,
-    9,
+    11,
   );
   assert.equal(
     nzap89.parameters.filter(({ status }) => status === 'pending').length,
@@ -712,4 +721,23 @@ void test('main weapon parameters expose values only after field-level verificat
     ).length,
     7,
   );
+});
+
+void test('Ver. 12.0.0 balance fields keep their fixed upstream values', () => {
+  const records = (mainWeaponParameterDocument as MainWeaponParameterDatabase)
+    .records;
+  const value = (weaponId: string, key: string) =>
+    records
+      .find((record) => record.weaponId === weaponId)
+      ?.parameters.find((parameter) => parameter.key === key)?.value;
+
+  assert.equal(value('shooter-precision', 'damagePerShot'), 29);
+  assert.equal(value('shooter-precision', 'inkConsumptionPerShot'), 0.84);
+  assert.equal(value('main-0', 'damagePerShot'), 40);
+  assert.equal(value('main-50', 'dropletPaintHalfWidth'), 1.37);
+  assert.equal(value('main-220', 'playerMovementProjectileZRate'), 1);
+  assert.equal(value('main-1020', 'horizontalInkRecoveryLockFrames'), 65);
+  assert.equal(value('main-7020', 'minimumChargePaintHalfWidth'), 2.5);
+  assert.equal(value('main-7020', 'middleChargePaintHalfWidth'), 2.5);
+  assert.equal(value('main-7020', 'fullChargePaintHalfWidth'), 3);
 });

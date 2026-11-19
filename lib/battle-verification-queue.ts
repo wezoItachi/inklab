@@ -1,4 +1,4 @@
-import summaryDocument from '../database/battle-parameter-verification-summary.v11.3.0.json' with { type: 'json' };
+import summaryDocument from '../database/battle-parameter-verification-summary.v12.0.0.json' with { type: 'json' };
 
 export type VerificationRouteSummary = {
   total: number;

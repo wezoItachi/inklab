@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import queueDocument from '../database/battle-parameter-verification-queue.v11.3.0.json' with { type: 'json' };
+import queueDocument from '../database/battle-parameter-verification-queue.v12.0.0.json' with { type: 'json' };
 import { getWeaponVerificationRouteSummary } from './battle-verification-queue.ts';
 import { weapons } from './weapons.ts';
 

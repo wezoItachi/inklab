@@ -22,13 +22,13 @@ INKLAB 已就明确范围向 Sendou 询问：将当前 26 个图标复制进公�
 
 界面以《Splatoon 3》游戏内简体中文名称为基准；玩家俗称仅作为搜索别名，不替代官方名称。
 
-Ver. 11.3.0 的 174 把对战武器名称直接取自固定上游快照的 `CommonMsg/Weapon/WeaponName_Main`，不通过“本体名称＋型号后缀”模板拼接。导入时只进行 Unicode NFC 与首尾空白规范化，并拒绝示例、模板、未命名或待定占位串；名称仍保留游戏原文中的空格、间隔号、拉丁字母和型号写法。
+Ver. 12.0.0 的 174 把对战武器名称直接取自固定上游快照的 `CommonMsg/Weapon/WeaponName_Main`，不通过“本体名称＋型号后缀”模板拼接。导入时只进行 Unicode NFC 与首尾空白规范化，并拒绝示例、模板、未命名或待定占位串；名称仍保留游戏原文中的空格、间隔号、拉丁字母和型号写法。
 
 ## 武器与副武器数据
 
 - 数据源：[`Leanny/splat3`](https://github.com/Leanny/splat3)
 - 参数浏览：[`Splatoon 3 Parameter Database`](https://leanny.github.io/splat3/parameters.html)
-- 当前目标版本：Ver. 11.3.0
+- 当前目标版本：Ver. 12.0.0
 - 用途：基础参数、武器套装关系及版本化数据
 - 要求署名：**Data provided by Lean**
 - 许可记录：[`Leanny/splat3#7` 回复](https://github.com/Leanny/splat3/issues/7#issuecomment-5566028905)
@@ -39,26 +39,13 @@ Ver. 11.3.0 的 174 把对战武器名称直接取自固定上游快照的 `Comm
 
 - `database/manifest.json`：数据库索引、目标游戏版本及授权沟通状态。
 - `database/sources.json`：来源、核对日期与使用状态。
-- `database/main-weapons.v11.3.0.json`：Ver. 11.3.0 的 174 把对战主武器。
-- `database/main-weapon-parameters.v11.3.0.json`：主武器参数字段、单位、核验状态和字段级来源位置。
-- `database/sub-weapons.v11.3.0.json`：副武器基础耗墨与增强语境。
-- `database/special-weapons.v11.3.0.json`：特殊武器身份表。
-- `database/weapon-kits.v11.3.0.json`：版本化武器套装关系。
-- `database/import-report.v11.3.0.json`：上游输入文件哈希、导入日期和输出计数。
-- `database/parameter-import-report.v11.3.0.json`：射击枪参数文件、固定提交、输入哈希和输出计数。
-- `database/blaster-parameter-import-report.v11.3.0.json`：爆破枪参数文件、固定提交、输入哈希和输出计数。
-- `database/roller-parameter-import-report.v11.3.0.json`：滚筒参数文件、固定提交、输入哈希和输出计数。
-- `database/charger-parameter-import-report.v11.3.0.json`：蓄力枪参数文件、固定提交、输入哈希和输出计数。
-- `database/remaining-family-parameter-import-report.v11.3.0.json`：其余七个武器类别的参数文件、固定提交、输入哈希和输出计数。
-- `database/salmon-weapon-parameters.v11.3.0.json`：63 把常规打工武器和 8 把熊武的来源可追溯部分参数，逐字段区分 `_Coop` 显式覆盖与父类继承。
-- `database/salmon-parameter-source-report.v11.3.0.json`：上述打工参数实际读取的普通／`_Coop` 文件、固定提交、输入哈希和输出计数。
-- `database/salmon-ink-cycle-evidence.v11.3.0.json`：普通回墨、主武／副武墨锁与鱿鱼滚行相关字段的证据分层和持续输出模型门禁。
-- `database/salmon-targets.v11.3.0.json`：14 个自由目标的生命值、复合生命值表达、本体／弱点／分体边界、社区数据页固定修订号与 Leanny 敌人内部身份。
-- `database/battle-parameter-gap-report.v11.3.0.json`：全量主武字段完整度审计，逐类别记录待验证字段及可能涉及上游缺省／继承规则的候选组。
-- `database/battle-parameter-source-audit.v11.3.0.json`：当前 31 组、241 次字段出现的固定提交来源核对；87 次为机制对象存在但叶字段省略，151 次为可选机制对象整体缺失，3 次需要参数结构以外的语义来源。省略本身不作为数值证据。
-- `database/battle-parameter-applicability-report.v11.3.0.json`：将其中 117 次字段出现从“待验证”改为“不适用”：13 把非爆炸泼桶的伤害/范围共 26 项，以及非鹦鹉螺号、非审查者、非圆珠笔加特林的专属状态共 91 项。这些字段保持空值，不写 `0`、不借用同族武器值；能力本身尚未证明时仍单独保留待验证。
-- `database/battle-parameter-verification-queue.v11.3.0.json`：将剩余 332 次待验证字段归并为 36 组任务。其中 87 个上游省略字段进一步拆为 65 个“运行时默认值或逐帧录像”、15 个“运行时默认值或机制观察”和 7 个“运行时默认值或标定测量”；其余任务要求射程模型／受控实测、动作周期逐帧验证、能力／继承语义、外部语义来源或显式字段／受控录像证据。
-- `database/battle-parameter-verification-summary.v11.3.0.json`：面向浏览器的精简逐武器待验证计数；完整证据要求仍只保存在队列文件中，避免把大型审计文档打包进客户端。
+- `database/main-weapons.v12.0.0.json`：Ver. 12.0.0 的 174 把对战主武器。
+- `database/main-weapon-parameters.v12.0.0.json`：主武器参数字段、单位、核验状态和字段级来源位置。
+- `database/sub-weapons.v12.0.0.json`、`special-weapons.v12.0.0.json`、`weapon-kits.v12.0.0.json`：副武器、特殊武器与版本化套装关系。
+- `database/*-import-report.v12.0.0.json`：各武器族和鲑鱼跑参数的固定上游提交、输入文件哈希、导入日期与计数。
+- `database/salmon-weapon-parameters.v12.0.0.json`、`salmon-ink-cycle-evidence.v12.0.0.json`、`salmon-targets.v12.0.0.json`：71 把打工武器的来源参数、回墨／墨锁证据和 14 个自由目标。
+- `database/battle-parameter-*.v12.0.0.json`：全 174 把对战武器的字段缺口、来源、省略机制、不适用项与 332 次待验证字段的证据队列。
+- `database/*.v11.3.0.json`：上一个游戏版本的历史快照，不参与当前界面运行。
 - `database/schema.ts`：字段类型与自动校验规则。
 
 该目录是随源码维护的版本化数据源，适合当前无账号、无服务器存储的 Web 阶段。它不表示 INKLAB 拥有第三方事实或素材；Leanny 已同意项目按指定署名使用所需数据，INKLAB 会保留仓库链接、导入输入哈希与字段级来源记录。当前仅选取并规范化产品需要的武器目录、套装关系和参数字段，不保存完整上游数据库镜像。未来若开放账号和社区功能，再把用户数据迁移到服务端数据库。
@@ -80,7 +67,7 @@ Ver. 11.3.0 的 174 把对战武器名称直接取自固定上游快照的 `Comm
 - 加特林类已按六个参数类分别建模两段蓄力、射击窗口、伤害层级和特殊状态，移除只适用于桶装旋转枪的硬编码说明。消防栓满蓄力伤害、圆珠笔可变状态、鹦鹉螺号续蓄／储存和审查者满蓄力覆盖值均独立处理；窗口发数继续标为可整除估算。完整口径见 [`verification/Spinner-charge-state-model-v11.3.0.md`](verification/Spinner-charge-state-model-v11.3.0.md)。
 - 尚未核对字段：各类别按已定义口径计算的射程数值、复杂动作的完整连续周期、上游省略后需要继承的缺省值、部分副武器耗墨与增强对象、完整 AP 效果曲线、特殊武器收益与全部关键阈值。滚筒横挥／竖挥和伞连续主武射击的 39 个周期字段已有明确的释放帧边界与采集门槛，见 [`verification/Action-cycle-capture-protocol-v11.3.0.md`](verification/Action-cycle-capture-protocol-v11.3.0.md)；当前数值仍保持为空，不得把内部阶段冒充完整周期。
 - 加特林射击中续蓄和伞面发射共有 15 个上游叶对象省略的布尔字段。省略不直接记为 `false`；界面与 [`verification/Capability-observation-protocol-v11.3.0.md`](verification/Capability-observation-protocol-v11.3.0.md) 已定义正／负结果、复测次数与排除条件，等待运行时默认值或实机录像关闭字段。
-- 版本状态：Nintendo 已发布 Ver. 11.3.0；截至 2026-10-03，Leanny 已公开 `data/parameter/1130` 参数快照。当前字段固定核对到上游提交 `7280ff9cde8bb1c5dcef46c700c326471584d2e6`，详见 `docs/verification/`。
+- 版本状态：Nintendo 已于 2026-11-18 发布 Ver. 12.0.0；Leanny 已公开 `data/parameter/1200` 参数快照。当前字段固定核对到上游提交 `b669d55e0eef1f1a7f18cb7468c636ed7746c189`，迁移边界见 [`verification/Version-transition-v12.0.0.md`](verification/Version-transition-v12.0.0.md)。
 - `lib/weapon-parameter-status.ts`：把每个字段分为“已核对 / 不适用 / 待验证 / 原型演示”，界面按字段展示状态。已核对与不适用字段必须带来源记录；待验证字段不得输出精确攻略结论。
 
 Nintendo 官方更新公告用于确认版本发布和公开平衡调整；Sendou.ink 的公开实现仅用于公式与显示结果的交叉验证。正式数值导入时将保留版本、上游路径、参数字段和验证状态，不把第三方数据误标为 INKLAB 自有内容。Leanny 数据按其回复要求使用 **Data provided by Lean** 并链接 [`Leanny/splat3`](https://github.com/Leanny/splat3)。2026-10-26 的追加回复确认了请求中列出的鲑鱼跑／通用参数、未来版本更新和选定图片用途；这不应扩大解释为可以镜像完整上游仓库，也不代表 Nintendo 对游戏素材、名称和商标的底层权利已经转移。Sendouc 关于能力图标实际来源的说明仍作为单独证据保留。源码仓库已于 2026-10-20 公开，网站仍未部署。
@@ -91,8 +78,8 @@ Nintendo 官方更新公告用于确认版本发布和公开平衡调整；Sendo
 - 轮换详情页：[`splatoon3.ink/salmonrun`](https://splatoon3.ink/salmonrun)
 - 上游项目：[`misenhower/splatoon3.ink`](https://github.com/misenhower/splatoon3.ink)（MIT）
 
-鲑鱼跑实验室当前在浏览器中读取当期常规轮换的地图与四把武器名称，不将远程响应写入本地数据库，不复制或托管上游地图、武器图片。手动编成目录包含 63 把常规武器和 8 把熊先生印章武器；熊武简中名称来自 Leanny Ver. 11.3.0 语言数据的 `CommonMsg/Weapon/WeaponName_Main`。
+鲑鱼跑实验室当前在浏览器中读取当期常规轮换的地图与四把武器名称，不将远程响应写入本地数据库，不复制或托管上游地图、武器图片。手动编成目录包含 63 把常规武器和 8 把熊先生印章武器；熊武简中名称来自 Leanny Ver. 12.0.0 语言数据的 `CommonMsg/Weapon/WeaponName_Main`。
 
-Leanny Ver. 11.3.0 参数快照中的 8 个熊武 `_Coop` 文件已纳入部分参数表：`WeaponBlasterBear`、`WeaponChargerBear`、`WeaponManeuverBear`、`WeaponRollerBear`、`WeaponSaberBear`、`WeaponShelterBear`、`WeaponSlosherBear` 和 `WeaponStringerBear`。导入器只接受已在对应对战武器族模型中登记过语义的字段；有显式父类的熊武继续区分父类继承与熊武覆盖。该数据表不直接等于精确 DPS，复杂动作周期仍需单独建模。
+Leanny Ver. 12.0.0 参数快照中的 8 个熊武 `_Coop` 文件已纳入部分参数表：`WeaponBlasterBear`、`WeaponChargerBear`、`WeaponManeuverBear`、`WeaponRollerBear`、`WeaponSaberBear`、`WeaponShelterBear`、`WeaponSlosherBear` 和 `WeaponStringerBear`。导入器只接受已在对应对战武器族模型中登记过语义的字段；有显式父类的熊武继续区分父类继承与熊武覆盖。该数据表不直接等于精确 DPS，复杂动作周期仍需单独建模。
 
 打工参数表现已覆盖 63 把常规武器底盘和 8 把熊武，共 71 条记录。常规武器从已核验的对战基础字段出发，只在 `_Coop` 文件显式出现同一路径时应用打工覆盖；N-ZAP85 在固定提交中没有专用 `_Coop` 文件，因此只记录普通基础值，不推测隐藏覆盖。当前纯输出界面仍只启用动作周期已经解释清楚的广域标记枪、窄域标记枪、`.96加仑` 与三发猎鱼弓，比较“理论极限／日常动作基准”；数据入库不会自动扩大为可用 DPS。自由目标实验的 14 组生命值已经逐项对照 Inkipedia 的固定修订版，Leanny 的 `CoopEnemyInfo.json` 用于核对敌人内部身份；该文件不含基础生命值，因此这些 HP 明确标作社区数据页复核，而非 Leanny 参数直接导入。普通无能力回墨曲线、打工三角雷 70% 耗墨／60 帧墨锁和广域标记枪 15 帧射击墨锁已经进入独立证据表，但普通回墨曲线的打工适用性、其他三把首批武器的缺省墨锁，以及鱿鱼滚行空中回墨机制仍未验证。同步／错峰循环因此继续禁用。副武器与特殊武器暂不计算；WAVE、危险度与出怪速率尚未接入，因此不输出持续 DPS、过线或通关结论。具体口径见 [`verification/Salmon-pressure-draft-v11.3.0.md`](verification/Salmon-pressure-draft-v11.3.0.md)，批量导入边界见 [`verification/Salmon-weapon-parameter-import-v11.3.0.md`](verification/Salmon-weapon-parameter-import-v11.3.0.md)。

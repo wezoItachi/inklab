@@ -1,8 +1,8 @@
 import { readFileSync, writeFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 
-const GAME_VERSION = '11.3.0';
-const RESOLVED_AT = '2026-10-26';
+const GAME_VERSION = '12.0.0';
+const RESOLVED_AT = '2026-11-19';
 const SOURCE_ID = 'leanny-splat3';
 const projectRoot = resolve(import.meta.dirname, '..');
 const databaseDir = resolve(projectRoot, 'database');
@@ -14,8 +14,8 @@ const writeDatabase = (name, value) =>
     `${JSON.stringify(value, null, 2)}\n`,
   );
 
-const parameterDatabase = readDatabase('main-weapon-parameters.v11.3.0.json');
-const sourceAudit = readDatabase('battle-parameter-source-audit.v11.3.0.json');
+const parameterDatabase = readDatabase('main-weapon-parameters.v12.0.0.json');
+const sourceAudit = readDatabase('battle-parameter-source-audit.v12.0.0.json');
 
 const dependentOptionalFields = new Set([
   '加特林:chargeHoldFrames',
@@ -58,7 +58,7 @@ const records = parameterDatabase.records.map((record) => ({
       status: 'not-applicable',
       note: `固定上游文件未包含 ${resolution.inspectedPath?.split('.')[1]} 可选机制对象，因此该对象的从属字段对本武器不适用；未由此推断任何布尔能力或数值默认值`,
       sourceId: SOURCE_ID,
-      upstreamPath: `data/parameter/1130/weapon/${resolution.fileName}`,
+      upstreamPath: `data/parameter/1200/weapon/${resolution.fileName}`,
       checkedAt: RESOLVED_AT,
     };
   }),
@@ -70,14 +70,14 @@ if (resolvedFields !== resolutions.size) {
   );
 }
 
-writeDatabase('main-weapon-parameters.v11.3.0.json', {
+writeDatabase('main-weapon-parameters.v12.0.0.json', {
   ...parameterDatabase,
   records,
 });
-writeDatabase('battle-parameter-applicability-report.v11.3.0.json', {
+writeDatabase('battle-parameter-applicability-report.v12.0.0.json', {
   gameVersion: GAME_VERSION,
   resolvedAt: RESOLVED_AT,
-  sourceAudit: 'battle-parameter-source-audit.v11.3.0.json',
+  sourceAudit: 'battle-parameter-source-audit.v12.0.0.json',
   policy:
     'Only dependent numeric fields under a wholly absent optional mechanism object are marked not applicable. Capability booleans, inherited ordinary-state values, and omitted runtime defaults remain pending.',
   summary: {
