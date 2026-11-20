@@ -216,18 +216,23 @@ export async function exportLoadoutPng(data: LoadoutCardData) {
 
   context.fillStyle = colors.ink;
   context.fillRect(52, 216, 728, 76);
-  context.save();
-  context.translate(95, 254);
-  context.rotate(-3 * Math.PI / 180);
-  fillBrandShape(context, -28.5, -28.5, 57, 57, 18, 6, colors.purple);
-  context.fillStyle = colors.acid;
-  context.font = `900 20px ${font}`;
-  context.textAlign = 'center';
-  context.fillText(data.weapon.badge, 0, 7);
-  context.restore();
+  const mainWeaponImage = data.weapon.mainImageUrl
+    ? images.get(data.weapon.mainImageUrl)
+    : undefined;
+  if (!mainWeaponImage) {
+    context.save();
+    context.translate(95, 254);
+    context.rotate(-3 * Math.PI / 180);
+    fillBrandShape(context, -28.5, -28.5, 57, 57, 18, 6, colors.purple);
+    context.fillStyle = colors.acid;
+    context.font = `900 20px ${font}`;
+    context.textAlign = 'center';
+    context.fillText(data.weapon.badge, 0, 7);
+    context.restore();
+  }
   drawContainedImage(
     context,
-    data.weapon.mainImageUrl ? images.get(data.weapon.mainImageUrl) : undefined,
+    mainWeaponImage,
     61,
     221,
     108,

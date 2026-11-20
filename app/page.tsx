@@ -649,7 +649,6 @@ export default function Home() {
                         >
                           <div className="weapon-image-placeholder">
                             <span>MAIN WEAPON / 主武器大图</span>
-                            <strong aria-hidden="true">{weapon.badge}</strong>
                             {/* oxlint-disable-next-line next/no-img-element -- Versioned local PNGs keep their audited upstream bytes and hashes. */}
                             <img
                               src={getMainWeaponAssetUrl(weapon.id)}
@@ -658,6 +657,7 @@ export default function Home() {
                                 event.currentTarget.hidden = true;
                               }}
                             />
+                            <strong aria-hidden="true">{weapon.badge}</strong>
                             <em>IMAGE SOURCE / LEAN</em>
                           </div>
                           <p>

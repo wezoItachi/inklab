@@ -2093,6 +2093,9 @@ button {
   color: #17171c;
   font-weight: 900;
 }
+.build-weapon-visual .build-main-image:not([hidden]) + span {
+  display: none;
+}
 .build-weapon-visual .build-main-image {
   position: absolute;
   inset: 5px 28px 5px 4px;
@@ -3409,6 +3412,9 @@ button {
   font-size: 24px;
   transform: rotate(-3deg);
   box-shadow: 6px 6px 0 #d9ff35;
+}
+.weapon-image-placeholder img:not([hidden]) + strong {
+  display: none;
 }
 .weapon-image-placeholder img {
   position: absolute;

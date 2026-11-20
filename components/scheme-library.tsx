@@ -205,7 +205,6 @@ export function SchemeLibrary({
                     className="build-weapon-visual"
                     aria-label={`${schemeWeapon.name}、${schemeWeapon.sub.name}、${schemeWeapon.special}`}
                   >
-                    <span aria-hidden="true">{schemeWeapon.badge}</span>
                     {/* oxlint-disable-next-line next/no-img-element -- Audited local weapon artwork is served without altering its recorded bytes. */}
                     <img
                       className="build-main-image"
@@ -215,6 +214,7 @@ export function SchemeLibrary({
                         event.currentTarget.hidden = true;
                       }}
                     />
+                    <span aria-hidden="true">{schemeWeapon.badge}</span>
                     <div>
                       {/* oxlint-disable-next-line next/no-img-element -- Audited local weapon artwork is served without altering its recorded bytes. */}
                       <img
