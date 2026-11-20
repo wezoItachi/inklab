@@ -2067,13 +2067,23 @@ button {
 }
 .build-weapon {
   display: grid;
-  grid-template-columns: 48px 1fr;
+  grid-template-columns: 116px minmax(0, 1fr);
   gap: 10px;
   align-items: center;
   padding: 11px;
   background: #f0eee8;
 }
-.weapon-badge {
+.build-weapon-visual {
+  position: relative;
+  display: grid;
+  min-height: 72px;
+  place-items: center;
+  overflow: hidden;
+  border: 1px solid #d8d3ca;
+  border-radius: 14px 5px;
+  background: #fff;
+}
+.build-weapon-visual > span {
   display: grid;
   place-items: center;
   width: 46px;
@@ -2082,6 +2092,27 @@ button {
   background: #efcc22;
   color: #17171c;
   font-weight: 900;
+}
+.build-weapon-visual .build-main-image {
+  position: absolute;
+  inset: 5px 28px 5px 4px;
+  width: calc(100% - 32px);
+  height: calc(100% - 10px);
+  object-fit: contain;
+}
+.build-weapon-visual > div {
+  position: absolute;
+  right: 4px;
+  bottom: 4px;
+  display: grid;
+  gap: 3px;
+}
+.build-weapon-visual > div img {
+  width: 25px;
+  height: 25px;
+  border-radius: 7px;
+  background: #292930;
+  object-fit: contain;
 }
 .build-weapon > div {
   display: grid;
@@ -2280,6 +2311,9 @@ button {
   }
   .build-card {
     padding: 14px;
+  }
+  .build-weapon {
+    grid-template-columns: 92px minmax(0, 1fr);
   }
   .build-card-title {
     flex-direction: column;

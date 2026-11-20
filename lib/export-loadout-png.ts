@@ -22,6 +22,9 @@ export type LoadoutCardData = {
     family: string;
     sub: string;
     special: string;
+    mainImageUrl?: string;
+    subImageUrl?: string;
+    specialImageUrl?: string;
   };
   slots: ExportSlot[];
   totals: ExportAbilityTotal[];
@@ -119,6 +122,27 @@ function drawAbility(context: CanvasRenderingContext2D, image: HTMLImageElement 
   context.restore();
 }
 
+function drawContainedImage(
+  context: CanvasRenderingContext2D,
+  image: HTMLImageElement | undefined,
+  x: number,
+  y: number,
+  width: number,
+  height: number,
+) {
+  if (!image) return;
+  const scale = Math.min(width / image.naturalWidth, height / image.naturalHeight);
+  const drawWidth = image.naturalWidth * scale;
+  const drawHeight = image.naturalHeight * scale;
+  context.drawImage(
+    image,
+    x + (width - drawWidth) / 2,
+    y + (height - drawHeight) / 2,
+    drawWidth,
+    drawHeight,
+  );
+}
+
 export async function exportLoadoutPng(data: LoadoutCardData) {
   await document.fonts?.ready;
   const canvas = document.createElement('canvas');
@@ -127,7 +151,14 @@ export async function exportLoadoutPng(data: LoadoutCardData) {
   const context = canvas.getContext('2d');
   if (!context) throw new Error('Canvas is unavailable');
 
-  const urls = [...new Set([...data.slots, ...data.totals].flatMap((item) => item.iconUrl ? [item.iconUrl] : []))];
+  const urls = [...new Set([
+    ...[
+      data.weapon.mainImageUrl,
+      data.weapon.subImageUrl,
+      data.weapon.specialImageUrl,
+    ].filter((url): url is string => Boolean(url)),
+    ...[...data.slots, ...data.totals].flatMap((item) => item.iconUrl ? [item.iconUrl] : []),
+  ])];
   const images = await loadImages(urls);
   const font = 'Arial, "Microsoft YaHei", sans-serif';
   const colors = {
@@ -194,13 +225,44 @@ export async function exportLoadoutPng(data: LoadoutCardData) {
   context.textAlign = 'center';
   context.fillText(data.weapon.badge, 0, 7);
   context.restore();
+  drawContainedImage(
+    context,
+    data.weapon.mainImageUrl ? images.get(data.weapon.mainImageUrl) : undefined,
+    61,
+    221,
+    108,
+    66,
+  );
   context.textAlign = 'left';
   context.fillStyle = '#ffffff';
   context.font = `900 22px ${font}`;
-  context.fillText(data.weapon.name, 140, 249);
+  context.fillText(truncate(context, data.weapon.name, 410), 184, 249);
   context.fillStyle = '#b8b8c2';
   context.font = `600 14px ${font}`;
-  context.fillText(`${data.weapon.family} · ${data.weapon.sub} · ${data.weapon.special}`, 140, 275);
+  context.fillText(
+    truncate(
+      context,
+      `${data.weapon.family} · ${data.weapon.sub} · ${data.weapon.special}`,
+      410,
+    ),
+    184,
+    275,
+  );
+  for (const [index, imageUrl] of [
+    data.weapon.subImageUrl,
+    data.weapon.specialImageUrl,
+  ].entries()) {
+    const x = 660 + index * 58;
+    fillRoundedRect(context, x, 226, 50, 50, 10, '#363640');
+    drawContainedImage(
+      context,
+      imageUrl ? images.get(imageUrl) : undefined,
+      x + 5,
+      231,
+      40,
+      40,
+    );
+  }
 
   const gearNames = ['头部', '服装', '鞋子'];
   for (let row = 0; row < 3; row += 1) {
@@ -255,6 +317,8 @@ export async function exportLoadoutPng(data: LoadoutCardData) {
   context.font = `700 12px ${font}`;
   context.fillText(`作者：${truncate(context, data.author || '匿名玩家', 230)}`, 1132, 527);
   context.textAlign = 'left';
+  context.font = `700 10px ${font}`;
+  context.fillText('Weapon images: Data provided by Lean', 806, 527);
 
   const blob = await new Promise<Blob>((resolve, reject) => {
     canvas.toBlob((result) => result ? resolve(result) : reject(new Error('PNG export failed')), 'image/png');

@@ -16,6 +16,11 @@ import {
   type SchemeFilters,
 } from '@/lib/schemes';
 import { DATA_VERSION, getWeapon } from '@/lib/weapons';
+import {
+  getMainWeaponAssetUrl,
+  getSpecialWeaponAssetUrl,
+  getSubWeaponAssetUrl,
+} from '@/lib/weapon-assets';
 
 export function SchemeLibrary({
   onOpen,
@@ -196,7 +201,39 @@ export function SchemeLibrary({
                   <time>Ver. {DATA_VERSION}</time>
                 </div>
                 <div className="build-weapon">
-                  <span className="weapon-badge">{schemeWeapon.badge}</span>
+                  <div
+                    className="build-weapon-visual"
+                    aria-label={`${schemeWeapon.name}、${schemeWeapon.sub.name}、${schemeWeapon.special}`}
+                  >
+                    <span aria-hidden="true">{schemeWeapon.badge}</span>
+                    {/* oxlint-disable-next-line next/no-img-element -- Audited local weapon artwork is served without altering its recorded bytes. */}
+                    <img
+                      className="build-main-image"
+                      src={getMainWeaponAssetUrl(schemeWeapon.id)}
+                      alt={`${schemeWeapon.name} 主武器图标`}
+                      onError={(event) => {
+                        event.currentTarget.hidden = true;
+                      }}
+                    />
+                    <div>
+                      {/* oxlint-disable-next-line next/no-img-element -- Audited local weapon artwork is served without altering its recorded bytes. */}
+                      <img
+                        src={getSubWeaponAssetUrl(schemeWeapon.sub.id)}
+                        alt={`${schemeWeapon.sub.name} 副武器图标`}
+                        onError={(event) => {
+                          event.currentTarget.hidden = true;
+                        }}
+                      />
+                      {/* oxlint-disable-next-line next/no-img-element -- Audited local weapon artwork is served without altering its recorded bytes. */}
+                      <img
+                        src={getSpecialWeaponAssetUrl(schemeWeapon.specialId)}
+                        alt={`${schemeWeapon.special} 特殊武器图标`}
+                        onError={(event) => {
+                          event.currentTarget.hidden = true;
+                        }}
+                      />
+                    </div>
+                  </div>
                   <div>
                     <small>使用武器</small>
                     <button

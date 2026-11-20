@@ -356,6 +356,9 @@ export default function Home() {
           family: weapon.family,
           sub: weapon.sub.name,
           special: weapon.special,
+          mainImageUrl: getMainWeaponAssetUrl(weapon.id),
+          subImageUrl: getSubWeaponAssetUrl(weapon.sub.id),
+          specialImageUrl: getSpecialWeaponAssetUrl(weapon.specialId),
         },
         slots: slots.map(([id, ap]) => {
           const ability = abilities.find((item) => item.id === id);
