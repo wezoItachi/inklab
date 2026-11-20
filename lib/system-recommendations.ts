@@ -18,6 +18,12 @@ type FamilyProfile = {
   support: string;
 };
 
+type RoleProfile = {
+  label: string;
+  primary: string;
+  support: string;
+};
+
 const familyProfiles: Record<WeaponFamily, FamilyProfile> = {
   '射击枪': { label: '移动射击与持续交战', primary: 'ssu', secondary: 'ism', support: 'ia' },
   '爆破枪': { label: '跳射稳定与主武续航', primary: 'ia', secondary: 'ism', support: 'ssu' },
@@ -30,6 +36,15 @@ const familyProfiles: Record<WeaponFamily, FamilyProfile> = {
   '伞': { label: '主武耗墨与交战续航', primary: 'ism', secondary: 'iru', support: 'ssu' },
   '弓': { label: '蓄力射击与阵地转移', primary: 'ism', secondary: 'ssu', support: 'ia' },
   '刮水刀': { label: '蓄力斩击与接近目标', primary: 'ssu', secondary: 'ism', support: 'ia' },
+};
+
+const roleProfiles: Readonly<Record<string, RoleProfile>> = {
+  '前线 / 伏击': { label: '接敌与阵亡后的再进入', primary: 'qr', support: 'inkres' },
+  '前线 / 泛用': { label: '移动交战与基础容错', primary: 'ssu', support: 'inkres' },
+  '前线 / 高机动': { label: '动作稳定与近距离机动', primary: 'ia', support: 'ssu' },
+  '中后卫 / 压制': { label: '持续压制与横向转位', primary: 'rsu', support: 'qsj' },
+  '后卫 / 长射程': { label: '主武续航与安全转点', primary: 'ism', support: 'qsj' },
+  '支援 / 前中卫': { label: '协同移动与持续作战', primary: 'ssu', support: 'iru' },
 };
 
 function makeSlots(
@@ -49,6 +64,12 @@ function makeSlots(
  */
 export function getSystemRecommendations(weapon: Weapon): readonly SystemRecommendation[] {
   const profile = familyProfiles[weapon.family];
+  const roleProfile = roleProfiles[weapon.role] ?? null;
+  const rolePrimary = roleProfile?.primary ?? profile.primary;
+  const roleSupport = roleProfile?.support ?? profile.support;
+  const roleEvidence = roleProfile
+    ? `目录定位：${weapon.role}（${roleProfile.label}）`
+    : `目录定位：${weapon.role}；尚未用于自动分配`;
   const subEvidence = weapon.sub.baseInkCost === null
     ? `${weapon.sub.name} 的身份已核对；耗墨曲线仍待验证`
     : `${weapon.sub.name} 基础耗墨 ${weapon.sub.baseInkCost}% 已录入`;
@@ -61,13 +82,13 @@ export function getSystemRecommendations(weapon: Weapon): readonly SystemRecomme
     {
       id: 'main',
       name: '主武基础型',
-      desc: profile.label,
-      rationale: `按${weapon.family}的共通操作需求分配能力，作为调整起点；不引用打法定位或玩家胜率。`,
-      evidence: [`武器族：${weapon.family}`, `侧重：${profile.label}`, '保留快跳、粘脚与副防各 3AP'],
-      focusAbilityId: profile.primary,
+      desc: roleProfile ? `${profile.label} · ${roleProfile.label}` : profile.label,
+      rationale: `按${weapon.family}的共通操作需求与当前目录定位分配能力，作为调整起点；不引用对局胜率或玩家采用率。`,
+      evidence: [`武器族：${weapon.family}（${profile.label}）`, roleEvidence, '保留快跳、粘脚与副防各 3AP'],
+      focusAbilityId: rolePrimary,
       slots: makeSlots(
-        [profile.primary, profile.secondary, profile.support],
-        [profile.primary, profile.primary, profile.secondary, profile.secondary, profile.support, 'iru', 'qsj', 'inkres', 'subr'],
+        [rolePrimary, profile.secondary, roleSupport],
+        [rolePrimary, rolePrimary, profile.secondary, profile.secondary, roleSupport, 'iru', 'qsj', 'inkres', 'subr'],
       ),
     },
     {

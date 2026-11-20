@@ -37,6 +37,39 @@ void test('family model changes the main suggestion instead of returning one glo
   assert.equal(spinnerMain.focusAbilityId, 'rsu');
 });
 
+void test('reviewed role labels influence the main suggestion without claiming player evidence', () => {
+  const familyGroups = Map.groupBy(weapons, ({ family }) => family);
+  const sameFamilyPair = [...familyGroups.values()]
+    .flatMap((familyWeapons) =>
+      familyWeapons.flatMap((weapon, index) =>
+        familyWeapons.slice(index + 1).map((other) => [weapon, other] as const),
+      ),
+    )
+    .find(
+      ([first, second]) =>
+        first.role !== second.role &&
+        first.role !== '打法定位待验证' &&
+        second.role !== '打法定位待验证',
+    );
+  assert.ok(sameFamilyPair);
+
+  const [first, second] = sameFamilyPair;
+  const firstMain = getSystemRecommendations(first)[0];
+  const secondMain = getSystemRecommendations(second)[0];
+  assert.notDeepEqual(firstMain.slots, secondMain.slots);
+  assert.ok(firstMain.evidence.some((item) => item.includes(first.role)));
+  assert.ok(secondMain.evidence.some((item) => item.includes(second.role)));
+  assert.match(firstMain.rationale, /不引用对局胜率或玩家采用率/);
+});
+
+void test('unverified role labels remain visible but do not alter the family fallback', () => {
+  const weapon = weapons.find(({ role }) => role === '打法定位待验证')!;
+  const suggestion = getSystemRecommendations(weapon)[0];
+
+  assert.ok(suggestion.evidence.some((item) => item.includes('尚未用于自动分配')));
+  assert.equal(suggestion.desc.includes('打法定位待验证'), false);
+});
+
 void test('unknown sub-power effects are not filled with an invented sub-power claim', () => {
   const weapon = weapons.find(({ sub }) => sub.subPowerEffect === null)!;
   const suggestion = getSystemRecommendations(weapon)[1];
