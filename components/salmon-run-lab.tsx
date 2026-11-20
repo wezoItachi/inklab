@@ -14,12 +14,17 @@ import {
   GRIZZCO_FAMILY,
   grizzcoWeapons,
   matchSalmonWeapon,
-  parseSalmonRotations,
   regularSalmonWeapons,
   salmonWeapons,
   selectActiveRotation,
   type SalmonRotation,
 } from '@/lib/salmon-run';
+import {
+  parseSalmonScheduleEnvelope,
+  readSalmonScheduleCache,
+  writeSalmonScheduleCache,
+  type SalmonScheduleEnvelope,
+} from '@/lib/salmon-schedule';
 import { WeaponPicker } from '@/components/weapon-picker';
 import type { WeaponPickerItem } from '@/lib/weapon-picker';
 import {
@@ -55,9 +60,10 @@ const salmonWeaponPickerItems: readonly WeaponPickerItem[] = salmonWeapons.map(
 export function SalmonRunLab() {
   const [selectedIds, setSelectedIds] = useState(defaultIds),
     [rotation, setRotation] = useState<SalmonRotation | null>(null);
-  const [status, setStatus] = useState<'loading' | 'ready' | 'error'>(
+  const [status, setStatus] = useState<'loading' | 'live' | 'cached' | 'error'>(
       'loading',
     ),
+    [scheduleFetchedAt, setScheduleFetchedAt] = useState<string | null>(null),
     [pressureStrategy, setPressureStrategy] =
       useState<SalmonPressureStrategy>('synchronized');
   const [targetId, setTargetId] = useState('rush-goldie'),
@@ -100,9 +106,15 @@ export function SalmonRunLab() {
     ...new Set(salmonTargets.map((target) => target.category)),
   ];
 
-  const acceptRotation = (active: SalmonRotation) => {
+  const acceptSchedule = (
+    envelope: SalmonScheduleEnvelope,
+    mode: 'live' | 'cached',
+  ) => {
+    const active = selectActiveRotation(envelope.rotations);
+    if (!active) throw new Error('no regular rotation');
     setRotation(active);
-    setStatus('ready');
+    setStatus(mode);
+    setScheduleFetchedAt(envelope.fetchedAt);
     const matches = active.weapons.map((item) => matchSalmonWeapon(item.name));
     if (
       !manuallyEdited.current &&
@@ -111,31 +123,46 @@ export function SalmonRunLab() {
     )
       setSelectedIds(matches.map((item) => item!.id));
   };
-  const fetchRotation = async () => {
-    const response = await fetch('https://splatoon3.ink/data/schedules.json', {
+  const fetchSchedule = async () => {
+    const response = await fetch('/api/salmon-schedule', {
       cache: 'no-store',
     });
     if (!response.ok) throw new Error(`schedule ${response.status}`);
-    const active = selectActiveRotation(
-      parseSalmonRotations(await response.json()),
-    );
-    if (!active) throw new Error('no regular rotation');
-    return active;
+    const envelope = parseSalmonScheduleEnvelope(await response.json());
+    if (!envelope) throw new Error('invalid schedule envelope');
+    return envelope;
+  };
+  const acceptCachedSchedule = () => {
+    const cached = readSalmonScheduleCache(window.localStorage);
+    if (!cached) return false;
+    try {
+      acceptSchedule(cached, 'cached');
+      return true;
+    } catch {
+      return false;
+    }
   };
   const loadSchedule = () => {
     setStatus('loading');
-    void fetchRotation()
-      .then(acceptRotation)
-      .catch(() => setStatus('error'));
+    void fetchSchedule()
+      .then((envelope) => {
+        writeSalmonScheduleCache(window.localStorage, envelope);
+        acceptSchedule(envelope, 'live');
+      })
+      .catch(() => {
+        if (!acceptCachedSchedule()) setStatus('error');
+      });
   };
   useEffect(() => {
     let active = true;
-    void fetchRotation()
-      .then((value) => {
-        if (active) acceptRotation(value);
+    void fetchSchedule()
+      .then((envelope) => {
+        if (!active) return;
+        writeSalmonScheduleCache(window.localStorage, envelope);
+        acceptSchedule(envelope, 'live');
       })
       .catch(() => {
-        if (active) setStatus('error');
+        if (active && !acceptCachedSchedule()) setStatus('error');
       });
     return () => {
       active = false;
@@ -226,23 +253,30 @@ export function SalmonRunLab() {
               </span>
             ))}
           </div>
-        ) : (
-          <output aria-live="polite" className={`salmon-fetch-state ${status}`}>
+        ) : null}
+        <output aria-live="polite" className={`salmon-fetch-state ${status}`}>
+          {status === 'live' ? (
+            <Check size={14} />
+          ) : (
             <AlertTriangle size={14} />
-            <span>
-              {status === 'error'
-                ? '实时数据读取失败，不影响下方手动分析。'
-                : '正在连接 splatoon3.ink 公开日程数据…'}
-            </span>
-          </output>
-        )}
+          )}
+          <span>
+            {status === 'live'
+              ? `日程已校验 · ${scheduleFetchedAt ? new Date(scheduleFetchedAt).toLocaleString('zh-CN') : '刚刚更新'}`
+              : status === 'cached'
+                ? `上游暂时不可用，正在使用最近缓存 · ${scheduleFetchedAt ? new Date(scheduleFetchedAt).toLocaleString('zh-CN') : '更新时间未知'}`
+                : status === 'error'
+                  ? '实时数据与本地缓存均不可用，不影响下方手动分析。'
+                  : '正在通过 INKLAB 日程接口校验 splatoon3.ink 公开数据…'}
+          </span>
+        </output>
         <div className="salmon-source-note">
           <span>
             日程来源：
             <a href="https://splatoon3.ink" target="_blank" rel="noreferrer">
               splatoon3.ink
             </a>
-            。当前仅读取地图与武器名称，不复制上游图片素材。
+            。当前仅经 INKLAB 接口读取地图与武器名称，不复制上游图片素材。
           </span>
           <button
             type="button"
@@ -407,7 +441,8 @@ export function SalmonRunLab() {
           ))}
         </div>
         <p className="salmon-event-boundary">
-          这是 INKLAB 的武器标签初评，不是社区共识或通关保证。狂潮会继续以下方独立 DPS
+          这是 INKLAB
+          的武器标签初评，不是社区共识或通关保证。狂潮会继续以下方独立 DPS
           压力实验为准；其余事件将在地图与社区样本接入后分层校准。
         </p>
       </section>

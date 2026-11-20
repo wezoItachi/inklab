@@ -193,6 +193,9 @@ const curatedSalmonWeapons: readonly Omit<
 ] as const;
 
 const liveAliases: Readonly<Record<string, readonly string[]>> = {
+  'N-ZAP85': ["N-ZAP '85"],
+  斯普拉旋转枪: ['Mini Splatling'],
+  '14式竹筒枪·甲': ['Bamboozler 14 Mk I'],
   'LACT-450': ['REEF-LUX 450'],
   回旋泼桶: ['Dread Wringer'],
   工作刮水刀: ['Splatana Wiper'],
@@ -399,7 +402,7 @@ export function getCompositionAnalysis(items: readonly SalmonWeapon[]) {
 }
 
 function normalizeName(value: string) {
-  return value.toLowerCase().replace(/[\s·・_-]/g, '');
+  return value.toLowerCase().replace(/[\s·・_'’.-]/g, '');
 }
 
 export function matchSalmonWeapon(name: string) {
@@ -409,58 +412,6 @@ export function matchSalmonWeapon(name: string) {
       (alias) => normalizeName(alias) === normalized,
     ),
   );
-}
-
-export function parseSalmonRotations(payload: unknown): SalmonRotation[] {
-  const root = payload as { data?: unknown };
-  const body = (
-    root &&
-    typeof root === 'object' &&
-    root.data &&
-    typeof root.data === 'object'
-      ? root.data
-      : payload
-  ) as { coopGroupingSchedule?: { regularSchedules?: { nodes?: unknown[] } } };
-  const nodes = body?.coopGroupingSchedule?.regularSchedules?.nodes;
-  if (!Array.isArray(nodes)) return [];
-  return nodes.flatMap((node) => {
-    if (!node || typeof node !== 'object') return [];
-    const value = node as {
-      startTime?: unknown;
-      endTime?: unknown;
-      setting?: { coopStage?: { name?: unknown }; weapons?: unknown[] };
-    };
-    if (
-      typeof value.startTime !== 'string' ||
-      typeof value.endTime !== 'string' ||
-      typeof value.setting?.coopStage?.name !== 'string' ||
-      !Array.isArray(value.setting.weapons)
-    )
-      return [];
-    const parsedWeapons = value.setting.weapons.flatMap((weapon) => {
-      if (!weapon || typeof weapon !== 'object') return [];
-      const candidate = weapon as {
-        __splatoon3ink_id?: unknown;
-        id?: unknown;
-        name?: unknown;
-      };
-      if (typeof candidate.name !== 'string') return [];
-      const rawId = candidate.__splatoon3ink_id ?? candidate.id;
-      const id =
-        typeof rawId === 'string' || typeof rawId === 'number'
-          ? String(rawId)
-          : candidate.name;
-      return [{ id, name: candidate.name }];
-    });
-    return [
-      {
-        stage: value.setting.coopStage.name,
-        startTime: value.startTime,
-        endTime: value.endTime,
-        weapons: parsedWeapons,
-      },
-    ];
-  });
 }
 
 export function selectActiveRotation(

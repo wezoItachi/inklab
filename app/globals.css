@@ -2782,6 +2782,12 @@ button {
 .salmon-fetch-state.error {
   color: #a63b35;
 }
+.salmon-fetch-state.live {
+  color: #49751c;
+}
+.salmon-fetch-state.cached {
+  color: #8a5b12;
+}
 .salmon-source-note {
   display: flex;
   align-items: center;

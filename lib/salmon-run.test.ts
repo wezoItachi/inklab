@@ -6,11 +6,11 @@ import {
   GRIZZCO_FAMILY,
   grizzcoWeapons,
   matchSalmonWeapon,
-  parseSalmonRotations,
   regularSalmonWeapons,
   salmonWeapons,
   selectActiveRotation,
 } from './salmon-run.ts';
+import { parseSalmonRotations } from './salmon-schedule.ts';
 
 void test('salmon weapon draft has unique ids and explicit tags', () => {
   assert.equal(regularSalmonWeapons.length, 63);
@@ -69,6 +69,13 @@ void test('live English Grizzco names match the local catalog', () => {
   }
 });
 
+void test('current live English rotation names match local weapon chassis', () => {
+  assert.equal(matchSalmonWeapon("N-ZAP '85")?.name, 'N-ZAP85');
+  assert.equal(matchSalmonWeapon('Splat Dualies')?.name, '斯普拉机动枪');
+  assert.equal(matchSalmonWeapon('Mini Splatling')?.name, '斯普拉旋转枪');
+  assert.equal(matchSalmonWeapon('Bamboozler 14 Mk I')?.name, '14式竹筒枪·甲');
+});
+
 void test('composition signature describes role repetition', () => {
   const byRole = (role: (typeof salmonWeapons)[number]['role']) =>
     salmonWeapons.filter((item) => item.role === role);
@@ -112,14 +119,27 @@ void test('schedule parser accepts wrapped splatoon3.ink data and selects curren
             {
               startTime: '2026-10-07T00:00:00Z',
               endTime: '2026-10-08T00:00:00Z',
-              setting: { coopStage: { name: 'Old' }, weapons: [] },
+              setting: {
+                coopStage: { name: 'Old' },
+                weapons: [
+                  { name: 'A' },
+                  { name: 'B' },
+                  { name: 'C' },
+                  { name: 'D' },
+                ],
+              },
             },
             {
               startTime: '2026-10-08T00:00:00Z',
               endTime: '2026-10-09T00:00:00Z',
               setting: {
                 coopStage: { name: 'Current' },
-                weapons: [{ name: 'Splattershot', __splatoon3ink_id: '10' }],
+                weapons: [
+                  { name: 'Splattershot', __splatoon3ink_id: '10' },
+                  { name: 'B', __splatoon3ink_id: '11' },
+                  { name: 'C', __splatoon3ink_id: '12' },
+                  { name: 'D', __splatoon3ink_id: '13' },
+                ],
               },
             },
           ],
