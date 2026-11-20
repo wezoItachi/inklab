@@ -2818,6 +2818,7 @@ button {
 }
 .salmon-editor,
 .salmon-results,
+.salmon-event-panel,
 .glowfly-panel {
   border: 1px solid var(--line);
   border-radius: 20px;
@@ -2923,32 +2924,53 @@ button {
   font-size: 8px;
   line-height: 1.6;
 }
-.salmon-pattern {
+.salmon-verdict {
   border-radius: 15px;
   background: #292930;
   padding: 15px;
   color: #fff;
 }
-.salmon-pattern > div {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-.salmon-pattern small {
+.salmon-verdict small {
+  display: block;
   color: #aaa;
   font: 800 7px monospace;
   letter-spacing: 0.1em;
 }
-.salmon-pattern strong {
+.salmon-verdict strong {
+  display: block;
+  margin-top: 8px;
   color: var(--acid);
-  font: 900 25px monospace;
-  letter-spacing: 0.08em;
+  font-size: 25px;
+  line-height: 1.1;
 }
-.salmon-pattern p {
-  margin: 9px 0 0;
+.salmon-verdict.balanced strong {
+  color: #fff;
+}
+.salmon-verdict.mixed strong {
+  color: #ffd464;
+}
+.salmon-verdict.demanding strong {
+  color: #ff8e80;
+}
+.salmon-verdict b {
+  display: block;
+  margin-top: 7px;
+  font-size: 10px;
+}
+.salmon-verdict p {
+  margin: 7px 0 0;
   color: #d2d2d7;
   font-size: 8px;
   line-height: 1.6;
+}
+.salmon-verdict em {
+  display: block;
+  margin-top: 10px;
+  border-top: 1px solid #46464e;
+  padding-top: 8px;
+  color: #92929c;
+  font: 700 7px monospace;
+  font-style: normal;
 }
 .salmon-findings {
   margin-top: 13px;
@@ -2982,6 +3004,89 @@ button {
   border-color: #e5b951;
   background: #fff6da;
   color: #775b19;
+}
+.salmon-event-panel {
+  margin-top: 20px;
+}
+.salmon-event-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 9px;
+}
+.salmon-event-grid article {
+  min-width: 0;
+  border: 1px solid #ddd8ce;
+  border-top: 4px solid #8b8b96;
+  border-radius: 13px;
+  background: #f7f5f0;
+  padding: 11px;
+}
+.salmon-event-grid article.easy {
+  border-top-color: var(--acid);
+}
+.salmon-event-grid article.steady {
+  border-top-color: #7fc2a0;
+}
+.salmon-event-grid article.caution {
+  border-top-color: #e8ba50;
+}
+.salmon-event-grid article.hard {
+  border-top-color: #e67468;
+}
+.salmon-event-grid header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 8px;
+}
+.salmon-event-grid small {
+  color: #858078;
+  font: 800 7px monospace;
+}
+.salmon-event-grid h3 {
+  margin: 4px 0 0;
+  font-size: 11px;
+}
+.salmon-event-grid h3 span {
+  margin-left: 5px;
+  color: #817a91;
+  font-size: 7px;
+  font-weight: 700;
+}
+.salmon-event-grid header > strong {
+  flex: none;
+  border-radius: 999px;
+  background: #292930;
+  padding: 5px 7px;
+  color: #fff;
+  font-size: 7px;
+}
+.salmon-event-grid article.easy header > strong {
+  background: #dfff66;
+  color: #25252b;
+}
+.salmon-event-grid article.caution header > strong {
+  background: #fff0c0;
+  color: #715713;
+}
+.salmon-event-grid article.hard header > strong {
+  background: #ffe0dc;
+  color: #8d3f35;
+}
+.salmon-event-grid p {
+  margin: 9px 0 0;
+  color: #666159;
+  font-size: 8px;
+  line-height: 1.55;
+}
+.salmon-event-boundary {
+  margin: 12px 0 0;
+  border-left: 3px solid var(--purple);
+  background: #f0ebff;
+  padding: 9px 11px;
+  color: #63577f;
+  font-size: 8px;
+  line-height: 1.55;
 }
 .glowfly-panel {
   margin-top: 20px;
@@ -3171,8 +3276,17 @@ button {
   }
   .salmon-editor,
   .salmon-results,
+  .salmon-event-panel,
   .glowfly-panel {
     padding: 15px;
+  }
+  .salmon-event-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media (max-width: 520px) {
+  .salmon-event-grid {
+    grid-template-columns: 1fr;
   }
 }
 

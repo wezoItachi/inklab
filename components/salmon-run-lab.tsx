@@ -31,6 +31,10 @@ import {
   salmonTargets,
   type SalmonPressureStrategy,
 } from '@/lib/salmon-pressure';
+import {
+  assessSalmonComposition,
+  assessSalmonEvents,
+} from '@/lib/salmon-assessment';
 
 const defaultIds = [
   'splat-roller',
@@ -63,6 +67,8 @@ export function SalmonRunLab() {
     (id) => salmonWeapons.find((item) => item.id === id) ?? salmonWeapons[0],
   );
   const analysis = getCompositionAnalysis(selected);
+  const compositionAssessment = assessSalmonComposition(selected);
+  const eventAssessments = assessSalmonEvents(selected);
   const liveMatches =
     rotation?.weapons.map((item) => matchSalmonWeapon(item.name)) ?? [];
   const canApplyLive = liveMatches.length === 4 && liveMatches.every(Boolean);
@@ -317,7 +323,7 @@ export function SalmonRunLab() {
             <AlertTriangle size={15} />
             <p>
               <b>编成标签草案</b>
-              　当前标签只用来暴露编成缺口，不代表强度排名；后续需结合打工专用伤害、射速、耗墨和地图路线实战校准。
+              　当前标签用于生成第一层系统初评；它不是玩家胜率或社区排名，仍需结合打工专用参数、地图、潮位与实战样本校准。
             </p>
           </div>
         </section>
@@ -330,19 +336,18 @@ export function SalmonRunLab() {
             <span>02</span>
             <div>
               <h2>编成结构分析</h2>
-              <p>字母仅表示职能重复形态，不是武器等级。</p>
+              <p>先给玩家可读结论；字母结构仅保留为开发诊断。</p>
             </div>
           </div>
-          <div className="salmon-pattern">
-            <div>
-              <small>COMPOSITION PATTERN</small>
-              <strong>{analysis.pattern}</strong>
-            </div>
-            <p>
-              {analysis.pattern === 'ABCD'
-                ? '四类职能均有覆盖，需继续核对单项性能是否足够。'
-                : `${analysis.pattern} 表示存在职能重复；重复可能强化一项任务，也可能留下覆盖空缺。`}
-            </p>
+          <div
+            className={`salmon-verdict ${compositionAssessment.grade}`}
+            aria-label={`INKLAB 系统初评：${compositionAssessment.label}`}
+          >
+            <small>INKLAB SYSTEM ASSESSMENT / 系统初评</small>
+            <strong>{compositionAssessment.label}</strong>
+            <b>{compositionAssessment.recommendation}</b>
+            <p>{compositionAssessment.summary}</p>
+            <em>开发诊断：{analysis.pattern} · 仅表示职能重复结构</em>
           </div>
           <div className="salmon-findings">
             <h3>
@@ -372,6 +377,42 @@ export function SalmonRunLab() {
       </div>
 
       <section
+        className="salmon-event-panel lab-instrument"
+        data-instrument="SPECIAL WAVE / ASSESSMENT"
+      >
+        <div className="salmon-section-head">
+          <span>03</span>
+          <div>
+            <h2>特殊事件适配度</h2>
+            <p>
+              根据当前四把武器的职能标签给出难度倾向；地图、潮位、点位和玩家熟练度尚未计入。
+            </p>
+          </div>
+        </div>
+        <div className="salmon-event-grid">
+          {eventAssessments.map((event) => (
+            <article className={event.tone} key={event.id}>
+              <header>
+                <div>
+                  <small>{event.influence}</small>
+                  <h3>
+                    {event.name}
+                    {event.alias && <span>{event.alias}</span>}
+                  </h3>
+                </div>
+                <strong>{event.label}</strong>
+              </header>
+              <p>{event.summary}</p>
+            </article>
+          ))}
+        </div>
+        <p className="salmon-event-boundary">
+          这是 INKLAB 的武器标签初评，不是社区共识或通关保证。狂潮会继续以下方独立 DPS
+          压力实验为准；其余事件将在地图与社区样本接入后分层校准。
+        </p>
+      </section>
+
+      <section
         className="glowfly-panel lab-instrument"
         data-instrument="DPS PRESSURE / OUTPUT"
       >
@@ -379,7 +420,7 @@ export function SalmonRunLab() {
           <div>
             <span>
               <Activity size={15} />
-              实验 03
+              实验 04
             </span>
             <h2>光蝇纯输出压力测试</h2>
             <p>
