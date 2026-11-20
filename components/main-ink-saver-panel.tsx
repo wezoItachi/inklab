@@ -10,12 +10,16 @@ export function MainInkSaverPanel({
   ap,
   setAp,
   isPreview,
+  equippedAp,
+  clearPreview,
 }: {
   weapon: Weapon;
   ability?: Ability;
   ap: number;
   setAp: (ap: number) => void;
   isPreview: boolean;
+  equippedAp: number;
+  clearPreview: () => void;
 }) {
   const analysis = getMainInkSaverAnalysis(weapon.id, ap);
   const primary = analysis.profiles[0];
@@ -114,8 +118,17 @@ export function MainInkSaverPanel({
         </div>
       )}
       <div className="ap-preview-label">
-        <span>{isPreview ? '正在试算' : 'AP 曲线试算'}</span>
-        <small>下方按钮只更新右侧结果，不修改左侧 57AP 配装</small>
+        <div>
+          <span>{isPreview ? `正在试算 ${analysis.ap}AP` : 'AP 曲线试算'}</span>
+          <small>
+            配装值 {equippedAp}AP · 下方按钮只更新右侧结果，不修改左侧 57AP 配装
+          </small>
+        </div>
+        {isPreview ? (
+          <button type="button" onClick={clearPreview}>
+            恢复配装值
+          </button>
+        ) : null}
       </div>
       <div className="breakpoints">
         {quickAp.map((value) => (

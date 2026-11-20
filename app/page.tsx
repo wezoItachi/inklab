@@ -193,8 +193,8 @@ export default function Home() {
     [slots],
   );
   const equippedAp = totalAp(slots);
-  const currentAp =
-    analysisApPreview ?? totals.find((x) => x.a?.id === focus)?.ap ?? 0;
+  const equippedFocusAp = totals.find((x) => x.a?.id === focus)?.ap ?? 0;
+  const currentAp = analysisApPreview ?? equippedFocusAp;
   const weapon = getWeapon(weaponId);
   const recommendations = useMemo(
     () => getSystemRecommendations(weapon),
@@ -1134,6 +1134,8 @@ export default function Home() {
                       ap={currentAp}
                       setAp={setAnalysisApPreview}
                       isPreview={analysisApPreview !== null}
+                      equippedAp={equippedFocusAp}
+                      clearPreview={() => setAnalysisApPreview(null)}
                     />
                     <div className="accordions">
                       <Suspense
@@ -1249,12 +1251,16 @@ function EffectPanel({
   ap,
   setAp,
   isPreview,
+  equippedAp,
+  clearPreview,
 }: {
   weapon: Weapon;
   id: string;
   ap: number;
   setAp: (ap: number) => void;
   isPreview: boolean;
+  equippedAp: number;
+  clearPreview: () => void;
 }) {
   const a = abilities.find((x) => x.id === id);
   const isMain = id === 'ism';
@@ -1283,6 +1289,8 @@ function EffectPanel({
             ap={ap}
             setAp={setAp}
             isPreview={isPreview}
+            equippedAp={equippedAp}
+            clearPreview={clearPreview}
           />
         </Suspense>
       ) : isSub ? (
