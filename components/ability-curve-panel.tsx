@@ -8,6 +8,21 @@ const samplePoints = [0, 3, 10, 20, 30, 57] as const;
 export function AbilityCurvePanel({ abilityId }: { abilityId: string }) {
   const curve = getAbilityCurveDefinition(abilityId);
 
+  if (curve.status === 'not-applicable') {
+    return (
+      <section className="ability-curve ability-curve-fixed">
+        <div className="ability-curve-head">
+          <div>
+            <small>FIXED ABILITY / 固定能力</small>
+            <h3>{curve.title}</h3>
+          </div>
+          <span>{curve.formulaLabel}</span>
+        </div>
+        <p>{curve.sourceNote}</p>
+      </section>
+    );
+  }
+
   if (curve.status === 'pending') {
     return (
       <section className="ability-curve ability-curve-pending">

@@ -6,6 +6,7 @@ import { AbilityIcon } from '@/components/ability-icon';
 import { AbilityCurvePanel } from '@/components/ability-curve-panel';
 import { abilities, abilityAliases } from '@/lib/abilities';
 import {
+  getAbilityCurveDefinition,
   hasMinimumEffectiveAbilityValue,
   hasVerifiedAbilityCurve,
 } from '@/lib/ability-curves';
@@ -64,6 +65,7 @@ export function AbilityWiki({
   );
   const current =
     abilities.find((ability) => ability.id === focus) ?? abilities[0];
+  const currentCurve = getAbilityCurveDefinition(current.id);
 
   return (
     <section className="workspace wiki-page">
@@ -138,15 +140,21 @@ export function AbilityWiki({
             </span>
             <span>{current.group}</span>
             <span>
-              {current.id === 'ism' ? '正式 AP 曲线已接入' : 'AP 曲线待核验'}
+              {currentCurve.status === 'verified'
+                ? '正式 AP 曲线已接入'
+                : currentCurve.status === 'not-applicable'
+                  ? '固定能力 · AP 曲线不适用'
+                  : 'AP 曲线待核验'}
             </span>
           </div>
           <div className="wiki-callout">
             <b>在实验室中的用途</b>
             <p>
-              {current.id === 'ism'
+              {currentCurve.status === 'verified'
                 ? '主武器省墨已接入正式效果曲线；进入实验室后会按当前武器的已核对基础耗墨展示完整动作次数与下一临界点。'
-                : '这项能力可以用于配装编辑和分类；完整 AP 效果、最小有效投入与关键临界点仍待逐项核验，目前不输出未经核对的阈值结论。'}
+                : currentCurve.status === 'not-applicable'
+                  ? '这项能力按对应部位的固定主能力规则生效，不会被误当成可重复堆叠的通用 AP 曲线；具体触发条件与效果仍在能力语义中单独说明。'
+                  : '这项能力可以用于配装编辑和分类；完整 AP 效果、最小有效投入与关键临界点仍待逐项核验，目前不输出未经核对的阈值结论。'}
             </p>
           </div>
           <AbilityCurvePanel abilityId={current.id} />

@@ -34,6 +34,16 @@ void test('unverified abilities never expose invented curve values', () => {
   assert.equal(hasMinimumEffectiveAbilityValue('iru'), false);
 });
 
+void test('fixed gear-exclusive abilities are not misreported as pending AP curves', () => {
+  for (const abilityId of ['og', 'ninja', 'stealth']) {
+    const definition = getAbilityCurveDefinition(abilityId);
+    assert.equal(definition.status, 'not-applicable');
+    assert.equal(definition.thresholdScope, 'not-applicable');
+    assert.equal(getAbilityCurveSample(abilityId, 10), null);
+    assert.equal(hasMinimumEffectiveAbilityValue(abilityId), false);
+  }
+});
+
 void test('shared AP points only include equipable main and sub combinations', () => {
   assert.equal(representableAbilityPoints.includes(1), false);
   assert.equal(representableAbilityPoints.includes(3), true);

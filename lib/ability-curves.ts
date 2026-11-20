@@ -12,7 +12,7 @@ export const representableAbilityPoints = Object.freeze(
     .sort((left, right) => left - right),
 );
 
-export type AbilityCurveStatus = 'verified' | 'pending';
+export type AbilityCurveStatus = 'verified' | 'pending' | 'not-applicable';
 
 export type AbilityCurveSample = {
   ap: number;
@@ -29,7 +29,7 @@ export type AbilityCurveDefinition = {
   sourceNote: string;
   minimumEffectiveAp: number | null;
   minimumEffectiveRule: string;
-  thresholdScope: 'weapon-specific' | 'pending';
+  thresholdScope: 'weapon-specific' | 'pending' | 'not-applicable';
   calculate: ((ap: number) => AbilityCurveSample) | null;
 };
 
@@ -73,9 +73,39 @@ const verifiedCurves = new Map<string, AbilityCurveDefinition>([
   [mainInkSaverCurve.abilityId, mainInkSaverCurve],
 ]);
 
+const fixedMainAbilityIds = new Set([
+  'og',
+  'lde',
+  'tenacity',
+  'comeback',
+  'ninja',
+  'haunt',
+  'thermal',
+  'rp',
+  'doubler',
+  'stealth',
+  'object',
+  'drop',
+]);
+
 export function getAbilityCurveDefinition(
   abilityId: string,
 ): AbilityCurveDefinition {
+  if (fixedMainAbilityIds.has(abilityId)) {
+    return {
+      abilityId,
+      status: 'not-applicable',
+      title: '固定主能力',
+      outputLabel: '不使用 AP 曲线',
+      formulaLabel: '装备后按固定规则生效',
+      sourceNote:
+        '这项能力只能出现在对应部位的主能力槽，本身不是可按 0–57AP 重复堆叠的通用能力。',
+      minimumEffectiveAp: null,
+      minimumEffectiveRule: '固定主能力不参与本站通用 AP 最小有效值筛选。',
+      thresholdScope: 'not-applicable',
+      calculate: null,
+    };
+  }
   return (
     verifiedCurves.get(abilityId) ?? {
       abilityId,

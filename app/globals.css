@@ -1898,6 +1898,16 @@ button {
   border-color: var(--line);
   background: #faf9f6;
 }
+.ability-curve-fixed {
+  border-color: #b9d8ca;
+  background: #f2faf6;
+}
+.ability-curve-fixed > p {
+  margin: 9px 0 0;
+  color: #4f6f61;
+  font-size: 8px;
+  line-height: 1.55;
+}
 .library-page {
   max-width: 1000px;
 }
