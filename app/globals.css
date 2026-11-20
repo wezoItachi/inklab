@@ -1486,30 +1486,6 @@ button {
   font-size: 8px;
   line-height: 1.5;
 }
-.weapon-list > button {
-  display: grid;
-  grid-template-columns: 48px 1fr 26px;
-  gap: 10px;
-  align-items: center;
-  text-align: left;
-  border: 1px solid var(--line);
-  background: #faf9f6;
-  padding: 10px;
-}
-.weapon-list > button.selected {
-  border: 2px solid var(--purple);
-  padding: 9px;
-  background: #f7f4ff;
-}
-.weapon-dot {
-  display: grid;
-  place-items: center;
-  width: 43px;
-  height: 43px;
-  border-radius: 14px 5px;
-  color: #fff;
-  font-weight: 900;
-}
 .weapon-list div {
   display: flex;
   flex-direction: column;
@@ -1526,19 +1502,6 @@ button {
   font: 700 8px monospace;
   color: var(--purple);
   font-style: normal;
-}
-.tick {
-  display: grid;
-  place-items: center;
-  width: 22px;
-  height: 22px;
-  border-radius: 50%;
-  background: #e5e2dc;
-  color: #777;
-}
-.selected .tick {
-  background: var(--purple);
-  color: #fff;
 }
 .goal-pills {
   display: grid;
@@ -1580,39 +1543,6 @@ button {
 .planner-part-list small {
   font-size: 7px;
   color: #777;
-}
-.locks {
-  display: flex;
-  flex-direction: column;
-  gap: 7px;
-}
-.locks button {
-  display: flex;
-  gap: 10px;
-  align-items: center;
-  text-align: left;
-  border: 1px solid var(--line);
-  background: #fff;
-  padding: 11px;
-  color: #bbb;
-}
-.locks button.on {
-  color: var(--purple);
-  background: #f7f4ff;
-  border-color: #cfc5ff;
-}
-.locks span {
-  display: flex;
-  flex-direction: column;
-  gap: 3px;
-}
-.locks b {
-  font-size: 10px;
-  color: var(--ink);
-}
-.locks small {
-  font-size: 8px;
-  color: #888;
 }
 .result-kicker {
   font: 800 9px monospace;
@@ -1763,61 +1693,6 @@ button {
 .candidate-title small {
   font-weight: 400;
   color: #999;
-}
-.gear-candidates {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 8px;
-}
-.gear-candidates button {
-  display: grid;
-  grid-template-columns: 44px 1fr 20px;
-  gap: 8px;
-  align-items: center;
-  text-align: left;
-  border: 1px solid var(--line);
-  background: #fff;
-  padding: 9px;
-}
-.gear-candidates button.best {
-  border: 2px solid var(--purple);
-  padding: 8px;
-}
-.shoe-art {
-  display: grid;
-  place-items: center;
-  width: 40px;
-  height: 40px;
-  border-radius: 13px 5px;
-  background: var(--purple);
-  color: #fff;
-  font-weight: 900;
-}
-.shoe-art.alt {
-  background: #18a999;
-}
-.gear-candidates div {
-  display: flex;
-  flex-direction: column;
-  gap: 3px;
-}
-.gear-candidates b {
-  font-size: 10px;
-}
-.gear-candidates small {
-  font-size: 8px;
-  color: #777;
-}
-.gear-candidates em {
-  font-size: 8px;
-  color: var(--purple);
-  font-style: normal;
-}
-.gear-candidates svg {
-  color: var(--purple);
-}
-.plan-action {
-  margin-top: 17px;
 }
 .wiki-page {
   max-width: 1260px;
@@ -2147,8 +2022,15 @@ button {
     border-bottom: 1px solid var(--line);
     min-height: 65px;
   }
-  .gear-candidates {
-    grid-template-columns: 1fr;
+  .planner-slot-result {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .ap-preview-label {
+    align-items: stretch;
+    flex-direction: column;
+  }
+  .ap-preview-label > button {
+    width: 100%;
   }
   .wiki-abilities {
     grid-template-columns: 1fr;
