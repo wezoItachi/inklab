@@ -915,6 +915,31 @@ button {
   font-size: 8px;
   color: #777;
 }
+.effect-boundary,
+.ap-preview-label {
+  border: 1px dashed #cfc8df;
+  background: #faf8ff;
+  color: #696477;
+  padding: 8px 10px;
+  margin: 10px 0;
+  font-size: 8px;
+  line-height: 1.5;
+}
+.ap-preview-label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+.ap-preview-label span {
+  color: var(--purple);
+  font: 800 8px monospace;
+  white-space: nowrap;
+}
+.ap-preview-label small {
+  text-align: right;
+  font-size: 7px;
+}
 .judgement {
   display: flex;
   align-items: flex-start;
@@ -1384,6 +1409,70 @@ button {
   flex-direction: column;
   gap: 7px;
 }
+.planner-add-weapon {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  border: 1px solid var(--line);
+  background: #fff;
+  padding: 7px 9px;
+  font-size: 8px;
+  font-weight: 800;
+}
+.planner-selected-weapon {
+  display: grid;
+  grid-template-columns: 48px minmax(0, 1fr) 28px;
+  gap: 10px;
+  align-items: center;
+  border: 1px solid var(--line);
+  background: #faf9f6;
+  padding: 9px;
+}
+.planner-selected-weapon > img {
+  width: 46px;
+  height: 46px;
+  object-fit: contain;
+}
+.planner-selected-weapon > div {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 3px;
+}
+.planner-selected-weapon b {
+  font-size: 10px;
+}
+.planner-selected-weapon small {
+  font-size: 8px;
+  color: #777;
+}
+.planner-selected-weapon em {
+  overflow: hidden;
+  color: var(--purple);
+  font: 700 7px monospace;
+  font-style: normal;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.planner-selected-weapon > button {
+  display: grid;
+  place-items: center;
+  width: 26px;
+  height: 26px;
+  border: 1px solid var(--line);
+  background: #fff;
+  color: #777;
+}
+.planner-selected-weapon > button:disabled {
+  cursor: not-allowed;
+  opacity: 0.35;
+}
+.planner-limit {
+  margin: 8px 0 0;
+  color: #777;
+  font-size: 8px;
+  line-height: 1.5;
+}
 .weapon-list > button {
   display: grid;
   grid-template-columns: 48px 1fr 26px;
@@ -1453,6 +1542,31 @@ button {
 .goal-pills button.active {
   background: var(--ink);
   color: var(--acid);
+}
+.planner-part-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 7px;
+}
+.planner-part-list article {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  border: 1px solid var(--line);
+  background: #faf9f6;
+  padding: 9px;
+}
+.planner-part-list article.active {
+  border-color: var(--purple);
+  background: #f4f0ff;
+}
+.planner-part-list b {
+  font-size: 10px;
+}
+.planner-part-list span,
+.planner-part-list small {
+  font-size: 7px;
+  color: #777;
 }
 .locks {
   display: flex;
@@ -1582,6 +1696,53 @@ button {
 }
 .trade svg {
   color: #629526;
+}
+.planner-slot-result {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 7px;
+}
+.planner-slot-result > span {
+  display: flex;
+  min-height: 66px;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  border: 1px solid var(--line);
+  background: #faf9f6;
+  padding: 9px;
+  text-align: center;
+}
+.planner-slot-result > span.shared {
+  border-color: #b7d77c;
+  background: #f3fae8;
+}
+.planner-slot-result > span.conflict {
+  border-color: #e2c17c;
+  background: #fff8e8;
+}
+.planner-slot-result b {
+  color: var(--purple);
+  font: 900 9px monospace;
+}
+.planner-slot-result small {
+  font-size: 8px;
+}
+.planner-empty {
+  display: grid;
+  min-height: 360px;
+  place-items: center;
+  align-content: center;
+  color: #777;
+  text-align: center;
+}
+.planner-empty h2 {
+  margin: 12px 0 4px;
+  color: var(--ink);
+  font-size: 18px;
+}
+.planner-empty p {
+  font-size: 9px;
 }
 .candidate-title {
   margin-top: 18px;

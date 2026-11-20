@@ -1,4 +1,5 @@
 import { abilities } from './abilities.ts';
+import { getAbilityCurveDefinition } from './ability-curves.ts';
 import type { Weapon } from './weapon-catalog.ts';
 
 export type EquippedAbilityTotal = {
@@ -34,12 +35,18 @@ function equippedMetrics(
   const metrics = ids.flatMap((id) => {
     const ap = apOf(totals, id);
     const ability = abilityById.get(id);
+    const curve = getAbilityCurveDefinition(id);
     return ap > 0 && ability
       ? [
           {
             label: ability.short,
             value: `${ap}AP`,
-            note: `${ability.name}已装备；精确效果曲线仍按字段状态单独核验。`,
+            note:
+              curve.status === 'verified'
+                ? `${ability.name}已装备；正式效果曲线可在上方单项分析中试算。`
+                : curve.status === 'not-applicable'
+                  ? `${ability.name}是固定主能力；按触发规则说明，不进入通用 AP 曲线。`
+                  : `${ability.name}已装备；精确效果曲线仍按字段状态单独核验。`,
             state: 'equipped' as const,
           },
         ]
@@ -193,7 +200,8 @@ export function buildLoadoutContextSections(
     {
       id: 'other',
       title: '其他能力',
-      summary: otherIds.length > 0 ? `${otherIds.length} 项已装备` : '没有剩余能力',
+      summary:
+        otherIds.length > 0 ? `${otherIds.length} 项已装备` : '没有剩余能力',
       metrics: equippedMetrics(
         totals,
         otherIds,

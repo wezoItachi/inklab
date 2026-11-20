@@ -1,206 +1,285 @@
 'use client';
 
-import { useState, type ReactNode } from 'react';
-import { Check, Footprints, Layers, Lock, Plus } from 'lucide-react';
+import { useMemo, useState, type ReactNode } from 'react';
+import { Check, Layers, Plus, X } from 'lucide-react';
+import { WeaponPicker } from '@/components/weapon-picker';
+import { abilities } from '@/lib/abilities';
+import { getMainWeaponAssetUrl } from '@/lib/weapon-assets';
+import {
+  buildUniversalGearPlan,
+  type PlannerGoal,
+} from '@/lib/universal-planner';
+import { getWeapon, weapons, type Weapon } from '@/lib/weapon-catalog';
+import type { WeaponPickerItem } from '@/lib/weapon-picker';
 
-const planningWeapons = [
-  {
-    id: 'zap',
-    name: 'N-ZAP89',
-    role: '副武压制',
-    accent: '#f1c40f',
-    needs: ['副省 12AP', '游速 6AP', '快跳 3AP'],
-  },
-  {
-    id: 'shot',
-    name: '斯普拉射击枪',
-    role: '前线泛用',
-    accent: '#8b5cf6',
-    needs: ['游速 6AP', '快跳 3AP', '安全鞋 3AP'],
-  },
-  {
-    id: 'leaf',
-    name: '枫叶射击枪',
-    role: '骚扰续航',
-    accent: '#22c55e',
-    needs: ['副省 9AP', '游速 6AP', '快跳 3AP'],
-  },
+const initialWeaponIds = [
+  'shooter-quickmiddle-cstm01',
+  'shooter-normalt',
+  'main-11',
 ];
+
+const pickerItems: readonly WeaponPickerItem[] = weapons.map((weapon) => ({
+  id: weapon.id,
+  name: weapon.name,
+  family: weapon.family,
+  badge: weapon.badge,
+  imageUrl: getMainWeaponAssetUrl(weapon.id),
+  meta: `${weapon.sub.name} · ${weapon.special}`,
+  tags: [weapon.role],
+}));
+
+const goals: ReadonlyArray<{ id: PlannerGoal; label: string }> = [
+  { id: 'shared-slots', label: '共通槽最多' },
+  { id: 'main-conflict', label: '主能力冲突最少' },
+  { id: 'verified-first', label: '已核验优先' },
+];
+
+const abilityShort = (id: string) =>
+  abilities.find((ability) => ability.id === id)?.short ?? id;
+
 export function UniversalPlanner() {
-  const [chosen, setChosen] = useState(['zap', 'shot', 'leaf']),
-    [goal, setGoal] = useState('省碎片'),
-    [applied, setApplied] = useState(false);
-  const toggle = (id: string) =>
-    setChosen((s) => (s.includes(id) ? s.filter((x) => x !== id) : [...s, id]));
+  const [selectedIds, setSelectedIds] = useState(initialWeaponIds);
+  const [goal, setGoal] = useState<PlannerGoal>('shared-slots');
+  const selectedWeapons = useMemo(
+    () => selectedIds.map((id) => getWeapon(id)),
+    [selectedIds],
+  );
+  const plan = useMemo(
+    () => buildUniversalGearPlan(selectedWeapons, goal),
+    [goal, selectedWeapons],
+  );
+
+  const addWeapon = (id: string) => {
+    setSelectedIds((current) =>
+      current.includes(id) || current.length >= 5 ? current : [...current, id],
+    );
+  };
+  const removeWeapon = (id: string) => {
+    setSelectedIds((current) =>
+      current.length <= 2 ? current : current.filter((item) => item !== id),
+    );
+  };
+
   return (
     <section className="workspace planner-page">
       <div className="intro">
         <div>
           <em>SHARED GEAR / 002</em>
           <h1>多武器通用装备规划</h1>
-          <p>把共同需求放进同一件装备，减少重复制作和能力碎片消耗。</p>
+          <p>比较现有系统建议，找出可以共用的装备槽与主能力冲突。</p>
         </div>
-        <span className="version-pill">规划草案 · 3把武器</span>
+        <span className="version-pill">
+          实时比较 · {selectedWeapons.length} 把武器
+        </span>
       </div>
       <div className="planner-grid">
         <section className="planner-controls">
-          <Title n="01" text="选择你常用的配装">
-            <button type="button">
-              <Plus size={14} />
-              添加武器
-            </button>
+          <Title n="01" text="选择要比较的武器">
+            <WeaponPicker
+              items={pickerItems}
+              value={selectedIds[0]}
+              onChange={addWeapon}
+              title="添加比较武器"
+              description="最多同时比较五把武器；已加入的武器不会重复添加。"
+              triggerClassName="planner-add-weapon"
+              triggerLabel="添加武器"
+              trigger={
+                <>
+                  <Plus size={14} /> 添加武器
+                </>
+              }
+            />
           </Title>
           <div className="weapon-list">
-            {planningWeapons.map((w, i) => (
-              <button
-                type="button"
-                key={w.id}
-                className={chosen.includes(w.id) ? 'selected' : ''}
-                onClick={() => toggle(w.id)}
-              >
-                <span className="weapon-dot" style={{ background: w.accent }}>
-                  {i === 0 ? '89' : i === 1 ? '枪' : '叶'}
-                </span>
-                <div>
-                  <b>{w.name}</b>
-                  <small>{w.role}</small>
-                  <em>{w.needs.join(' · ')}</em>
-                </div>
-                <span className="tick">
-                  {chosen.includes(w.id) ? (
-                    <Check size={14} />
-                  ) : (
-                    <Plus size={14} />
-                  )}
-                </span>
-              </button>
+            {selectedWeapons.map((weapon) => (
+              <SelectedWeapon
+                key={weapon.id}
+                weapon={weapon}
+                removable={selectedWeapons.length > 2}
+                onRemove={() => removeWeapon(weapon.id)}
+              />
             ))}
           </div>
-          <Title n="02" text="这次优先考虑什么">
-            <small>可随时重新计算</small>
+          <p className="planner-limit">
+            至少保留 2 把，最多 5
+            把。比较依据是每把武器当前的“主武基础型”系统建议。
+          </p>
+          <Title n="02" text="排序目标">
+            <small>只改变候选部位排序，不改变原始建议</small>
           </Title>
           <div className="goal-pills">
-            {['省碎片', '最少妥协', '容易购买'].map((x) => (
+            {goals.map((item) => (
               <button
                 type="button"
-                className={goal === x ? 'active' : ''}
-                onClick={() => setGoal(x)}
-                key={x}
+                className={goal === item.id ? 'active' : ''}
+                onClick={() => setGoal(item.id)}
+                key={item.id}
               >
-                {x}
+                {item.label}
               </button>
             ))}
           </div>
-          <Title n="03" text="固定条件">
-            <small>锁定后不会被方案替换</small>
+          <Title n="03" text="三个部位的比较结果">
+            <small>共通槽包含相同主能力和相同小技能</small>
           </Title>
-          <div className="locks">
-            <button type="button" className="on">
-              <Lock size={14} />
-              <span>
-                <b>头部与服装保持可变</b>
-                <small>允许不同武器使用专属大技能</small>
-              </span>
-            </button>
-            <button type="button">
-              <Lock size={14} />
-              <span>
-                <b>至少保留 3AP 快跳</b>
-                <small>作为所有前线配装的安全垫</small>
-              </span>
-            </button>
+          <div className="planner-part-list">
+            {plan.candidates.map((candidate) => (
+              <article
+                className={
+                  plan.candidate?.partId === candidate.partId ? 'active' : ''
+                }
+                key={candidate.partId}
+              >
+                <b>{candidate.partLabel}</b>
+                <span>{candidate.commonSlotCount}/4 共通槽</span>
+                <small>{candidate.mainAbilityIds.length} 种主能力</small>
+              </article>
+            ))}
           </div>
         </section>
         <aside className="planner-result">
-          <div className="result-kicker">RECOMMENDATION / {goal}</div>
-          <div className="recommend-title">
-            <div className="gear-symbol">
-              <Footprints />
+          {plan.candidate ? (
+            <PlannerResult plan={plan} goal={goal} />
+          ) : (
+            <div className="planner-empty">
+              <Layers size={28} />
+              <h2>至少选择两把武器</h2>
+              <p>加入第二把武器后才会计算共通装备结构。</p>
             </div>
-            <div>
-              <small>最适合固定为通用件</small>
-              <h2>优先制作一双通用鞋</h2>
-            </div>
-            <b>匹配度 92%</b>
-          </div>
-          <div className="why-grid">
-            <div>
-              <span>共同需求</span>
-              <b>游速 6AP</b>
-              <b>快跳 3AP</b>
-            </div>
-            <div>
-              <span>部位冲突</span>
-              <b className="good">鞋子最低</b>
-              <small>头、服装需要随玩法变化</small>
-            </div>
-            <div>
-              <span>预计节省</span>
-              <b className="big">≈ 36</b>
-              <small>能力碎片 · 原型估算</small>
-            </div>
-          </div>
-          <div className="decision">
-            <h3>为什么是鞋子？</h3>
-            <p>
-              三套配装都需要少量游速和快跳；而头部可能在最后冲刺、回归之间切换，服装还要考虑隐游。把共同的小技能固定在鞋子，换武器时只需调整头和服装。
-            </p>
-            <div className="trade">
-              <Check size={15} />
-              <span>
-                <b>N-ZAP89</b> 保留副武压制核心，鞋子负责通用机动
-              </span>
-            </div>
-            <div className="trade">
-              <Check size={15} />
-              <span>
-                <b>斯普拉射击枪</b> 无需重复制作 6AP 游速
-              </span>
-            </div>
-            <div className="trade">
-              <Check size={15} />
-              <span>
-                <b>枫叶射击枪</b> 只需在头、服装补足副省
-              </span>
-            </div>
-          </div>
-          <h3 className="candidate-title">
-            装备参考 <small>根据原始大技能与改造成本排序</small>
-          </h3>
-          <div className="gear-candidates">
-            <button type="button" className="best">
-              <span className="shoe-art">鞋</span>
-              <div>
-                <b>通用鞋胚 A</b>
-                <small>原始大技能：隐形跳跃</small>
-                <em>推荐 · 只需制作 3 个小槽</em>
-              </div>
-              <Check />
-            </button>
-            <button type="button">
-              <span className="shoe-art alt">鞋</span>
-              <div>
-                <b>通用鞋胚 B</b>
-                <small>原始大技能：受身术</small>
-                <em>备选 · 适合回场倾向</em>
-              </div>
-              <Plus />
-            </button>
-          </div>
-          <button
-            type="button"
-            className="primary plan-action"
-            onClick={() => setApplied(true)}
-          >
-            {applied ? <Check size={16} /> : <Layers size={16} />}{' '}
-            {applied ? '已保存为实验分支' : '用此鞋生成三套实验分支'}
-          </button>
-          <p className="note">
-            装备名称与碎片成本暂为交互示例，正式版将绑定玩家库存与版本数据。
-          </p>
+          )}
         </aside>
       </div>
     </section>
+  );
+}
+
+function SelectedWeapon({
+  weapon,
+  removable,
+  onRemove,
+}: {
+  weapon: Weapon;
+  removable: boolean;
+  onRemove: () => void;
+}) {
+  return (
+    <article className="planner-selected-weapon">
+      {/* oxlint-disable-next-line next/no-img-element -- Versioned local weapon images retain audited upstream bytes. */}
+      <img src={getMainWeaponAssetUrl(weapon.id)} alt="" />
+      <div>
+        <b>{weapon.name}</b>
+        <small>
+          {weapon.family} · {weapon.role}
+        </small>
+        <em>
+          {weapon.sub.name} · {weapon.special}
+        </em>
+      </div>
+      <button
+        type="button"
+        aria-label={`移除${weapon.name}`}
+        disabled={!removable}
+        title={removable ? '移出比较' : '至少保留两把武器'}
+        onClick={onRemove}
+      >
+        <X size={14} />
+      </button>
+    </article>
+  );
+}
+
+function PlannerResult({
+  plan,
+  goal,
+}: {
+  plan: ReturnType<typeof buildUniversalGearPlan>;
+  goal: PlannerGoal;
+}) {
+  const candidate = plan.candidate!;
+  const commonMain = candidate.commonMainAbilityId
+    ? abilityShort(candidate.commonMainAbilityId)
+    : null;
+  return (
+    <>
+      <div className="result-kicker">
+        RECOMMENDATION / {goals.find((item) => item.id === goal)?.label}
+      </div>
+      <div className="recommend-title">
+        <div className="gear-symbol">
+          <Layers />
+        </div>
+        <div>
+          <small>当前比较中共通度最高</small>
+          <h2>{candidate.partLabel}模块</h2>
+        </div>
+        <b>共通 {candidate.compatibilityPercent}%</b>
+      </div>
+      <div className="why-grid">
+        <div>
+          <span>共通小技能</span>
+          <b>{candidate.sharedSubAbilityIds.length}/3 槽</b>
+          <small>
+            {candidate.sharedSubAbilityIds.map(abilityShort).join(' · ') ||
+              '没有完全相同的小技能'}
+          </small>
+        </div>
+        <div>
+          <span>主能力</span>
+          <b className={commonMain ? 'good' : ''}>
+            {commonMain ?? `${candidate.mainAbilityIds.length} 种冲突`}
+          </b>
+          <small>
+            {commonMain ? '可直接共用同一主能力' : '需要分别制作对应版本'}
+          </small>
+        </div>
+        <div>
+          <span>已核验曲线槽</span>
+          <b className="big">{candidate.verifiedCommonSlotCount}</b>
+          <small>只统计当前已正式接入的 AP 曲线</small>
+        </div>
+      </div>
+      <div className="decision">
+        <h3>系统结论</h3>
+        <p>
+          {candidate.sharedSubAbilityIds.length === 3
+            ? `${candidate.partLabel}的三个小技能在所选武器建议中完全一致。`
+            : `${candidate.partLabel}目前有 ${candidate.sharedSubAbilityIds.length} 个可以直接复用的小技能槽。`}
+          {commonMain
+            ? ' 主能力也一致，可以作为一件完整通用装备继续实验。'
+            : ' 但主能力不一致，因此应理解为“共通小技能模板”，不是同一件装备能覆盖全部武器。'}
+        </p>
+        {plan.weaponRequirements.map((requirement) => (
+          <div className="trade" key={requirement.weaponId}>
+            <Check size={15} />
+            <span>
+              <b>{requirement.weaponName}</b> · {candidate.partLabel}主能力{' '}
+              {requirement.mainAbilityName}
+            </span>
+          </div>
+        ))}
+      </div>
+      <h3 className="candidate-title">
+        共通槽结构 <small>来自当前系统建议，不是玩家统计</small>
+      </h3>
+      <div className="planner-slot-result">
+        <span className={commonMain ? 'shared' : 'conflict'}>
+          <b>主</b>
+          <small>{commonMain ?? '按武器区分'}</small>
+        </span>
+        {Array.from({ length: 3 }, (_, index) => {
+          const abilityId = candidate.sharedSubAbilityIds[index];
+          return (
+            <span className={abilityId ? 'shared' : 'empty'} key={index}>
+              <b>小</b>
+              <small>{abilityId ? abilityShort(abilityId) : '不共通'}</small>
+            </span>
+          );
+        })}
+      </div>
+      <p className="note">
+        当前不读取玩家库存、装备品牌或真实碎片数量，因此不估算购买难度与碎片节省量。结果会随所选武器和排序目标即时重算。
+      </p>
+    </>
   );
 }
 

@@ -51,6 +51,7 @@ import { SectionErrorBoundary } from '@/components/section-error-boundary';
 import type { WeaponPickerItem } from '@/lib/weapon-picker';
 import { getPageHash, parsePageHash, type PageId } from '@/lib/page-navigation';
 import { buildAbilityContext } from '@/lib/ability-context';
+import { getAbilityCurveDefinition } from '@/lib/ability-curves';
 import {
   getMainWeaponAssetUrl,
   getSpecialWeaponAssetUrl,
@@ -616,8 +617,8 @@ export default function Home() {
                   <section className="builder control-column">
                     <Title n="01" text="要分析的武器">
                       <small>
-                        {weapons.length} 把可选 ·{' '}
-                        {weapons.length} 把已有核验字段
+                        {weapons.length} 把可选 · {weapons.length}{' '}
+                        把已有核验字段
                       </small>
                     </Title>
                     <div className="weapon-kit-card">
@@ -1043,7 +1044,13 @@ export default function Home() {
                         <span>{weapon.special}</span>
                       </div>
                     </div>
-                    <Suspense fallback={<p className="parameter-public-note">正在读取参数核验状态…</p>}>
+                    <Suspense
+                      fallback={
+                        <p className="parameter-public-note">
+                          正在读取参数核验状态…
+                        </p>
+                      }
+                    >
                       <MainWeaponVerification weaponId={weapon.id} />
                     </Suspense>
                     <details className="export-settings export-settings-collapsible">
@@ -1126,12 +1133,25 @@ export default function Home() {
                       id={focus}
                       ap={currentAp}
                       setAp={setAnalysisApPreview}
+                      isPreview={analysisApPreview !== null}
                     />
                     <div className="accordions">
-                      <Suspense fallback={<p className="parameter-public-note">正在载入武器分析…</p>}>
+                      <Suspense
+                        fallback={
+                          <p className="parameter-public-note">
+                            正在载入武器分析…
+                          </p>
+                        }
+                      >
                         <MainWeaponEfficiencyPanel weaponId={weapon.id} />
                       </Suspense>
-                      <Suspense fallback={<p className="parameter-public-note">正在整理当前配装上下文…</p>}>
+                      <Suspense
+                        fallback={
+                          <p className="parameter-public-note">
+                            正在整理当前配装上下文…
+                          </p>
+                        }
+                      >
                         <LoadoutContextAnalysis
                           weapon={weapon}
                           totals={totals.map(({ a, ap }) => ({
@@ -1228,17 +1248,20 @@ function EffectPanel({
   id,
   ap,
   setAp,
+  isPreview,
 }: {
   weapon: Weapon;
   id: string;
   ap: number;
   setAp: (ap: number) => void;
+  isPreview: boolean;
 }) {
   const a = abilities.find((x) => x.id === id);
   const isMain = id === 'ism';
   const isSub = id === 'iss';
   const isSubPower = id === 'subp';
   const genericContext = a ? buildAbilityContext(a, weapon, ap) : null;
+  const curve = getAbilityCurveDefinition(id);
   return (
     <section className="effect-panel">
       <div className="effect-head">
@@ -1251,8 +1274,16 @@ function EffectPanel({
         </b>
       </div>
       {isMain ? (
-        <Suspense fallback={<p className="parameter-public-note">正在计算主武省墨…</p>}>
-          <MainInkSaverPanel weapon={weapon} ability={a} ap={ap} setAp={setAp} />
+        <Suspense
+          fallback={<p className="parameter-public-note">正在计算主武省墨…</p>}
+        >
+          <MainInkSaverPanel
+            weapon={weapon}
+            ability={a}
+            ap={ap}
+            setAp={setAp}
+            isPreview={isPreview}
+          />
         </Suspense>
       ) : isSub ? (
         <>
@@ -1273,21 +1304,9 @@ function EffectPanel({
             </div>
             <span>曲线待验证</span>
           </div>
-          <div className="breakpoints">
-            {[3, 6, 12].map((n) => (
-              <button
-                type="button"
-                className={ap === n ? 'active' : ''}
-                onClick={() => setAp(n)}
-                key={n}
-              >
-                <b>{n}AP</b>
-                <small>
-                  {n === 3 ? '轻量投入' : n === 6 ? '平衡投入' : '专项投入'}
-                </small>
-              </button>
-            ))}
-          </div>
+          <p className="effect-boundary">
+            当前只读取左侧配装中的 {ap}AP；曲线核验前不提供预设试投档位。
+          </p>
           <p className="judgement">
             <TrendingUp size={14} />
             <b>当前结论：</b>
@@ -1295,7 +1314,7 @@ function EffectPanel({
           </p>
         </>
       ) : isSubPower ? (
-        <SubPowerPanel weapon={weapon} a={a} ap={ap} setAp={setAp} />
+        <SubPowerPanel weapon={weapon} a={a} ap={ap} />
       ) : (
         <>
           <div className="effect-main generic">
@@ -1310,9 +1329,11 @@ function EffectPanel({
               </p>
             </div>
             <span>
-              {genericContext?.verification === 'rule-only'
-                ? '规则已识别'
-                : '曲线待验证'}
+              {curve.status === 'not-applicable'
+                ? '固定能力 · 曲线不适用'
+                : genericContext?.verification === 'rule-only'
+                  ? '规则已识别'
+                  : '曲线待验证'}
             </span>
           </div>
           {genericContext && (
@@ -1350,12 +1371,10 @@ function SubPowerPanel({
   weapon,
   a,
   ap,
-  setAp,
 }: {
   weapon: Weapon;
   a?: Ability;
   ap: number;
-  setAp: (ap: number) => void;
 }) {
   return (
     <>
@@ -1394,21 +1413,10 @@ function SubPowerPanel({
           </div>
         ))}
       </div>
-      <div className="breakpoints">
-        {[3, 6, 10].map((n) => (
-          <button
-            type="button"
-            className={ap === n ? 'active' : ''}
-            onClick={() => setAp(n)}
-            key={n}
-          >
-            <b>{n}AP</b>
-            <small>
-              {n === 3 ? '轻量延伸' : n === 6 ? '常用试投' : '主技能投入'}
-            </small>
-          </button>
-        ))}
-      </div>
+      <p className="effect-boundary">
+        当前只读取左侧配装中的 {ap}
+        AP；作用对象与增量曲线完全核验前，不显示推荐试投档位。
+      </p>
       <div className="sub-compare">
         <b>当前套装</b>
         <span>

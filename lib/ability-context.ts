@@ -49,7 +49,7 @@ export function buildAbilityContext(
   const target =
     ability.id === 'spu'
       ? weapon.special
-      : targetById[ability.id] ?? '当前玩家状态';
+      : (targetById[ability.id] ?? '当前玩家状态');
   const isExclusive = ability.group.endsWith('限定');
 
   return {
@@ -59,7 +59,9 @@ export function buildAbilityContext(
     targetNote:
       ability.id === 'spu'
         ? `${weapon.special} 的具体增强对象仍需按特殊武器逐项核验。`
-        : `${ability.name}的规则作用对象已确定；精确数值与临界点仍由效果曲线验证。`,
+        : isExclusive
+          ? `${ability.name}的规则作用对象已确定；它是固定主能力，不进入通用 AP 曲线。`
+          : `${ability.name}的规则作用对象已确定；精确数值与临界点仍由效果曲线验证。`,
     conclusion: isExclusive
       ? `当前为 ${ap}AP 主技能投入。先按触发条件理解作用，不把固定主技能格换算成未经核验的数值收益。`
       : `当前为 ${ap}AP 投入。网站已能识别作用范围，但在曲线核验前不提供“推荐投入量”或伪精确收益。`,
