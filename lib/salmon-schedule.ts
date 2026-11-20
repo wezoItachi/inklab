@@ -4,6 +4,24 @@ export const SALMON_SCHEDULE_SOURCE_URL =
   'https://splatoon3.ink/data/schedules.json';
 export const SALMON_SCHEDULE_CACHE_KEY = 'inklab:salmon-schedule:v1';
 
+const salmonStageNames: Readonly<Record<string, string>> = {
+  'Barnacle & Dime': '塔拉波特购物公园',
+  'Bonerattle Arena': '鲑鱼心脏斗技场',
+  'Eeltail Alley': '鳗鲶区',
+  'Gone Fission Hydroplant': '麦年海洋发电所',
+  'Grand Splatlands Bowl': '蛮颓大巨蛋',
+  'Inkblot Art Academy': '海女美术大学',
+  "Jammin' Salmon Junction": '生筋子系统交流道遗址',
+  "Marooner's Bay": '漂浮落难船',
+  'Multiple Sites': '各地同时发生',
+  'Salmonid Smokeyard': '时不知鲑烟熏工房',
+  'Sockeye Station': '新卷堡',
+  'Spawning Grounds': '鲑坝',
+  "Um'ami Ruins": '鱼露遗迹',
+  'Undertow Spillway': '竹蛏疏洪道',
+  'Wahoo World': '醋饭海洋世界',
+};
+
 export type SalmonScheduleEnvelope = {
   schemaVersion: 1;
   source: 'splatoon3.ink';
@@ -13,6 +31,10 @@ export type SalmonScheduleEnvelope = {
 };
 
 type ScheduleStorage = Pick<Storage, 'getItem' | 'setItem'>;
+
+export function localizeSalmonStageName(name: string) {
+  return salmonStageNames[name] ?? name;
+}
 
 export function parseSalmonRotations(payload: unknown): SalmonRotation[] {
   const root = payload as { data?: unknown };

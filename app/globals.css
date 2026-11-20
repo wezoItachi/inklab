@@ -2715,6 +2715,11 @@ button {
   margin: 5px 0 0;
   font-size: 22px;
 }
+.salmon-live-window {
+  margin-top: 5px;
+  color: #777;
+  font-size: 9px;
+}
 .salmon-kicker {
   display: flex;
   align-items: center;

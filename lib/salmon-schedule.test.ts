@@ -2,6 +2,7 @@ import assert from 'node:assert/strict';
 import test from 'node:test';
 import {
   createSalmonScheduleEnvelope,
+  localizeSalmonStageName,
   parseSalmonScheduleEnvelope,
   readSalmonScheduleCache,
   SALMON_SCHEDULE_CACHE_KEY,
@@ -57,4 +58,13 @@ void test('schedule cache failure remains non-fatal', () => {
   const envelope = createSalmonScheduleEnvelope(rotations);
   assert.equal(readSalmonScheduleCache(storage), null);
   assert.equal(writeSalmonScheduleCache(storage, envelope), false);
+});
+
+void test('schedule stages use the reviewed Simplified Chinese language table', () => {
+  assert.equal(localizeSalmonStageName('Sockeye Station'), '新卷堡');
+  assert.equal(
+    localizeSalmonStageName("Jammin' Salmon Junction"),
+    '生筋子系统交流道遗址',
+  );
+  assert.equal(localizeSalmonStageName('Future Stage'), 'Future Stage');
 });

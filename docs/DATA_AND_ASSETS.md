@@ -90,7 +90,7 @@ Nintendo 官方更新公告用于确认版本发布和公开平衡调整；Sendo
 - 轮换详情页：[`splatoon3.ink/salmonrun`](https://splatoon3.ink/salmonrun)
 - 上游项目：[`misenhower/splatoon3.ink`](https://github.com/misenhower/splatoon3.ink)（MIT）
 
-鲑鱼跑实验室当前通过站内 `/api/salmon-schedule` 代理读取当期常规轮换，先规范化并校验地图、起止时间与四把武器名称，再返回版本化结果。接口采用五分钟共享缓存和一小时过期重验证；浏览器仅保存最近一次成功结果，供上游短时不可用时回退，不将远程响应写入项目数据库，也不复制或托管上游地图、武器图片。上游武器短哈希只保留为轮换记录标识，不当作 Leanny 武器 ID；本地匹配使用经过测试的名称别名。手动编成目录包含 63 把常规武器和 8 把熊先生印章武器；熊武简中名称来自 Leanny Ver. 12.0.0 语言数据的 `CommonMsg/Weapon/WeaponName_Main`。
+鲑鱼跑实验室当前通过站内 `/api/salmon-schedule` 代理读取当期常规轮换，先规范化并校验地图、起止时间与四把武器名称，再返回版本化结果。接口采用五分钟共享缓存和一小时过期重验证；浏览器仅保存最近一次成功结果，供上游短时不可用时回退，不将远程响应写入项目数据库，也不复制或托管上游地图、武器图片。上游武器短哈希只保留为轮换记录标识，不当作 Leanny 武器 ID；本地匹配使用经过测试的名称别名。页面显示的地图简中名来自 Leanny Ver. 12.0.0 `CommonMsg/Coop/CoopStageName`，武器简中名来自本地已核对目录，遇到未知的新名称会保留上游原文而非自行翻译。手动编成目录包含 63 把常规武器和 8 把熊先生印章武器；熊武简中名称来自同版语言数据的 `CommonMsg/Weapon/WeaponName_Main`。
 
 Leanny Ver. 12.0.0 参数快照中的 8 个熊武 `_Coop` 文件已纳入部分参数表：`WeaponBlasterBear`、`WeaponChargerBear`、`WeaponManeuverBear`、`WeaponRollerBear`、`WeaponSaberBear`、`WeaponShelterBear`、`WeaponSlosherBear` 和 `WeaponStringerBear`。导入器只接受已在对应对战武器族模型中登记过语义的字段；有显式父类的熊武继续区分父类继承与熊武覆盖。该数据表不直接等于精确 DPS，复杂动作周期仍需单独建模。
 

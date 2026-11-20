@@ -20,6 +20,7 @@ import {
   type SalmonRotation,
 } from '@/lib/salmon-run';
 import {
+  localizeSalmonStageName,
   parseSalmonScheduleEnvelope,
   readSalmonScheduleCache,
   writeSalmonScheduleCache,
@@ -105,6 +106,19 @@ export function SalmonRunLab() {
   const targetCategories = [
     ...new Set(salmonTargets.map((target) => target.category)),
   ];
+  const rotationWindow = rotation
+    ? `${new Date(rotation.startTime).toLocaleString('zh-CN', {
+        month: 'numeric',
+        day: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit',
+      })} — ${new Date(rotation.endTime).toLocaleString('zh-CN', {
+        month: 'numeric',
+        day: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit',
+      })}`
+    : null;
 
   const acceptSchedule = (
     envelope: SalmonScheduleEnvelope,
@@ -221,9 +235,12 @@ export function SalmonRunLab() {
               当期轮换
             </span>
             <h2>
-              {rotation?.stage ??
+              {(rotation && localizeSalmonStageName(rotation.stage)) ??
                 (status === 'loading' ? '正在读取地图…' : '暂时无法读取')}
             </h2>
+            {rotationWindow && (
+              <p className="salmon-live-window">本期轮换 · {rotationWindow}</p>
+            )}
           </div>
           <div className="salmon-live-actions">
             <button
@@ -247,9 +264,9 @@ export function SalmonRunLab() {
         {rotation ? (
           <div className="salmon-live-weapons">
             {rotation.weapons.map((item, index) => (
-              <span key={`${item.id}-${index}`}>
+              <span key={`${item.id}-${index}`} title={item.name}>
                 <b>0{index + 1}</b>
-                {item.name}
+                {matchSalmonWeapon(item.name)?.name ?? item.name}
               </span>
             ))}
           </div>
