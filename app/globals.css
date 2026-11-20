@@ -1818,6 +1818,86 @@ button {
   font-size: 7px;
   color: #888;
 }
+.ability-curve {
+  border: 1px solid #cfc4ff;
+  background: #f8f6ff;
+  padding: 12px;
+  margin: 15px 0;
+}
+.ability-curve-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #ddd5ff;
+}
+.ability-curve-head small {
+  color: var(--purple);
+  font: 800 7px monospace;
+}
+.ability-curve-head h3 {
+  margin: 3px 0 0;
+  font-size: 11px;
+}
+.ability-curve-head > span {
+  max-width: 145px;
+  text-align: right;
+  font: 700 7px/1.45 monospace;
+  color: #716b84;
+}
+.ability-curve-bars {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  align-items: end;
+  gap: 5px;
+  min-height: 102px;
+  padding: 13px 0 9px;
+}
+.ability-curve-bars > div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 3px;
+  height: 86px;
+}
+.ability-curve-bars i {
+  display: block;
+  width: min(22px, 72%);
+  border-radius: 4px 4px 1px 1px;
+  background: linear-gradient(180deg, var(--acid), var(--purple));
+}
+.ability-curve-bars b {
+  font: 800 7px monospace;
+}
+.ability-curve-bars small {
+  font: 700 7px monospace;
+  color: #817b91;
+}
+.ability-curve-rule {
+  border-left: 3px solid var(--acid);
+  background: #fff;
+  padding: 8px 9px;
+}
+.ability-curve-rule b {
+  font-size: 9px;
+}
+.ability-curve-rule p,
+.ability-curve-note,
+.ability-curve-pending > p {
+  margin: 4px 0 0;
+  color: #716c7e;
+  font-size: 8px;
+  line-height: 1.55;
+}
+.ability-curve-note {
+  margin-top: 9px;
+}
+.ability-curve-pending {
+  border-color: var(--line);
+  background: #faf9f6;
+}
 .library-page {
   max-width: 1000px;
 }

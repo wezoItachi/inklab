@@ -3,7 +3,12 @@
 import { useState } from 'react';
 import { Plus, Search, Zap } from 'lucide-react';
 import { AbilityIcon } from '@/components/ability-icon';
+import { AbilityCurvePanel } from '@/components/ability-curve-panel';
 import { abilities, abilityAliases } from '@/lib/abilities';
+import {
+  hasMinimumEffectiveAbilityValue,
+  hasVerifiedAbilityCurve,
+} from '@/lib/ability-curves';
 
 export function AbilityWiki({
   focus,
@@ -26,13 +31,9 @@ export function AbilityWiki({
     { label: '机动' },
     {
       label: '少量投入有效',
-      disabled: true,
-      title: '等待各能力 AP 曲线逐项核验后开放',
     },
     {
       label: '关键临界点',
-      disabled: true,
-      title: '当前仅主武器省墨具备正式临界点模型',
     },
   ];
   const toggle = (tag: string) =>
@@ -56,7 +57,10 @@ export function AbilityWiki({
       (!filters.includes('机动') || ability.group === '机动') &&
       (!filters.includes('头部限定') || ability.group === '头部限定') &&
       (!filters.includes('服装限定') || ability.group === '服装限定') &&
-      (!filters.includes('鞋子限定') || ability.group === '鞋子限定'),
+      (!filters.includes('鞋子限定') || ability.group === '鞋子限定') &&
+      (!filters.includes('少量投入有效') ||
+        hasMinimumEffectiveAbilityValue(ability.id)) &&
+      (!filters.includes('关键临界点') || hasVerifiedAbilityCurve(ability.id)),
   );
   const current =
     abilities.find((ability) => ability.id === focus) ?? abilities[0];
@@ -83,8 +87,6 @@ export function AbilityWiki({
           <button
             type="button"
             key={tag.label}
-            disabled={tag.disabled}
-            title={tag.title}
             className={
               (tag.label === '全部' && !filters.length) ||
               filters.includes(tag.label)
@@ -94,7 +96,6 @@ export function AbilityWiki({
             onClick={() => toggle(tag.label)}
           >
             {tag.label}
-            {tag.disabled ? <small>待核验</small> : null}
           </button>
         ))}
       </div>
@@ -148,24 +149,7 @@ export function AbilityWiki({
                 : '这项能力可以用于配装编辑和分类；完整 AP 效果、最小有效投入与关键临界点仍待逐项核验，目前不输出未经核对的阈值结论。'}
             </p>
           </div>
-          <h3>投入结构示意</h3>
-          <div className="ap-recipes">
-            <article>
-              <b>3AP</b>
-              <span>轻量投入</span>
-              <small>占用 1 个追加能力槽</small>
-            </article>
-            <article>
-              <b>6AP</b>
-              <span>两个追加槽</span>
-              <small>是否有效取决于能力曲线</small>
-            </article>
-            <article>
-              <b>专项</b>
-              <span>围绕临界点</span>
-              <small>仅在已有核验模型时计算</small>
-            </article>
-          </div>
+          <AbilityCurvePanel abilityId={current.id} />
           <button type="button" className="primary" onClick={onOpenLab}>
             <Zap size={15} />
             围绕此能力进入实验室

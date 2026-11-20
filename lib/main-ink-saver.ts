@@ -1,8 +1,17 @@
 import type { MainWeaponParameterField } from '../database/schema.ts';
+import {
+  clampAbilityPoints,
+  getAbilityIntensity,
+  getMainInkSaverMultiplier,
+  representableAbilityPoints,
+} from './ability-curves.ts';
 import { getMainWeaponParameters } from './weapons.ts';
 
-const MAX_ABILITY_POINTS = 57;
-const MAX_INK_REDUCTION = 0.45;
+export {
+  getAbilityIntensity,
+  getMainInkSaverMultiplier,
+  representableAbilityPoints,
+};
 
 const actionFields = [
   ['inkConsumptionPerShot', '一次射击'],
@@ -34,27 +43,6 @@ export type MainInkSaverAnalysis = {
   reductionPercent: number;
   profiles: MainInkSaverProfile[];
 };
-
-export const representableAbilityPoints = Object.freeze(
-  [
-    ...new Set(
-      Array.from({ length: 4 }, (_, mains) =>
-        Array.from({ length: 10 }, (_, subs) => mains * 10 + subs * 3),
-      ).flat(),
-    ),
-  ]
-    .filter((ap) => ap <= MAX_ABILITY_POINTS)
-    .sort((left, right) => left - right),
-);
-
-export function getAbilityIntensity(ap: number): number {
-  const boundedAp = Math.max(0, Math.min(MAX_ABILITY_POINTS, ap));
-  return Math.min(100, 3.3 * boundedAp - 0.027 * boundedAp ** 2) / 100;
-}
-
-export function getMainInkSaverMultiplier(ap: number): number {
-  return 1 - MAX_INK_REDUCTION * getAbilityIntensity(ap);
-}
 
 function actionsPerTank(inkCost: number): number {
   return Math.floor((100 + Number.EPSILON) / inkCost);
@@ -93,7 +81,7 @@ export function calculateMainInkSaverProfile(
   baseInkCost: number,
   ap: number,
 ): MainInkSaverProfile {
-  const boundedAp = Math.max(0, Math.min(MAX_ABILITY_POINTS, ap));
+  const boundedAp = clampAbilityPoints(ap);
   const baseActionsPerTank = actionsPerTank(baseInkCost);
   const adjustedInkCost = baseInkCost * getMainInkSaverMultiplier(boundedAp);
   const adjustedActionsPerTank = actionsPerTank(adjustedInkCost);
@@ -122,7 +110,7 @@ export function getMainInkSaverAnalysis(
   weaponId: string,
   ap: number,
 ): MainInkSaverAnalysis {
-  const boundedAp = Math.max(0, Math.min(MAX_ABILITY_POINTS, ap));
+  const boundedAp = clampAbilityPoints(ap);
   const fields = getMainWeaponParameters(weaponId).parameters;
   const profiles = actionFields.flatMap(([key, label]) => {
     const baseInkCost = getVerifiedInkCost(fields, key);
