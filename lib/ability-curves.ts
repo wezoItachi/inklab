@@ -29,7 +29,11 @@ export type AbilityCurveDefinition = {
   sourceNote: string;
   minimumEffectiveAp: number | null;
   minimumEffectiveRule: string;
-  thresholdScope: 'weapon-specific' | 'pending' | 'not-applicable';
+  thresholdScope:
+    | 'universal'
+    | 'weapon-specific'
+    | 'pending'
+    | 'not-applicable';
   calculate: ((ap: number) => AbilityCurveSample) | null;
 };
 
@@ -75,6 +79,16 @@ export function getSubInkSaverMultiplier(
   level: 0 | 1 | 2 | 3 | 4 = 2,
 ): number {
   return interpolateAbilityValue(subInkSaverValues[level], ap);
+}
+
+export function getInkRecoveryFrames(
+  ap: number,
+  form: 'humanoid' | 'squid',
+): number {
+  return interpolateAbilityValue(
+    form === 'humanoid' ? [220, 410, 600] : [117, 148.5, 180],
+    ap,
+  );
 }
 
 const mainInkSaverCurve: AbilityCurveDefinition = {
@@ -123,9 +137,33 @@ const subInkSaverCurve: AbilityCurveDefinition = {
   },
 };
 
+const inkRecoveryCurve: AbilityCurveDefinition = {
+  abilityId: 'iru',
+  status: 'verified',
+  title: '潜墨状态回满时间',
+  outputLabel: '回满时间缩短',
+  formulaLabel: '潜墨 180→117 帧 · 非潜墨 600→220 帧',
+  sourceNote:
+    '百科曲线以潜墨状态为主轴；实验室同时展示潜墨与非潜墨两种回满时间。两组三点值来自 Leanny 12.0 固定快照，并与 Sendou.ink 公开分析器实现交叉核对。仅适用于普通对战，鲑鱼跑适用性继续待验证。',
+  minimumEffectiveAp: 3,
+  minimumEffectiveRule:
+    '首个可装备投入 3AP 会同时缩短潜墨与非潜墨回满时间；不代表所有配装都必须投入。',
+  thresholdScope: 'universal',
+  calculate(ap) {
+    const boundedAp = clampAbilityPoints(ap);
+    const frames = getInkRecoveryFrames(boundedAp, 'squid');
+    return {
+      ap: boundedAp,
+      multiplier: frames / 180,
+      benefitPercent: (1 - frames / 180) * 100,
+    };
+  },
+};
+
 const verifiedCurves = new Map<string, AbilityCurveDefinition>([
   [mainInkSaverCurve.abilityId, mainInkSaverCurve],
   [subInkSaverCurve.abilityId, subInkSaverCurve],
+  [inkRecoveryCurve.abilityId, inkRecoveryCurve],
 ]);
 
 const fixedMainAbilityIds = new Set([

@@ -1,5 +1,6 @@
 import { abilities } from './abilities.ts';
 import { getAbilityCurveDefinition } from './ability-curves.ts';
+import { getInkRecoveryAnalysis } from './ink-recovery.ts';
 import type { Weapon } from './weapon-catalog.ts';
 import { getSubInkSaverAnalysis } from './sub-ink-saver.ts';
 
@@ -85,6 +86,7 @@ export function buildLoadoutContextSections(
       ? null
       : 100 - baseUses * baseInkCost;
   const subInkAnalysis = getSubInkSaverAnalysis(weapon, subInkAp);
+  const inkRecoveryAnalysis = getInkRecoveryAnalysis(weapon, inkRecoveryAp);
 
   const coveredIds = new Set([
     'iss',
@@ -151,9 +153,15 @@ export function buildLoadoutContextSections(
         },
         {
           label: '回墨协同',
-          value: inkRecoveryAp > 0 ? `${inkRecoveryAp}AP` : '未投入',
-          note: '回墨能力会单独影响恢复阶段；当前不会把它混进副武单次耗墨。',
-          state: inkRecoveryAp > 0 ? 'equipped' : 'empty',
+          value:
+            inkRecoveryAp > 0
+              ? `${inkRecoveryAp}AP · 潜墨 ${inkRecoveryAnalysis.squid.adjustedSeconds.toFixed(2)}秒`
+              : '未投入',
+          note:
+            inkRecoveryAp > 0
+              ? `对战模式从空槽回满：潜墨 ${inkRecoveryAnalysis.squid.adjustedFrames} 帧，非潜墨 ${inkRecoveryAnalysis.humanoid.adjustedFrames} 帧；不包含${weapon.sub.name}使用后的墨锁。`
+              : '当前配装没有提升墨汁回复力；对战回墨曲线已核对，可在上方单项分析中试算。',
+          state: inkRecoveryAp > 0 ? 'equipped' : 'verified',
         },
       ],
     },

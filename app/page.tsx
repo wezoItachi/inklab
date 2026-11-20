@@ -112,6 +112,12 @@ const SubInkSaverPanel = lazy(() =>
   })),
 );
 
+const InkRecoveryPanel = lazy(() =>
+  import('@/components/ink-recovery-panel').then(({ InkRecoveryPanel }) => ({
+    default: InkRecoveryPanel,
+  })),
+);
+
 const LoadoutContextAnalysis = lazy(() =>
   import('@/components/loadout-context-analysis').then(
     ({ LoadoutContextAnalysis }) => ({ default: LoadoutContextAnalysis }),
@@ -1179,8 +1185,8 @@ export default function Home() {
                       </p>
                     </div>
                     <p className="note">
-                      套装关系已核对 · 主武与副武省墨曲线已核对 · 其余 AP
-                      效果曲线仍在验证
+                      套装关系已核对 · 主武省墨、副武省墨与对战回墨曲线已核对 ·
+                      其余 AP 效果曲线仍在验证
                     </p>
                   </aside>
                 </div>
@@ -1271,6 +1277,7 @@ function EffectPanel({
   const a = abilities.find((x) => x.id === id);
   const isMain = id === 'ism';
   const isSub = id === 'iss';
+  const isInkRecovery = id === 'iru';
   const isSubPower = id === 'subp';
   const genericContext = a ? buildAbilityContext(a, weapon, ap) : null;
   const curve = getAbilityCurveDefinition(id);
@@ -1304,6 +1311,20 @@ function EffectPanel({
           fallback={<p className="parameter-public-note">正在计算副武省墨…</p>}
         >
           <SubInkSaverPanel
+            weapon={weapon}
+            ability={a}
+            ap={ap}
+            setAp={setAp}
+            isPreview={isPreview}
+            equippedAp={equippedAp}
+            clearPreview={clearPreview}
+          />
+        </Suspense>
+      ) : isInkRecovery ? (
+        <Suspense
+          fallback={<p className="parameter-public-note">正在计算回墨时间…</p>}
+        >
+          <InkRecoveryPanel
             weapon={weapon}
             ability={a}
             ap={ap}

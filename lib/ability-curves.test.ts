@@ -37,13 +37,25 @@ void test('sub ink saver exposes its standard curve and weapon-specific threshol
   );
 });
 
-void test('unverified abilities never expose invented curve values', () => {
+void test('ink recovery exposes the verified battle squid-form curve', () => {
   const definition = getAbilityCurveDefinition('iru');
+  assert.equal(definition.status, 'verified');
+  assert.equal(definition.minimumEffectiveAp, 3);
+  assert.equal(definition.thresholdScope, 'universal');
+  assert.equal(getAbilityCurveSample('iru', 0)?.benefitPercent, 0);
+  assert.ok(
+    Math.abs((getAbilityCurveSample('iru', 57)?.benefitPercent ?? 0) - 35) <
+      1e-9,
+  );
+});
+
+void test('unverified abilities never expose invented curve values', () => {
+  const definition = getAbilityCurveDefinition('ssu');
   assert.equal(definition.status, 'pending');
   assert.equal(definition.calculate, null);
-  assert.equal(getAbilityCurveSample('iru', 10), null);
-  assert.equal(hasVerifiedAbilityCurve('iru'), false);
-  assert.equal(hasMinimumEffectiveAbilityValue('iru'), false);
+  assert.equal(getAbilityCurveSample('ssu', 10), null);
+  assert.equal(hasVerifiedAbilityCurve('ssu'), false);
+  assert.equal(hasMinimumEffectiveAbilityValue('ssu'), false);
 });
 
 void test('fixed gear-exclusive abilities are not misreported as pending AP curves', () => {
