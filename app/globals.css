@@ -1274,6 +1274,33 @@ button {
 .context-analysis-grid p {
   margin: 5px 0 0;
 }
+.ability-context-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+  margin-top: 10px;
+}
+.ability-context-grid article {
+  min-width: 0;
+  padding: 10px;
+  border: 1px solid #d5def5;
+  border-radius: var(--radius-data);
+  background: #f7f9ff;
+}
+.ability-context-grid small,
+.ability-context-grid strong {
+  display: block;
+}
+.ability-context-grid small {
+  color: #6278a8;
+  font: 700 8px monospace;
+}
+.ability-context-grid strong {
+  margin-top: 2px;
+}
+.ability-context-grid p {
+  margin: 5px 0 0;
+}
 .analysis-column > .notice {
   margin-top: 14px;
 }
@@ -1290,6 +1317,9 @@ button {
 }
 @media (max-width: 680px) {
   .accordions details > .context-analysis-grid {
+    grid-template-columns: 1fr;
+  }
+  .ability-context-grid {
     grid-template-columns: 1fr;
   }
   .stone-pool {

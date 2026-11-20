@@ -50,6 +50,7 @@ import { WeaponPicker } from '@/components/weapon-picker';
 import { SectionErrorBoundary } from '@/components/section-error-boundary';
 import type { WeaponPickerItem } from '@/lib/weapon-picker';
 import { getPageHash, parsePageHash, type PageId } from '@/lib/page-navigation';
+import { buildAbilityContext } from '@/lib/ability-context';
 
 const SalmonRunLab = lazy(() =>
   import('@/components/salmon-run-lab').then(({ SalmonRunLab }) => ({
@@ -1204,6 +1205,7 @@ function EffectPanel({
   const isMain = id === 'ism';
   const isSub = id === 'iss';
   const isSubPower = id === 'subp';
+  const genericContext = a ? buildAbilityContext(a, weapon, ap) : null;
   return (
     <section className="effect-panel">
       <div className="effect-head">
@@ -1262,19 +1264,51 @@ function EffectPanel({
       ) : isSubPower ? (
         <SubPowerPanel weapon={weapon} a={a} ap={ap} setAp={setAp} />
       ) : (
-        <div className="effect-main generic">
-          <AbilityIcon ability={a} />
-          <div>
-            <small>
-              {weapon.name} · 当前 {ap}AP
-            </small>
-            <strong>{a?.name}</strong>
-            <p>
-              当前分析上下文已绑定 {weapon.sub.name} 与 {weapon.special}
-              ；此能力的正式参数仍待导入。
-            </p>
+        <>
+          <div className="effect-main generic">
+            <AbilityIcon ability={a} />
+            <div>
+              <small>
+                {weapon.name} · 当前 {ap}AP
+              </small>
+              <strong>{a?.name}</strong>
+              <p>
+                当前先展示可核对的规则语义；效果曲线、临界点与推荐投入量继续保持待验证。
+              </p>
+            </div>
+            <span>
+              {genericContext?.verification === 'rule-only'
+                ? '规则已识别'
+                : '曲线待验证'}
+            </span>
           </div>
-        </div>
+          {genericContext && (
+            <div className="ability-context-grid">
+              <article>
+                <small>实验区</small>
+                <strong>{genericContext.experimentArea}</strong>
+                <p>按能力分类进入对应的实验与证据队列。</p>
+              </article>
+              <article>
+                <small>生效条件</small>
+                <strong>{genericContext.activation}</strong>
+                <p>先区分常驻、条件触发与部位限定，不混成同一种 AP。</p>
+              </article>
+              <article>
+                <small>当前作用对象</small>
+                <strong>{genericContext.target}</strong>
+                <p>{genericContext.targetNote}</p>
+              </article>
+            </div>
+          )}
+          {genericContext && (
+            <p className="judgement">
+              <TrendingUp size={14} />
+              <b>当前结论：</b>
+              {genericContext.conclusion}
+            </p>
+          )}
+        </>
       )}
     </section>
   );
