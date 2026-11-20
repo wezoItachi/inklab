@@ -42,8 +42,39 @@ export function getAbilityIntensity(ap: number): number {
   return Math.min(100, 3.3 * boundedAp - 0.027 * boundedAp ** 2) / 100;
 }
 
+type AbilityValueTriple = readonly [high: number, mid: number, low: number];
+
+export function interpolateAbilityValue(
+  [high, mid, low]: AbilityValueTriple,
+  ap: number,
+): number {
+  const intensity = getAbilityIntensity(ap);
+  if (high === low) return low;
+  const slope = mid === low ? 0 : (mid - low) / (high - low);
+  const curvedIntensity =
+    slope.toFixed(3) === '0.500' || intensity === 0 || intensity === 1
+      ? intensity
+      : Math.E ** (-(Math.log(intensity) * Math.log(slope)) / Math.log(2));
+  return low + (high - low) * curvedIntensity;
+}
+
 export function getMainInkSaverMultiplier(ap: number): number {
-  return 1 - 0.45 * getAbilityIntensity(ap);
+  return interpolateAbilityValue([0.55, 0.775, 1], ap);
+}
+
+const subInkSaverValues = [
+  [0.8, 0.9, 1],
+  [0.7, 0.85, 1],
+  [0.65, 0.825, 1],
+  [0.6, 0.8, 1],
+  [0.711111, 0.855555, 1],
+] as const;
+
+export function getSubInkSaverMultiplier(
+  ap: number,
+  level: 0 | 1 | 2 | 3 | 4 = 2,
+): number {
+  return interpolateAbilityValue(subInkSaverValues[level], ap);
 }
 
 const mainInkSaverCurve: AbilityCurveDefinition = {
@@ -69,8 +100,32 @@ const mainInkSaverCurve: AbilityCurveDefinition = {
   },
 };
 
+const subInkSaverCurve: AbilityCurveDefinition = {
+  abilityId: 'iss',
+  status: 'verified',
+  title: '副武器耗墨倍率（标准档）',
+  outputLabel: '耗墨降低',
+  formulaLabel: '按副武器 Lv0–Lv4 档位插值',
+  sourceNote:
+    '能力三点值与副武器档位已和 Leanny 12.0 固定快照及 Sendou.ink 构建分析器实现交叉核对；百科显示 Lv2 标准档，实验室按当前副武器实际档位计算。',
+  minimumEffectiveAp: 3,
+  minimumEffectiveRule:
+    '所有五个副武器档位在首个可装备投入 3AP 时都会改变耗墨倍率；实际完整使用次数临界点仍取决于副武器和墨水槽容量。',
+  thresholdScope: 'weapon-specific',
+  calculate(ap) {
+    const boundedAp = clampAbilityPoints(ap);
+    const multiplier = getSubInkSaverMultiplier(boundedAp);
+    return {
+      ap: boundedAp,
+      multiplier,
+      benefitPercent: (1 - multiplier) * 100,
+    };
+  },
+};
+
 const verifiedCurves = new Map<string, AbilityCurveDefinition>([
   [mainInkSaverCurve.abilityId, mainInkSaverCurve],
+  [subInkSaverCurve.abilityId, subInkSaverCurve],
 ]);
 
 const fixedMainAbilityIds = new Set([

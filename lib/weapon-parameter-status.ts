@@ -46,6 +46,11 @@ export const parameterSources = {
     url: 'https://github.com/Leanny/splat3/tree/b669d55e0eef1f1a7f18cb7468c636ed7746c189/data/parameter/1200',
     checkedAt: '2026-11-19',
   },
+  subInkCurveCrossCheck: {
+    label: 'Leanny 12.0 参数与 Sendou.ink 分析器交叉核对',
+    url: 'https://github.com/sendou-ink/sendou.ink/tree/8bcc6e48c3aec3cae9b6292137c7fc6bf811e9fc/app/features/build-analyzer',
+    checkedAt: '2026-11-20',
+  },
   internalReview: {
     label: 'INKLAB 六武器参数人工核对记录',
     checkedAt: '2026-09-06',
@@ -82,11 +87,14 @@ export function getWeaponParameterSnapshot(
       {
         label: '副武耗墨',
         status: weapon.sub.baseInkCost === null ? 'pending' : 'verified',
-        source: weapon.sub.baseInkCost === null ? undefined : 'internalReview',
+        source:
+          weapon.sub.baseInkCost === null
+            ? undefined
+            : 'subInkCurveCrossCheck',
         note:
           weapon.sub.baseInkCost === null
             ? '副武器身份已导入，基础耗墨尚未逐字段核对'
-            : `基础耗墨 ${weapon.sub.baseInkCost}%`,
+            : `基础耗墨 ${weapon.sub.baseInkCost}% · 副省 Lv${weapon.sub.inkSaverLevel}`,
       },
       {
         label: '副武增强对象',
@@ -110,7 +118,7 @@ export function getWeaponParameterSnapshot(
       {
         label: 'AP 效果曲线',
         status: 'partial',
-        note: '主武器墨水效率提升已核对；其余能力效果曲线待验证',
+        note: '主武器与副武器墨水效率提升已核对；其余能力效果曲线待验证',
       },
       {
         label: '系统建议',

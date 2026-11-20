@@ -25,6 +25,18 @@ void test('main ink saver is exposed through the shared verified curve protocol'
   );
 });
 
+void test('sub ink saver exposes its standard curve and weapon-specific threshold scope', () => {
+  const definition = getAbilityCurveDefinition('iss');
+  assert.equal(definition.status, 'verified');
+  assert.equal(definition.minimumEffectiveAp, 3);
+  assert.equal(definition.thresholdScope, 'weapon-specific');
+  assert.equal(getAbilityCurveSample('iss', 0)?.benefitPercent, 0);
+  assert.ok(
+    Math.abs((getAbilityCurveSample('iss', 57)?.benefitPercent ?? 0) - 35) <
+      1e-9,
+  );
+});
+
 void test('unverified abilities never expose invented curve values', () => {
   const definition = getAbilityCurveDefinition('iru');
   assert.equal(definition.status, 'pending');

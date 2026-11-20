@@ -95,7 +95,7 @@ export function getSystemRecommendations(weapon: Weapon): readonly SystemRecomme
       id: 'sub',
       name: `${weapon.sub.name}协同型`,
       desc: '围绕已核对的武器套装组织能力',
-      rationale: `提高副武器使用后的续航空间；精确节省量和连续使用阈值要等 AP 曲线核验。`,
+      rationale: `提高副武器使用后的续航空间；精确节省量和连续使用阈值按当前副武器的已核对曲线计算。`,
       evidence: [subEvidence, subPowerNote, '保留基础机动与生存小能力'],
       focusAbilityId: 'iss',
       slots: makeSlots(

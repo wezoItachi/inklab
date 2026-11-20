@@ -3,7 +3,7 @@ import test from 'node:test';
 import { buildLoadoutContextSections } from './loadout-context-analysis.ts';
 import { getWeapon } from './weapon-catalog.ts';
 
-void test('context analysis reads the current kit and equipped AP without inventing curves', () => {
+void test('context analysis reads the current kit and verified equipped AP curves', () => {
   const sections = buildLoadoutContextSections(
     getWeapon('shooter-quickmiddle-cstm01'),
     [
@@ -22,8 +22,8 @@ void test('context analysis reads the current kit and equipped AP without invent
   assert.equal(sub?.summary, '机器人炸弹 · 当前套装');
   assert.equal(sub?.metrics[0]?.value, '55%');
   assert.match(sub?.metrics[0]?.note ?? '', /完整使用 1 次/);
-  assert.equal(sub?.metrics[1]?.value, '13AP');
-  assert.match(sub?.metrics[1]?.note ?? '', /不输出调整后耗墨/);
+  assert.equal(sub?.metrics[1]?.value, '13AP · 48.67%');
+  assert.match(sub?.metrics[1]?.note ?? '', /Lv1 曲线.*完整使用 2 次/);
   assert.equal(mobility?.metrics[0]?.label, '快跳');
   assert.equal(other?.metrics[0]?.label, '主省');
   assert.match(other?.metrics[0]?.note ?? '', /正式效果曲线/);
@@ -54,6 +54,9 @@ void test('unverified kit fields remain visibly pending', () => {
     sub: {
       ...getWeapon('shooter-quickmiddle-cstm01').sub,
       baseInkCost: null,
+      inkSaverLevel: null,
+      inkCostSource: null,
+      inkSaverLevelSource: null,
       subPowerEffect: null,
     },
   };

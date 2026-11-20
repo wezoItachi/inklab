@@ -106,6 +106,12 @@ const MainInkSaverPanel = lazy(() =>
   })),
 );
 
+const SubInkSaverPanel = lazy(() =>
+  import('@/components/sub-ink-saver-panel').then(({ SubInkSaverPanel }) => ({
+    default: SubInkSaverPanel,
+  })),
+);
+
 const LoadoutContextAnalysis = lazy(() =>
   import('@/components/loadout-context-analysis').then(
     ({ LoadoutContextAnalysis }) => ({ default: LoadoutContextAnalysis }),
@@ -1173,7 +1179,7 @@ export default function Home() {
                       </p>
                     </div>
                     <p className="note">
-                      套装关系已核对 · 主武省墨曲线已核对 · 其余 AP
+                      套装关系已核对 · 主武与副武省墨曲线已核对 · 其余 AP
                       效果曲线仍在验证
                     </p>
                   </aside>
@@ -1294,33 +1300,19 @@ function EffectPanel({
           />
         </Suspense>
       ) : isSub ? (
-        <>
-          <div className="effect-main">
-            <AbilityIcon ability={a} />
-            <div>
-              <small>
-                {weapon.name} · {weapon.sub.name}
-              </small>
-              <strong>降低每次使用副武器的墨水消耗</strong>
-              <p>
-                当前 {ap}AP；{weapon.sub.name} 的基础耗墨
-                {weapon.sub.baseInkCost === null
-                  ? '尚未核对'
-                  : `为 ${weapon.sub.baseInkCost}%`}
-                。精确曲线与连续使用阈值将在参数层验证后显示。
-              </p>
-            </div>
-            <span>曲线待验证</span>
-          </div>
-          <p className="effect-boundary">
-            当前只读取左侧配装中的 {ap}AP；曲线核验前不提供预设试投档位。
-          </p>
-          <p className="judgement">
-            <TrendingUp size={14} />
-            <b>当前结论：</b>
-            武器切换已经更新副武器身份；在耗墨、公式和字段完成双重核对前，不把演示档位写成正式攻略。
-          </p>
-        </>
+        <Suspense
+          fallback={<p className="parameter-public-note">正在计算副武省墨…</p>}
+        >
+          <SubInkSaverPanel
+            weapon={weapon}
+            ability={a}
+            ap={ap}
+            setAp={setAp}
+            isPreview={isPreview}
+            equippedAp={equippedAp}
+            clearPreview={clearPreview}
+          />
+        </Suspense>
       ) : isSubPower ? (
         <SubPowerPanel weapon={weapon} a={a} ap={ap} />
       ) : (

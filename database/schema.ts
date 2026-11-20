@@ -44,6 +44,9 @@ export type SubWeaponRecord = Provenance & {
   upstreamId: string;
   name: string;
   baseInkCost: number | null;
+  inkSaverLevel: 0 | 1 | 2 | 3 | 4 | null;
+  inkCostSource: 'leanny-explicit' | 'sendou-runtime-default' | null;
+  inkSaverLevelSource: 'leanny-explicit' | 'sendou-runtime-default' | null;
   subPowerEffect: string | null;
   subPowerDoesNotChange: string[];
 };
@@ -112,7 +115,14 @@ export type MainWeaponParameterDatabase = VersionedRecordSet<
 export type WeaponRecord = MainWeaponRecord & {
   sub: Pick<
     SubWeaponRecord,
-    'id' | 'name' | 'baseInkCost' | 'subPowerEffect' | 'subPowerDoesNotChange'
+    | 'id'
+    | 'name'
+    | 'baseInkCost'
+    | 'inkSaverLevel'
+    | 'inkCostSource'
+    | 'inkSaverLevelSource'
+    | 'subPowerEffect'
+    | 'subPowerDoesNotChange'
   >;
   specialId: string;
   special: string;
@@ -179,6 +189,18 @@ export function validateGameDatabase(
       (sub.baseInkCost <= 0 || sub.baseInkCost > 100)
     )
       throw new Error(`Invalid sub ink cost: ${sub.id}`);
+    if (
+      sub.inkSaverLevel !== null &&
+      (!Number.isInteger(sub.inkSaverLevel) ||
+        sub.inkSaverLevel < 0 ||
+        sub.inkSaverLevel > 4)
+    )
+      throw new Error(`Invalid sub ink saver level: ${sub.id}`);
+    if (
+      (sub.baseInkCost === null) !== (sub.inkCostSource === null) ||
+      (sub.inkSaverLevel === null) !== (sub.inkSaverLevelSource === null)
+    )
+      throw new Error(`Missing sub ink provenance: ${sub.id}`);
     if (
       sub.verification === 'kit-verified' &&
       (!sub.subPowerEffect || sub.subPowerDoesNotChange.length < 1)

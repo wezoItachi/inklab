@@ -1,6 +1,7 @@
 import { abilities } from './abilities.ts';
 import { getAbilityCurveDefinition } from './ability-curves.ts';
 import type { Weapon } from './weapon-catalog.ts';
+import { getSubInkSaverAnalysis } from './sub-ink-saver.ts';
 
 export type EquippedAbilityTotal = {
   id: string;
@@ -83,6 +84,7 @@ export function buildLoadoutContextSections(
     baseUses === null || baseInkCost === null
       ? null
       : 100 - baseUses * baseInkCost;
+  const subInkAnalysis = getSubInkSaverAnalysis(weapon, subInkAp);
 
   const coveredIds = new Set([
     'iss',
@@ -123,12 +125,15 @@ export function buildLoadoutContextSections(
         },
         {
           label: '副武省墨',
-          value: subInkAp > 0 ? `${subInkAp}AP` : '未投入',
+          value:
+            subInkAp > 0 && subInkAnalysis
+              ? `${subInkAp}AP · ${subInkAnalysis.adjustedInkCost.toFixed(2)}%`
+              : '未投入',
           note:
-            subInkAp > 0
-              ? '已识别当前 AP；副武省墨曲线完成核验前不输出调整后耗墨与连续次数。'
-              : '当前配装没有提升墨汁效率（次要武器）。',
-          state: subInkAp > 0 ? 'equipped' : 'empty',
+            subInkAp > 0 && subInkAnalysis
+              ? `按${weapon.sub.name}的 Lv${subInkAnalysis.level} 曲线计算，满墨可完整使用 ${subInkAnalysis.adjustedUsesPerTank} 次。`
+              : '当前配装没有提升墨汁效率（次要武器）；曲线已核对，可在上方单项分析中试算。',
+          state: subInkAnalysis ? (subInkAp > 0 ? 'equipped' : 'verified') : 'pending',
         },
         {
           label: '副武增强',
