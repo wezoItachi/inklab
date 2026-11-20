@@ -54,5 +54,22 @@ void test('all eight special events receive an explicit provisional assessment',
   );
   assert.equal(events.every((event) => event.label.length > 0), true);
   assert.equal(events.every((event) => event.summary.length > 0), true);
-  assert.equal(events.find((event) => event.id === 'tornado')?.alias, '走私关');
+  assert.deepEqual(
+    events.map((event) => event.name),
+    [
+      '狂潮',
+      '烤架鱼进发',
+      '寻找金鲑鱼',
+      '走私鱼来袭',
+      '大胖鱼大量出现',
+      '雾',
+      '泥鲑鱼喷发',
+      '巨型龙卷风',
+    ],
+  );
+  assert.equal(
+    events.find((event) => event.id === 'mothership')?.alias,
+    '走私关',
+  );
+  assert.equal(events.find((event) => event.id === 'tornado')?.alias, undefined);
 });

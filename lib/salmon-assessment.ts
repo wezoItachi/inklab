@@ -145,7 +145,7 @@ export function assessSalmonEvents(
     },
     {
       id: 'griller',
-      name: '烤架鱼大量出现',
+      name: '烤架鱼进发',
       ...getTone(grillerScore),
       influence: '武器影响高',
       summary: '看单体爆发、射程与小鲑鱼清理分工；未计入地图绕行路线。',
@@ -159,7 +159,8 @@ export function assessSalmonEvents(
     },
     {
       id: 'mothership',
-      name: '运鱼船来袭',
+      name: '走私鱼来袭',
+      alias: '走私关',
       ...getTone(mothershipScore),
       influence: '武器影响中',
       summary: '长手与涂地覆盖越完整，回收箱处理和远处箱子清理越从容。',
@@ -187,8 +188,7 @@ export function assessSalmonEvents(
     },
     {
       id: 'tornado',
-      name: '巨大龙卷风',
-      alias: '走私关',
+      name: '巨型龙卷风',
       ...getTone(tornadoScore),
       influence: '编成影响较低',
       summary: '通常更偏搬运与接力，机动和涂地只影响运送余量；未计入地图路线。',
