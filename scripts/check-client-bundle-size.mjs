@@ -39,6 +39,7 @@ const lazySections = [
   ['main-weapon-verification', '主武参数核验状态'],
   ['main-weapon-efficiency-panel', '主武参数分析'],
   ['main-ink-saver-panel', '主武省墨分析'],
+  ['loadout-context-analysis', '当前配装上下文分析'],
 ];
 
 for (const [prefix, label] of lazySections) {

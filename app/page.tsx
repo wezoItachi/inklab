@@ -99,6 +99,12 @@ const MainInkSaverPanel = lazy(() =>
   })),
 );
 
+const LoadoutContextAnalysis = lazy(() =>
+  import('@/components/loadout-context-analysis').then(
+    ({ LoadoutContextAnalysis }) => ({ default: LoadoutContextAnalysis }),
+  ),
+);
+
 const initialRecommendations = getSystemRecommendations(
   getWeapon(weapons[0].id),
 );
@@ -1091,27 +1097,15 @@ export default function Home() {
                       <Suspense fallback={<p className="parameter-public-note">正在载入武器分析…</p>}>
                         <MainWeaponEfficiencyPanel weaponId={weapon.id} />
                       </Suspense>
-                      {[
-                        '次要武器实际影响',
-                        '特殊武器循环',
-                        '移动与返场',
-                        '生存与抗性',
-                        '其他能力',
-                      ].map((x, i) => (
-                        <details open={i === 0} key={x}>
-                          <summary>
-                            <span>{x}</span>
-                            <b>
-                              {i === 0 ? weapon.sub.name + ' · 当前套装' : ''}
-                            </b>
-                          </summary>
-                          <div>
-                            {i === 0
-                              ? `已根据 ${weapon.sub.name} 自动筛选：${weapon.sub.baseInkCost === null ? '基础耗墨待验证' : `基础耗墨 ${weapon.sub.baseInkCost}%`}；${weapon.sub.subPowerEffect === null ? '副武增强对象待验证' : `副武增强影响${weapon.sub.subPowerEffect}`}。`
-                              : '正式参数导入后，将在这里展示当前武器的数值、关键阈值、边际收益和机会成本。'}
-                          </div>
-                        </details>
-                      ))}
+                      <Suspense fallback={<p className="parameter-public-note">正在整理当前配装上下文…</p>}>
+                        <LoadoutContextAnalysis
+                          weapon={weapon}
+                          totals={totals.map(({ a, ap }) => ({
+                            id: a?.id ?? '',
+                            ap,
+                          }))}
+                        />
+                      </Suspense>
                     </div>
                     <div className="notice">
                       <Check size={15} />

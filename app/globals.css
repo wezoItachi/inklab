@@ -1233,6 +1233,47 @@ button {
   font-size: 9px;
   line-height: 1.6;
 }
+.accordions details > .context-analysis-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+  padding: 0 14px 14px;
+}
+.context-analysis-grid article {
+  min-width: 0;
+  padding: 10px;
+  border: 1px solid #d5def5;
+  border-radius: var(--radius-data);
+  background: rgba(255, 255, 255, 0.72);
+}
+.context-analysis-grid article.verified {
+  border-left: 3px solid #72a82b;
+}
+.context-analysis-grid article.equipped {
+  border-left: 3px solid var(--purple);
+}
+.context-analysis-grid article.pending {
+  border-left: 3px solid #c29434;
+}
+.context-analysis-grid article.empty {
+  opacity: 0.72;
+}
+.context-analysis-grid small,
+.context-analysis-grid strong {
+  display: block;
+}
+.context-analysis-grid small {
+  color: #6278a8;
+  font: 700 8px monospace;
+}
+.context-analysis-grid strong {
+  margin-top: 2px;
+  color: var(--ink);
+  font-size: 14px;
+}
+.context-analysis-grid p {
+  margin: 5px 0 0;
+}
 .analysis-column > .notice {
   margin-top: 14px;
 }
@@ -1248,6 +1289,9 @@ button {
   }
 }
 @media (max-width: 680px) {
+  .accordions details > .context-analysis-grid {
+    grid-template-columns: 1fr;
+  }
   .stone-pool {
     grid-template-columns: repeat(5, 1fr);
   }
