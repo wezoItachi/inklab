@@ -24,6 +24,7 @@
     "data:import-charger-parameters": "node scripts/import-leanny-charger-parameters.mjs",
     "data:import-remaining-parameters": "node scripts/import-leanny-remaining-parameters.mjs",
     "data:import-salmon-parameters": "node scripts/import-leanny-salmon-parameters.mjs",
+    "data:import-salmon-weapon-names": "node scripts/import-leanny-salmon-weapon-names.mjs",
     "data:import-salmon-ink-cycle": "node scripts/import-leanny-salmon-ink-cycle.mjs",
     "assets:import-weapon-images": "node scripts/import-leanny-weapon-images.mjs",
     "data:audit-battle-gaps": "node scripts/audit-battle-parameter-gaps.mjs",

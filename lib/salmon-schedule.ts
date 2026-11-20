@@ -36,6 +36,15 @@ export function localizeSalmonStageName(name: string) {
   return salmonStageNames[name] ?? name;
 }
 
+export function getSalmonScheduleRefreshDelay(
+  endTime: string,
+  now = Date.now(),
+) {
+  const end = Date.parse(endTime);
+  if (!Number.isFinite(end)) return 5 * 60 * 1000;
+  return Math.min(Math.max(end - now + 5_000, 1_000), 2_147_483_647);
+}
+
 export function parseSalmonRotations(payload: unknown): SalmonRotation[] {
   const root = payload as { data?: unknown };
   const body = (

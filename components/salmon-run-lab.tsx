@@ -20,6 +20,7 @@ import {
   type SalmonRotation,
 } from '@/lib/salmon-run';
 import {
+  getSalmonScheduleRefreshDelay,
   localizeSalmonStageName,
   parseSalmonScheduleEnvelope,
   readSalmonScheduleCache,
@@ -70,6 +71,7 @@ export function SalmonRunLab() {
   const [targetId, setTargetId] = useState('rush-goldie'),
     [customTargetHealth, setCustomTargetHealth] = useState(500);
   const manuallyEdited = useRef(false);
+  const refreshSchedule = useRef<() => void>(() => {});
   const selected = selectedIds.map(
     (id) => salmonWeapons.find((item) => item.id === id) ?? salmonWeapons[0],
   );
@@ -119,6 +121,7 @@ export function SalmonRunLab() {
         minute: '2-digit',
       })}`
     : null;
+  const rotationEndTime = rotation?.endTime;
 
   const acceptSchedule = (
     envelope: SalmonScheduleEnvelope,
@@ -168,6 +171,9 @@ export function SalmonRunLab() {
       });
   };
   useEffect(() => {
+    refreshSchedule.current = loadSchedule;
+  });
+  useEffect(() => {
     let active = true;
     void fetchSchedule()
       .then((envelope) => {
@@ -182,6 +188,14 @@ export function SalmonRunLab() {
       active = false;
     };
   }, []);
+  useEffect(() => {
+    if (!rotationEndTime) return;
+    const timer = window.setTimeout(
+      () => refreshSchedule.current(),
+      getSalmonScheduleRefreshDelay(rotationEndTime),
+    );
+    return () => window.clearTimeout(timer);
+  }, [rotationEndTime]);
   const replaceWeapon = (index: number, id: string) => {
     manuallyEdited.current = true;
     setSelectedIds((current) =>
@@ -294,6 +308,7 @@ export function SalmonRunLab() {
               splatoon3.ink
             </a>
             。当前仅经 INKLAB 接口读取地图与武器名称，不复制上游图片素材。
+            页面会在本期轮换结束后自动刷新。
           </span>
           <button
             type="button"

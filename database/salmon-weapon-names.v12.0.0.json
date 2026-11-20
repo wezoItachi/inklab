@@ -1,0 +1,261 @@
+{
+  "gameVersion": "12.0.0",
+  "checkedAt": "2026-11-20",
+  "sourceId": "leanny-splat3",
+  "sourceCommit": "b669d55e0eef1f1a7f18cb7468c636ed7746c189",
+  "languageKey": "CommonMsg/Weapon/WeaponName_Main",
+  "records": [
+    {
+      "upstreamRowId": "Shooter_Normal_00",
+      "englishName": "Splattershot"
+    },
+    {
+      "upstreamRowId": "Shooter_Precision_00",
+      "englishName": "Splash-o-matic"
+    },
+    {
+      "upstreamRowId": "Charger_Normal_00",
+      "englishName": "Splat Charger"
+    },
+    {
+      "upstreamRowId": "Roller_Normal_00",
+      "englishName": "Splat Roller"
+    },
+    {
+      "upstreamRowId": "Spinner_Standard_00",
+      "englishName": "Heavy Splatling"
+    },
+    {
+      "upstreamRowId": "Shooter_Short_00",
+      "englishName": "Sploosh-o-matic"
+    },
+    {
+      "upstreamRowId": "Shooter_First_00",
+      "englishName": "Splattershot Jr."
+    },
+    {
+      "upstreamRowId": "Shooter_Blaze_00",
+      "englishName": "Aerospray MG"
+    },
+    {
+      "upstreamRowId": "Shooter_Gravity_00",
+      "englishName": ".52 Gal"
+    },
+    {
+      "upstreamRowId": "Shooter_QuickMiddle_00",
+      "englishName": "N-ZAP '85"
+    },
+    {
+      "upstreamRowId": "Shooter_Expert_00",
+      "englishName": "Splattershot Pro"
+    },
+    {
+      "upstreamRowId": "Shooter_Heavy_00",
+      "englishName": ".96 Gal"
+    },
+    {
+      "upstreamRowId": "Shooter_Long_00",
+      "englishName": "Jet Squelcher"
+    },
+    {
+      "upstreamRowId": "Shooter_QuickLong_00",
+      "englishName": "Splattershot Nova"
+    },
+    {
+      "upstreamRowId": "Shooter_TripleQuick_00",
+      "englishName": "L-3 Nozzlenose"
+    },
+    {
+      "upstreamRowId": "Shooter_TripleMiddle_00",
+      "englishName": "H-3 Nozzlenose"
+    },
+    {
+      "upstreamRowId": "Shooter_Flash_00",
+      "englishName": "Squeezer"
+    },
+    {
+      "upstreamRowId": "Blaster_Short_00",
+      "englishName": "Luna Blaster"
+    },
+    {
+      "upstreamRowId": "Blaster_Middle_00",
+      "englishName": "Blaster"
+    },
+    {
+      "upstreamRowId": "Blaster_Long_00",
+      "englishName": "Range Blaster"
+    },
+    {
+      "upstreamRowId": "Blaster_LightShort_00",
+      "englishName": "Clash Blaster"
+    },
+    {
+      "upstreamRowId": "Blaster_Light_00",
+      "englishName": "Rapid Blaster"
+    },
+    {
+      "upstreamRowId": "Blaster_LightLong_00",
+      "englishName": "Rapid Blaster Pro"
+    },
+    {
+      "upstreamRowId": "Blaster_Precision_00",
+      "englishName": "S-BLAST '92"
+    },
+    {
+      "upstreamRowId": "Roller_Compact_00",
+      "englishName": "Carbon Roller"
+    },
+    {
+      "upstreamRowId": "Roller_Heavy_00",
+      "englishName": "Dynamo Roller"
+    },
+    {
+      "upstreamRowId": "Roller_Hunter_00",
+      "englishName": "Flingza Roller"
+    },
+    {
+      "upstreamRowId": "Roller_Wide_00",
+      "englishName": "Big Swig Roller"
+    },
+    {
+      "upstreamRowId": "Brush_Mini_00",
+      "englishName": "Inkbrush"
+    },
+    {
+      "upstreamRowId": "Brush_Normal_00",
+      "englishName": "Octobrush"
+    },
+    {
+      "upstreamRowId": "Brush_Heavy_00",
+      "englishName": "Painbrush"
+    },
+    {
+      "upstreamRowId": "Charger_Quick_00",
+      "englishName": "Classic Squiffer"
+    },
+    {
+      "upstreamRowId": "Charger_Long_00",
+      "englishName": "E-liter 4K"
+    },
+    {
+      "upstreamRowId": "Charger_Light_00",
+      "englishName": "Bamboozler 14 Mk I"
+    },
+    {
+      "upstreamRowId": "Charger_Keeper_00",
+      "englishName": "Goo Tuber"
+    },
+    {
+      "upstreamRowId": "Charger_Pencil_00",
+      "englishName": "Snipewriter 5H"
+    },
+    {
+      "upstreamRowId": "Slosher_Strong_00",
+      "englishName": "Slosher"
+    },
+    {
+      "upstreamRowId": "Slosher_Diffusion_00",
+      "englishName": "Tri-Slosher"
+    },
+    {
+      "upstreamRowId": "Slosher_Launcher_00",
+      "englishName": "Sloshing Machine"
+    },
+    {
+      "upstreamRowId": "Slosher_Bathtub_00",
+      "englishName": "Bloblobber"
+    },
+    {
+      "upstreamRowId": "Slosher_Washtub_00",
+      "englishName": "Explosher"
+    },
+    {
+      "upstreamRowId": "Slosher_Double_00",
+      "englishName": "Dread Wringer"
+    },
+    {
+      "upstreamRowId": "Spinner_Quick_00",
+      "englishName": "Mini Splatling"
+    },
+    {
+      "upstreamRowId": "Spinner_Hyper_00",
+      "englishName": "Hydra Splatling"
+    },
+    {
+      "upstreamRowId": "Spinner_Downpour_00",
+      "englishName": "Ballpoint Splatling"
+    },
+    {
+      "upstreamRowId": "Spinner_Serein_00",
+      "englishName": "Nautilus 47"
+    },
+    {
+      "upstreamRowId": "Spinner_HyperShort_00",
+      "englishName": "Heavy Edit Splatling"
+    },
+    {
+      "upstreamRowId": "Maneuver_Short_00",
+      "englishName": "Dapple Dualies"
+    },
+    {
+      "upstreamRowId": "Maneuver_Normal_00",
+      "englishName": "Splat Dualies"
+    },
+    {
+      "upstreamRowId": "Maneuver_Gallon_00",
+      "englishName": "Glooga Dualies"
+    },
+    {
+      "upstreamRowId": "Maneuver_Dual_00",
+      "englishName": "Dualie Squelchers"
+    },
+    {
+      "upstreamRowId": "Maneuver_Stepper_00",
+      "englishName": "Dark Tetra Dualies"
+    },
+    {
+      "upstreamRowId": "Maneuver_Long_00",
+      "englishName": "Douser Dualies FF"
+    },
+    {
+      "upstreamRowId": "Shelter_Normal_00",
+      "englishName": "Splat Brella"
+    },
+    {
+      "upstreamRowId": "Shelter_Wide_00",
+      "englishName": "Tenta Brella"
+    },
+    {
+      "upstreamRowId": "Shelter_Compact_00",
+      "englishName": "Undercover Brella"
+    },
+    {
+      "upstreamRowId": "Shelter_Focus_00",
+      "englishName": "Recycled Brella 24 Mk I"
+    },
+    {
+      "upstreamRowId": "Stringer_Normal_00",
+      "englishName": "Tri-Stringer"
+    },
+    {
+      "upstreamRowId": "Stringer_Short_00",
+      "englishName": "REEF-LUX 450"
+    },
+    {
+      "upstreamRowId": "Stringer_Explosion_00",
+      "englishName": "Wellstring V"
+    },
+    {
+      "upstreamRowId": "Saber_Normal_00",
+      "englishName": "Splatana Stamper"
+    },
+    {
+      "upstreamRowId": "Saber_Lite_00",
+      "englishName": "Splatana Wiper"
+    },
+    {
+      "upstreamRowId": "Saber_Heavy_00",
+      "englishName": "Mint Decavitator"
+    }
+  ]
+}

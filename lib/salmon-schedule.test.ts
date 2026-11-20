@@ -2,6 +2,7 @@ import assert from 'node:assert/strict';
 import test from 'node:test';
 import {
   createSalmonScheduleEnvelope,
+  getSalmonScheduleRefreshDelay,
   localizeSalmonStageName,
   parseSalmonScheduleEnvelope,
   readSalmonScheduleCache,
@@ -67,4 +68,17 @@ void test('schedule stages use the reviewed Simplified Chinese language table', 
     '生筋子系统交流道遗址',
   );
   assert.equal(localizeSalmonStageName('Future Stage'), 'Future Stage');
+});
+
+void test('schedule refresh waits for the next rotation boundary', () => {
+  const now = Date.parse('2026-11-20T00:00:00Z');
+  assert.equal(
+    getSalmonScheduleRefreshDelay('2026-11-20T00:10:00Z', now),
+    605_000,
+  );
+  assert.equal(
+    getSalmonScheduleRefreshDelay('2026-11-19T00:00:00Z', now),
+    1_000,
+  );
+  assert.equal(getSalmonScheduleRefreshDelay('invalid', now), 300_000);
 });

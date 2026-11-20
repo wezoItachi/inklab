@@ -119,7 +119,7 @@
       "detailsUrl": "https://splatoon3.ink/salmonrun",
       "checkedAt": "2026-10-19",
       "authorization": "MIT-upstream-read-only-endpoint",
-      "scope": "浏览器只读获取当前常规轮换的地图和四把武器名称；不复制或托管图片"
+      "scope": "站内只读代理获取当前常规轮换的地图、时间和四把武器名称，经 schema 校验和短时缓存后返回；不复制或托管图片"
     },
     {
       "id": "inklab-manual-review",

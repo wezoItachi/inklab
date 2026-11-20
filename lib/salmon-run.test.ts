@@ -69,6 +69,24 @@ void test('live English Grizzco names match the local catalog', () => {
   }
 });
 
+void test('all regular Salmon Run chassis match their reviewed English names', () => {
+  assert.equal(regularSalmonWeapons.length, 63);
+  assert.equal(
+    regularSalmonWeapons.every(
+      (weapon) =>
+        weapon.aliases.length >= 1 &&
+        weapon.aliases.some(
+          (alias) => matchSalmonWeapon(alias)?.name === weapon.name,
+        ),
+    ),
+    true,
+  );
+  assert.equal(
+    new Set(regularSalmonWeapons.map((weapon) => weapon.aliases[0])).size,
+    63,
+  );
+});
+
 void test('current live English rotation names match local weapon chassis', () => {
   assert.equal(matchSalmonWeapon("N-ZAP '85")?.name, 'N-ZAP85');
   assert.equal(matchSalmonWeapon('Splat Dualies')?.name, '斯普拉机动枪');

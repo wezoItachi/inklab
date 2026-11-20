@@ -1,4 +1,5 @@
 import { weapons, type WeaponFamily } from './weapons.ts';
+import salmonWeaponNamesJson from '../database/salmon-weapon-names.v12.0.0.json' with { type: 'json' };
 
 export type SalmonRole = 'frontline' | 'flex' | 'ranged' | 'control';
 export type SalmonWeaponTag =
@@ -185,25 +186,31 @@ const curatedSalmonWeapons: readonly Omit<
   {
     id: 'splatana-wiper',
     name: '工作刮水刀',
-    aliases: ['Splatana Wiper'],
+    aliases: ['Splatana Stamper'],
     role: 'frontline',
     tags: ['短手', '高机动', '清杂'],
     salmonDps: null,
   },
 ] as const;
 
-const liveAliases: Readonly<Record<string, readonly string[]>> = {
-  'N-ZAP85': ["N-ZAP '85"],
-  斯普拉旋转枪: ['Mini Splatling'],
-  '14式竹筒枪·甲': ['Bamboozler 14 Mk I'],
-  'LACT-450': ['REEF-LUX 450'],
-  回旋泼桶: ['Dread Wringer'],
-  工作刮水刀: ['Splatana Wiper'],
-  邦普V: ['Wellstring V'],
-  巴勃罗: ['Inkbrush'],
-  北斋: ['Octobrush'],
-  文森: ['Painbrush'],
+const salmonWeaponNames = salmonWeaponNamesJson as {
+  gameVersion: string;
+  sourceCommit: string;
+  records: {
+    upstreamRowId: string;
+    englishName: string;
+  }[];
 };
+const englishNameByRowId = new Map(
+  salmonWeaponNames.records.map((record) => [
+    record.upstreamRowId,
+    record.englishName,
+  ]),
+);
+
+function mergeAliases(...groups: readonly (readonly string[])[]) {
+  return [...new Set(groups.flat())];
+}
 
 function inferSalmonProfile(
   family: WeaponFamily,
@@ -246,10 +253,16 @@ export const regularSalmonWeapons: readonly SalmonWeapon[] =
     const curated = curatedSalmonWeapons.find(
       (item) => item.name === weapon.name,
     );
+    const englishName = englishNameByRowId.get(weapon.upstreamRowId);
+    if (!englishName)
+      throw new Error(
+        `Missing Salmon Run English name: ${weapon.upstreamRowId}`,
+      );
     if (curated)
       return {
         ...curated,
         family: weapon.family,
+        aliases: mergeAliases(curated.aliases, [englishName]),
         parameterSource: null,
       };
     const inferred = inferSalmonProfile(weapon.family);
@@ -257,7 +270,7 @@ export const regularSalmonWeapons: readonly SalmonWeapon[] =
       id: `salmon-${weapon.upstreamRowId.toLowerCase().replaceAll('_', '-')}`,
       name: weapon.name,
       family: weapon.family,
-      aliases: liveAliases[weapon.name] ?? [],
+      aliases: [englishName],
       role: inferred.role,
       tags: inferred.tags,
       salmonDps: null,
