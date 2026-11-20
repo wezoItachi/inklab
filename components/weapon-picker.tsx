@@ -245,7 +245,21 @@ export function WeaponPicker({
                     onKeyDown={(event) => navigateResults(event, index)}
                     key={item.id}
                   >
-                    <span>{item.badge ?? item.name.slice(0, 1)}</span>
+                    <span>
+                      {item.badge ?? item.name.slice(0, 1)}
+                      {item.imageUrl ? (
+                        <>
+                          {/* oxlint-disable-next-line next/no-img-element -- Audited local weapon thumbnails do not need runtime optimization. */}
+                          <img
+                            src={item.imageUrl}
+                            alt=""
+                            onError={(event) => {
+                              event.currentTarget.hidden = true;
+                            }}
+                          />
+                        </>
+                      ) : null}
+                    </span>
                     <div>
                       <b>{item.name}</b>
                       <small>

@@ -123,6 +123,7 @@ const mainWeaponPickerItems: readonly WeaponPickerItem[] = weapons.map(
     name: weapon.name,
     family: weapon.family,
     badge: weapon.badge,
+    imageUrl: getMainWeaponAssetUrl(weapon.id),
     meta: `${weapon.sub.name} · ${weapon.special}`,
     tags: [weapon.role],
   }),

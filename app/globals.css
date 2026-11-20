@@ -4874,6 +4874,8 @@ button {
   background: #eee9ff;
 }
 .weapon-picker-results > button > span {
+  position: relative;
+  overflow: hidden;
   display: grid;
   place-items: center;
   width: 40px;
@@ -4883,6 +4885,14 @@ button {
   color: var(--acid);
   font-size: 13px;
   font-weight: 900;
+}
+.weapon-picker-results > button > span img {
+  position: absolute;
+  inset: 2px;
+  width: calc(100% - 4px);
+  height: calc(100% - 4px);
+  object-fit: contain;
+  background: #f1f0eb;
 }
 .weapon-picker-results > button > div {
   display: flex;

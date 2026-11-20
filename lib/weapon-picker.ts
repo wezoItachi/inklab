@@ -3,6 +3,7 @@ export type WeaponPickerItem = {
   name: string;
   family: string;
   badge?: string;
+  imageUrl?: string;
   meta?: string;
   tags?: readonly string[];
 };
