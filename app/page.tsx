@@ -51,6 +51,11 @@ import { SectionErrorBoundary } from '@/components/section-error-boundary';
 import type { WeaponPickerItem } from '@/lib/weapon-picker';
 import { getPageHash, parsePageHash, type PageId } from '@/lib/page-navigation';
 import { buildAbilityContext } from '@/lib/ability-context';
+import {
+  getMainWeaponAssetUrl,
+  getSpecialWeaponAssetUrl,
+  getSubWeaponAssetUrl,
+} from '@/lib/weapon-assets';
 
 const SalmonRunLab = lazy(() =>
   import('@/components/salmon-run-lab').then(({ SalmonRunLab }) => ({
@@ -640,8 +645,16 @@ export default function Home() {
                         >
                           <div className="weapon-image-placeholder">
                             <span>MAIN WEAPON / 主武器大图</span>
-                            <strong>{weapon.badge}</strong>
-                            <em>图像通道待接入</em>
+                            <strong aria-hidden="true">{weapon.badge}</strong>
+                            {/* oxlint-disable-next-line next/no-img-element -- Versioned local PNGs keep their audited upstream bytes and hashes. */}
+                            <img
+                              src={getMainWeaponAssetUrl(weapon.id)}
+                              alt={`${weapon.name} 主武器图标`}
+                              onError={(event) => {
+                                event.currentTarget.hidden = true;
+                              }}
+                            />
+                            <em>IMAGE SOURCE / LEAN</em>
                           </div>
                           <p>
                             <b>{weapon.family}</b>
@@ -651,13 +664,29 @@ export default function Home() {
                         <div className="weapon-side-visuals">
                           <div aria-label={`副武器：${weapon.sub.name}`}>
                             <span>SUB / 副武器</span>
+                            {/* oxlint-disable-next-line next/no-img-element -- Versioned local PNGs keep their audited upstream bytes and hashes. */}
+                            <img
+                              src={getSubWeaponAssetUrl(weapon.sub.id)}
+                              alt={`${weapon.sub.name} 副武器图标`}
+                              onError={(event) => {
+                                event.currentTarget.hidden = true;
+                              }}
+                            />
                             <strong>{weapon.sub.name}</strong>
-                            <small>图像通道待接入</small>
+                            <small>Data provided by Lean</small>
                           </div>
                           <div aria-label={`特殊武器：${weapon.special}`}>
                             <span>SPECIAL / 特殊武器</span>
+                            {/* oxlint-disable-next-line next/no-img-element -- Versioned local PNGs keep their audited upstream bytes and hashes. */}
+                            <img
+                              src={getSpecialWeaponAssetUrl(weapon.specialId)}
+                              alt={`${weapon.special} 特殊武器图标`}
+                              onError={(event) => {
+                                event.currentTarget.hidden = true;
+                              }}
+                            />
                             <strong>{weapon.special}</strong>
-                            <small>图像通道待接入</small>
+                            <small>Data provided by Lean</small>
                           </div>
                         </div>
                       </div>

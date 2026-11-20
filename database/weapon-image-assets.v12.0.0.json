@@ -1,0 +1,2087 @@
+{
+  "gameVersion": "12.0.0",
+  "checkedAt": "2026-11-20",
+  "catalogCommit": "b669d55e0eef1f1a7f18cb7468c636ed7746c189",
+  "sourceBaseUrl": "https://leanny.github.io/splat3",
+  "attribution": "Data provided by Lean",
+  "authorizationUrl": "https://github.com/Leanny/splat3/issues/7#issuecomment-6402785216",
+  "note": "Nintendo retains the underlying rights to the game images. These files are not relicensed under INKLAB's AGPL-3.0-only license.",
+  "counts": {
+    "main": 174,
+    "sub": 14,
+    "special": 19,
+    "total": 207
+  },
+  "assets": [
+    {
+      "kind": "main",
+      "id": "shooter-quickmiddle-cstm01",
+      "upstreamId": "Shooter_QuickMiddle_01",
+      "sourcePath": "/images/weapon_flat/Path_Wst_Shooter_QuickMiddle_01.png",
+      "sourceUrl": "https://leanny.github.io/splat3/images/weapon_flat/Path_Wst_Shooter_QuickMiddle_01.png",
+      "relativePath": "/assets/weapons/main/shooter-quickmiddle-cstm01.png",
+      "byteLength": 13770,
+      "sha256": "8f565d9c174d371b2f0cf80a1294ae6b958a0e819562110a279ace0cdf20e28b"
+    },
+    {
+      "kind": "main",
+      "id": "shooter-normalt",
+      "upstreamId": "Shooter_Normal_00",
+      "sourcePath": "/images/weapon_flat/Path_Wst_Shooter_Normal_00.png",
+      "sourceUrl": "https://leanny.github.io/splat3/images/weapon_flat/Path_Wst_Shooter_Normal_00.png",
+      "relativePath": "/assets/weapons/main/shooter-normalt.png",
+      "byteLength": 15629,
+      "sha256": "db760bdef60b2cb0757f059787ba9d0c37acb5101a33cef35ef3af3f355e5435"
+    },
+    {
+      "kind": "main",
+      "id": "shooter-precision",
+      "upstreamId": "Shooter_Precision_00",
+      "sourcePath": "/images/weapon_flat/Path_Wst_Shooter_Precision_00.png",
+      "sourceUrl": "https://leanny.github.io/splat3/images/weapon_flat/Path_Wst_Shooter_Precision_00.png",
+      "relativePath": "/assets/weapons/main/shooter-precision.png",
+      "byteLength": 14316,
+      "sha256": "7c3f045e082b7d1123cb940c4ac48f45cb149c2d7eea41f515400b72735860dc"
+    },
+    {
+      "kind": "main",
+      "id": "charger-normalt",
+      "upstreamId": "Charger_Normal_00",
+      "sourcePath": "/images/weapon_flat/Path_Wst_Charger_Normal_00.png",
+      "sourceUrl": "https://leanny.github.io/splat3/images/weapon_flat/Path_Wst_Charger_Normal_00.png",
+      "relativePath": "/assets/weapons/main/charger-normalt.png",
+      "byteLength": 8360,
+      "sha256": "f069e45f0bfc9d16ae414717ff67ce5c6dcb1d737493ba403c0b51705ab45a6e"
+    },
+    {
+      "kind": "main",
+      "id": "roller-normalt",
+      "upstreamId": "Roller_Normal_00",
+      "sourcePath": "/images/weapon_flat/Path_Wst_Roller_Normal_00.png",
+      "sourceUrl": "https://leanny.github.io/splat3/images/weapon_flat/Path_Wst_Roller_Normal_00.png",
+      "relativePath": "/assets/weapons/main/roller-normalt.png",
+      "byteLength": 14214,
+      "sha256": "c18e790b7590d8e07b05d08e6f9503fed8542bfaff982130d91fe0663188902a"
+    },
+    {
+      "kind": "main",
+      "id": "spinner-standardt",
+      "upstreamId": "Spinner_Standard_00",
+      "sourcePath": "/images/weapon_flat/Path_Wst_Spinner_Standard_00.png",
+      "sourceUrl": "https://leanny.github.io/splat3/images/weapon_flat/Path_Wst_Spinner_Standard_00.png",
+      "relativePath": "/assets/weapons/main/spinner-standardt.png",
+      "byteLength": 18085,
+      "sha256": "afcdf4c0efaf17bf2e71331d9b62368561aa0186cda35441a7f733389f563aa7"
+    },
+    {
+      "kind": "main",
+      "id": "main-0",
+      "upstreamId": "Shooter_Short_00",
+      "sourcePath": "/images/weapon_flat/Path_Wst_Shooter_Short_00.png",
+      "sourceUrl": "https://leanny.github.io/splat3/images/weapon_flat/Path_Wst_Shooter_Short_00.png",
+      "relativePath": "/assets/weapons/main/main-0.png",
+      "byteLength": 14996,
+      "sha256": "4f2b3aaadc153cdf3ae7f117905bbe6d5c9108b510fc5fbf6244cba9bb686700"
+    },
+    {
+      "kind": "main",
+      "id": "main-1",
+      "upstreamId": "Shooter_Short_01",
+      "sourcePath": "/images/weapon_flat/Path_Wst_Shooter_Short_01.png",
+      "sourceUrl": "https://leanny.github.io/splat3/images/weapon_flat/Path_Wst_Shooter_Short_01.png",
+      "relativePath": "/assets/weapons/main/main-1.png",
+      "byteLength": 17266,
+      "sha256": "83be9428b53f252ba52132c5b309c6c9fca352e64b99276bc6eb409a7116cbfc"
+    },
+    {
+      "kind": "main",
+      "id": "main-10",
+      "upstreamId": "Shooter_First_00",
+      "sourcePath": "/images/weapon_flat/Path_Wst_Shooter_First_00.png",
+      "sourceUrl": "https://leanny.github.io/splat3/images/weapon_flat/Path_Wst_Shooter_First_00.png",
+      "relativePath": "/assets/weapons/main/main-10.png",
+      "byteLength": 14674,
+      "sha256": "7107d97ce63faba73a246fa1aa437362fa0ba4a9435046696910308ff586e830"
+    },
+    {
+      "kind": "main",
+      "id": "main-11",
+      "upstreamId": "Shooter_First_01",
+      "sourcePath": "/images/weapon_flat/Path_Wst_Shooter_First_01.png",
+      "sourceUrl": "https://leanny.github.io/splat3/images/weapon_flat/Path_Wst_Shooter_First_01.png",
+      "relativePath": "/assets/weapons/main/main-11.png",
+      "byteLength": 21724,
+      "sha256": "40fd51fa2a554cf430ee14ae93ef700faa552f84528b8eeed0d1da643beefd17"
+    },
+    {
+      "kind": "main",
+      "id": "main-21",
+      "upstreamId": "Shooter_Precision_01",
+      "sourcePath": "/images/weapon_flat/Path_Wst_Shooter_Precision_01.png",
+      "sourceUrl": "https://leanny.github.io/splat3/images/weapon_flat/Path_Wst_Shooter_Precision_01.png",
+      "relativePath": "/assets/weapons/main/main-21.png",
+      "byteLength": 16345,
+      "sha256": "d581c7ffaf6edaee3b34b801a06b7d3c725749807fc23e8aee4c8ab40e810cda"
+    },
+    {
+      "kind": "main",
+      "id": "main-22",
+      "upstreamId": "Shooter_Precision_02",
+      "sourcePath": "/images/weapon_flat/Path_Wst_Shooter_Precision_02.png",
+      "sourceUrl": "https://leanny.github.io/splat3/images/weapon_flat/Path_Wst_Shooter_Precision_02.png",
+      "relativePath": "/assets/weapons/main/main-22.png",
+      "byteLength": 19800,
+      "sha256": "ea53e3ca2bf455b8c6223e9ca838ef26f3c233bc261ce288a7eb6c4284e8ab5b"
+    },
+    {
+      "kind": "main",
+      "id": "main-30",
+      "upstreamId": "Shooter_Blaze_00",
+      "sourcePath": "/images/weapon_flat/Path_Wst_Shooter_Blaze_00.png",
+      "sourceUrl": "https://leanny.github.io/splat3/images/weapon_flat/Path_Wst_Shooter_Blaze_00.png",
+      "relativePath": "/assets/weapons/main/main-30.png",
+      "byteLength": 12074,
+      "sha256": "2001237bcf82c443af2eb7e8874c309dd9d3f9b0e1fd08da1520bdc6b94e5637"
+    },
+    {
+      "kind": "main",
+      "id": "main-31",
+      "upstreamId": "Shooter_Blaze_01",
+      "sourcePath": "/images/weapon_flat/Path_Wst_Shooter_Blaze_01.png",
+      "sourceUrl": "https://leanny.github.io/splat3/images/weapon_flat/Path_Wst_Shooter_Blaze_01.png",
+      "relativePath": "/assets/weapons/main/main-31.png",
+      "byteLength": 17148,
+      "sha256": "9bc8224d1eb35a76c38cf905186e1ed59b3425defcb8d80b6f64c8bf121d312f"
+    },
+    {
+      "kind": "main",
+      "id": "main-32",
+      "upstreamId": "Shooter_Blaze_02",
+      "sourcePath": "/images/weapon_flat/Path_Wst_Shooter_Blaze_02.png",
+      "sourceUrl": "https://leanny.github.io/splat3/images/weapon_flat/Path_Wst_Shooter_Blaze_02.png",
+      "relativePath": "/assets/weapons/main/main-32.png",
+      "byteLength": 18882,
+      "sha256": "f4579a23a69a43ffece65db4c99c62dda0b7c342f47e68533defc9212e0e2477"
+    },
+    {
+      "kind": "main",
+      "id": "main-41",
+      "upstreamId": "Shooter_Normal_01",
+      "sourcePath": "/images/weapon_flat/Path_Wst_Shooter_Normal_01.png",
+      "sourceUrl": "https://leanny.github.io/splat3/images/weapon_flat/Path_Wst_Shooter_Normal_01.png",
+      "relativePath": "/assets/weapons/main/main-41.png",
+      "byteLength": 19161,
+      "sha256": "875d4c7ad78f2f1b8804f27d62842510b8a29b717f60e398eb21ef4d84c88909"
+    },
+    {
+      "kind": "main",
+      "id": "main-42",
+      "upstreamId": "Shooter_Normal_02",
+      "sourcePath": "/images/weapon_flat/Path_Wst_Shooter_Normal_02.png",
+      "sourceUrl": "https://leanny.github.io/splat3/images/weapon_flat/Path_Wst_Shooter_Normal_02.png",
+      "relativePath": "/assets/weapons/main/main-42.png",
+      "byteLength": 17754,
+      "sha256": "4dda266372b9533e9ae62cdfcaec9066cf798908e550057caa05b6063ba61563"
+    },
+    {
+      "kind": "main",
+      "id": "main-45",
+      "upstreamId": "Shooter_Normal_H",
+      "sourcePath": "/images/weapon_flat/Path_Wst_Shooter_Normal_H.png",
+      "sourceUrl": "https://leanny.github.io/splat3/images/weapon_flat/Path_Wst_Shooter_Normal_H.png",
+      "relativePath": "/assets/weapons/main/main-45.png",
+      "byteLength": 18585,
+      "sha256": "1678d389730fe360d4675ff49a994ba8a7991307b8f57633a14b7f71d2254f45"
+    },
+    {
+      "kind": "main",
+      "id": "main-46",
+      "upstreamId": "Shooter_Normal_Oct",
+      "sourcePath": "/images/weapon_flat/Path_Wst_Shooter_Normal_Oct.png",
+      "sourceUrl": "https://leanny.github.io/splat3/images/weapon_flat/Path_Wst_Shooter_Normal_Oct.png",
+      "relativePath": "/assets/weapons/main/main-46.png",
+      "byteLength": 12254,
+      "sha256": "b368be0c5cf0709554a96e5bf1427413e32fbce78831cb487d6996073820235f"
+    },
+    {
+      "kind": "main",
+      "id": "main-47",
+      "upstreamId": "Shooter_Normal_O",
+      "sourcePath": "/images/weapon_flat/Path_Wst_Shooter_Normal_O.png",
+      "sourceUrl": "https://leanny.github.io/splat3/images/weapon_flat/Path_Wst_Shooter_Normal_O.png",
+      "relativePath": "/assets/weapons/main/main-47.png",
+      "byteLength": 12953,
+      "sha256": "1c346a582c196779e200f7e1b201f397b0d1ac1e26df934d0d56d894ace7baf3"
+    },
+    {
+      "kind": "main",
+      "id": "main-48",
+      "upstreamId": "Shooter_Normal_S",
+      "sourcePath": "/images/weapon_flat/Path_Wst_Shooter_Normal_S.png",
+      "sourceUrl": "https://leanny.github.io/splat3/images/weapon_flat/Path_Wst_Shooter_Normal_S.png",
+      "relativePath": "/assets/weapons/main/main-48.png",
+      "byteLength": 25236,
+      "sha256": "cdff9cdedecd2894abb3f1ed76c534adbe178bf782385994e5abf55c151def1d"
+    },
+    {
+      "kind": "main",
+      "id": "main-50",
+      "upstreamId": "Shooter_Gravity_00",
+      "sourcePath": "/images/weapon_flat/Path_Wst_Shooter_Gravity_00.png",
+      "sourceUrl": "https://leanny.github.io/splat3/images/weapon_flat/Path_Wst_Shooter_Gravity_00.png",
+      "relativePath": "/assets/weapons/main/main-50.png",
+      "byteLength": 16218,
+      "sha256": "d54c40629e71efd8f2ac371ed7326f49d121c9f33486858252531fc8702e0d96"
+    },
+    {
+      "kind": "main",
+      "id": "main-51",
+      "upstreamId": "Shooter_Gravity_01",
+      "sourcePath": "/images/weapon_flat/Path_Wst_Shooter_Gravity_01.png",
+      "sourceUrl": "https://leanny.github.io/splat3/images/weapon_flat/Path_Wst_Shooter_Gravity_01.png",
+      "relativePath": "/assets/weapons/main/main-51.png",
+      "byteLength": 28418,
+      "sha256": "611f549b57ee1647bd8aae8f95565d09c9605bcdb2148145cb62b373cbbb2ce1"
+    },
+    {
+      "kind": "main",
+      "id": "main-60",
+      "upstreamId": "Shooter_QuickMiddle_00",
+      "sourcePath": "/images/weapon_flat/Path_Wst_Shooter_QuickMiddle_00.png",
+      "sourceUrl": "https://leanny.github.io/splat3/images/weapon_flat/Path_Wst_Shooter_QuickMiddle_00.png",
+      "relativePath": "/assets/weapons/main/main-60.png",
+      "byteLength": 9380,
+      "sha256": "793f954750c67958199af17da0b70cd3df07a89779b2acafd45f26bcf096587c"
+    },
+    {
+      "kind": "main",
+      "id": "main-70",
+      "upstreamId": "Shooter_Expert_00",
+      "sourcePath": "/images/weapon_flat/Path_Wst_Shooter_Expert_00.png",
+      "sourceUrl": "https://leanny.github.io/splat3/images/weapon_flat/Path_Wst_Shooter_Expert_00.png",
+      "relativePath": "/assets/weapons/main/main-70.png",
+      "byteLength": 15653,
+      "sha256": "71307c4f31d368f73fd6317dac51c7efdc8d04275a9f4671e497fcfd6de4c32d"
+    },
+    {
+      "kind": "main",
+      "id": "main-71",
+      "upstreamId": "Shooter_Expert_01",
+      "sourcePath": "/images/weapon_flat/Path_Wst_Shooter_Expert_01.png",
+      "sourceUrl": "https://leanny.github.io/splat3/images/weapon_flat/Path_Wst_Shooter_Expert_01.png",
+      "relativePath": "/assets/weapons/main/main-71.png",
+      "byteLength": 17046,
+      "sha256": "1aaa9f1a43b930c888087a63d1fe2293757f57161a9de19bea35c775421775f3"
+    },
+    {
+      "kind": "main",
+      "id": "main-72",
+      "upstreamId": "Shooter_Expert_02",
+      "sourcePath": "/images/weapon_flat/Path_Wst_Shooter_Expert_02.png",
+      "sourceUrl": "https://leanny.github.io/splat3/images/weapon_flat/Path_Wst_Shooter_Expert_02.png",
+      "relativePath": "/assets/weapons/main/main-72.png",
+      "byteLength": 19699,
+      "sha256": "65fed8fc52ad079ab0da7f207b440b771259465b01d05182d404ef609252ef1f"
+    },
+    {
+      "kind": "main",
+      "id": "main-80",
+      "upstreamId": "Shooter_Heavy_00",
+      "sourcePath": "/images/weapon_flat/Path_Wst_Shooter_Heavy_00.png",
+      "sourceUrl": "https://leanny.github.io/splat3/images/weapon_flat/Path_Wst_Shooter_Heavy_00.png",
+      "relativePath": "/assets/weapons/main/main-80.png",
+      "byteLength": 16463,
+      "sha256": "5e23c4ee87f4b53d9de85b4f9b1fb7f314b56c71a400efa4c8c35ef8e4c602df"
+    },
+    {
+      "kind": "main",
+      "id": "main-81",
+      "upstreamId": "Shooter_Heavy_01",
+      "sourcePath": "/images/weapon_flat/Path_Wst_Shooter_Heavy_01.png",
+      "sourceUrl": "https://leanny.github.io/splat3/images/weapon_flat/Path_Wst_Shooter_Heavy_01.png",
+      "relativePath": "/assets/weapons/main/main-81.png",
+      "byteLength": 25783,
+      "sha256": "578bcbaf7214145350a4bdec5302764cc85cb2ba95b6c5a9035a0a7be935985a"
+    },
+    {
+      "kind": "main",
+      "id": "main-82",
+      "upstreamId": "Shooter_Heavy_02",
+      "sourcePath": "/images/weapon_flat/Path_Wst_Shooter_Heavy_02.png",
+      "sourceUrl": "https://leanny.github.io/splat3/images/weapon_flat/Path_Wst_Shooter_Heavy_02.png",
+      "relativePath": "/assets/weapons/main/main-82.png",
+      "byteLength": 19618,
+      "sha256": "776c7022aa544ca658caf664e84f54a8d7a89a0925009793df7d286d82d5ef92"
+    },
+    {
+      "kind": "main",
+      "id": "main-90",
+      "upstreamId": "Shooter_Long_00",
+      "sourcePath": "/images/weapon_flat/Path_Wst_Shooter_Long_00.png",
+      "sourceUrl": "https://leanny.github.io/splat3/images/weapon_flat/Path_Wst_Shooter_Long_00.png",
+      "relativePath": "/assets/weapons/main/main-90.png",
+      "byteLength": 11781,
+      "sha256": "7a7936284f416446cfe885a46ad11fd1c7c8594ec1f37a74bcdea4c46fcab041"
+    },
+    {
+      "kind": "main",
+      "id": "main-91",
+      "upstreamId": "Shooter_Long_01",
+      "sourcePath": "/images/weapon_flat/Path_Wst_Shooter_Long_01.png",
+      "sourceUrl": "https://leanny.github.io/splat3/images/weapon_flat/Path_Wst_Shooter_Long_01.png",
+      "relativePath": "/assets/weapons/main/main-91.png",
+      "byteLength": 16605,
+      "sha256": "2a938b72b41d473df16eef71d3134dd2b8f660000d92b132058e8cec115e2a32"
+    },
+    {
+      "kind": "main",
+      "id": "main-92",
+      "upstreamId": "Shooter_Long_02",
+      "sourcePath": "/images/weapon_flat/Path_Wst_Shooter_Long_02.png",
+      "sourceUrl": "https://leanny.github.io/splat3/images/weapon_flat/Path_Wst_Shooter_Long_02.png",
+      "relativePath": "/assets/weapons/main/main-92.png",
+      "byteLength": 20799,
+      "sha256": "a1d80b594f1b47b026440aa9cc9f6b741fc0e84910b59326da734834fca500c0"
+    },
+    {
+      "kind": "main",
+      "id": "main-100",
+      "upstreamId": "Shooter_QuickLong_00",
+      "sourcePath": "/images/weapon_flat/Path_Wst_Shooter_QuickLong_00.png",
+      "sourceUrl": "https://leanny.github.io/splat3/images/weapon_flat/Path_Wst_Shooter_QuickLong_00.png",
+      "relativePath": "/assets/weapons/main/main-100.png",
+      "byteLength": 15754,
+      "sha256": "6bdb2364e1dbd29af75fdc6674d8cbea33287d0bea28a4a32bd1ed92e34651b1"
+    },
+    {
+      "kind": "main",
+      "id": "main-101",
+      "upstreamId": "Shooter_QuickLong_01",
+      "sourcePath": "/images/weapon_flat/Path_Wst_Shooter_QuickLong_01.png",
+      "sourceUrl": "https://leanny.github.io/splat3/images/weapon_flat/Path_Wst_Shooter_QuickLong_01.png",
+      "relativePath": "/assets/weapons/main/main-101.png",
+      "byteLength": 19557,
+      "sha256": "8917fa97a92512314b33d43925aeff2d2b1bcf721763ba4c1741036702c3527d"
+    },
+    {
+      "kind": "main",
+      "id": "main-300",
+      "upstreamId": "Shooter_TripleQuick_00",
+      "sourcePath": "/images/weapon_flat/Path_Wst_Shooter_TripleQuick_00.png",
+      "sourceUrl": "https://leanny.github.io/splat3/images/weapon_flat/Path_Wst_Shooter_TripleQuick_00.png",
+      "relativePath": "/assets/weapons/main/main-300.png",
+      "byteLength": 19395,
+      "sha256": "ee80ceec6066777e99d176f96907f0687487a46eb3f9137c76eefe07a6b2451f"
+    },
+    {
+      "kind": "main",
+      "id": "main-301",
+      "upstreamId": "Shooter_TripleQuick_01",
+      "sourcePath": "/images/weapon_flat/Path_Wst_Shooter_TripleQuick_01.png",
+      "sourceUrl": "https://leanny.github.io/splat3/images/weapon_flat/Path_Wst_Shooter_TripleQuick_01.png",
+      "relativePath": "/assets/weapons/main/main-301.png",
+      "byteLength": 25989,
+      "sha256": "bd312fde94d9e7b95c1294cf5dabe95c88eaa3f82f382cf173bb780c74bfc795"
+    },
+    {
+      "kind": "main",
+      "id": "main-302",
+      "upstreamId": "Shooter_TripleQuick_02",
+      "sourcePath": "/images/weapon_flat/Path_Wst_Shooter_TripleQuick_02.png",
+      "sourceUrl": "https://leanny.github.io/splat3/images/weapon_flat/Path_Wst_Shooter_TripleQuick_02.png",
+      "relativePath": "/assets/weapons/main/main-302.png",
+      "byteLength": 23082,
+      "sha256": "f70b0d221ad41da213278ef8c5d7cc7c7ca45ffecef8a5e9c7f932b355b55c23"
+    },
+    {
+      "kind": "main",
+      "id": "main-310",
+      "upstreamId": "Shooter_TripleMiddle_00",
+      "sourcePath": "/images/weapon_flat/Path_Wst_Shooter_TripleMiddle_00.png",
+      "sourceUrl": "https://leanny.github.io/splat3/images/weapon_flat/Path_Wst_Shooter_TripleMiddle_00.png",
+      "relativePath": "/assets/weapons/main/main-310.png",
+      "byteLength": 18098,
+      "sha256": "4d18f94c5b397b5bdc5b0298ef55fa390b153d3024d2751060a0f26b9e3b55cf"
+    },
+    {
+      "kind": "main",
+      "id": "main-311",
+      "upstreamId": "Shooter_TripleMiddle_01",
+      "sourcePath": "/images/weapon_flat/Path_Wst_Shooter_TripleMiddle_01.png",
+      "sourceUrl": "https://leanny.github.io/splat3/images/weapon_flat/Path_Wst_Shooter_TripleMiddle_01.png",
+      "relativePath": "/assets/weapons/main/main-311.png",
+      "byteLength": 25115,
+      "sha256": "0462bccd0c9b2373bd3a0d26b4431505918d009794c83b8b929489682690bac2"
+    },
+    {
+      "kind": "main",
+      "id": "main-312",
+      "upstreamId": "Shooter_TripleMiddle_02",
+      "sourcePath": "/images/weapon_flat/Path_Wst_Shooter_TripleMiddle_02.png",
+      "sourceUrl": "https://leanny.github.io/splat3/images/weapon_flat/Path_Wst_Shooter_TripleMiddle_02.png",
+      "relativePath": "/assets/weapons/main/main-312.png",
+      "byteLength": 23735,
+      "sha256": "d586602ae42413c5981ee3c724bb10ec6313549cda8f73ba5e4b5156ab87fef5"
+    },
+    {
+      "kind": "main",
+      "id": "main-400",
+      "upstreamId": "Shooter_Flash_00",
+      "sourcePath": "/images/weapon_flat/Path_Wst_Shooter_Flash_00.png",
+      "sourceUrl": "https://leanny.github.io/splat3/images/weapon_flat/Path_Wst_Shooter_Flash_00.png",
+      "relativePath": "/assets/weapons/main/main-400.png",
+      "byteLength": 15140,
+      "sha256": "59b43d162577614e673de27cdf1a4713b49ee55bf884e873fd72bdc33e776b43"
+    },
+    {
+      "kind": "main",
+      "id": "main-401",
+      "upstreamId": "Shooter_Flash_01",
+      "sourcePath": "/images/weapon_flat/Path_Wst_Shooter_Flash_01.png",
+      "sourceUrl": "https://leanny.github.io/splat3/images/weapon_flat/Path_Wst_Shooter_Flash_01.png",
+      "relativePath": "/assets/weapons/main/main-401.png",
+      "byteLength": 19500,
+      "sha256": "ce1af2db2ec8eef9e8eb6262ac3113c7005e5a5da817d08dcf0ce76fcd34be30"
+    },
+    {
+      "kind": "main",
+      "id": "main-200",
+      "upstreamId": "Blaster_Short_00",
+      "sourcePath": "/images/weapon_flat/Path_Wst_Blaster_Short_00.png",
+      "sourceUrl": "https://leanny.github.io/splat3/images/weapon_flat/Path_Wst_Blaster_Short_00.png",
+      "relativePath": "/assets/weapons/main/main-200.png",
+      "byteLength": 12165,
+      "sha256": "2889642c155dc91ef100ab15047073a451f64d1427726f5380d24d1792d2f2a3"
+    },
+    {
+      "kind": "main",
+      "id": "main-201",
+      "upstreamId": "Blaster_Short_01",
+      "sourcePath": "/images/weapon_flat/Path_Wst_Blaster_Short_01.png",
+      "sourceUrl": "https://leanny.github.io/splat3/images/weapon_flat/Path_Wst_Blaster_Short_01.png",
+      "relativePath": "/assets/weapons/main/main-201.png",
+      "byteLength": 12235,
+      "sha256": "ce16ad27e4923c9809f86fde9417321d1add5e52d209a30fb7bcffe44261926a"
+    },
+    {
+      "kind": "main",
+      "id": "main-205",
+      "upstreamId": "Blaster_Short_O",
+      "sourcePath": "/images/weapon_flat/Path_Wst_Blaster_Short_O.png",
+      "sourceUrl": "https://leanny.github.io/splat3/images/weapon_flat/Path_Wst_Blaster_Short_O.png",
+      "relativePath": "/assets/weapons/main/main-205.png",
+      "byteLength": 10413,
+      "sha256": "f1bf1d6d933815caa3db2919d6643312488e3ee959be80f362a707fec59a993c"
+    },
+    {
+      "kind": "main",
+      "id": "main-210",
+      "upstreamId": "Blaster_Middle_00",
+      "sourcePath": "/images/weapon_flat/Path_Wst_Blaster_Middle_00.png",
+      "sourceUrl": "https://leanny.github.io/splat3/images/weapon_flat/Path_Wst_Blaster_Middle_00.png",
+      "relativePath": "/assets/weapons/main/main-210.png",
+      "byteLength": 18832,
+      "sha256": "3d86347256414d591b0aba9a3a82f734356a902d16a843a4699cd0c74dc4743e"
+    },
+    {
+      "kind": "main",
+      "id": "main-211",
+      "upstreamId": "Blaster_Middle_01",
+      "sourcePath": "/images/weapon_flat/Path_Wst_Blaster_Middle_01.png",
+      "sourceUrl": "https://leanny.github.io/splat3/images/weapon_flat/Path_Wst_Blaster_Middle_01.png",
+      "relativePath": "/assets/weapons/main/main-211.png",
+      "byteLength": 22555,
+      "sha256": "6584adfa67a9d3867c038dbbbc700360dd4f1a4aff53616ca75ee15f7fe42eac"
+    },
+    {
+      "kind": "main",
+      "id": "main-212",
+      "upstreamId": "Blaster_Middle_02",
+      "sourcePath": "/images/weapon_flat/Path_Wst_Blaster_Middle_02.png",
+      "sourceUrl": "https://leanny.github.io/splat3/images/weapon_flat/Path_Wst_Blaster_Middle_02.png",
+      "relativePath": "/assets/weapons/main/main-212.png",
+      "byteLength": 21905,
+      "sha256": "14bb3735378e3ce2efcb195cc12202e058bb11f8786ed551077e7ce6d74a9bdf"
+    },
+    {
+      "kind": "main",
+      "id": "main-220",
+      "upstreamId": "Blaster_Long_00",
+      "sourcePath": "/images/weapon_flat/Path_Wst_Blaster_Long_00.png",
+      "sourceUrl": "https://leanny.github.io/splat3/images/weapon_flat/Path_Wst_Blaster_Long_00.png",
+      "relativePath": "/assets/weapons/main/main-220.png",
+      "byteLength": 20637,
+      "sha256": "be1fabd55cb73ed4b12620c67186636df1c4ab75214a8da6ff65331f2602bb38"
+    },
+    {
+      "kind": "main",
+      "id": "main-221",
+      "upstreamId": "Blaster_Long_01",
+      "sourcePath": "/images/weapon_flat/Path_Wst_Blaster_Long_01.png",
+      "sourceUrl": "https://leanny.github.io/splat3/images/weapon_flat/Path_Wst_Blaster_Long_01.png",
+      "relativePath": "/assets/weapons/main/main-221.png",
+      "byteLength": 24244,
+      "sha256": "c9f90894918dddacd37a72755e0be8c4c926e7f6d6cbd6cacad0aaa0d18c31b8"
+    },
+    {
+      "kind": "main",
+      "id": "main-230",
+      "upstreamId": "Blaster_LightShort_00",
+      "sourcePath": "/images/weapon_flat/Path_Wst_Blaster_LightShort_00.png",
+      "sourceUrl": "https://leanny.github.io/splat3/images/weapon_flat/Path_Wst_Blaster_LightShort_00.png",
+      "relativePath": "/assets/weapons/main/main-230.png",
+      "byteLength": 17640,
+      "sha256": "94008ebbf10fe579b80e8018325c0920d5d03f55b7d99347c537d37e76e17afa"
+    },
+    {
+      "kind": "main",
+      "id": "main-231",
+      "upstreamId": "Blaster_LightShort_01",
+      "sourcePath": "/images/weapon_flat/Path_Wst_Blaster_LightShort_01.png",
+      "sourceUrl": "https://leanny.github.io/splat3/images/weapon_flat/Path_Wst_Blaster_LightShort_01.png",
+      "relativePath": "/assets/weapons/main/main-231.png",
+      "byteLength": 20145,
+      "sha256": "9fc14e5e8d51d1e34f1846a12d4e3d353fd6b8722ea4524ce0d914837737244b"
+    },
+    {
+      "kind": "main",
+      "id": "main-240",
+      "upstreamId": "Blaster_Light_00",
+      "sourcePath": "/images/weapon_flat/Path_Wst_Blaster_Light_00.png",
+      "sourceUrl": "https://leanny.github.io/splat3/images/weapon_flat/Path_Wst_Blaster_Light_00.png",
+      "relativePath": "/assets/weapons/main/main-240.png",
+      "byteLength": 16474,
+      "sha256": "a7aa1a178ec4ce8dab3b755300c1dbfe0f942defa632506077cfafde082bafde"
+    },
+    {
+      "kind": "main",
+      "id": "main-241",
+      "upstreamId": "Blaster_Light_01",
+      "sourcePath": "/images/weapon_flat/Path_Wst_Blaster_Light_01.png",
+      "sourceUrl": "https://leanny.github.io/splat3/images/weapon_flat/Path_Wst_Blaster_Light_01.png",
+      "relativePath": "/assets/weapons/main/main-241.png",
+      "byteLength": 21278,
+      "sha256": "c5a9025cf35dfb3584295ee78e17e2e4b032c02f5ac4bcfb8dbd834718ea6b2f"
+    },
+    {
+      "kind": "main",
+      "id": "main-250",
+      "upstreamId": "Blaster_LightLong_00",
+      "sourcePath": "/images/weapon_flat/Path_Wst_Blaster_LightLong_00.png",
+      "sourceUrl": "https://leanny.github.io/splat3/images/weapon_flat/Path_Wst_Blaster_LightLong_00.png",
+      "relativePath": "/assets/weapons/main/main-250.png",
+      "byteLength": 16058,
+      "sha256": "ed2c1871be3253c5d0857d6e6d7ada0347e759a6adf03f600b9f0af8c7e8e0fe"
+    },
+    {
+      "kind": "main",
+      "id": "main-251",
+      "upstreamId": "Blaster_LightLong_01",
+      "sourcePath": "/images/weapon_flat/Path_Wst_Blaster_LightLong_01.png",
+      "sourceUrl": "https://leanny.github.io/splat3/images/weapon_flat/Path_Wst_Blaster_LightLong_01.png",
+      "relativePath": "/assets/weapons/main/main-251.png",
+      "byteLength": 20159,
+      "sha256": "885a8fbff185868912594928a31c2a5f884af076b03f53a0fe573719acd413fb"
+    },
+    {
+      "kind": "main",
+      "id": "main-252",
+      "upstreamId": "Blaster_LightLong_02",
+      "sourcePath": "/images/weapon_flat/Path_Wst_Blaster_LightLong_02.png",
+      "sourceUrl": "https://leanny.github.io/splat3/images/weapon_flat/Path_Wst_Blaster_LightLong_02.png",
+      "relativePath": "/assets/weapons/main/main-252.png",
+      "byteLength": 21774,
+      "sha256": "4e54134edb7fd3dc724ba29f2c6f586c4adcab58370d83ae4012878d79c3bf3f"
+    },
+    {
+      "kind": "main",
+      "id": "main-260",
+      "upstreamId": "Blaster_Precision_00",
+      "sourcePath": "/images/weapon_flat/Path_Wst_Blaster_Precision_00.png",
+      "sourceUrl": "https://leanny.github.io/splat3/images/weapon_flat/Path_Wst_Blaster_Precision_00.png",
+      "relativePath": "/assets/weapons/main/main-260.png",
+      "byteLength": 11423,
+      "sha256": "5c8438db184c8b33ff21373badc13487aff5097f6cf2f20b1b99fc23947faa4c"
+    },
+    {
+      "kind": "main",
+      "id": "main-261",
+      "upstreamId": "Blaster_Precision_01",
+      "sourcePath": "/images/weapon_flat/Path_Wst_Blaster_Precision_01.png",
+      "sourceUrl": "https://leanny.github.io/splat3/images/weapon_flat/Path_Wst_Blaster_Precision_01.png",
+      "relativePath": "/assets/weapons/main/main-261.png",
+      "byteLength": 16435,
+      "sha256": "7aa3cf2971243ea688c375553c16124093f623f5e5abb92f12c24ebe65b7bf09"
+    },
+    {
+      "kind": "main",
+      "id": "main-1000",
+      "upstreamId": "Roller_Compact_00",
+      "sourcePath": "/images/weapon_flat/Path_Wst_Roller_Compact_00.png",
+      "sourceUrl": "https://leanny.github.io/splat3/images/weapon_flat/Path_Wst_Roller_Compact_00.png",
+      "relativePath": "/assets/weapons/main/main-1000.png",
+      "byteLength": 16525,
+      "sha256": "c7163e20d1f223efe63c16fe0badd62bb71423deb5335e06005b65bb96b1dac6"
+    },
+    {
+      "kind": "main",
+      "id": "main-1001",
+      "upstreamId": "Roller_Compact_01",
+      "sourcePath": "/images/weapon_flat/Path_Wst_Roller_Compact_01.png",
+      "sourceUrl": "https://leanny.github.io/splat3/images/weapon_flat/Path_Wst_Roller_Compact_01.png",
+      "relativePath": "/assets/weapons/main/main-1001.png",
+      "byteLength": 21143,
+      "sha256": "82dc55cdeaee8cd5d8d93d94561b5050aecf4e5656faa61a2e25c0b169decc2a"
+    },
+    {
+      "kind": "main",
+      "id": "main-1002",
+      "upstreamId": "Roller_Compact_02",
+      "sourcePath": "/images/weapon_flat/Path_Wst_Roller_Compact_02.png",
+      "sourceUrl": "https://leanny.github.io/splat3/images/weapon_flat/Path_Wst_Roller_Compact_02.png",
+      "relativePath": "/assets/weapons/main/main-1002.png",
+      "byteLength": 19864,
+      "sha256": "c0c6598f26289a75be160ea301cd5b945fd0d1fe31335dc883a2dc2a79eb2c7e"
+    },
+    {
+      "kind": "main",
+      "id": "main-1011",
+      "upstreamId": "Roller_Normal_01",
+      "sourcePath": "/images/weapon_flat/Path_Wst_Roller_Normal_01.png",
+      "sourceUrl": "https://leanny.github.io/splat3/images/weapon_flat/Path_Wst_Roller_Normal_01.png",
+      "relativePath": "/assets/weapons/main/main-1011.png",
+      "byteLength": 20061,
+      "sha256": "bf12650a25fd19b7a9d2b80a10b7b4cda832ba7bffbac39af81ba796322e2d95"
+    },
+    {
+      "kind": "main",
+      "id": "main-1015",
+      "upstreamId": "Roller_Normal_O",
+      "sourcePath": "/images/weapon_flat/Path_Wst_Roller_Normal_O.png",
+      "sourceUrl": "https://leanny.github.io/splat3/images/weapon_flat/Path_Wst_Roller_Normal_O.png",
+      "relativePath": "/assets/weapons/main/main-1015.png",
+      "byteLength": 12965,
+      "sha256": "f84fc4d028c8567228ad55457bdc72cb8421d632d855c7707788319ed0e8dbf8"
+    },
+    {
+      "kind": "main",
+      "id": "main-1020",
+      "upstreamId": "Roller_Heavy_00",
+      "sourcePath": "/images/weapon_flat/Path_Wst_Roller_Heavy_00.png",
+      "sourceUrl": "https://leanny.github.io/splat3/images/weapon_flat/Path_Wst_Roller_Heavy_00.png",
+      "relativePath": "/assets/weapons/main/main-1020.png",
+      "byteLength": 19725,
+      "sha256": "85a23e2cf56bb550eb7d27caeb3401a24eec1498364b14c7d2c1f603c46c78b6"
+    },
+    {
+      "kind": "main",
+      "id": "main-1021",
+      "upstreamId": "Roller_Heavy_01",
+      "sourcePath": "/images/weapon_flat/Path_Wst_Roller_Heavy_01.png",
+      "sourceUrl": "https://leanny.github.io/splat3/images/weapon_flat/Path_Wst_Roller_Heavy_01.png",
+      "relativePath": "/assets/weapons/main/main-1021.png",
+      "byteLength": 23494,
+      "sha256": "83a1f3b4b15fa5205f33c17d594e2a6a353313d4751d631315b1e9368d204e6f"
+    },
+    {
+      "kind": "main",
+      "id": "main-1022",
+      "upstreamId": "Roller_Heavy_02",
+      "sourcePath": "/images/weapon_flat/Path_Wst_Roller_Heavy_02.png",
+      "sourceUrl": "https://leanny.github.io/splat3/images/weapon_flat/Path_Wst_Roller_Heavy_02.png",
+      "relativePath": "/assets/weapons/main/main-1022.png",
+      "byteLength": 22542,
+      "sha256": "b3e3d4ffc47a9722be5cf470bd8cb1933955064073c29cfff8643d90a32d49df"
+    },
+    {
+      "kind": "main",
+      "id": "main-1030",
+      "upstreamId": "Roller_Hunter_00",
+      "sourcePath": "/images/weapon_flat/Path_Wst_Roller_Hunter_00.png",
+      "sourceUrl": "https://leanny.github.io/splat3/images/weapon_flat/Path_Wst_Roller_Hunter_00.png",
+      "relativePath": "/assets/weapons/main/main-1030.png",
+      "byteLength": 17206,
+      "sha256": "e6228d286c285304c341383147033a838778343c1f1cd29b8ca6e9e64c022119"
+    },
+    {
+      "kind": "main",
+      "id": "main-1031",
+      "upstreamId": "Roller_Hunter_01",
+      "sourcePath": "/images/weapon_flat/Path_Wst_Roller_Hunter_01.png",
+      "sourceUrl": "https://leanny.github.io/splat3/images/weapon_flat/Path_Wst_Roller_Hunter_01.png",
+      "relativePath": "/assets/weapons/main/main-1031.png",
+      "byteLength": 22247,
+      "sha256": "0f45c7b2998d3208d921dee949a558f8562eb02076567ead46716111e5427b89"
+    },
+    {
+      "kind": "main",
+      "id": "main-1040",
+      "upstreamId": "Roller_Wide_00",
+      "sourcePath": "/images/weapon_flat/Path_Wst_Roller_Wide_00.png",
+      "sourceUrl": "https://leanny.github.io/splat3/images/weapon_flat/Path_Wst_Roller_Wide_00.png",
+      "relativePath": "/assets/weapons/main/main-1040.png",
+      "byteLength": 17354,
+      "sha256": "f3b508ce6a50b54fbd089f517ddd90d24e946ed52a3ae4bcc4a0bb115c98f5bf"
+    },
+    {
+      "kind": "main",
+      "id": "main-1041",
+      "upstreamId": "Roller_Wide_01",
+      "sourcePath": "/images/weapon_flat/Path_Wst_Roller_Wide_01.png",
+      "sourceUrl": "https://leanny.github.io/splat3/images/weapon_flat/Path_Wst_Roller_Wide_01.png",
+      "relativePath": "/assets/weapons/main/main-1041.png",
+      "byteLength": 21267,
+      "sha256": "7e1492e8d8e0fc00026537b7a6842bc9c27d74914f2478a1806a78ed716d333c"
+    },
+    {
+      "kind": "main",
+      "id": "main-1042",
+      "upstreamId": "Roller_Wide_02",
+      "sourcePath": "/images/weapon_flat/Path_Wst_Roller_Wide_02.png",
+      "sourceUrl": "https://leanny.github.io/splat3/images/weapon_flat/Path_Wst_Roller_Wide_02.png",
+      "relativePath": "/assets/weapons/main/main-1042.png",
+      "byteLength": 19002,
+      "sha256": "069838b240f8721a9a39c8ae5e7be244e12df786c8a000221d2fc88f64c69085"
+    },
+    {
+      "kind": "main",
+      "id": "main-1100",
+      "upstreamId": "Brush_Mini_00",
+      "sourcePath": "/images/weapon_flat/Path_Wst_Brush_Mini_00.png",
+      "sourceUrl": "https://leanny.github.io/splat3/images/weapon_flat/Path_Wst_Brush_Mini_00.png",
+      "relativePath": "/assets/weapons/main/main-1100.png",
+      "byteLength": 9427,
+      "sha256": "ae3bcdca61784e65f866cd1a2af1d05f86099cb709b17171ad011b5ced77c623"
+    },
+    {
+      "kind": "main",
+      "id": "main-1101",
+      "upstreamId": "Brush_Mini_01",
+      "sourcePath": "/images/weapon_flat/Path_Wst_Brush_Mini_01.png",
+      "sourceUrl": "https://leanny.github.io/splat3/images/weapon_flat/Path_Wst_Brush_Mini_01.png",
+      "relativePath": "/assets/weapons/main/main-1101.png",
+      "byteLength": 12127,
+      "sha256": "2b3b829f732051690fa36e32ea2162c3ddb6176d03f2f7a025162e15329e8f6d"
+    },
+    {
+      "kind": "main",
+      "id": "main-1110",
+      "upstreamId": "Brush_Normal_00",
+      "sourcePath": "/images/weapon_flat/Path_Wst_Brush_Normal_00.png",
+      "sourceUrl": "https://leanny.github.io/splat3/images/weapon_flat/Path_Wst_Brush_Normal_00.png",
+      "relativePath": "/assets/weapons/main/main-1110.png",
+      "byteLength": 11417,
+      "sha256": "143cd6784fd1be57b74a35dc7aa9a49b9da9a204b827b9e0781ddc6184d8ff13"
+    },
+    {
+      "kind": "main",
+      "id": "main-1111",
+      "upstreamId": "Brush_Normal_01",
+      "sourcePath": "/images/weapon_flat/Path_Wst_Brush_Normal_01.png",
+      "sourceUrl": "https://leanny.github.io/splat3/images/weapon_flat/Path_Wst_Brush_Normal_01.png",
+      "relativePath": "/assets/weapons/main/main-1111.png",
+      "byteLength": 16418,
+      "sha256": "bee34ff0cb5dde70756b18aa3542d5f43ca33f3b7d850b3d53837883cf2fc2d1"
+    },
+    {
+      "kind": "main",
+      "id": "main-1112",
+      "upstreamId": "Brush_Normal_02",
+      "sourcePath": "/images/weapon_flat/Path_Wst_Brush_Normal_02.png",
+      "sourceUrl": "https://leanny.github.io/splat3/images/weapon_flat/Path_Wst_Brush_Normal_02.png",
+      "relativePath": "/assets/weapons/main/main-1112.png",
+      "byteLength": 14365,
+      "sha256": "3b8b8d75a64fe02bf93c12a184911d2695e3ebf938eb9d119fe7ea95ea2edc00"
+    },
+    {
+      "kind": "main",
+      "id": "main-1115",
+      "upstreamId": "Brush_Normal_O",
+      "sourcePath": "/images/weapon_flat/Path_Wst_Brush_Normal_O.png",
+      "sourceUrl": "https://leanny.github.io/splat3/images/weapon_flat/Path_Wst_Brush_Normal_O.png",
+      "relativePath": "/assets/weapons/main/main-1115.png",
+      "byteLength": 12791,
+      "sha256": "c361382695abe56dac8a272a6320a55a265517a0137532c3094a9225cf856e4a"
+    },
+    {
+      "kind": "main",
+      "id": "main-1120",
+      "upstreamId": "Brush_Heavy_00",
+      "sourcePath": "/images/weapon_flat/Path_Wst_Brush_Heavy_00.png",
+      "sourceUrl": "https://leanny.github.io/splat3/images/weapon_flat/Path_Wst_Brush_Heavy_00.png",
+      "relativePath": "/assets/weapons/main/main-1120.png",
+      "byteLength": 11224,
+      "sha256": "f8d171161dfdf5c0408a36810edba2aa9e54fb3bc153e083a3b88a3686c3c4da"
+    },
+    {
+      "kind": "main",
+      "id": "main-1121",
+      "upstreamId": "Brush_Heavy_01",
+      "sourcePath": "/images/weapon_flat/Path_Wst_Brush_Heavy_01.png",
+      "sourceUrl": "https://leanny.github.io/splat3/images/weapon_flat/Path_Wst_Brush_Heavy_01.png",
+      "relativePath": "/assets/weapons/main/main-1121.png",
+      "byteLength": 14284,
+      "sha256": "49bd4f6920403c62a307a1333ac1fa52441a062cd3a954823e85ae7436ffac1a"
+    },
+    {
+      "kind": "main",
+      "id": "main-1122",
+      "upstreamId": "Brush_Heavy_02",
+      "sourcePath": "/images/weapon_flat/Path_Wst_Brush_Heavy_02.png",
+      "sourceUrl": "https://leanny.github.io/splat3/images/weapon_flat/Path_Wst_Brush_Heavy_02.png",
+      "relativePath": "/assets/weapons/main/main-1122.png",
+      "byteLength": 15830,
+      "sha256": "e570439145a054564119bfc518729c2119f9cea1e35df110ae177a6c46690553"
+    },
+    {
+      "kind": "main",
+      "id": "main-2000",
+      "upstreamId": "Charger_Quick_00",
+      "sourcePath": "/images/weapon_flat/Path_Wst_Charger_Quick_00.png",
+      "sourceUrl": "https://leanny.github.io/splat3/images/weapon_flat/Path_Wst_Charger_Quick_00.png",
+      "relativePath": "/assets/weapons/main/main-2000.png",
+      "byteLength": 11095,
+      "sha256": "f3694ca7698780ad2b1ea7ed72d0686b208facdcece9910f15e6fde187dca10f"
+    },
+    {
+      "kind": "main",
+      "id": "main-2001",
+      "upstreamId": "Charger_Quick_01",
+      "sourcePath": "/images/weapon_flat/Path_Wst_Charger_Quick_01.png",
+      "sourceUrl": "https://leanny.github.io/splat3/images/weapon_flat/Path_Wst_Charger_Quick_01.png",
+      "relativePath": "/assets/weapons/main/main-2001.png",
+      "byteLength": 16893,
+      "sha256": "d82641ea1fda8a6f1dbe5a7212bc6e618bd29069c16915ab8407ffc69498361d"
+    },
+    {
+      "kind": "main",
+      "id": "main-2011",
+      "upstreamId": "Charger_Normal_01",
+      "sourcePath": "/images/weapon_flat/Path_Wst_Charger_Normal_01.png",
+      "sourceUrl": "https://leanny.github.io/splat3/images/weapon_flat/Path_Wst_Charger_Normal_01.png",
+      "relativePath": "/assets/weapons/main/main-2011.png",
+      "byteLength": 13099,
+      "sha256": "42e5d5e612603452e563992285d1c0490d7ee09a13ed9c2140bd30a62a77b4b1"
+    },
+    {
+      "kind": "main",
+      "id": "main-2012",
+      "upstreamId": "Charger_Normal_02",
+      "sourcePath": "/images/weapon_flat/Path_Wst_Charger_Normal_02.png",
+      "sourceUrl": "https://leanny.github.io/splat3/images/weapon_flat/Path_Wst_Charger_Normal_02.png",
+      "relativePath": "/assets/weapons/main/main-2012.png",
+      "byteLength": 14224,
+      "sha256": "004bc6970931a6ac5da16123231fddaef7e6de27a2716df75e7e04a19b213228"
+    },
+    {
+      "kind": "main",
+      "id": "main-2015",
+      "upstreamId": "Charger_Normal_O",
+      "sourcePath": "/images/weapon_flat/Path_Wst_Charger_Normal_O.png",
+      "sourceUrl": "https://leanny.github.io/splat3/images/weapon_flat/Path_Wst_Charger_Normal_O.png",
+      "relativePath": "/assets/weapons/main/main-2015.png",
+      "byteLength": 8012,
+      "sha256": "80c049e51d72153a2a25ff5fe614d7d5d5258cdb415877be7af6c0cab89bb17a"
+    },
+    {
+      "kind": "main",
+      "id": "main-2020",
+      "upstreamId": "Charger_NormalScope_00",
+      "sourcePath": "/images/weapon_flat/Path_Wst_Charger_NormalScope_00.png",
+      "sourceUrl": "https://leanny.github.io/splat3/images/weapon_flat/Path_Wst_Charger_NormalScope_00.png",
+      "relativePath": "/assets/weapons/main/main-2020.png",
+      "byteLength": 10341,
+      "sha256": "86d27a355f96dfda57463aa37a9a47df8397530f31e1704fb667531cae9e5744"
+    },
+    {
+      "kind": "main",
+      "id": "main-2021",
+      "upstreamId": "Charger_NormalScope_01",
+      "sourcePath": "/images/weapon_flat/Path_Wst_Charger_NormalScope_01.png",
+      "sourceUrl": "https://leanny.github.io/splat3/images/weapon_flat/Path_Wst_Charger_NormalScope_01.png",
+      "relativePath": "/assets/weapons/main/main-2021.png",
+      "byteLength": 14666,
+      "sha256": "d91729cfe072a89d45b44491bd55536623988420da788906d7579836ccb88798"
+    },
+    {
+      "kind": "main",
+      "id": "main-2022",
+      "upstreamId": "Charger_NormalScope_02",
+      "sourcePath": "/images/weapon_flat/Path_Wst_Charger_NormalScope_02.png",
+      "sourceUrl": "https://leanny.github.io/splat3/images/weapon_flat/Path_Wst_Charger_NormalScope_02.png",
+      "relativePath": "/assets/weapons/main/main-2022.png",
+      "byteLength": 15937,
+      "sha256": "8919f37fa41d204e7bf8224af38d0a70028b992e4430be1ac8ac8b13cccb44a4"
+    },
+    {
+      "kind": "main",
+      "id": "main-2030",
+      "upstreamId": "Charger_Long_00",
+      "sourcePath": "/images/weapon_flat/Path_Wst_Charger_Long_00.png",
+      "sourceUrl": "https://leanny.github.io/splat3/images/weapon_flat/Path_Wst_Charger_Long_00.png",
+      "relativePath": "/assets/weapons/main/main-2030.png",
+      "byteLength": 12089,
+      "sha256": "3b54903490307daa18aeebf14222174fded9bbbe1b9434270b04a2e1e9020d0d"
+    },
+    {
+      "kind": "main",
+      "id": "main-2031",
+      "upstreamId": "Charger_Long_01",
+      "sourcePath": "/images/weapon_flat/Path_Wst_Charger_Long_01.png",
+      "sourceUrl": "https://leanny.github.io/splat3/images/weapon_flat/Path_Wst_Charger_Long_01.png",
+      "relativePath": "/assets/weapons/main/main-2031.png",
+      "byteLength": 16304,
+      "sha256": "c6655a447c1ca4233eeca5637c5cd46c2843efe445b36fd2c7784181215e12e3"
+    },
+    {
+      "kind": "main",
+      "id": "main-2040",
+      "upstreamId": "Charger_LongScope_00",
+      "sourcePath": "/images/weapon_flat/Path_Wst_Charger_LongScope_00.png",
+      "sourceUrl": "https://leanny.github.io/splat3/images/weapon_flat/Path_Wst_Charger_LongScope_00.png",
+      "relativePath": "/assets/weapons/main/main-2040.png",
+      "byteLength": 13293,
+      "sha256": "86c17c312d62bd6cee4f02e4daa60e761da0077e8ac123c272c7ad47b5ca7ab5"
+    },
+    {
+      "kind": "main",
+      "id": "main-2041",
+      "upstreamId": "Charger_LongScope_01",
+      "sourcePath": "/images/weapon_flat/Path_Wst_Charger_LongScope_01.png",
+      "sourceUrl": "https://leanny.github.io/splat3/images/weapon_flat/Path_Wst_Charger_LongScope_01.png",
+      "relativePath": "/assets/weapons/main/main-2041.png",
+      "byteLength": 17584,
+      "sha256": "ffb0ccbed232d24eea5e39e035e2b2db034d987528f2916c5731f98fdecbc4cd"
+    },
+    {
+      "kind": "main",
+      "id": "main-2050",
+      "upstreamId": "Charger_Light_00",
+      "sourcePath": "/images/weapon_flat/Path_Wst_Charger_Light_00.png",
+      "sourceUrl": "https://leanny.github.io/splat3/images/weapon_flat/Path_Wst_Charger_Light_00.png",
+      "relativePath": "/assets/weapons/main/main-2050.png",
+      "byteLength": 9438,
+      "sha256": "042aabd8e8af2db3bb4aa0fde21d9c6a660ded46fad6fdf46882323739d454a0"
+    },
+    {
+      "kind": "main",
+      "id": "main-2051",
+      "upstreamId": "Charger_Light_01",
+      "sourcePath": "/images/weapon_flat/Path_Wst_Charger_Light_01.png",
+      "sourceUrl": "https://leanny.github.io/splat3/images/weapon_flat/Path_Wst_Charger_Light_01.png",
+      "relativePath": "/assets/weapons/main/main-2051.png",
+      "byteLength": 14006,
+      "sha256": "395ed10384981f1940a3defcc5f85b263852704ece980733f2cc03f00972431c"
+    },
+    {
+      "kind": "main",
+      "id": "main-2060",
+      "upstreamId": "Charger_Keeper_00",
+      "sourcePath": "/images/weapon_flat/Path_Wst_Charger_Keeper_00.png",
+      "sourceUrl": "https://leanny.github.io/splat3/images/weapon_flat/Path_Wst_Charger_Keeper_00.png",
+      "relativePath": "/assets/weapons/main/main-2060.png",
+      "byteLength": 16320,
+      "sha256": "e2c53d76de318025683d51bc7c1e983816bead2e31bcd9161dfde4064e64593a"
+    },
+    {
+      "kind": "main",
+      "id": "main-2061",
+      "upstreamId": "Charger_Keeper_01",
+      "sourcePath": "/images/weapon_flat/Path_Wst_Charger_Keeper_01.png",
+      "sourceUrl": "https://leanny.github.io/splat3/images/weapon_flat/Path_Wst_Charger_Keeper_01.png",
+      "relativePath": "/assets/weapons/main/main-2061.png",
+      "byteLength": 20473,
+      "sha256": "71e7a10c6f656cb72eff97a4fd6289a63ce7a4e5c5c46fbb7057ea77da426266"
+    },
+    {
+      "kind": "main",
+      "id": "main-2070",
+      "upstreamId": "Charger_Pencil_00",
+      "sourcePath": "/images/weapon_flat/Path_Wst_Charger_Pencil_00.png",
+      "sourceUrl": "https://leanny.github.io/splat3/images/weapon_flat/Path_Wst_Charger_Pencil_00.png",
+      "relativePath": "/assets/weapons/main/main-2070.png",
+      "byteLength": 11409,
+      "sha256": "07ce8d8b89caa705815e95bb49c70ab43ef78c955249e2d2ce9d4849a1b59159"
+    },
+    {
+      "kind": "main",
+      "id": "main-2071",
+      "upstreamId": "Charger_Pencil_01",
+      "sourcePath": "/images/weapon_flat/Path_Wst_Charger_Pencil_01.png",
+      "sourceUrl": "https://leanny.github.io/splat3/images/weapon_flat/Path_Wst_Charger_Pencil_01.png",
+      "relativePath": "/assets/weapons/main/main-2071.png",
+      "byteLength": 13647,
+      "sha256": "34210cf444a083d65f99b4e42c2de99ab95be42f35a1a6fc7f281f2bf4ddf66e"
+    },
+    {
+      "kind": "main",
+      "id": "main-3000",
+      "upstreamId": "Slosher_Strong_00",
+      "sourcePath": "/images/weapon_flat/Path_Wst_Slosher_Strong_00.png",
+      "sourceUrl": "https://leanny.github.io/splat3/images/weapon_flat/Path_Wst_Slosher_Strong_00.png",
+      "relativePath": "/assets/weapons/main/main-3000.png",
+      "byteLength": 18131,
+      "sha256": "f7868b34636777a604f6d95b4894981ae1fbcbdadff7ea9a723090820af525c2"
+    },
+    {
+      "kind": "main",
+      "id": "main-3001",
+      "upstreamId": "Slosher_Strong_01",
+      "sourcePath": "/images/weapon_flat/Path_Wst_Slosher_Strong_01.png",
+      "sourceUrl": "https://leanny.github.io/splat3/images/weapon_flat/Path_Wst_Slosher_Strong_01.png",
+      "relativePath": "/assets/weapons/main/main-3001.png",
+      "byteLength": 24888,
+      "sha256": "219bf73a8f0178e68e1c61bf50dce7ebeb46277527b368c60443cd3027e0efb2"
+    },
+    {
+      "kind": "main",
+      "id": "main-3005",
+      "upstreamId": "Slosher_Strong_O",
+      "sourcePath": "/images/weapon_flat/Path_Wst_Slosher_Strong_O.png",
+      "sourceUrl": "https://leanny.github.io/splat3/images/weapon_flat/Path_Wst_Slosher_Strong_O.png",
+      "relativePath": "/assets/weapons/main/main-3005.png",
+      "byteLength": 13751,
+      "sha256": "252ec5e9be34dbd816b0fe0fcb45de56a7de2ee125dbc38e0201b1d9a4796ef4"
+    },
+    {
+      "kind": "main",
+      "id": "main-3010",
+      "upstreamId": "Slosher_Diffusion_00",
+      "sourcePath": "/images/weapon_flat/Path_Wst_Slosher_Diffusion_00.png",
+      "sourceUrl": "https://leanny.github.io/splat3/images/weapon_flat/Path_Wst_Slosher_Diffusion_00.png",
+      "relativePath": "/assets/weapons/main/main-3010.png",
+      "byteLength": 9627,
+      "sha256": "30d3b53067e05d670126a6c47ea0b4ce1c99ce45f241edaaa60b015a6a559c89"
+    },
+    {
+      "kind": "main",
+      "id": "main-3011",
+      "upstreamId": "Slosher_Diffusion_01",
+      "sourcePath": "/images/weapon_flat/Path_Wst_Slosher_Diffusion_01.png",
+      "sourceUrl": "https://leanny.github.io/splat3/images/weapon_flat/Path_Wst_Slosher_Diffusion_01.png",
+      "relativePath": "/assets/weapons/main/main-3011.png",
+      "byteLength": 15980,
+      "sha256": "f9616ce49af97f94a06fc6ce5dd0b8c7c618b0564d3482af70174efb3013d704"
+    },
+    {
+      "kind": "main",
+      "id": "main-3012",
+      "upstreamId": "Slosher_Diffusion_02",
+      "sourcePath": "/images/weapon_flat/Path_Wst_Slosher_Diffusion_02.png",
+      "sourceUrl": "https://leanny.github.io/splat3/images/weapon_flat/Path_Wst_Slosher_Diffusion_02.png",
+      "relativePath": "/assets/weapons/main/main-3012.png",
+      "byteLength": 19412,
+      "sha256": "2693963ffe57dcd77acab5e8e28f044dcf40c359dd870288abd99f90972cf857"
+    },
+    {
+      "kind": "main",
+      "id": "main-3020",
+      "upstreamId": "Slosher_Launcher_00",
+      "sourcePath": "/images/weapon_flat/Path_Wst_Slosher_Launcher_00.png",
+      "sourceUrl": "https://leanny.github.io/splat3/images/weapon_flat/Path_Wst_Slosher_Launcher_00.png",
+      "relativePath": "/assets/weapons/main/main-3020.png",
+      "byteLength": 15076,
+      "sha256": "737584f353488e15c0f062b796f72e8beef91dfbf4a5ece19f9e9540f3f9e7e8"
+    },
+    {
+      "kind": "main",
+      "id": "main-3021",
+      "upstreamId": "Slosher_Launcher_01",
+      "sourcePath": "/images/weapon_flat/Path_Wst_Slosher_Launcher_01.png",
+      "sourceUrl": "https://leanny.github.io/splat3/images/weapon_flat/Path_Wst_Slosher_Launcher_01.png",
+      "relativePath": "/assets/weapons/main/main-3021.png",
+      "byteLength": 17167,
+      "sha256": "2cf62e3396c9e951c40cd4dcf2042b29ebfd63267db4281625c2bd1769cb43ef"
+    },
+    {
+      "kind": "main",
+      "id": "main-3030",
+      "upstreamId": "Slosher_Bathtub_00",
+      "sourcePath": "/images/weapon_flat/Path_Wst_Slosher_Bathtub_00.png",
+      "sourceUrl": "https://leanny.github.io/splat3/images/weapon_flat/Path_Wst_Slosher_Bathtub_00.png",
+      "relativePath": "/assets/weapons/main/main-3030.png",
+      "byteLength": 12547,
+      "sha256": "08938eafbaec028da0cdda8874c46823133bd0c8a2961d99948f52497af18aa6"
+    },
+    {
+      "kind": "main",
+      "id": "main-3031",
+      "upstreamId": "Slosher_Bathtub_01",
+      "sourcePath": "/images/weapon_flat/Path_Wst_Slosher_Bathtub_01.png",
+      "sourceUrl": "https://leanny.github.io/splat3/images/weapon_flat/Path_Wst_Slosher_Bathtub_01.png",
+      "relativePath": "/assets/weapons/main/main-3031.png",
+      "byteLength": 19641,
+      "sha256": "d7580e15bbcdde89e29c8a58534228829203e28976ae32a6db98feebb42dd417"
+    },
+    {
+      "kind": "main",
+      "id": "main-3040",
+      "upstreamId": "Slosher_Washtub_00",
+      "sourcePath": "/images/weapon_flat/Path_Wst_Slosher_Washtub_00.png",
+      "sourceUrl": "https://leanny.github.io/splat3/images/weapon_flat/Path_Wst_Slosher_Washtub_00.png",
+      "relativePath": "/assets/weapons/main/main-3040.png",
+      "byteLength": 19912,
+      "sha256": "618bbdbef56428fc93db15080ba0046de99b8bc5079867c03bbe916308d53bf8"
+    },
+    {
+      "kind": "main",
+      "id": "main-3041",
+      "upstreamId": "Slosher_Washtub_01",
+      "sourcePath": "/images/weapon_flat/Path_Wst_Slosher_Washtub_01.png",
+      "sourceUrl": "https://leanny.github.io/splat3/images/weapon_flat/Path_Wst_Slosher_Washtub_01.png",
+      "relativePath": "/assets/weapons/main/main-3041.png",
+      "byteLength": 27146,
+      "sha256": "ee42da9fc82768aadb1b0e0edb9c2f63b6c972d7fc1f46c36858c9081d94fa81"
+    },
+    {
+      "kind": "main",
+      "id": "main-3050",
+      "upstreamId": "Slosher_Double_00",
+      "sourcePath": "/images/weapon_flat/Path_Wst_Slosher_Double_00.png",
+      "sourceUrl": "https://leanny.github.io/splat3/images/weapon_flat/Path_Wst_Slosher_Double_00.png",
+      "relativePath": "/assets/weapons/main/main-3050.png",
+      "byteLength": 13144,
+      "sha256": "9c9033b999dc07ef3aa312fd59d35f87adde7884e5c60e495bc9d5d49e58fe0d"
+    },
+    {
+      "kind": "main",
+      "id": "main-3051",
+      "upstreamId": "Slosher_Double_01",
+      "sourcePath": "/images/weapon_flat/Path_Wst_Slosher_Double_01.png",
+      "sourceUrl": "https://leanny.github.io/splat3/images/weapon_flat/Path_Wst_Slosher_Double_01.png",
+      "relativePath": "/assets/weapons/main/main-3051.png",
+      "byteLength": 20242,
+      "sha256": "3f0a80cd977440e240f15fdec654e611370f3543cf9043b42df1c2bd02a941dc"
+    },
+    {
+      "kind": "main",
+      "id": "main-3052",
+      "upstreamId": "Slosher_Double_02",
+      "sourcePath": "/images/weapon_flat/Path_Wst_Slosher_Double_02.png",
+      "sourceUrl": "https://leanny.github.io/splat3/images/weapon_flat/Path_Wst_Slosher_Double_02.png",
+      "relativePath": "/assets/weapons/main/main-3052.png",
+      "byteLength": 19718,
+      "sha256": "36103d77bec83ad31ccd400341c38003a1caf49abb33279971f2c41bfc8d5b94"
+    },
+    {
+      "kind": "main",
+      "id": "main-4000",
+      "upstreamId": "Spinner_Quick_00",
+      "sourcePath": "/images/weapon_flat/Path_Wst_Spinner_Quick_00.png",
+      "sourceUrl": "https://leanny.github.io/splat3/images/weapon_flat/Path_Wst_Spinner_Quick_00.png",
+      "relativePath": "/assets/weapons/main/main-4000.png",
+      "byteLength": 15330,
+      "sha256": "a2fda9719092f988c97f90f2b5e3958a9d45d2bd8661c117b09627dd4a9bce32"
+    },
+    {
+      "kind": "main",
+      "id": "main-4001",
+      "upstreamId": "Spinner_Quick_01",
+      "sourcePath": "/images/weapon_flat/Path_Wst_Spinner_Quick_01.png",
+      "sourceUrl": "https://leanny.github.io/splat3/images/weapon_flat/Path_Wst_Spinner_Quick_01.png",
+      "relativePath": "/assets/weapons/main/main-4001.png",
+      "byteLength": 16550,
+      "sha256": "f480bba9ff883029a1674049ce3991e4173f5638b28e42a51b09321dbff542c8"
+    },
+    {
+      "kind": "main",
+      "id": "main-4002",
+      "upstreamId": "Spinner_Quick_02",
+      "sourcePath": "/images/weapon_flat/Path_Wst_Spinner_Quick_02.png",
+      "sourceUrl": "https://leanny.github.io/splat3/images/weapon_flat/Path_Wst_Spinner_Quick_02.png",
+      "relativePath": "/assets/weapons/main/main-4002.png",
+      "byteLength": 21967,
+      "sha256": "c31f45a693781c207945d0fe88f4c6e0690db3060f3728c1c5fd056e37c9310c"
+    },
+    {
+      "kind": "main",
+      "id": "main-4011",
+      "upstreamId": "Spinner_Standard_01",
+      "sourcePath": "/images/weapon_flat/Path_Wst_Spinner_Standard_01.png",
+      "sourceUrl": "https://leanny.github.io/splat3/images/weapon_flat/Path_Wst_Spinner_Standard_01.png",
+      "relativePath": "/assets/weapons/main/main-4011.png",
+      "byteLength": 29741,
+      "sha256": "47bbdc398202fdbb670c0e0e14ff3a0d1cffb1e6839ac681ed78a827a3ce29bf"
+    },
+    {
+      "kind": "main",
+      "id": "main-4015",
+      "upstreamId": "Spinner_Standard_O",
+      "sourcePath": "/images/weapon_flat/Path_Wst_Spinner_Standard_O.png",
+      "sourceUrl": "https://leanny.github.io/splat3/images/weapon_flat/Path_Wst_Spinner_Standard_O.png",
+      "relativePath": "/assets/weapons/main/main-4015.png",
+      "byteLength": 11582,
+      "sha256": "4235cd3a108db02f884528cd732a22d5434eb8e8bb653b41319df2dd6003adf0"
+    },
+    {
+      "kind": "main",
+      "id": "main-4020",
+      "upstreamId": "Spinner_Hyper_00",
+      "sourcePath": "/images/weapon_flat/Path_Wst_Spinner_Hyper_00.png",
+      "sourceUrl": "https://leanny.github.io/splat3/images/weapon_flat/Path_Wst_Spinner_Hyper_00.png",
+      "relativePath": "/assets/weapons/main/main-4020.png",
+      "byteLength": 22703,
+      "sha256": "98fb54696a3c87adb7b9ef9a578f20074685677bca207457f7364ca1cb70ae2f"
+    },
+    {
+      "kind": "main",
+      "id": "main-4021",
+      "upstreamId": "Spinner_Hyper_01",
+      "sourcePath": "/images/weapon_flat/Path_Wst_Spinner_Hyper_01.png",
+      "sourceUrl": "https://leanny.github.io/splat3/images/weapon_flat/Path_Wst_Spinner_Hyper_01.png",
+      "relativePath": "/assets/weapons/main/main-4021.png",
+      "byteLength": 25673,
+      "sha256": "57448b11df46ae2b25f00c81b7e3fc5a1779047ddb0f327a3def252ceab85f39"
+    },
+    {
+      "kind": "main",
+      "id": "main-4022",
+      "upstreamId": "Spinner_Hyper_02",
+      "sourcePath": "/images/weapon_flat/Path_Wst_Spinner_Hyper_02.png",
+      "sourceUrl": "https://leanny.github.io/splat3/images/weapon_flat/Path_Wst_Spinner_Hyper_02.png",
+      "relativePath": "/assets/weapons/main/main-4022.png",
+      "byteLength": 24637,
+      "sha256": "bce80813270f3a6f8bc683b6320ff7fbc4ec509e10142ba9326ea669f30a6fd8"
+    },
+    {
+      "kind": "main",
+      "id": "main-4030",
+      "upstreamId": "Spinner_Downpour_00",
+      "sourcePath": "/images/weapon_flat/Path_Wst_Spinner_Downpour_00.png",
+      "sourceUrl": "https://leanny.github.io/splat3/images/weapon_flat/Path_Wst_Spinner_Downpour_00.png",
+      "relativePath": "/assets/weapons/main/main-4030.png",
+      "byteLength": 16023,
+      "sha256": "b897facf6be0b4fe0737d5d7370f4be1a2f9faaef886588c85f5c9d84e1070cc"
+    },
+    {
+      "kind": "main",
+      "id": "main-4031",
+      "upstreamId": "Spinner_Downpour_01",
+      "sourcePath": "/images/weapon_flat/Path_Wst_Spinner_Downpour_01.png",
+      "sourceUrl": "https://leanny.github.io/splat3/images/weapon_flat/Path_Wst_Spinner_Downpour_01.png",
+      "relativePath": "/assets/weapons/main/main-4031.png",
+      "byteLength": 19919,
+      "sha256": "da1defa8d1f4046b0705da5be864fa92238cbf7ccf000b3cc9e6aab7b0a39d6d"
+    },
+    {
+      "kind": "main",
+      "id": "main-4040",
+      "upstreamId": "Spinner_Serein_00",
+      "sourcePath": "/images/weapon_flat/Path_Wst_Spinner_Serein_00.png",
+      "sourceUrl": "https://leanny.github.io/splat3/images/weapon_flat/Path_Wst_Spinner_Serein_00.png",
+      "relativePath": "/assets/weapons/main/main-4040.png",
+      "byteLength": 13741,
+      "sha256": "c1b02fdec5a5b5843d9f13c4e9b1f23d5487da7b73a3fd47d90e0627c63a14c4"
+    },
+    {
+      "kind": "main",
+      "id": "main-4041",
+      "upstreamId": "Spinner_Serein_01",
+      "sourcePath": "/images/weapon_flat/Path_Wst_Spinner_Serein_01.png",
+      "sourceUrl": "https://leanny.github.io/splat3/images/weapon_flat/Path_Wst_Spinner_Serein_01.png",
+      "relativePath": "/assets/weapons/main/main-4041.png",
+      "byteLength": 17188,
+      "sha256": "5d05b5b10712e62b88650086e9b6ab526c127ce780be667ba5796f26a4e22ed5"
+    },
+    {
+      "kind": "main",
+      "id": "main-4050",
+      "upstreamId": "Spinner_HyperShort_00",
+      "sourcePath": "/images/weapon_flat/Path_Wst_Spinner_HyperShort_00.png",
+      "sourceUrl": "https://leanny.github.io/splat3/images/weapon_flat/Path_Wst_Spinner_HyperShort_00.png",
+      "relativePath": "/assets/weapons/main/main-4050.png",
+      "byteLength": 21438,
+      "sha256": "e4d36265899f9af1b0193c3f343f81160e0d1140191b9e29083d1876a9f9a3ac"
+    },
+    {
+      "kind": "main",
+      "id": "main-4051",
+      "upstreamId": "Spinner_HyperShort_01",
+      "sourcePath": "/images/weapon_flat/Path_Wst_Spinner_HyperShort_01.png",
+      "sourceUrl": "https://leanny.github.io/splat3/images/weapon_flat/Path_Wst_Spinner_HyperShort_01.png",
+      "relativePath": "/assets/weapons/main/main-4051.png",
+      "byteLength": 24669,
+      "sha256": "a84325eda953f0fac8d9eb594befbd5addd851fe0d9ecf86e2ce212049aaa935"
+    },
+    {
+      "kind": "main",
+      "id": "main-5000",
+      "upstreamId": "Maneuver_Short_00",
+      "sourcePath": "/images/weapon_flat/Path_Wst_Maneuver_Short_00.png",
+      "sourceUrl": "https://leanny.github.io/splat3/images/weapon_flat/Path_Wst_Maneuver_Short_00.png",
+      "relativePath": "/assets/weapons/main/main-5000.png",
+      "byteLength": 17956,
+      "sha256": "964f2af5f7ae64c976cc9488a37f1381a52b9fb8270919c14e66dd4532a9ff59"
+    },
+    {
+      "kind": "main",
+      "id": "main-5001",
+      "upstreamId": "Maneuver_Short_01",
+      "sourcePath": "/images/weapon_flat/Path_Wst_Maneuver_Short_01.png",
+      "sourceUrl": "https://leanny.github.io/splat3/images/weapon_flat/Path_Wst_Maneuver_Short_01.png",
+      "relativePath": "/assets/weapons/main/main-5001.png",
+      "byteLength": 19457,
+      "sha256": "9571fcc969c28464b8f3edf7ad89394dc1bbe2acf7f6be0ce53937bffc131437"
+    },
+    {
+      "kind": "main",
+      "id": "main-5002",
+      "upstreamId": "Maneuver_Short_02",
+      "sourcePath": "/images/weapon_flat/Path_Wst_Maneuver_Short_02.png",
+      "sourceUrl": "https://leanny.github.io/splat3/images/weapon_flat/Path_Wst_Maneuver_Short_02.png",
+      "relativePath": "/assets/weapons/main/main-5002.png",
+      "byteLength": 22617,
+      "sha256": "5fa4d22a308272c74473754d85f27bfdfe183b32f253b9d8f50b54c37478595d"
+    },
+    {
+      "kind": "main",
+      "id": "main-5010",
+      "upstreamId": "Maneuver_Normal_00",
+      "sourcePath": "/images/weapon_flat/Path_Wst_Maneuver_Normal_00.png",
+      "sourceUrl": "https://leanny.github.io/splat3/images/weapon_flat/Path_Wst_Maneuver_Normal_00.png",
+      "relativePath": "/assets/weapons/main/main-5010.png",
+      "byteLength": 16069,
+      "sha256": "606870b39246dc300bc5649c36371380b511bb09f8397dc76bce9500ea48b0fa"
+    },
+    {
+      "kind": "main",
+      "id": "main-5011",
+      "upstreamId": "Maneuver_Normal_01",
+      "sourcePath": "/images/weapon_flat/Path_Wst_Maneuver_Normal_01.png",
+      "sourceUrl": "https://leanny.github.io/splat3/images/weapon_flat/Path_Wst_Maneuver_Normal_01.png",
+      "relativePath": "/assets/weapons/main/main-5011.png",
+      "byteLength": 19890,
+      "sha256": "9eefead877aace4b623dbadeb93c25770fbabbaecb7e056ecf2e50029aeaa2d6"
+    },
+    {
+      "kind": "main",
+      "id": "main-5012",
+      "upstreamId": "Maneuver_Normal_02",
+      "sourcePath": "/images/weapon_flat/Path_Wst_Maneuver_Normal_02.png",
+      "sourceUrl": "https://leanny.github.io/splat3/images/weapon_flat/Path_Wst_Maneuver_Normal_02.png",
+      "relativePath": "/assets/weapons/main/main-5012.png",
+      "byteLength": 21091,
+      "sha256": "3a7c97f7baf6e6641538ab08491de6d05e92efbb937525ac45035dcb2ec04e25"
+    },
+    {
+      "kind": "main",
+      "id": "main-5015",
+      "upstreamId": "Maneuver_Normal_O",
+      "sourcePath": "/images/weapon_flat/Path_Wst_Maneuver_Normal_O.png",
+      "sourceUrl": "https://leanny.github.io/splat3/images/weapon_flat/Path_Wst_Maneuver_Normal_O.png",
+      "relativePath": "/assets/weapons/main/main-5015.png",
+      "byteLength": 19366,
+      "sha256": "bab3ca72d9740a1ee9c948da9135ce0eb15c54bfd1c3013f7baf0170a0d6a588"
+    },
+    {
+      "kind": "main",
+      "id": "main-5020",
+      "upstreamId": "Maneuver_Gallon_00",
+      "sourcePath": "/images/weapon_flat/Path_Wst_Maneuver_Gallon_00.png",
+      "sourceUrl": "https://leanny.github.io/splat3/images/weapon_flat/Path_Wst_Maneuver_Gallon_00.png",
+      "relativePath": "/assets/weapons/main/main-5020.png",
+      "byteLength": 25275,
+      "sha256": "3edd97581de6121fa3652186f7ca0c65b0faee62255ed7eda419fd82d9faf479"
+    },
+    {
+      "kind": "main",
+      "id": "main-5021",
+      "upstreamId": "Maneuver_Gallon_01",
+      "sourcePath": "/images/weapon_flat/Path_Wst_Maneuver_Gallon_01.png",
+      "sourceUrl": "https://leanny.github.io/splat3/images/weapon_flat/Path_Wst_Maneuver_Gallon_01.png",
+      "relativePath": "/assets/weapons/main/main-5021.png",
+      "byteLength": 29435,
+      "sha256": "a57615f0f0c68bc236d49bf62eb3687ca1f150642740306c9024de1453c74ba9"
+    },
+    {
+      "kind": "main",
+      "id": "main-5030",
+      "upstreamId": "Maneuver_Dual_00",
+      "sourcePath": "/images/weapon_flat/Path_Wst_Maneuver_Dual_00.png",
+      "sourceUrl": "https://leanny.github.io/splat3/images/weapon_flat/Path_Wst_Maneuver_Dual_00.png",
+      "relativePath": "/assets/weapons/main/main-5030.png",
+      "byteLength": 15776,
+      "sha256": "36817a737ce4af77837706e02bde0b38d61bd5d6501578c99cad5e3ff8e305c7"
+    },
+    {
+      "kind": "main",
+      "id": "main-5031",
+      "upstreamId": "Maneuver_Dual_01",
+      "sourcePath": "/images/weapon_flat/Path_Wst_Maneuver_Dual_01.png",
+      "sourceUrl": "https://leanny.github.io/splat3/images/weapon_flat/Path_Wst_Maneuver_Dual_01.png",
+      "relativePath": "/assets/weapons/main/main-5031.png",
+      "byteLength": 19848,
+      "sha256": "d3ea552a5692866882afd9ba984ed71319b905cdb385eeb7e59ca1f320492c2c"
+    },
+    {
+      "kind": "main",
+      "id": "main-5032",
+      "upstreamId": "Maneuver_Dual_02",
+      "sourcePath": "/images/weapon_flat/Path_Wst_Maneuver_Dual_02.png",
+      "sourceUrl": "https://leanny.github.io/splat3/images/weapon_flat/Path_Wst_Maneuver_Dual_02.png",
+      "relativePath": "/assets/weapons/main/main-5032.png",
+      "byteLength": 19503,
+      "sha256": "f4f4ec124a27dedca18cf06523dadcb8c329633563cba6b8c281415396d5a033"
+    },
+    {
+      "kind": "main",
+      "id": "main-5040",
+      "upstreamId": "Maneuver_Stepper_00",
+      "sourcePath": "/images/weapon_flat/Path_Wst_Maneuver_Stepper_00.png",
+      "sourceUrl": "https://leanny.github.io/splat3/images/weapon_flat/Path_Wst_Maneuver_Stepper_00.png",
+      "relativePath": "/assets/weapons/main/main-5040.png",
+      "byteLength": 23277,
+      "sha256": "3c8b1e7b3e5ddb0eec9770aa67a75f7e144476cb2b7bd2d4cf75a18be356dd74"
+    },
+    {
+      "kind": "main",
+      "id": "main-5041",
+      "upstreamId": "Maneuver_Stepper_01",
+      "sourcePath": "/images/weapon_flat/Path_Wst_Maneuver_Stepper_01.png",
+      "sourceUrl": "https://leanny.github.io/splat3/images/weapon_flat/Path_Wst_Maneuver_Stepper_01.png",
+      "relativePath": "/assets/weapons/main/main-5041.png",
+      "byteLength": 25459,
+      "sha256": "2f3ec91f2e56126e66d73a0f4c117ceffc3553114fd02e26cb911cda2d6895e2"
+    },
+    {
+      "kind": "main",
+      "id": "main-5050",
+      "upstreamId": "Maneuver_Long_00",
+      "sourcePath": "/images/weapon_flat/Path_Wst_Maneuver_Long_00.png",
+      "sourceUrl": "https://leanny.github.io/splat3/images/weapon_flat/Path_Wst_Maneuver_Long_00.png",
+      "relativePath": "/assets/weapons/main/main-5050.png",
+      "byteLength": 21005,
+      "sha256": "de4fb62f30a800202a9b9688742dc0d82ad2461e707a2aea06c01d67b0fe3716"
+    },
+    {
+      "kind": "main",
+      "id": "main-5051",
+      "upstreamId": "Maneuver_Long_01",
+      "sourcePath": "/images/weapon_flat/Path_Wst_Maneuver_Long_01.png",
+      "sourceUrl": "https://leanny.github.io/splat3/images/weapon_flat/Path_Wst_Maneuver_Long_01.png",
+      "relativePath": "/assets/weapons/main/main-5051.png",
+      "byteLength": 24199,
+      "sha256": "6a8b74e3022a10f12ffce405380d6bf848c8b98d671d55702c159f88a4f4c7f7"
+    },
+    {
+      "kind": "main",
+      "id": "main-6000",
+      "upstreamId": "Shelter_Normal_00",
+      "sourcePath": "/images/weapon_flat/Path_Wst_Shelter_Normal_00.png",
+      "sourceUrl": "https://leanny.github.io/splat3/images/weapon_flat/Path_Wst_Shelter_Normal_00.png",
+      "relativePath": "/assets/weapons/main/main-6000.png",
+      "byteLength": 15077,
+      "sha256": "00d861e973ef17ef776ad4c9fa14c8e40f4ffe496e946754893fedf4bbdee33c"
+    },
+    {
+      "kind": "main",
+      "id": "main-6001",
+      "upstreamId": "Shelter_Normal_01",
+      "sourcePath": "/images/weapon_flat/Path_Wst_Shelter_Normal_01.png",
+      "sourceUrl": "https://leanny.github.io/splat3/images/weapon_flat/Path_Wst_Shelter_Normal_01.png",
+      "relativePath": "/assets/weapons/main/main-6001.png",
+      "byteLength": 15944,
+      "sha256": "3af46b61602ee3b70798803eca9022f928d23d44a347c3bb821a563e952636cb"
+    },
+    {
+      "kind": "main",
+      "id": "main-6005",
+      "upstreamId": "Shelter_Normal_O",
+      "sourcePath": "/images/weapon_flat/Path_Wst_Shelter_Normal_O.png",
+      "sourceUrl": "https://leanny.github.io/splat3/images/weapon_flat/Path_Wst_Shelter_Normal_O.png",
+      "relativePath": "/assets/weapons/main/main-6005.png",
+      "byteLength": 9363,
+      "sha256": "e4f3fe456d1ff6cb7d03e592046d77ab289fbd0f487d0db20b3e130922504aaa"
+    },
+    {
+      "kind": "main",
+      "id": "main-6010",
+      "upstreamId": "Shelter_Wide_00",
+      "sourcePath": "/images/weapon_flat/Path_Wst_Shelter_Wide_00.png",
+      "sourceUrl": "https://leanny.github.io/splat3/images/weapon_flat/Path_Wst_Shelter_Wide_00.png",
+      "relativePath": "/assets/weapons/main/main-6010.png",
+      "byteLength": 12989,
+      "sha256": "8d300fe91acf958b7e0538f2a22bcc4f7448c23c3954bb9f8d7759a3a6d79c12"
+    },
+    {
+      "kind": "main",
+      "id": "main-6011",
+      "upstreamId": "Shelter_Wide_01",
+      "sourcePath": "/images/weapon_flat/Path_Wst_Shelter_Wide_01.png",
+      "sourceUrl": "https://leanny.github.io/splat3/images/weapon_flat/Path_Wst_Shelter_Wide_01.png",
+      "relativePath": "/assets/weapons/main/main-6011.png",
+      "byteLength": 14148,
+      "sha256": "e623e240442943234e765f6665e07cf56bc77a837f7ff4ac0ca457d1c4280ae1"
+    },
+    {
+      "kind": "main",
+      "id": "main-6012",
+      "upstreamId": "Shelter_Wide_02",
+      "sourcePath": "/images/weapon_flat/Path_Wst_Shelter_Wide_02.png",
+      "sourceUrl": "https://leanny.github.io/splat3/images/weapon_flat/Path_Wst_Shelter_Wide_02.png",
+      "relativePath": "/assets/weapons/main/main-6012.png",
+      "byteLength": 17546,
+      "sha256": "7c9014c28b5ed07e6c1f9af2fa1a0ce8e8b1b9d76a49e68a8e27573b38477352"
+    },
+    {
+      "kind": "main",
+      "id": "main-6020",
+      "upstreamId": "Shelter_Compact_00",
+      "sourcePath": "/images/weapon_flat/Path_Wst_Shelter_Compact_00.png",
+      "sourceUrl": "https://leanny.github.io/splat3/images/weapon_flat/Path_Wst_Shelter_Compact_00.png",
+      "relativePath": "/assets/weapons/main/main-6020.png",
+      "byteLength": 6527,
+      "sha256": "ffc539a365183e8f893e2e3934282509677bf9f9be835a335bdfdca6a3b333f3"
+    },
+    {
+      "kind": "main",
+      "id": "main-6021",
+      "upstreamId": "Shelter_Compact_01",
+      "sourcePath": "/images/weapon_flat/Path_Wst_Shelter_Compact_01.png",
+      "sourceUrl": "https://leanny.github.io/splat3/images/weapon_flat/Path_Wst_Shelter_Compact_01.png",
+      "relativePath": "/assets/weapons/main/main-6021.png",
+      "byteLength": 14142,
+      "sha256": "4d10b6d9a1f11030120264eb5bc9e86828375f4a3cd7601969063c8bd2d0fa5c"
+    },
+    {
+      "kind": "main",
+      "id": "main-6022",
+      "upstreamId": "Shelter_Compact_02",
+      "sourcePath": "/images/weapon_flat/Path_Wst_Shelter_Compact_02.png",
+      "sourceUrl": "https://leanny.github.io/splat3/images/weapon_flat/Path_Wst_Shelter_Compact_02.png",
+      "relativePath": "/assets/weapons/main/main-6022.png",
+      "byteLength": 15371,
+      "sha256": "17dd8c938945e09de0e4a8e7b1b41da83cf4d268b6ce51e1869ed5aec4030643"
+    },
+    {
+      "kind": "main",
+      "id": "main-6030",
+      "upstreamId": "Shelter_Focus_00",
+      "sourcePath": "/images/weapon_flat/Path_Wst_Shelter_Focus_00.png",
+      "sourceUrl": "https://leanny.github.io/splat3/images/weapon_flat/Path_Wst_Shelter_Focus_00.png",
+      "relativePath": "/assets/weapons/main/main-6030.png",
+      "byteLength": 14359,
+      "sha256": "4c80d412bd7be3d1cdc6d73c75cf5f264c53560cfd179998d1e5e868fbe9ebff"
+    },
+    {
+      "kind": "main",
+      "id": "main-6031",
+      "upstreamId": "Shelter_Focus_01",
+      "sourcePath": "/images/weapon_flat/Path_Wst_Shelter_Focus_01.png",
+      "sourceUrl": "https://leanny.github.io/splat3/images/weapon_flat/Path_Wst_Shelter_Focus_01.png",
+      "relativePath": "/assets/weapons/main/main-6031.png",
+      "byteLength": 17755,
+      "sha256": "58ad409721640db6658ea110dade4286254d9f1db8349e82ab6f194de8f383ae"
+    },
+    {
+      "kind": "main",
+      "id": "main-7010",
+      "upstreamId": "Stringer_Normal_00",
+      "sourcePath": "/images/weapon_flat/Path_Wst_Stringer_Normal_00.png",
+      "sourceUrl": "https://leanny.github.io/splat3/images/weapon_flat/Path_Wst_Stringer_Normal_00.png",
+      "relativePath": "/assets/weapons/main/main-7010.png",
+      "byteLength": 19819,
+      "sha256": "adee8532e01457889186faba45da6e74edba47add8ee0376527fdb47d312bf38"
+    },
+    {
+      "kind": "main",
+      "id": "main-7011",
+      "upstreamId": "Stringer_Normal_01",
+      "sourcePath": "/images/weapon_flat/Path_Wst_Stringer_Normal_01.png",
+      "sourceUrl": "https://leanny.github.io/splat3/images/weapon_flat/Path_Wst_Stringer_Normal_01.png",
+      "relativePath": "/assets/weapons/main/main-7011.png",
+      "byteLength": 21171,
+      "sha256": "0c93aa58ad0b64b80ad80efdb9141d7148c7bd5e3099a57cff375352a2c6887c"
+    },
+    {
+      "kind": "main",
+      "id": "main-7012",
+      "upstreamId": "Stringer_Normal_02",
+      "sourcePath": "/images/weapon_flat/Path_Wst_Stringer_Normal_02.png",
+      "sourceUrl": "https://leanny.github.io/splat3/images/weapon_flat/Path_Wst_Stringer_Normal_02.png",
+      "relativePath": "/assets/weapons/main/main-7012.png",
+      "byteLength": 21525,
+      "sha256": "5efdc3813d74a0be037a4a6356042e844535ce84426fbd1591e2ed652b1e9f05"
+    },
+    {
+      "kind": "main",
+      "id": "main-7015",
+      "upstreamId": "Stringer_Normal_O",
+      "sourcePath": "/images/weapon_flat/Path_Wst_Stringer_Normal_O.png",
+      "sourceUrl": "https://leanny.github.io/splat3/images/weapon_flat/Path_Wst_Stringer_Normal_O.png",
+      "relativePath": "/assets/weapons/main/main-7015.png",
+      "byteLength": 15211,
+      "sha256": "d8c0ccfa9d5ddcd45544a4af84e109e4831931ffaf9a7add7f9a2a5d46aba2f7"
+    },
+    {
+      "kind": "main",
+      "id": "main-7020",
+      "upstreamId": "Stringer_Short_00",
+      "sourcePath": "/images/weapon_flat/Path_Wst_Stringer_Short_00.png",
+      "sourceUrl": "https://leanny.github.io/splat3/images/weapon_flat/Path_Wst_Stringer_Short_00.png",
+      "relativePath": "/assets/weapons/main/main-7020.png",
+      "byteLength": 20762,
+      "sha256": "9ef96df02bb986487b204132061084c4d11099465fdff90aefba1432d3b9bf8b"
+    },
+    {
+      "kind": "main",
+      "id": "main-7021",
+      "upstreamId": "Stringer_Short_01",
+      "sourcePath": "/images/weapon_flat/Path_Wst_Stringer_Short_01.png",
+      "sourceUrl": "https://leanny.github.io/splat3/images/weapon_flat/Path_Wst_Stringer_Short_01.png",
+      "relativePath": "/assets/weapons/main/main-7021.png",
+      "byteLength": 23176,
+      "sha256": "fac436e164270343d66f7325e8737b9268b050e711f42465385520dac47e4947"
+    },
+    {
+      "kind": "main",
+      "id": "main-7022",
+      "upstreamId": "Stringer_Short_02",
+      "sourcePath": "/images/weapon_flat/Path_Wst_Stringer_Short_02.png",
+      "sourceUrl": "https://leanny.github.io/splat3/images/weapon_flat/Path_Wst_Stringer_Short_02.png",
+      "relativePath": "/assets/weapons/main/main-7022.png",
+      "byteLength": 22769,
+      "sha256": "f77b7ceeb7af1658045a24d824045c20217a94d616ef13253263b30ad4730cdc"
+    },
+    {
+      "kind": "main",
+      "id": "main-7030",
+      "upstreamId": "Stringer_Explosion_00",
+      "sourcePath": "/images/weapon_flat/Path_Wst_Stringer_Explosion_00.png",
+      "sourceUrl": "https://leanny.github.io/splat3/images/weapon_flat/Path_Wst_Stringer_Explosion_00.png",
+      "relativePath": "/assets/weapons/main/main-7030.png",
+      "byteLength": 20865,
+      "sha256": "edd3b0bac99a2a118cfa7cb72abc29ae691e3132155cea71eae8487c30212416"
+    },
+    {
+      "kind": "main",
+      "id": "main-7031",
+      "upstreamId": "Stringer_Explosion_01",
+      "sourcePath": "/images/weapon_flat/Path_Wst_Stringer_Explosion_01.png",
+      "sourceUrl": "https://leanny.github.io/splat3/images/weapon_flat/Path_Wst_Stringer_Explosion_01.png",
+      "relativePath": "/assets/weapons/main/main-7031.png",
+      "byteLength": 22734,
+      "sha256": "578f9ac3dbb207703ef5cd69cb570929e2cee60781b6ce8715bc48175cd9a4bd"
+    },
+    {
+      "kind": "main",
+      "id": "main-8000",
+      "upstreamId": "Saber_Normal_00",
+      "sourcePath": "/images/weapon_flat/Path_Wst_Saber_Normal_00.png",
+      "sourceUrl": "https://leanny.github.io/splat3/images/weapon_flat/Path_Wst_Saber_Normal_00.png",
+      "relativePath": "/assets/weapons/main/main-8000.png",
+      "byteLength": 15078,
+      "sha256": "995e36eeef8151a294859471dd34e69649fd8715b1bcc868a009f97f6bcb9fab"
+    },
+    {
+      "kind": "main",
+      "id": "main-8001",
+      "upstreamId": "Saber_Normal_01",
+      "sourcePath": "/images/weapon_flat/Path_Wst_Saber_Normal_01.png",
+      "sourceUrl": "https://leanny.github.io/splat3/images/weapon_flat/Path_Wst_Saber_Normal_01.png",
+      "relativePath": "/assets/weapons/main/main-8001.png",
+      "byteLength": 18725,
+      "sha256": "bccbd87d72996b05de73d892bf7b66082e87b683207dcef5c3ac77596e79affb"
+    },
+    {
+      "kind": "main",
+      "id": "main-8002",
+      "upstreamId": "Saber_Normal_02",
+      "sourcePath": "/images/weapon_flat/Path_Wst_Saber_Normal_02.png",
+      "sourceUrl": "https://leanny.github.io/splat3/images/weapon_flat/Path_Wst_Saber_Normal_02.png",
+      "relativePath": "/assets/weapons/main/main-8002.png",
+      "byteLength": 20849,
+      "sha256": "ef95ed71877cd232389c65b884f13ec4c333c96bb5e73b0c6cf22b9924874788"
+    },
+    {
+      "kind": "main",
+      "id": "main-8005",
+      "upstreamId": "Saber_Normal_O",
+      "sourcePath": "/images/weapon_flat/Path_Wst_Saber_Normal_O.png",
+      "sourceUrl": "https://leanny.github.io/splat3/images/weapon_flat/Path_Wst_Saber_Normal_O.png",
+      "relativePath": "/assets/weapons/main/main-8005.png",
+      "byteLength": 14109,
+      "sha256": "760947450a9e45a8ccb9b833dd6df45aeecb94b6ec6f0a72d97c278eec9bcfb6"
+    },
+    {
+      "kind": "main",
+      "id": "main-8010",
+      "upstreamId": "Saber_Lite_00",
+      "sourcePath": "/images/weapon_flat/Path_Wst_Saber_Lite_00.png",
+      "sourceUrl": "https://leanny.github.io/splat3/images/weapon_flat/Path_Wst_Saber_Lite_00.png",
+      "relativePath": "/assets/weapons/main/main-8010.png",
+      "byteLength": 16424,
+      "sha256": "fb6544d02f64c5580415d38b74834cfd669b3e40cf23a492443f60b3df0cf1cd"
+    },
+    {
+      "kind": "main",
+      "id": "main-8011",
+      "upstreamId": "Saber_Lite_01",
+      "sourcePath": "/images/weapon_flat/Path_Wst_Saber_Lite_01.png",
+      "sourceUrl": "https://leanny.github.io/splat3/images/weapon_flat/Path_Wst_Saber_Lite_01.png",
+      "relativePath": "/assets/weapons/main/main-8011.png",
+      "byteLength": 24118,
+      "sha256": "9207067fe594bde20c9993f492c56a4947b54392f3d64b8675c52c6987acc180"
+    },
+    {
+      "kind": "main",
+      "id": "main-8012",
+      "upstreamId": "Saber_Lite_02",
+      "sourcePath": "/images/weapon_flat/Path_Wst_Saber_Lite_02.png",
+      "sourceUrl": "https://leanny.github.io/splat3/images/weapon_flat/Path_Wst_Saber_Lite_02.png",
+      "relativePath": "/assets/weapons/main/main-8012.png",
+      "byteLength": 23003,
+      "sha256": "3501238bc3154f8b8dfa1dfc557be6a7ac7c159dba4c5855a00ab45e608c1eb1"
+    },
+    {
+      "kind": "main",
+      "id": "main-8020",
+      "upstreamId": "Saber_Heavy_00",
+      "sourcePath": "/images/weapon_flat/Path_Wst_Saber_Heavy_00.png",
+      "sourceUrl": "https://leanny.github.io/splat3/images/weapon_flat/Path_Wst_Saber_Heavy_00.png",
+      "relativePath": "/assets/weapons/main/main-8020.png",
+      "byteLength": 24210,
+      "sha256": "8dc4546d5e4449418165787d221179291a95326dceea1378456aa836afb7f4fc"
+    },
+    {
+      "kind": "main",
+      "id": "main-8021",
+      "upstreamId": "Saber_Heavy_01",
+      "sourcePath": "/images/weapon_flat/Path_Wst_Saber_Heavy_01.png",
+      "sourceUrl": "https://leanny.github.io/splat3/images/weapon_flat/Path_Wst_Saber_Heavy_01.png",
+      "relativePath": "/assets/weapons/main/main-8021.png",
+      "byteLength": 25024,
+      "sha256": "2881a287008716f3cd7be270ae6552b801ea794a4eeea0cda819ac0ea0839664"
+    },
+    {
+      "kind": "sub",
+      "id": "squid-beakon",
+      "upstreamId": "Beacon",
+      "sourcePath": "/images/subspe/Wsb_Beacon00.png",
+      "sourceUrl": "https://leanny.github.io/splat3/images/subspe/Wsb_Beacon00.png",
+      "relativePath": "/assets/weapons/sub/squid-beakon.png",
+      "byteLength": 1804,
+      "sha256": "7cdfa4b1b137583f5534c70982aad78d018fd92eec5e124ceb105ae14dce1bda"
+    },
+    {
+      "kind": "sub",
+      "id": "curling-bomb",
+      "upstreamId": "Bomb_Curling",
+      "sourcePath": "/images/subspe/Wsb_Bomb_Curling00.png",
+      "sourceUrl": "https://leanny.github.io/splat3/images/subspe/Wsb_Bomb_Curling00.png",
+      "relativePath": "/assets/weapons/sub/curling-bomb.png",
+      "byteLength": 917,
+      "sha256": "3ad22f104b52474c3a44b0daf618762fc4cd6a2a0170475e492149d92110ce56"
+    },
+    {
+      "kind": "sub",
+      "id": "fizzy-bomb",
+      "upstreamId": "Bomb_Fizzy",
+      "sourcePath": "/images/subspe/Wsb_Bomb_Fizzy00.png",
+      "sourceUrl": "https://leanny.github.io/splat3/images/subspe/Wsb_Bomb_Fizzy00.png",
+      "relativePath": "/assets/weapons/sub/fizzy-bomb.png",
+      "byteLength": 1378,
+      "sha256": "3c66066279ef738f6768070bc2beeb329e63f42e7a9873a2edf33e3e271a32c5"
+    },
+    {
+      "kind": "sub",
+      "id": "burst-bomb",
+      "upstreamId": "Bomb_Quick",
+      "sourcePath": "/images/subspe/Wsb_Bomb_Quick00.png",
+      "sourceUrl": "https://leanny.github.io/splat3/images/subspe/Wsb_Bomb_Quick00.png",
+      "relativePath": "/assets/weapons/sub/burst-bomb.png",
+      "byteLength": 1825,
+      "sha256": "654d09b541cc8bad2228a3cf06e4146d88db6a65a14ed2ac4f2bfca7325d5467"
+    },
+    {
+      "kind": "sub",
+      "id": "autobomb",
+      "upstreamId": "Bomb_Robot",
+      "sourcePath": "/images/subspe/Wsb_Bomb_Robot00.png",
+      "sourceUrl": "https://leanny.github.io/splat3/images/subspe/Wsb_Bomb_Robot00.png",
+      "relativePath": "/assets/weapons/sub/autobomb.png",
+      "byteLength": 1809,
+      "sha256": "13b685e65773230e118ff7389974396b601ae2bf8bb339200cf399f5dc54b2a3"
+    },
+    {
+      "kind": "sub",
+      "id": "splat-bomb",
+      "upstreamId": "Bomb_Splash",
+      "sourcePath": "/images/subspe/Wsb_Bomb_Splash00.png",
+      "sourceUrl": "https://leanny.github.io/splat3/images/subspe/Wsb_Bomb_Splash00.png",
+      "relativePath": "/assets/weapons/sub/splat-bomb.png",
+      "byteLength": 1761,
+      "sha256": "9e6693f995eacb8712fe842ebc81e67132f42bb80659de230796665e126782ba"
+    },
+    {
+      "kind": "sub",
+      "id": "suction-bomb",
+      "upstreamId": "Bomb_Suction",
+      "sourcePath": "/images/subspe/Wsb_Bomb_Suction00.png",
+      "sourceUrl": "https://leanny.github.io/splat3/images/subspe/Wsb_Bomb_Suction00.png",
+      "relativePath": "/assets/weapons/sub/suction-bomb.png",
+      "byteLength": 950,
+      "sha256": "2dcbc591df202194a098b1d855ca667a92967ea432a2ad98e316e2144839b307"
+    },
+    {
+      "kind": "sub",
+      "id": "torpedo",
+      "upstreamId": "Bomb_Torpedo",
+      "sourcePath": "/images/subspe/Wsb_Bomb_Torpedo00.png",
+      "sourceUrl": "https://leanny.github.io/splat3/images/subspe/Wsb_Bomb_Torpedo00.png",
+      "relativePath": "/assets/weapons/sub/torpedo.png",
+      "byteLength": 1900,
+      "sha256": "fc3799410fea2aae990bf7eb86a264713fe2f9672eb0fa8eb673bee10e75da27"
+    },
+    {
+      "kind": "sub",
+      "id": "angle-shooter",
+      "upstreamId": "LineMarker",
+      "sourcePath": "/images/subspe/Wsb_LineMarker00.png",
+      "sourceUrl": "https://leanny.github.io/splat3/images/subspe/Wsb_LineMarker00.png",
+      "relativePath": "/assets/weapons/sub/angle-shooter.png",
+      "byteLength": 953,
+      "sha256": "ccf3379e7de1bcf86cfcc43953bc6d7c3d6460e6371659af0e457a2e8c253fba"
+    },
+    {
+      "kind": "sub",
+      "id": "point-sensor",
+      "upstreamId": "PointSensor",
+      "sourcePath": "/images/subspe/Wsb_PointSensor00.png",
+      "sourceUrl": "https://leanny.github.io/splat3/images/subspe/Wsb_PointSensor00.png",
+      "relativePath": "/assets/weapons/sub/point-sensor.png",
+      "byteLength": 1211,
+      "sha256": "898223ff8475a2401c7a18a6dfa56ec6ede31948176dbedf082a791635e9eca1"
+    },
+    {
+      "kind": "sub",
+      "id": "toxic-mist",
+      "upstreamId": "PoisonMist",
+      "sourcePath": "/images/subspe/Wsb_PoisonMist00.png",
+      "sourceUrl": "https://leanny.github.io/splat3/images/subspe/Wsb_PoisonMist00.png",
+      "relativePath": "/assets/weapons/sub/toxic-mist.png",
+      "byteLength": 1842,
+      "sha256": "684b976f189b2590443c784855bb73e2056507e05f5263aab67da3ba824a4989"
+    },
+    {
+      "kind": "sub",
+      "id": "splash-wall",
+      "upstreamId": "Shield",
+      "sourcePath": "/images/subspe/Wsb_Shield00.png",
+      "sourceUrl": "https://leanny.github.io/splat3/images/subspe/Wsb_Shield00.png",
+      "relativePath": "/assets/weapons/sub/splash-wall.png",
+      "byteLength": 1527,
+      "sha256": "944128dc82e1d1ee2b7c943a68384d48594e6765665c786a73460974b6527633"
+    },
+    {
+      "kind": "sub",
+      "id": "sprinkler",
+      "upstreamId": "Sprinkler",
+      "sourcePath": "/images/subspe/Wsb_Sprinkler00.png",
+      "sourceUrl": "https://leanny.github.io/splat3/images/subspe/Wsb_Sprinkler00.png",
+      "relativePath": "/assets/weapons/sub/sprinkler.png",
+      "byteLength": 1308,
+      "sha256": "82f86ca5a54f0883b795ee0f82098bc8df054d2875bd57d09ca35579c91976a3"
+    },
+    {
+      "kind": "sub",
+      "id": "ink-mine",
+      "upstreamId": "Trap",
+      "sourcePath": "/images/subspe/Wsb_Trap00.png",
+      "sourceUrl": "https://leanny.github.io/splat3/images/subspe/Wsb_Trap00.png",
+      "relativePath": "/assets/weapons/sub/ink-mine.png",
+      "byteLength": 1471,
+      "sha256": "24978d28415e078760a91e8dd2e6c654ed092eaab315b2d3aa7ccb65b561bf64"
+    },
+    {
+      "kind": "special",
+      "id": "ink-vac",
+      "upstreamId": "SpBlower",
+      "sourcePath": "/images/subspe/Wsp_SpBlower00.png",
+      "sourceUrl": "https://leanny.github.io/splat3/images/subspe/Wsp_SpBlower00.png",
+      "relativePath": "/assets/weapons/special/ink-vac.png",
+      "byteLength": 2852,
+      "sha256": "d46ac05d86370937214c2c9c6b757b9b0ce1872685163ffa37f3d58b1d8d4e07"
+    },
+    {
+      "kind": "special",
+      "id": "kraken-royale",
+      "upstreamId": "SpCastle",
+      "sourcePath": "/images/subspe/Wsp_SpCastle00.png",
+      "sourceUrl": "https://leanny.github.io/splat3/images/subspe/Wsp_SpCastle00.png",
+      "relativePath": "/assets/weapons/special/kraken-royale.png",
+      "byteLength": 2431,
+      "sha256": "4c34be2495647f69cd8eda0dc01bf6deaf2bb7b890c421cc623a8db0f946bca9"
+    },
+    {
+      "kind": "special",
+      "id": "crab-tank",
+      "upstreamId": "SpChariot",
+      "sourcePath": "/images/subspe/Wsp_SpChariot00.png",
+      "sourceUrl": "https://leanny.github.io/splat3/images/subspe/Wsp_SpChariot00.png",
+      "relativePath": "/assets/weapons/special/crab-tank.png",
+      "byteLength": 3190,
+      "sha256": "8aeb352ae953213a50d9a5b2404124506fcdd1c077498bcaacfafd72249308cf"
+    },
+    {
+      "kind": "special",
+      "id": "splattercolor-screen",
+      "upstreamId": "SpChimney",
+      "sourcePath": "/images/subspe/Wsp_SpChimney00.png",
+      "sourceUrl": "https://leanny.github.io/splat3/images/subspe/Wsp_SpChimney00.png",
+      "relativePath": "/assets/weapons/special/splattercolor-screen.png",
+      "byteLength": 4028,
+      "sha256": "5651e5ca2b1f066392dd18db6fc0b8acae03e5e1aecc8ade76348b5e473bd1cc"
+    },
+    {
+      "kind": "special",
+      "id": "tacticooler",
+      "upstreamId": "SpEnergyStand",
+      "sourcePath": "/images/subspe/Wsp_SpEnergyStand00.png",
+      "sourceUrl": "https://leanny.github.io/splat3/images/subspe/Wsp_SpEnergyStand00.png",
+      "relativePath": "/assets/weapons/special/tacticooler.png",
+      "byteLength": 4627,
+      "sha256": "19c223e68e48fc16542c6f79cf9ea9ff764b590af16d1218f23003552d74778a"
+    },
+    {
+      "kind": "special",
+      "id": "decoy",
+      "upstreamId": "SpFirework",
+      "sourcePath": "/images/subspe/Wsp_SpFirework00.png",
+      "sourceUrl": "https://leanny.github.io/splat3/images/subspe/Wsp_SpFirework00.png",
+      "relativePath": "/assets/weapons/special/decoy.png",
+      "byteLength": 3384,
+      "sha256": "a1ba26e2957563f29bd27b451845198557234685e4646951e693d68aa6a95126"
+    },
+    {
+      "kind": "special",
+      "id": "big-bubbler",
+      "upstreamId": "SpGreatBarrier",
+      "sourcePath": "/images/subspe/Wsp_SpGreatBarrier00.png",
+      "sourceUrl": "https://leanny.github.io/splat3/images/subspe/Wsp_SpGreatBarrier00.png",
+      "relativePath": "/assets/weapons/special/big-bubbler.png",
+      "byteLength": 2550,
+      "sha256": "1825f836c2929aeb27780681e85275a8aca8b58923c09fd95efb4f256ca99f8b"
+    },
+    {
+      "kind": "special",
+      "id": "ink-storm",
+      "upstreamId": "SpInkStorm",
+      "sourcePath": "/images/subspe/Wsp_SpInkStorm00.png",
+      "sourceUrl": "https://leanny.github.io/splat3/images/subspe/Wsp_SpInkStorm00.png",
+      "relativePath": "/assets/weapons/special/ink-storm.png",
+      "byteLength": 2271,
+      "sha256": "7cb6b5b069b15627bfd94f19969d85ea5d29dfdc89c98cddc6f9ebbed5c5d617"
+    },
+    {
+      "kind": "special",
+      "id": "inkjet",
+      "upstreamId": "SpJetpack",
+      "sourcePath": "/images/subspe/Wsp_SpJetpack00.png",
+      "sourceUrl": "https://leanny.github.io/splat3/images/subspe/Wsp_SpJetpack00.png",
+      "relativePath": "/assets/weapons/special/inkjet.png",
+      "byteLength": 5088,
+      "sha256": "02213f3f3ad2fda66a581363e16715cd08b7a356c268fd960f0b71c9dc886feb"
+    },
+    {
+      "kind": "special",
+      "id": "killer-wail-5.1",
+      "upstreamId": "SpMicroLaser",
+      "sourcePath": "/images/subspe/Wsp_SpMicroLaser00.png",
+      "sourceUrl": "https://leanny.github.io/splat3/images/subspe/Wsp_SpMicroLaser00.png",
+      "relativePath": "/assets/weapons/special/killer-wail-5.1.png",
+      "byteLength": 3924,
+      "sha256": "cca578b78f66001823a8433f1457b1747db0cf42cf983ba510557c0f03d56f27"
+    },
+    {
+      "kind": "special",
+      "id": "tenta-missiles",
+      "upstreamId": "SpMultiMissile",
+      "sourcePath": "/images/subspe/Wsp_SpMultiMissile00.png",
+      "sourceUrl": "https://leanny.github.io/splat3/images/subspe/Wsp_SpMultiMissile00.png",
+      "relativePath": "/assets/weapons/special/tenta-missiles.png",
+      "byteLength": 5781,
+      "sha256": "f1ff11cf726c4d2e777ea73f925651d2450aba359c167526f4b22f2ff4df821f"
+    },
+    {
+      "kind": "special",
+      "id": "booyah-bomb",
+      "upstreamId": "SpNiceBall",
+      "sourcePath": "/images/subspe/Wsp_SpNiceBall00.png",
+      "sourceUrl": "https://leanny.github.io/splat3/images/subspe/Wsp_SpNiceBall00.png",
+      "relativePath": "/assets/weapons/special/booyah-bomb.png",
+      "byteLength": 2179,
+      "sha256": "bb17f45b5ee1705281041283e94ef8bdd9f637be8309c049091b8a0144cae23f"
+    },
+    {
+      "kind": "special",
+      "id": "triple-splashdown",
+      "upstreamId": "SpPogo",
+      "sourcePath": "/images/subspe/Wsp_SpPogo00.png",
+      "sourceUrl": "https://leanny.github.io/splat3/images/subspe/Wsp_SpPogo00.png",
+      "relativePath": "/assets/weapons/special/triple-splashdown.png",
+      "byteLength": 2821,
+      "sha256": "966c47ddd80e96108b33dbfdd1f4e8fab667462de347325b5fead5d61545660e"
+    },
+    {
+      "kind": "special",
+      "id": "wave-breaker",
+      "upstreamId": "SpShockSonar",
+      "sourcePath": "/images/subspe/Wsp_SpShockSonar00.png",
+      "sourceUrl": "https://leanny.github.io/splat3/images/subspe/Wsp_SpShockSonar00.png",
+      "relativePath": "/assets/weapons/special/wave-breaker.png",
+      "byteLength": 4403,
+      "sha256": "7ea490520b5be8cde15ec5fd245bf7c460d746fc9d994d13e6e31637782c1496"
+    },
+    {
+      "kind": "special",
+      "id": "reef-slider",
+      "upstreamId": "SpSkewer",
+      "sourcePath": "/images/subspe/Wsp_SpSkewer00.png",
+      "sourceUrl": "https://leanny.github.io/splat3/images/subspe/Wsp_SpSkewer00.png",
+      "relativePath": "/assets/weapons/special/reef-slider.png",
+      "byteLength": 2741,
+      "sha256": "7f2779f444482c0cf7443c171dfa7db9d3b3f73a9313a8ab50ee96dc0ad3e2a7"
+    },
+    {
+      "kind": "special",
+      "id": "zipcaster",
+      "upstreamId": "SpSuperHook",
+      "sourcePath": "/images/subspe/Wsp_SpSuperHook00.png",
+      "sourceUrl": "https://leanny.github.io/splat3/images/subspe/Wsp_SpSuperHook00.png",
+      "relativePath": "/assets/weapons/special/zipcaster.png",
+      "byteLength": 2431,
+      "sha256": "8e6ae8a714f82c29d2fe61645a80cced4a31e3b55547114ef63c6a1d97d9f812"
+    },
+    {
+      "kind": "special",
+      "id": "triple-inkstrike",
+      "upstreamId": "SpTripleTornado",
+      "sourcePath": "/images/subspe/Wsp_SpTripleTornado00.png",
+      "sourceUrl": "https://leanny.github.io/splat3/images/subspe/Wsp_SpTripleTornado00.png",
+      "relativePath": "/assets/weapons/special/triple-inkstrike.png",
+      "byteLength": 4570,
+      "sha256": "41f94b171eed4b9c89b1343acbd73b2e4d9dce8f0779de3cc14ce6c98470f81b"
+    },
+    {
+      "kind": "special",
+      "id": "trizooka",
+      "upstreamId": "SpUltraShot",
+      "sourcePath": "/images/subspe/Wsp_SpUltraShot00.png",
+      "sourceUrl": "https://leanny.github.io/splat3/images/subspe/Wsp_SpUltraShot00.png",
+      "relativePath": "/assets/weapons/special/trizooka.png",
+      "byteLength": 3364,
+      "sha256": "525f6777482cf3db6c0078d1902eed21a7c7f172f674851198307f1eb1add42e"
+    },
+    {
+      "kind": "special",
+      "id": "ultra-stamp",
+      "upstreamId": "SpUltraStamp",
+      "sourcePath": "/images/subspe/Wsp_SpUltraStamp00.png",
+      "sourceUrl": "https://leanny.github.io/splat3/images/subspe/Wsp_SpUltraStamp00.png",
+      "relativePath": "/assets/weapons/special/ultra-stamp.png",
+      "byteLength": 4705,
+      "sha256": "40c7d3fef1ed73736167c3b16afd6ee779612980fe36a26490a3f31e670ce698"
+    }
+  ]
+}

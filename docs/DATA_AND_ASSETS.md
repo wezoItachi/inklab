@@ -26,6 +26,17 @@ Ver. 12.0.0 的 174 把对战武器名称直接取自固定上游快照的 `Comm
 
 ## 武器与副武器数据
 
+### 对战武器图片（Ver. 12.0.0）
+
+- 本地位置：`public/assets/weapons/{main,sub,special}/*.png`
+- 完整来源、字节数和 SHA-256：`database/weapon-image-assets.v12.0.0.json`
+- 目录身份固定到 `Leanny/splat3` 提交 `b669d55e0eef1f1a7f18cb7468c636ed7746c189`
+- 图片取得路径：`https://leanny.github.io/splat3/images/weapon_flat/` 与 `images/subspe/`
+- 核对日期：2026-11-20
+- 数量：174 张对战主武器、14 张副武器、19 张特殊武器，共 207 张
+
+图片保持上游 PNG 字节，不进行二次转码；导入脚本为 `scripts/import-leanny-weapon-images.mjs`。Leanny 已在[追加回复](https://github.com/Leanny/splat3/issues/7#issuecomment-6402785216)中同意请求所列图片的复制、缩放、转换、自托管与分享图用途。项目继续使用 **Data provided by Lean** 并链接其仓库。图片底层权利仍归 Nintendo 等相应权利人所有，不纳入 INKLAB 自有代码的 `AGPL-3.0-only` 再许可范围。
+
 - 数据源：[`Leanny/splat3`](https://github.com/Leanny/splat3)
 - 参数浏览：[`Splatoon 3 Parameter Database`](https://leanny.github.io/splat3/parameters.html)
 - 当前目标版本：Ver. 12.0.0
@@ -40,6 +51,7 @@ Ver. 12.0.0 的 174 把对战武器名称直接取自固定上游快照的 `Comm
 - `database/manifest.json`：数据库索引、目标游戏版本及授权沟通状态。
 - `database/sources.json`：来源、核对日期与使用状态。
 - `database/main-weapons.v12.0.0.json`：Ver. 12.0.0 的 174 把对战主武器。
+- `database/weapon-image-assets.v12.0.0.json`：页面实际自托管的 207 张对战武器图片来源、字节数与 SHA-256。
 - `database/main-weapon-parameters.v12.0.0.json`：主武器参数字段、单位、核验状态和字段级来源位置。
 - `database/sub-weapons.v12.0.0.json`、`special-weapons.v12.0.0.json`、`weapon-kits.v12.0.0.json`：副武器、特殊武器与版本化套装关系。
 - `database/*-import-report.v12.0.0.json`：各武器族和鲑鱼跑参数的固定上游提交、输入文件哈希、导入日期与计数。

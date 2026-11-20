@@ -114,6 +114,7 @@ export type WeaponRecord = MainWeaponRecord & {
     SubWeaponRecord,
     'id' | 'name' | 'baseInkCost' | 'subPowerEffect' | 'subPowerDoesNotChange'
   >;
+  specialId: string;
   special: string;
   recommendedPreset: number | null;
 };

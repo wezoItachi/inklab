@@ -72,6 +72,7 @@ export const weapons: readonly WeaponRecord[] = mainWeaponDatabase.weapons.map(
         subPowerEffect: sub.subPowerEffect,
         subPowerDoesNotChange: sub.subPowerDoesNotChange,
       },
+      specialId: special.id,
       special: special.name,
       recommendedPreset: kit.recommendedPreset,
     };
