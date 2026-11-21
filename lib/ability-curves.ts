@@ -91,6 +91,16 @@ export function getInkRecoveryFrames(
   );
 }
 
+export function getSuperJumpFrames(
+  ap: number,
+  phase: 'charge' | 'move',
+): number {
+  return interpolateAbilityValue(
+    phase === 'charge' ? [20, 35, 80] : [96.6, 132.3, 138],
+    ap,
+  );
+}
+
 const mainInkSaverCurve: AbilityCurveDefinition = {
   abilityId: 'ism',
   status: 'verified',
@@ -160,10 +170,34 @@ const inkRecoveryCurve: AbilityCurveDefinition = {
   },
 };
 
+const quickSuperJumpCurve: AbilityCurveDefinition = {
+  abilityId: 'qsj',
+  status: 'verified',
+  title: '超级跳跃起跳准备时间',
+  outputLabel: '准备时间缩短',
+  formulaLabel: '准备 80→20 帧 · 飞行 138→96.6 帧',
+  sourceNote:
+    '百科曲线以起跳准备时间为主轴；实验室同时展示准备、飞行与合计时间。两组三点值来自 Leanny 12.0 固定快照，并与 Sendou.ink 公开分析器实现交叉核对。隐身跳跃会另加随距离变化、最多 60 帧的惩罚，不计入本曲线。',
+  minimumEffectiveAp: 3,
+  minimumEffectiveRule:
+    '首个可装备投入 3AP 会改变起跳准备与飞行公式；飞行阶段按完整帧显示时要到 9AP 才会由 138 帧降为 137 帧。这只是公式生效边界，不是强制配装建议。',
+  thresholdScope: 'universal',
+  calculate(ap) {
+    const boundedAp = clampAbilityPoints(ap);
+    const frames = getSuperJumpFrames(boundedAp, 'charge');
+    return {
+      ap: boundedAp,
+      multiplier: frames / 80,
+      benefitPercent: (1 - frames / 80) * 100,
+    };
+  },
+};
+
 const verifiedCurves = new Map<string, AbilityCurveDefinition>([
   [mainInkSaverCurve.abilityId, mainInkSaverCurve],
   [subInkSaverCurve.abilityId, subInkSaverCurve],
   [inkRecoveryCurve.abilityId, inkRecoveryCurve],
+  [quickSuperJumpCurve.abilityId, quickSuperJumpCurve],
 ]);
 
 const fixedMainAbilityIds = new Set([

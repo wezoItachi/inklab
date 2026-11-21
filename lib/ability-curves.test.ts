@@ -3,6 +3,7 @@ import test from 'node:test';
 import {
   getAbilityCurveDefinition,
   getAbilityCurveSample,
+  getSuperJumpFrames,
   hasMinimumEffectiveAbilityValue,
   hasVerifiedAbilityCurve,
   representableAbilityPoints,
@@ -47,6 +48,21 @@ void test('ink recovery exposes the verified battle squid-form curve', () => {
     Math.abs((getAbilityCurveSample('iru', 57)?.benefitPercent ?? 0) - 35) <
       1e-9,
   );
+});
+
+void test('quick super jump exposes the verified charge-time curve', () => {
+  const definition = getAbilityCurveDefinition('qsj');
+  assert.equal(definition.status, 'verified');
+  assert.equal(definition.minimumEffectiveAp, 3);
+  assert.equal(definition.thresholdScope, 'universal');
+  assert.equal(getAbilityCurveSample('qsj', 0)?.benefitPercent, 0);
+  assert.equal(getAbilityCurveSample('qsj', 57)?.benefitPercent, 75);
+});
+
+void test('quick super jump keeps raw and displayed move-frame boundaries distinct', () => {
+  assert.ok(getSuperJumpFrames(3, 'move') < 138);
+  assert.equal(Math.ceil(getSuperJumpFrames(3, 'move') - 1e-9), 138);
+  assert.equal(Math.ceil(getSuperJumpFrames(9, 'move') - 1e-9), 137);
 });
 
 void test('unverified abilities never expose invented curve values', () => {

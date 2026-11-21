@@ -118,6 +118,12 @@ const InkRecoveryPanel = lazy(() =>
   })),
 );
 
+const QuickSuperJumpPanel = lazy(() =>
+  import('@/components/quick-super-jump-panel').then(
+    ({ QuickSuperJumpPanel }) => ({ default: QuickSuperJumpPanel }),
+  ),
+);
+
 const LoadoutContextAnalysis = lazy(() =>
   import('@/components/loadout-context-analysis').then(
     ({ LoadoutContextAnalysis }) => ({ default: LoadoutContextAnalysis }),
@@ -1148,6 +1154,9 @@ export default function Home() {
                       isPreview={analysisApPreview !== null}
                       equippedAp={equippedFocusAp}
                       clearPreview={() => setAnalysisApPreview(null)}
+                      hasStealthJump={totals.some(
+                        ({ a }) => a?.id === 'stealth',
+                      )}
                     />
                     <div className="accordions">
                       <Suspense
@@ -1185,8 +1194,8 @@ export default function Home() {
                       </p>
                     </div>
                     <p className="note">
-                      套装关系已核对 · 主武省墨、副武省墨与对战回墨曲线已核对 ·
-                      其余 AP 效果曲线仍在验证
+                      套装关系已核对 · 三项续航与快跳曲线已核对 · 其余 AP
+                      效果曲线仍在验证
                     </p>
                   </aside>
                 </div>
@@ -1265,6 +1274,7 @@ function EffectPanel({
   isPreview,
   equippedAp,
   clearPreview,
+  hasStealthJump,
 }: {
   weapon: Weapon;
   id: string;
@@ -1273,11 +1283,13 @@ function EffectPanel({
   isPreview: boolean;
   equippedAp: number;
   clearPreview: () => void;
+  hasStealthJump: boolean;
 }) {
   const a = abilities.find((x) => x.id === id);
   const isMain = id === 'ism';
   const isSub = id === 'iss';
   const isInkRecovery = id === 'iru';
+  const isQuickSuperJump = id === 'qsj';
   const isSubPower = id === 'subp';
   const genericContext = a ? buildAbilityContext(a, weapon, ap) : null;
   const curve = getAbilityCurveDefinition(id);
@@ -1332,6 +1344,21 @@ function EffectPanel({
             isPreview={isPreview}
             equippedAp={equippedAp}
             clearPreview={clearPreview}
+          />
+        </Suspense>
+      ) : isQuickSuperJump ? (
+        <Suspense
+          fallback={<p className="parameter-public-note">正在计算超级跳跃时间…</p>}
+        >
+          <QuickSuperJumpPanel
+            weapon={weapon}
+            ability={a}
+            ap={ap}
+            setAp={setAp}
+            isPreview={isPreview}
+            equippedAp={equippedAp}
+            clearPreview={clearPreview}
+            hasStealthJump={hasStealthJump}
           />
         </Suspense>
       ) : isSubPower ? (

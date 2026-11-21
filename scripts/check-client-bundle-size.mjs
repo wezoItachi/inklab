@@ -41,6 +41,7 @@ const lazySections = [
   ['main-ink-saver-panel', '主武省墨分析'],
   ['sub-ink-saver-panel', '副武省墨分析'],
   ['ink-recovery-panel', '对战回墨分析'],
+  ['quick-super-jump-panel', '超级跳跃时间分析'],
   ['loadout-context-analysis', '当前配装上下文分析'],
 ];
 
