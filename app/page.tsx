@@ -130,6 +130,12 @@ const MovementSpeedPanel = lazy(() =>
   ),
 );
 
+const ActionIntensifyPanel = lazy(() =>
+  import('@/components/action-intensify-panel').then(
+    ({ ActionIntensifyPanel }) => ({ default: ActionIntensifyPanel }),
+  ),
+);
+
 const LoadoutContextAnalysis = lazy(() =>
   import('@/components/loadout-context-analysis').then(
     ({ LoadoutContextAnalysis }) => ({ default: LoadoutContextAnalysis }),
@@ -1201,7 +1207,8 @@ export default function Home() {
                       </p>
                     </div>
                     <p className="note">
-                      套装关系已核对 · 续航、快跳、移动与已支持动作走速已核对 · 其余 AP
+                      套装关系已核对 ·
+                      续航、快跳、移动、行动强化与已支持动作走速已核对 · 其余 AP
                       效果曲线仍在验证
                     </p>
                   </aside>
@@ -1300,6 +1307,7 @@ function EffectPanel({
   const isInkRecovery = id === 'iru';
   const isQuickSuperJump = id === 'qsj';
   const movementAbilityId = id === 'ssu' || id === 'rsu' ? id : null;
+  const isActionIntensify = id === 'ia';
   const isSubPower = id === 'subp';
   const genericContext = a ? buildAbilityContext(a, weapon, ap) : null;
   const curve = getAbilityCurveDefinition(id);
@@ -1358,7 +1366,9 @@ function EffectPanel({
         </Suspense>
       ) : isQuickSuperJump ? (
         <Suspense
-          fallback={<p className="parameter-public-note">正在计算超级跳跃时间…</p>}
+          fallback={
+            <p className="parameter-public-note">正在计算超级跳跃时间…</p>
+          }
         >
           <QuickSuperJumpPanel
             weapon={weapon}
@@ -1385,6 +1395,20 @@ function EffectPanel({
             equippedAp={equippedAp}
             clearPreview={clearPreview}
             hasNinjaSquid={hasNinjaSquid}
+          />
+        </Suspense>
+      ) : isActionIntensify ? (
+        <Suspense
+          fallback={<p className="parameter-public-note">正在计算行动强化…</p>}
+        >
+          <ActionIntensifyPanel
+            weapon={weapon}
+            ability={a}
+            ap={ap}
+            setAp={setAp}
+            isPreview={isPreview}
+            equippedAp={equippedAp}
+            clearPreview={clearPreview}
           />
         </Suspense>
       ) : isSubPower ? (

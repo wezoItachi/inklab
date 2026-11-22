@@ -109,6 +109,10 @@ export function getRunSpeed(ap: number): number {
   return interpolateAbilityValue([0.144, 0.12, 0.096], ap) * 10;
 }
 
+export function getActionIntensifySquidSurgeFrames(ap: number): number {
+  return interpolateAbilityValue([5, 18, 45], ap);
+}
+
 const mainInkSaverCurve: AbilityCurveDefinition = {
   abilityId: 'ism',
   status: 'verified',
@@ -247,6 +251,29 @@ const runSpeedCurve: AbilityCurveDefinition = {
   },
 };
 
+const actionIntensifyCurve: AbilityCurveDefinition = {
+  abilityId: 'ia',
+  status: 'verified',
+  title: '鱿鱼登顶蓄力时间',
+  outputLabel: '蓄力时间缩短',
+  formulaLabel: '鱿鱼登顶 45→5 帧',
+  sourceNote:
+    '百科以通用的鱿鱼登顶蓄力时间为主轴；实验室另按当前武器计算跳跃射击的额外扩散抑制。三点值、武器扩散和专用中点来自 Leanny 12.0 固定快照，并与 Sendou.ink 公开分析器实现交叉核对。鱿鱼滚行的操作窗口本轮不推算。',
+  minimumEffectiveAp: 3,
+  minimumEffectiveRule:
+    '首个可装备投入 3AP 会缩短鱿鱼登顶的原始蓄力时间，并在存在空中额外扩散的武器上改变扩散结果；不代表所有武器都必须投入。',
+  thresholdScope: 'weapon-specific',
+  calculate(ap) {
+    const boundedAp = clampAbilityPoints(ap);
+    const frames = getActionIntensifySquidSurgeFrames(boundedAp);
+    return {
+      ap: boundedAp,
+      multiplier: frames / 45,
+      benefitPercent: (1 - frames / 45) * 100,
+    };
+  },
+};
+
 const verifiedCurves = new Map<string, AbilityCurveDefinition>([
   [mainInkSaverCurve.abilityId, mainInkSaverCurve],
   [subInkSaverCurve.abilityId, subInkSaverCurve],
@@ -254,6 +281,7 @@ const verifiedCurves = new Map<string, AbilityCurveDefinition>([
   [quickSuperJumpCurve.abilityId, quickSuperJumpCurve],
   [swimSpeedCurve.abilityId, swimSpeedCurve],
   [runSpeedCurve.abilityId, runSpeedCurve],
+  [actionIntensifyCurve.abilityId, actionIntensifyCurve],
 ]);
 
 const fixedMainAbilityIds = new Set([

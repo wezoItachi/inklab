@@ -88,9 +88,7 @@ export function getWeaponParameterSnapshot(
         label: '副武耗墨',
         status: weapon.sub.baseInkCost === null ? 'pending' : 'verified',
         source:
-          weapon.sub.baseInkCost === null
-            ? undefined
-            : 'subInkCurveCrossCheck',
+          weapon.sub.baseInkCost === null ? undefined : 'subInkCurveCrossCheck',
         note:
           weapon.sub.baseInkCost === null
             ? '副武器身份已导入，基础耗墨尚未逐字段核对'
@@ -118,7 +116,7 @@ export function getWeaponParameterSnapshot(
       {
         label: 'AP 效果曲线',
         status: 'partial',
-        note: '省墨、对战回墨、超级跳跃、游速／走速及来源完整的动作走速已核对；其余能力曲线待验证',
+        note: '省墨、对战回墨、超级跳跃、游速／走速、行动强化及来源完整的动作走速已核对；其余能力曲线待验证',
       },
       {
         label: '系统建议',

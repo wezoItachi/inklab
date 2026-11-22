@@ -75,13 +75,22 @@ void test('swim and run speed expose verified weight-aware curve definitions', (
   }
 });
 
-void test('unverified abilities never expose invented curve values', () => {
+void test('action intensify exposes the verified squid-surge curve', () => {
   const definition = getAbilityCurveDefinition('ia');
+  assert.equal(definition.status, 'verified');
+  assert.equal(definition.minimumEffectiveAp, 3);
+  assert.equal(definition.thresholdScope, 'weapon-specific');
+  assert.equal(getAbilityCurveSample('ia', 0)?.benefitPercent, 0);
+  assert.ok((getAbilityCurveSample('ia', 57)?.benefitPercent ?? 0) > 88);
+});
+
+void test('unverified abilities never expose invented curve values', () => {
+  const definition = getAbilityCurveDefinition('subp');
   assert.equal(definition.status, 'pending');
   assert.equal(definition.calculate, null);
-  assert.equal(getAbilityCurveSample('ia', 10), null);
-  assert.equal(hasVerifiedAbilityCurve('ia'), false);
-  assert.equal(hasMinimumEffectiveAbilityValue('ia'), false);
+  assert.equal(getAbilityCurveSample('subp', 10), null);
+  assert.equal(hasVerifiedAbilityCurve('subp'), false);
+  assert.equal(hasMinimumEffectiveAbilityValue('subp'), false);
 });
 
 void test('fixed gear-exclusive abilities are not misreported as pending AP curves', () => {
