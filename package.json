@@ -26,6 +26,7 @@
     "data:import-salmon-parameters": "node scripts/import-leanny-salmon-parameters.mjs",
     "data:import-salmon-weapon-names": "node scripts/import-leanny-salmon-weapon-names.mjs",
     "data:import-salmon-ink-cycle": "node scripts/import-leanny-salmon-ink-cycle.mjs",
+    "data:import-movement-classes": "node scripts/import-leanny-movement-classes.mjs",
     "assets:import-weapon-images": "node scripts/import-leanny-weapon-images.mjs",
     "data:audit-battle-gaps": "node scripts/audit-battle-parameter-gaps.mjs",
     "data:audit-battle-source": "node scripts/audit-battle-source-omissions.mjs",

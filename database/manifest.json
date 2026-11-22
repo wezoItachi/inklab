@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "databaseId": "inklab-core",
   "gameVersion": "12.0.0",
-  "updatedAt": "2026-11-20",
+  "updatedAt": "2026-11-22",
   "scope": "full-weapon-catalog-partial-parameters",
   "records": {
     "mainWeapons": "main-weapons.v12.0.0.json",
@@ -11,6 +11,7 @@
     "specialWeapons": "special-weapons.v12.0.0.json",
     "weaponKits": "weapon-kits.v12.0.0.json",
     "weaponImageAssets": "weapon-image-assets.v12.0.0.json",
+    "weaponMovementClasses": "weapon-movement-classes.v12.0.0.json",
     "sources": "sources.json",
     "importReport": "import-report.v12.0.0.json",
     "parameterImportReport": "parameter-import-report.v12.0.0.json",

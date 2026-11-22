@@ -124,6 +124,12 @@ const QuickSuperJumpPanel = lazy(() =>
   ),
 );
 
+const MovementSpeedPanel = lazy(() =>
+  import('@/components/movement-speed-panel').then(
+    ({ MovementSpeedPanel }) => ({ default: MovementSpeedPanel }),
+  ),
+);
+
 const LoadoutContextAnalysis = lazy(() =>
   import('@/components/loadout-context-analysis').then(
     ({ LoadoutContextAnalysis }) => ({ default: LoadoutContextAnalysis }),
@@ -1157,6 +1163,7 @@ export default function Home() {
                       hasStealthJump={totals.some(
                         ({ a }) => a?.id === 'stealth',
                       )}
+                      hasNinjaSquid={totals.some(({ a }) => a?.id === 'ninja')}
                     />
                     <div className="accordions">
                       <Suspense
@@ -1194,7 +1201,7 @@ export default function Home() {
                       </p>
                     </div>
                     <p className="note">
-                      套装关系已核对 · 三项续航与快跳曲线已核对 · 其余 AP
+                      套装关系已核对 · 续航、快跳与基础移动曲线已核对 · 其余 AP
                       效果曲线仍在验证
                     </p>
                   </aside>
@@ -1275,6 +1282,7 @@ function EffectPanel({
   equippedAp,
   clearPreview,
   hasStealthJump,
+  hasNinjaSquid,
 }: {
   weapon: Weapon;
   id: string;
@@ -1284,12 +1292,14 @@ function EffectPanel({
   equippedAp: number;
   clearPreview: () => void;
   hasStealthJump: boolean;
+  hasNinjaSquid: boolean;
 }) {
   const a = abilities.find((x) => x.id === id);
   const isMain = id === 'ism';
   const isSub = id === 'iss';
   const isInkRecovery = id === 'iru';
   const isQuickSuperJump = id === 'qsj';
+  const movementAbilityId = id === 'ssu' || id === 'rsu' ? id : null;
   const isSubPower = id === 'subp';
   const genericContext = a ? buildAbilityContext(a, weapon, ap) : null;
   const curve = getAbilityCurveDefinition(id);
@@ -1359,6 +1369,22 @@ function EffectPanel({
             equippedAp={equippedAp}
             clearPreview={clearPreview}
             hasStealthJump={hasStealthJump}
+          />
+        </Suspense>
+      ) : movementAbilityId ? (
+        <Suspense
+          fallback={<p className="parameter-public-note">正在计算移动速度…</p>}
+        >
+          <MovementSpeedPanel
+            weapon={weapon}
+            ability={a}
+            abilityId={movementAbilityId}
+            ap={ap}
+            setAp={setAp}
+            isPreview={isPreview}
+            equippedAp={equippedAp}
+            clearPreview={clearPreview}
+            hasNinjaSquid={hasNinjaSquid}
           />
         </Suspense>
       ) : isSubPower ? (

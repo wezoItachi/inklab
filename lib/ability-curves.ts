@@ -101,6 +101,14 @@ export function getSuperJumpFrames(
   );
 }
 
+export function getSwimSpeed(ap: number): number {
+  return interpolateAbilityValue([0.24, 0.216, 0.192], ap) * 10;
+}
+
+export function getRunSpeed(ap: number): number {
+  return interpolateAbilityValue([0.144, 0.12, 0.096], ap) * 10;
+}
+
 const mainInkSaverCurve: AbilityCurveDefinition = {
   abilityId: 'ism',
   status: 'verified',
@@ -193,11 +201,59 @@ const quickSuperJumpCurve: AbilityCurveDefinition = {
   },
 };
 
+const swimSpeedCurve: AbilityCurveDefinition = {
+  abilityId: 'ssu',
+  status: 'verified',
+  title: '鱿鱼冲刺速度（中量级基准）',
+  outputLabel: '潜墨移动速度提升',
+  formulaLabel: '中量级 1.92→2.40 单位/帧',
+  sourceNote:
+    '百科以中量级且未装备鱿鱼忍者为基准；实验室按当前武器的轻量／中量／重量级计算。三套能力值来自 Leanny 12.0 固定快照，并与 Sendou.ink 公开分析器实现交叉核对。鱿鱼忍者的 0.9 倍修正会在实验室单独显示。',
+  minimumEffectiveAp: 3,
+  minimumEffectiveRule:
+    '首个可装备投入 3AP 会提高三种重量级的原始游速；这是公式生效边界，不等于所有配装都必须投入。',
+  thresholdScope: 'weapon-specific',
+  calculate(ap) {
+    const boundedAp = clampAbilityPoints(ap);
+    const speed = getSwimSpeed(boundedAp);
+    return {
+      ap: boundedAp,
+      multiplier: speed / 1.92,
+      benefitPercent: (speed / 1.92 - 1) * 100,
+    };
+  },
+};
+
+const runSpeedCurve: AbilityCurveDefinition = {
+  abilityId: 'rsu',
+  status: 'verified',
+  title: '人形态基础移动速度（中量级基准）',
+  outputLabel: '非射击走速提升',
+  formulaLabel: '中量级 0.96→1.44 单位/帧',
+  sourceNote:
+    '百科以中量级的普通人形态移动为基准；实验室按当前武器重量级计算。本曲线不等同于射击、蓄力或满蓄力时的武器专用走速，这些状态后续独立核验。',
+  minimumEffectiveAp: 3,
+  minimumEffectiveRule:
+    '首个可装备投入 3AP 会提高三种重量级的普通人形态移动速度；射击中走速临界点需结合具体武器另行判断。',
+  thresholdScope: 'weapon-specific',
+  calculate(ap) {
+    const boundedAp = clampAbilityPoints(ap);
+    const speed = getRunSpeed(boundedAp);
+    return {
+      ap: boundedAp,
+      multiplier: speed / 0.96,
+      benefitPercent: (speed / 0.96 - 1) * 100,
+    };
+  },
+};
+
 const verifiedCurves = new Map<string, AbilityCurveDefinition>([
   [mainInkSaverCurve.abilityId, mainInkSaverCurve],
   [subInkSaverCurve.abilityId, subInkSaverCurve],
   [inkRecoveryCurve.abilityId, inkRecoveryCurve],
   [quickSuperJumpCurve.abilityId, quickSuperJumpCurve],
+  [swimSpeedCurve.abilityId, swimSpeedCurve],
+  [runSpeedCurve.abilityId, runSpeedCurve],
 ]);
 
 const fixedMainAbilityIds = new Set([

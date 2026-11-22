@@ -65,13 +65,23 @@ void test('quick super jump keeps raw and displayed move-frame boundaries distin
   assert.equal(Math.ceil(getSuperJumpFrames(9, 'move') - 1e-9), 137);
 });
 
+void test('swim and run speed expose verified weight-aware curve definitions', () => {
+  for (const abilityId of ['ssu', 'rsu']) {
+    const definition = getAbilityCurveDefinition(abilityId);
+    assert.equal(definition.status, 'verified');
+    assert.equal(definition.minimumEffectiveAp, 3);
+    assert.equal(definition.thresholdScope, 'weapon-specific');
+    assert.ok((getAbilityCurveSample(abilityId, 3)?.benefitPercent ?? 0) > 0);
+  }
+});
+
 void test('unverified abilities never expose invented curve values', () => {
-  const definition = getAbilityCurveDefinition('ssu');
+  const definition = getAbilityCurveDefinition('ia');
   assert.equal(definition.status, 'pending');
   assert.equal(definition.calculate, null);
-  assert.equal(getAbilityCurveSample('ssu', 10), null);
-  assert.equal(hasVerifiedAbilityCurve('ssu'), false);
-  assert.equal(hasMinimumEffectiveAbilityValue('ssu'), false);
+  assert.equal(getAbilityCurveSample('ia', 10), null);
+  assert.equal(hasVerifiedAbilityCurve('ia'), false);
+  assert.equal(hasMinimumEffectiveAbilityValue('ia'), false);
 });
 
 void test('fixed gear-exclusive abilities are not misreported as pending AP curves', () => {
