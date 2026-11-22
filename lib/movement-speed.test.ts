@@ -7,6 +7,7 @@ import {
   getMovementSpeed,
   getWeaponMovementClass,
   movementClassData,
+  RAINMAKER_SPEED_MULTIPLIER,
 } from './movement-speed.ts';
 import { weapons } from './weapon-catalog.ts';
 
@@ -64,6 +65,22 @@ void test('run speed does not apply the ninja squid modifier', () => {
   });
   assert.equal(analysis.ninjaSquidApplied, false);
   assert.equal(analysis.speed, analysis.speedBeforeFixedAbilities);
+  assert.equal(analysis.rainmakerSpeed, null);
+});
+
+void test('Rainmaker applies its fixed modifier after AP and Ninja Squid', () => {
+  const analysis = analyzeMovementSpeed({
+    weaponId: 'shooter-normalt',
+    abilityId: 'ssu',
+    ap: 10,
+    hasNinjaSquid: true,
+  });
+  assert.equal(RAINMAKER_SPEED_MULTIPLIER, 0.8);
+  assert.equal(analysis.rainmakerSpeed, analysis.speed * 0.8);
+  assert.equal(
+    analysis.rainmakerSpeed,
+    analysis.speedBeforeFixedAbilities * 0.9 * 0.8,
+  );
 });
 
 void test('action movement database keeps verified state coverage explicit', () => {
@@ -92,10 +109,7 @@ void test('splatling movement preserves its weapon-specific multiplier', () => {
   const maximum = analyzeActionMovement('spinner-standardt', 57);
   assert.equal(maximum.multiplierSourceMode, 'weapon-override');
   assert.equal(maximum.multiplier, 1.35);
-  assert.equal(
-    maximum.states.find(({ id }) => id === 'firing')?.speed,
-    0.945,
-  );
+  assert.equal(maximum.states.find(({ id }) => id === 'firing')?.speed, 0.945);
   assert.equal(
     maximum.states.find(({ id }) => id === 'charging')?.speed,
     0.837,

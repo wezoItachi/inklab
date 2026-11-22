@@ -52,7 +52,8 @@ export function MovementSpeedPanel({
             {speedLabel} {analysis.speed.toFixed(3)} 单位/帧
           </strong>
           <p>
-            当前按武器重量级选择对应曲线；{isSwim
+            当前按武器重量级选择对应曲线；
+            {isSwim
               ? '鱿鱼忍者修正与 AP 增益分开计算。'
               : '这里先计算未射击时的基础走速，不混入武器射击动作。'}
           </p>
@@ -92,6 +93,35 @@ export function MovementSpeedPanel({
           单位/帧；这里不会把鱿鱼忍者误算成可重复堆叠的 AP 能力。
         </p>
       )}
+      {isSwim && analysis.rainmakerSpeed !== null && (
+        <>
+          <div className="ap-preview-label">
+            <div>
+              <span>真格鱼虎模式条件</span>
+              <small>持有鱼虎时固定修正 · 不改变当前配装 AP</small>
+            </div>
+          </div>
+          <div className="ink-saver-metrics">
+            <div>
+              <small>普通潜墨 → 持有鱼虎</small>
+              <b>
+                {analysis.speed.toFixed(3)} →{' '}
+                {analysis.rainmakerSpeed.toFixed(3)}
+              </b>
+              <span>单位/帧 · 最终结果 ×0.8</span>
+            </div>
+            <div>
+              <small>60 帧换算</small>
+              <b>{analysis.rainmakerSpeedPerSecond?.toFixed(1)} 单位/秒</b>
+              <span>已包含重量、游速 AP 与鱿鱼忍者</span>
+            </div>
+          </div>
+          <p className="effect-boundary">
+            这是对战模式中的持有状态，不是新的装备能力：先完成武器重量级与游速
+            AP 计算，再应用鱿鱼忍者（如有），最后对结果乘 0.8。
+          </p>
+        </>
+      )}
       {!isSwim && (
         <>
           <div className="ap-preview-label">
@@ -108,10 +138,12 @@ export function MovementSpeedPanel({
                 <div key={state.id}>
                   <small>{state.label}</small>
                   <b>
-                    {state.baseDisplaySpeed.toFixed(3)} → {state.speed.toFixed(3)}
+                    {state.baseDisplaySpeed.toFixed(3)} →{' '}
+                    {state.speed.toFixed(3)}
                   </b>
                   <span>
-                    单位/帧 · {actionMovement.multiplierSourceMode === 'weapon-override'
+                    单位/帧 ·{' '}
+                    {actionMovement.multiplierSourceMode === 'weapon-override'
                       ? '武器专用倍率'
                       : '通用人速倍率'}
                   </span>
@@ -161,8 +193,9 @@ export function MovementSpeedPanel({
       <p className="effect-source">
         <Check size={13} />
         轻量／中量／重量三套能力值、当前武器 WeaponSpeedType
-        与已显示的动作基础速度来自 Leanny Ver. 12.0.0 固定快照，并经
-        Sendou.ink 公开分析器实现交叉核对。数值按分析器口径显示为游戏单位/帧，不换算成现实距离。
+        与已显示的动作基础速度来自 Leanny Ver. 12.0.0
+        固定快照；鱿鱼忍者和真格鱼虎持有修正经 Sendou.ink
+        公开分析器实现交叉核对。数值按分析器口径显示为游戏单位/帧，不换算成现实距离。
       </p>
     </>
   );

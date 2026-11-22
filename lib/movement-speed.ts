@@ -86,6 +86,7 @@ const runValues = {
 } as const;
 
 export const NINJA_SQUID_SPEED_MULTIPLIER = 0.9;
+export const RAINMAKER_SPEED_MULTIPLIER = 0.8;
 
 export const weaponSpeedClassLabels: Record<WeaponSpeedClass, string> = {
   Fast: '轻量级',
@@ -102,8 +103,11 @@ export function getMovementSpeed(
   ap: number,
   speedClass: WeaponSpeedClass = 'Mid',
 ) {
-  const values = abilityId === 'ssu' ? swimValues[speedClass] : runValues[speedClass];
-  return Math.round(interpolateAbilityValue(values, ap) * 10 * 1_000_000) / 1_000_000;
+  const values =
+    abilityId === 'ssu' ? swimValues[speedClass] : runValues[speedClass];
+  return (
+    Math.round(interpolateAbilityValue(values, ap) * 10 * 1_000_000) / 1_000_000
+  );
 }
 
 export function analyzeMovementSpeed({
@@ -130,6 +134,8 @@ export function analyzeMovementSpeed({
   const speed = ninjaSquidApplied
     ? speedBeforeFixedAbilities * NINJA_SQUID_SPEED_MULTIPLIER
     : speedBeforeFixedAbilities;
+  const rainmakerSpeed =
+    abilityId === 'ssu' ? speed * RAINMAKER_SPEED_MULTIPLIER : null;
 
   return {
     ap: boundedAp,
@@ -142,6 +148,9 @@ export function analyzeMovementSpeed({
     speed,
     baseSpeedPerSecond: baseSpeed * 60,
     speedPerSecond: speed * 60,
+    rainmakerSpeed,
+    rainmakerSpeedPerSecond:
+      rainmakerSpeed === null ? null : rainmakerSpeed * 60,
     gainPercent: (speed / baseSpeed - 1) * 100,
     ninjaSquidApplied,
   };
