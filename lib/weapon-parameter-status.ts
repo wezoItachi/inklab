@@ -116,7 +116,7 @@ export function getWeaponParameterSnapshot(
       {
         label: 'AP 效果曲线',
         status: 'partial',
-        note: '省墨、对战回墨、超级跳跃、游速／走速、行动强化及来源完整的动作走速已核对；其余能力曲线待验证',
+        note: '十一条通用 AP 曲线、套装特殊点数及来源完整的动作走速已核对；其余能力曲线待验证',
       },
       {
         label: '系统建议',

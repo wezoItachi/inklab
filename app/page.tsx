@@ -136,6 +136,24 @@ const ActionIntensifyPanel = lazy(() =>
   ),
 );
 
+const EnemyInkResistancePanel = lazy(() =>
+  import('@/components/enemy-ink-resistance-panel').then(
+    ({ EnemyInkResistancePanel }) => ({ default: EnemyInkResistancePanel }),
+  ),
+);
+
+const SpecialGaugePanel = lazy(() =>
+  import('@/components/special-gauge-panel').then(({ SpecialGaugePanel }) => ({
+    default: SpecialGaugePanel,
+  })),
+);
+
+const QuickRespawnPanel = lazy(() =>
+  import('@/components/quick-respawn-panel').then(({ QuickRespawnPanel }) => ({
+    default: QuickRespawnPanel,
+  })),
+);
+
 const LoadoutContextAnalysis = lazy(() =>
   import('@/components/loadout-context-analysis').then(
     ({ LoadoutContextAnalysis }) => ({ default: LoadoutContextAnalysis }),
@@ -1170,6 +1188,9 @@ export default function Home() {
                         ({ a }) => a?.id === 'stealth',
                       )}
                       hasNinjaSquid={totals.some(({ a }) => a?.id === 'ninja')}
+                      hasRespawnPunisher={totals.some(
+                        ({ a }) => a?.id === 'rp',
+                      )}
                     />
                     <div className="accordions">
                       <Suspense
@@ -1207,9 +1228,8 @@ export default function Home() {
                       </p>
                     </div>
                     <p className="note">
-                      套装关系已核对 ·
-                      续航、快跳、移动、行动强化与已支持动作走速已核对 · 其余 AP
-                      效果曲线仍在验证
+                      套装关系已核对 · 十一条 AP 曲线与已支持动作走速已核对 ·
+                      其余能力继续逐项验证
                     </p>
                   </aside>
                 </div>
@@ -1290,6 +1310,7 @@ function EffectPanel({
   clearPreview,
   hasStealthJump,
   hasNinjaSquid,
+  hasRespawnPunisher,
 }: {
   weapon: Weapon;
   id: string;
@@ -1300,6 +1321,7 @@ function EffectPanel({
   clearPreview: () => void;
   hasStealthJump: boolean;
   hasNinjaSquid: boolean;
+  hasRespawnPunisher: boolean;
 }) {
   const a = abilities.find((x) => x.id === id);
   const isMain = id === 'ism';
@@ -1308,6 +1330,9 @@ function EffectPanel({
   const isQuickSuperJump = id === 'qsj';
   const movementAbilityId = id === 'ssu' || id === 'rsu' ? id : null;
   const isActionIntensify = id === 'ia';
+  const isEnemyInkResistance = id === 'inkres';
+  const specialGaugeAbilityId = id === 'scu' || id === 'ss' ? id : null;
+  const isQuickRespawn = id === 'qr';
   const isSubPower = id === 'subp';
   const genericContext = a ? buildAbilityContext(a, weapon, ap) : null;
   const curve = getAbilityCurveDefinition(id);
@@ -1409,6 +1434,53 @@ function EffectPanel({
             isPreview={isPreview}
             equippedAp={equippedAp}
             clearPreview={clearPreview}
+          />
+        </Suspense>
+      ) : isEnemyInkResistance ? (
+        <Suspense
+          fallback={<p className="parameter-public-note">正在计算敌墨影响…</p>}
+        >
+          <EnemyInkResistancePanel
+            weapon={weapon}
+            ability={a}
+            ap={ap}
+            setAp={setAp}
+            isPreview={isPreview}
+            equippedAp={equippedAp}
+            clearPreview={clearPreview}
+          />
+        </Suspense>
+      ) : specialGaugeAbilityId ? (
+        <Suspense
+          fallback={
+            <p className="parameter-public-note">正在计算特殊武器槽…</p>
+          }
+        >
+          <SpecialGaugePanel
+            weapon={weapon}
+            ability={a}
+            abilityId={specialGaugeAbilityId}
+            ap={ap}
+            setAp={setAp}
+            isPreview={isPreview}
+            equippedAp={equippedAp}
+            clearPreview={clearPreview}
+            hasRespawnPunisher={hasRespawnPunisher}
+          />
+        </Suspense>
+      ) : isQuickRespawn ? (
+        <Suspense
+          fallback={<p className="parameter-public-note">正在计算复活时间…</p>}
+        >
+          <QuickRespawnPanel
+            weapon={weapon}
+            ability={a}
+            ap={ap}
+            setAp={setAp}
+            isPreview={isPreview}
+            equippedAp={equippedAp}
+            clearPreview={clearPreview}
+            hasRespawnPunisher={hasRespawnPunisher}
           />
         </Suspense>
       ) : isSubPower ? (

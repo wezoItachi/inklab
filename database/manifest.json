@@ -14,6 +14,7 @@
     "weaponMovementClasses": "weapon-movement-classes.v12.0.0.json",
     "weaponActionMovement": "weapon-action-movement.v12.0.0.json",
     "weaponActionIntensify": "weapon-action-intensify.v12.0.0.json",
+    "weaponSpecialGauge": "weapon-special-gauge.v12.0.0.json",
     "sources": "sources.json",
     "importReport": "import-report.v12.0.0.json",
     "parameterImportReport": "parameter-import-report.v12.0.0.json",

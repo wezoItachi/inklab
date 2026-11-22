@@ -1,0 +1,1076 @@
+{
+  "gameVersion": "12.0.0",
+  "checkedAt": "2026-11-22",
+  "datasetStatus": "complete-battle-special-gauge-points",
+  "sourceId": "leanny-splat3",
+  "sourceCommit": "b669d55e0eef1f1a7f18cb7468c636ed7746c189",
+  "specialChargeMultiplier": {
+    "high": 1.3,
+    "mid": 1.15,
+    "low": 1
+  },
+  "specialLossRate": {
+    "high": 1,
+    "mid": 0.8,
+    "low": 0.5
+  },
+  "respawnPunisherExtraLoss": {
+    "ownAbility": 0.225,
+    "opponentAbility": 0.15
+  },
+  "pointDistribution": {
+    "160": 1,
+    "170": 9,
+    "180": 25,
+    "190": 61,
+    "200": 47,
+    "210": 27,
+    "220": 4
+  },
+  "records": [
+    {
+      "weaponId": "shooter-quickmiddle-cstm01",
+      "upstreamRowId": "Shooter_QuickMiddle_01",
+      "specialPoints": 170,
+      "upstreamPath": "data/mush/1200/WeaponInfoMain.json#__RowId=Shooter_QuickMiddle_01.SpecialPoint"
+    },
+    {
+      "weaponId": "shooter-normalt",
+      "upstreamRowId": "Shooter_Normal_00",
+      "specialPoints": 200,
+      "upstreamPath": "data/mush/1200/WeaponInfoMain.json#__RowId=Shooter_Normal_00.SpecialPoint"
+    },
+    {
+      "weaponId": "shooter-precision",
+      "upstreamRowId": "Shooter_Precision_00",
+      "specialPoints": 210,
+      "upstreamPath": "data/mush/1200/WeaponInfoMain.json#__RowId=Shooter_Precision_00.SpecialPoint"
+    },
+    {
+      "weaponId": "charger-normalt",
+      "upstreamRowId": "Charger_Normal_00",
+      "specialPoints": 190,
+      "upstreamPath": "data/mush/1200/WeaponInfoMain.json#__RowId=Charger_Normal_00.SpecialPoint"
+    },
+    {
+      "weaponId": "roller-normalt",
+      "upstreamRowId": "Roller_Normal_00",
+      "specialPoints": 180,
+      "upstreamPath": "data/mush/1200/WeaponInfoMain.json#__RowId=Roller_Normal_00.SpecialPoint"
+    },
+    {
+      "weaponId": "spinner-standardt",
+      "upstreamRowId": "Spinner_Standard_00",
+      "specialPoints": 210,
+      "upstreamPath": "data/mush/1200/WeaponInfoMain.json#__RowId=Spinner_Standard_00.SpecialPoint"
+    },
+    {
+      "weaponId": "main-0",
+      "upstreamRowId": "Shooter_Short_00",
+      "specialPoints": 190,
+      "upstreamPath": "data/mush/1200/WeaponInfoMain.json#__RowId=Shooter_Short_00.SpecialPoint"
+    },
+    {
+      "weaponId": "main-1",
+      "upstreamRowId": "Shooter_Short_01",
+      "specialPoints": 170,
+      "upstreamPath": "data/mush/1200/WeaponInfoMain.json#__RowId=Shooter_Short_01.SpecialPoint"
+    },
+    {
+      "weaponId": "main-10",
+      "upstreamRowId": "Shooter_First_00",
+      "specialPoints": 180,
+      "upstreamPath": "data/mush/1200/WeaponInfoMain.json#__RowId=Shooter_First_00.SpecialPoint"
+    },
+    {
+      "weaponId": "main-11",
+      "upstreamRowId": "Shooter_First_01",
+      "specialPoints": 190,
+      "upstreamPath": "data/mush/1200/WeaponInfoMain.json#__RowId=Shooter_First_01.SpecialPoint"
+    },
+    {
+      "weaponId": "main-21",
+      "upstreamRowId": "Shooter_Precision_01",
+      "specialPoints": 200,
+      "upstreamPath": "data/mush/1200/WeaponInfoMain.json#__RowId=Shooter_Precision_01.SpecialPoint"
+    },
+    {
+      "weaponId": "main-22",
+      "upstreamRowId": "Shooter_Precision_02",
+      "specialPoints": 180,
+      "upstreamPath": "data/mush/1200/WeaponInfoMain.json#__RowId=Shooter_Precision_02.SpecialPoint"
+    },
+    {
+      "weaponId": "main-30",
+      "upstreamRowId": "Shooter_Blaze_00",
+      "specialPoints": 180,
+      "upstreamPath": "data/mush/1200/WeaponInfoMain.json#__RowId=Shooter_Blaze_00.SpecialPoint"
+    },
+    {
+      "weaponId": "main-31",
+      "upstreamRowId": "Shooter_Blaze_01",
+      "specialPoints": 190,
+      "upstreamPath": "data/mush/1200/WeaponInfoMain.json#__RowId=Shooter_Blaze_01.SpecialPoint"
+    },
+    {
+      "weaponId": "main-32",
+      "upstreamRowId": "Shooter_Blaze_02",
+      "specialPoints": 180,
+      "upstreamPath": "data/mush/1200/WeaponInfoMain.json#__RowId=Shooter_Blaze_02.SpecialPoint"
+    },
+    {
+      "weaponId": "main-41",
+      "upstreamRowId": "Shooter_Normal_01",
+      "specialPoints": 190,
+      "upstreamPath": "data/mush/1200/WeaponInfoMain.json#__RowId=Shooter_Normal_01.SpecialPoint"
+    },
+    {
+      "weaponId": "main-42",
+      "upstreamRowId": "Shooter_Normal_02",
+      "specialPoints": 190,
+      "upstreamPath": "data/mush/1200/WeaponInfoMain.json#__RowId=Shooter_Normal_02.SpecialPoint"
+    },
+    {
+      "weaponId": "main-45",
+      "upstreamRowId": "Shooter_Normal_H",
+      "specialPoints": 200,
+      "upstreamPath": "data/mush/1200/WeaponInfoMain.json#__RowId=Shooter_Normal_H.SpecialPoint"
+    },
+    {
+      "weaponId": "main-46",
+      "upstreamRowId": "Shooter_Normal_Oct",
+      "specialPoints": 190,
+      "upstreamPath": "data/mush/1200/WeaponInfoMain.json#__RowId=Shooter_Normal_Oct.SpecialPoint"
+    },
+    {
+      "weaponId": "main-47",
+      "upstreamRowId": "Shooter_Normal_O",
+      "specialPoints": 200,
+      "upstreamPath": "data/mush/1200/WeaponInfoMain.json#__RowId=Shooter_Normal_O.SpecialPoint"
+    },
+    {
+      "weaponId": "main-48",
+      "upstreamRowId": "Shooter_Normal_S",
+      "specialPoints": 190,
+      "upstreamPath": "data/mush/1200/WeaponInfoMain.json#__RowId=Shooter_Normal_S.SpecialPoint"
+    },
+    {
+      "weaponId": "main-50",
+      "upstreamRowId": "Shooter_Gravity_00",
+      "specialPoints": 210,
+      "upstreamPath": "data/mush/1200/WeaponInfoMain.json#__RowId=Shooter_Gravity_00.SpecialPoint"
+    },
+    {
+      "weaponId": "main-51",
+      "upstreamRowId": "Shooter_Gravity_01",
+      "specialPoints": 190,
+      "upstreamPath": "data/mush/1200/WeaponInfoMain.json#__RowId=Shooter_Gravity_01.SpecialPoint"
+    },
+    {
+      "weaponId": "main-60",
+      "upstreamRowId": "Shooter_QuickMiddle_00",
+      "specialPoints": 200,
+      "upstreamPath": "data/mush/1200/WeaponInfoMain.json#__RowId=Shooter_QuickMiddle_00.SpecialPoint"
+    },
+    {
+      "weaponId": "main-70",
+      "upstreamRowId": "Shooter_Expert_00",
+      "specialPoints": 190,
+      "upstreamPath": "data/mush/1200/WeaponInfoMain.json#__RowId=Shooter_Expert_00.SpecialPoint"
+    },
+    {
+      "weaponId": "main-71",
+      "upstreamRowId": "Shooter_Expert_01",
+      "specialPoints": 200,
+      "upstreamPath": "data/mush/1200/WeaponInfoMain.json#__RowId=Shooter_Expert_01.SpecialPoint"
+    },
+    {
+      "weaponId": "main-72",
+      "upstreamRowId": "Shooter_Expert_02",
+      "specialPoints": 190,
+      "upstreamPath": "data/mush/1200/WeaponInfoMain.json#__RowId=Shooter_Expert_02.SpecialPoint"
+    },
+    {
+      "weaponId": "main-80",
+      "upstreamRowId": "Shooter_Heavy_00",
+      "specialPoints": 190,
+      "upstreamPath": "data/mush/1200/WeaponInfoMain.json#__RowId=Shooter_Heavy_00.SpecialPoint"
+    },
+    {
+      "weaponId": "main-81",
+      "upstreamRowId": "Shooter_Heavy_01",
+      "specialPoints": 210,
+      "upstreamPath": "data/mush/1200/WeaponInfoMain.json#__RowId=Shooter_Heavy_01.SpecialPoint"
+    },
+    {
+      "weaponId": "main-82",
+      "upstreamRowId": "Shooter_Heavy_02",
+      "specialPoints": 190,
+      "upstreamPath": "data/mush/1200/WeaponInfoMain.json#__RowId=Shooter_Heavy_02.SpecialPoint"
+    },
+    {
+      "weaponId": "main-90",
+      "upstreamRowId": "Shooter_Long_00",
+      "specialPoints": 180,
+      "upstreamPath": "data/mush/1200/WeaponInfoMain.json#__RowId=Shooter_Long_00.SpecialPoint"
+    },
+    {
+      "weaponId": "main-91",
+      "upstreamRowId": "Shooter_Long_01",
+      "specialPoints": 180,
+      "upstreamPath": "data/mush/1200/WeaponInfoMain.json#__RowId=Shooter_Long_01.SpecialPoint"
+    },
+    {
+      "weaponId": "main-92",
+      "upstreamRowId": "Shooter_Long_02",
+      "specialPoints": 190,
+      "upstreamPath": "data/mush/1200/WeaponInfoMain.json#__RowId=Shooter_Long_02.SpecialPoint"
+    },
+    {
+      "weaponId": "main-100",
+      "upstreamRowId": "Shooter_QuickLong_00",
+      "specialPoints": 190,
+      "upstreamPath": "data/mush/1200/WeaponInfoMain.json#__RowId=Shooter_QuickLong_00.SpecialPoint"
+    },
+    {
+      "weaponId": "main-101",
+      "upstreamRowId": "Shooter_QuickLong_01",
+      "specialPoints": 210,
+      "upstreamPath": "data/mush/1200/WeaponInfoMain.json#__RowId=Shooter_QuickLong_01.SpecialPoint"
+    },
+    {
+      "weaponId": "main-300",
+      "upstreamRowId": "Shooter_TripleQuick_00",
+      "specialPoints": 190,
+      "upstreamPath": "data/mush/1200/WeaponInfoMain.json#__RowId=Shooter_TripleQuick_00.SpecialPoint"
+    },
+    {
+      "weaponId": "main-301",
+      "upstreamRowId": "Shooter_TripleQuick_01",
+      "specialPoints": 200,
+      "upstreamPath": "data/mush/1200/WeaponInfoMain.json#__RowId=Shooter_TripleQuick_01.SpecialPoint"
+    },
+    {
+      "weaponId": "main-302",
+      "upstreamRowId": "Shooter_TripleQuick_02",
+      "specialPoints": 200,
+      "upstreamPath": "data/mush/1200/WeaponInfoMain.json#__RowId=Shooter_TripleQuick_02.SpecialPoint"
+    },
+    {
+      "weaponId": "main-310",
+      "upstreamRowId": "Shooter_TripleMiddle_00",
+      "specialPoints": 190,
+      "upstreamPath": "data/mush/1200/WeaponInfoMain.json#__RowId=Shooter_TripleMiddle_00.SpecialPoint"
+    },
+    {
+      "weaponId": "main-311",
+      "upstreamRowId": "Shooter_TripleMiddle_01",
+      "specialPoints": 200,
+      "upstreamPath": "data/mush/1200/WeaponInfoMain.json#__RowId=Shooter_TripleMiddle_01.SpecialPoint"
+    },
+    {
+      "weaponId": "main-312",
+      "upstreamRowId": "Shooter_TripleMiddle_02",
+      "specialPoints": 200,
+      "upstreamPath": "data/mush/1200/WeaponInfoMain.json#__RowId=Shooter_TripleMiddle_02.SpecialPoint"
+    },
+    {
+      "weaponId": "main-400",
+      "upstreamRowId": "Shooter_Flash_00",
+      "specialPoints": 220,
+      "upstreamPath": "data/mush/1200/WeaponInfoMain.json#__RowId=Shooter_Flash_00.SpecialPoint"
+    },
+    {
+      "weaponId": "main-401",
+      "upstreamRowId": "Shooter_Flash_01",
+      "specialPoints": 190,
+      "upstreamPath": "data/mush/1200/WeaponInfoMain.json#__RowId=Shooter_Flash_01.SpecialPoint"
+    },
+    {
+      "weaponId": "main-200",
+      "upstreamRowId": "Blaster_Short_00",
+      "specialPoints": 170,
+      "upstreamPath": "data/mush/1200/WeaponInfoMain.json#__RowId=Blaster_Short_00.SpecialPoint"
+    },
+    {
+      "weaponId": "main-201",
+      "upstreamRowId": "Blaster_Short_01",
+      "specialPoints": 200,
+      "upstreamPath": "data/mush/1200/WeaponInfoMain.json#__RowId=Blaster_Short_01.SpecialPoint"
+    },
+    {
+      "weaponId": "main-205",
+      "upstreamRowId": "Blaster_Short_O",
+      "specialPoints": 170,
+      "upstreamPath": "data/mush/1200/WeaponInfoMain.json#__RowId=Blaster_Short_O.SpecialPoint"
+    },
+    {
+      "weaponId": "main-210",
+      "upstreamRowId": "Blaster_Middle_00",
+      "specialPoints": 200,
+      "upstreamPath": "data/mush/1200/WeaponInfoMain.json#__RowId=Blaster_Middle_00.SpecialPoint"
+    },
+    {
+      "weaponId": "main-211",
+      "upstreamRowId": "Blaster_Middle_01",
+      "specialPoints": 190,
+      "upstreamPath": "data/mush/1200/WeaponInfoMain.json#__RowId=Blaster_Middle_01.SpecialPoint"
+    },
+    {
+      "weaponId": "main-212",
+      "upstreamRowId": "Blaster_Middle_02",
+      "specialPoints": 180,
+      "upstreamPath": "data/mush/1200/WeaponInfoMain.json#__RowId=Blaster_Middle_02.SpecialPoint"
+    },
+    {
+      "weaponId": "main-220",
+      "upstreamRowId": "Blaster_Long_00",
+      "specialPoints": 210,
+      "upstreamPath": "data/mush/1200/WeaponInfoMain.json#__RowId=Blaster_Long_00.SpecialPoint"
+    },
+    {
+      "weaponId": "main-221",
+      "upstreamRowId": "Blaster_Long_01",
+      "specialPoints": 210,
+      "upstreamPath": "data/mush/1200/WeaponInfoMain.json#__RowId=Blaster_Long_01.SpecialPoint"
+    },
+    {
+      "weaponId": "main-230",
+      "upstreamRowId": "Blaster_LightShort_00",
+      "specialPoints": 180,
+      "upstreamPath": "data/mush/1200/WeaponInfoMain.json#__RowId=Blaster_LightShort_00.SpecialPoint"
+    },
+    {
+      "weaponId": "main-231",
+      "upstreamRowId": "Blaster_LightShort_01",
+      "specialPoints": 170,
+      "upstreamPath": "data/mush/1200/WeaponInfoMain.json#__RowId=Blaster_LightShort_01.SpecialPoint"
+    },
+    {
+      "weaponId": "main-240",
+      "upstreamRowId": "Blaster_Light_00",
+      "specialPoints": 190,
+      "upstreamPath": "data/mush/1200/WeaponInfoMain.json#__RowId=Blaster_Light_00.SpecialPoint"
+    },
+    {
+      "weaponId": "main-241",
+      "upstreamRowId": "Blaster_Light_01",
+      "specialPoints": 210,
+      "upstreamPath": "data/mush/1200/WeaponInfoMain.json#__RowId=Blaster_Light_01.SpecialPoint"
+    },
+    {
+      "weaponId": "main-250",
+      "upstreamRowId": "Blaster_LightLong_00",
+      "specialPoints": 180,
+      "upstreamPath": "data/mush/1200/WeaponInfoMain.json#__RowId=Blaster_LightLong_00.SpecialPoint"
+    },
+    {
+      "weaponId": "main-251",
+      "upstreamRowId": "Blaster_LightLong_01",
+      "specialPoints": 200,
+      "upstreamPath": "data/mush/1200/WeaponInfoMain.json#__RowId=Blaster_LightLong_01.SpecialPoint"
+    },
+    {
+      "weaponId": "main-252",
+      "upstreamRowId": "Blaster_LightLong_02",
+      "specialPoints": 200,
+      "upstreamPath": "data/mush/1200/WeaponInfoMain.json#__RowId=Blaster_LightLong_02.SpecialPoint"
+    },
+    {
+      "weaponId": "main-260",
+      "upstreamRowId": "Blaster_Precision_00",
+      "specialPoints": 180,
+      "upstreamPath": "data/mush/1200/WeaponInfoMain.json#__RowId=Blaster_Precision_00.SpecialPoint"
+    },
+    {
+      "weaponId": "main-261",
+      "upstreamRowId": "Blaster_Precision_01",
+      "specialPoints": 210,
+      "upstreamPath": "data/mush/1200/WeaponInfoMain.json#__RowId=Blaster_Precision_01.SpecialPoint"
+    },
+    {
+      "weaponId": "main-1000",
+      "upstreamRowId": "Roller_Compact_00",
+      "specialPoints": 160,
+      "upstreamPath": "data/mush/1200/WeaponInfoMain.json#__RowId=Roller_Compact_00.SpecialPoint"
+    },
+    {
+      "weaponId": "main-1001",
+      "upstreamRowId": "Roller_Compact_01",
+      "specialPoints": 190,
+      "upstreamPath": "data/mush/1200/WeaponInfoMain.json#__RowId=Roller_Compact_01.SpecialPoint"
+    },
+    {
+      "weaponId": "main-1002",
+      "upstreamRowId": "Roller_Compact_02",
+      "specialPoints": 170,
+      "upstreamPath": "data/mush/1200/WeaponInfoMain.json#__RowId=Roller_Compact_02.SpecialPoint"
+    },
+    {
+      "weaponId": "main-1011",
+      "upstreamRowId": "Roller_Normal_01",
+      "specialPoints": 170,
+      "upstreamPath": "data/mush/1200/WeaponInfoMain.json#__RowId=Roller_Normal_01.SpecialPoint"
+    },
+    {
+      "weaponId": "main-1015",
+      "upstreamRowId": "Roller_Normal_O",
+      "specialPoints": 180,
+      "upstreamPath": "data/mush/1200/WeaponInfoMain.json#__RowId=Roller_Normal_O.SpecialPoint"
+    },
+    {
+      "weaponId": "main-1020",
+      "upstreamRowId": "Roller_Heavy_00",
+      "specialPoints": 210,
+      "upstreamPath": "data/mush/1200/WeaponInfoMain.json#__RowId=Roller_Heavy_00.SpecialPoint"
+    },
+    {
+      "weaponId": "main-1021",
+      "upstreamRowId": "Roller_Heavy_01",
+      "specialPoints": 190,
+      "upstreamPath": "data/mush/1200/WeaponInfoMain.json#__RowId=Roller_Heavy_01.SpecialPoint"
+    },
+    {
+      "weaponId": "main-1022",
+      "upstreamRowId": "Roller_Heavy_02",
+      "specialPoints": 180,
+      "upstreamPath": "data/mush/1200/WeaponInfoMain.json#__RowId=Roller_Heavy_02.SpecialPoint"
+    },
+    {
+      "weaponId": "main-1030",
+      "upstreamRowId": "Roller_Hunter_00",
+      "specialPoints": 210,
+      "upstreamPath": "data/mush/1200/WeaponInfoMain.json#__RowId=Roller_Hunter_00.SpecialPoint"
+    },
+    {
+      "weaponId": "main-1031",
+      "upstreamRowId": "Roller_Hunter_01",
+      "specialPoints": 200,
+      "upstreamPath": "data/mush/1200/WeaponInfoMain.json#__RowId=Roller_Hunter_01.SpecialPoint"
+    },
+    {
+      "weaponId": "main-1040",
+      "upstreamRowId": "Roller_Wide_00",
+      "specialPoints": 180,
+      "upstreamPath": "data/mush/1200/WeaponInfoMain.json#__RowId=Roller_Wide_00.SpecialPoint"
+    },
+    {
+      "weaponId": "main-1041",
+      "upstreamRowId": "Roller_Wide_01",
+      "specialPoints": 180,
+      "upstreamPath": "data/mush/1200/WeaponInfoMain.json#__RowId=Roller_Wide_01.SpecialPoint"
+    },
+    {
+      "weaponId": "main-1042",
+      "upstreamRowId": "Roller_Wide_02",
+      "specialPoints": 180,
+      "upstreamPath": "data/mush/1200/WeaponInfoMain.json#__RowId=Roller_Wide_02.SpecialPoint"
+    },
+    {
+      "weaponId": "main-1100",
+      "upstreamRowId": "Brush_Mini_00",
+      "specialPoints": 180,
+      "upstreamPath": "data/mush/1200/WeaponInfoMain.json#__RowId=Brush_Mini_00.SpecialPoint"
+    },
+    {
+      "weaponId": "main-1101",
+      "upstreamRowId": "Brush_Mini_01",
+      "specialPoints": 190,
+      "upstreamPath": "data/mush/1200/WeaponInfoMain.json#__RowId=Brush_Mini_01.SpecialPoint"
+    },
+    {
+      "weaponId": "main-1110",
+      "upstreamRowId": "Brush_Normal_00",
+      "specialPoints": 190,
+      "upstreamPath": "data/mush/1200/WeaponInfoMain.json#__RowId=Brush_Normal_00.SpecialPoint"
+    },
+    {
+      "weaponId": "main-1111",
+      "upstreamRowId": "Brush_Normal_01",
+      "specialPoints": 180,
+      "upstreamPath": "data/mush/1200/WeaponInfoMain.json#__RowId=Brush_Normal_01.SpecialPoint"
+    },
+    {
+      "weaponId": "main-1112",
+      "upstreamRowId": "Brush_Normal_02",
+      "specialPoints": 190,
+      "upstreamPath": "data/mush/1200/WeaponInfoMain.json#__RowId=Brush_Normal_02.SpecialPoint"
+    },
+    {
+      "weaponId": "main-1115",
+      "upstreamRowId": "Brush_Normal_O",
+      "specialPoints": 190,
+      "upstreamPath": "data/mush/1200/WeaponInfoMain.json#__RowId=Brush_Normal_O.SpecialPoint"
+    },
+    {
+      "weaponId": "main-1120",
+      "upstreamRowId": "Brush_Heavy_00",
+      "specialPoints": 190,
+      "upstreamPath": "data/mush/1200/WeaponInfoMain.json#__RowId=Brush_Heavy_00.SpecialPoint"
+    },
+    {
+      "weaponId": "main-1121",
+      "upstreamRowId": "Brush_Heavy_01",
+      "specialPoints": 190,
+      "upstreamPath": "data/mush/1200/WeaponInfoMain.json#__RowId=Brush_Heavy_01.SpecialPoint"
+    },
+    {
+      "weaponId": "main-1122",
+      "upstreamRowId": "Brush_Heavy_02",
+      "specialPoints": 190,
+      "upstreamPath": "data/mush/1200/WeaponInfoMain.json#__RowId=Brush_Heavy_02.SpecialPoint"
+    },
+    {
+      "weaponId": "main-2000",
+      "upstreamRowId": "Charger_Quick_00",
+      "specialPoints": 190,
+      "upstreamPath": "data/mush/1200/WeaponInfoMain.json#__RowId=Charger_Quick_00.SpecialPoint"
+    },
+    {
+      "weaponId": "main-2001",
+      "upstreamRowId": "Charger_Quick_01",
+      "specialPoints": 180,
+      "upstreamPath": "data/mush/1200/WeaponInfoMain.json#__RowId=Charger_Quick_01.SpecialPoint"
+    },
+    {
+      "weaponId": "main-2011",
+      "upstreamRowId": "Charger_Normal_01",
+      "specialPoints": 200,
+      "upstreamPath": "data/mush/1200/WeaponInfoMain.json#__RowId=Charger_Normal_01.SpecialPoint"
+    },
+    {
+      "weaponId": "main-2012",
+      "upstreamRowId": "Charger_Normal_02",
+      "specialPoints": 200,
+      "upstreamPath": "data/mush/1200/WeaponInfoMain.json#__RowId=Charger_Normal_02.SpecialPoint"
+    },
+    {
+      "weaponId": "main-2015",
+      "upstreamRowId": "Charger_Normal_O",
+      "specialPoints": 190,
+      "upstreamPath": "data/mush/1200/WeaponInfoMain.json#__RowId=Charger_Normal_O.SpecialPoint"
+    },
+    {
+      "weaponId": "main-2020",
+      "upstreamRowId": "Charger_NormalScope_00",
+      "specialPoints": 190,
+      "upstreamPath": "data/mush/1200/WeaponInfoMain.json#__RowId=Charger_NormalScope_00.SpecialPoint"
+    },
+    {
+      "weaponId": "main-2021",
+      "upstreamRowId": "Charger_NormalScope_01",
+      "specialPoints": 200,
+      "upstreamPath": "data/mush/1200/WeaponInfoMain.json#__RowId=Charger_NormalScope_01.SpecialPoint"
+    },
+    {
+      "weaponId": "main-2022",
+      "upstreamRowId": "Charger_NormalScope_02",
+      "specialPoints": 200,
+      "upstreamPath": "data/mush/1200/WeaponInfoMain.json#__RowId=Charger_NormalScope_02.SpecialPoint"
+    },
+    {
+      "weaponId": "main-2030",
+      "upstreamRowId": "Charger_Long_00",
+      "specialPoints": 210,
+      "upstreamPath": "data/mush/1200/WeaponInfoMain.json#__RowId=Charger_Long_00.SpecialPoint"
+    },
+    {
+      "weaponId": "main-2031",
+      "upstreamRowId": "Charger_Long_01",
+      "specialPoints": 210,
+      "upstreamPath": "data/mush/1200/WeaponInfoMain.json#__RowId=Charger_Long_01.SpecialPoint"
+    },
+    {
+      "weaponId": "main-2040",
+      "upstreamRowId": "Charger_LongScope_00",
+      "specialPoints": 210,
+      "upstreamPath": "data/mush/1200/WeaponInfoMain.json#__RowId=Charger_LongScope_00.SpecialPoint"
+    },
+    {
+      "weaponId": "main-2041",
+      "upstreamRowId": "Charger_LongScope_01",
+      "specialPoints": 210,
+      "upstreamPath": "data/mush/1200/WeaponInfoMain.json#__RowId=Charger_LongScope_01.SpecialPoint"
+    },
+    {
+      "weaponId": "main-2050",
+      "upstreamRowId": "Charger_Light_00",
+      "specialPoints": 190,
+      "upstreamPath": "data/mush/1200/WeaponInfoMain.json#__RowId=Charger_Light_00.SpecialPoint"
+    },
+    {
+      "weaponId": "main-2051",
+      "upstreamRowId": "Charger_Light_01",
+      "specialPoints": 190,
+      "upstreamPath": "data/mush/1200/WeaponInfoMain.json#__RowId=Charger_Light_01.SpecialPoint"
+    },
+    {
+      "weaponId": "main-2060",
+      "upstreamRowId": "Charger_Keeper_00",
+      "specialPoints": 200,
+      "upstreamPath": "data/mush/1200/WeaponInfoMain.json#__RowId=Charger_Keeper_00.SpecialPoint"
+    },
+    {
+      "weaponId": "main-2061",
+      "upstreamRowId": "Charger_Keeper_01",
+      "specialPoints": 200,
+      "upstreamPath": "data/mush/1200/WeaponInfoMain.json#__RowId=Charger_Keeper_01.SpecialPoint"
+    },
+    {
+      "weaponId": "main-2070",
+      "upstreamRowId": "Charger_Pencil_00",
+      "specialPoints": 220,
+      "upstreamPath": "data/mush/1200/WeaponInfoMain.json#__RowId=Charger_Pencil_00.SpecialPoint"
+    },
+    {
+      "weaponId": "main-2071",
+      "upstreamRowId": "Charger_Pencil_01",
+      "specialPoints": 200,
+      "upstreamPath": "data/mush/1200/WeaponInfoMain.json#__RowId=Charger_Pencil_01.SpecialPoint"
+    },
+    {
+      "weaponId": "main-3000",
+      "upstreamRowId": "Slosher_Strong_00",
+      "specialPoints": 220,
+      "upstreamPath": "data/mush/1200/WeaponInfoMain.json#__RowId=Slosher_Strong_00.SpecialPoint"
+    },
+    {
+      "weaponId": "main-3001",
+      "upstreamRowId": "Slosher_Strong_01",
+      "specialPoints": 170,
+      "upstreamPath": "data/mush/1200/WeaponInfoMain.json#__RowId=Slosher_Strong_01.SpecialPoint"
+    },
+    {
+      "weaponId": "main-3005",
+      "upstreamRowId": "Slosher_Strong_O",
+      "specialPoints": 220,
+      "upstreamPath": "data/mush/1200/WeaponInfoMain.json#__RowId=Slosher_Strong_O.SpecialPoint"
+    },
+    {
+      "weaponId": "main-3010",
+      "upstreamRowId": "Slosher_Diffusion_00",
+      "specialPoints": 180,
+      "upstreamPath": "data/mush/1200/WeaponInfoMain.json#__RowId=Slosher_Diffusion_00.SpecialPoint"
+    },
+    {
+      "weaponId": "main-3011",
+      "upstreamRowId": "Slosher_Diffusion_01",
+      "specialPoints": 200,
+      "upstreamPath": "data/mush/1200/WeaponInfoMain.json#__RowId=Slosher_Diffusion_01.SpecialPoint"
+    },
+    {
+      "weaponId": "main-3012",
+      "upstreamRowId": "Slosher_Diffusion_02",
+      "specialPoints": 190,
+      "upstreamPath": "data/mush/1200/WeaponInfoMain.json#__RowId=Slosher_Diffusion_02.SpecialPoint"
+    },
+    {
+      "weaponId": "main-3020",
+      "upstreamRowId": "Slosher_Launcher_00",
+      "specialPoints": 210,
+      "upstreamPath": "data/mush/1200/WeaponInfoMain.json#__RowId=Slosher_Launcher_00.SpecialPoint"
+    },
+    {
+      "weaponId": "main-3021",
+      "upstreamRowId": "Slosher_Launcher_01",
+      "specialPoints": 190,
+      "upstreamPath": "data/mush/1200/WeaponInfoMain.json#__RowId=Slosher_Launcher_01.SpecialPoint"
+    },
+    {
+      "weaponId": "main-3030",
+      "upstreamRowId": "Slosher_Bathtub_00",
+      "specialPoints": 190,
+      "upstreamPath": "data/mush/1200/WeaponInfoMain.json#__RowId=Slosher_Bathtub_00.SpecialPoint"
+    },
+    {
+      "weaponId": "main-3031",
+      "upstreamRowId": "Slosher_Bathtub_01",
+      "specialPoints": 190,
+      "upstreamPath": "data/mush/1200/WeaponInfoMain.json#__RowId=Slosher_Bathtub_01.SpecialPoint"
+    },
+    {
+      "weaponId": "main-3040",
+      "upstreamRowId": "Slosher_Washtub_00",
+      "specialPoints": 200,
+      "upstreamPath": "data/mush/1200/WeaponInfoMain.json#__RowId=Slosher_Washtub_00.SpecialPoint"
+    },
+    {
+      "weaponId": "main-3041",
+      "upstreamRowId": "Slosher_Washtub_01",
+      "specialPoints": 190,
+      "upstreamPath": "data/mush/1200/WeaponInfoMain.json#__RowId=Slosher_Washtub_01.SpecialPoint"
+    },
+    {
+      "weaponId": "main-3050",
+      "upstreamRowId": "Slosher_Double_00",
+      "specialPoints": 200,
+      "upstreamPath": "data/mush/1200/WeaponInfoMain.json#__RowId=Slosher_Double_00.SpecialPoint"
+    },
+    {
+      "weaponId": "main-3051",
+      "upstreamRowId": "Slosher_Double_01",
+      "specialPoints": 190,
+      "upstreamPath": "data/mush/1200/WeaponInfoMain.json#__RowId=Slosher_Double_01.SpecialPoint"
+    },
+    {
+      "weaponId": "main-3052",
+      "upstreamRowId": "Slosher_Double_02",
+      "specialPoints": 200,
+      "upstreamPath": "data/mush/1200/WeaponInfoMain.json#__RowId=Slosher_Double_02.SpecialPoint"
+    },
+    {
+      "weaponId": "main-4000",
+      "upstreamRowId": "Spinner_Quick_00",
+      "specialPoints": 200,
+      "upstreamPath": "data/mush/1200/WeaponInfoMain.json#__RowId=Spinner_Quick_00.SpecialPoint"
+    },
+    {
+      "weaponId": "main-4001",
+      "upstreamRowId": "Spinner_Quick_01",
+      "specialPoints": 200,
+      "upstreamPath": "data/mush/1200/WeaponInfoMain.json#__RowId=Spinner_Quick_01.SpecialPoint"
+    },
+    {
+      "weaponId": "main-4002",
+      "upstreamRowId": "Spinner_Quick_02",
+      "specialPoints": 200,
+      "upstreamPath": "data/mush/1200/WeaponInfoMain.json#__RowId=Spinner_Quick_02.SpecialPoint"
+    },
+    {
+      "weaponId": "main-4011",
+      "upstreamRowId": "Spinner_Standard_01",
+      "specialPoints": 200,
+      "upstreamPath": "data/mush/1200/WeaponInfoMain.json#__RowId=Spinner_Standard_01.SpecialPoint"
+    },
+    {
+      "weaponId": "main-4015",
+      "upstreamRowId": "Spinner_Standard_O",
+      "specialPoints": 210,
+      "upstreamPath": "data/mush/1200/WeaponInfoMain.json#__RowId=Spinner_Standard_O.SpecialPoint"
+    },
+    {
+      "weaponId": "main-4020",
+      "upstreamRowId": "Spinner_Hyper_00",
+      "specialPoints": 190,
+      "upstreamPath": "data/mush/1200/WeaponInfoMain.json#__RowId=Spinner_Hyper_00.SpecialPoint"
+    },
+    {
+      "weaponId": "main-4021",
+      "upstreamRowId": "Spinner_Hyper_01",
+      "specialPoints": 190,
+      "upstreamPath": "data/mush/1200/WeaponInfoMain.json#__RowId=Spinner_Hyper_01.SpecialPoint"
+    },
+    {
+      "weaponId": "main-4022",
+      "upstreamRowId": "Spinner_Hyper_02",
+      "specialPoints": 200,
+      "upstreamPath": "data/mush/1200/WeaponInfoMain.json#__RowId=Spinner_Hyper_02.SpecialPoint"
+    },
+    {
+      "weaponId": "main-4030",
+      "upstreamRowId": "Spinner_Downpour_00",
+      "specialPoints": 210,
+      "upstreamPath": "data/mush/1200/WeaponInfoMain.json#__RowId=Spinner_Downpour_00.SpecialPoint"
+    },
+    {
+      "weaponId": "main-4031",
+      "upstreamRowId": "Spinner_Downpour_01",
+      "specialPoints": 200,
+      "upstreamPath": "data/mush/1200/WeaponInfoMain.json#__RowId=Spinner_Downpour_01.SpecialPoint"
+    },
+    {
+      "weaponId": "main-4040",
+      "upstreamRowId": "Spinner_Serein_00",
+      "specialPoints": 190,
+      "upstreamPath": "data/mush/1200/WeaponInfoMain.json#__RowId=Spinner_Serein_00.SpecialPoint"
+    },
+    {
+      "weaponId": "main-4041",
+      "upstreamRowId": "Spinner_Serein_01",
+      "specialPoints": 200,
+      "upstreamPath": "data/mush/1200/WeaponInfoMain.json#__RowId=Spinner_Serein_01.SpecialPoint"
+    },
+    {
+      "weaponId": "main-4050",
+      "upstreamRowId": "Spinner_HyperShort_00",
+      "specialPoints": 200,
+      "upstreamPath": "data/mush/1200/WeaponInfoMain.json#__RowId=Spinner_HyperShort_00.SpecialPoint"
+    },
+    {
+      "weaponId": "main-4051",
+      "upstreamRowId": "Spinner_HyperShort_01",
+      "specialPoints": 200,
+      "upstreamPath": "data/mush/1200/WeaponInfoMain.json#__RowId=Spinner_HyperShort_01.SpecialPoint"
+    },
+    {
+      "weaponId": "main-5000",
+      "upstreamRowId": "Maneuver_Short_00",
+      "specialPoints": 180,
+      "upstreamPath": "data/mush/1200/WeaponInfoMain.json#__RowId=Maneuver_Short_00.SpecialPoint"
+    },
+    {
+      "weaponId": "main-5001",
+      "upstreamRowId": "Maneuver_Short_01",
+      "specialPoints": 190,
+      "upstreamPath": "data/mush/1200/WeaponInfoMain.json#__RowId=Maneuver_Short_01.SpecialPoint"
+    },
+    {
+      "weaponId": "main-5002",
+      "upstreamRowId": "Maneuver_Short_02",
+      "specialPoints": 190,
+      "upstreamPath": "data/mush/1200/WeaponInfoMain.json#__RowId=Maneuver_Short_02.SpecialPoint"
+    },
+    {
+      "weaponId": "main-5010",
+      "upstreamRowId": "Maneuver_Normal_00",
+      "specialPoints": 200,
+      "upstreamPath": "data/mush/1200/WeaponInfoMain.json#__RowId=Maneuver_Normal_00.SpecialPoint"
+    },
+    {
+      "weaponId": "main-5011",
+      "upstreamRowId": "Maneuver_Normal_01",
+      "specialPoints": 190,
+      "upstreamPath": "data/mush/1200/WeaponInfoMain.json#__RowId=Maneuver_Normal_01.SpecialPoint"
+    },
+    {
+      "weaponId": "main-5012",
+      "upstreamRowId": "Maneuver_Normal_02",
+      "specialPoints": 190,
+      "upstreamPath": "data/mush/1200/WeaponInfoMain.json#__RowId=Maneuver_Normal_02.SpecialPoint"
+    },
+    {
+      "weaponId": "main-5015",
+      "upstreamRowId": "Maneuver_Normal_O",
+      "specialPoints": 200,
+      "upstreamPath": "data/mush/1200/WeaponInfoMain.json#__RowId=Maneuver_Normal_O.SpecialPoint"
+    },
+    {
+      "weaponId": "main-5020",
+      "upstreamRowId": "Maneuver_Gallon_00",
+      "specialPoints": 180,
+      "upstreamPath": "data/mush/1200/WeaponInfoMain.json#__RowId=Maneuver_Gallon_00.SpecialPoint"
+    },
+    {
+      "weaponId": "main-5021",
+      "upstreamRowId": "Maneuver_Gallon_01",
+      "specialPoints": 190,
+      "upstreamPath": "data/mush/1200/WeaponInfoMain.json#__RowId=Maneuver_Gallon_01.SpecialPoint"
+    },
+    {
+      "weaponId": "main-5030",
+      "upstreamRowId": "Maneuver_Dual_00",
+      "specialPoints": 200,
+      "upstreamPath": "data/mush/1200/WeaponInfoMain.json#__RowId=Maneuver_Dual_00.SpecialPoint"
+    },
+    {
+      "weaponId": "main-5031",
+      "upstreamRowId": "Maneuver_Dual_01",
+      "specialPoints": 200,
+      "upstreamPath": "data/mush/1200/WeaponInfoMain.json#__RowId=Maneuver_Dual_01.SpecialPoint"
+    },
+    {
+      "weaponId": "main-5032",
+      "upstreamRowId": "Maneuver_Dual_02",
+      "specialPoints": 190,
+      "upstreamPath": "data/mush/1200/WeaponInfoMain.json#__RowId=Maneuver_Dual_02.SpecialPoint"
+    },
+    {
+      "weaponId": "main-5040",
+      "upstreamRowId": "Maneuver_Stepper_00",
+      "specialPoints": 200,
+      "upstreamPath": "data/mush/1200/WeaponInfoMain.json#__RowId=Maneuver_Stepper_00.SpecialPoint"
+    },
+    {
+      "weaponId": "main-5041",
+      "upstreamRowId": "Maneuver_Stepper_01",
+      "specialPoints": 190,
+      "upstreamPath": "data/mush/1200/WeaponInfoMain.json#__RowId=Maneuver_Stepper_01.SpecialPoint"
+    },
+    {
+      "weaponId": "main-5050",
+      "upstreamRowId": "Maneuver_Long_00",
+      "specialPoints": 190,
+      "upstreamPath": "data/mush/1200/WeaponInfoMain.json#__RowId=Maneuver_Long_00.SpecialPoint"
+    },
+    {
+      "weaponId": "main-5051",
+      "upstreamRowId": "Maneuver_Long_01",
+      "specialPoints": 200,
+      "upstreamPath": "data/mush/1200/WeaponInfoMain.json#__RowId=Maneuver_Long_01.SpecialPoint"
+    },
+    {
+      "weaponId": "main-6000",
+      "upstreamRowId": "Shelter_Normal_00",
+      "specialPoints": 210,
+      "upstreamPath": "data/mush/1200/WeaponInfoMain.json#__RowId=Shelter_Normal_00.SpecialPoint"
+    },
+    {
+      "weaponId": "main-6001",
+      "upstreamRowId": "Shelter_Normal_01",
+      "specialPoints": 210,
+      "upstreamPath": "data/mush/1200/WeaponInfoMain.json#__RowId=Shelter_Normal_01.SpecialPoint"
+    },
+    {
+      "weaponId": "main-6005",
+      "upstreamRowId": "Shelter_Normal_O",
+      "specialPoints": 210,
+      "upstreamPath": "data/mush/1200/WeaponInfoMain.json#__RowId=Shelter_Normal_O.SpecialPoint"
+    },
+    {
+      "weaponId": "main-6010",
+      "upstreamRowId": "Shelter_Wide_00",
+      "specialPoints": 190,
+      "upstreamPath": "data/mush/1200/WeaponInfoMain.json#__RowId=Shelter_Wide_00.SpecialPoint"
+    },
+    {
+      "weaponId": "main-6011",
+      "upstreamRowId": "Shelter_Wide_01",
+      "specialPoints": 200,
+      "upstreamPath": "data/mush/1200/WeaponInfoMain.json#__RowId=Shelter_Wide_01.SpecialPoint"
+    },
+    {
+      "weaponId": "main-6012",
+      "upstreamRowId": "Shelter_Wide_02",
+      "specialPoints": 170,
+      "upstreamPath": "data/mush/1200/WeaponInfoMain.json#__RowId=Shelter_Wide_02.SpecialPoint"
+    },
+    {
+      "weaponId": "main-6020",
+      "upstreamRowId": "Shelter_Compact_00",
+      "specialPoints": 180,
+      "upstreamPath": "data/mush/1200/WeaponInfoMain.json#__RowId=Shelter_Compact_00.SpecialPoint"
+    },
+    {
+      "weaponId": "main-6021",
+      "upstreamRowId": "Shelter_Compact_01",
+      "specialPoints": 180,
+      "upstreamPath": "data/mush/1200/WeaponInfoMain.json#__RowId=Shelter_Compact_01.SpecialPoint"
+    },
+    {
+      "weaponId": "main-6022",
+      "upstreamRowId": "Shelter_Compact_02",
+      "specialPoints": 180,
+      "upstreamPath": "data/mush/1200/WeaponInfoMain.json#__RowId=Shelter_Compact_02.SpecialPoint"
+    },
+    {
+      "weaponId": "main-6030",
+      "upstreamRowId": "Shelter_Focus_00",
+      "specialPoints": 190,
+      "upstreamPath": "data/mush/1200/WeaponInfoMain.json#__RowId=Shelter_Focus_00.SpecialPoint"
+    },
+    {
+      "weaponId": "main-6031",
+      "upstreamRowId": "Shelter_Focus_01",
+      "specialPoints": 190,
+      "upstreamPath": "data/mush/1200/WeaponInfoMain.json#__RowId=Shelter_Focus_01.SpecialPoint"
+    },
+    {
+      "weaponId": "main-7010",
+      "upstreamRowId": "Stringer_Normal_00",
+      "specialPoints": 190,
+      "upstreamPath": "data/mush/1200/WeaponInfoMain.json#__RowId=Stringer_Normal_00.SpecialPoint"
+    },
+    {
+      "weaponId": "main-7011",
+      "upstreamRowId": "Stringer_Normal_01",
+      "specialPoints": 200,
+      "upstreamPath": "data/mush/1200/WeaponInfoMain.json#__RowId=Stringer_Normal_01.SpecialPoint"
+    },
+    {
+      "weaponId": "main-7012",
+      "upstreamRowId": "Stringer_Normal_02",
+      "specialPoints": 200,
+      "upstreamPath": "data/mush/1200/WeaponInfoMain.json#__RowId=Stringer_Normal_02.SpecialPoint"
+    },
+    {
+      "weaponId": "main-7015",
+      "upstreamRowId": "Stringer_Normal_O",
+      "specialPoints": 190,
+      "upstreamPath": "data/mush/1200/WeaponInfoMain.json#__RowId=Stringer_Normal_O.SpecialPoint"
+    },
+    {
+      "weaponId": "main-7020",
+      "upstreamRowId": "Stringer_Short_00",
+      "specialPoints": 210,
+      "upstreamPath": "data/mush/1200/WeaponInfoMain.json#__RowId=Stringer_Short_00.SpecialPoint"
+    },
+    {
+      "weaponId": "main-7021",
+      "upstreamRowId": "Stringer_Short_01",
+      "specialPoints": 200,
+      "upstreamPath": "data/mush/1200/WeaponInfoMain.json#__RowId=Stringer_Short_01.SpecialPoint"
+    },
+    {
+      "weaponId": "main-7022",
+      "upstreamRowId": "Stringer_Short_02",
+      "specialPoints": 210,
+      "upstreamPath": "data/mush/1200/WeaponInfoMain.json#__RowId=Stringer_Short_02.SpecialPoint"
+    },
+    {
+      "weaponId": "main-7030",
+      "upstreamRowId": "Stringer_Explosion_00",
+      "specialPoints": 200,
+      "upstreamPath": "data/mush/1200/WeaponInfoMain.json#__RowId=Stringer_Explosion_00.SpecialPoint"
+    },
+    {
+      "weaponId": "main-7031",
+      "upstreamRowId": "Stringer_Explosion_01",
+      "specialPoints": 190,
+      "upstreamPath": "data/mush/1200/WeaponInfoMain.json#__RowId=Stringer_Explosion_01.SpecialPoint"
+    },
+    {
+      "weaponId": "main-8000",
+      "upstreamRowId": "Saber_Normal_00",
+      "specialPoints": 210,
+      "upstreamPath": "data/mush/1200/WeaponInfoMain.json#__RowId=Saber_Normal_00.SpecialPoint"
+    },
+    {
+      "weaponId": "main-8001",
+      "upstreamRowId": "Saber_Normal_01",
+      "specialPoints": 210,
+      "upstreamPath": "data/mush/1200/WeaponInfoMain.json#__RowId=Saber_Normal_01.SpecialPoint"
+    },
+    {
+      "weaponId": "main-8002",
+      "upstreamRowId": "Saber_Normal_02",
+      "specialPoints": 190,
+      "upstreamPath": "data/mush/1200/WeaponInfoMain.json#__RowId=Saber_Normal_02.SpecialPoint"
+    },
+    {
+      "weaponId": "main-8005",
+      "upstreamRowId": "Saber_Normal_O",
+      "specialPoints": 210,
+      "upstreamPath": "data/mush/1200/WeaponInfoMain.json#__RowId=Saber_Normal_O.SpecialPoint"
+    },
+    {
+      "weaponId": "main-8010",
+      "upstreamRowId": "Saber_Lite_00",
+      "specialPoints": 190,
+      "upstreamPath": "data/mush/1200/WeaponInfoMain.json#__RowId=Saber_Lite_00.SpecialPoint"
+    },
+    {
+      "weaponId": "main-8011",
+      "upstreamRowId": "Saber_Lite_01",
+      "specialPoints": 190,
+      "upstreamPath": "data/mush/1200/WeaponInfoMain.json#__RowId=Saber_Lite_01.SpecialPoint"
+    },
+    {
+      "weaponId": "main-8012",
+      "upstreamRowId": "Saber_Lite_02",
+      "specialPoints": 190,
+      "upstreamPath": "data/mush/1200/WeaponInfoMain.json#__RowId=Saber_Lite_02.SpecialPoint"
+    },
+    {
+      "weaponId": "main-8020",
+      "upstreamRowId": "Saber_Heavy_00",
+      "specialPoints": 210,
+      "upstreamPath": "data/mush/1200/WeaponInfoMain.json#__RowId=Saber_Heavy_00.SpecialPoint"
+    },
+    {
+      "weaponId": "main-8021",
+      "upstreamRowId": "Saber_Heavy_01",
+      "specialPoints": 200,
+      "upstreamPath": "data/mush/1200/WeaponInfoMain.json#__RowId=Saber_Heavy_01.SpecialPoint"
+    }
+  ]
+}

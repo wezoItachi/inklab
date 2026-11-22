@@ -44,6 +44,9 @@ const lazySections = [
   ['quick-super-jump-panel', '超级跳跃时间分析'],
   ['movement-speed-panel', '游速与走速分析'],
   ['action-intensify-panel', '行动强化分析'],
+  ['enemy-ink-resistance-panel', '对手墨汁影响分析'],
+  ['special-gauge-panel', '特殊武器槽分析'],
+  ['quick-respawn-panel', '条件复活时间分析'],
   ['loadout-context-analysis', '当前配装上下文分析'],
 ];
 

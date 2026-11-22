@@ -84,6 +84,43 @@ void test('action intensify exposes the verified squid-surge curve', () => {
   assert.ok((getAbilityCurveSample('ia', 57)?.benefitPercent ?? 0) > 88);
 });
 
+void test('enemy ink resistance exposes the verified movement curve', () => {
+  const definition = getAbilityCurveDefinition('inkres');
+  assert.equal(definition.status, 'verified');
+  assert.equal(definition.minimumEffectiveAp, 3);
+  assert.equal(definition.thresholdScope, 'universal');
+  assert.equal(getAbilityCurveSample('inkres', 0)?.benefitPercent, 0);
+  assert.ok(
+    Math.abs((getAbilityCurveSample('inkres', 57)?.benefitPercent ?? 0) - 220) <
+      1e-9,
+  );
+});
+
+void test('special gauge abilities expose distinct verified curves', () => {
+  const charge = getAbilityCurveDefinition('scu');
+  const saver = getAbilityCurveDefinition('ss');
+  assert.equal(charge.status, 'verified');
+  assert.equal(charge.thresholdScope, 'weapon-specific');
+  assert.equal(getAbilityCurveSample('scu', 0)?.benefitPercent, 0);
+  assert.equal(getAbilityCurveSample('scu', 57)?.benefitPercent, 23);
+  assert.equal(saver.status, 'verified');
+  assert.equal(saver.thresholdScope, 'universal');
+  assert.equal(getAbilityCurveSample('ss', 0)?.benefitPercent, 0);
+  assert.equal(getAbilityCurveSample('ss', 57)?.benefitPercent, 100);
+});
+
+void test('quick respawn exposes only its conditional standard curve', () => {
+  const definition = getAbilityCurveDefinition('qr');
+  assert.equal(definition.status, 'verified');
+  assert.equal(definition.thresholdScope, 'universal');
+  assert.equal(getAbilityCurveSample('qr', 0)?.benefitPercent, 0);
+  assert.ok(
+    Math.abs(
+      (getAbilityCurveSample('qr', 57)?.benefitPercent ?? 0) - 53.3333333333,
+    ) < 1e-9,
+  );
+});
+
 void test('unverified abilities never expose invented curve values', () => {
   const definition = getAbilityCurveDefinition('subp');
   assert.equal(definition.status, 'pending');
