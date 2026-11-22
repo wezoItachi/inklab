@@ -153,6 +153,12 @@ const SpecialGaugePanel = lazy(() =>
   })),
 );
 
+const SpecialPowerPanel = lazy(() =>
+  import('@/components/special-power-panel').then(({ SpecialPowerPanel }) => ({
+    default: SpecialPowerPanel,
+  })),
+);
+
 const QuickRespawnPanel = lazy(() =>
   import('@/components/quick-respawn-panel').then(({ QuickRespawnPanel }) => ({
     default: QuickRespawnPanel,
@@ -1346,6 +1352,7 @@ function EffectPanel({
   const isQuickRespawn = id === 'qr';
   const isSubPower = id === 'subp';
   const isSubResistance = id === 'subr';
+  const isSpecialPower = id === 'spu';
   const genericContext = a ? buildAbilityContext(a, weapon, ap) : null;
   const curve = getAbilityCurveDefinition(id);
   return (
@@ -1518,6 +1525,20 @@ function EffectPanel({
           }
         >
           <SubResistancePanel
+            weapon={weapon}
+            ability={a}
+            ap={ap}
+            setAp={setAp}
+            isPreview={isPreview}
+            equippedAp={equippedAp}
+            clearPreview={clearPreview}
+          />
+        </Suspense>
+      ) : isSpecialPower ? (
+        <Suspense
+          fallback={<p className="parameter-public-note">正在计算特殊武器性能…</p>}
+        >
+          <SpecialPowerPanel
             weapon={weapon}
             ability={a}
             ap={ap}

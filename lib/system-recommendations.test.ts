@@ -70,10 +70,10 @@ void test('unverified role labels remain visible but do not alter the family fal
   assert.equal(suggestion.desc.includes('打法定位待验证'), false);
 });
 
-void test('unknown sub-power effects are not filled with an invented sub-power claim', () => {
-  const weapon = weapons.find(({ sub }) => sub.subPowerEffect === null)!;
+void test('source-backed sub-power data can drive every sub-focused suggestion', () => {
+  const weapon = weapons.find(({ sub }) => sub.id === 'squid-beakon')!;
   const suggestion = getSystemRecommendations(weapon)[1];
 
-  assert.equal(suggestion.slots.some(([id]) => id === 'subp'), false);
-  assert.ok(suggestion.evidence.some((item) => item.includes('没有自动投入副强')));
+  assert.equal(suggestion.slots.some(([id]) => id === 'subp'), true);
+  assert.ok(suggestion.evidence.some((item) => item.includes('超级跳跃缩短')));
 });

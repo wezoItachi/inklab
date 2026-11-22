@@ -47,6 +47,7 @@ const lazySections = [
   ['action-intensify-panel', '行动强化分析'],
   ['enemy-ink-resistance-panel', '对手墨汁影响分析'],
   ['special-gauge-panel', '特殊武器槽分析'],
+  ['special-power-panel', '特殊武器性能分析'],
   ['quick-respawn-panel', '条件复活时间分析'],
   ['sub-resistance-panel', '次要武器影响分析'],
   ['loadout-context-analysis', '当前配装上下文分析'],

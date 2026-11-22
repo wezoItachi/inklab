@@ -4,6 +4,7 @@ import {
   type Weapon,
 } from './weapons.ts';
 import { getWeaponVerificationRouteSummary } from './battle-verification-queue.ts';
+import { analyzeSubPower } from './sub-power.ts';
 
 export type VerificationStatus =
   | 'verified'
@@ -60,6 +61,7 @@ export const parameterSources = {
 export function getWeaponParameterSnapshot(
   weapon: Weapon,
 ): WeaponParameterSnapshot {
+  const subPower = analyzeSubPower(weapon.sub.id, 0);
   const mainParameters = getMainWeaponParameters(weapon.id).parameters;
   const verifiedMainParameters = mainParameters.filter(
     ({ status }) => status === 'verified',
@@ -96,10 +98,11 @@ export function getWeaponParameterSnapshot(
       },
       {
         label: '副武增强对象',
-        status: weapon.sub.subPowerEffect === null ? 'pending' : 'verified',
-        source:
-          weapon.sub.subPowerEffect === null ? undefined : 'internalReview',
-        note: weapon.sub.subPowerEffect ?? '副武增强作用对象尚未逐字段核对',
+        status: subPower ? 'verified' : 'pending',
+        source: subPower ? 'leanny1200' : undefined,
+        note:
+          subPower?.metrics.map(({ label }) => label).join('、') ??
+          '副武增强参数记录缺失',
       },
       {
         label: '主武参数',
@@ -116,7 +119,7 @@ export function getWeaponParameterSnapshot(
       {
         label: 'AP 效果曲线',
         status: 'partial',
-        note: '十二条通用 AP 曲线、14 种副武器专属性能、套装特殊点数及来源完整的动作走速已核对；特殊武器性能页面仍在分项接入',
+        note: '十二条通用 AP 曲线、14 种副武器专属性能、16 种特殊武器的 21 个具名指标、套装特殊点数及来源完整的动作走速已核对',
       },
       {
         label: '系统建议',

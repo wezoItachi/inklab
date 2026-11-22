@@ -1,4 +1,6 @@
 import type { LoadoutSlot } from './loadouts.ts';
+import { analyzeSpecialPower } from './special-power.ts';
+import { analyzeSubPower } from './sub-power.ts';
 import type { Weapon, WeaponFamily } from './weapons.ts';
 
 export type SystemRecommendation = {
@@ -73,10 +75,16 @@ export function getSystemRecommendations(weapon: Weapon): readonly SystemRecomme
   const subEvidence = weapon.sub.baseInkCost === null
     ? `${weapon.sub.name} 的身份已核对；耗墨曲线仍待验证`
     : `${weapon.sub.name} 基础耗墨 ${weapon.sub.baseInkCost}% 已录入`;
-  const subPowerAbility = weapon.sub.subPowerEffect === null ? profile.support : 'subp';
-  const subPowerNote = weapon.sub.subPowerEffect === null
-    ? '副武增强作用尚未核对，因此没有自动投入副强'
-    : `副武增强已知影响${weapon.sub.subPowerEffect}`;
+  const subPowerAnalysis = analyzeSubPower(weapon.sub.id, 3);
+  const subPowerAbility = subPowerAnalysis ? 'subp' : profile.support;
+  const subPowerNote = subPowerAnalysis
+    ? `副武增强已核对：${subPowerAnalysis.metrics.map(({ label }) => label).join('、')}`
+    : '副武增强参数记录缺失，因此没有自动投入副强';
+  const specialPower = analyzeSpecialPower(weapon.specialId, 3);
+  const specialPowerNote =
+    specialPower?.status === 'verified'
+      ? `大招强已核对：${specialPower.metrics.map(({ label }) => label).join('、')}；是否投入仍取决于战术场景`
+      : `${weapon.special} 的性能索引语义待核验，因此不自动投入大招强`;
 
   return [
     {
@@ -108,7 +116,11 @@ export function getSystemRecommendations(weapon: Weapon): readonly SystemRecomme
       name: `${weapon.special}循环型`,
       desc: '积攒、保留与重新进入循环',
       rationale: `只根据已核对的特殊武器身份提供循环方向，不推断大招强度、最佳释放频率或模式表现。`,
-      evidence: [`特殊武器：${weapon.special}`, '大招增与大招减作为循环起点', '未自动投入大招强，避免套用未知效果'],
+      evidence: [
+        `特殊武器：${weapon.special}`,
+        '大招增与大招减作为循环起点',
+        specialPowerNote,
+      ],
       focusAbilityId: 'scu',
       slots: makeSlots(
         ['scu', 'ss', profile.primary],

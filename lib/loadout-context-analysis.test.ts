@@ -15,6 +15,7 @@ void test('context analysis reads the current kit and verified equipped AP curve
     ],
   );
   const sub = sections.find(({ id }) => id === 'sub');
+  const special = sections.find(({ id }) => id === 'special');
   const mobility = sections.find(({ id }) => id === 'mobility');
   const other = sections.find(({ id }) => id === 'other');
 
@@ -24,6 +25,11 @@ void test('context analysis reads the current kit and verified equipped AP curve
   assert.match(sub?.metrics[0]?.note ?? '', /完整使用 1 次/);
   assert.equal(sub?.metrics[1]?.value, '13AP · 48.67%');
   assert.match(sub?.metrics[1]?.note ?? '', /Lv1 曲线.*完整使用 2 次/);
+  assert.equal(sub?.metrics[2]?.state, 'equipped');
+  assert.match(sub?.metrics[2]?.note ?? '', /投掷初速度/);
+  assert.equal(special?.metrics[0]?.state, 'verified');
+  assert.equal(special?.metrics[1]?.state, 'verified');
+  assert.equal(special?.metrics[2]?.state, 'pending');
   assert.equal(mobility?.metrics[0]?.label, '快跳');
   assert.equal(other?.metrics[0]?.label, '主省');
   assert.match(other?.metrics[0]?.note ?? '', /正式效果曲线/);
@@ -64,5 +70,5 @@ void test('unverified kit fields remain visibly pending', () => {
     ({ id }) => id === 'sub',
   );
   assert.equal(sub?.metrics[0]?.state, 'pending');
-  assert.equal(sub?.metrics[2]?.state, 'pending');
+  assert.equal(sub?.metrics[2]?.state, 'verified');
 });

@@ -465,6 +465,22 @@ export function getAbilityCurveDefinition(
       calculate: null,
     };
   }
+  if (abilityId === 'spu') {
+    return {
+      abilityId,
+      status: 'pending',
+      title: '特殊武器专属性能曲线',
+      outputLabel: '请在实验室查看',
+      formulaLabel: '19 种特殊武器分别计算',
+      sourceNote:
+        '特殊武器性能没有一条可代表全部大招的通用曲线。实验室已对其中 16 种开放 21 个具名指标；诱饵烟花、终极着陆和鲨鱼坐骑的索引语义待核验，因此不输出猜测值。',
+      minimumEffectiveAp: null,
+      minimumEffectiveRule:
+        '首个可装备投入为 3AP，但具体收益与单位必须在实验室结合当前特殊武器判断。',
+      thresholdScope: 'weapon-specific',
+      calculate: null,
+    };
+  }
   if (fixedMainAbilityIds.has(abilityId)) {
     return {
       abilityId,

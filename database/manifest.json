@@ -11,6 +11,7 @@
     "subPower": "sub-power.v12.0.0.json",
     "specialWeapons": "special-weapons.v12.0.0.json",
     "specialPowerCoverage": "special-power-coverage.v12.0.0.json",
+    "specialPower": "special-power.v12.0.0.json",
     "weaponKits": "weapon-kits.v12.0.0.json",
     "weaponImageAssets": "weapon-image-assets.v12.0.0.json",
     "weaponMovementClasses": "weapon-movement-classes.v12.0.0.json",

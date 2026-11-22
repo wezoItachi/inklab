@@ -1,6 +1,9 @@
 import { abilities } from './abilities.ts';
 import { getAbilityCurveDefinition } from './ability-curves.ts';
 import { getInkRecoveryAnalysis } from './ink-recovery.ts';
+import { analyzeSpecialCharge, analyzeSpecialSaver } from './special-gauge.ts';
+import { analyzeSpecialPower } from './special-power.ts';
+import { analyzeSubPower } from './sub-power.ts';
 import type { Weapon } from './weapon-catalog.ts';
 import { getSubInkSaverAnalysis } from './sub-ink-saver.ts';
 
@@ -86,7 +89,16 @@ export function buildLoadoutContextSections(
       ? null
       : 100 - baseUses * baseInkCost;
   const subInkAnalysis = getSubInkSaverAnalysis(weapon, subInkAp);
+  const subPowerAnalysis = analyzeSubPower(weapon.sub.id, subPowerAp);
   const inkRecoveryAnalysis = getInkRecoveryAnalysis(weapon, inkRecoveryAp);
+  const specialChargeAnalysis = analyzeSpecialCharge(weapon.id, specialChargeAp);
+  const specialSaveAnalysis = analyzeSpecialSaver(specialSaveAp);
+  const specialPowerAnalysis = analyzeSpecialPower(
+    weapon.specialId,
+    specialPowerAp,
+  );
+  const subPowerPrimary = subPowerAnalysis?.metrics[0] ?? null;
+  const specialPowerPrimary = specialPowerAnalysis?.metrics[0] ?? null;
 
   const coveredIds = new Set([
     'iss',
@@ -139,13 +151,16 @@ export function buildLoadoutContextSections(
         },
         {
           label: '副武增强',
-          value: subPowerAp > 0 ? `${subPowerAp}AP` : '未投入',
+          value:
+            subPowerAp > 0 && subPowerPrimary
+              ? `${subPowerAp}AP · ${subPowerPrimary.value.toFixed(2)}`
+              : '未投入',
           note:
-            weapon.sub.subPowerEffect === null
-              ? '该副武器的增强对象仍待核验。'
-              : `已核对增强对象：${weapon.sub.subPowerEffect}；当前 AP 的精确增量仍待曲线验证。`,
+            subPowerPrimary === null
+              ? '该副武器的性能参数记录缺失。'
+              : `${subPowerPrimary.label}：基础 ${subPowerPrimary.baseValue.toFixed(2)}，当前 ${subPowerPrimary.value.toFixed(2)}；完整单位与其他字段可在上方单项分析查看。`,
           state:
-            weapon.sub.subPowerEffect === null
+            subPowerPrimary === null
               ? 'pending'
               : subPowerAp > 0
                 ? 'equipped'
@@ -172,21 +187,38 @@ export function buildLoadoutContextSections(
       metrics: [
         {
           label: '大招增加',
-          value: specialChargeAp > 0 ? `${specialChargeAp}AP` : '未投入',
-          note: '必要点数和增加量曲线尚未接入，因此不输出攒满所需涂墨量。',
-          state: specialChargeAp > 0 ? 'equipped' : 'empty',
+          value:
+            specialChargeAp > 0
+              ? `${specialChargeAp}AP · ${specialChargeAnalysis.requiredPoints}p`
+              : '未投入',
+          note: `当前套装基础需要 ${specialChargeAnalysis.basePoints}p；当前 AP 下需要 ${specialChargeAnalysis.requiredPoints}p。`,
+          state: specialChargeAp > 0 ? 'equipped' : 'verified',
         },
         {
           label: '大招减量',
-          value: specialSaveAp > 0 ? `${specialSaveAp}AP` : '未投入',
-          note: '只记录当前投入；阵亡后保留比例仍等待正式曲线。',
-          state: specialSaveAp > 0 ? 'equipped' : 'empty',
+          value:
+            specialSaveAp > 0
+              ? `${specialSaveAp}AP · 保留 ${specialSaveAnalysis.standardRetainedPercent.toFixed(1)}%`
+              : '未投入',
+          note: `标准被击倒时损失 ${specialSaveAnalysis.standardLossPercent.toFixed(1)}%；复活惩罚边界在上方单项分析独立显示。`,
+          state: specialSaveAp > 0 ? 'equipped' : 'verified',
         },
         {
           label: '大招增强',
-          value: specialPowerAp > 0 ? `${specialPowerAp}AP` : '未投入',
-          note: `${weapon.special} 的具体增强对象与增量尚未逐项核验。`,
-          state: specialPowerAp > 0 ? 'equipped' : 'pending',
+          value:
+            specialPowerAp > 0 && specialPowerPrimary
+              ? `${specialPowerAp}AP · ${specialPowerPrimary.value.toFixed(2)}`
+              : '未投入',
+          note:
+            specialPowerAnalysis?.status === 'verified' && specialPowerPrimary
+              ? `${specialPowerPrimary.label}：基础 ${specialPowerPrimary.baseValue.toFixed(2)}，当前 ${specialPowerPrimary.value.toFixed(2)}；完整单位与其他字段可在上方单项分析查看。`
+              : `${weapon.special} 的参数索引语义仍待核验，不输出猜测值。`,
+          state:
+            specialPowerAnalysis?.status !== 'verified' || !specialPowerPrimary
+              ? 'pending'
+              : specialPowerAp > 0
+                ? 'equipped'
+                : 'verified',
         },
       ],
     },
