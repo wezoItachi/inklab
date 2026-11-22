@@ -48,6 +48,10 @@ void test('salmon weapon draft has unique ids and explicit tags', () => {
     ),
     true,
   );
+  assert.equal(
+    regularSalmonWeapons.every((item) => item.parameterSource !== null),
+    true,
+  );
   assert.deepEqual(
     grizzcoWeapons.map((item) => item.name),
     [

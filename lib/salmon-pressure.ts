@@ -35,10 +35,28 @@ export const SALMON_MODEL_VERSION='draft-2026-10-08';
 
 const shooterPattern=(damage:number,frames:number,ink:number):SalmonAttackPattern=>({label:'连续射击',damagePerAction:damage,actionFrames:frames,inkConsumptionPerAction:ink,note:'保持射击并假设全部命中'});
 
+const continuousFireWeapons=[
+  {weaponId:'salmon-shooter-short-00',name:'广域标记枪',upstreamStem:'WeaponShooterShort',damage:45,frames:5,ink:.8,coopOverride:true},
+  {weaponId:'splash-o-matic',name:'窄域标记枪',upstreamStem:'WeaponShooterPrecision',damage:29,frames:5,ink:.8,coopOverride:true},
+  {weaponId:'salmon-shooter-first-00',name:'新叶射击枪',upstreamStem:'WeaponShooterFirst',damage:28,frames:5,ink:.43,coopOverride:true},
+  {weaponId:'salmon-shooter-blaze-00',name:'专业模型枪MG',upstreamStem:'WeaponShooterBlaze',damage:24,frames:4,ink:.5,coopOverride:true},
+  {weaponId:'52-gal',name:'.52加仑',upstreamStem:'WeaponShooterGravity',damage:52,frames:9,ink:1.3,coopOverride:true},
+  {weaponId:'salmon-shooter-quickmiddle-00',name:'N-ZAP85',upstreamStem:'WeaponShooterQuickMiddle',damage:30,frames:5,ink:.8,coopOverride:false},
+  {weaponId:'salmon-shooter-expert-00',name:'顶尖射击枪',upstreamStem:'WeaponShooterExpert',damage:45,frames:8,ink:1.6,coopOverride:true},
+  {weaponId:'salmon-shooter-heavy-00',name:'.96加仑',upstreamStem:'WeaponShooterHeavy',damage:85,frames:12,ink:2.3,coopOverride:true},
+  {weaponId:'jet-squelcher',name:'喷射清洁枪',upstreamStem:'WeaponShooterLong',damage:40,frames:8,ink:1.5,coopOverride:true},
+  {weaponId:'salmon-shooter-quicklong-00',name:'太空射击枪',upstreamStem:'WeaponShooterQuickLong',damage:30,frames:6,ink:.8,coopOverride:true},
+] as const;
+
+const continuousFirePerformance=continuousFireWeapons.map(({weaponId,name,upstreamStem,damage,frames,ink,coopOverride})=>{
+  const pattern=shooterPattern(damage,frames,ink);
+  const basePath=`data/parameter/1200/weapon/${upstreamStem}.game__GameParameterTable.json`;
+  const coopPath=`data/parameter/1200/weapon/${upstreamStem}_Coop.game__GameParameterTable.json`;
+  return{weaponId,name,limit:pattern,routine:pattern,sourcePaths:coopOverride?[basePath,coopPath]:[basePath]} satisfies SalmonWeaponPerformance;
+});
+
 export const salmonWeaponPerformance:readonly SalmonWeaponPerformance[]=[
-  {weaponId:'salmon-shooter-short-00',name:'广域标记枪',limit:shooterPattern(45,5,.8),routine:shooterPattern(45,5,.8),sourcePaths:['data/parameter/1200/weapon/WeaponShooterShort.game__GameParameterTable.json','data/parameter/1200/weapon/WeaponShooterShort_Coop.game__GameParameterTable.json']},
-  {weaponId:'splash-o-matic',name:'窄域标记枪',limit:shooterPattern(29,5,.8),routine:shooterPattern(29,5,.8),sourcePaths:['data/parameter/1200/weapon/WeaponShooterPrecision.game__GameParameterTable.json','data/parameter/1200/weapon/WeaponShooterPrecision_Coop.game__GameParameterTable.json']},
-  {weaponId:'salmon-shooter-heavy-00',name:'.96加仑',limit:shooterPattern(85,12,2.3),routine:shooterPattern(85,12,2.3),sourcePaths:['data/parameter/1200/weapon/WeaponShooterHeavy.game__GameParameterTable.json','data/parameter/1200/weapon/WeaponShooterHeavy_Coop.game__GameParameterTable.json']},
+  ...continuousFirePerformance,
   {weaponId:'tri-stringer',name:'三发猎鱼弓',limit:{label:'一段蓄力 · 三箭全中',damagePerAction:300,actionFrames:40,inkConsumptionPerAction:4,note:'30 帧一段蓄力 + 10 帧后摇'},routine:{label:'一段／满蓄力各一次',damagePerAction:750,actionFrames:122,inkConsumptionPerAction:11.5,note:'一段 300 伤害／40 帧与满蓄力 450 伤害／82 帧各一次；不是玩家统计'},sourcePaths:['data/parameter/1200/weapon/WeaponStringerNormal.game__GameParameterTable.json','data/parameter/1200/weapon/WeaponStringerNormal_Coop.game__GameParameterTable.json']},
 ] as const;
 

@@ -258,12 +258,13 @@ export const regularSalmonWeapons: readonly SalmonWeapon[] =
       throw new Error(
         `Missing Salmon Run English name: ${weapon.upstreamRowId}`,
       );
+    const parameterSource = `Ver. 12.0.0 / ${weapon.upstreamRowId}`;
     if (curated)
       return {
         ...curated,
         family: weapon.family,
         aliases: mergeAliases(curated.aliases, [englishName]),
-        parameterSource: null,
+        parameterSource,
       };
     const inferred = inferSalmonProfile(weapon.family);
     return {
@@ -274,7 +275,7 @@ export const regularSalmonWeapons: readonly SalmonWeapon[] =
       role: inferred.role,
       tags: inferred.tags,
       salmonDps: null,
-      parameterSource: null,
+      parameterSource,
     };
   });
 

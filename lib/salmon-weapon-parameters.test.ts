@@ -3,6 +3,7 @@ import test from 'node:test';
 import {
   getGrizzcoParameters,
   getRegularSalmonParameters,
+  getSalmonParametersByName,
   salmonWeaponParameterRecords,
 } from './salmon-weapon-parameters.ts';
 
@@ -46,6 +47,11 @@ void test('regular records distinguish Coop overrides from inherited battle valu
     nzap.parameters.every(({ sourceMode }) => sourceMode === 'base-inherited'),
     true,
   );
+});
+
+void test('Salmon Run parameters can be resolved by the player-facing weapon name', () => {
+  assert.equal(getSalmonParametersByName('N-ZAP85')?.weaponId, 'main-60');
+  assert.equal(getSalmonParametersByName('不存在的武器'), null);
 });
 
 void test('all eight Grizzco records can be resolved by their public ids', () => {

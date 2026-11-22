@@ -36,6 +36,7 @@ import {
   rushTargets,
   salmonPressurePresets,
   salmonTargets,
+  salmonWeaponPerformance,
   type SalmonPressureStrategy,
 } from '@/lib/salmon-pressure';
 import {
@@ -379,7 +380,7 @@ export function SalmonRunLab() {
                 </div>
                 {weapon.parameterSource && (
                   <p title={weapon.parameterSource}>
-                    上游 `_Coop` 参数已找到 · DPS 待核验
+                    可追溯参数已入库 · 复杂动作仍待核验
                   </p>
                 )}
               </article>
@@ -535,7 +536,7 @@ export function SalmonRunLab() {
             <p>
               {pressureComparison
                 ? '这套编成可对照极限与日常两种主武器动作输出。'
-                : '目前只导入广域标记枪、窄域标记枪、.96加仑与三发猎鱼弓；其他武器继续显示待核验。'}
+                : `71 把武器已有部分来源参数；其中 ${salmonWeaponPerformance.length} 把已建立可用于本实验的双手法动作模型，其余继续显示待核验。`}
             </p>
           </div>
           <div className="glowfly-weapons">

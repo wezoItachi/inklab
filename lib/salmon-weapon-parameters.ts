@@ -42,6 +42,9 @@ const byBattleWeaponId = new Map(
 const byRecordId = new Map(
   salmonWeaponParameterRecords.map((record) => [record.id, record]),
 );
+const byName = new Map(
+  salmonWeaponParameterRecords.map((record) => [record.name, record]),
+);
 
 export function getRegularSalmonParameters(battleWeaponId: string) {
   return byBattleWeaponId.get(battleWeaponId) ?? null;
@@ -50,4 +53,8 @@ export function getRegularSalmonParameters(battleWeaponId: string) {
 export function getGrizzcoParameters(grizzcoWeaponId: string) {
   const record = byRecordId.get(grizzcoWeaponId);
   return record?.kind === 'grizzco' ? record : null;
+}
+
+export function getSalmonParametersByName(name: string) {
+  return byName.get(name) ?? null;
 }

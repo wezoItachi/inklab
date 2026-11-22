@@ -2,15 +2,32 @@ import assert from 'node:assert/strict';
 import test from 'node:test';
 import {salmonRecoveryModelGate,salmonSplatBombCycle} from './salmon-ink-cycle.ts';
 import {analyzeSalmonPressure,analyzeTargetActions,compareSalmonPressure,getSalmonWeaponPerformance,getWeaponActionWindow,salmonTargets,salmonWeaponPerformance} from './salmon-pressure.ts';
+import {getSalmonParametersByName} from './salmon-weapon-parameters.ts';
 
 void test('first Salmon Run pressure samples retain traceable weapon values',()=>{
-  assert.equal(salmonWeaponPerformance.length,4);
-  assert.equal(salmonWeaponPerformance.every(item=>item.sourcePaths.length===2),true);
+  assert.equal(salmonWeaponPerformance.length,11);
+  assert.equal(salmonWeaponPerformance.every(item=>item.sourcePaths.length>=1),true);
   assert.equal(salmonTargets.length,14);
   assert.equal(salmonTargets.every(target=>target.health>0&&target.note.length>0),true);
   assert.equal(salmonTargets.every(target=>target.healthStatus==='reviewed-community-reference'),true);
   assert.equal(salmonTargets.find(target=>target.id==='stinger')?.healthExpression,'60 × 7');
   assert.match(salmonTargets.find(target=>target.id==='flyfish-basket')?.note??'',/10 倍/);
+});
+
+void test('verified continuous-fire Salmon weapons match the compact 12.0 action snapshot',()=>{
+  const nzap=getSalmonWeaponPerformance('salmon-shooter-quickmiddle-00');
+  assert.ok(nzap);
+  assert.equal(nzap.limit.damagePerAction,30);
+  assert.equal(nzap.limit.actionFrames,5);
+  assert.equal(nzap.limit.inkConsumptionPerAction,.8);
+  assert.equal(getWeaponActionWindow(nzap).actionDps,360);
+  for(const performance of salmonWeaponPerformance.filter(item=>item.limit.label==='连续射击')){
+    const record=getSalmonParametersByName(performance.name);
+    assert.ok(record,performance.name);
+    assert.equal(record.parameters.find(item=>item.key==='damagePerShot')?.value,performance.limit.damagePerAction,performance.name);
+    assert.equal(record.parameters.find(item=>item.key==='fireIntervalFrames')?.value,performance.limit.actionFrames,performance.name);
+    assert.equal(record.parameters.find(item=>item.key==='inkConsumptionPerShot')?.value,performance.limit.inkConsumptionPerAction,performance.name);
+  }
 });
 
 void test('action window exposes source-backed output without inventing recovery time',()=>{
