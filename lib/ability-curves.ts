@@ -133,6 +133,10 @@ export function getQuickRespawnFrames(ap: number): number {
   );
 }
 
+export function getHeavySubDamageMultiplier(ap: number): number {
+  return interpolateAbilityValue([0.5, 0.75, 1], ap);
+}
+
 const mainInkSaverCurve: AbilityCurveDefinition = {
   abilityId: 'ism',
   status: 'verified',
@@ -389,6 +393,29 @@ const quickRespawnCurve: AbilityCurveDefinition = {
   },
 };
 
+const subResistanceCurve: AbilityCurveDefinition = {
+  abilityId: 'subr',
+  status: 'verified',
+  title: '次要武器非致命伤害倍率（重型组）',
+  outputLabel: '非致命伤害降低',
+  formulaLabel: '重型组 100%→50%',
+  sourceNote:
+    '百科以斯普拉炸弹、吸盘炸弹、冰壶炸弹、机器人炸弹、墨汁陷阱和鱼雷共用的重型伤害组为主轴；实验室同时展示轻型伤害、标记时间和毒雾减速等独立曲线。超过 100 的直接致命伤害不会被这条伤害倍率降低。三点值来自 Leanny 12.0 固定快照，并与 Sendou.ink 公开分析器实现交叉核对。',
+  minimumEffectiveAp: 3,
+  minimumEffectiveRule:
+    '首个可装备投入 3AP 会改变所有受支持的伤害、标记和毒雾影响倍率；实际少受多少伤害仍取决于命中的副武器和伤害段。',
+  thresholdScope: 'universal',
+  calculate(ap) {
+    const boundedAp = clampAbilityPoints(ap);
+    const multiplier = getHeavySubDamageMultiplier(boundedAp);
+    return {
+      ap: boundedAp,
+      multiplier,
+      benefitPercent: (1 - multiplier) * 100,
+    };
+  },
+};
+
 const verifiedCurves = new Map<string, AbilityCurveDefinition>([
   [mainInkSaverCurve.abilityId, mainInkSaverCurve],
   [subInkSaverCurve.abilityId, subInkSaverCurve],
@@ -401,6 +428,7 @@ const verifiedCurves = new Map<string, AbilityCurveDefinition>([
   [specialChargeCurve.abilityId, specialChargeCurve],
   [specialSaverCurve.abilityId, specialSaverCurve],
   [quickRespawnCurve.abilityId, quickRespawnCurve],
+  [subResistanceCurve.abilityId, subResistanceCurve],
 ]);
 
 const fixedMainAbilityIds = new Set([
@@ -421,6 +449,22 @@ const fixedMainAbilityIds = new Set([
 export function getAbilityCurveDefinition(
   abilityId: string,
 ): AbilityCurveDefinition {
+  if (abilityId === 'subp') {
+    return {
+      abilityId,
+      status: 'pending',
+      title: '副武器专属性能曲线',
+      outputLabel: '请在实验室查看',
+      formulaLabel: '14 种副武器分别计算',
+      sourceNote:
+        '副武器性能没有一条可代表全部副武器的通用曲线。实验室已按当前套装读取 14 种副武器的 17 个源参数指标；百科不拿其中一种副武器冒充统一百分比。',
+      minimumEffectiveAp: null,
+      minimumEffectiveRule:
+        '首个可装备投入为 3AP，但具体收益与单位必须在实验室结合当前副武器判断。',
+      thresholdScope: 'weapon-specific',
+      calculate: null,
+    };
+  }
   if (fixedMainAbilityIds.has(abilityId)) {
     return {
       abilityId,

@@ -40,6 +40,7 @@ const lazySections = [
   ['main-weapon-efficiency-panel', '主武参数分析'],
   ['main-ink-saver-panel', '主武省墨分析'],
   ['sub-ink-saver-panel', '副武省墨分析'],
+  ['sub-power-panel', '副武器性能分析'],
   ['ink-recovery-panel', '对战回墨分析'],
   ['quick-super-jump-panel', '超级跳跃时间分析'],
   ['movement-speed-panel', '游速与走速分析'],
@@ -47,6 +48,7 @@ const lazySections = [
   ['enemy-ink-resistance-panel', '对手墨汁影响分析'],
   ['special-gauge-panel', '特殊武器槽分析'],
   ['quick-respawn-panel', '条件复活时间分析'],
+  ['sub-resistance-panel', '次要武器影响分析'],
   ['loadout-context-analysis', '当前配装上下文分析'],
 ];
 

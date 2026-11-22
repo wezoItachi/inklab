@@ -116,7 +116,7 @@ export function getWeaponParameterSnapshot(
       {
         label: 'AP 效果曲线',
         status: 'partial',
-        note: '十一条通用 AP 曲线、套装特殊点数及来源完整的动作走速已核对；其余能力曲线待验证',
+        note: '十二条通用 AP 曲线、14 种副武器专属性能、套装特殊点数及来源完整的动作走速已核对；特殊武器性能页面仍在分项接入',
       },
       {
         label: '系统建议',

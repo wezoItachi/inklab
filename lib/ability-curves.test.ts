@@ -121,6 +121,15 @@ void test('quick respawn exposes only its conditional standard curve', () => {
   );
 });
 
+void test('sub resistance exposes the verified heavy-damage reference curve', () => {
+  const definition = getAbilityCurveDefinition('subr');
+  assert.equal(definition.status, 'verified');
+  assert.equal(definition.thresholdScope, 'universal');
+  assert.equal(definition.minimumEffectiveAp, 3);
+  assert.equal(getAbilityCurveSample('subr', 0)?.benefitPercent, 0);
+  assert.equal(getAbilityCurveSample('subr', 57)?.benefitPercent, 50);
+});
+
 void test('unverified abilities never expose invented curve values', () => {
   const definition = getAbilityCurveDefinition('subp');
   assert.equal(definition.status, 'pending');

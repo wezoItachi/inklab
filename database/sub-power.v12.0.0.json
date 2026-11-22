@@ -1,0 +1,196 @@
+{
+  "gameVersion": "12.0.0",
+  "sourceId": "leanny-splat3",
+  "checkedAt": "2026-11-22",
+  "records": [
+    {
+      "subId": "squid-beakon",
+      "metrics": [
+        {
+          "key": "qsjAp",
+          "label": "跳向信标时附加的超级跳跃缩短",
+          "unit": "AP",
+          "kind": "beakon",
+          "values": [57, 25, 0]
+        }
+      ]
+    },
+    {
+      "subId": "curling-bomb",
+      "metrics": [
+        {
+          "key": "velocity",
+          "label": "地面滑行初速度",
+          "unit": "",
+          "kind": "number",
+          "values": [0.52, 0.46, 0.4]
+        }
+      ]
+    },
+    {
+      "subId": "fizzy-bomb",
+      "metrics": [
+        {
+          "key": "velocity",
+          "label": "投掷初速度",
+          "unit": "",
+          "kind": "number",
+          "values": [1.84, 1.6, 1.36]
+        }
+      ]
+    },
+    {
+      "subId": "burst-bomb",
+      "metrics": [
+        {
+          "key": "velocity",
+          "label": "投掷初速度",
+          "unit": "",
+          "kind": "number",
+          "values": [1.68, 1.4, 1.12]
+        }
+      ]
+    },
+    {
+      "subId": "autobomb",
+      "metrics": [
+        {
+          "key": "velocity",
+          "label": "投掷初速度",
+          "unit": "",
+          "kind": "number",
+          "values": [1.68, 1.4, 1.12]
+        }
+      ]
+    },
+    {
+      "subId": "splat-bomb",
+      "metrics": [
+        {
+          "key": "velocity",
+          "label": "投掷初速度",
+          "unit": "",
+          "kind": "number",
+          "values": [1.68, 1.4, 1.12]
+        }
+      ]
+    },
+    {
+      "subId": "suction-bomb",
+      "metrics": [
+        {
+          "key": "velocity",
+          "label": "投掷初速度",
+          "unit": "",
+          "kind": "number",
+          "values": [1.68, 1.4, 1.12]
+        }
+      ]
+    },
+    {
+      "subId": "torpedo",
+      "metrics": [
+        {
+          "key": "velocity",
+          "label": "投掷初速度",
+          "unit": "",
+          "kind": "number",
+          "values": [1.9, 1.65, 1.4]
+        }
+      ]
+    },
+    {
+      "subId": "angle-shooter",
+      "metrics": [
+        {
+          "key": "velocity",
+          "label": "发射初速度",
+          "unit": "",
+          "kind": "number",
+          "values": [6.8, 6.55, 6.3]
+        }
+      ]
+    },
+    {
+      "subId": "point-sensor",
+      "metrics": [
+        {
+          "key": "marking",
+          "label": "标记持续时间",
+          "unit": "秒",
+          "kind": "frames",
+          "values": [960, 720, 480]
+        },
+        {
+          "key": "velocity",
+          "label": "投掷初速度",
+          "unit": "",
+          "kind": "number",
+          "values": [1.87, 1.64, 1.38]
+        }
+      ]
+    },
+    {
+      "subId": "toxic-mist",
+      "metrics": [
+        {
+          "key": "velocity",
+          "label": "投掷初速度",
+          "unit": "",
+          "kind": "number",
+          "values": [1.68, 1.4, 1.12]
+        }
+      ]
+    },
+    {
+      "subId": "splash-wall",
+      "metrics": [
+        {
+          "key": "hp",
+          "label": "防护墙耐久",
+          "unit": "HP",
+          "kind": "hp10",
+          "values": [15000, 11500, 8000]
+        }
+      ]
+    },
+    {
+      "subId": "sprinkler",
+      "metrics": [
+        {
+          "key": "firstPhase",
+          "label": "高频涂墨阶段",
+          "unit": "秒",
+          "kind": "frames",
+          "values": [780, 630, 480]
+        },
+        {
+          "key": "secondPhase",
+          "label": "中频涂墨阶段结束时间",
+          "unit": "秒",
+          "kind": "frames",
+          "values": [1020, 960, 900]
+        }
+      ]
+    },
+    {
+      "subId": "ink-mine",
+      "metrics": [
+        {
+          "key": "marking",
+          "label": "标记持续时间",
+          "unit": "秒",
+          "kind": "frames",
+          "values": [600, 450, 300]
+        },
+        {
+          "key": "radius",
+          "label": "感应半径",
+          "unit": "",
+          "kind": "number",
+          "values": [4, 3.5, 3]
+        }
+      ]
+    }
+  ]
+}

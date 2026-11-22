@@ -1,0 +1,121 @@
+{
+  "gameVersion": "12.0.0",
+  "sourceId": "leanny-splat3",
+  "checkedAt": "2026-11-22",
+  "records": [
+    {
+      "specialId": "ink-vac",
+      "status": "source-backed",
+      "fields": ["RadiusMax", "RadiusMin"],
+      "note": "吸取范围上下界"
+    },
+    {
+      "specialId": "kraken-royale",
+      "status": "source-backed",
+      "fields": ["SpecialTotalFrame"],
+      "note": "持续时间"
+    },
+    {
+      "specialId": "crab-tank",
+      "status": "source-backed",
+      "fields": ["SpecialTotalFrame"],
+      "note": "持续时间"
+    },
+    {
+      "specialId": "splattercolor-screen",
+      "status": "source-backed",
+      "fields": ["MoveSpeed"],
+      "note": "幕墙移动速度"
+    },
+    {
+      "specialId": "tacticooler",
+      "status": "source-backed",
+      "fields": ["PowerUpFrame"],
+      "note": "饮料强化持续时间"
+    },
+    {
+      "specialId": "decoy",
+      "status": "interpretation-pending",
+      "fields": [],
+      "note": "仅有索引化 SubSpecialSpecUpList，需先确认每个索引语义"
+    },
+    {
+      "specialId": "big-bubbler",
+      "status": "source-backed",
+      "fields": ["MaxFieldHP", "MaxHP"],
+      "note": "防护罩与装置耐久"
+    },
+    {
+      "specialId": "ink-storm",
+      "status": "source-backed",
+      "fields": ["RainyFrame", "SpawnSpeedZSpecUp"],
+      "note": "降雨持续时间与投掷初速度"
+    },
+    {
+      "specialId": "inkjet",
+      "status": "source-backed",
+      "fields": ["SpecialTotalFrame"],
+      "note": "持续时间；伤害范围索引仍不公开解释"
+    },
+    {
+      "specialId": "killer-wail-5.1",
+      "status": "source-backed",
+      "fields": ["LaserFrame"],
+      "note": "镭射持续时间"
+    },
+    {
+      "specialId": "tenta-missiles",
+      "status": "source-backed",
+      "fields": ["TargetInCircleRadius"],
+      "note": "锁定准星半径"
+    },
+    {
+      "specialId": "booyah-bomb",
+      "status": "source-backed",
+      "fields": ["ChargeRateAutoPerFrame"],
+      "note": "自动充能速率"
+    },
+    {
+      "specialId": "triple-splashdown",
+      "status": "interpretation-pending",
+      "fields": [],
+      "note": "仅有索引化 SubSpecialSpecUpList，需先确认每个索引语义"
+    },
+    {
+      "specialId": "wave-breaker",
+      "status": "source-backed",
+      "fields": ["MaxFrame", "MaxRadius"],
+      "note": "波纹持续帧与最大半径"
+    },
+    {
+      "specialId": "reef-slider",
+      "status": "interpretation-pending",
+      "fields": [],
+      "note": "仅有索引化 SubSpecialSpecUpList，需先确认每个索引语义"
+    },
+    {
+      "specialId": "zipcaster",
+      "status": "source-backed",
+      "fields": ["InkConsume_Hook", "InkConsume_PerSec"],
+      "note": "触手动作与每秒耗墨"
+    },
+    {
+      "specialId": "triple-inkstrike",
+      "status": "source-backed",
+      "fields": ["SpawnSpeedZSpecUp"],
+      "note": "引导装置投掷初速度"
+    },
+    {
+      "specialId": "trizooka",
+      "status": "source-backed",
+      "fields": ["SpecialDurationFrame"],
+      "note": "可用时间窗口"
+    },
+    {
+      "specialId": "ultra-stamp",
+      "status": "source-backed",
+      "fields": ["SpecialTotalFrame"],
+      "note": "持续时间"
+    }
+  ]
+}

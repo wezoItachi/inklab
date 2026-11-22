@@ -39,7 +39,6 @@ import {
   getAbilityAssetUrl,
   getAbilityPartForSlot,
   toggleSelectedPart,
-  type Ability,
   type AbilityFilterGroup,
 } from '@/lib/abilities';
 import { AbilityIcon } from '@/components/ability-icon';
@@ -112,6 +111,12 @@ const SubInkSaverPanel = lazy(() =>
   })),
 );
 
+const SubPowerPanel = lazy(() =>
+  import('@/components/sub-power-panel').then(({ SubPowerPanel }) => ({
+    default: SubPowerPanel,
+  })),
+);
+
 const InkRecoveryPanel = lazy(() =>
   import('@/components/ink-recovery-panel').then(({ InkRecoveryPanel }) => ({
     default: InkRecoveryPanel,
@@ -152,6 +157,12 @@ const QuickRespawnPanel = lazy(() =>
   import('@/components/quick-respawn-panel').then(({ QuickRespawnPanel }) => ({
     default: QuickRespawnPanel,
   })),
+);
+
+const SubResistancePanel = lazy(() =>
+  import('@/components/sub-resistance-panel').then(
+    ({ SubResistancePanel }) => ({ default: SubResistancePanel }),
+  ),
 );
 
 const LoadoutContextAnalysis = lazy(() =>
@@ -1228,7 +1239,7 @@ export default function Home() {
                       </p>
                     </div>
                     <p className="note">
-                      套装关系已核对 · 十一条 AP 曲线与已支持动作走速已核对 ·
+                      套装关系已核对 · 十二条 AP 曲线与已支持动作走速已核对 ·
                       其余能力继续逐项验证
                     </p>
                   </aside>
@@ -1334,6 +1345,7 @@ function EffectPanel({
   const specialGaugeAbilityId = id === 'scu' || id === 'ss' ? id : null;
   const isQuickRespawn = id === 'qr';
   const isSubPower = id === 'subp';
+  const isSubResistance = id === 'subr';
   const genericContext = a ? buildAbilityContext(a, weapon, ap) : null;
   const curve = getAbilityCurveDefinition(id);
   return (
@@ -1484,7 +1496,37 @@ function EffectPanel({
           />
         </Suspense>
       ) : isSubPower ? (
-        <SubPowerPanel weapon={weapon} a={a} ap={ap} />
+        <Suspense
+          fallback={
+            <p className="parameter-public-note">正在计算副武器性能…</p>
+          }
+        >
+          <SubPowerPanel
+            weapon={weapon}
+            ability={a}
+            ap={ap}
+            setAp={setAp}
+            isPreview={isPreview}
+            equippedAp={equippedAp}
+            clearPreview={clearPreview}
+          />
+        </Suspense>
+      ) : isSubResistance ? (
+        <Suspense
+          fallback={
+            <p className="parameter-public-note">正在计算副武器影响…</p>
+          }
+        >
+          <SubResistancePanel
+            weapon={weapon}
+            ability={a}
+            ap={ap}
+            setAp={setAp}
+            isPreview={isPreview}
+            equippedAp={equippedAp}
+            clearPreview={clearPreview}
+          />
+        </Suspense>
       ) : (
         <>
           <div className="effect-main generic">
@@ -1535,80 +1577,5 @@ function EffectPanel({
         </>
       )}
     </section>
-  );
-}
-function SubPowerPanel({
-  weapon,
-  a,
-  ap,
-}: {
-  weapon: Weapon;
-  a?: Ability;
-  ap: number;
-}) {
-  return (
-    <>
-      <div className="effect-main sub-context">
-        <AbilityIcon ability={a} />
-        <div>
-          <small>
-            {weapon.name} · 当前副武器：{weapon.sub.name}
-          </small>
-          <strong>
-            {weapon.sub.subPowerEffect
-              ? `提升${weapon.sub.subPowerEffect}`
-              : '作用对象待验证'}
-          </strong>
-          <p>
-            副武器性能提升的作用会随副武器改变；未核对的副武器不会沿用其他副武器的说明。
-          </p>
-        </div>
-        <span>套装已联动</span>
-      </div>
-      <div className="impact-matrix">
-        <div className="yes">
-          <Check size={14} />
-          <span>
-            <b>{weapon.sub.subPowerEffect ?? '待验证'}</b>
-            <small>具体对象与幅度以字段核验为准</small>
-          </span>
-        </div>
-        {weapon.sub.subPowerDoesNotChange.map((item) => (
-          <div key={item}>
-            <b>—</b>
-            <span>
-              <strong>{item}</strong>
-              <small>不变</small>
-            </span>
-          </div>
-        ))}
-      </div>
-      <p className="effect-boundary">
-        当前只读取左侧配装中的 {ap}
-        AP；作用对象与增量曲线完全核验前，不显示推荐试投档位。
-      </p>
-      <div className="sub-compare">
-        <b>当前套装</b>
-        <span>
-          <strong>
-            {weapon.name} · {weapon.sub.name}
-          </strong>
-        </span>
-        <span>
-          <Check size={13} /> {weapon.sub.subPowerEffect ?? '作用对象待验证'}
-        </span>
-        <span>
-          —{' '}
-          {weapon.sub.subPowerDoesNotChange.length
-            ? weapon.sub.subPowerDoesNotChange.join('、')
-            : '不变项待验证'}
-        </span>
-      </div>
-      <p className="judgement">
-        <TrendingUp size={14} />
-        <b>配装建议：</b>先根据你实际使用 {weapon.sub.name}{' '}
-        的频率判断是否投入；精确 AP 收益将在版本参数通过测试后补充。
-      </p>
-    </>
   );
 }
