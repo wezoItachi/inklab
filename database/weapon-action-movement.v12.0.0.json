@@ -1,0 +1,3164 @@
+{
+  "gameVersion": "12.0.0",
+  "checkedAt": "2026-11-22",
+  "datasetStatus": "source-backed-action-movement",
+  "sourceId": "leanny-splat3",
+  "sourceCommit": "b669d55e0eef1f1a7f18cb7468c636ed7746c189",
+  "sharedMultiplier": {
+    "high": 1.25,
+    "mid": 1.125,
+    "low": 1
+  },
+  "counts": {
+    "weaponsWithStates": 136,
+    "firing": 99,
+    "charging": 15,
+    "fullCharge": 37,
+    "secondary": 2,
+    "weaponOverrides": 15
+  },
+  "records": [
+    {
+      "weaponId": "shooter-quickmiddle-cstm01",
+      "upstreamRowId": "Shooter_QuickMiddle_01",
+      "multiplier": {
+        "high": 1.25,
+        "mid": 1.125,
+        "low": 1
+      },
+      "multiplierSourceMode": "shared-default",
+      "multiplierPath": "data/parameter/1200/misc/params.json#MoveVelRt_Shot",
+      "states": [
+        {
+          "id": "firing",
+          "label": "射击／动作中",
+          "baseSpeed": 0.088,
+          "baseSpeedPath": "data/parameter/1200/weapon/WeaponShooterQuickMiddle.game__GameParameterTable.json#GameParameters.WeaponParam.MoveSpeed"
+        }
+      ]
+    },
+    {
+      "weaponId": "shooter-normalt",
+      "upstreamRowId": "Shooter_Normal_00",
+      "multiplier": {
+        "high": 1.25,
+        "mid": 1.125,
+        "low": 1
+      },
+      "multiplierSourceMode": "shared-default",
+      "multiplierPath": "data/parameter/1200/misc/params.json#MoveVelRt_Shot",
+      "states": [
+        {
+          "id": "firing",
+          "label": "射击／动作中",
+          "baseSpeed": 0.072,
+          "baseSpeedPath": "data/parameter/1200/weapon/WeaponShooterNormal.game__GameParameterTable.json#GameParameters.WeaponParam.MoveSpeed"
+        }
+      ]
+    },
+    {
+      "weaponId": "shooter-precision",
+      "upstreamRowId": "Shooter_Precision_00",
+      "multiplier": {
+        "high": 1.25,
+        "mid": 1.125,
+        "low": 1
+      },
+      "multiplierSourceMode": "shared-default",
+      "multiplierPath": "data/parameter/1200/misc/params.json#MoveVelRt_Shot",
+      "states": [
+        {
+          "id": "firing",
+          "label": "射击／动作中",
+          "baseSpeed": 0.072,
+          "baseSpeedPath": "data/parameter/1200/weapon/WeaponShooterPrecision.game__GameParameterTable.json#GameParameters.WeaponParam.MoveSpeed"
+        }
+      ]
+    },
+    {
+      "weaponId": "charger-normalt",
+      "upstreamRowId": "Charger_Normal_00",
+      "multiplier": {
+        "high": 1.25,
+        "mid": 1.125,
+        "low": 1
+      },
+      "multiplierSourceMode": "shared-default",
+      "multiplierPath": "data/parameter/1200/misc/params.json#MoveVelRt_Shot",
+      "states": [
+        {
+          "id": "full-charge",
+          "label": "满蓄力状态",
+          "baseSpeed": 0.02,
+          "baseSpeedPath": "data/parameter/1200/weapon/WeaponChargerNormal.game__GameParameterTable.json#GameParameters.WeaponParam.MoveSpeedFullCharge"
+        }
+      ]
+    },
+    {
+      "weaponId": "roller-normalt",
+      "upstreamRowId": "Roller_Normal_00",
+      "multiplier": {
+        "high": 1.25,
+        "mid": 1.125,
+        "low": 1
+      },
+      "multiplierSourceMode": "shared-default",
+      "multiplierPath": "data/parameter/1200/misc/params.json#MoveVelRt_Shot",
+      "states": []
+    },
+    {
+      "weaponId": "spinner-standardt",
+      "upstreamRowId": "Spinner_Standard_00",
+      "multiplier": {
+        "high": 1.35,
+        "mid": 1.175,
+        "low": 1
+      },
+      "multiplierSourceMode": "weapon-override",
+      "multiplierPath": "data/parameter/1200/weapon/WeaponSpinnerStandard.game__GameParameterTable.json#GameParameters.MainWeaponSetting",
+      "states": [
+        {
+          "id": "firing",
+          "label": "射击／动作中",
+          "baseSpeed": 0.07,
+          "baseSpeedPath": "data/parameter/1200/weapon/WeaponSpinnerStandard.game__GameParameterTable.json#GameParameters.WeaponParam.MoveSpeed"
+        },
+        {
+          "id": "charging",
+          "label": "蓄力中",
+          "baseSpeed": 0.062,
+          "baseSpeedPath": "data/parameter/1200/weapon/WeaponSpinnerStandard.game__GameParameterTable.json#GameParameters.WeaponParam.MoveSpeed_Charge"
+        }
+      ]
+    },
+    {
+      "weaponId": "main-0",
+      "upstreamRowId": "Shooter_Short_00",
+      "multiplier": {
+        "high": 1.25,
+        "mid": 1.125,
+        "low": 1
+      },
+      "multiplierSourceMode": "shared-default",
+      "multiplierPath": "data/parameter/1200/misc/params.json#MoveVelRt_Shot",
+      "states": [
+        {
+          "id": "firing",
+          "label": "射击／动作中",
+          "baseSpeed": 0.08,
+          "baseSpeedPath": "data/parameter/1200/weapon/WeaponShooterShort.game__GameParameterTable.json#GameParameters.WeaponParam.MoveSpeed"
+        }
+      ]
+    },
+    {
+      "weaponId": "main-1",
+      "upstreamRowId": "Shooter_Short_01",
+      "multiplier": {
+        "high": 1.25,
+        "mid": 1.125,
+        "low": 1
+      },
+      "multiplierSourceMode": "shared-default",
+      "multiplierPath": "data/parameter/1200/misc/params.json#MoveVelRt_Shot",
+      "states": [
+        {
+          "id": "firing",
+          "label": "射击／动作中",
+          "baseSpeed": 0.08,
+          "baseSpeedPath": "data/parameter/1200/weapon/WeaponShooterShort.game__GameParameterTable.json#GameParameters.WeaponParam.MoveSpeed"
+        }
+      ]
+    },
+    {
+      "weaponId": "main-10",
+      "upstreamRowId": "Shooter_First_00",
+      "multiplier": {
+        "high": 1.25,
+        "mid": 1.125,
+        "low": 1
+      },
+      "multiplierSourceMode": "shared-default",
+      "multiplierPath": "data/parameter/1200/misc/params.json#MoveVelRt_Shot",
+      "states": [
+        {
+          "id": "firing",
+          "label": "射击／动作中",
+          "baseSpeed": 0.076,
+          "baseSpeedPath": "data/parameter/1200/weapon/WeaponShooterFirst.game__GameParameterTable.json#GameParameters.WeaponParam.MoveSpeed"
+        }
+      ]
+    },
+    {
+      "weaponId": "main-11",
+      "upstreamRowId": "Shooter_First_01",
+      "multiplier": {
+        "high": 1.25,
+        "mid": 1.125,
+        "low": 1
+      },
+      "multiplierSourceMode": "shared-default",
+      "multiplierPath": "data/parameter/1200/misc/params.json#MoveVelRt_Shot",
+      "states": [
+        {
+          "id": "firing",
+          "label": "射击／动作中",
+          "baseSpeed": 0.076,
+          "baseSpeedPath": "data/parameter/1200/weapon/WeaponShooterFirst.game__GameParameterTable.json#GameParameters.WeaponParam.MoveSpeed"
+        }
+      ]
+    },
+    {
+      "weaponId": "main-21",
+      "upstreamRowId": "Shooter_Precision_01",
+      "multiplier": {
+        "high": 1.25,
+        "mid": 1.125,
+        "low": 1
+      },
+      "multiplierSourceMode": "shared-default",
+      "multiplierPath": "data/parameter/1200/misc/params.json#MoveVelRt_Shot",
+      "states": [
+        {
+          "id": "firing",
+          "label": "射击／动作中",
+          "baseSpeed": 0.072,
+          "baseSpeedPath": "data/parameter/1200/weapon/WeaponShooterPrecision.game__GameParameterTable.json#GameParameters.WeaponParam.MoveSpeed"
+        }
+      ]
+    },
+    {
+      "weaponId": "main-22",
+      "upstreamRowId": "Shooter_Precision_02",
+      "multiplier": {
+        "high": 1.25,
+        "mid": 1.125,
+        "low": 1
+      },
+      "multiplierSourceMode": "shared-default",
+      "multiplierPath": "data/parameter/1200/misc/params.json#MoveVelRt_Shot",
+      "states": [
+        {
+          "id": "firing",
+          "label": "射击／动作中",
+          "baseSpeed": 0.072,
+          "baseSpeedPath": "data/parameter/1200/weapon/WeaponShooterPrecision.game__GameParameterTable.json#GameParameters.WeaponParam.MoveSpeed"
+        }
+      ]
+    },
+    {
+      "weaponId": "main-30",
+      "upstreamRowId": "Shooter_Blaze_00",
+      "multiplier": {
+        "high": 1.25,
+        "mid": 1.125,
+        "low": 1
+      },
+      "multiplierSourceMode": "shared-default",
+      "multiplierPath": "data/parameter/1200/misc/params.json#MoveVelRt_Shot",
+      "states": [
+        {
+          "id": "firing",
+          "label": "射击／动作中",
+          "baseSpeed": 0.072,
+          "baseSpeedPath": "data/parameter/1200/weapon/WeaponShooterBlaze.game__GameParameterTable.json#GameParameters.WeaponParam.MoveSpeed"
+        }
+      ]
+    },
+    {
+      "weaponId": "main-31",
+      "upstreamRowId": "Shooter_Blaze_01",
+      "multiplier": {
+        "high": 1.25,
+        "mid": 1.125,
+        "low": 1
+      },
+      "multiplierSourceMode": "shared-default",
+      "multiplierPath": "data/parameter/1200/misc/params.json#MoveVelRt_Shot",
+      "states": [
+        {
+          "id": "firing",
+          "label": "射击／动作中",
+          "baseSpeed": 0.072,
+          "baseSpeedPath": "data/parameter/1200/weapon/WeaponShooterBlaze.game__GameParameterTable.json#GameParameters.WeaponParam.MoveSpeed"
+        }
+      ]
+    },
+    {
+      "weaponId": "main-32",
+      "upstreamRowId": "Shooter_Blaze_02",
+      "multiplier": {
+        "high": 1.25,
+        "mid": 1.125,
+        "low": 1
+      },
+      "multiplierSourceMode": "shared-default",
+      "multiplierPath": "data/parameter/1200/misc/params.json#MoveVelRt_Shot",
+      "states": [
+        {
+          "id": "firing",
+          "label": "射击／动作中",
+          "baseSpeed": 0.072,
+          "baseSpeedPath": "data/parameter/1200/weapon/WeaponShooterBlaze.game__GameParameterTable.json#GameParameters.WeaponParam.MoveSpeed"
+        }
+      ]
+    },
+    {
+      "weaponId": "main-41",
+      "upstreamRowId": "Shooter_Normal_01",
+      "multiplier": {
+        "high": 1.25,
+        "mid": 1.125,
+        "low": 1
+      },
+      "multiplierSourceMode": "shared-default",
+      "multiplierPath": "data/parameter/1200/misc/params.json#MoveVelRt_Shot",
+      "states": [
+        {
+          "id": "firing",
+          "label": "射击／动作中",
+          "baseSpeed": 0.072,
+          "baseSpeedPath": "data/parameter/1200/weapon/WeaponShooterNormal.game__GameParameterTable.json#GameParameters.WeaponParam.MoveSpeed"
+        }
+      ]
+    },
+    {
+      "weaponId": "main-42",
+      "upstreamRowId": "Shooter_Normal_02",
+      "multiplier": {
+        "high": 1.25,
+        "mid": 1.125,
+        "low": 1
+      },
+      "multiplierSourceMode": "shared-default",
+      "multiplierPath": "data/parameter/1200/misc/params.json#MoveVelRt_Shot",
+      "states": [
+        {
+          "id": "firing",
+          "label": "射击／动作中",
+          "baseSpeed": 0.072,
+          "baseSpeedPath": "data/parameter/1200/weapon/WeaponShooterNormal.game__GameParameterTable.json#GameParameters.WeaponParam.MoveSpeed"
+        }
+      ]
+    },
+    {
+      "weaponId": "main-45",
+      "upstreamRowId": "Shooter_Normal_H",
+      "multiplier": {
+        "high": 1.25,
+        "mid": 1.125,
+        "low": 1
+      },
+      "multiplierSourceMode": "shared-default",
+      "multiplierPath": "data/parameter/1200/misc/params.json#MoveVelRt_Shot",
+      "states": [
+        {
+          "id": "firing",
+          "label": "射击／动作中",
+          "baseSpeed": 0.072,
+          "baseSpeedPath": "data/parameter/1200/weapon/WeaponShooterNormal.game__GameParameterTable.json#GameParameters.WeaponParam.MoveSpeed"
+        }
+      ]
+    },
+    {
+      "weaponId": "main-46",
+      "upstreamRowId": "Shooter_Normal_Oct",
+      "multiplier": {
+        "high": 1.25,
+        "mid": 1.125,
+        "low": 1
+      },
+      "multiplierSourceMode": "shared-default",
+      "multiplierPath": "data/parameter/1200/misc/params.json#MoveVelRt_Shot",
+      "states": [
+        {
+          "id": "firing",
+          "label": "射击／动作中",
+          "baseSpeed": 0.072,
+          "baseSpeedPath": "data/parameter/1200/weapon/WeaponShooterNormal.game__GameParameterTable.json#GameParameters.WeaponParam.MoveSpeed"
+        }
+      ]
+    },
+    {
+      "weaponId": "main-47",
+      "upstreamRowId": "Shooter_Normal_O",
+      "multiplier": {
+        "high": 1.25,
+        "mid": 1.125,
+        "low": 1
+      },
+      "multiplierSourceMode": "shared-default",
+      "multiplierPath": "data/parameter/1200/misc/params.json#MoveVelRt_Shot",
+      "states": [
+        {
+          "id": "firing",
+          "label": "射击／动作中",
+          "baseSpeed": 0.072,
+          "baseSpeedPath": "data/parameter/1200/weapon/WeaponShooterNormal.game__GameParameterTable.json#GameParameters.WeaponParam.MoveSpeed"
+        }
+      ]
+    },
+    {
+      "weaponId": "main-48",
+      "upstreamRowId": "Shooter_Normal_S",
+      "multiplier": {
+        "high": 1.25,
+        "mid": 1.125,
+        "low": 1
+      },
+      "multiplierSourceMode": "shared-default",
+      "multiplierPath": "data/parameter/1200/misc/params.json#MoveVelRt_Shot",
+      "states": [
+        {
+          "id": "firing",
+          "label": "射击／动作中",
+          "baseSpeed": 0.072,
+          "baseSpeedPath": "data/parameter/1200/weapon/WeaponShooterNormal.game__GameParameterTable.json#GameParameters.WeaponParam.MoveSpeed"
+        }
+      ]
+    },
+    {
+      "weaponId": "main-50",
+      "upstreamRowId": "Shooter_Gravity_00",
+      "multiplier": {
+        "high": 1.25,
+        "mid": 1.125,
+        "low": 1
+      },
+      "multiplierSourceMode": "shared-default",
+      "multiplierPath": "data/parameter/1200/misc/params.json#MoveVelRt_Shot",
+      "states": [
+        {
+          "id": "firing",
+          "label": "射击／动作中",
+          "baseSpeed": 0.06,
+          "baseSpeedPath": "data/parameter/1200/weapon/WeaponShooterGravity.game__GameParameterTable.json#GameParameters.WeaponParam.MoveSpeed"
+        }
+      ]
+    },
+    {
+      "weaponId": "main-51",
+      "upstreamRowId": "Shooter_Gravity_01",
+      "multiplier": {
+        "high": 1.25,
+        "mid": 1.125,
+        "low": 1
+      },
+      "multiplierSourceMode": "shared-default",
+      "multiplierPath": "data/parameter/1200/misc/params.json#MoveVelRt_Shot",
+      "states": [
+        {
+          "id": "firing",
+          "label": "射击／动作中",
+          "baseSpeed": 0.06,
+          "baseSpeedPath": "data/parameter/1200/weapon/WeaponShooterGravity.game__GameParameterTable.json#GameParameters.WeaponParam.MoveSpeed"
+        }
+      ]
+    },
+    {
+      "weaponId": "main-60",
+      "upstreamRowId": "Shooter_QuickMiddle_00",
+      "multiplier": {
+        "high": 1.25,
+        "mid": 1.125,
+        "low": 1
+      },
+      "multiplierSourceMode": "shared-default",
+      "multiplierPath": "data/parameter/1200/misc/params.json#MoveVelRt_Shot",
+      "states": [
+        {
+          "id": "firing",
+          "label": "射击／动作中",
+          "baseSpeed": 0.088,
+          "baseSpeedPath": "data/parameter/1200/weapon/WeaponShooterQuickMiddle.game__GameParameterTable.json#GameParameters.WeaponParam.MoveSpeed"
+        }
+      ]
+    },
+    {
+      "weaponId": "main-70",
+      "upstreamRowId": "Shooter_Expert_00",
+      "multiplier": {
+        "high": 1.25,
+        "mid": 1.125,
+        "low": 1
+      },
+      "multiplierSourceMode": "shared-default",
+      "multiplierPath": "data/parameter/1200/misc/params.json#MoveVelRt_Shot",
+      "states": [
+        {
+          "id": "firing",
+          "label": "射击／动作中",
+          "baseSpeed": 0.055,
+          "baseSpeedPath": "data/parameter/1200/weapon/WeaponShooterExpert.game__GameParameterTable.json#GameParameters.WeaponParam.MoveSpeed"
+        }
+      ]
+    },
+    {
+      "weaponId": "main-71",
+      "upstreamRowId": "Shooter_Expert_01",
+      "multiplier": {
+        "high": 1.25,
+        "mid": 1.125,
+        "low": 1
+      },
+      "multiplierSourceMode": "shared-default",
+      "multiplierPath": "data/parameter/1200/misc/params.json#MoveVelRt_Shot",
+      "states": [
+        {
+          "id": "firing",
+          "label": "射击／动作中",
+          "baseSpeed": 0.055,
+          "baseSpeedPath": "data/parameter/1200/weapon/WeaponShooterExpert.game__GameParameterTable.json#GameParameters.WeaponParam.MoveSpeed"
+        }
+      ]
+    },
+    {
+      "weaponId": "main-72",
+      "upstreamRowId": "Shooter_Expert_02",
+      "multiplier": {
+        "high": 1.25,
+        "mid": 1.125,
+        "low": 1
+      },
+      "multiplierSourceMode": "shared-default",
+      "multiplierPath": "data/parameter/1200/misc/params.json#MoveVelRt_Shot",
+      "states": [
+        {
+          "id": "firing",
+          "label": "射击／动作中",
+          "baseSpeed": 0.055,
+          "baseSpeedPath": "data/parameter/1200/weapon/WeaponShooterExpert.game__GameParameterTable.json#GameParameters.WeaponParam.MoveSpeed"
+        }
+      ]
+    },
+    {
+      "weaponId": "main-80",
+      "upstreamRowId": "Shooter_Heavy_00",
+      "multiplier": {
+        "high": 1.25,
+        "mid": 1.125,
+        "low": 1
+      },
+      "multiplierSourceMode": "shared-default",
+      "multiplierPath": "data/parameter/1200/misc/params.json#MoveVelRt_Shot",
+      "states": [
+        {
+          "id": "firing",
+          "label": "射击／动作中",
+          "baseSpeed": 0.04,
+          "baseSpeedPath": "data/parameter/1200/weapon/WeaponShooterHeavy.game__GameParameterTable.json#GameParameters.WeaponParam.MoveSpeed"
+        }
+      ]
+    },
+    {
+      "weaponId": "main-81",
+      "upstreamRowId": "Shooter_Heavy_01",
+      "multiplier": {
+        "high": 1.25,
+        "mid": 1.125,
+        "low": 1
+      },
+      "multiplierSourceMode": "shared-default",
+      "multiplierPath": "data/parameter/1200/misc/params.json#MoveVelRt_Shot",
+      "states": [
+        {
+          "id": "firing",
+          "label": "射击／动作中",
+          "baseSpeed": 0.04,
+          "baseSpeedPath": "data/parameter/1200/weapon/WeaponShooterHeavy.game__GameParameterTable.json#GameParameters.WeaponParam.MoveSpeed"
+        }
+      ]
+    },
+    {
+      "weaponId": "main-82",
+      "upstreamRowId": "Shooter_Heavy_02",
+      "multiplier": {
+        "high": 1.25,
+        "mid": 1.125,
+        "low": 1
+      },
+      "multiplierSourceMode": "shared-default",
+      "multiplierPath": "data/parameter/1200/misc/params.json#MoveVelRt_Shot",
+      "states": [
+        {
+          "id": "firing",
+          "label": "射击／动作中",
+          "baseSpeed": 0.04,
+          "baseSpeedPath": "data/parameter/1200/weapon/WeaponShooterHeavy.game__GameParameterTable.json#GameParameters.WeaponParam.MoveSpeed"
+        }
+      ]
+    },
+    {
+      "weaponId": "main-90",
+      "upstreamRowId": "Shooter_Long_00",
+      "multiplier": {
+        "high": 1.25,
+        "mid": 1.125,
+        "low": 1
+      },
+      "multiplierSourceMode": "shared-default",
+      "multiplierPath": "data/parameter/1200/misc/params.json#MoveVelRt_Shot",
+      "states": [
+        {
+          "id": "firing",
+          "label": "射击／动作中",
+          "baseSpeed": 0.06,
+          "baseSpeedPath": "data/parameter/1200/weapon/WeaponShooterLong.game__GameParameterTable.json#GameParameters.WeaponParam.MoveSpeed"
+        }
+      ]
+    },
+    {
+      "weaponId": "main-91",
+      "upstreamRowId": "Shooter_Long_01",
+      "multiplier": {
+        "high": 1.25,
+        "mid": 1.125,
+        "low": 1
+      },
+      "multiplierSourceMode": "shared-default",
+      "multiplierPath": "data/parameter/1200/misc/params.json#MoveVelRt_Shot",
+      "states": [
+        {
+          "id": "firing",
+          "label": "射击／动作中",
+          "baseSpeed": 0.06,
+          "baseSpeedPath": "data/parameter/1200/weapon/WeaponShooterLong.game__GameParameterTable.json#GameParameters.WeaponParam.MoveSpeed"
+        }
+      ]
+    },
+    {
+      "weaponId": "main-92",
+      "upstreamRowId": "Shooter_Long_02",
+      "multiplier": {
+        "high": 1.25,
+        "mid": 1.125,
+        "low": 1
+      },
+      "multiplierSourceMode": "shared-default",
+      "multiplierPath": "data/parameter/1200/misc/params.json#MoveVelRt_Shot",
+      "states": [
+        {
+          "id": "firing",
+          "label": "射击／动作中",
+          "baseSpeed": 0.06,
+          "baseSpeedPath": "data/parameter/1200/weapon/WeaponShooterLong.game__GameParameterTable.json#GameParameters.WeaponParam.MoveSpeed"
+        }
+      ]
+    },
+    {
+      "weaponId": "main-100",
+      "upstreamRowId": "Shooter_QuickLong_00",
+      "multiplier": {
+        "high": 1.25,
+        "mid": 1.125,
+        "low": 1
+      },
+      "multiplierSourceMode": "shared-default",
+      "multiplierPath": "data/parameter/1200/misc/params.json#MoveVelRt_Shot",
+      "states": [
+        {
+          "id": "firing",
+          "label": "射击／动作中",
+          "baseSpeed": 0.079,
+          "baseSpeedPath": "data/parameter/1200/weapon/WeaponShooterQuickLong.game__GameParameterTable.json#GameParameters.WeaponParam.MoveSpeed"
+        }
+      ]
+    },
+    {
+      "weaponId": "main-101",
+      "upstreamRowId": "Shooter_QuickLong_01",
+      "multiplier": {
+        "high": 1.25,
+        "mid": 1.125,
+        "low": 1
+      },
+      "multiplierSourceMode": "shared-default",
+      "multiplierPath": "data/parameter/1200/misc/params.json#MoveVelRt_Shot",
+      "states": [
+        {
+          "id": "firing",
+          "label": "射击／动作中",
+          "baseSpeed": 0.079,
+          "baseSpeedPath": "data/parameter/1200/weapon/WeaponShooterQuickLong.game__GameParameterTable.json#GameParameters.WeaponParam.MoveSpeed"
+        }
+      ]
+    },
+    {
+      "weaponId": "main-300",
+      "upstreamRowId": "Shooter_TripleQuick_00",
+      "multiplier": {
+        "high": 1.25,
+        "mid": 1.125,
+        "low": 1
+      },
+      "multiplierSourceMode": "shared-default",
+      "multiplierPath": "data/parameter/1200/misc/params.json#MoveVelRt_Shot",
+      "states": [
+        {
+          "id": "firing",
+          "label": "射击／动作中",
+          "baseSpeed": 0.08,
+          "baseSpeedPath": "data/parameter/1200/weapon/WeaponShooterTripleQuick.game__GameParameterTable.json#GameParameters.WeaponParam.MoveSpeed"
+        }
+      ]
+    },
+    {
+      "weaponId": "main-301",
+      "upstreamRowId": "Shooter_TripleQuick_01",
+      "multiplier": {
+        "high": 1.25,
+        "mid": 1.125,
+        "low": 1
+      },
+      "multiplierSourceMode": "shared-default",
+      "multiplierPath": "data/parameter/1200/misc/params.json#MoveVelRt_Shot",
+      "states": [
+        {
+          "id": "firing",
+          "label": "射击／动作中",
+          "baseSpeed": 0.08,
+          "baseSpeedPath": "data/parameter/1200/weapon/WeaponShooterTripleQuick.game__GameParameterTable.json#GameParameters.WeaponParam.MoveSpeed"
+        }
+      ]
+    },
+    {
+      "weaponId": "main-302",
+      "upstreamRowId": "Shooter_TripleQuick_02",
+      "multiplier": {
+        "high": 1.25,
+        "mid": 1.125,
+        "low": 1
+      },
+      "multiplierSourceMode": "shared-default",
+      "multiplierPath": "data/parameter/1200/misc/params.json#MoveVelRt_Shot",
+      "states": [
+        {
+          "id": "firing",
+          "label": "射击／动作中",
+          "baseSpeed": 0.08,
+          "baseSpeedPath": "data/parameter/1200/weapon/WeaponShooterTripleQuick.game__GameParameterTable.json#GameParameters.WeaponParam.MoveSpeed"
+        }
+      ]
+    },
+    {
+      "weaponId": "main-310",
+      "upstreamRowId": "Shooter_TripleMiddle_00",
+      "multiplier": {
+        "high": 1.25,
+        "mid": 1.125,
+        "low": 1
+      },
+      "multiplierSourceMode": "shared-default",
+      "multiplierPath": "data/parameter/1200/misc/params.json#MoveVelRt_Shot",
+      "states": [
+        {
+          "id": "firing",
+          "label": "射击／动作中",
+          "baseSpeed": 0.06,
+          "baseSpeedPath": "data/parameter/1200/weapon/WeaponShooterTripleMiddle.game__GameParameterTable.json#GameParameters.WeaponParam.MoveSpeed"
+        }
+      ]
+    },
+    {
+      "weaponId": "main-311",
+      "upstreamRowId": "Shooter_TripleMiddle_01",
+      "multiplier": {
+        "high": 1.25,
+        "mid": 1.125,
+        "low": 1
+      },
+      "multiplierSourceMode": "shared-default",
+      "multiplierPath": "data/parameter/1200/misc/params.json#MoveVelRt_Shot",
+      "states": [
+        {
+          "id": "firing",
+          "label": "射击／动作中",
+          "baseSpeed": 0.06,
+          "baseSpeedPath": "data/parameter/1200/weapon/WeaponShooterTripleMiddle.game__GameParameterTable.json#GameParameters.WeaponParam.MoveSpeed"
+        }
+      ]
+    },
+    {
+      "weaponId": "main-312",
+      "upstreamRowId": "Shooter_TripleMiddle_02",
+      "multiplier": {
+        "high": 1.25,
+        "mid": 1.125,
+        "low": 1
+      },
+      "multiplierSourceMode": "shared-default",
+      "multiplierPath": "data/parameter/1200/misc/params.json#MoveVelRt_Shot",
+      "states": [
+        {
+          "id": "firing",
+          "label": "射击／动作中",
+          "baseSpeed": 0.06,
+          "baseSpeedPath": "data/parameter/1200/weapon/WeaponShooterTripleMiddle.game__GameParameterTable.json#GameParameters.WeaponParam.MoveSpeed"
+        }
+      ]
+    },
+    {
+      "weaponId": "main-400",
+      "upstreamRowId": "Shooter_Flash_00",
+      "multiplier": {
+        "high": 1.25,
+        "mid": 1.125,
+        "low": 1
+      },
+      "multiplierSourceMode": "shared-default",
+      "multiplierPath": "data/parameter/1200/misc/params.json#MoveVelRt_Shot",
+      "states": [
+        {
+          "id": "firing",
+          "label": "射击／动作中",
+          "baseSpeed": 0.066,
+          "baseSpeedPath": "data/parameter/1200/weapon/WeaponShooterFlash.game__GameParameterTable.json#GameParameters.WeaponParam.MoveSpeed"
+        }
+      ]
+    },
+    {
+      "weaponId": "main-401",
+      "upstreamRowId": "Shooter_Flash_01",
+      "multiplier": {
+        "high": 1.25,
+        "mid": 1.125,
+        "low": 1
+      },
+      "multiplierSourceMode": "shared-default",
+      "multiplierPath": "data/parameter/1200/misc/params.json#MoveVelRt_Shot",
+      "states": [
+        {
+          "id": "firing",
+          "label": "射击／动作中",
+          "baseSpeed": 0.066,
+          "baseSpeedPath": "data/parameter/1200/weapon/WeaponShooterFlash.game__GameParameterTable.json#GameParameters.WeaponParam.MoveSpeed"
+        }
+      ]
+    },
+    {
+      "weaponId": "main-200",
+      "upstreamRowId": "Blaster_Short_00",
+      "multiplier": {
+        "high": 1.25,
+        "mid": 1.125,
+        "low": 1
+      },
+      "multiplierSourceMode": "shared-default",
+      "multiplierPath": "data/parameter/1200/misc/params.json#MoveVelRt_Shot",
+      "states": [
+        {
+          "id": "firing",
+          "label": "射击／动作中",
+          "baseSpeed": 0.05,
+          "baseSpeedPath": "data/parameter/1200/weapon/WeaponBlasterShort.game__GameParameterTable.json#GameParameters.WeaponParam.MoveSpeed"
+        }
+      ]
+    },
+    {
+      "weaponId": "main-201",
+      "upstreamRowId": "Blaster_Short_01",
+      "multiplier": {
+        "high": 1.25,
+        "mid": 1.125,
+        "low": 1
+      },
+      "multiplierSourceMode": "shared-default",
+      "multiplierPath": "data/parameter/1200/misc/params.json#MoveVelRt_Shot",
+      "states": [
+        {
+          "id": "firing",
+          "label": "射击／动作中",
+          "baseSpeed": 0.05,
+          "baseSpeedPath": "data/parameter/1200/weapon/WeaponBlasterShort.game__GameParameterTable.json#GameParameters.WeaponParam.MoveSpeed"
+        }
+      ]
+    },
+    {
+      "weaponId": "main-205",
+      "upstreamRowId": "Blaster_Short_O",
+      "multiplier": {
+        "high": 1.25,
+        "mid": 1.125,
+        "low": 1
+      },
+      "multiplierSourceMode": "shared-default",
+      "multiplierPath": "data/parameter/1200/misc/params.json#MoveVelRt_Shot",
+      "states": [
+        {
+          "id": "firing",
+          "label": "射击／动作中",
+          "baseSpeed": 0.05,
+          "baseSpeedPath": "data/parameter/1200/weapon/WeaponBlasterShort.game__GameParameterTable.json#GameParameters.WeaponParam.MoveSpeed"
+        }
+      ]
+    },
+    {
+      "weaponId": "main-210",
+      "upstreamRowId": "Blaster_Middle_00",
+      "multiplier": {
+        "high": 1.25,
+        "mid": 1.125,
+        "low": 1
+      },
+      "multiplierSourceMode": "shared-default",
+      "multiplierPath": "data/parameter/1200/misc/params.json#MoveVelRt_Shot",
+      "states": [
+        {
+          "id": "firing",
+          "label": "射击／动作中",
+          "baseSpeed": 0.045,
+          "baseSpeedPath": "data/parameter/1200/weapon/WeaponBlasterMiddle.game__GameParameterTable.json#GameParameters.WeaponParam.MoveSpeed"
+        }
+      ]
+    },
+    {
+      "weaponId": "main-211",
+      "upstreamRowId": "Blaster_Middle_01",
+      "multiplier": {
+        "high": 1.25,
+        "mid": 1.125,
+        "low": 1
+      },
+      "multiplierSourceMode": "shared-default",
+      "multiplierPath": "data/parameter/1200/misc/params.json#MoveVelRt_Shot",
+      "states": [
+        {
+          "id": "firing",
+          "label": "射击／动作中",
+          "baseSpeed": 0.045,
+          "baseSpeedPath": "data/parameter/1200/weapon/WeaponBlasterMiddle.game__GameParameterTable.json#GameParameters.WeaponParam.MoveSpeed"
+        }
+      ]
+    },
+    {
+      "weaponId": "main-212",
+      "upstreamRowId": "Blaster_Middle_02",
+      "multiplier": {
+        "high": 1.25,
+        "mid": 1.125,
+        "low": 1
+      },
+      "multiplierSourceMode": "shared-default",
+      "multiplierPath": "data/parameter/1200/misc/params.json#MoveVelRt_Shot",
+      "states": [
+        {
+          "id": "firing",
+          "label": "射击／动作中",
+          "baseSpeed": 0.045,
+          "baseSpeedPath": "data/parameter/1200/weapon/WeaponBlasterMiddle.game__GameParameterTable.json#GameParameters.WeaponParam.MoveSpeed"
+        }
+      ]
+    },
+    {
+      "weaponId": "main-220",
+      "upstreamRowId": "Blaster_Long_00",
+      "multiplier": {
+        "high": 1.25,
+        "mid": 1.125,
+        "low": 1
+      },
+      "multiplierSourceMode": "shared-default",
+      "multiplierPath": "data/parameter/1200/misc/params.json#MoveVelRt_Shot",
+      "states": [
+        {
+          "id": "firing",
+          "label": "射击／动作中",
+          "baseSpeed": 0.04,
+          "baseSpeedPath": "data/parameter/1200/weapon/WeaponBlasterLong.game__GameParameterTable.json#GameParameters.WeaponParam.MoveSpeed"
+        }
+      ]
+    },
+    {
+      "weaponId": "main-221",
+      "upstreamRowId": "Blaster_Long_01",
+      "multiplier": {
+        "high": 1.25,
+        "mid": 1.125,
+        "low": 1
+      },
+      "multiplierSourceMode": "shared-default",
+      "multiplierPath": "data/parameter/1200/misc/params.json#MoveVelRt_Shot",
+      "states": [
+        {
+          "id": "firing",
+          "label": "射击／动作中",
+          "baseSpeed": 0.04,
+          "baseSpeedPath": "data/parameter/1200/weapon/WeaponBlasterLong.game__GameParameterTable.json#GameParameters.WeaponParam.MoveSpeed"
+        }
+      ]
+    },
+    {
+      "weaponId": "main-230",
+      "upstreamRowId": "Blaster_LightShort_00",
+      "multiplier": {
+        "high": 1.25,
+        "mid": 1.125,
+        "low": 1
+      },
+      "multiplierSourceMode": "shared-default",
+      "multiplierPath": "data/parameter/1200/misc/params.json#MoveVelRt_Shot",
+      "states": [
+        {
+          "id": "firing",
+          "label": "射击／动作中",
+          "baseSpeed": 0.068,
+          "baseSpeedPath": "data/parameter/1200/weapon/WeaponBlasterLightShort.game__GameParameterTable.json#GameParameters.WeaponParam.MoveSpeed"
+        }
+      ]
+    },
+    {
+      "weaponId": "main-231",
+      "upstreamRowId": "Blaster_LightShort_01",
+      "multiplier": {
+        "high": 1.25,
+        "mid": 1.125,
+        "low": 1
+      },
+      "multiplierSourceMode": "shared-default",
+      "multiplierPath": "data/parameter/1200/misc/params.json#MoveVelRt_Shot",
+      "states": [
+        {
+          "id": "firing",
+          "label": "射击／动作中",
+          "baseSpeed": 0.068,
+          "baseSpeedPath": "data/parameter/1200/weapon/WeaponBlasterLightShort.game__GameParameterTable.json#GameParameters.WeaponParam.MoveSpeed"
+        }
+      ]
+    },
+    {
+      "weaponId": "main-240",
+      "upstreamRowId": "Blaster_Light_00",
+      "multiplier": {
+        "high": 1.25,
+        "mid": 1.125,
+        "low": 1
+      },
+      "multiplierSourceMode": "shared-default",
+      "multiplierPath": "data/parameter/1200/misc/params.json#MoveVelRt_Shot",
+      "states": [
+        {
+          "id": "firing",
+          "label": "射击／动作中",
+          "baseSpeed": 0.055,
+          "baseSpeedPath": "data/parameter/1200/weapon/WeaponBlasterLight.game__GameParameterTable.json#GameParameters.WeaponParam.MoveSpeed"
+        }
+      ]
+    },
+    {
+      "weaponId": "main-241",
+      "upstreamRowId": "Blaster_Light_01",
+      "multiplier": {
+        "high": 1.25,
+        "mid": 1.125,
+        "low": 1
+      },
+      "multiplierSourceMode": "shared-default",
+      "multiplierPath": "data/parameter/1200/misc/params.json#MoveVelRt_Shot",
+      "states": [
+        {
+          "id": "firing",
+          "label": "射击／动作中",
+          "baseSpeed": 0.055,
+          "baseSpeedPath": "data/parameter/1200/weapon/WeaponBlasterLight.game__GameParameterTable.json#GameParameters.WeaponParam.MoveSpeed"
+        }
+      ]
+    },
+    {
+      "weaponId": "main-250",
+      "upstreamRowId": "Blaster_LightLong_00",
+      "multiplier": {
+        "high": 1.25,
+        "mid": 1.125,
+        "low": 1
+      },
+      "multiplierSourceMode": "shared-default",
+      "multiplierPath": "data/parameter/1200/misc/params.json#MoveVelRt_Shot",
+      "states": [
+        {
+          "id": "firing",
+          "label": "射击／动作中",
+          "baseSpeed": 0.05,
+          "baseSpeedPath": "data/parameter/1200/weapon/WeaponBlasterLightLong.game__GameParameterTable.json#GameParameters.WeaponParam.MoveSpeed"
+        }
+      ]
+    },
+    {
+      "weaponId": "main-251",
+      "upstreamRowId": "Blaster_LightLong_01",
+      "multiplier": {
+        "high": 1.25,
+        "mid": 1.125,
+        "low": 1
+      },
+      "multiplierSourceMode": "shared-default",
+      "multiplierPath": "data/parameter/1200/misc/params.json#MoveVelRt_Shot",
+      "states": [
+        {
+          "id": "firing",
+          "label": "射击／动作中",
+          "baseSpeed": 0.05,
+          "baseSpeedPath": "data/parameter/1200/weapon/WeaponBlasterLightLong.game__GameParameterTable.json#GameParameters.WeaponParam.MoveSpeed"
+        }
+      ]
+    },
+    {
+      "weaponId": "main-252",
+      "upstreamRowId": "Blaster_LightLong_02",
+      "multiplier": {
+        "high": 1.25,
+        "mid": 1.125,
+        "low": 1
+      },
+      "multiplierSourceMode": "shared-default",
+      "multiplierPath": "data/parameter/1200/misc/params.json#MoveVelRt_Shot",
+      "states": [
+        {
+          "id": "firing",
+          "label": "射击／动作中",
+          "baseSpeed": 0.05,
+          "baseSpeedPath": "data/parameter/1200/weapon/WeaponBlasterLightLong.game__GameParameterTable.json#GameParameters.WeaponParam.MoveSpeed"
+        }
+      ]
+    },
+    {
+      "weaponId": "main-260",
+      "upstreamRowId": "Blaster_Precision_00",
+      "multiplier": {
+        "high": 1.25,
+        "mid": 1.125,
+        "low": 1
+      },
+      "multiplierSourceMode": "shared-default",
+      "multiplierPath": "data/parameter/1200/misc/params.json#MoveVelRt_Shot",
+      "states": [
+        {
+          "id": "firing",
+          "label": "射击／动作中",
+          "baseSpeed": 0.04,
+          "baseSpeedPath": "data/parameter/1200/weapon/WeaponBlasterPrecision.game__GameParameterTable.json#GameParameters.WeaponParam.MoveSpeed"
+        }
+      ]
+    },
+    {
+      "weaponId": "main-261",
+      "upstreamRowId": "Blaster_Precision_01",
+      "multiplier": {
+        "high": 1.25,
+        "mid": 1.125,
+        "low": 1
+      },
+      "multiplierSourceMode": "shared-default",
+      "multiplierPath": "data/parameter/1200/misc/params.json#MoveVelRt_Shot",
+      "states": [
+        {
+          "id": "firing",
+          "label": "射击／动作中",
+          "baseSpeed": 0.04,
+          "baseSpeedPath": "data/parameter/1200/weapon/WeaponBlasterPrecision.game__GameParameterTable.json#GameParameters.WeaponParam.MoveSpeed"
+        }
+      ]
+    },
+    {
+      "weaponId": "main-1000",
+      "upstreamRowId": "Roller_Compact_00",
+      "multiplier": {
+        "high": 1.25,
+        "mid": 1.125,
+        "low": 1
+      },
+      "multiplierSourceMode": "shared-default",
+      "multiplierPath": "data/parameter/1200/misc/params.json#MoveVelRt_Shot",
+      "states": []
+    },
+    {
+      "weaponId": "main-1001",
+      "upstreamRowId": "Roller_Compact_01",
+      "multiplier": {
+        "high": 1.25,
+        "mid": 1.125,
+        "low": 1
+      },
+      "multiplierSourceMode": "shared-default",
+      "multiplierPath": "data/parameter/1200/misc/params.json#MoveVelRt_Shot",
+      "states": []
+    },
+    {
+      "weaponId": "main-1002",
+      "upstreamRowId": "Roller_Compact_02",
+      "multiplier": {
+        "high": 1.25,
+        "mid": 1.125,
+        "low": 1
+      },
+      "multiplierSourceMode": "shared-default",
+      "multiplierPath": "data/parameter/1200/misc/params.json#MoveVelRt_Shot",
+      "states": []
+    },
+    {
+      "weaponId": "main-1011",
+      "upstreamRowId": "Roller_Normal_01",
+      "multiplier": {
+        "high": 1.25,
+        "mid": 1.125,
+        "low": 1
+      },
+      "multiplierSourceMode": "shared-default",
+      "multiplierPath": "data/parameter/1200/misc/params.json#MoveVelRt_Shot",
+      "states": []
+    },
+    {
+      "weaponId": "main-1015",
+      "upstreamRowId": "Roller_Normal_O",
+      "multiplier": {
+        "high": 1.25,
+        "mid": 1.125,
+        "low": 1
+      },
+      "multiplierSourceMode": "shared-default",
+      "multiplierPath": "data/parameter/1200/misc/params.json#MoveVelRt_Shot",
+      "states": []
+    },
+    {
+      "weaponId": "main-1020",
+      "upstreamRowId": "Roller_Heavy_00",
+      "multiplier": {
+        "high": 1.25,
+        "mid": 1.125,
+        "low": 1
+      },
+      "multiplierSourceMode": "shared-default",
+      "multiplierPath": "data/parameter/1200/misc/params.json#MoveVelRt_Shot",
+      "states": []
+    },
+    {
+      "weaponId": "main-1021",
+      "upstreamRowId": "Roller_Heavy_01",
+      "multiplier": {
+        "high": 1.25,
+        "mid": 1.125,
+        "low": 1
+      },
+      "multiplierSourceMode": "shared-default",
+      "multiplierPath": "data/parameter/1200/misc/params.json#MoveVelRt_Shot",
+      "states": []
+    },
+    {
+      "weaponId": "main-1022",
+      "upstreamRowId": "Roller_Heavy_02",
+      "multiplier": {
+        "high": 1.25,
+        "mid": 1.125,
+        "low": 1
+      },
+      "multiplierSourceMode": "shared-default",
+      "multiplierPath": "data/parameter/1200/misc/params.json#MoveVelRt_Shot",
+      "states": []
+    },
+    {
+      "weaponId": "main-1030",
+      "upstreamRowId": "Roller_Hunter_00",
+      "multiplier": {
+        "high": 1.25,
+        "mid": 1.125,
+        "low": 1
+      },
+      "multiplierSourceMode": "shared-default",
+      "multiplierPath": "data/parameter/1200/misc/params.json#MoveVelRt_Shot",
+      "states": []
+    },
+    {
+      "weaponId": "main-1031",
+      "upstreamRowId": "Roller_Hunter_01",
+      "multiplier": {
+        "high": 1.25,
+        "mid": 1.125,
+        "low": 1
+      },
+      "multiplierSourceMode": "shared-default",
+      "multiplierPath": "data/parameter/1200/misc/params.json#MoveVelRt_Shot",
+      "states": []
+    },
+    {
+      "weaponId": "main-1040",
+      "upstreamRowId": "Roller_Wide_00",
+      "multiplier": {
+        "high": 1.25,
+        "mid": 1.125,
+        "low": 1
+      },
+      "multiplierSourceMode": "shared-default",
+      "multiplierPath": "data/parameter/1200/misc/params.json#MoveVelRt_Shot",
+      "states": []
+    },
+    {
+      "weaponId": "main-1041",
+      "upstreamRowId": "Roller_Wide_01",
+      "multiplier": {
+        "high": 1.25,
+        "mid": 1.125,
+        "low": 1
+      },
+      "multiplierSourceMode": "shared-default",
+      "multiplierPath": "data/parameter/1200/misc/params.json#MoveVelRt_Shot",
+      "states": []
+    },
+    {
+      "weaponId": "main-1042",
+      "upstreamRowId": "Roller_Wide_02",
+      "multiplier": {
+        "high": 1.25,
+        "mid": 1.125,
+        "low": 1
+      },
+      "multiplierSourceMode": "shared-default",
+      "multiplierPath": "data/parameter/1200/misc/params.json#MoveVelRt_Shot",
+      "states": []
+    },
+    {
+      "weaponId": "main-1100",
+      "upstreamRowId": "Brush_Mini_00",
+      "multiplier": {
+        "high": 1.25,
+        "mid": 1.125,
+        "low": 1
+      },
+      "multiplierSourceMode": "shared-default",
+      "multiplierPath": "data/parameter/1200/misc/params.json#MoveVelRt_Shot",
+      "states": []
+    },
+    {
+      "weaponId": "main-1101",
+      "upstreamRowId": "Brush_Mini_01",
+      "multiplier": {
+        "high": 1.25,
+        "mid": 1.125,
+        "low": 1
+      },
+      "multiplierSourceMode": "shared-default",
+      "multiplierPath": "data/parameter/1200/misc/params.json#MoveVelRt_Shot",
+      "states": []
+    },
+    {
+      "weaponId": "main-1110",
+      "upstreamRowId": "Brush_Normal_00",
+      "multiplier": {
+        "high": 1.25,
+        "mid": 1.125,
+        "low": 1
+      },
+      "multiplierSourceMode": "shared-default",
+      "multiplierPath": "data/parameter/1200/misc/params.json#MoveVelRt_Shot",
+      "states": []
+    },
+    {
+      "weaponId": "main-1111",
+      "upstreamRowId": "Brush_Normal_01",
+      "multiplier": {
+        "high": 1.25,
+        "mid": 1.125,
+        "low": 1
+      },
+      "multiplierSourceMode": "shared-default",
+      "multiplierPath": "data/parameter/1200/misc/params.json#MoveVelRt_Shot",
+      "states": []
+    },
+    {
+      "weaponId": "main-1112",
+      "upstreamRowId": "Brush_Normal_02",
+      "multiplier": {
+        "high": 1.25,
+        "mid": 1.125,
+        "low": 1
+      },
+      "multiplierSourceMode": "shared-default",
+      "multiplierPath": "data/parameter/1200/misc/params.json#MoveVelRt_Shot",
+      "states": []
+    },
+    {
+      "weaponId": "main-1115",
+      "upstreamRowId": "Brush_Normal_O",
+      "multiplier": {
+        "high": 1.25,
+        "mid": 1.125,
+        "low": 1
+      },
+      "multiplierSourceMode": "shared-default",
+      "multiplierPath": "data/parameter/1200/misc/params.json#MoveVelRt_Shot",
+      "states": []
+    },
+    {
+      "weaponId": "main-1120",
+      "upstreamRowId": "Brush_Heavy_00",
+      "multiplier": {
+        "high": 1.25,
+        "mid": 1.125,
+        "low": 1
+      },
+      "multiplierSourceMode": "shared-default",
+      "multiplierPath": "data/parameter/1200/misc/params.json#MoveVelRt_Shot",
+      "states": []
+    },
+    {
+      "weaponId": "main-1121",
+      "upstreamRowId": "Brush_Heavy_01",
+      "multiplier": {
+        "high": 1.25,
+        "mid": 1.125,
+        "low": 1
+      },
+      "multiplierSourceMode": "shared-default",
+      "multiplierPath": "data/parameter/1200/misc/params.json#MoveVelRt_Shot",
+      "states": []
+    },
+    {
+      "weaponId": "main-1122",
+      "upstreamRowId": "Brush_Heavy_02",
+      "multiplier": {
+        "high": 1.25,
+        "mid": 1.125,
+        "low": 1
+      },
+      "multiplierSourceMode": "shared-default",
+      "multiplierPath": "data/parameter/1200/misc/params.json#MoveVelRt_Shot",
+      "states": []
+    },
+    {
+      "weaponId": "main-2000",
+      "upstreamRowId": "Charger_Quick_00",
+      "multiplier": {
+        "high": 1.25,
+        "mid": 1.125,
+        "low": 1
+      },
+      "multiplierSourceMode": "shared-default",
+      "multiplierPath": "data/parameter/1200/misc/params.json#MoveVelRt_Shot",
+      "states": [
+        {
+          "id": "full-charge",
+          "label": "满蓄力状态",
+          "baseSpeed": 0.03,
+          "baseSpeedPath": "data/parameter/1200/weapon/WeaponChargerQuick.game__GameParameterTable.json#GameParameters.WeaponParam.MoveSpeedFullCharge"
+        }
+      ]
+    },
+    {
+      "weaponId": "main-2001",
+      "upstreamRowId": "Charger_Quick_01",
+      "multiplier": {
+        "high": 1.25,
+        "mid": 1.125,
+        "low": 1
+      },
+      "multiplierSourceMode": "shared-default",
+      "multiplierPath": "data/parameter/1200/misc/params.json#MoveVelRt_Shot",
+      "states": [
+        {
+          "id": "full-charge",
+          "label": "满蓄力状态",
+          "baseSpeed": 0.03,
+          "baseSpeedPath": "data/parameter/1200/weapon/WeaponChargerQuick.game__GameParameterTable.json#GameParameters.WeaponParam.MoveSpeedFullCharge"
+        }
+      ]
+    },
+    {
+      "weaponId": "main-2011",
+      "upstreamRowId": "Charger_Normal_01",
+      "multiplier": {
+        "high": 1.25,
+        "mid": 1.125,
+        "low": 1
+      },
+      "multiplierSourceMode": "shared-default",
+      "multiplierPath": "data/parameter/1200/misc/params.json#MoveVelRt_Shot",
+      "states": [
+        {
+          "id": "full-charge",
+          "label": "满蓄力状态",
+          "baseSpeed": 0.02,
+          "baseSpeedPath": "data/parameter/1200/weapon/WeaponChargerNormal.game__GameParameterTable.json#GameParameters.WeaponParam.MoveSpeedFullCharge"
+        }
+      ]
+    },
+    {
+      "weaponId": "main-2012",
+      "upstreamRowId": "Charger_Normal_02",
+      "multiplier": {
+        "high": 1.25,
+        "mid": 1.125,
+        "low": 1
+      },
+      "multiplierSourceMode": "shared-default",
+      "multiplierPath": "data/parameter/1200/misc/params.json#MoveVelRt_Shot",
+      "states": [
+        {
+          "id": "full-charge",
+          "label": "满蓄力状态",
+          "baseSpeed": 0.02,
+          "baseSpeedPath": "data/parameter/1200/weapon/WeaponChargerNormal.game__GameParameterTable.json#GameParameters.WeaponParam.MoveSpeedFullCharge"
+        }
+      ]
+    },
+    {
+      "weaponId": "main-2015",
+      "upstreamRowId": "Charger_Normal_O",
+      "multiplier": {
+        "high": 1.25,
+        "mid": 1.125,
+        "low": 1
+      },
+      "multiplierSourceMode": "shared-default",
+      "multiplierPath": "data/parameter/1200/misc/params.json#MoveVelRt_Shot",
+      "states": [
+        {
+          "id": "full-charge",
+          "label": "满蓄力状态",
+          "baseSpeed": 0.02,
+          "baseSpeedPath": "data/parameter/1200/weapon/WeaponChargerNormal.game__GameParameterTable.json#GameParameters.WeaponParam.MoveSpeedFullCharge"
+        }
+      ]
+    },
+    {
+      "weaponId": "main-2020",
+      "upstreamRowId": "Charger_NormalScope_00",
+      "multiplier": {
+        "high": 1.25,
+        "mid": 1.125,
+        "low": 1
+      },
+      "multiplierSourceMode": "shared-default",
+      "multiplierPath": "data/parameter/1200/misc/params.json#MoveVelRt_Shot",
+      "states": [
+        {
+          "id": "full-charge",
+          "label": "满蓄力状态",
+          "baseSpeed": 0.02,
+          "baseSpeedPath": "data/parameter/1200/weapon/WeaponChargerNormalScope.game__GameParameterTable.json#GameParameters.WeaponParam.MoveSpeedFullCharge"
+        }
+      ]
+    },
+    {
+      "weaponId": "main-2021",
+      "upstreamRowId": "Charger_NormalScope_01",
+      "multiplier": {
+        "high": 1.25,
+        "mid": 1.125,
+        "low": 1
+      },
+      "multiplierSourceMode": "shared-default",
+      "multiplierPath": "data/parameter/1200/misc/params.json#MoveVelRt_Shot",
+      "states": [
+        {
+          "id": "full-charge",
+          "label": "满蓄力状态",
+          "baseSpeed": 0.02,
+          "baseSpeedPath": "data/parameter/1200/weapon/WeaponChargerNormalScope.game__GameParameterTable.json#GameParameters.WeaponParam.MoveSpeedFullCharge"
+        }
+      ]
+    },
+    {
+      "weaponId": "main-2022",
+      "upstreamRowId": "Charger_NormalScope_02",
+      "multiplier": {
+        "high": 1.25,
+        "mid": 1.125,
+        "low": 1
+      },
+      "multiplierSourceMode": "shared-default",
+      "multiplierPath": "data/parameter/1200/misc/params.json#MoveVelRt_Shot",
+      "states": [
+        {
+          "id": "full-charge",
+          "label": "满蓄力状态",
+          "baseSpeed": 0.02,
+          "baseSpeedPath": "data/parameter/1200/weapon/WeaponChargerNormalScope.game__GameParameterTable.json#GameParameters.WeaponParam.MoveSpeedFullCharge"
+        }
+      ]
+    },
+    {
+      "weaponId": "main-2030",
+      "upstreamRowId": "Charger_Long_00",
+      "multiplier": {
+        "high": 1.25,
+        "mid": 1.125,
+        "low": 1
+      },
+      "multiplierSourceMode": "shared-default",
+      "multiplierPath": "data/parameter/1200/misc/params.json#MoveVelRt_Shot",
+      "states": [
+        {
+          "id": "full-charge",
+          "label": "满蓄力状态",
+          "baseSpeed": 0.015,
+          "baseSpeedPath": "data/parameter/1200/weapon/WeaponChargerLong.game__GameParameterTable.json#GameParameters.WeaponParam.MoveSpeedFullCharge"
+        }
+      ]
+    },
+    {
+      "weaponId": "main-2031",
+      "upstreamRowId": "Charger_Long_01",
+      "multiplier": {
+        "high": 1.25,
+        "mid": 1.125,
+        "low": 1
+      },
+      "multiplierSourceMode": "shared-default",
+      "multiplierPath": "data/parameter/1200/misc/params.json#MoveVelRt_Shot",
+      "states": [
+        {
+          "id": "full-charge",
+          "label": "满蓄力状态",
+          "baseSpeed": 0.015,
+          "baseSpeedPath": "data/parameter/1200/weapon/WeaponChargerLong.game__GameParameterTable.json#GameParameters.WeaponParam.MoveSpeedFullCharge"
+        }
+      ]
+    },
+    {
+      "weaponId": "main-2040",
+      "upstreamRowId": "Charger_LongScope_00",
+      "multiplier": {
+        "high": 1.25,
+        "mid": 1.125,
+        "low": 1
+      },
+      "multiplierSourceMode": "shared-default",
+      "multiplierPath": "data/parameter/1200/misc/params.json#MoveVelRt_Shot",
+      "states": [
+        {
+          "id": "full-charge",
+          "label": "满蓄力状态",
+          "baseSpeed": 0.015,
+          "baseSpeedPath": "data/parameter/1200/weapon/WeaponChargerLongScope.game__GameParameterTable.json#GameParameters.WeaponParam.MoveSpeedFullCharge"
+        }
+      ]
+    },
+    {
+      "weaponId": "main-2041",
+      "upstreamRowId": "Charger_LongScope_01",
+      "multiplier": {
+        "high": 1.25,
+        "mid": 1.125,
+        "low": 1
+      },
+      "multiplierSourceMode": "shared-default",
+      "multiplierPath": "data/parameter/1200/misc/params.json#MoveVelRt_Shot",
+      "states": [
+        {
+          "id": "full-charge",
+          "label": "满蓄力状态",
+          "baseSpeed": 0.015,
+          "baseSpeedPath": "data/parameter/1200/weapon/WeaponChargerLongScope.game__GameParameterTable.json#GameParameters.WeaponParam.MoveSpeedFullCharge"
+        }
+      ]
+    },
+    {
+      "weaponId": "main-2050",
+      "upstreamRowId": "Charger_Light_00",
+      "multiplier": {
+        "high": 1.25,
+        "mid": 1.125,
+        "low": 1
+      },
+      "multiplierSourceMode": "shared-default",
+      "multiplierPath": "data/parameter/1200/misc/params.json#MoveVelRt_Shot",
+      "states": [
+        {
+          "id": "full-charge",
+          "label": "满蓄力状态",
+          "baseSpeed": 0.068,
+          "baseSpeedPath": "data/parameter/1200/weapon/WeaponChargerLight.game__GameParameterTable.json#GameParameters.WeaponParam.MoveSpeedFullCharge"
+        }
+      ]
+    },
+    {
+      "weaponId": "main-2051",
+      "upstreamRowId": "Charger_Light_01",
+      "multiplier": {
+        "high": 1.25,
+        "mid": 1.125,
+        "low": 1
+      },
+      "multiplierSourceMode": "shared-default",
+      "multiplierPath": "data/parameter/1200/misc/params.json#MoveVelRt_Shot",
+      "states": [
+        {
+          "id": "full-charge",
+          "label": "满蓄力状态",
+          "baseSpeed": 0.068,
+          "baseSpeedPath": "data/parameter/1200/weapon/WeaponChargerLight.game__GameParameterTable.json#GameParameters.WeaponParam.MoveSpeedFullCharge"
+        }
+      ]
+    },
+    {
+      "weaponId": "main-2060",
+      "upstreamRowId": "Charger_Keeper_00",
+      "multiplier": {
+        "high": 1.25,
+        "mid": 1.125,
+        "low": 1
+      },
+      "multiplierSourceMode": "shared-default",
+      "multiplierPath": "data/parameter/1200/misc/params.json#MoveVelRt_Shot",
+      "states": [
+        {
+          "id": "full-charge",
+          "label": "满蓄力状态",
+          "baseSpeed": 0.03,
+          "baseSpeedPath": "data/parameter/1200/weapon/WeaponChargerKeeper.game__GameParameterTable.json#GameParameters.WeaponParam.MoveSpeedFullCharge"
+        }
+      ]
+    },
+    {
+      "weaponId": "main-2061",
+      "upstreamRowId": "Charger_Keeper_01",
+      "multiplier": {
+        "high": 1.25,
+        "mid": 1.125,
+        "low": 1
+      },
+      "multiplierSourceMode": "shared-default",
+      "multiplierPath": "data/parameter/1200/misc/params.json#MoveVelRt_Shot",
+      "states": [
+        {
+          "id": "full-charge",
+          "label": "满蓄力状态",
+          "baseSpeed": 0.03,
+          "baseSpeedPath": "data/parameter/1200/weapon/WeaponChargerKeeper.game__GameParameterTable.json#GameParameters.WeaponParam.MoveSpeedFullCharge"
+        }
+      ]
+    },
+    {
+      "weaponId": "main-2070",
+      "upstreamRowId": "Charger_Pencil_00",
+      "multiplier": {
+        "high": 1.25,
+        "mid": 1.125,
+        "low": 1
+      },
+      "multiplierSourceMode": "shared-default",
+      "multiplierPath": "data/parameter/1200/misc/params.json#MoveVelRt_Shot",
+      "states": [
+        {
+          "id": "full-charge",
+          "label": "满蓄力状态",
+          "baseSpeed": 0.068,
+          "baseSpeedPath": "data/parameter/1200/weapon/WeaponChargerPencil.game__GameParameterTable.json#GameParameters.WeaponParam.MoveSpeedFullCharge"
+        }
+      ]
+    },
+    {
+      "weaponId": "main-2071",
+      "upstreamRowId": "Charger_Pencil_01",
+      "multiplier": {
+        "high": 1.25,
+        "mid": 1.125,
+        "low": 1
+      },
+      "multiplierSourceMode": "shared-default",
+      "multiplierPath": "data/parameter/1200/misc/params.json#MoveVelRt_Shot",
+      "states": [
+        {
+          "id": "full-charge",
+          "label": "满蓄力状态",
+          "baseSpeed": 0.068,
+          "baseSpeedPath": "data/parameter/1200/weapon/WeaponChargerPencil.game__GameParameterTable.json#GameParameters.WeaponParam.MoveSpeedFullCharge"
+        }
+      ]
+    },
+    {
+      "weaponId": "main-3000",
+      "upstreamRowId": "Slosher_Strong_00",
+      "multiplier": {
+        "high": 1.25,
+        "mid": 1.125,
+        "low": 1
+      },
+      "multiplierSourceMode": "shared-default",
+      "multiplierPath": "data/parameter/1200/misc/params.json#MoveVelRt_Shot",
+      "states": []
+    },
+    {
+      "weaponId": "main-3001",
+      "upstreamRowId": "Slosher_Strong_01",
+      "multiplier": {
+        "high": 1.25,
+        "mid": 1.125,
+        "low": 1
+      },
+      "multiplierSourceMode": "shared-default",
+      "multiplierPath": "data/parameter/1200/misc/params.json#MoveVelRt_Shot",
+      "states": []
+    },
+    {
+      "weaponId": "main-3005",
+      "upstreamRowId": "Slosher_Strong_O",
+      "multiplier": {
+        "high": 1.25,
+        "mid": 1.125,
+        "low": 1
+      },
+      "multiplierSourceMode": "shared-default",
+      "multiplierPath": "data/parameter/1200/misc/params.json#MoveVelRt_Shot",
+      "states": []
+    },
+    {
+      "weaponId": "main-3010",
+      "upstreamRowId": "Slosher_Diffusion_00",
+      "multiplier": {
+        "high": 1.25,
+        "mid": 1.125,
+        "low": 1
+      },
+      "multiplierSourceMode": "shared-default",
+      "multiplierPath": "data/parameter/1200/misc/params.json#MoveVelRt_Shot",
+      "states": []
+    },
+    {
+      "weaponId": "main-3011",
+      "upstreamRowId": "Slosher_Diffusion_01",
+      "multiplier": {
+        "high": 1.25,
+        "mid": 1.125,
+        "low": 1
+      },
+      "multiplierSourceMode": "shared-default",
+      "multiplierPath": "data/parameter/1200/misc/params.json#MoveVelRt_Shot",
+      "states": []
+    },
+    {
+      "weaponId": "main-3012",
+      "upstreamRowId": "Slosher_Diffusion_02",
+      "multiplier": {
+        "high": 1.25,
+        "mid": 1.125,
+        "low": 1
+      },
+      "multiplierSourceMode": "shared-default",
+      "multiplierPath": "data/parameter/1200/misc/params.json#MoveVelRt_Shot",
+      "states": []
+    },
+    {
+      "weaponId": "main-3020",
+      "upstreamRowId": "Slosher_Launcher_00",
+      "multiplier": {
+        "high": 1.25,
+        "mid": 1.125,
+        "low": 1
+      },
+      "multiplierSourceMode": "shared-default",
+      "multiplierPath": "data/parameter/1200/misc/params.json#MoveVelRt_Shot",
+      "states": []
+    },
+    {
+      "weaponId": "main-3021",
+      "upstreamRowId": "Slosher_Launcher_01",
+      "multiplier": {
+        "high": 1.25,
+        "mid": 1.125,
+        "low": 1
+      },
+      "multiplierSourceMode": "shared-default",
+      "multiplierPath": "data/parameter/1200/misc/params.json#MoveVelRt_Shot",
+      "states": []
+    },
+    {
+      "weaponId": "main-3030",
+      "upstreamRowId": "Slosher_Bathtub_00",
+      "multiplier": {
+        "high": 1.25,
+        "mid": 1.125,
+        "low": 1
+      },
+      "multiplierSourceMode": "shared-default",
+      "multiplierPath": "data/parameter/1200/misc/params.json#MoveVelRt_Shot",
+      "states": []
+    },
+    {
+      "weaponId": "main-3031",
+      "upstreamRowId": "Slosher_Bathtub_01",
+      "multiplier": {
+        "high": 1.25,
+        "mid": 1.125,
+        "low": 1
+      },
+      "multiplierSourceMode": "shared-default",
+      "multiplierPath": "data/parameter/1200/misc/params.json#MoveVelRt_Shot",
+      "states": []
+    },
+    {
+      "weaponId": "main-3040",
+      "upstreamRowId": "Slosher_Washtub_00",
+      "multiplier": {
+        "high": 1.25,
+        "mid": 1.125,
+        "low": 1
+      },
+      "multiplierSourceMode": "shared-default",
+      "multiplierPath": "data/parameter/1200/misc/params.json#MoveVelRt_Shot",
+      "states": []
+    },
+    {
+      "weaponId": "main-3041",
+      "upstreamRowId": "Slosher_Washtub_01",
+      "multiplier": {
+        "high": 1.25,
+        "mid": 1.125,
+        "low": 1
+      },
+      "multiplierSourceMode": "shared-default",
+      "multiplierPath": "data/parameter/1200/misc/params.json#MoveVelRt_Shot",
+      "states": []
+    },
+    {
+      "weaponId": "main-3050",
+      "upstreamRowId": "Slosher_Double_00",
+      "multiplier": {
+        "high": 1.25,
+        "mid": 1.125,
+        "low": 1
+      },
+      "multiplierSourceMode": "shared-default",
+      "multiplierPath": "data/parameter/1200/misc/params.json#MoveVelRt_Shot",
+      "states": []
+    },
+    {
+      "weaponId": "main-3051",
+      "upstreamRowId": "Slosher_Double_01",
+      "multiplier": {
+        "high": 1.25,
+        "mid": 1.125,
+        "low": 1
+      },
+      "multiplierSourceMode": "shared-default",
+      "multiplierPath": "data/parameter/1200/misc/params.json#MoveVelRt_Shot",
+      "states": []
+    },
+    {
+      "weaponId": "main-3052",
+      "upstreamRowId": "Slosher_Double_02",
+      "multiplier": {
+        "high": 1.25,
+        "mid": 1.125,
+        "low": 1
+      },
+      "multiplierSourceMode": "shared-default",
+      "multiplierPath": "data/parameter/1200/misc/params.json#MoveVelRt_Shot",
+      "states": []
+    },
+    {
+      "weaponId": "main-4000",
+      "upstreamRowId": "Spinner_Quick_00",
+      "multiplier": {
+        "high": 1.4,
+        "mid": 1.2,
+        "low": 1
+      },
+      "multiplierSourceMode": "weapon-override",
+      "multiplierPath": "data/parameter/1200/weapon/WeaponSpinnerQuick.game__GameParameterTable.json#GameParameters.MainWeaponSetting",
+      "states": [
+        {
+          "id": "firing",
+          "label": "射击／动作中",
+          "baseSpeed": 0.086,
+          "baseSpeedPath": "data/parameter/1200/weapon/WeaponSpinnerQuick.game__GameParameterTable.json#GameParameters.WeaponParam.MoveSpeed"
+        },
+        {
+          "id": "charging",
+          "label": "蓄力中",
+          "baseSpeed": 0.072,
+          "baseSpeedPath": "data/parameter/1200/weapon/WeaponSpinnerQuick.game__GameParameterTable.json#GameParameters.WeaponParam.MoveSpeed_Charge"
+        }
+      ]
+    },
+    {
+      "weaponId": "main-4001",
+      "upstreamRowId": "Spinner_Quick_01",
+      "multiplier": {
+        "high": 1.4,
+        "mid": 1.2,
+        "low": 1
+      },
+      "multiplierSourceMode": "weapon-override",
+      "multiplierPath": "data/parameter/1200/weapon/WeaponSpinnerQuick.game__GameParameterTable.json#GameParameters.MainWeaponSetting",
+      "states": [
+        {
+          "id": "firing",
+          "label": "射击／动作中",
+          "baseSpeed": 0.086,
+          "baseSpeedPath": "data/parameter/1200/weapon/WeaponSpinnerQuick.game__GameParameterTable.json#GameParameters.WeaponParam.MoveSpeed"
+        },
+        {
+          "id": "charging",
+          "label": "蓄力中",
+          "baseSpeed": 0.072,
+          "baseSpeedPath": "data/parameter/1200/weapon/WeaponSpinnerQuick.game__GameParameterTable.json#GameParameters.WeaponParam.MoveSpeed_Charge"
+        }
+      ]
+    },
+    {
+      "weaponId": "main-4002",
+      "upstreamRowId": "Spinner_Quick_02",
+      "multiplier": {
+        "high": 1.4,
+        "mid": 1.2,
+        "low": 1
+      },
+      "multiplierSourceMode": "weapon-override",
+      "multiplierPath": "data/parameter/1200/weapon/WeaponSpinnerQuick.game__GameParameterTable.json#GameParameters.MainWeaponSetting",
+      "states": [
+        {
+          "id": "firing",
+          "label": "射击／动作中",
+          "baseSpeed": 0.086,
+          "baseSpeedPath": "data/parameter/1200/weapon/WeaponSpinnerQuick.game__GameParameterTable.json#GameParameters.WeaponParam.MoveSpeed"
+        },
+        {
+          "id": "charging",
+          "label": "蓄力中",
+          "baseSpeed": 0.072,
+          "baseSpeedPath": "data/parameter/1200/weapon/WeaponSpinnerQuick.game__GameParameterTable.json#GameParameters.WeaponParam.MoveSpeed_Charge"
+        }
+      ]
+    },
+    {
+      "weaponId": "main-4011",
+      "upstreamRowId": "Spinner_Standard_01",
+      "multiplier": {
+        "high": 1.35,
+        "mid": 1.175,
+        "low": 1
+      },
+      "multiplierSourceMode": "weapon-override",
+      "multiplierPath": "data/parameter/1200/weapon/WeaponSpinnerStandard.game__GameParameterTable.json#GameParameters.MainWeaponSetting",
+      "states": [
+        {
+          "id": "firing",
+          "label": "射击／动作中",
+          "baseSpeed": 0.07,
+          "baseSpeedPath": "data/parameter/1200/weapon/WeaponSpinnerStandard.game__GameParameterTable.json#GameParameters.WeaponParam.MoveSpeed"
+        },
+        {
+          "id": "charging",
+          "label": "蓄力中",
+          "baseSpeed": 0.062,
+          "baseSpeedPath": "data/parameter/1200/weapon/WeaponSpinnerStandard.game__GameParameterTable.json#GameParameters.WeaponParam.MoveSpeed_Charge"
+        }
+      ]
+    },
+    {
+      "weaponId": "main-4015",
+      "upstreamRowId": "Spinner_Standard_O",
+      "multiplier": {
+        "high": 1.35,
+        "mid": 1.175,
+        "low": 1
+      },
+      "multiplierSourceMode": "weapon-override",
+      "multiplierPath": "data/parameter/1200/weapon/WeaponSpinnerStandard.game__GameParameterTable.json#GameParameters.MainWeaponSetting",
+      "states": [
+        {
+          "id": "firing",
+          "label": "射击／动作中",
+          "baseSpeed": 0.07,
+          "baseSpeedPath": "data/parameter/1200/weapon/WeaponSpinnerStandard.game__GameParameterTable.json#GameParameters.WeaponParam.MoveSpeed"
+        },
+        {
+          "id": "charging",
+          "label": "蓄力中",
+          "baseSpeed": 0.062,
+          "baseSpeedPath": "data/parameter/1200/weapon/WeaponSpinnerStandard.game__GameParameterTable.json#GameParameters.WeaponParam.MoveSpeed_Charge"
+        }
+      ]
+    },
+    {
+      "weaponId": "main-4020",
+      "upstreamRowId": "Spinner_Hyper_00",
+      "multiplier": {
+        "high": 1.35,
+        "mid": 1.175,
+        "low": 1
+      },
+      "multiplierSourceMode": "weapon-override",
+      "multiplierPath": "data/parameter/1200/weapon/WeaponSpinnerHyper.game__GameParameterTable.json#GameParameters.MainWeaponSetting",
+      "states": [
+        {
+          "id": "firing",
+          "label": "射击／动作中",
+          "baseSpeed": 0.06,
+          "baseSpeedPath": "data/parameter/1200/weapon/WeaponSpinnerHyper.game__GameParameterTable.json#GameParameters.WeaponParam.MoveSpeed"
+        },
+        {
+          "id": "charging",
+          "label": "蓄力中",
+          "baseSpeed": 0.044,
+          "baseSpeedPath": "data/parameter/1200/weapon/WeaponSpinnerHyper.game__GameParameterTable.json#GameParameters.WeaponParam.MoveSpeed_Charge"
+        }
+      ]
+    },
+    {
+      "weaponId": "main-4021",
+      "upstreamRowId": "Spinner_Hyper_01",
+      "multiplier": {
+        "high": 1.35,
+        "mid": 1.175,
+        "low": 1
+      },
+      "multiplierSourceMode": "weapon-override",
+      "multiplierPath": "data/parameter/1200/weapon/WeaponSpinnerHyper.game__GameParameterTable.json#GameParameters.MainWeaponSetting",
+      "states": [
+        {
+          "id": "firing",
+          "label": "射击／动作中",
+          "baseSpeed": 0.06,
+          "baseSpeedPath": "data/parameter/1200/weapon/WeaponSpinnerHyper.game__GameParameterTable.json#GameParameters.WeaponParam.MoveSpeed"
+        },
+        {
+          "id": "charging",
+          "label": "蓄力中",
+          "baseSpeed": 0.044,
+          "baseSpeedPath": "data/parameter/1200/weapon/WeaponSpinnerHyper.game__GameParameterTable.json#GameParameters.WeaponParam.MoveSpeed_Charge"
+        }
+      ]
+    },
+    {
+      "weaponId": "main-4022",
+      "upstreamRowId": "Spinner_Hyper_02",
+      "multiplier": {
+        "high": 1.35,
+        "mid": 1.175,
+        "low": 1
+      },
+      "multiplierSourceMode": "weapon-override",
+      "multiplierPath": "data/parameter/1200/weapon/WeaponSpinnerHyper.game__GameParameterTable.json#GameParameters.MainWeaponSetting",
+      "states": [
+        {
+          "id": "firing",
+          "label": "射击／动作中",
+          "baseSpeed": 0.06,
+          "baseSpeedPath": "data/parameter/1200/weapon/WeaponSpinnerHyper.game__GameParameterTable.json#GameParameters.WeaponParam.MoveSpeed"
+        },
+        {
+          "id": "charging",
+          "label": "蓄力中",
+          "baseSpeed": 0.044,
+          "baseSpeedPath": "data/parameter/1200/weapon/WeaponSpinnerHyper.game__GameParameterTable.json#GameParameters.WeaponParam.MoveSpeed_Charge"
+        }
+      ]
+    },
+    {
+      "weaponId": "main-4030",
+      "upstreamRowId": "Spinner_Downpour_00",
+      "multiplier": {
+        "high": 1.25,
+        "mid": 1.125,
+        "low": 1
+      },
+      "multiplierSourceMode": "weapon-override",
+      "multiplierPath": "data/parameter/1200/weapon/WeaponSpinnerDownpour.game__GameParameterTable.json#GameParameters.MainWeaponSetting",
+      "states": [
+        {
+          "id": "firing",
+          "label": "射击／动作中",
+          "baseSpeed": 0.086,
+          "baseSpeedPath": "data/parameter/1200/weapon/WeaponSpinnerDownpour.game__GameParameterTable.json#GameParameters.WeaponParam.MoveSpeed"
+        },
+        {
+          "id": "charging",
+          "label": "蓄力中",
+          "baseSpeed": 0.086,
+          "baseSpeedPath": "data/parameter/1200/weapon/WeaponSpinnerDownpour.game__GameParameterTable.json#GameParameters.WeaponParam.MoveSpeed_Charge"
+        },
+        {
+          "id": "secondary",
+          "label": "第二射击状态",
+          "baseSpeed": 0.05,
+          "baseSpeedPath": "data/parameter/1200/weapon/WeaponSpinnerDownpour.game__GameParameterTable.json#GameParameters.VariableShotParam.MoveSpeed"
+        }
+      ]
+    },
+    {
+      "weaponId": "main-4031",
+      "upstreamRowId": "Spinner_Downpour_01",
+      "multiplier": {
+        "high": 1.25,
+        "mid": 1.125,
+        "low": 1
+      },
+      "multiplierSourceMode": "weapon-override",
+      "multiplierPath": "data/parameter/1200/weapon/WeaponSpinnerDownpour.game__GameParameterTable.json#GameParameters.MainWeaponSetting",
+      "states": [
+        {
+          "id": "firing",
+          "label": "射击／动作中",
+          "baseSpeed": 0.086,
+          "baseSpeedPath": "data/parameter/1200/weapon/WeaponSpinnerDownpour.game__GameParameterTable.json#GameParameters.WeaponParam.MoveSpeed"
+        },
+        {
+          "id": "charging",
+          "label": "蓄力中",
+          "baseSpeed": 0.086,
+          "baseSpeedPath": "data/parameter/1200/weapon/WeaponSpinnerDownpour.game__GameParameterTable.json#GameParameters.WeaponParam.MoveSpeed_Charge"
+        },
+        {
+          "id": "secondary",
+          "label": "第二射击状态",
+          "baseSpeed": 0.05,
+          "baseSpeedPath": "data/parameter/1200/weapon/WeaponSpinnerDownpour.game__GameParameterTable.json#GameParameters.VariableShotParam.MoveSpeed"
+        }
+      ]
+    },
+    {
+      "weaponId": "main-4040",
+      "upstreamRowId": "Spinner_Serein_00",
+      "multiplier": {
+        "high": 1.3,
+        "mid": 1.15,
+        "low": 1
+      },
+      "multiplierSourceMode": "weapon-override",
+      "multiplierPath": "data/parameter/1200/weapon/WeaponSpinnerSerein.game__GameParameterTable.json#GameParameters.MainWeaponSetting",
+      "states": [
+        {
+          "id": "firing",
+          "label": "射击／动作中",
+          "baseSpeed": 0.07,
+          "baseSpeedPath": "data/parameter/1200/weapon/WeaponSpinnerSerein.game__GameParameterTable.json#GameParameters.WeaponParam.MoveSpeed"
+        },
+        {
+          "id": "charging",
+          "label": "蓄力中",
+          "baseSpeed": 0.04,
+          "baseSpeedPath": "data/parameter/1200/weapon/WeaponSpinnerSerein.game__GameParameterTable.json#GameParameters.WeaponParam.MoveSpeed_Charge"
+        }
+      ]
+    },
+    {
+      "weaponId": "main-4041",
+      "upstreamRowId": "Spinner_Serein_01",
+      "multiplier": {
+        "high": 1.3,
+        "mid": 1.15,
+        "low": 1
+      },
+      "multiplierSourceMode": "weapon-override",
+      "multiplierPath": "data/parameter/1200/weapon/WeaponSpinnerSerein.game__GameParameterTable.json#GameParameters.MainWeaponSetting",
+      "states": [
+        {
+          "id": "firing",
+          "label": "射击／动作中",
+          "baseSpeed": 0.07,
+          "baseSpeedPath": "data/parameter/1200/weapon/WeaponSpinnerSerein.game__GameParameterTable.json#GameParameters.WeaponParam.MoveSpeed"
+        },
+        {
+          "id": "charging",
+          "label": "蓄力中",
+          "baseSpeed": 0.04,
+          "baseSpeedPath": "data/parameter/1200/weapon/WeaponSpinnerSerein.game__GameParameterTable.json#GameParameters.WeaponParam.MoveSpeed_Charge"
+        }
+      ]
+    },
+    {
+      "weaponId": "main-4050",
+      "upstreamRowId": "Spinner_HyperShort_00",
+      "multiplier": {
+        "high": 1.4,
+        "mid": 1.2,
+        "low": 1
+      },
+      "multiplierSourceMode": "weapon-override",
+      "multiplierPath": "data/parameter/1200/weapon/WeaponSpinnerHyperShort.game__GameParameterTable.json#GameParameters.MainWeaponSetting",
+      "states": [
+        {
+          "id": "firing",
+          "label": "射击／动作中",
+          "baseSpeed": 0.086,
+          "baseSpeedPath": "data/parameter/1200/weapon/WeaponSpinnerHyperShort.game__GameParameterTable.json#GameParameters.WeaponParam.MoveSpeed"
+        },
+        {
+          "id": "charging",
+          "label": "蓄力中",
+          "baseSpeed": 0.072,
+          "baseSpeedPath": "data/parameter/1200/weapon/WeaponSpinnerHyperShort.game__GameParameterTable.json#GameParameters.WeaponParam.MoveSpeed_Charge"
+        }
+      ]
+    },
+    {
+      "weaponId": "main-4051",
+      "upstreamRowId": "Spinner_HyperShort_01",
+      "multiplier": {
+        "high": 1.4,
+        "mid": 1.2,
+        "low": 1
+      },
+      "multiplierSourceMode": "weapon-override",
+      "multiplierPath": "data/parameter/1200/weapon/WeaponSpinnerHyperShort.game__GameParameterTable.json#GameParameters.MainWeaponSetting",
+      "states": [
+        {
+          "id": "firing",
+          "label": "射击／动作中",
+          "baseSpeed": 0.086,
+          "baseSpeedPath": "data/parameter/1200/weapon/WeaponSpinnerHyperShort.game__GameParameterTable.json#GameParameters.WeaponParam.MoveSpeed"
+        },
+        {
+          "id": "charging",
+          "label": "蓄力中",
+          "baseSpeed": 0.072,
+          "baseSpeedPath": "data/parameter/1200/weapon/WeaponSpinnerHyperShort.game__GameParameterTable.json#GameParameters.WeaponParam.MoveSpeed_Charge"
+        }
+      ]
+    },
+    {
+      "weaponId": "main-5000",
+      "upstreamRowId": "Maneuver_Short_00",
+      "multiplier": {
+        "high": 1.25,
+        "mid": 1.125,
+        "low": 1
+      },
+      "multiplierSourceMode": "shared-default",
+      "multiplierPath": "data/parameter/1200/misc/params.json#MoveVelRt_Shot",
+      "states": [
+        {
+          "id": "firing",
+          "label": "射击／动作中",
+          "baseSpeed": 0.084,
+          "baseSpeedPath": "data/parameter/1200/weapon/WeaponManeuverShort.game__GameParameterTable.json#GameParameters.WeaponParam.MoveSpeed"
+        }
+      ]
+    },
+    {
+      "weaponId": "main-5001",
+      "upstreamRowId": "Maneuver_Short_01",
+      "multiplier": {
+        "high": 1.25,
+        "mid": 1.125,
+        "low": 1
+      },
+      "multiplierSourceMode": "shared-default",
+      "multiplierPath": "data/parameter/1200/misc/params.json#MoveVelRt_Shot",
+      "states": [
+        {
+          "id": "firing",
+          "label": "射击／动作中",
+          "baseSpeed": 0.084,
+          "baseSpeedPath": "data/parameter/1200/weapon/WeaponManeuverShort.game__GameParameterTable.json#GameParameters.WeaponParam.MoveSpeed"
+        }
+      ]
+    },
+    {
+      "weaponId": "main-5002",
+      "upstreamRowId": "Maneuver_Short_02",
+      "multiplier": {
+        "high": 1.25,
+        "mid": 1.125,
+        "low": 1
+      },
+      "multiplierSourceMode": "shared-default",
+      "multiplierPath": "data/parameter/1200/misc/params.json#MoveVelRt_Shot",
+      "states": [
+        {
+          "id": "firing",
+          "label": "射击／动作中",
+          "baseSpeed": 0.084,
+          "baseSpeedPath": "data/parameter/1200/weapon/WeaponManeuverShort.game__GameParameterTable.json#GameParameters.WeaponParam.MoveSpeed"
+        }
+      ]
+    },
+    {
+      "weaponId": "main-5010",
+      "upstreamRowId": "Maneuver_Normal_00",
+      "multiplier": {
+        "high": 1.25,
+        "mid": 1.125,
+        "low": 1
+      },
+      "multiplierSourceMode": "shared-default",
+      "multiplierPath": "data/parameter/1200/misc/params.json#MoveVelRt_Shot",
+      "states": [
+        {
+          "id": "firing",
+          "label": "射击／动作中",
+          "baseSpeed": 0.08,
+          "baseSpeedPath": "data/parameter/1200/weapon/WeaponManeuverNormal.game__GameParameterTable.json#GameParameters.WeaponParam.MoveSpeed"
+        }
+      ]
+    },
+    {
+      "weaponId": "main-5011",
+      "upstreamRowId": "Maneuver_Normal_01",
+      "multiplier": {
+        "high": 1.25,
+        "mid": 1.125,
+        "low": 1
+      },
+      "multiplierSourceMode": "shared-default",
+      "multiplierPath": "data/parameter/1200/misc/params.json#MoveVelRt_Shot",
+      "states": [
+        {
+          "id": "firing",
+          "label": "射击／动作中",
+          "baseSpeed": 0.08,
+          "baseSpeedPath": "data/parameter/1200/weapon/WeaponManeuverNormal.game__GameParameterTable.json#GameParameters.WeaponParam.MoveSpeed"
+        }
+      ]
+    },
+    {
+      "weaponId": "main-5012",
+      "upstreamRowId": "Maneuver_Normal_02",
+      "multiplier": {
+        "high": 1.25,
+        "mid": 1.125,
+        "low": 1
+      },
+      "multiplierSourceMode": "shared-default",
+      "multiplierPath": "data/parameter/1200/misc/params.json#MoveVelRt_Shot",
+      "states": [
+        {
+          "id": "firing",
+          "label": "射击／动作中",
+          "baseSpeed": 0.08,
+          "baseSpeedPath": "data/parameter/1200/weapon/WeaponManeuverNormal.game__GameParameterTable.json#GameParameters.WeaponParam.MoveSpeed"
+        }
+      ]
+    },
+    {
+      "weaponId": "main-5015",
+      "upstreamRowId": "Maneuver_Normal_O",
+      "multiplier": {
+        "high": 1.25,
+        "mid": 1.125,
+        "low": 1
+      },
+      "multiplierSourceMode": "shared-default",
+      "multiplierPath": "data/parameter/1200/misc/params.json#MoveVelRt_Shot",
+      "states": [
+        {
+          "id": "firing",
+          "label": "射击／动作中",
+          "baseSpeed": 0.08,
+          "baseSpeedPath": "data/parameter/1200/weapon/WeaponManeuverNormal.game__GameParameterTable.json#GameParameters.WeaponParam.MoveSpeed"
+        }
+      ]
+    },
+    {
+      "weaponId": "main-5020",
+      "upstreamRowId": "Maneuver_Gallon_00",
+      "multiplier": {
+        "high": 1.25,
+        "mid": 1.125,
+        "low": 1
+      },
+      "multiplierSourceMode": "shared-default",
+      "multiplierPath": "data/parameter/1200/misc/params.json#MoveVelRt_Shot",
+      "states": [
+        {
+          "id": "firing",
+          "label": "射击／动作中",
+          "baseSpeed": 0.06,
+          "baseSpeedPath": "data/parameter/1200/weapon/WeaponManeuverGallon.game__GameParameterTable.json#GameParameters.WeaponParam.MoveSpeed"
+        }
+      ]
+    },
+    {
+      "weaponId": "main-5021",
+      "upstreamRowId": "Maneuver_Gallon_01",
+      "multiplier": {
+        "high": 1.25,
+        "mid": 1.125,
+        "low": 1
+      },
+      "multiplierSourceMode": "shared-default",
+      "multiplierPath": "data/parameter/1200/misc/params.json#MoveVelRt_Shot",
+      "states": [
+        {
+          "id": "firing",
+          "label": "射击／动作中",
+          "baseSpeed": 0.06,
+          "baseSpeedPath": "data/parameter/1200/weapon/WeaponManeuverGallon.game__GameParameterTable.json#GameParameters.WeaponParam.MoveSpeed"
+        }
+      ]
+    },
+    {
+      "weaponId": "main-5030",
+      "upstreamRowId": "Maneuver_Dual_00",
+      "multiplier": {
+        "high": 1.25,
+        "mid": 1.125,
+        "low": 1
+      },
+      "multiplierSourceMode": "shared-default",
+      "multiplierPath": "data/parameter/1200/misc/params.json#MoveVelRt_Shot",
+      "states": [
+        {
+          "id": "firing",
+          "label": "射击／动作中",
+          "baseSpeed": 0.072,
+          "baseSpeedPath": "data/parameter/1200/weapon/WeaponManeuverDual.game__GameParameterTable.json#GameParameters.WeaponParam.MoveSpeed"
+        }
+      ]
+    },
+    {
+      "weaponId": "main-5031",
+      "upstreamRowId": "Maneuver_Dual_01",
+      "multiplier": {
+        "high": 1.25,
+        "mid": 1.125,
+        "low": 1
+      },
+      "multiplierSourceMode": "shared-default",
+      "multiplierPath": "data/parameter/1200/misc/params.json#MoveVelRt_Shot",
+      "states": [
+        {
+          "id": "firing",
+          "label": "射击／动作中",
+          "baseSpeed": 0.072,
+          "baseSpeedPath": "data/parameter/1200/weapon/WeaponManeuverDual.game__GameParameterTable.json#GameParameters.WeaponParam.MoveSpeed"
+        }
+      ]
+    },
+    {
+      "weaponId": "main-5032",
+      "upstreamRowId": "Maneuver_Dual_02",
+      "multiplier": {
+        "high": 1.25,
+        "mid": 1.125,
+        "low": 1
+      },
+      "multiplierSourceMode": "shared-default",
+      "multiplierPath": "data/parameter/1200/misc/params.json#MoveVelRt_Shot",
+      "states": [
+        {
+          "id": "firing",
+          "label": "射击／动作中",
+          "baseSpeed": 0.072,
+          "baseSpeedPath": "data/parameter/1200/weapon/WeaponManeuverDual.game__GameParameterTable.json#GameParameters.WeaponParam.MoveSpeed"
+        }
+      ]
+    },
+    {
+      "weaponId": "main-5040",
+      "upstreamRowId": "Maneuver_Stepper_00",
+      "multiplier": {
+        "high": 1.25,
+        "mid": 1.125,
+        "low": 1
+      },
+      "multiplierSourceMode": "shared-default",
+      "multiplierPath": "data/parameter/1200/misc/params.json#MoveVelRt_Shot",
+      "states": [
+        {
+          "id": "firing",
+          "label": "射击／动作中",
+          "baseSpeed": 0.072,
+          "baseSpeedPath": "data/parameter/1200/weapon/WeaponManeuverStepper.game__GameParameterTable.json#GameParameters.WeaponParam.MoveSpeed"
+        }
+      ]
+    },
+    {
+      "weaponId": "main-5041",
+      "upstreamRowId": "Maneuver_Stepper_01",
+      "multiplier": {
+        "high": 1.25,
+        "mid": 1.125,
+        "low": 1
+      },
+      "multiplierSourceMode": "shared-default",
+      "multiplierPath": "data/parameter/1200/misc/params.json#MoveVelRt_Shot",
+      "states": [
+        {
+          "id": "firing",
+          "label": "射击／动作中",
+          "baseSpeed": 0.072,
+          "baseSpeedPath": "data/parameter/1200/weapon/WeaponManeuverStepper.game__GameParameterTable.json#GameParameters.WeaponParam.MoveSpeed"
+        }
+      ]
+    },
+    {
+      "weaponId": "main-5050",
+      "upstreamRowId": "Maneuver_Long_00",
+      "multiplier": {
+        "high": 1.25,
+        "mid": 1.125,
+        "low": 1
+      },
+      "multiplierSourceMode": "shared-default",
+      "multiplierPath": "data/parameter/1200/misc/params.json#MoveVelRt_Shot",
+      "states": [
+        {
+          "id": "firing",
+          "label": "射击／动作中",
+          "baseSpeed": 0.07,
+          "baseSpeedPath": "data/parameter/1200/weapon/WeaponManeuverLong.game__GameParameterTable.json#GameParameters.WeaponParam.MoveSpeed"
+        }
+      ]
+    },
+    {
+      "weaponId": "main-5051",
+      "upstreamRowId": "Maneuver_Long_01",
+      "multiplier": {
+        "high": 1.25,
+        "mid": 1.125,
+        "low": 1
+      },
+      "multiplierSourceMode": "shared-default",
+      "multiplierPath": "data/parameter/1200/misc/params.json#MoveVelRt_Shot",
+      "states": [
+        {
+          "id": "firing",
+          "label": "射击／动作中",
+          "baseSpeed": 0.07,
+          "baseSpeedPath": "data/parameter/1200/weapon/WeaponManeuverLong.game__GameParameterTable.json#GameParameters.WeaponParam.MoveSpeed"
+        }
+      ]
+    },
+    {
+      "weaponId": "main-6000",
+      "upstreamRowId": "Shelter_Normal_00",
+      "multiplier": {
+        "high": 1.25,
+        "mid": 1.125,
+        "low": 1
+      },
+      "multiplierSourceMode": "shared-default",
+      "multiplierPath": "data/parameter/1200/misc/params.json#MoveVelRt_Shot",
+      "states": [
+        {
+          "id": "firing",
+          "label": "射击／动作中",
+          "baseSpeed": 0.065,
+          "baseSpeedPath": "data/parameter/1200/weapon/WeaponShelterNormal.game__GameParameterTable.json#GameParameters.spl__WeaponShelterShotgunParam.MoveSpeed"
+        }
+      ]
+    },
+    {
+      "weaponId": "main-6001",
+      "upstreamRowId": "Shelter_Normal_01",
+      "multiplier": {
+        "high": 1.25,
+        "mid": 1.125,
+        "low": 1
+      },
+      "multiplierSourceMode": "shared-default",
+      "multiplierPath": "data/parameter/1200/misc/params.json#MoveVelRt_Shot",
+      "states": [
+        {
+          "id": "firing",
+          "label": "射击／动作中",
+          "baseSpeed": 0.065,
+          "baseSpeedPath": "data/parameter/1200/weapon/WeaponShelterNormal.game__GameParameterTable.json#GameParameters.spl__WeaponShelterShotgunParam.MoveSpeed"
+        }
+      ]
+    },
+    {
+      "weaponId": "main-6005",
+      "upstreamRowId": "Shelter_Normal_O",
+      "multiplier": {
+        "high": 1.25,
+        "mid": 1.125,
+        "low": 1
+      },
+      "multiplierSourceMode": "shared-default",
+      "multiplierPath": "data/parameter/1200/misc/params.json#MoveVelRt_Shot",
+      "states": [
+        {
+          "id": "firing",
+          "label": "射击／动作中",
+          "baseSpeed": 0.065,
+          "baseSpeedPath": "data/parameter/1200/weapon/WeaponShelterNormal.game__GameParameterTable.json#GameParameters.spl__WeaponShelterShotgunParam.MoveSpeed"
+        }
+      ]
+    },
+    {
+      "weaponId": "main-6010",
+      "upstreamRowId": "Shelter_Wide_00",
+      "multiplier": {
+        "high": 1.25,
+        "mid": 1.125,
+        "low": 1
+      },
+      "multiplierSourceMode": "shared-default",
+      "multiplierPath": "data/parameter/1200/misc/params.json#MoveVelRt_Shot",
+      "states": [
+        {
+          "id": "firing",
+          "label": "射击／动作中",
+          "baseSpeed": 0.05,
+          "baseSpeedPath": "data/parameter/1200/weapon/WeaponShelterWide.game__GameParameterTable.json#GameParameters.spl__WeaponShelterShotgunParam.MoveSpeed"
+        }
+      ]
+    },
+    {
+      "weaponId": "main-6011",
+      "upstreamRowId": "Shelter_Wide_01",
+      "multiplier": {
+        "high": 1.25,
+        "mid": 1.125,
+        "low": 1
+      },
+      "multiplierSourceMode": "shared-default",
+      "multiplierPath": "data/parameter/1200/misc/params.json#MoveVelRt_Shot",
+      "states": [
+        {
+          "id": "firing",
+          "label": "射击／动作中",
+          "baseSpeed": 0.05,
+          "baseSpeedPath": "data/parameter/1200/weapon/WeaponShelterWide.game__GameParameterTable.json#GameParameters.spl__WeaponShelterShotgunParam.MoveSpeed"
+        }
+      ]
+    },
+    {
+      "weaponId": "main-6012",
+      "upstreamRowId": "Shelter_Wide_02",
+      "multiplier": {
+        "high": 1.25,
+        "mid": 1.125,
+        "low": 1
+      },
+      "multiplierSourceMode": "shared-default",
+      "multiplierPath": "data/parameter/1200/misc/params.json#MoveVelRt_Shot",
+      "states": [
+        {
+          "id": "firing",
+          "label": "射击／动作中",
+          "baseSpeed": 0.05,
+          "baseSpeedPath": "data/parameter/1200/weapon/WeaponShelterWide.game__GameParameterTable.json#GameParameters.spl__WeaponShelterShotgunParam.MoveSpeed"
+        }
+      ]
+    },
+    {
+      "weaponId": "main-6020",
+      "upstreamRowId": "Shelter_Compact_00",
+      "multiplier": {
+        "high": 1.25,
+        "mid": 1.125,
+        "low": 1
+      },
+      "multiplierSourceMode": "shared-default",
+      "multiplierPath": "data/parameter/1200/misc/params.json#MoveVelRt_Shot",
+      "states": [
+        {
+          "id": "firing",
+          "label": "射击／动作中",
+          "baseSpeed": 0.072,
+          "baseSpeedPath": "data/parameter/1200/weapon/WeaponShelterCompact.game__GameParameterTable.json#GameParameters.spl__WeaponShelterShotgunParam.MoveSpeed"
+        }
+      ]
+    },
+    {
+      "weaponId": "main-6021",
+      "upstreamRowId": "Shelter_Compact_01",
+      "multiplier": {
+        "high": 1.25,
+        "mid": 1.125,
+        "low": 1
+      },
+      "multiplierSourceMode": "shared-default",
+      "multiplierPath": "data/parameter/1200/misc/params.json#MoveVelRt_Shot",
+      "states": [
+        {
+          "id": "firing",
+          "label": "射击／动作中",
+          "baseSpeed": 0.072,
+          "baseSpeedPath": "data/parameter/1200/weapon/WeaponShelterCompact.game__GameParameterTable.json#GameParameters.spl__WeaponShelterShotgunParam.MoveSpeed"
+        }
+      ]
+    },
+    {
+      "weaponId": "main-6022",
+      "upstreamRowId": "Shelter_Compact_02",
+      "multiplier": {
+        "high": 1.25,
+        "mid": 1.125,
+        "low": 1
+      },
+      "multiplierSourceMode": "shared-default",
+      "multiplierPath": "data/parameter/1200/misc/params.json#MoveVelRt_Shot",
+      "states": [
+        {
+          "id": "firing",
+          "label": "射击／动作中",
+          "baseSpeed": 0.072,
+          "baseSpeedPath": "data/parameter/1200/weapon/WeaponShelterCompact.game__GameParameterTable.json#GameParameters.spl__WeaponShelterShotgunParam.MoveSpeed"
+        }
+      ]
+    },
+    {
+      "weaponId": "main-6030",
+      "upstreamRowId": "Shelter_Focus_00",
+      "multiplier": {
+        "high": 1.25,
+        "mid": 1.125,
+        "low": 1
+      },
+      "multiplierSourceMode": "shared-default",
+      "multiplierPath": "data/parameter/1200/misc/params.json#MoveVelRt_Shot",
+      "states": [
+        {
+          "id": "firing",
+          "label": "射击／动作中",
+          "baseSpeed": 0.058,
+          "baseSpeedPath": "data/parameter/1200/weapon/WeaponShelterFocus.game__GameParameterTable.json#GameParameters.spl__WeaponShelterShotgunParam.MoveSpeed"
+        }
+      ]
+    },
+    {
+      "weaponId": "main-6031",
+      "upstreamRowId": "Shelter_Focus_01",
+      "multiplier": {
+        "high": 1.25,
+        "mid": 1.125,
+        "low": 1
+      },
+      "multiplierSourceMode": "shared-default",
+      "multiplierPath": "data/parameter/1200/misc/params.json#MoveVelRt_Shot",
+      "states": [
+        {
+          "id": "firing",
+          "label": "射击／动作中",
+          "baseSpeed": 0.058,
+          "baseSpeedPath": "data/parameter/1200/weapon/WeaponShelterFocus.game__GameParameterTable.json#GameParameters.spl__WeaponShelterShotgunParam.MoveSpeed"
+        }
+      ]
+    },
+    {
+      "weaponId": "main-7010",
+      "upstreamRowId": "Stringer_Normal_00",
+      "multiplier": {
+        "high": 1.25,
+        "mid": 1.125,
+        "low": 1
+      },
+      "multiplierSourceMode": "shared-default",
+      "multiplierPath": "data/parameter/1200/misc/params.json#MoveVelRt_Shot",
+      "states": [
+        {
+          "id": "full-charge",
+          "label": "满蓄力状态",
+          "baseSpeed": 0.068,
+          "baseSpeedPath": "data/parameter/1200/weapon/WeaponStringerNormal.game__GameParameterTable.json#GameParameters.spl__WeaponStringerParam.ChargeParam.MoveSpeedFullCharge"
+        }
+      ]
+    },
+    {
+      "weaponId": "main-7011",
+      "upstreamRowId": "Stringer_Normal_01",
+      "multiplier": {
+        "high": 1.25,
+        "mid": 1.125,
+        "low": 1
+      },
+      "multiplierSourceMode": "shared-default",
+      "multiplierPath": "data/parameter/1200/misc/params.json#MoveVelRt_Shot",
+      "states": [
+        {
+          "id": "full-charge",
+          "label": "满蓄力状态",
+          "baseSpeed": 0.068,
+          "baseSpeedPath": "data/parameter/1200/weapon/WeaponStringerNormal.game__GameParameterTable.json#GameParameters.spl__WeaponStringerParam.ChargeParam.MoveSpeedFullCharge"
+        }
+      ]
+    },
+    {
+      "weaponId": "main-7012",
+      "upstreamRowId": "Stringer_Normal_02",
+      "multiplier": {
+        "high": 1.25,
+        "mid": 1.125,
+        "low": 1
+      },
+      "multiplierSourceMode": "shared-default",
+      "multiplierPath": "data/parameter/1200/misc/params.json#MoveVelRt_Shot",
+      "states": [
+        {
+          "id": "full-charge",
+          "label": "满蓄力状态",
+          "baseSpeed": 0.068,
+          "baseSpeedPath": "data/parameter/1200/weapon/WeaponStringerNormal.game__GameParameterTable.json#GameParameters.spl__WeaponStringerParam.ChargeParam.MoveSpeedFullCharge"
+        }
+      ]
+    },
+    {
+      "weaponId": "main-7015",
+      "upstreamRowId": "Stringer_Normal_O",
+      "multiplier": {
+        "high": 1.25,
+        "mid": 1.125,
+        "low": 1
+      },
+      "multiplierSourceMode": "shared-default",
+      "multiplierPath": "data/parameter/1200/misc/params.json#MoveVelRt_Shot",
+      "states": [
+        {
+          "id": "full-charge",
+          "label": "满蓄力状态",
+          "baseSpeed": 0.068,
+          "baseSpeedPath": "data/parameter/1200/weapon/WeaponStringerNormal.game__GameParameterTable.json#GameParameters.spl__WeaponStringerParam.ChargeParam.MoveSpeedFullCharge"
+        }
+      ]
+    },
+    {
+      "weaponId": "main-7020",
+      "upstreamRowId": "Stringer_Short_00",
+      "multiplier": {
+        "high": 1.25,
+        "mid": 1.125,
+        "low": 1
+      },
+      "multiplierSourceMode": "shared-default",
+      "multiplierPath": "data/parameter/1200/misc/params.json#MoveVelRt_Shot",
+      "states": [
+        {
+          "id": "full-charge",
+          "label": "满蓄力状态",
+          "baseSpeed": 0.084,
+          "baseSpeedPath": "data/parameter/1200/weapon/WeaponStringerShort.game__GameParameterTable.json#GameParameters.spl__WeaponStringerParam.ChargeParam.MoveSpeedFullCharge"
+        }
+      ]
+    },
+    {
+      "weaponId": "main-7021",
+      "upstreamRowId": "Stringer_Short_01",
+      "multiplier": {
+        "high": 1.25,
+        "mid": 1.125,
+        "low": 1
+      },
+      "multiplierSourceMode": "shared-default",
+      "multiplierPath": "data/parameter/1200/misc/params.json#MoveVelRt_Shot",
+      "states": [
+        {
+          "id": "full-charge",
+          "label": "满蓄力状态",
+          "baseSpeed": 0.084,
+          "baseSpeedPath": "data/parameter/1200/weapon/WeaponStringerShort.game__GameParameterTable.json#GameParameters.spl__WeaponStringerParam.ChargeParam.MoveSpeedFullCharge"
+        }
+      ]
+    },
+    {
+      "weaponId": "main-7022",
+      "upstreamRowId": "Stringer_Short_02",
+      "multiplier": {
+        "high": 1.25,
+        "mid": 1.125,
+        "low": 1
+      },
+      "multiplierSourceMode": "shared-default",
+      "multiplierPath": "data/parameter/1200/misc/params.json#MoveVelRt_Shot",
+      "states": [
+        {
+          "id": "full-charge",
+          "label": "满蓄力状态",
+          "baseSpeed": 0.084,
+          "baseSpeedPath": "data/parameter/1200/weapon/WeaponStringerShort.game__GameParameterTable.json#GameParameters.spl__WeaponStringerParam.ChargeParam.MoveSpeedFullCharge"
+        }
+      ]
+    },
+    {
+      "weaponId": "main-7030",
+      "upstreamRowId": "Stringer_Explosion_00",
+      "multiplier": {
+        "high": 1.25,
+        "mid": 1.125,
+        "low": 1
+      },
+      "multiplierSourceMode": "shared-default",
+      "multiplierPath": "data/parameter/1200/misc/params.json#MoveVelRt_Shot",
+      "states": [
+        {
+          "id": "full-charge",
+          "label": "满蓄力状态",
+          "baseSpeed": 0.04,
+          "baseSpeedPath": "data/parameter/1200/weapon/WeaponStringerExplosion.game__GameParameterTable.json#GameParameters.spl__WeaponStringerParam.ChargeParam.MoveSpeedFullCharge"
+        }
+      ]
+    },
+    {
+      "weaponId": "main-7031",
+      "upstreamRowId": "Stringer_Explosion_01",
+      "multiplier": {
+        "high": 1.25,
+        "mid": 1.125,
+        "low": 1
+      },
+      "multiplierSourceMode": "shared-default",
+      "multiplierPath": "data/parameter/1200/misc/params.json#MoveVelRt_Shot",
+      "states": [
+        {
+          "id": "full-charge",
+          "label": "满蓄力状态",
+          "baseSpeed": 0.04,
+          "baseSpeedPath": "data/parameter/1200/weapon/WeaponStringerExplosion.game__GameParameterTable.json#GameParameters.spl__WeaponStringerParam.ChargeParam.MoveSpeedFullCharge"
+        }
+      ]
+    },
+    {
+      "weaponId": "main-8000",
+      "upstreamRowId": "Saber_Normal_00",
+      "multiplier": {
+        "high": 1.25,
+        "mid": 1.125,
+        "low": 1
+      },
+      "multiplierSourceMode": "shared-default",
+      "multiplierPath": "data/parameter/1200/misc/params.json#MoveVelRt_Shot",
+      "states": [
+        {
+          "id": "full-charge",
+          "label": "满蓄力状态",
+          "baseSpeed": 0.4,
+          "baseSpeedPath": "data/parameter/1200/weapon/WeaponSaberNormal.game__GameParameterTable.json#GameParameters.spl__WeaponSaberParam.ChargeParam.MoveSpeedFullCharge"
+        }
+      ]
+    },
+    {
+      "weaponId": "main-8001",
+      "upstreamRowId": "Saber_Normal_01",
+      "multiplier": {
+        "high": 1.25,
+        "mid": 1.125,
+        "low": 1
+      },
+      "multiplierSourceMode": "shared-default",
+      "multiplierPath": "data/parameter/1200/misc/params.json#MoveVelRt_Shot",
+      "states": [
+        {
+          "id": "full-charge",
+          "label": "满蓄力状态",
+          "baseSpeed": 0.4,
+          "baseSpeedPath": "data/parameter/1200/weapon/WeaponSaberNormal.game__GameParameterTable.json#GameParameters.spl__WeaponSaberParam.ChargeParam.MoveSpeedFullCharge"
+        }
+      ]
+    },
+    {
+      "weaponId": "main-8002",
+      "upstreamRowId": "Saber_Normal_02",
+      "multiplier": {
+        "high": 1.25,
+        "mid": 1.125,
+        "low": 1
+      },
+      "multiplierSourceMode": "shared-default",
+      "multiplierPath": "data/parameter/1200/misc/params.json#MoveVelRt_Shot",
+      "states": [
+        {
+          "id": "full-charge",
+          "label": "满蓄力状态",
+          "baseSpeed": 0.4,
+          "baseSpeedPath": "data/parameter/1200/weapon/WeaponSaberNormal.game__GameParameterTable.json#GameParameters.spl__WeaponSaberParam.ChargeParam.MoveSpeedFullCharge"
+        }
+      ]
+    },
+    {
+      "weaponId": "main-8005",
+      "upstreamRowId": "Saber_Normal_O",
+      "multiplier": {
+        "high": 1.25,
+        "mid": 1.125,
+        "low": 1
+      },
+      "multiplierSourceMode": "shared-default",
+      "multiplierPath": "data/parameter/1200/misc/params.json#MoveVelRt_Shot",
+      "states": [
+        {
+          "id": "full-charge",
+          "label": "满蓄力状态",
+          "baseSpeed": 0.4,
+          "baseSpeedPath": "data/parameter/1200/weapon/WeaponSaberNormal.game__GameParameterTable.json#GameParameters.spl__WeaponSaberParam.ChargeParam.MoveSpeedFullCharge"
+        }
+      ]
+    },
+    {
+      "weaponId": "main-8010",
+      "upstreamRowId": "Saber_Lite_00",
+      "multiplier": {
+        "high": 1.25,
+        "mid": 1.125,
+        "low": 1
+      },
+      "multiplierSourceMode": "shared-default",
+      "multiplierPath": "data/parameter/1200/misc/params.json#MoveVelRt_Shot",
+      "states": [
+        {
+          "id": "full-charge",
+          "label": "满蓄力状态",
+          "baseSpeed": 0.4,
+          "baseSpeedPath": "data/parameter/1200/weapon/WeaponSaberLite.game__GameParameterTable.json#GameParameters.spl__WeaponSaberParam.ChargeParam.MoveSpeedFullCharge"
+        }
+      ]
+    },
+    {
+      "weaponId": "main-8011",
+      "upstreamRowId": "Saber_Lite_01",
+      "multiplier": {
+        "high": 1.25,
+        "mid": 1.125,
+        "low": 1
+      },
+      "multiplierSourceMode": "shared-default",
+      "multiplierPath": "data/parameter/1200/misc/params.json#MoveVelRt_Shot",
+      "states": [
+        {
+          "id": "full-charge",
+          "label": "满蓄力状态",
+          "baseSpeed": 0.4,
+          "baseSpeedPath": "data/parameter/1200/weapon/WeaponSaberLite.game__GameParameterTable.json#GameParameters.spl__WeaponSaberParam.ChargeParam.MoveSpeedFullCharge"
+        }
+      ]
+    },
+    {
+      "weaponId": "main-8012",
+      "upstreamRowId": "Saber_Lite_02",
+      "multiplier": {
+        "high": 1.25,
+        "mid": 1.125,
+        "low": 1
+      },
+      "multiplierSourceMode": "shared-default",
+      "multiplierPath": "data/parameter/1200/misc/params.json#MoveVelRt_Shot",
+      "states": [
+        {
+          "id": "full-charge",
+          "label": "满蓄力状态",
+          "baseSpeed": 0.4,
+          "baseSpeedPath": "data/parameter/1200/weapon/WeaponSaberLite.game__GameParameterTable.json#GameParameters.spl__WeaponSaberParam.ChargeParam.MoveSpeedFullCharge"
+        }
+      ]
+    },
+    {
+      "weaponId": "main-8020",
+      "upstreamRowId": "Saber_Heavy_00",
+      "multiplier": {
+        "high": 1.25,
+        "mid": 1.125,
+        "low": 1
+      },
+      "multiplierSourceMode": "shared-default",
+      "multiplierPath": "data/parameter/1200/misc/params.json#MoveVelRt_Shot",
+      "states": [
+        {
+          "id": "full-charge",
+          "label": "满蓄力状态",
+          "baseSpeed": 0.35,
+          "baseSpeedPath": "data/parameter/1200/weapon/WeaponSaberHeavy.game__GameParameterTable.json#GameParameters.spl__WeaponSaberParam.ChargeParam.MoveSpeedFullCharge"
+        }
+      ]
+    },
+    {
+      "weaponId": "main-8021",
+      "upstreamRowId": "Saber_Heavy_01",
+      "multiplier": {
+        "high": 1.25,
+        "mid": 1.125,
+        "low": 1
+      },
+      "multiplierSourceMode": "shared-default",
+      "multiplierPath": "data/parameter/1200/misc/params.json#MoveVelRt_Shot",
+      "states": [
+        {
+          "id": "full-charge",
+          "label": "满蓄力状态",
+          "baseSpeed": 0.35,
+          "baseSpeedPath": "data/parameter/1200/weapon/WeaponSaberHeavy.game__GameParameterTable.json#GameParameters.spl__WeaponSaberParam.ChargeParam.MoveSpeedFullCharge"
+        }
+      ]
+    }
+  ]
+}

@@ -1201,7 +1201,7 @@ export default function Home() {
                       </p>
                     </div>
                     <p className="note">
-                      套装关系已核对 · 续航、快跳与基础移动曲线已核对 · 其余 AP
+                      套装关系已核对 · 续航、快跳、移动与已支持动作走速已核对 · 其余 AP
                       效果曲线仍在验证
                     </p>
                   </aside>

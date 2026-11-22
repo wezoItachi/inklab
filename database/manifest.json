@@ -12,6 +12,7 @@
     "weaponKits": "weapon-kits.v12.0.0.json",
     "weaponImageAssets": "weapon-image-assets.v12.0.0.json",
     "weaponMovementClasses": "weapon-movement-classes.v12.0.0.json",
+    "weaponActionMovement": "weapon-action-movement.v12.0.0.json",
     "sources": "sources.json",
     "importReport": "import-report.v12.0.0.json",
     "parameterImportReport": "parameter-import-report.v12.0.0.json",

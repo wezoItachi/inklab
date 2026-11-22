@@ -1,6 +1,8 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import {
+  actionMovementData,
+  analyzeActionMovement,
   analyzeMovementSpeed,
   getMovementSpeed,
   getWeaponMovementClass,
@@ -62,4 +64,52 @@ void test('run speed does not apply the ninja squid modifier', () => {
   });
   assert.equal(analysis.ninjaSquidApplied, false);
   assert.equal(analysis.speed, analysis.speedBeforeFixedAbilities);
+});
+
+void test('action movement database keeps verified state coverage explicit', () => {
+  assert.equal(actionMovementData.records.length, weapons.length);
+  assert.deepEqual(actionMovementData.counts, {
+    weaponsWithStates: 136,
+    firing: 99,
+    charging: 15,
+    fullCharge: 37,
+    secondary: 2,
+    weaponOverrides: 15,
+  });
+});
+
+void test('standard firing movement uses the shared run-speed multiplier', () => {
+  const base = analyzeActionMovement('shooter-normalt', 0);
+  const maximum = analyzeActionMovement('shooter-normalt', 57);
+  assert.equal(base.states[0]?.id, 'firing');
+  assert.equal(base.states[0]?.baseDisplaySpeed, 0.72);
+  assert.equal(base.states[0]?.speed, 0.72);
+  assert.equal(maximum.states[0]?.speed, 0.9);
+  assert.equal(maximum.multiplierSourceMode, 'shared-default');
+});
+
+void test('splatling movement preserves its weapon-specific multiplier', () => {
+  const maximum = analyzeActionMovement('spinner-standardt', 57);
+  assert.equal(maximum.multiplierSourceMode, 'weapon-override');
+  assert.equal(maximum.multiplier, 1.35);
+  assert.equal(
+    maximum.states.find(({ id }) => id === 'firing')?.speed,
+    0.945,
+  );
+  assert.equal(
+    maximum.states.find(({ id }) => id === 'charging')?.speed,
+    0.837,
+  );
+});
+
+void test('full-charge and secondary states remain separately labelled', () => {
+  const charger = analyzeActionMovement('charger-normalt', 0);
+  assert.equal(charger.states[0]?.id, 'full-charge');
+  assert.equal(charger.states[0]?.speed, 0.2);
+
+  const splatling = analyzeActionMovement('main-4030', 0);
+  assert.equal(
+    splatling.states.find(({ id }) => id === 'secondary')?.speed,
+    0.5,
+  );
 });

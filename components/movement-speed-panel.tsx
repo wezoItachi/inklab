@@ -1,6 +1,7 @@
 import { Check, TrendingUp } from 'lucide-react';
 import type { Ability } from '@/lib/abilities';
 import {
+  analyzeActionMovement,
   analyzeMovementSpeed,
   type MovementAbilityId,
 } from '@/lib/movement-speed';
@@ -35,6 +36,7 @@ export function MovementSpeedPanel({
     hasNinjaSquid,
   });
   const isSwim = abilityId === 'ssu';
+  const actionMovement = analyzeActionMovement(weapon.id, ap);
   const quickAp = [3, 6, 10, 20, 30, 57];
   const speedLabel = isSwim ? '潜墨移动' : '普通人形态移动';
 
@@ -91,9 +93,37 @@ export function MovementSpeedPanel({
         </p>
       )}
       {!isSwim && (
-        <p className="effect-boundary">
-          “提升人类移动速度”还会影响部分武器的射击、蓄力与满蓄力移动倍率；本轮只开放已经统一核对的普通人形态走速，武器动作走速继续单独验证。
-        </p>
+        <>
+          <div className="ap-preview-label">
+            <div>
+              <span>当前武器动作走速</span>
+              <small>
+                仅显示上游已提供基础速度的状态 · 与普通人形态走速分开
+              </small>
+            </div>
+          </div>
+          {actionMovement.states.length > 0 ? (
+            <div className="ink-saver-metrics">
+              {actionMovement.states.map((state) => (
+                <div key={state.id}>
+                  <small>{state.label}</small>
+                  <b>
+                    {state.baseDisplaySpeed.toFixed(3)} → {state.speed.toFixed(3)}
+                  </b>
+                  <span>
+                    单位/帧 · {actionMovement.multiplierSourceMode === 'weapon-override'
+                      ? '武器专用倍率'
+                      : '通用人速倍率'}
+                  </span>
+                </div>
+              ))}
+            </div>
+          ) : (
+            <p className="effect-boundary">
+              当前武器尚无可公开复算的射击／蓄力动作基础速度；普通人形态走速仍可计算，动作状态不会用同一数值代填。
+            </p>
+          )}
+        </>
       )}
       <div className="ap-preview-label">
         <div>
@@ -130,8 +160,9 @@ export function MovementSpeedPanel({
       </p>
       <p className="effect-source">
         <Check size={13} />
-        轻量／中量／重量三套能力值与当前武器 WeaponSpeedType 来自 Leanny Ver.
-        12.0.0 固定快照，并经 Sendou.ink 公开分析器实现交叉核对。数值按分析器口径显示为游戏单位/帧，不换算成现实距离。
+        轻量／中量／重量三套能力值、当前武器 WeaponSpeedType
+        与已显示的动作基础速度来自 Leanny Ver. 12.0.0 固定快照，并经
+        Sendou.ink 公开分析器实现交叉核对。数值按分析器口径显示为游戏单位/帧，不换算成现实距离。
       </p>
     </>
   );

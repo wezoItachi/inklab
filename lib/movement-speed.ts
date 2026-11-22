@@ -1,4 +1,5 @@
 import movementClassDatabaseJson from '../database/weapon-movement-classes.v12.0.0.json' with { type: 'json' };
+import actionMovementDatabaseJson from '../database/weapon-action-movement.v12.0.0.json' with { type: 'json' };
 import {
   clampAbilityPoints,
   interpolateAbilityValue,
@@ -27,10 +28,49 @@ type MovementClassDatabase = {
   records: MovementClassRecord[];
 };
 
+type ActionMovementState = {
+  id: 'firing' | 'charging' | 'full-charge' | 'secondary';
+  label: string;
+  baseSpeed: number;
+  baseSpeedPath: string;
+};
+
+type ActionMovementRecord = {
+  weaponId: string;
+  upstreamRowId: string;
+  multiplier: { high: number; mid: number; low: number };
+  multiplierSourceMode: 'shared-default' | 'weapon-override';
+  multiplierPath: string;
+  states: ActionMovementState[];
+};
+
+type ActionMovementDatabase = {
+  gameVersion: string;
+  checkedAt: string;
+  datasetStatus: string;
+  sourceId: string;
+  sourceCommit: string;
+  sharedMultiplier: { high: number; mid: number; low: number };
+  counts: {
+    weaponsWithStates: number;
+    firing: number;
+    charging: number;
+    fullCharge: number;
+    secondary: number;
+    weaponOverrides: number;
+  };
+  records: ActionMovementRecord[];
+};
+
 const movementClassDatabase =
   movementClassDatabaseJson as MovementClassDatabase;
+const actionMovementDatabase =
+  actionMovementDatabaseJson as ActionMovementDatabase;
 const movementClassByWeaponId = new Map(
   movementClassDatabase.records.map((record) => [record.weaponId, record]),
+);
+const actionMovementByWeaponId = new Map(
+  actionMovementDatabase.records.map((record) => [record.weaponId, record]),
 );
 
 const swimValues = {
@@ -107,4 +147,35 @@ export function analyzeMovementSpeed({
   };
 }
 
+export function analyzeActionMovement(weaponId: string, ap: number) {
+  const record = actionMovementByWeaponId.get(weaponId);
+  const boundedAp = clampAbilityPoints(ap);
+  if (!record) {
+    return {
+      ap: boundedAp,
+      multiplierSourceMode: 'shared-default' as const,
+      multiplier: 1,
+      states: [],
+    };
+  }
+  const multiplier = interpolateAbilityValue(
+    [record.multiplier.high, record.multiplier.mid, record.multiplier.low],
+    boundedAp,
+  );
+  return {
+    ap: boundedAp,
+    multiplierSourceMode: record.multiplierSourceMode,
+    multiplier,
+    states: record.states.map((state) => ({
+      ...state,
+      baseDisplaySpeed:
+        Math.round(state.baseSpeed * 10 * 1_000_000) / 1_000_000,
+      speed:
+        Math.round(state.baseSpeed * multiplier * 10 * 1_000_000) / 1_000_000,
+      gainPercent: (multiplier - 1) * 100,
+    })),
+  };
+}
+
 export const movementClassData = movementClassDatabase;
+export const actionMovementData = actionMovementDatabase;
