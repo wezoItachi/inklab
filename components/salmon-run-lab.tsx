@@ -33,6 +33,7 @@ import {
   analyzeTargetActions,
   compareSalmonPressure,
   getSalmonWeaponPerformance,
+  parseSalmonTargetHealth,
   rushTargets,
   salmonPressurePresets,
   salmonTargets,
@@ -70,7 +71,11 @@ export function SalmonRunLab() {
     [pressureStrategy, setPressureStrategy] =
       useState<SalmonPressureStrategy>('synchronized');
   const [targetId, setTargetId] = useState('rush-goldie'),
-    [customTargetHealth, setCustomTargetHealth] = useState(500);
+    [customTargetHealth, setCustomTargetHealth] = useState(500),
+    [targetHealthInput, setTargetHealthInput] = useState('500'),
+    [targetHealthMessage, setTargetHealthMessage] = useState<string | null>(
+      null,
+    );
   const manuallyEdited = useRef(false);
   const refreshSchedule = useRef<() => void>(() => {});
   const selected = selectedIds.map(
@@ -217,6 +222,19 @@ export function SalmonRunLab() {
     if (!target) return;
     setTargetId(id);
     setCustomTargetHealth(target.health);
+    setTargetHealthInput(String(target.health));
+    setTargetHealthMessage(null);
+  };
+  const updateTargetHealth = (raw: string) => {
+    setTargetHealthInput(raw);
+    const parsed = parseSalmonTargetHealth(raw);
+    setTargetHealthMessage(parsed.message);
+    if (parsed.value !== null) setCustomTargetHealth(parsed.value);
+  };
+  const normalizeTargetHealth = () => {
+    if (targetHealthMessage === null) return;
+    setTargetHealthInput(String(customTargetHealth));
+    setTargetHealthMessage(null);
   };
 
   return (
@@ -615,14 +633,20 @@ export function SalmonRunLab() {
                 min="1"
                 max="100000"
                 step="1"
-                value={customTargetHealth}
-                onChange={(event) =>
-                  setCustomTargetHealth(
-                    Math.max(1, Number(event.target.value) || 1),
-                  )
-                }
+                value={targetHealthInput}
+                aria-invalid={targetHealthMessage !== null}
+                aria-describedby="salmon-target-health-status"
+                onChange={(event) => updateTargetHealth(event.target.value)}
+                onBlur={normalizeTargetHealth}
               />
               <span>HP</span>
+              <output
+                id="salmon-target-health-status"
+                className={targetHealthMessage ? 'error' : ''}
+                aria-live="polite"
+              >
+                {targetHealthMessage ?? '范围 1–100000'}
+              </output>
             </label>
           </div>
           <div className="salmon-target-groups">

@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import {salmonRecoveryModelGate,salmonSplatBombCycle} from './salmon-ink-cycle.ts';
-import {analyzeSalmonPressure,analyzeTargetActions,compareSalmonPressure,getSalmonWeaponPerformance,getWeaponActionWindow,salmonTargets,salmonWeaponPerformance} from './salmon-pressure.ts';
+import {analyzeSalmonPressure,analyzeTargetActions,compareSalmonPressure,getSalmonWeaponPerformance,getWeaponActionWindow,parseSalmonTargetHealth,salmonTargets,salmonWeaponPerformance} from './salmon-pressure.ts';
 import {getSalmonParametersByName} from './salmon-weapon-parameters.ts';
 
 void test('first Salmon Run pressure samples retain traceable weapon values',()=>{
@@ -75,6 +75,13 @@ void test('target solver reports fractional equivalents and real action count',(
   assert.equal(result.overkill,120);
   assert.equal(result.totalFrames,60);
   assert.equal(result.totalInkConsumption,10);
+});
+
+void test('custom target health rejects incomplete or out-of-range input without changing the model',()=>{
+  assert.deepEqual(parseSalmonTargetHealth('300'),{value:300,message:null});
+  assert.equal(parseSalmonTargetHealth('').value,null);
+  assert.match(parseSalmonTargetHealth('1.5').message??'',/整数/);
+  assert.match(parseSalmonTargetHealth('100001').message??'',/1–100000/);
 });
 
 void test('unsupported weapons keep the pressure result explicitly incomplete',()=>{

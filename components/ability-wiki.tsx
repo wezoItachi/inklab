@@ -122,6 +122,22 @@ export function AbilityWiki({
                 <Plus size={14} />
               </button>
             ))}
+            {shown.length === 0 ? (
+              <output className="wiki-empty">
+                <Search size={18} />
+                <b>没有符合当前组合的能力</b>
+                <span>清除搜索词和标签后可查看全部能力。</span>
+                <button
+                  type="button"
+                  onClick={() => {
+                    setQuery('');
+                    setFilters([]);
+                  }}
+                >
+                  查看全部能力
+                </button>
+              </output>
+            ) : null}
           </div>
         </section>
         <aside className="ability-detail">

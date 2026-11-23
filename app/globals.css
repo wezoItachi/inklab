@@ -1794,6 +1794,33 @@ button {
 .wiki-abilities svg {
   color: var(--purple);
 }
+.wiki-abilities .wiki-empty {
+  grid-column: 1 / -1;
+  display: grid;
+  justify-items: center;
+  gap: 7px;
+  padding: 28px 16px;
+  border: 1px dashed #cfc7f3;
+  background: #faf8ff;
+  color: #746f80;
+  text-align: center;
+}
+.wiki-empty b {
+  color: var(--ink);
+  font-size: 11px;
+}
+.wiki-empty span {
+  font-size: 9px;
+}
+.wiki-empty button {
+  margin-top: 3px;
+  border: 1px solid var(--purple);
+  background: #fff;
+  color: var(--purple);
+  padding: 7px 11px;
+  font-size: 9px;
+  font-weight: 900;
+}
 .ability-name {
   display: flex;
   align-items: center;
@@ -5425,6 +5452,21 @@ button {
   color: #5f596d;
   font-size: 8px;
   font-weight: 900;
+}
+.salmon-target-head label output {
+  grid-column: 1 / -1;
+  min-height: 12px;
+  color: #817b8c;
+  font-size: 7px;
+  font-weight: 700;
+  text-align: right;
+}
+.salmon-target-head label output.error {
+  color: #a43655;
+}
+.salmon-target-head input[aria-invalid='true'] {
+  border-color: #c84f70;
+  box-shadow: 0 0 0 2px #c84f7018;
 }
 .salmon-target-head input {
   width: 76px;

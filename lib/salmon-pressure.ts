@@ -32,6 +32,16 @@ export type SalmonTarget={
 };
 
 export const SALMON_MODEL_VERSION='draft-2026-10-08';
+export const SALMON_TARGET_HEALTH_MIN=1;
+export const SALMON_TARGET_HEALTH_MAX=100000;
+
+export const parseSalmonTargetHealth=(raw:string):{value:number|null;message:string|null}=>{
+  if(raw.trim()==='')return{value:null,message:'请输入目标生命值。'};
+  const value=Number(raw);
+  if(!Number.isFinite(value)||!Number.isInteger(value))return{value:null,message:'目标生命值需要填写整数。'};
+  if(value<SALMON_TARGET_HEALTH_MIN||value>SALMON_TARGET_HEALTH_MAX)return{value:null,message:`请输入 ${SALMON_TARGET_HEALTH_MIN}–${SALMON_TARGET_HEALTH_MAX} HP。`};
+  return{value,message:null};
+};
 
 const shooterPattern=(damage:number,frames:number,ink:number):SalmonAttackPattern=>({label:'连续射击',damagePerAction:damage,actionFrames:frames,inkConsumptionPerAction:ink,note:'保持射击并假设全部命中'});
 
