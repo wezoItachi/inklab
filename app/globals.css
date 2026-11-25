@@ -3380,6 +3380,13 @@ button {
   font: 800 7px monospace;
   font-style: normal;
 }
+.glowfly-weapons i {
+  margin-top: 2px;
+  color: #8c6d76;
+  font-size: 6px;
+  font-style: normal;
+  line-height: 1.35;
+}
 .glowfly-model {
   display: flex;
   flex-direction: column;
@@ -5408,6 +5415,12 @@ button {
   color: #716c63;
   font: 700 7px monospace;
   line-height: 1.35;
+}
+.salmon-action-labels {
+  display: block;
+  margin-bottom: 5px;
+  color: var(--purple);
+  font: 800 7px monospace;
 }
 .salmon-target-lab {
   margin-top: 13px;

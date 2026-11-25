@@ -11,6 +11,14 @@ export type AbilityContext = {
   verification: 'curve-pending' | 'rule-only';
 };
 
+export function getAbilityLabScopeNote(
+  verification: AbilityContext['verification'],
+) {
+  return verification === 'rule-only'
+    ? '这是固定主能力，按对应部位与触发条件生效；它不进入 0–57AP 通用曲线，也不会生成伪造的投入临界点。'
+    : '当前先展示可核对的规则语义；效果曲线、临界点与推荐投入量继续保持待验证。';
+}
+
 const targetById: Readonly<Record<string, string>> = {
   ssu: '鱿鱼形态移动',
   rsu: '人形态移动',

@@ -533,7 +533,7 @@ export function SalmonRunLab() {
           </div>
         </div>
         <div className="pressure-presets">
-          <b>首批试算样本</b>
+          <b>动作模型样本</b>
           {salmonPressurePresets.map((preset) => (
             <button
               type="button"
@@ -581,6 +581,10 @@ export function SalmonRunLab() {
                         )}{' '}
                         动作 DPS · {performance.routine.label}
                       </small>
+                      {performance.limit.label !==
+                      performance.routine.label ? (
+                        <i>{performance.limit.note}</i>
+                      ) : null}
                     </>
                   ) : (
                     <em>两种手法均待核验</em>
@@ -700,6 +704,10 @@ export function SalmonRunLab() {
                       <b>{solution.weapon.name}</b>
                     </header>
                     <section>
+                      <small className="salmon-action-labels">
+                        {solution.performance.limit.label} /{' '}
+                        {solution.performance.routine.label}
+                      </small>
                       <strong>
                         {solution.limit.damageEquivalent.toFixed(2)} 确 → 实际{' '}
                         {solution.limit.requiredActions} 次

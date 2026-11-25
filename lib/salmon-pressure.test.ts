@@ -1,17 +1,39 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import {salmonRecoveryModelGate,salmonSplatBombCycle} from './salmon-ink-cycle.ts';
-import {analyzeSalmonPressure,analyzeTargetActions,compareSalmonPressure,getSalmonWeaponPerformance,getWeaponActionWindow,parseSalmonTargetHealth,salmonTargets,salmonWeaponPerformance} from './salmon-pressure.ts';
+import {analyzeSalmonPressure,analyzeTargetActions,compareSalmonPressure,getSalmonWeaponPerformance,getWeaponActionWindow,parseSalmonTargetHealth,salmonPressurePresets,salmonTargets,salmonWeaponPerformance} from './salmon-pressure.ts';
 import {getSalmonParametersByName} from './salmon-weapon-parameters.ts';
 
 void test('first Salmon Run pressure samples retain traceable weapon values',()=>{
-  assert.equal(salmonWeaponPerformance.length,11);
+  assert.equal(salmonWeaponPerformance.length,14);
   assert.equal(salmonWeaponPerformance.every(item=>item.sourcePaths.length>=1),true);
   assert.equal(salmonTargets.length,14);
   assert.equal(salmonTargets.every(target=>target.health>0&&target.note.length>0),true);
   assert.equal(salmonTargets.every(target=>target.healthStatus==='reviewed-community-reference'),true);
   assert.equal(salmonTargets.find(target=>target.id==='stinger')?.healthExpression,'60 × 7');
   assert.match(salmonTargets.find(target=>target.id==='flyfish-basket')?.note??'',/10 倍/);
+});
+
+void test('verified dualie profiles keep ordinary and post-dodge states separate',()=>{
+  const kelvin=getSalmonWeaponPerformance('salmon-maneuver-gallon-00');
+  const glooga=getSalmonWeaponPerformance('salmon-maneuver-long-00');
+  const grizzco=getSalmonWeaponPerformance('grizzco-dualies');
+  assert.ok(kelvin&&glooga&&grizzco);
+  assert.equal(getWeaponActionWindow(kelvin).actionDps.toFixed(1),'466.7');
+  assert.equal(getWeaponActionWindow(kelvin,'routine').actionDps,300);
+  assert.equal(getWeaponActionWindow(glooga).actionDps,600);
+  assert.equal(getWeaponActionWindow(glooga,'routine').actionDps,300);
+  assert.equal(getWeaponActionWindow(grizzco).actionDps,525);
+  assert.equal(getWeaponActionWindow(grizzco,'routine').actionDps,420);
+  for(const performance of [kelvin,glooga,grizzco]){
+    const record=getSalmonParametersByName(performance.name);
+    assert.ok(record,performance.name);
+    assert.equal(record.parameters.find(item=>item.key==='postDodgeDamagePerShot')?.value,performance.limit.damagePerAction,performance.name);
+    assert.equal(record.parameters.find(item=>item.key==='postDodgeFireIntervalFrames')?.value,performance.limit.actionFrames,performance.name);
+    assert.equal(record.parameters.find(item=>item.key==='damagePerShot')?.value,performance.routine.damagePerAction,performance.name);
+    assert.equal(record.parameters.find(item=>item.key==='fireIntervalFrames')?.value,performance.routine.actionFrames,performance.name);
+    assert.equal(record.parameters.find(item=>item.key==='inkConsumptionPerShot')?.value,performance.limit.inkConsumptionPerAction,performance.name);
+  }
 });
 
 void test('verified continuous-fire Salmon weapons match the compact 12.0 action snapshot',()=>{
@@ -59,6 +81,13 @@ void test('pressure comparison exposes limit and explicit routine profiles',()=>
   assert.equal(result.limit.combinedActionDps>result.routine.combinedActionDps,true);
   assert.equal(result.limit.recoveryModelReady,false);
   assert.equal(result.limit.recoveryModelBlockers.length,4);
+});
+
+void test('pressure presets always contain four supported action profiles',()=>{
+  for(const preset of salmonPressurePresets){
+    assert.equal(preset.weaponIds.length,4,preset.label);
+    assert.equal(preset.weaponIds.every(id=>getSalmonWeaponPerformance(id)!==null),true,preset.label);
+  }
 });
 
 void test('source-backed ink-cycle evidence keeps sustained output gated',()=>{

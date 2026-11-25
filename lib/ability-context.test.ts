@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import { abilities } from './abilities.ts';
-import { buildAbilityContext } from './ability-context.ts';
+import { buildAbilityContext, getAbilityLabScopeNote } from './ability-context.ts';
 import { getWeapon } from './weapon-catalog.ts';
 
 const weapon = getWeapon('shooter-quickmiddle-cstm01');
@@ -30,4 +30,6 @@ void test('exclusive abilities are described as conditional main abilities', () 
   const context = buildAbilityContext(ability, weapon, 10);
   assert.equal(context.activation, '主技能限定／条件触发');
   assert.equal(context.verification, 'rule-only');
+  assert.match(getAbilityLabScopeNote(context.verification), /不进入 0–57AP/);
+  assert.doesNotMatch(getAbilityLabScopeNote(context.verification), /待验证/);
 });

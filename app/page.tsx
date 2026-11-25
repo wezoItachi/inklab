@@ -49,7 +49,10 @@ import { WeaponPicker } from '@/components/weapon-picker';
 import { SectionErrorBoundary } from '@/components/section-error-boundary';
 import type { WeaponPickerItem } from '@/lib/weapon-picker';
 import { getPageHash, parsePageHash, type PageId } from '@/lib/page-navigation';
-import { buildAbilityContext } from '@/lib/ability-context';
+import {
+  buildAbilityContext,
+  getAbilityLabScopeNote,
+} from '@/lib/ability-context';
 import { getAbilityCurveDefinition } from '@/lib/ability-curves';
 import {
   getMainWeaponAssetUrl,
@@ -1558,7 +1561,9 @@ function EffectPanel({
               </small>
               <strong>{a?.name}</strong>
               <p>
-                当前先展示可核对的规则语义；效果曲线、临界点与推荐投入量继续保持待验证。
+                {getAbilityLabScopeNote(
+                  genericContext?.verification ?? 'curve-pending',
+                )}
               </p>
             </div>
             <span>

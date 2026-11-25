@@ -31,7 +31,7 @@ export type SalmonTarget={
   healthStatus:'reviewed-community-reference';
 };
 
-export const SALMON_MODEL_VERSION='draft-2026-10-08';
+export const SALMON_MODEL_VERSION='draft-2026-11-25';
 export const SALMON_TARGET_HEALTH_MIN=1;
 export const SALMON_TARGET_HEALTH_MAX=100000;
 
@@ -65,8 +65,15 @@ const continuousFirePerformance=continuousFireWeapons.map(({weaponId,name,upstre
   return{weaponId,name,limit:pattern,routine:pattern,sourcePaths:coopOverride?[basePath,coopPath]:[basePath]} satisfies SalmonWeaponPerformance;
 });
 
+const verifiedDualiePerformance:readonly SalmonWeaponPerformance[]=[
+  {weaponId:'salmon-maneuver-gallon-00',name:'开尔文525',limit:{label:'翻滚后连续射击',damagePerAction:70,actionFrames:9,inkConsumptionPerAction:1.4,note:'已进入翻滚后射击状态；不计首次翻滚的耗墨与动作时间'},routine:{label:'普通连续射击',damagePerAction:45,actionFrames:9,inkConsumptionPerAction:1.4,note:'不使用翻滚强化状态并假设全部命中'},sourcePaths:['data/parameter/1200/weapon/WeaponManeuverGallon.game__GameParameterTable.json','data/parameter/1200/weapon/WeaponManeuverGallon_Coop.game__GameParameterTable.json']},
+  {weaponId:'salmon-maneuver-long-00',name:'灭熄FF',limit:{label:'翻滚后连续射击',damagePerAction:40,actionFrames:4,inkConsumptionPerAction:1.2,note:'已进入翻滚后射击状态；不计首次翻滚的耗墨与动作时间'},routine:{label:'普通连续射击',damagePerAction:40,actionFrames:8,inkConsumptionPerAction:1.2,note:'不使用翻滚强化状态并假设全部命中'},sourcePaths:['data/parameter/1200/weapon/WeaponManeuverLong.game__GameParameterTable.json','data/parameter/1200/weapon/WeaponManeuverLong_Coop.game__GameParameterTable.json']},
+  {weaponId:'grizzco-dualies',name:'熊先生印章机动枪',limit:{label:'翻滚后连续射击',damagePerAction:35,actionFrames:4,inkConsumptionPerAction:.5,note:'已进入翻滚后射击状态；不计首次翻滚的耗墨与动作时间'},routine:{label:'普通连续射击',damagePerAction:35,actionFrames:5,inkConsumptionPerAction:.5,note:'不使用翻滚强化状态并假设全部命中'},sourcePaths:['data/parameter/1200/weapon/WeaponManeuverBear_Coop.game__GameParameterTable.json']},
+] as const;
+
 export const salmonWeaponPerformance:readonly SalmonWeaponPerformance[]=[
   ...continuousFirePerformance,
+  ...verifiedDualiePerformance,
   {weaponId:'tri-stringer',name:'三发猎鱼弓',limit:{label:'一段蓄力 · 三箭全中',damagePerAction:300,actionFrames:40,inkConsumptionPerAction:4,note:'30 帧一段蓄力 + 10 帧后摇'},routine:{label:'一段／满蓄力各一次',damagePerAction:750,actionFrames:122,inkConsumptionPerAction:11.5,note:'一段 300 伤害／40 帧与满蓄力 450 伤害／82 帧各一次；不是玩家统计'},sourcePaths:['data/parameter/1200/weapon/WeaponStringerNormal.game__GameParameterTable.json','data/parameter/1200/weapon/WeaponStringerNormal_Coop.game__GameParameterTable.json']},
 ] as const;
 
@@ -75,6 +82,7 @@ export const salmonPressurePresets=[
   {id:'splash-four',label:'4×窄域标记枪',weaponIds:['splash-o-matic','splash-o-matic','splash-o-matic','splash-o-matic']},
   {id:'mixed-shooters',label:'射击枪混编',weaponIds:['salmon-shooter-short-00','splash-o-matic','splash-o-matic','salmon-shooter-heavy-00']},
   {id:'tri-stringer-four',label:'4×三发猎鱼弓',weaponIds:['tri-stringer','tri-stringer','tri-stringer','tri-stringer']},
+  {id:'dualies-states',label:'双枪状态对照',weaponIds:['salmon-maneuver-gallon-00','salmon-maneuver-long-00','grizzco-dualies','salmon-maneuver-gallon-00']},
 ] as const;
 
 export const salmonTargets=salmonTargetDocument.records as readonly SalmonTarget[];
