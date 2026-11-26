@@ -54,6 +54,7 @@ import {
   getAbilityLabScopeNote,
 } from '@/lib/ability-context';
 import { getAbilityCurveDefinition } from '@/lib/ability-curves';
+import { hasFixedAbilityAnalysis } from '@/lib/fixed-ability-analysis';
 import {
   getMainWeaponAssetUrl,
   getSpecialWeaponAssetUrl,
@@ -172,6 +173,12 @@ const SubResistancePanel = lazy(() =>
   import('@/components/sub-resistance-panel').then(
     ({ SubResistancePanel }) => ({ default: SubResistancePanel }),
   ),
+);
+
+const FixedAbilityPanel = lazy(() =>
+  import('@/components/fixed-ability-panel').then(({ FixedAbilityPanel }) => ({
+    default: FixedAbilityPanel,
+  })),
 );
 
 const LoadoutContextAnalysis = lazy(() =>
@@ -1211,6 +1218,18 @@ export default function Home() {
                       hasRespawnPunisher={totals.some(
                         ({ a }) => a?.id === 'rp',
                       )}
+                      swimSpeedAp={
+                        totals.find(({ a }) => a?.id === 'ssu')?.ap ?? 0
+                      }
+                      quickJumpAp={
+                        totals.find(({ a }) => a?.id === 'qsj')?.ap ?? 0
+                      }
+                      quickRespawnAp={
+                        totals.find(({ a }) => a?.id === 'qr')?.ap ?? 0
+                      }
+                      specialSaverAp={
+                        totals.find(({ a }) => a?.id === 'ss')?.ap ?? 0
+                      }
                     />
                     <div className="accordions">
                       <Suspense
@@ -1331,6 +1350,10 @@ function EffectPanel({
   hasStealthJump,
   hasNinjaSquid,
   hasRespawnPunisher,
+  swimSpeedAp,
+  quickJumpAp,
+  quickRespawnAp,
+  specialSaverAp,
 }: {
   weapon: Weapon;
   id: string;
@@ -1342,6 +1365,10 @@ function EffectPanel({
   hasStealthJump: boolean;
   hasNinjaSquid: boolean;
   hasRespawnPunisher: boolean;
+  swimSpeedAp: number;
+  quickJumpAp: number;
+  quickRespawnAp: number;
+  specialSaverAp: number;
 }) {
   const a = abilities.find((x) => x.id === id);
   const isMain = id === 'ism';
@@ -1356,6 +1383,7 @@ function EffectPanel({
   const isSubPower = id === 'subp';
   const isSubResistance = id === 'subr';
   const isSpecialPower = id === 'spu';
+  const fixedAbility = a && hasFixedAbilityAnalysis(a.id) ? a : null;
   const genericContext = a ? buildAbilityContext(a, weapon, ap) : null;
   const curve = getAbilityCurveDefinition(id);
   return (
@@ -1539,7 +1567,9 @@ function EffectPanel({
         </Suspense>
       ) : isSpecialPower ? (
         <Suspense
-          fallback={<p className="parameter-public-note">正在计算特殊武器性能…</p>}
+          fallback={
+            <p className="parameter-public-note">正在计算特殊武器性能…</p>
+          }
         >
           <SpecialPowerPanel
             weapon={weapon}
@@ -1549,6 +1579,21 @@ function EffectPanel({
             isPreview={isPreview}
             equippedAp={equippedAp}
             clearPreview={clearPreview}
+          />
+        </Suspense>
+      ) : fixedAbility ? (
+        <Suspense
+          fallback={
+            <p className="parameter-public-note">正在计算固定能力边界…</p>
+          }
+        >
+          <FixedAbilityPanel
+            weapon={weapon}
+            ability={fixedAbility}
+            swimSpeedAp={swimSpeedAp}
+            quickJumpAp={quickJumpAp}
+            quickRespawnAp={quickRespawnAp}
+            specialSaverAp={specialSaverAp}
           />
         </Suspense>
       ) : (

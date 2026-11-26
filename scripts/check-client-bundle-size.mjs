@@ -50,6 +50,7 @@ const lazySections = [
   ['special-power-panel', '特殊武器性能分析'],
   ['quick-respawn-panel', '条件复活时间分析'],
   ['sub-resistance-panel', '次要武器影响分析'],
+  ['fixed-ability-panel', '固定主能力配装联动'],
   ['loadout-context-analysis', '当前配装上下文分析'],
 ];
 
