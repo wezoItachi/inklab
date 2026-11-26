@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import { buildLoadoutContextSections } from './loadout-context-analysis.ts';
-import { getWeapon } from './weapon-catalog.ts';
+import { getWeapon, weapons } from './weapon-catalog.ts';
 
 void test('context analysis reads the current kit and verified equipped AP curves', () => {
   const sections = buildLoadoutContextSections(
@@ -31,25 +31,59 @@ void test('context analysis reads the current kit and verified equipped AP curve
   assert.equal(special?.metrics[1]?.state, 'verified');
   assert.equal(special?.metrics[2]?.state, 'pending');
   assert.equal(mobility?.metrics[0]?.label, '快跳');
+  assert.match(mobility?.metrics[0]?.value ?? '', /3AP · \d+帧/);
   assert.equal(other?.metrics[0]?.label, '主省');
-  assert.match(other?.metrics[0]?.note ?? '', /正式效果曲线/);
+  assert.match(other?.metrics[0]?.value ?? '', /10AP · 耗墨 −/);
+  assert.match(other?.metrics[0]?.note ?? '', /满墨/);
 });
 
-void test('fixed main abilities are not described as pending AP curves', () => {
+void test('weapon-specific models remain distinct from universal verified curves', () => {
+  const weapon = getWeapon('shooter-quickmiddle-cstm01');
+  const sections = buildLoadoutContextSections(weapon, []);
+  const sub = sections.find(({ id }) => id === 'sub');
+  const special = sections.find(({ id }) => id === 'special');
+
+  assert.equal(sub?.metrics[2]?.state, 'weapon-specific');
+  assert.match(sub?.metrics[2]?.note ?? '', /投掷初速度/);
+  assert.equal(special?.metrics[2]?.state, 'pending');
+
+  const verifiedSpecialWeapon = weapons.find((candidate) => {
+    const specialMetric = buildLoadoutContextSections(candidate, []).find(
+      ({ id }) => id === 'special',
+    )?.metrics[2];
+    return specialMetric?.state === 'weapon-specific';
+  });
+  assert.ok(verifiedSpecialWeapon);
+});
+
+void test('fixed main abilities merge with their verified current-loadout models', () => {
   const sections = buildLoadoutContextSections(
     getWeapon('shooter-quickmiddle-cstm01'),
     [
-      { id: 'og', ap: 10 },
+      { id: 'ssu', ap: 6 },
+      { id: 'qsj', ap: 3 },
+      { id: 'qr', ap: 3 },
+      { id: 'ss', ap: 3 },
       { id: 'ninja', ap: 10 },
       { id: 'stealth', ap: 10 },
+      { id: 'rp', ap: 10 },
     ],
   );
-  const notes = sections.flatMap(({ metrics }) =>
-    metrics.map(({ note }) => note),
-  );
-  assert.equal(notes.filter((note) => note.includes('固定主能力')).length, 3);
+  const mobility = sections.find(({ id }) => id === 'mobility');
+  const survival = sections.find(({ id }) => id === 'survival');
+  const special = sections.find(({ id }) => id === 'special');
+
+  assert.equal(mobility?.metrics[0]?.label, '游速＋隐游');
+  assert.match(mobility?.metrics[0]?.note ?? '', /0\.9 倍固定修正/);
+  assert.equal(mobility?.metrics[1]?.label, '快跳＋隐跳');
+  assert.match(mobility?.metrics[1]?.note ?? '', /最多增加到/);
+  assert.equal(survival?.metrics[0]?.label, '快活＋死惩');
+  assert.match(survival?.metrics[0]?.note ?? '', /固定复活代价/);
+  assert.match(special?.metrics[1]?.note ?? '', /自身提升复活惩罚代价/);
   assert.equal(
-    notes.some((note) => /固定主能力.*曲线.*待/.test(note)),
+    sections.some(({ metrics }) =>
+      metrics.some(({ note }) => /固定主能力.*曲线.*待/.test(note)),
+    ),
     false,
   );
 });
@@ -70,5 +104,36 @@ void test('unverified kit fields remain visibly pending', () => {
     ({ id }) => id === 'sub',
   );
   assert.equal(sub?.metrics[0]?.state, 'pending');
-  assert.equal(sub?.metrics[2]?.state, 'verified');
+  assert.equal(sub?.metrics[2]?.state, 'weapon-specific');
+});
+
+void test('all battle weapons produce finite linked summaries for fixed-ability variants', () => {
+  const ninjaStealthTotals = [
+    { id: 'ssu', ap: 6 },
+    { id: 'qsj', ap: 3 },
+    { id: 'ia', ap: 3 },
+    { id: 'inkres', ap: 3 },
+    { id: 'subr', ap: 3 },
+    { id: 'ism', ap: 6 },
+    { id: 'ninja', ap: 10 },
+    { id: 'stealth', ap: 10 },
+  ];
+  const respawnPunisherTotals = [
+    { id: 'qr', ap: 6 },
+    { id: 'ss', ap: 6 },
+    { id: 'rp', ap: 10 },
+  ];
+
+  for (const weapon of weapons) {
+    for (const totals of [ninjaStealthTotals, respawnPunisherTotals]) {
+      const sections = buildLoadoutContextSections(weapon, totals);
+      assert.equal(sections.length, 5, weapon.name);
+      const text = sections
+        .flatMap(({ metrics }) =>
+          metrics.flatMap(({ value, note }) => [value, note]),
+        )
+        .join(' ');
+      assert.doesNotMatch(text, /NaN|Infinity/, weapon.name);
+    }
+  }
 });

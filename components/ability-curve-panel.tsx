@@ -2,11 +2,13 @@ import {
   getAbilityCurveDefinition,
   getAbilityCurveSample,
 } from '@/lib/ability-curves';
+import { getFixedAbilityRule } from '@/lib/ability-context';
 
 const samplePoints = [0, 3, 10, 20, 30, 57] as const;
 
 export function AbilityCurvePanel({ abilityId }: { abilityId: string }) {
   const curve = getAbilityCurveDefinition(abilityId);
+  const fixedRule = getFixedAbilityRule(abilityId);
 
   if (curve.status === 'not-applicable') {
     return (
@@ -18,7 +20,38 @@ export function AbilityCurvePanel({ abilityId }: { abilityId: string }) {
           </div>
           <span>{curve.formulaLabel}</span>
         </div>
+        {fixedRule ? (
+          <dl className="ability-fixed-rules">
+            <div>
+              <dt>触发条件</dt>
+              <dd>{fixedRule.activation}</dd>
+            </div>
+            <div>
+              <dt>作用对象</dt>
+              <dd>{fixedRule.target}</dd>
+            </div>
+          </dl>
+        ) : null}
         <p>{curve.sourceNote}</p>
+      </section>
+    );
+  }
+
+  if (curve.status === 'weapon-specific') {
+    return (
+      <section className="ability-curve ability-curve-specific">
+        <div className="ability-curve-head">
+          <div>
+            <small>WEAPON-SPECIFIC / 武器专属</small>
+            <h3>{curve.title}</h3>
+          </div>
+          <span>{curve.formulaLabel}</span>
+        </div>
+        <p>{curve.sourceNote}</p>
+        <div className="ability-curve-rule">
+          <b>为何不画统一曲线</b>
+          <p>{curve.minimumEffectiveRule}</p>
+        </div>
       </section>
     );
   }

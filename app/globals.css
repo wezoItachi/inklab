@@ -1287,6 +1287,9 @@ button {
 .context-analysis-grid article.verified {
   border-left: 3px solid #72a82b;
 }
+.context-analysis-grid article.weapon-specific {
+  border-left: 3px solid #28a8a1;
+}
 .context-analysis-grid article.equipped {
   border-left: 3px solid var(--purple);
 }
@@ -1299,6 +1302,33 @@ button {
 .context-analysis-grid small,
 .context-analysis-grid strong {
   display: block;
+}
+.context-metric-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+.context-metric-heading em {
+  flex: 0 0 auto;
+  padding: 1px 5px;
+  border-radius: 999px;
+  background: #e9eefc;
+  color: #61739e;
+  font: 700 7px/1.4 monospace;
+  font-style: normal;
+}
+.context-analysis-grid article.weapon-specific .context-metric-heading em {
+  background: #daf4f1;
+  color: #17766f;
+}
+.context-analysis-grid article.equipped .context-metric-heading em {
+  background: #eee8ff;
+  color: var(--purple);
+}
+.context-analysis-grid article.pending .context-metric-heading em {
+  background: #fff2d5;
+  color: #8c6418;
 }
 .context-analysis-grid small {
   color: #6278a8;
@@ -1974,6 +2004,16 @@ button {
   border-color: var(--line);
   background: #faf9f6;
 }
+.ability-curve-specific {
+  border-color: #bfc9ee;
+  background: #f3f6ff;
+}
+.ability-curve-specific > p {
+  margin: 9px 0;
+  color: #59627f;
+  font-size: 8px;
+  line-height: 1.55;
+}
 .ability-curve-fixed {
   border-color: #b9d8ca;
   background: #f2faf6;
@@ -1983,6 +2023,32 @@ button {
   color: #4f6f61;
   font-size: 8px;
   line-height: 1.55;
+}
+.ability-fixed-rules {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+  margin: 9px 0 0;
+}
+.ability-fixed-rules > div {
+  min-width: 0;
+  border: 1px solid #d7e7df;
+  background: #fff;
+  padding: 7px 8px;
+}
+.ability-fixed-rules dt {
+  color: #587667;
+  font: 800 7px/1.4 monospace;
+}
+.ability-fixed-rules dd {
+  margin: 3px 0 0;
+  font-size: 8px;
+  line-height: 1.5;
+}
+@media (max-width: 520px) {
+  .ability-fixed-rules {
+    grid-template-columns: 1fr;
+  }
 }
 .library-page {
   max-width: 1000px;

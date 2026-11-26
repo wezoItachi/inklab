@@ -12,7 +12,11 @@ export const representableAbilityPoints = Object.freeze(
     .sort((left, right) => left - right),
 );
 
-export type AbilityCurveStatus = 'verified' | 'pending' | 'not-applicable';
+export type AbilityCurveStatus =
+  | 'verified'
+  | 'weapon-specific'
+  | 'pending'
+  | 'not-applicable';
 
 export type AbilityCurveSample = {
   ap: number;
@@ -452,7 +456,7 @@ export function getAbilityCurveDefinition(
   if (abilityId === 'subp') {
     return {
       abilityId,
-      status: 'pending',
+      status: 'weapon-specific',
       title: '副武器专属性能曲线',
       outputLabel: '请在实验室查看',
       formulaLabel: '14 种副武器分别计算',
@@ -468,7 +472,7 @@ export function getAbilityCurveDefinition(
   if (abilityId === 'spu') {
     return {
       abilityId,
-      status: 'pending',
+      status: 'weapon-specific',
       title: '特殊武器专属性能曲线',
       outputLabel: '请在实验室查看',
       formulaLabel: '19 种特殊武器分别计算',

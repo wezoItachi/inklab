@@ -4,12 +4,10 @@ import { useState } from 'react';
 import { Plus, Search, Zap } from 'lucide-react';
 import { AbilityIcon } from '@/components/ability-icon';
 import { AbilityCurvePanel } from '@/components/ability-curve-panel';
-import { abilities, abilityAliases } from '@/lib/abilities';
-import {
-  getAbilityCurveDefinition,
-  hasMinimumEffectiveAbilityValue,
-  hasVerifiedAbilityCurve,
-} from '@/lib/ability-curves';
+import { abilities } from '@/lib/abilities';
+import { getFixedAbilityRule } from '@/lib/ability-context';
+import { filterAbilitiesForWiki } from '@/lib/ability-wiki-filter';
+import { getAbilityCurveDefinition } from '@/lib/ability-curves';
 
 export function AbilityWiki({
   focus,
@@ -36,6 +34,9 @@ export function AbilityWiki({
     {
       label: '关键临界点',
     },
+    {
+      label: '武器专属',
+    },
   ];
   const toggle = (tag: string) =>
     setFilters(
@@ -46,26 +47,11 @@ export function AbilityWiki({
               ? current.filter((item) => item !== tag)
               : [...current, tag],
     );
-  const shown = abilities.filter(
-    (ability) =>
-      (!query ||
-        ability.name.includes(query) ||
-        ability.short.includes(query) ||
-        (abilityAliases[ability.id] || '').includes(query)) &&
-      (!filters.includes('副武器') ||
-        ['iss', 'subp', 'subr'].includes(ability.id)) &&
-      (!filters.includes('墨水续航') || ability.group === '续航') &&
-      (!filters.includes('机动') || ability.group === '机动') &&
-      (!filters.includes('头部限定') || ability.group === '头部限定') &&
-      (!filters.includes('服装限定') || ability.group === '服装限定') &&
-      (!filters.includes('鞋子限定') || ability.group === '鞋子限定') &&
-      (!filters.includes('少量投入有效') ||
-        hasMinimumEffectiveAbilityValue(ability.id)) &&
-      (!filters.includes('关键临界点') || hasVerifiedAbilityCurve(ability.id)),
-  );
+  const shown = filterAbilitiesForWiki(query, filters);
   const current =
     abilities.find((ability) => ability.id === focus) ?? abilities[0];
   const currentCurve = getAbilityCurveDefinition(current.id);
+  const fixedRule = getFixedAbilityRule(current.id);
 
   return (
     <section className="workspace wiki-page">
@@ -158,9 +144,11 @@ export function AbilityWiki({
             <span>
               {currentCurve.status === 'verified'
                 ? '正式 AP 曲线已接入'
-                : currentCurve.status === 'not-applicable'
-                  ? '固定能力 · AP 曲线不适用'
-                  : 'AP 曲线待核验'}
+                : currentCurve.status === 'weapon-specific'
+                  ? '武器专属模型已接入'
+                  : currentCurve.status === 'not-applicable'
+                    ? '固定能力 · AP 曲线不适用'
+                    : 'AP 曲线待核验'}
             </span>
           </div>
           <div className="wiki-callout">
@@ -189,8 +177,13 @@ export function AbilityWiki({
                                     ? '缩短复活时间已接入条件复活曲线；实验室会明确显示触发前提，并单列自身或对手装备复活惩罚时的 AP 压制与固定时间。'
                                     : '主武器省墨已接入正式效果曲线；进入实验室后会按当前武器的已核对基础耗墨展示完整动作次数与下一临界点。'
                 : currentCurve.status === 'not-applicable'
-                  ? '这项能力按对应部位的固定主能力规则生效，不会被误当成可重复堆叠的通用 AP 曲线；具体触发条件与效果仍在能力语义中单独说明。'
-                  : '这项能力可以用于配装编辑和分类；完整 AP 效果、最小有效投入与关键临界点仍待逐项核验，目前不输出未经核对的阈值结论。'}
+                  ? (fixedRule?.labNote ??
+                    '这项能力按对应部位的固定主能力规则生效，不会被误当成可重复堆叠的通用 AP 曲线；具体触发条件与效果仍在能力语义中单独说明。')
+                  : currentCurve.status === 'weapon-specific'
+                    ? current.id === 'subp'
+                      ? '副武器性能已按当前套装读取 14 种副武器的 17 个专属指标；不同副武器改变的距离、速度、持续时间或耐久并不相同，因此不会被压缩成一条统一百分比。'
+                      : '特殊武器性能已对 16 种特殊武器开放 21 个具名指标；其余 3 种索引语义继续明确标为待核验，不影响已完成的专属模型。'
+                    : '这项能力可以用于配装编辑和分类；完整 AP 效果、最小有效投入与关键临界点仍待逐项核验，目前不输出未经核对的阈值结论。'}
             </p>
           </div>
           <AbilityCurvePanel abilityId={current.id} />

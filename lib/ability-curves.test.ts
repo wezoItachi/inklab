@@ -130,13 +130,25 @@ void test('sub resistance exposes the verified heavy-damage reference curve', ()
   assert.equal(getAbilityCurveSample('subr', 57)?.benefitPercent, 50);
 });
 
+void test('weapon-specific abilities do not pretend to share one curve', () => {
+  for (const abilityId of ['subp', 'spu']) {
+    const definition = getAbilityCurveDefinition(abilityId);
+    assert.equal(definition.status, 'weapon-specific');
+    assert.equal(definition.thresholdScope, 'weapon-specific');
+    assert.equal(definition.calculate, null);
+    assert.equal(getAbilityCurveSample(abilityId, 10), null);
+    assert.equal(hasVerifiedAbilityCurve(abilityId), false);
+    assert.equal(hasMinimumEffectiveAbilityValue(abilityId), false);
+  }
+});
+
 void test('unverified abilities never expose invented curve values', () => {
-  const definition = getAbilityCurveDefinition('subp');
+  const definition = getAbilityCurveDefinition('unknown');
   assert.equal(definition.status, 'pending');
   assert.equal(definition.calculate, null);
-  assert.equal(getAbilityCurveSample('subp', 10), null);
-  assert.equal(hasVerifiedAbilityCurve('subp'), false);
-  assert.equal(hasMinimumEffectiveAbilityValue('subp'), false);
+  assert.equal(getAbilityCurveSample('unknown', 10), null);
+  assert.equal(hasVerifiedAbilityCurve('unknown'), false);
+  assert.equal(hasMinimumEffectiveAbilityValue('unknown'), false);
 });
 
 void test('fixed gear-exclusive abilities are not misreported as pending AP curves', () => {

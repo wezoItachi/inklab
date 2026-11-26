@@ -2,6 +2,14 @@ import type { Weapon } from '@/lib/weapon-catalog';
 import type { EquippedAbilityTotal } from '@/lib/loadout-context-analysis';
 import { buildLoadoutContextSections } from '@/lib/loadout-context-analysis';
 
+const stateLabels = {
+  verified: '已核对',
+  'weapon-specific': '武器专属',
+  equipped: '当前配装',
+  pending: '待核验',
+  empty: '未投入',
+} as const;
+
 export function LoadoutContextAnalysis({
   weapon,
   totals,
@@ -21,7 +29,10 @@ export function LoadoutContextAnalysis({
           <div className="context-analysis-grid">
             {section.metrics.map((metric) => (
               <article className={metric.state} key={metric.label}>
-                <small>{metric.label}</small>
+                <div className="context-metric-heading">
+                  <small>{metric.label}</small>
+                  <em>{stateLabels[metric.state]}</em>
+                </div>
                 <strong>{metric.value}</strong>
                 <p>{metric.note}</p>
               </article>
