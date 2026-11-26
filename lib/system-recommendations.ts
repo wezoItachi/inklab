@@ -1,4 +1,8 @@
-import type { LoadoutSlot } from './loadouts.ts';
+import {
+  calculateAbilityTotals,
+  type EditableLoadoutSlot,
+  type LoadoutSlot,
+} from './loadouts.ts';
 import { analyzeSpecialPower } from './special-power.ts';
 import { analyzeSubPower } from './sub-power.ts';
 import type { Weapon, WeaponFamily } from './weapons.ts';
@@ -12,6 +16,126 @@ export type SystemRecommendation = {
   focusAbilityId: string;
   slots: readonly LoadoutSlot[];
 };
+
+export type RecommendationGearPart = 'head' | 'clothes' | 'shoes';
+
+const recommendationGearParts: readonly RecommendationGearPart[] = [
+  'head',
+  'clothes',
+  'shoes',
+];
+
+export function summarizeRecommendationAp(slots: readonly LoadoutSlot[]) {
+  return calculateAbilityTotals(slots)
+    .map(({ id, ap }) => ({ abilityId: id, ap }))
+    .sort((first, second) => second.ap - first.ap);
+}
+
+export function findMatchingRecommendationIndex(
+  slots: readonly (readonly [string | null, number])[],
+  recommendations: readonly SystemRecommendation[],
+) {
+  return recommendations.findIndex(
+    (recommendation) =>
+      recommendation.slots.length === slots.length &&
+      recommendation.slots.every(
+        ([abilityId, ap], index) =>
+          slots[index]?.[0] === abilityId && slots[index]?.[1] === ap,
+      ),
+  );
+}
+
+export function compareRecommendationToSlots(
+  slots: readonly (readonly [string | null, number])[],
+  recommendation: SystemRecommendation,
+) {
+  const matchingSlots = recommendation.slots.filter(
+    ([abilityId, ap], index) =>
+      slots[index]?.[0] === abilityId && slots[index]?.[1] === ap,
+  ).length;
+  const changedSlotIndices = recommendation.slots.flatMap(
+    ([abilityId, ap], index) =>
+      slots[index]?.[0] === abilityId && slots[index]?.[1] === ap ? [] : [index],
+  );
+  const changedParts = recommendationGearParts.filter((_, partIndex) => {
+    const firstSlotIndex = partIndex * 4;
+    return recommendation.slots
+      .slice(firstSlotIndex, firstSlotIndex + 4)
+      .some(
+        ([abilityId, ap], slotOffset) =>
+          slots[firstSlotIndex + slotOffset]?.[0] !== abilityId ||
+          slots[firstSlotIndex + slotOffset]?.[1] !== ap,
+      );
+  });
+  const currentTotals = new Map<string, number>();
+  for (const [abilityId, ap] of slots) {
+    if (abilityId)
+      currentTotals.set(abilityId, (currentTotals.get(abilityId) ?? 0) + ap);
+  }
+  const recommendationTotals = calculateAbilityTotals(recommendation.slots);
+  const sharedAbilityAp = recommendationTotals.reduce(
+    (total, { id, ap }) => total + Math.min(ap, currentTotals.get(id) ?? 0),
+    0,
+  );
+  const missingAbilityAp = recommendationTotals
+    .map(({ id, ap }) => ({ id, ap: Math.max(0, ap - (currentTotals.get(id) ?? 0)) }))
+    .filter(({ ap }) => ap > 0)
+    .sort((left, right) => right.ap - left.ap);
+  const extraAbilityAp = [...currentTotals.entries()]
+    .map(([id, ap]) => ({
+      id,
+      ap: Math.max(
+        0,
+        ap - (recommendationTotals.find((item) => item.id === id)?.ap ?? 0),
+      ),
+    }))
+    .filter(({ ap }) => ap > 0)
+    .sort((left, right) => right.ap - left.ap);
+  return {
+    matchingSlots,
+    changedSlots: recommendation.slots.length - matchingSlots,
+    changedSlotIndices,
+    changedParts,
+    sharedAbilityAp,
+    changedAbilityAp: 57 - sharedAbilityAp,
+    missingAbilityAp,
+    extraAbilityAp,
+  };
+}
+
+export function findClosestRecommendationIndex(
+  slots: readonly (readonly [string | null, number])[],
+  recommendations: readonly SystemRecommendation[],
+) {
+  if (recommendations.length === 0) return -1;
+  const comparisons = recommendations.map((recommendation) =>
+    compareRecommendationToSlots(slots, recommendation),
+  );
+  return comparisons.reduce((bestIndex, comparison, index) => {
+    const best = comparisons[bestIndex];
+    if (comparison.sharedAbilityAp !== best.sharedAbilityAp)
+      return comparison.sharedAbilityAp > best.sharedAbilityAp ? index : bestIndex;
+    return comparison.matchingSlots > best.matchingSlots ? index : bestIndex;
+  }, 0);
+}
+
+export function replaceGearPartFromRecommendation(
+  slots: readonly EditableLoadoutSlot[],
+  recommendation: SystemRecommendation,
+  part: RecommendationGearPart,
+) {
+  const partIndex = recommendationGearParts.indexOf(part);
+  if (partIndex < 0) return slots.map((slot) => [...slot] as EditableLoadoutSlot);
+  const firstSlotIndex = partIndex * 4;
+  return slots.map((slot, index) => {
+    const recommendationSlot = recommendation.slots[index];
+    return index >= firstSlotIndex &&
+      index < firstSlotIndex + 4 &&
+      recommendationSlot
+      ? ([...recommendationSlot] as EditableLoadoutSlot)
+      : ([...slot] as EditableLoadoutSlot);
+  });
+}
 
 type FamilyProfile = {
   label: string;
@@ -27,36 +151,134 @@ type RoleProfile = {
 };
 
 const familyProfiles: Record<WeaponFamily, FamilyProfile> = {
-  '射击枪': { label: '移动射击与持续交战', primary: 'ssu', secondary: 'ism', support: 'ia' },
-  '爆破枪': { label: '跳射稳定与主武续航', primary: 'ia', secondary: 'ism', support: 'ssu' },
-  '滚筒': { label: '接近目标与挥击续航', primary: 'ssu', secondary: 'ism', support: 'iru' },
-  '画笔': { label: '高频移动与主武续航', primary: 'ssu', secondary: 'ism', support: 'iru' },
-  '蓄力枪': { label: '蓄力射击续航与转点', primary: 'ism', secondary: 'ssu', support: 'qsj' },
-  '泼桶': { label: '连续泼墨与位置调整', primary: 'ism', secondary: 'ssu', support: 'iru' },
-  '加特林': { label: '蓄力射击与走位', primary: 'rsu', secondary: 'ism', support: 'ssu' },
-  '双枪': { label: '翻滚交战与机动容错', primary: 'ia', secondary: 'ssu', support: 'inkres' },
-  '伞': { label: '主武耗墨与交战续航', primary: 'ism', secondary: 'iru', support: 'ssu' },
-  '弓': { label: '蓄力射击与阵地转移', primary: 'ism', secondary: 'ssu', support: 'ia' },
-  '刮水刀': { label: '蓄力斩击与接近目标', primary: 'ssu', secondary: 'ism', support: 'ia' },
+  射击枪: {
+    label: '移动射击与持续交战',
+    primary: 'ssu',
+    secondary: 'ism',
+    support: 'ia',
+  },
+  爆破枪: {
+    label: '跳射稳定与主武续航',
+    primary: 'ia',
+    secondary: 'ism',
+    support: 'ssu',
+  },
+  滚筒: {
+    label: '接近目标与挥击续航',
+    primary: 'ssu',
+    secondary: 'ism',
+    support: 'iru',
+  },
+  画笔: {
+    label: '高频移动与主武续航',
+    primary: 'ssu',
+    secondary: 'ism',
+    support: 'iru',
+  },
+  蓄力枪: {
+    label: '蓄力射击续航与转点',
+    primary: 'ism',
+    secondary: 'ssu',
+    support: 'qsj',
+  },
+  泼桶: {
+    label: '连续泼墨与位置调整',
+    primary: 'ism',
+    secondary: 'ssu',
+    support: 'iru',
+  },
+  加特林: {
+    label: '蓄力射击与走位',
+    primary: 'rsu',
+    secondary: 'ism',
+    support: 'ssu',
+  },
+  双枪: {
+    label: '翻滚交战与机动容错',
+    primary: 'ia',
+    secondary: 'ssu',
+    support: 'inkres',
+  },
+  伞: {
+    label: '主武耗墨与交战续航',
+    primary: 'ism',
+    secondary: 'iru',
+    support: 'ssu',
+  },
+  弓: {
+    label: '蓄力射击与阵地转移',
+    primary: 'ism',
+    secondary: 'ssu',
+    support: 'ia',
+  },
+  刮水刀: {
+    label: '蓄力斩击与接近目标',
+    primary: 'ssu',
+    secondary: 'ism',
+    support: 'ia',
+  },
 };
 
 const roleProfiles: Readonly<Record<string, RoleProfile>> = {
-  '前线 / 伏击': { label: '接敌与阵亡后的再进入', primary: 'qr', support: 'inkres' },
-  '前线 / 泛用': { label: '移动交战与基础容错', primary: 'ssu', support: 'inkres' },
-  '前线 / 高机动': { label: '动作稳定与近距离机动', primary: 'ia', support: 'ssu' },
-  '中后卫 / 压制': { label: '持续压制与横向转位', primary: 'rsu', support: 'qsj' },
-  '后卫 / 长射程': { label: '主武续航与安全转点', primary: 'ism', support: 'qsj' },
-  '支援 / 前中卫': { label: '协同移动与持续作战', primary: 'ssu', support: 'iru' },
+  '前线 / 伏击': {
+    label: '接敌与阵亡后的再进入',
+    primary: 'qr',
+    support: 'inkres',
+  },
+  '前线 / 泛用': {
+    label: '移动交战与基础容错',
+    primary: 'ssu',
+    support: 'inkres',
+  },
+  '前线 / 高机动': {
+    label: '动作稳定与近距离机动',
+    primary: 'ia',
+    support: 'ssu',
+  },
+  '中后卫 / 压制': {
+    label: '持续压制与横向转位',
+    primary: 'rsu',
+    support: 'qsj',
+  },
+  '后卫 / 长射程': {
+    label: '主武续航与安全转点',
+    primary: 'ism',
+    support: 'qsj',
+  },
+  '支援 / 前中卫': {
+    label: '协同移动与持续作战',
+    primary: 'ssu',
+    support: 'iru',
+  },
 };
 
 function makeSlots(
   mains: readonly [string, string, string],
-  subs: readonly [string, string, string, string, string, string, string, string, string],
+  subs: readonly [
+    string,
+    string,
+    string,
+    string,
+    string,
+    string,
+    string,
+    string,
+    string,
+  ],
 ): LoadoutSlot[] {
   return [
-    [mains[0], 10], [subs[0], 3], [subs[1], 3], [subs[2], 3],
-    [mains[1], 10], [subs[3], 3], [subs[4], 3], [subs[5], 3],
-    [mains[2], 10], [subs[6], 3], [subs[7], 3], [subs[8], 3],
+    [mains[0], 10],
+    [subs[0], 3],
+    [subs[1], 3],
+    [subs[2], 3],
+    [mains[1], 10],
+    [subs[3], 3],
+    [subs[4], 3],
+    [subs[5], 3],
+    [mains[2], 10],
+    [subs[6], 3],
+    [subs[7], 3],
+    [subs[8], 3],
   ];
 }
 
@@ -64,7 +286,9 @@ function makeSlots(
  * Produce transparent starting points from verified weapon identity and family.
  * These are deterministic heuristics, not player statistics or claims of an optimal build.
  */
-export function getSystemRecommendations(weapon: Weapon): readonly SystemRecommendation[] {
+export function getSystemRecommendations(
+  weapon: Weapon,
+): readonly SystemRecommendation[] {
   const profile = familyProfiles[weapon.family];
   const roleProfile = roleProfiles[weapon.role] ?? null;
   const rolePrimary = roleProfile?.primary ?? profile.primary;
@@ -72,9 +296,10 @@ export function getSystemRecommendations(weapon: Weapon): readonly SystemRecomme
   const roleEvidence = roleProfile
     ? `目录定位：${weapon.role}（${roleProfile.label}）`
     : `目录定位：${weapon.role}；尚未用于自动分配`;
-  const subEvidence = weapon.sub.baseInkCost === null
-    ? `${weapon.sub.name} 的身份已核对；耗墨曲线仍待验证`
-    : `${weapon.sub.name} 基础耗墨 ${weapon.sub.baseInkCost}% 已录入`;
+  const subEvidence =
+    weapon.sub.baseInkCost === null
+      ? `${weapon.sub.name} 的身份已核对；耗墨曲线仍待验证`
+      : `${weapon.sub.name} 基础耗墨 ${weapon.sub.baseInkCost}% 已录入`;
   const subPowerAnalysis = analyzeSubPower(weapon.sub.id, 3);
   const subPowerAbility = subPowerAnalysis ? 'subp' : profile.support;
   const subPowerNote = subPowerAnalysis
@@ -90,13 +315,29 @@ export function getSystemRecommendations(weapon: Weapon): readonly SystemRecomme
     {
       id: 'main',
       name: '主武基础型',
-      desc: roleProfile ? `${profile.label} · ${roleProfile.label}` : profile.label,
+      desc: roleProfile
+        ? `${profile.label} · ${roleProfile.label}`
+        : profile.label,
       rationale: `按${weapon.family}的共通操作需求与当前目录定位分配能力，作为调整起点；不引用对局胜率或玩家采用率。`,
-      evidence: [`武器族：${weapon.family}（${profile.label}）`, roleEvidence, '保留快跳、粘脚与副防各 3AP'],
+      evidence: [
+        `武器族：${weapon.family}（${profile.label}）`,
+        roleEvidence,
+        '保留快跳、粘脚与副防各 3AP',
+      ],
       focusAbilityId: rolePrimary,
       slots: makeSlots(
         [rolePrimary, profile.secondary, roleSupport],
-        [rolePrimary, rolePrimary, profile.secondary, profile.secondary, roleSupport, 'iru', 'qsj', 'inkres', 'subr'],
+        [
+          rolePrimary,
+          rolePrimary,
+          profile.secondary,
+          profile.secondary,
+          roleSupport,
+          'iru',
+          'qsj',
+          'inkres',
+          'subr',
+        ],
       ),
     },
     {
@@ -108,7 +349,17 @@ export function getSystemRecommendations(weapon: Weapon): readonly SystemRecomme
       focusAbilityId: 'iss',
       slots: makeSlots(
         ['iss', subPowerAbility, 'iru'],
-        ['iss', 'iss', 'iss', subPowerAbility, subPowerAbility, 'iru', 'qsj', 'inkres', 'subr'],
+        [
+          'iss',
+          'iss',
+          'iss',
+          subPowerAbility,
+          subPowerAbility,
+          'iru',
+          'qsj',
+          'inkres',
+          'subr',
+        ],
       ),
     },
     {
@@ -124,7 +375,17 @@ export function getSystemRecommendations(weapon: Weapon): readonly SystemRecomme
       focusAbilityId: 'scu',
       slots: makeSlots(
         ['scu', 'ss', profile.primary],
-        ['scu', 'scu', 'scu', 'ss', 'ss', profile.primary, 'qsj', 'inkres', 'subr'],
+        [
+          'scu',
+          'scu',
+          'scu',
+          'ss',
+          'ss',
+          profile.primary,
+          'qsj',
+          'inkres',
+          'subr',
+        ],
       ),
     },
   ];

@@ -600,11 +600,89 @@ button {
 .system-presets > button div {
   gap: 4px;
 }
+.system-presets .recommendation-action {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  gap: 3px;
+  margin-top: 1px;
+  padding: 4px 6px;
+  border: 1px solid #cbc5bb;
+  background: #fff;
+  color: #4f4a42;
+  font-size: 7px;
+  font-weight: 800;
+  white-space: nowrap;
+}
+.system-presets > button.picked .recommendation-action {
+  border-color: #91b34b;
+  background: #e5f6c6;
+  color: #42691d;
+}
 .system-presets em {
   color: #777;
   font-size: 8px;
   font-style: normal;
   line-height: 1.45;
+}
+.recommendation-match {
+  width: max-content;
+  max-width: 100%;
+  padding: 3px 6px;
+  background: #efede7;
+  color: #5d5869;
+  font: 700 7px/1.4 monospace;
+}
+.system-presets > button.picked .recommendation-match {
+  background: #e5f6c6;
+  color: #42691d;
+}
+.system-presets > button.closest {
+  border-color: #9b8ed5;
+  background: #fbfaff;
+}
+.system-presets > button.closest .recommendation-match {
+  background: #eee9ff;
+  color: #564398;
+}
+@media (max-width: 620px) {
+  .system-presets .recommendation-action {
+    width: 100%;
+    justify-content: center;
+  }
+}
+.custom-loadout-diff {
+  display: block;
+  margin-top: 4px;
+  color: var(--purple);
+  font-size: 8px;
+  font-weight: 700;
+}
+.custom-loadout-adjustments {
+  display: block;
+  margin-top: 2px;
+  color: #756f62;
+  font-size: 7px;
+  line-height: 1.45;
+}
+.custom-loadout-part-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-top: 5px;
+}
+.custom-loadout-part-actions button {
+  padding: 4px 6px;
+  border: 1px solid #c9bdf5;
+  background: #fff;
+  color: #57439f;
+  font-size: 7px;
+  font-weight: 800;
+}
+.custom-loadout-part-actions button:hover,
+.custom-loadout-part-actions button:focus-visible {
+  border-color: var(--purple);
+  background: #f1edff;
 }
 .system-evidence {
   display: flex;
@@ -622,6 +700,25 @@ button {
 .system-evidence > span {
   font-size: 8px;
   color: #575267;
+}
+.recommendation-allocation {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-top: 4px;
+}
+.recommendation-allocation span {
+  padding: 3px 6px;
+  border: 1px solid #cbc0ff;
+  border-radius: 999px;
+  background: #fff;
+  color: #4f3da0;
+  font: 700 7px/1.4 monospace;
+}
+.recommendation-applied-status {
+  color: #42691d;
+  font-size: 8px;
+  font-weight: 700;
 }
 .system-evidence > small {
   margin-top: 3px;
@@ -1212,6 +1309,24 @@ button {
   font-size: 12px;
   margin: 0 0 9px;
 }
+.analysis-summary .analysis-model-summary {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-bottom: 7px;
+}
+.analysis-model-summary span {
+  padding: 3px 6px;
+  border: 1px solid #cfdafa;
+  background: #f7f9ff;
+  color: #45618f;
+  font: 700 7px/1.4 monospace;
+}
+.analysis-model-summary span.pending {
+  border-color: #e4cf86;
+  background: #fff8dc;
+  color: #806500;
+}
 .analysis-summary > div {
   display: flex;
   flex-wrap: wrap;
@@ -1554,17 +1669,24 @@ button {
   grid-template-columns: repeat(3, 1fr);
   gap: 7px;
 }
-.planner-part-list article {
+.planner-part-list button {
   display: flex;
   flex-direction: column;
   gap: 4px;
+  width: 100%;
   border: 1px solid var(--line);
   background: #faf9f6;
   padding: 9px;
+  color: inherit;
+  text-align: left;
 }
-.planner-part-list article.active {
+.planner-part-list button.active {
   border-color: var(--purple);
   background: #f4f0ff;
+}
+.planner-part-list button:hover,
+.planner-part-list button:focus-visible {
+  border-color: var(--purple);
 }
 .planner-part-list b {
   font-size: 10px;
@@ -1573,6 +1695,17 @@ button {
 .planner-part-list small {
   font-size: 7px;
   color: #777;
+}
+.planner-auto-part {
+  margin-top: 8px;
+  border: 0;
+  background: transparent;
+  padding: 3px 0;
+  color: var(--purple);
+  font-size: 8px;
+  font-weight: 800;
+  text-decoration: underline;
+  text-underline-offset: 3px;
 }
 .result-kicker {
   font: 800 9px monospace;
@@ -1669,6 +1802,37 @@ button {
 }
 .trade svg {
   color: #629526;
+}
+.trade span {
+  flex: 1;
+}
+
+.trade-allocation {
+  display: block;
+  margin-top: 0.2rem;
+  color: var(--muted);
+  font-size: 0.68rem;
+  line-height: 1.45;
+}
+.trade button {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  gap: 4px;
+  border: 1px solid #c8c2b5;
+  background: #fff;
+  padding: 5px 7px;
+  color: #504b41;
+  font-size: 8px;
+  font-weight: 800;
+}
+.trade button:hover,
+.trade button:focus-visible {
+  border-color: var(--purple);
+  color: var(--purple);
+}
+.trade button svg {
+  color: currentColor;
 }
 .planner-slot-result {
   display: grid;
@@ -2114,6 +2278,15 @@ button {
     border-right: 0;
     border-bottom: 1px solid var(--line);
     min-height: 65px;
+  }
+  .trade {
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+  .trade button {
+    margin-left: 23px;
+    width: calc(100% - 23px);
+    justify-content: center;
   }
   .planner-slot-result {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -4100,6 +4273,11 @@ button {
   z-index: 1;
   border: 2px solid var(--purple);
   box-shadow: 0 0 0 2px var(--acid);
+}
+.gear section > button.template-difference:not(.selected-slot) {
+  border-color: #8e7bd2;
+  border-style: dashed;
+  box-shadow: inset 0 0 0 1px #eee9ff;
 }
 .analysis-summary h3 {
   display: flex;

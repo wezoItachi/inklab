@@ -16,6 +16,16 @@ void test('planner derives a shared gear structure from real system suggestions'
   assert.equal(plan.candidate.commonSlotCount, 4);
   assert.equal(plan.candidate.compatibilityPercent, 100);
   assert.equal(plan.weaponRequirements.length, 3);
+  for (const requirement of plan.weaponRequirements) {
+    assert.equal(
+      requirement.allocation.reduce((total, item) => total + item.ap, 0),
+      57,
+    );
+    assert.equal(
+      new Set(requirement.allocation.map(({ abilityId }) => abilityId)).size,
+      requirement.allocation.length,
+    );
+  }
 });
 
 void test('planner exposes main-ability variants instead of inventing one gear item', () => {
@@ -38,4 +48,19 @@ void test('planner requires at least two weapons for a comparison', () => {
   );
   assert.equal(plan.candidate, null);
   assert.deepEqual(plan.candidates, []);
+});
+
+void test('planner can inspect a non-recommended gear part without changing its data', () => {
+  const automatic = buildUniversalGearPlan(shooterSet, 'shared-slots');
+  const selectedPartId = automatic.candidates.find(
+    ({ partId }) => partId !== automatic.candidate?.partId,
+  )!.partId;
+  const inspected = buildUniversalGearPlan(
+    shooterSet,
+    'shared-slots',
+    selectedPartId,
+  );
+  assert.equal(inspected.candidate?.partId, selectedPartId);
+  assert.deepEqual(inspected.candidates, automatic.candidates);
+  assert.equal(inspected.weaponRequirements.length, shooterSet.length);
 });

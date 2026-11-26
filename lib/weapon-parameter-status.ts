@@ -5,6 +5,7 @@ import {
 } from './weapons.ts';
 import { getWeaponVerificationRouteSummary } from './battle-verification-queue.ts';
 import { analyzeSubPower } from './sub-power.ts';
+import { getAbilityModelCoverageNote } from './ability-model-coverage.ts';
 
 export type VerificationStatus =
   | 'verified'
@@ -119,7 +120,7 @@ export function getWeaponParameterSnapshot(
       {
         label: 'AP 效果曲线',
         status: 'partial',
-        note: '十二条通用 AP 曲线、14 种副武器专属性能、16 种特殊武器的 21 个具名指标、套装特殊点数及来源完整的动作走速已核对',
+        note: getAbilityModelCoverageNote(),
       },
       {
         label: '系统建议',

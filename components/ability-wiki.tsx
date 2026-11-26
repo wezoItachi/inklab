@@ -8,6 +8,7 @@ import { abilities } from '@/lib/abilities';
 import { getFixedAbilityRule } from '@/lib/ability-context';
 import { filterAbilitiesForWiki } from '@/lib/ability-wiki-filter';
 import { getAbilityCurveDefinition } from '@/lib/ability-curves';
+import { getAbilityModelCoverage } from '@/lib/ability-model-coverage';
 
 export function AbilityWiki({
   focus,
@@ -18,6 +19,7 @@ export function AbilityWiki({
   setFocus: (id: string) => void;
   onOpenLab: () => void;
 }) {
+  const modelCoverage = getAbilityModelCoverage();
   const [filters, setFilters] = useState<string[]>([]);
   const [query, setQuery] = useState('');
   const tags = [
@@ -181,8 +183,8 @@ export function AbilityWiki({
                     '这项能力按对应部位的固定主能力规则生效，不会被误当成可重复堆叠的通用 AP 曲线；具体触发条件与效果仍在能力语义中单独说明。')
                   : currentCurve.status === 'weapon-specific'
                     ? current.id === 'subp'
-                      ? '副武器性能已按当前套装读取 14 种副武器的 17 个专属指标；不同副武器改变的距离、速度、持续时间或耐久并不相同，因此不会被压缩成一条统一百分比。'
-                      : '特殊武器性能已对 16 种特殊武器开放 21 个具名指标；其余 3 种索引语义继续明确标为待核验，不影响已完成的专属模型。'
+                      ? `副武器性能已按当前套装读取 ${modelCoverage.subWeaponCount} 种副武器的 ${modelCoverage.subMetricCount} 个专属指标；不同副武器改变的距离、速度、持续时间或耐久并不相同，因此不会被压缩成一条统一百分比。`
+                      : `特殊武器性能已对 ${modelCoverage.verifiedSpecialWeaponCount} 种特殊武器开放 ${modelCoverage.specialMetricCount} 个具名指标；其余 ${modelCoverage.pendingSpecialWeaponCount} 种索引语义继续明确标为待核验，不影响已完成的专属模型。`
                     : '这项能力可以用于配装编辑和分类；完整 AP 效果、最小有效投入与关键临界点仍待逐项核验，目前不输出未经核对的阈值结论。'}
             </p>
           </div>

@@ -16,8 +16,33 @@ void test('every ability receives a non-empty honest context', () => {
     assert.ok(context.experimentArea);
     assert.ok(context.activation);
     assert.ok(context.target);
-    assert.match(context.conclusion, /当前为 3AP/);
+    assert.match(
+      context.conclusion,
+      ability.group.endsWith('限定') ? /当前配装已装备/ : /当前为 3AP/,
+    );
   }
+});
+
+void test('verified common abilities never fall back to pending context', () => {
+  const verifiedCommonAbilities = abilities.filter(
+    ({ group }) => !group.endsWith('限定'),
+  );
+
+  for (const ability of verifiedCommonAbilities) {
+    const context = buildAbilityContext(ability, weapon, 3);
+    assert.notEqual(context.verification, 'curve-pending', ability.id);
+    assert.doesNotMatch(context.conclusion, /曲线核验前/, ability.id);
+  }
+
+  const mainInk = verifiedCommonAbilities.find(({ id }) => id === 'ism');
+  assert.ok(mainInk);
+  const mainInkContext = buildAbilityContext(mainInk, weapon, 6);
+  assert.equal(mainInkContext.verification, 'curve-verified');
+  assert.match(mainInkContext.target, /主武器.*耗墨/);
+  assert.match(
+    getAbilityLabScopeNote(mainInkContext.verification),
+    /正式 AP 曲线/,
+  );
 });
 
 void test('special power follows the currently selected special weapon', () => {
@@ -49,6 +74,18 @@ void test('exclusive abilities are described as conditional main abilities', () 
   assert.match(context.targetNote, /最多 60 帧/);
   assert.match(getAbilityLabScopeNote(context.verification), /不进入 0–57AP/);
   assert.doesNotMatch(getAbilityLabScopeNote(context.verification), /待验证/);
+  assert.match(context.conclusion, /已装备.*联动已有模型/);
+});
+
+void test('fixed ability context distinguishes equipped state from preview', () => {
+  const ability = abilities.find(({ id }) => id === 'thermal');
+  assert.ok(ability);
+  assert.match(buildAbilityContext(ability, weapon, 0).conclusion, /未装备/);
+  assert.match(buildAbilityContext(ability, weapon, 10).conclusion, /已装备/);
+  assert.doesNotMatch(
+    buildAbilityContext(ability, weapon, 0).conclusion,
+    /0AP/,
+  );
 });
 
 void test('every fixed main ability has one shared rule description', () => {

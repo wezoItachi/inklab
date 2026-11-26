@@ -27,7 +27,15 @@ import {
   totalAp,
   type EditableLoadoutSlot,
 } from '@/lib/loadouts';
-import { getSystemRecommendations } from '@/lib/system-recommendations';
+import {
+  compareRecommendationToSlots,
+  findClosestRecommendationIndex,
+  findMatchingRecommendationIndex,
+  getSystemRecommendations,
+  replaceGearPartFromRecommendation,
+  summarizeRecommendationAp,
+  type RecommendationGearPart,
+} from '@/lib/system-recommendations';
 import { exportLoadoutPng, normalizeTags } from '@/lib/export-loadout-png';
 import {
   abilities,
@@ -53,8 +61,12 @@ import {
   buildAbilityContext,
   getAbilityLabScopeNote,
 } from '@/lib/ability-context';
+import {
+  getAbilityLabPanelKind,
+  summarizeAbilityLabRoutes,
+} from '@/lib/ability-lab-routing';
+import { getAbilityModelCoverageNote } from '@/lib/ability-model-coverage';
 import { getAbilityCurveDefinition } from '@/lib/ability-curves';
-import { hasFixedAbilityAnalysis } from '@/lib/fixed-ability-analysis';
 import {
   getMainWeaponAssetUrl,
   getSpecialWeaponAssetUrl,
@@ -204,6 +216,21 @@ const mainWeaponPickerItems: readonly WeaponPickerItem[] = weapons.map(
     tags: [weapon.role],
   }),
 );
+const describeAbilityApChanges = (
+  changes: readonly { id: string; ap: number }[],
+) =>
+  changes
+    .map(({ id, ap }) => {
+      const ability = abilities.find((item) => item.id === id);
+      return `${ability?.short ?? id} ${ap}AP`;
+    })
+    .join('、');
+const describeChangedParts = (
+  parts: readonly ('head' | 'clothes' | 'shoes')[],
+) =>
+  parts
+    .map((part) => ({ head: '头', clothes: '衣', shoes: '鞋' })[part])
+    .join('／');
 export default function Home() {
   const [page, setPage] = useState<PageId>('lab'),
     [labMode, setLabMode] = useState<'planner' | 'single'>('single');
@@ -218,8 +245,7 @@ export default function Home() {
     'idle' | 'working' | 'saved' | 'error'
   >('idle');
   const [slots, setSlots] = useState<EditableLoadoutSlot[]>(initialSlots),
-    [focus, setFocus] = useState('iss'),
-    [activePreset, setActivePreset] = useState(0);
+    [focus, setFocus] = useState('iss');
   const [recommendationSource, setRecommendationSource] = useState<
     'system' | 'community'
   >('system');
@@ -268,12 +294,34 @@ export default function Home() {
     [slots],
   );
   const equippedAp = totalAp(slots);
+  const abilityRouteSummary = useMemo(
+    () =>
+      summarizeAbilityLabRoutes(
+        totals.flatMap(({ a }) => (a ? [a.id] : [])),
+      ),
+    [totals],
+  );
   const equippedFocusAp = totals.find((x) => x.a?.id === focus)?.ap ?? 0;
   const currentAp = analysisApPreview ?? equippedFocusAp;
   const weapon = getWeapon(weaponId);
   const recommendations = useMemo(
     () => getSystemRecommendations(weapon),
     [weapon],
+  );
+  const activePreset = useMemo(
+    () => findMatchingRecommendationIndex(slots, recommendations),
+    [recommendations, slots],
+  );
+  const recommendationComparisons = useMemo(
+    () =>
+      recommendations.map((recommendation) =>
+        compareRecommendationToSlots(slots, recommendation),
+      ),
+    [recommendations, slots],
+  );
+  const closestRecommendationIndex = useMemo(
+    () => findClosestRecommendationIndex(slots, recommendations),
+    [recommendations, slots],
   );
   const currentPresetName = recommendations[activePreset]?.name ?? '自定义配装';
   useEffect(() => {
@@ -297,7 +345,6 @@ export default function Home() {
       if (restored.source !== 'default') {
         setWeaponId(restored.state.weaponId);
         setSlots(restored.state.slots);
-        setActivePreset(-1);
         setFocus(restored.state.focus);
         setSelectedSlot(restored.state.selectedSlot);
       }
@@ -327,7 +374,6 @@ export default function Home() {
   const applyRecommendation = (i: number) => {
     const recommendation = recommendations[i];
     if (!recommendation) return;
-    setActivePreset(i);
     setSlots(
       recommendation.slots.map((slot) => [...slot] as EditableLoadoutSlot),
     );
@@ -335,9 +381,31 @@ export default function Home() {
     setFocus(recommendation.focusAbilityId);
     setAnalysisApPreview(null);
   };
+  const applyRecommendationPart = (part: RecommendationGearPart) => {
+    const recommendation = recommendations[closestRecommendationIndex];
+    if (!recommendation) return;
+    const partIndex = { head: 0, clothes: 1, shoes: 2 }[part];
+    setSlots(
+      replaceGearPartFromRecommendation(slots, recommendation, part),
+    );
+    setSelectedSlot(partIndex * 4);
+    setFocus(recommendation.slots[partIndex * 4]?.[0] ?? focus);
+    setAnalysisApPreview(null);
+  };
+  const openPlannerWeapon = (nextWeaponId: string) => {
+    const nextWeapon = getWeapon(nextWeaponId);
+    const mainRecommendation = getSystemRecommendations(nextWeapon)[0];
+    setWeaponId(nextWeapon.id);
+    setSlots(
+      mainRecommendation.slots.map((slot) => [...slot] as EditableLoadoutSlot),
+    );
+    setSelectedSlot(0);
+    setFocus(mainRecommendation.focusAbilityId);
+    setAnalysisApPreview(null);
+    setLabMode('single');
+  };
   const selectWeapon = (nextWeaponId: string) => {
     setWeaponId(nextWeaponId);
-    setActivePreset(-1);
     setAnalysisApPreview(null);
   };
   const navigatePage = (nextPage: PageId) => {
@@ -351,7 +419,6 @@ export default function Home() {
   ) => {
     setWeaponId(nextWeaponId);
     setSlots(nextSlots);
-    setActivePreset(-1);
     setSelectedSlot(0);
     setFocus(nextSlots[0]?.[0] ?? 'iss');
     setAnalysisApPreview(null);
@@ -365,7 +432,6 @@ export default function Home() {
   const selectLoadoutSlot = (index: number) => {
     if (selectedSlot === index) {
       setSlots((current) => clearLoadoutSlot(current, index));
-      setActivePreset(-1);
       setAnalysisApPreview(null);
       return;
     }
@@ -383,7 +449,6 @@ export default function Home() {
   const placeAbility = (id: string, index: number, advance: boolean) => {
     if (!canPlaceAbilityInSlot(id, index)) return;
     setSlots((current) => replaceLoadoutSlot(current, index, id));
-    setActivePreset(-1);
     setFocus(id);
     setAnalysisApPreview(null);
     const next = advance ? getNextLoadoutSlotIndex(index) : index;
@@ -395,7 +460,6 @@ export default function Home() {
   };
   const resetLoadout = () => {
     setSlots((current) => clearLoadout(current));
-    setActivePreset(-1);
     setSelectedSlot(0);
     setAnalysisApPreview(null);
   };
@@ -651,7 +715,7 @@ export default function Home() {
                   </section>
                 }
               >
-                <UniversalPlanner />
+                <UniversalPlanner onOpenWeapon={openPlannerWeapon} />
               </Suspense>
             ) : (
               <section className="workspace analyzer-workspace">
@@ -824,7 +888,16 @@ export default function Home() {
                           {recommendations.map((recommendation, i) => (
                             <button
                               type="button"
-                              className={activePreset === i ? 'picked' : ''}
+                              aria-pressed={activePreset === i}
+                              aria-label={`${activePreset === i ? '当前已采用' : '应用'}${recommendation.name}`}
+                              className={
+                                activePreset === i
+                                  ? 'picked'
+                                  : activePreset < 0 &&
+                                      closestRecommendationIndex === i
+                                    ? 'closest'
+                                    : ''
+                              }
                               key={recommendation.id}
                               onClick={() => applyRecommendation(i)}
                             >
@@ -833,12 +906,20 @@ export default function Home() {
                                 <strong>{recommendation.name}</strong>
                                 <small>{recommendation.desc}</small>
                                 <em>{recommendation.rationale}</em>
+                                <span className="recommendation-match">
+                                  {activePreset === i
+                                    ? '当前配装完全一致'
+                                    : `${activePreset < 0 && closestRecommendationIndex === i ? '最接近当前 · ' : ''}能力投入相同 ${recommendationComparisons[i].sharedAbilityAp}/57AP · 差异部位 ${describeChangedParts(recommendationComparisons[i].changedParts) || '无'}`}
+                                </span>
                               </div>
-                              {activePreset === i ? (
-                                <Check size={17} />
-                              ) : (
-                                <Plus size={17} />
-                              )}
+                              <span className="recommendation-action">
+                                {activePreset === i ? (
+                                  <Check size={14} />
+                                ) : (
+                                  <Plus size={14} />
+                                )}
+                                {activePreset === i ? '当前已采用' : '应用此起点'}
+                              </span>
                             </button>
                           ))}
                         </div>
@@ -850,6 +931,26 @@ export default function Home() {
                                 <span key={item}>· {item}</span>
                               ),
                             )}
+                            <div
+                              className="recommendation-allocation"
+                              aria-label="当前系统建议的 AP 分配"
+                            >
+                              {summarizeRecommendationAp(
+                                recommendations[activePreset].slots,
+                              ).map(({ abilityId, ap }) => {
+                                const ability = abilities.find(
+                                  ({ id }) => id === abilityId,
+                                );
+                                return (
+                                  <span key={abilityId}>
+                                    {ability?.short ?? abilityId} {ap}AP
+                                  </span>
+                                );
+                              })}
+                            </div>
+                            <output className="recommendation-applied-status">
+                              已应用到当前配装 · 共 57AP
+                            </output>
                             <small>建议强度尚未由对局或玩家样本验证</small>
                           </div>
                         )}
@@ -867,6 +968,78 @@ export default function Home() {
                               ? '已自动保存在此浏览器'
                               : '本地存储不可用 · 可复制链接保留配装'}
                         </small>
+                        {activePreset < 0 && (
+                          <>
+                            <span className="custom-loadout-diff">
+                              最接近“
+                              {recommendations[closestRecommendationIndex]?.name}
+                              ”：能力投入相同{' '}
+                              {
+                                recommendationComparisons[
+                                  closestRecommendationIndex
+                                ]?.sharedAbilityAp
+                              }
+                              /57AP ·{' '}
+                              {
+                                recommendationComparisons[
+                                  closestRecommendationIndex
+                                ]?.changedSlots
+                              }{' '}
+                              个槽位不同 · 需调整{' '}
+                              {describeChangedParts(
+                                recommendationComparisons[
+                                  closestRecommendationIndex
+                                ]?.changedParts ?? [],
+                              ) || '无'}
+                            </span>
+                            <span className="custom-loadout-adjustments">
+                              {recommendationComparisons[
+                                closestRecommendationIndex
+                              ]?.missingAbilityAp.length > 0 && (
+                                <>
+                                  相对模板少{' '}
+                                  {describeAbilityApChanges(
+                                    recommendationComparisons[
+                                      closestRecommendationIndex
+                                    ].missingAbilityAp,
+                                  )}
+                                </>
+                              )}
+                              {recommendationComparisons[
+                                closestRecommendationIndex
+                              ]?.extraAbilityAp.length > 0 && (
+                                <>
+                                  {' · '}当前多{' '}
+                                  {describeAbilityApChanges(
+                                    recommendationComparisons[
+                                      closestRecommendationIndex
+                                    ].extraAbilityAp,
+                                  )}
+                                </>
+                              )}
+                              {' · '}虚线槽位为与最近模板不同的位置
+                            </span>
+                            <span
+                              className="custom-loadout-part-actions"
+                              aria-label="按部位采用最近系统模板"
+                            >
+                              {recommendationComparisons[
+                                closestRecommendationIndex
+                              ]?.changedParts.map((part) => (
+                                <button
+                                  type="button"
+                                  key={part}
+                                  onClick={() => applyRecommendationPart(part)}
+                                >
+                                  仅替换
+                                  {{ head: '头部', clothes: '服装', shoes: '鞋子' }[
+                                    part
+                                  ]}
+                                </button>
+                              ))}
+                            </span>
+                          </>
+                        )}
                       </div>
                       <div className="loadout-actions">
                         <button type="button" onClick={resetLoadout}>
@@ -897,6 +1070,11 @@ export default function Home() {
                               .map(([id, ap], i) => {
                                 const index = r * 4 + i,
                                   isSelected = selectedSlot === index,
+                                  differsFromClosest =
+                                    activePreset < 0 &&
+                                    recommendationComparisons[
+                                      closestRecommendationIndex
+                                    ]?.changedSlotIndices.includes(index),
                                   canDrop =
                                     draggedAbilityId !== null &&
                                     canPlaceAbilityInSlot(
@@ -907,14 +1085,14 @@ export default function Home() {
                                   <button
                                     type="button"
                                     data-slot-index={index}
-                                    aria-label={`${g}${i === 0 ? '主技能' : '小技能'}槽位${id ? '，当前已装备' : '，当前为空'}`}
+                                    aria-label={`${g}${i === 0 ? '主技能' : '小技能'}槽位${id ? '，当前已装备' : '，当前为空'}${differsFromClosest ? '，与最近系统模板不同' : ''}`}
                                     aria-pressed={isSelected}
                                     title={
                                       isSelected && id
                                         ? `再次点击移除${g}${i === 0 ? '主技能' : '小技能'}`
                                         : `选择${g}${i === 0 ? '主技能' : '小技能'}槽位`
                                     }
-                                    className={`${i === 0 ? 'main ' : ''}${isSelected ? 'selected-slot ' : ''}${id === null ? 'empty-slot ' : ''}${canDrop ? 'drag-available' : ''}`}
+                                    className={`${i === 0 ? 'main ' : ''}${isSelected ? 'selected-slot ' : ''}${id === null ? 'empty-slot ' : ''}${canDrop ? 'drag-available ' : ''}${differsFromClosest ? 'template-difference' : ''}`}
                                     key={index}
                                     onClick={() => selectLoadoutSlot(index)}
                                     onDragOver={(event) => {
@@ -1185,6 +1363,28 @@ export default function Home() {
                         选择要分析的能力{' '}
                         <small>仅影响右侧说明，不修改配装</small>
                       </h3>
+                      <div
+                        className="analysis-model-summary"
+                        aria-label={`当前配装 ${abilityRouteSummary.total} 项能力的模型覆盖`}
+                      >
+                        <span>已装备 {abilityRouteSummary.total}</span>
+                        {abilityRouteSummary.universal > 0 && (
+                          <span>通用曲线 {abilityRouteSummary.universal}</span>
+                        )}
+                        {abilityRouteSummary.weaponSpecific > 0 && (
+                          <span>
+                            武器专属 {abilityRouteSummary.weaponSpecific}
+                          </span>
+                        )}
+                        {abilityRouteSummary.fixed > 0 && (
+                          <span>固定规则 {abilityRouteSummary.fixed}</span>
+                        )}
+                        {abilityRouteSummary.unsupported > 0 && (
+                          <span className="pending">
+                            待支持 {abilityRouteSummary.unsupported}
+                          </span>
+                        )}
+                      </div>
                       <div>
                         {totals.map((x) => (
                           <button
@@ -1267,8 +1467,8 @@ export default function Home() {
                       </p>
                     </div>
                     <p className="note">
-                      套装关系已核对 · 十二条 AP 曲线与已支持动作走速已核对 ·
-                      其余能力继续逐项验证
+                      套装关系已核对 · {getAbilityModelCoverageNote()} ·
+                      未具名索引与实机动作边界继续逐项核验
                     </p>
                   </aside>
                 </div>
@@ -1371,19 +1571,10 @@ function EffectPanel({
   specialSaverAp: number;
 }) {
   const a = abilities.find((x) => x.id === id);
-  const isMain = id === 'ism';
-  const isSub = id === 'iss';
-  const isInkRecovery = id === 'iru';
-  const isQuickSuperJump = id === 'qsj';
+  const panelKind = getAbilityLabPanelKind(id);
   const movementAbilityId = id === 'ssu' || id === 'rsu' ? id : null;
-  const isActionIntensify = id === 'ia';
-  const isEnemyInkResistance = id === 'inkres';
   const specialGaugeAbilityId = id === 'scu' || id === 'ss' ? id : null;
-  const isQuickRespawn = id === 'qr';
-  const isSubPower = id === 'subp';
-  const isSubResistance = id === 'subr';
-  const isSpecialPower = id === 'spu';
-  const fixedAbility = a && hasFixedAbilityAnalysis(a.id) ? a : null;
+  const fixedAbility = a && panelKind === 'fixed-linked' ? a : null;
   const genericContext = a ? buildAbilityContext(a, weapon, ap) : null;
   const curve = getAbilityCurveDefinition(id);
   return (
@@ -1397,7 +1588,7 @@ function EffectPanel({
           <Zap size={13} /> 武器上下文
         </b>
       </div>
-      {isMain ? (
+      {panelKind === 'main-ink-saver' ? (
         <Suspense
           fallback={<p className="parameter-public-note">正在计算主武省墨…</p>}
         >
@@ -1411,7 +1602,7 @@ function EffectPanel({
             clearPreview={clearPreview}
           />
         </Suspense>
-      ) : isSub ? (
+      ) : panelKind === 'sub-ink-saver' ? (
         <Suspense
           fallback={<p className="parameter-public-note">正在计算副武省墨…</p>}
         >
@@ -1425,7 +1616,7 @@ function EffectPanel({
             clearPreview={clearPreview}
           />
         </Suspense>
-      ) : isInkRecovery ? (
+      ) : panelKind === 'ink-recovery' ? (
         <Suspense
           fallback={<p className="parameter-public-note">正在计算回墨时间…</p>}
         >
@@ -1439,7 +1630,7 @@ function EffectPanel({
             clearPreview={clearPreview}
           />
         </Suspense>
-      ) : isQuickSuperJump ? (
+      ) : panelKind === 'quick-super-jump' ? (
         <Suspense
           fallback={
             <p className="parameter-public-note">正在计算超级跳跃时间…</p>
@@ -1456,7 +1647,7 @@ function EffectPanel({
             hasStealthJump={hasStealthJump}
           />
         </Suspense>
-      ) : movementAbilityId ? (
+      ) : panelKind === 'movement-speed' && movementAbilityId ? (
         <Suspense
           fallback={<p className="parameter-public-note">正在计算移动速度…</p>}
         >
@@ -1472,7 +1663,7 @@ function EffectPanel({
             hasNinjaSquid={hasNinjaSquid}
           />
         </Suspense>
-      ) : isActionIntensify ? (
+      ) : panelKind === 'action-intensify' ? (
         <Suspense
           fallback={<p className="parameter-public-note">正在计算行动强化…</p>}
         >
@@ -1486,7 +1677,7 @@ function EffectPanel({
             clearPreview={clearPreview}
           />
         </Suspense>
-      ) : isEnemyInkResistance ? (
+      ) : panelKind === 'enemy-ink-resistance' ? (
         <Suspense
           fallback={<p className="parameter-public-note">正在计算敌墨影响…</p>}
         >
@@ -1500,7 +1691,7 @@ function EffectPanel({
             clearPreview={clearPreview}
           />
         </Suspense>
-      ) : specialGaugeAbilityId ? (
+      ) : panelKind === 'special-gauge' && specialGaugeAbilityId ? (
         <Suspense
           fallback={
             <p className="parameter-public-note">正在计算特殊武器槽…</p>
@@ -1518,7 +1709,7 @@ function EffectPanel({
             hasRespawnPunisher={hasRespawnPunisher}
           />
         </Suspense>
-      ) : isQuickRespawn ? (
+      ) : panelKind === 'quick-respawn' ? (
         <Suspense
           fallback={<p className="parameter-public-note">正在计算复活时间…</p>}
         >
@@ -1533,7 +1724,7 @@ function EffectPanel({
             hasRespawnPunisher={hasRespawnPunisher}
           />
         </Suspense>
-      ) : isSubPower ? (
+      ) : panelKind === 'sub-power' ? (
         <Suspense
           fallback={
             <p className="parameter-public-note">正在计算副武器性能…</p>
@@ -1549,7 +1740,7 @@ function EffectPanel({
             clearPreview={clearPreview}
           />
         </Suspense>
-      ) : isSubResistance ? (
+      ) : panelKind === 'sub-resistance' ? (
         <Suspense
           fallback={
             <p className="parameter-public-note">正在计算副武器影响…</p>
@@ -1565,7 +1756,7 @@ function EffectPanel({
             clearPreview={clearPreview}
           />
         </Suspense>
-      ) : isSpecialPower ? (
+      ) : panelKind === 'special-power' ? (
         <Suspense
           fallback={
             <p className="parameter-public-note">正在计算特殊武器性能…</p>
@@ -1594,6 +1785,7 @@ function EffectPanel({
             quickJumpAp={quickJumpAp}
             quickRespawnAp={quickRespawnAp}
             specialSaverAp={specialSaverAp}
+            isEquipped={equippedAp > 0}
           />
         </Suspense>
       ) : (
@@ -1602,7 +1794,12 @@ function EffectPanel({
             <AbilityIcon ability={a} />
             <div>
               <small>
-                {weapon.name} · 当前 {ap}AP
+                {weapon.name} ·{' '}
+                {panelKind === 'fixed-rule'
+                  ? equippedAp > 0
+                    ? '当前配装已装备'
+                    : '规则预览 · 当前未装备'
+                  : `当前 ${ap}AP`}
               </small>
               <strong>{a?.name}</strong>
               <p>

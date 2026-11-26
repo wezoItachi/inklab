@@ -1,6 +1,9 @@
 import { abilities } from './abilities.ts';
 import { getAbilityCurveDefinition } from './ability-curves.ts';
-import { getSystemRecommendations } from './system-recommendations.ts';
+import {
+  getSystemRecommendations,
+  summarizeRecommendationAp,
+} from './system-recommendations.ts';
 import type { Weapon } from './weapon-catalog.ts';
 
 export type PlannerGoal = 'shared-slots' | 'main-conflict' | 'verified-first';
@@ -27,6 +30,11 @@ export type UniversalGearPlan = {
     weaponName: string;
     mainAbilityId: string;
     mainAbilityName: string;
+    allocation: Array<{
+      abilityId: string;
+      abilityName: string;
+      ap: number;
+    }>;
   }>;
 };
 
@@ -89,6 +97,7 @@ function scoreCandidate(candidate: UniversalGearCandidate, goal: PlannerGoal) {
 export function buildUniversalGearPlan(
   selectedWeapons: readonly Weapon[],
   goal: PlannerGoal,
+  selectedPartId?: UniversalGearCandidate['partId'] | null,
 ): UniversalGearPlan {
   if (selectedWeapons.length < 2) {
     return {
@@ -135,9 +144,12 @@ export function buildUniversalGearPlan(
       compatibilityPercent: Math.round((commonSlotCount / 4) * 100),
     };
   });
-  const candidate = [...candidates].sort(
+  const recommendedCandidate = [...candidates].sort(
     (left, right) => scoreCandidate(right, goal) - scoreCandidate(left, goal),
   )[0];
+  const candidate =
+    candidates.find(({ partId }) => partId === selectedPartId) ??
+    recommendedCandidate;
   const part = partDefinitions.find(
     ({ partId }) => partId === candidate.partId,
   )!;
@@ -146,6 +158,11 @@ export function buildUniversalGearPlan(
     weaponName: weapon.name,
     mainAbilityId: slots[part.mainIndex][0],
     mainAbilityName: abilityName(slots[part.mainIndex][0]),
+    allocation: summarizeRecommendationAp(slots).map(({ abilityId, ap }) => ({
+      abilityId,
+      abilityName: abilityName(abilityId),
+      ap,
+    })),
   }));
 
   return {

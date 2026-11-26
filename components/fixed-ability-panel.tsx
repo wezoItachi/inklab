@@ -15,6 +15,7 @@ export function FixedAbilityPanel({
   quickJumpAp,
   quickRespawnAp,
   specialSaverAp,
+  isEquipped,
 }: {
   weapon: Weapon;
   ability: Ability;
@@ -22,7 +23,9 @@ export function FixedAbilityPanel({
   quickJumpAp: number;
   quickRespawnAp: number;
   specialSaverAp: number;
+  isEquipped: boolean;
 }) {
+  const previewLabel = isEquipped ? '当前配装' : '假设装备预览';
   if (ability.id === 'ninja') {
     const result = analyzeNinjaSquidContext(weapon.id, swimSpeedAp);
     return (
@@ -37,7 +40,7 @@ export function FixedAbilityPanel({
             <strong>{result.speed.toFixed(3)} 单位/帧</strong>
             <p>先计算当前游速 AP，再应用鱿鱼忍者的 0.9 倍固定修正。</p>
           </div>
-          <span>固定修正已核对</span>
+          <span>{previewLabel} · 固定修正已核对</span>
         </div>
         <div className="ink-saver-metrics">
           <div>
@@ -53,7 +56,10 @@ export function FixedAbilityPanel({
           <div>
             <small>60 帧换算</small>
             <b>{result.speedPerSecond.toFixed(1)} 单位/秒</b>
-            <span>{result.speedClassLabel}当前配装结果</span>
+            <span>
+              {result.speedClassLabel}
+              {previewLabel}结果
+            </span>
           </div>
         </div>
         <p className="effect-boundary">
@@ -62,7 +68,7 @@ export function FixedAbilityPanel({
         <p className="judgement">
           <TrendingUp size={14} />
           <b>当前结论：</b>
-          当前 {swimSpeedAp}AP 游速先得到{' '}
+          {isEquipped ? '当前配装' : '假设装备后'}的 {swimSpeedAp}AP 游速先得到{' '}
           {result.speedBeforeFixedAbilities.toFixed(3)}，装备鱿鱼忍者后为{' '}
           {result.speed.toFixed(3)} 单位/帧。
         </p>
@@ -84,7 +90,7 @@ export function FixedAbilityPanel({
             <strong>最多 {result.displayedMaxTotalFrames} 帧</strong>
             <p>标准跳跃时间与隐身跳跃的距离相关惩罚分开显示。</p>
           </div>
-          <span>规则边界已核对</span>
+          <span>{previewLabel} · 规则边界已核对</span>
         </div>
         <div className="ink-saver-metrics">
           <div>
@@ -111,8 +117,9 @@ export function FixedAbilityPanel({
         <p className="judgement">
           <TrendingUp size={14} />
           <b>当前结论：</b>
-          当前快跳投入下，标准完整跳跃为 {result.totalFrames}{' '}
-          帧；隐跳距离惩罚加入后最多为 {result.displayedMaxTotalFrames} 帧。
+          {isEquipped ? '当前配装' : '假设装备后'}的快跳投入下，标准完整跳跃为{' '}
+          {result.totalFrames} 帧；隐跳距离惩罚加入后最多为{' '}
+          {result.displayedMaxTotalFrames} 帧。
         </p>
         <SourceNote />
       </>
@@ -134,7 +141,7 @@ export function FixedAbilityPanel({
           </strong>
           <p>自身代价、对手受到的惩罚与能力压制分别展示。</p>
         </div>
-        <span>惩罚边界已核对</span>
+        <span>{previewLabel} · 惩罚边界已核对</span>
       </div>
       <div className="ink-saver-metrics">
         <div>
@@ -162,8 +169,9 @@ export function FixedAbilityPanel({
       <p className="judgement">
         <TrendingUp size={14} />
         <b>当前结论：</b>
-        提升复活惩罚同时影响自己与被自己击倒的对手；当前卡片把自身配装结果和对手无相关
-        AP 的参考边界分开，不能只把它理解成单向增益。
+        提升复活惩罚同时影响自己与被自己击倒的对手；
+        {isEquipped ? '当前卡片' : '假设装备预览'}把自身配装结果和对手无相关 AP
+        的参考边界分开，不能只把它理解成单向增益。
       </p>
       <SourceNote />
     </>

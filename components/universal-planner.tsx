@@ -1,7 +1,7 @@
 'use client';
 
 import { useMemo, useState, type ReactNode } from 'react';
-import { Check, Layers, Plus, X } from 'lucide-react';
+import { ArrowRight, Check, Layers, Plus, X } from 'lucide-react';
 import { WeaponPicker } from '@/components/weapon-picker';
 import { abilities } from '@/lib/abilities';
 import { getMainWeaponAssetUrl } from '@/lib/weapon-assets';
@@ -37,16 +37,23 @@ const goals: ReadonlyArray<{ id: PlannerGoal; label: string }> = [
 const abilityShort = (id: string) =>
   abilities.find((ability) => ability.id === id)?.short ?? id;
 
-export function UniversalPlanner() {
+export function UniversalPlanner({
+  onOpenWeapon,
+}: {
+  onOpenWeapon: (weaponId: string) => void;
+}) {
   const [selectedIds, setSelectedIds] = useState(initialWeaponIds);
   const [goal, setGoal] = useState<PlannerGoal>('shared-slots');
+  const [selectedPartId, setSelectedPartId] = useState<
+    'head' | 'clothes' | 'shoes' | null
+  >(null);
   const selectedWeapons = useMemo(
     () => selectedIds.map((id) => getWeapon(id)),
     [selectedIds],
   );
   const plan = useMemo(
-    () => buildUniversalGearPlan(selectedWeapons, goal),
-    [goal, selectedWeapons],
+    () => buildUniversalGearPlan(selectedWeapons, goal, selectedPartId),
+    [goal, selectedPartId, selectedWeapons],
   );
 
   const addWeapon = (id: string) => {
@@ -112,7 +119,10 @@ export function UniversalPlanner() {
               <button
                 type="button"
                 className={goal === item.id ? 'active' : ''}
-                onClick={() => setGoal(item.id)}
+                onClick={() => {
+                  setGoal(item.id);
+                  setSelectedPartId(null);
+                }}
                 key={item.id}
               >
                 {item.label}
@@ -124,22 +134,39 @@ export function UniversalPlanner() {
           </Title>
           <div className="planner-part-list">
             {plan.candidates.map((candidate) => (
-              <article
+              <button
+                type="button"
                 className={
                   plan.candidate?.partId === candidate.partId ? 'active' : ''
                 }
                 key={candidate.partId}
+                aria-pressed={plan.candidate?.partId === candidate.partId}
+                onClick={() => setSelectedPartId(candidate.partId)}
               >
                 <b>{candidate.partLabel}</b>
                 <span>{candidate.commonSlotCount}/4 共通槽</span>
                 <small>{candidate.mainAbilityIds.length} 种主能力</small>
-              </article>
+              </button>
             ))}
           </div>
+          {selectedPartId && (
+            <button
+              type="button"
+              className="planner-auto-part"
+              onClick={() => setSelectedPartId(null)}
+            >
+              恢复系统推荐部位
+            </button>
+          )}
         </section>
         <aside className="planner-result">
           {plan.candidate ? (
-            <PlannerResult plan={plan} goal={goal} />
+            <PlannerResult
+              plan={plan}
+              goal={goal}
+              isManualSelection={selectedPartId !== null}
+              onOpenWeapon={onOpenWeapon}
+            />
           ) : (
             <div className="planner-empty">
               <Layers size={28} />
@@ -191,9 +218,13 @@ function SelectedWeapon({
 function PlannerResult({
   plan,
   goal,
+  isManualSelection,
+  onOpenWeapon,
 }: {
   plan: ReturnType<typeof buildUniversalGearPlan>;
   goal: PlannerGoal;
+  isManualSelection: boolean;
+  onOpenWeapon: (weaponId: string) => void;
 }) {
   const candidate = plan.candidate!;
   const commonMain = candidate.commonMainAbilityId
@@ -202,14 +233,18 @@ function PlannerResult({
   return (
     <>
       <div className="result-kicker">
-        RECOMMENDATION / {goals.find((item) => item.id === goal)?.label}
+        {isManualSelection
+          ? 'INSPECTION / 手动检查'
+          : `RECOMMENDATION / ${goals.find((item) => item.id === goal)?.label}`}
       </div>
       <div className="recommend-title">
         <div className="gear-symbol">
           <Layers />
         </div>
         <div>
-          <small>当前比较中共通度最高</small>
+          <small>
+            {isManualSelection ? '正在检查选定部位' : '当前比较中共通度最高'}
+          </small>
           <h2>{candidate.partLabel}模块</h2>
         </div>
         <b>共通 {candidate.compatibilityPercent}%</b>
@@ -254,7 +289,19 @@ function PlannerResult({
             <span>
               <b>{requirement.weaponName}</b> · {candidate.partLabel}主能力{' '}
               {requirement.mainAbilityName}
+              <small className="trade-allocation">
+                {requirement.allocation
+                  .map(({ abilityName, ap }) => `${abilityName} ${ap}AP`)
+                  .join(' · ')}
+              </small>
             </span>
+            <button
+              type="button"
+              onClick={() => onOpenWeapon(requirement.weaponId)}
+              aria-label={`载入${requirement.weaponName}的主武基础型并进入单套分析`}
+            >
+              进入单套分析 <ArrowRight size={12} />
+            </button>
           </div>
         ))}
       </div>

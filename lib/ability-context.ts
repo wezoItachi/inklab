@@ -1,4 +1,5 @@
 import type { Ability } from './abilities.ts';
+import { getAbilityCurveDefinition } from './ability-curves.ts';
 import type { Weapon } from './weapon-catalog.ts';
 import { analyzeSpecialPower } from './special-power.ts';
 
@@ -8,7 +9,11 @@ export type AbilityContext = {
   target: string;
   targetNote: string;
   conclusion: string;
-  verification: 'curve-pending' | 'weapon-specific' | 'rule-only';
+  verification:
+    | 'curve-verified'
+    | 'curve-pending'
+    | 'weapon-specific'
+    | 'rule-only';
 };
 
 export type FixedAbilityRule = {
@@ -109,11 +114,13 @@ export function getFixedAbilityRule(abilityId: string) {
 export function getAbilityLabScopeNote(
   verification: AbilityContext['verification'],
 ) {
-  return verification === 'rule-only'
-    ? '这是固定主能力，按对应部位与触发条件生效；它不进入 0–57AP 通用曲线，也不会生成伪造的投入临界点。'
-    : verification === 'weapon-specific'
-      ? '这项能力没有可代表全部武器的单一曲线；实验室会按当前副武器或特殊武器读取已经核对的专属指标。'
-      : '当前先展示可核对的规则语义；效果曲线、临界点与推荐投入量继续保持待验证。';
+  return verification === 'curve-verified'
+    ? '正式 AP 曲线已经接入；实验室会按当前武器、当前投入与对应边界展示可复算结果。'
+    : verification === 'rule-only'
+      ? '这是固定主能力，按对应部位与触发条件生效；它不进入 0–57AP 通用曲线，也不会生成伪造的投入临界点。'
+      : verification === 'weapon-specific'
+        ? '这项能力没有可代表全部武器的单一曲线；实验室会按当前副武器或特殊武器读取已经核对的专属指标。'
+        : '当前先展示可核对的规则语义；效果曲线、临界点与推荐投入量继续保持待验证。';
 }
 
 const targetById: Readonly<Record<string, string>> = {
@@ -121,6 +128,8 @@ const targetById: Readonly<Record<string, string>> = {
   rsu: '人形态移动',
   qsj: '超级跳跃准备阶段',
   ia: '跳射与鱿鱼滚行／登顶动作',
+  ism: '当前主武器的动作耗墨',
+  iss: '当前次要武器的单次耗墨与完整使用次数',
   iru: '潜墨与非射击回墨阶段',
   scu: '特殊武器计量表增加量',
   ss: '被击倒后的特殊武器计量表',
@@ -160,6 +169,7 @@ export function buildAbilityContext(
         : (targetById[ability.id] ?? '当前玩家状态');
   const isExclusive = ability.group.endsWith('限定');
   const fixedRule = getFixedAbilityRule(ability.id);
+  const curve = getAbilityCurveDefinition(ability.id);
   const specialPower =
     ability.id === 'spu' ? analyzeSpecialPower(weapon.specialId, ap) : null;
 
@@ -178,16 +188,24 @@ export function buildAbilityContext(
             ? fixedRule.labNote
             : `${ability.name}的规则作用对象已确定；精确数值与临界点仍由效果曲线验证。`,
     conclusion: fixedRule
-      ? fixedRule.hasLinkedNumericModel
-        ? `当前为 ${ap}AP 主技能投入。实验室可以联动已有模型，但固定主能力本身仍不会被折算成可重复堆叠的 AP。`
-        : `当前为 ${ap}AP 主技能投入。先按触发条件理解作用，不把固定主技能格换算成未经核验的数值收益。`
+      ? ap > 0
+        ? fixedRule.hasLinkedNumericModel
+          ? '当前配装已装备此固定主能力。实验室可以联动已有模型，但固定主能力本身仍不会被折算成可重复堆叠的 AP。'
+          : '当前配装已装备此固定主能力。先按触发条件理解作用，不把主技能槽换算成未经核验的数值收益。'
+        : fixedRule.hasLinkedNumericModel
+          ? '当前配装未装备此固定主能力；实验室显示的是假设装备后的联动预览，不会修改左侧配装。'
+          : '当前配装未装备此固定主能力；以下只展示规则与作用对象，不会修改左侧配装。'
       : ['subp', 'spu'].includes(ability.id)
         ? `当前为 ${ap}AP 投入。${target}的专属字段会在实验室按实际单位试算，但本站不把不同武器的效果包装成一条统一百分比。`
-        : `当前为 ${ap}AP 投入。网站已能识别作用范围，但在曲线核验前不提供“推荐投入量”或伪精确收益。`,
+        : curve.status === 'verified'
+          ? `当前为 ${ap}AP 投入。正式曲线已接入，实验室会结合当前武器与适用边界输出可复算结果。`
+          : `当前为 ${ap}AP 投入。网站已能识别作用范围，但在曲线核验前不提供“推荐投入量”或伪精确收益。`,
     verification: isExclusive
       ? 'rule-only'
       : ['subp', 'spu'].includes(ability.id)
         ? 'weapon-specific'
-        : 'curve-pending',
+        : curve.status === 'verified'
+          ? 'curve-verified'
+          : 'curve-pending',
   };
 }
