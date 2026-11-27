@@ -9,9 +9,9 @@ import {
 void test('special power data covers the complete special catalog', () => {
   const summary = summarizeSpecialPowerData();
   assert.equal(summary.total, specialWeaponDatabase.specialWeapons.length);
-  assert.equal(summary.verified, 16);
-  assert.equal(summary.pending, 3);
-  assert.equal(summary.metricCount, 21);
+  assert.equal(summary.verified, 19);
+  assert.equal(summary.pending, 0);
+  assert.equal(summary.metricCount, 32);
   for (const special of specialWeaponDatabase.specialWeapons) {
     assert.ok(analyzeSpecialPower(special.id, 3), special.id);
   }
@@ -42,10 +42,19 @@ void test('zipcaster ink costs use its 150 percent special ink tank', () => {
   assert.equal(maximum?.metrics[1].value, 8);
 });
 
-void test('ambiguous indexed effects remain numerically unavailable', () => {
-  for (const specialId of ['decoy', 'triple-splashdown', 'reef-slider']) {
-    const result = analyzeSpecialPower(specialId, 57);
-    assert.equal(result?.status, 'pending');
-    assert.deepEqual(result?.metrics, []);
-  }
+void test('12.0 named special-up fields are available for the final three specials', () => {
+  const decoy = analyzeSpecialPower('decoy', 57);
+  assert.equal(decoy?.status, 'verified');
+  assert.equal(decoy?.metrics.length, 4);
+  assert.equal(decoy?.metrics[0].value, 4.1);
+
+  const splashdown = analyzeSpecialPower('triple-splashdown', 0);
+  assert.equal(splashdown?.status, 'verified');
+  assert.equal(splashdown?.metrics.length, 2);
+  assert.equal(splashdown?.metrics[1].value, 10);
+
+  const reefSlider = analyzeSpecialPower('reef-slider', 57);
+  assert.equal(reefSlider?.status, 'verified');
+  assert.equal(reefSlider?.metrics.length, 5);
+  assert.equal(reefSlider?.metrics[1].value, 9.012);
 });

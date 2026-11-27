@@ -1,8 +1,10 @@
 import { Check, TrendingUp } from 'lucide-react';
 import type { Ability } from '@/lib/abilities';
 import { analyzeSubPower } from '@/lib/sub-power';
+import { getSubVersionAdjustment } from '@/lib/version-adjustments';
 import type { Weapon } from '@/lib/weapon-catalog';
 import { AbilityIcon } from './ability-icon';
+import { OfficialVersionNote } from './official-version-note';
 
 const quickAp = [3, 6, 10, 20, 30, 57];
 
@@ -32,6 +34,7 @@ export function SubPowerPanel({
   if (!result)
     return <p className="parameter-public-note">当前副武器参数待核验。</p>;
   const primary = result.metrics[0];
+  const versionAdjustment = getSubVersionAdjustment(weapon.sub.id);
 
   return (
     <>
@@ -64,6 +67,14 @@ export function SubPowerPanel({
         投掷初速度用于说明能力实际改变的源参数，不直接换算为地面距离；地形、高低差与玩家移动会改变落点。信标显示的是赋予跳跃者的超级跳跃缩短等效
         AP。
       </p>
+      {versionAdjustment ? (
+        <OfficialVersionNote
+          gameVersion={versionAdjustment.gameVersion}
+          statusLabel="固定动作规则已记录"
+          summary={versionAdjustment.summary}
+          modelNote={versionAdjustment.modelNote}
+        />
+      ) : null}
       <div className="ap-preview-label">
         <div>
           <span>{isPreview ? `正在试算 ${result.ap}AP` : 'AP 曲线试算'}</span>

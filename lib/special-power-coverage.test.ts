@@ -9,18 +9,18 @@ import {
 void test('special power coverage accounts for every special weapon', () => {
   const summary = summarizeSpecialPowerCoverage();
   assert.equal(summary.total, specialWeaponDatabase.specialWeapons.length);
-  assert.equal(summary.sourceBacked, 16);
-  assert.equal(summary.interpretationPending, 3);
-  assert.equal(summary.fieldCount, 21);
+  assert.equal(summary.sourceBacked, 19);
+  assert.equal(summary.interpretationPending, 0);
+  assert.equal(summary.fieldCount, 32);
   for (const special of specialWeaponDatabase.specialWeapons) {
     assert.ok(getSpecialPowerCoverage(special.id), special.id);
   }
 });
 
-void test('ambiguous indexed effects stay pending instead of receiving invented labels', () => {
+void test('12.0 named special-up fields close the former interpretation gaps', () => {
   for (const specialId of ['decoy', 'triple-splashdown', 'reef-slider']) {
     const record = getSpecialPowerCoverage(specialId);
-    assert.equal(record?.status, 'interpretation-pending');
-    assert.deepEqual(record?.fields, []);
+    assert.equal(record?.status, 'source-backed');
+    assert.ok((record?.fields.length ?? 0) > 0);
   }
 });

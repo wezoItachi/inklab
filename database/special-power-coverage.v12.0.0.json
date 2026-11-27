@@ -1,7 +1,7 @@
 {
   "gameVersion": "12.0.0",
   "sourceId": "leanny-splat3",
-  "checkedAt": "2026-11-22",
+  "checkedAt": "2026-11-28",
   "records": [
     {
       "specialId": "ink-vac",
@@ -35,9 +35,9 @@
     },
     {
       "specialId": "decoy",
-      "status": "interpretation-pending",
-      "fields": [],
-      "note": "仅有索引化 SubSpecialSpecUpList，需先确认每个索引语义"
+      "status": "source-backed",
+      "fields": ["PaintRadius", "CrossPaintCheckLength", "CrossPaintRadius", "DistanceDamageDistanceRate"],
+      "note": "爆炸涂墨、十字涂墨与伤害衰减距离倍率"
     },
     {
       "specialId": "big-bubbler",
@@ -77,9 +77,9 @@
     },
     {
       "specialId": "triple-splashdown",
-      "status": "interpretation-pending",
-      "fields": [],
-      "note": "仅有索引化 SubSpecialSpecUpList，需先确认每个索引语义"
+      "status": "source-backed",
+      "fields": ["DistanceDamageDistanceRate", "PaintRadius"],
+      "note": "普通爆炸与跳跃落点爆炸共享的伤害衰减距离倍率和涂墨半径"
     },
     {
       "specialId": "wave-breaker",
@@ -89,9 +89,9 @@
     },
     {
       "specialId": "reef-slider",
-      "status": "interpretation-pending",
-      "fields": [],
-      "note": "仅有索引化 SubSpecialSpecUpList，需先确认每个索引语义"
+      "status": "source-backed",
+      "fields": ["DistanceDamageDistanceRate", "PaintRadius", "SplashAroundVelocityMin", "SplashAroundVelocityMax", "SplashAroundPaintRadius"],
+      "note": "爆炸伤害衰减距离、涂墨半径与周边飞沫参数"
     },
     {
       "specialId": "zipcaster",

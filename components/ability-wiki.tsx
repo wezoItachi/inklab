@@ -184,7 +184,9 @@ export function AbilityWiki({
                   : currentCurve.status === 'weapon-specific'
                     ? current.id === 'subp'
                       ? `副武器性能已按当前套装读取 ${modelCoverage.subWeaponCount} 种副武器的 ${modelCoverage.subMetricCount} 个专属指标；不同副武器改变的距离、速度、持续时间或耐久并不相同，因此不会被压缩成一条统一百分比。`
-                      : `特殊武器性能已对 ${modelCoverage.verifiedSpecialWeaponCount} 种特殊武器开放 ${modelCoverage.specialMetricCount} 个具名指标；其余 ${modelCoverage.pendingSpecialWeaponCount} 种索引语义继续明确标为待核验，不影响已完成的专属模型。`
+                      : modelCoverage.pendingSpecialWeaponCount > 0
+                        ? `特殊武器性能已对 ${modelCoverage.verifiedSpecialWeaponCount} 种特殊武器开放 ${modelCoverage.specialMetricCount} 个具名指标；其余 ${modelCoverage.pendingSpecialWeaponCount} 种索引语义继续明确标为待核验，不影响已完成的专属模型。`
+                        : `特殊武器性能已对全部 ${modelCoverage.verifiedSpecialWeaponCount} 种特殊武器开放 ${modelCoverage.specialMetricCount} 个具名指标；各武器继续按自身的范围、持续时间、速度、耐久或耗墨字段分别计算。`
                     : '这项能力可以用于配装编辑和分类；完整 AP 效果、最小有效投入与关键临界点仍待逐项核验，目前不输出未经核对的阈值结论。'}
             </p>
           </div>

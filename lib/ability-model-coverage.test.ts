@@ -15,15 +15,15 @@ void test('ability model coverage is derived from current registries', () => {
     subWeaponCount: 14,
     subMetricCount: 17,
     specialWeaponCount: 19,
-    verifiedSpecialWeaponCount: 16,
-    pendingSpecialWeaponCount: 3,
-    specialMetricCount: 21,
+    verifiedSpecialWeaponCount: 19,
+    pendingSpecialWeaponCount: 0,
+    specialMetricCount: 32,
   });
 });
 
 void test('public coverage note uses derived counts', () => {
   assert.match(
     getAbilityModelCoverageNote(),
-    /12 条通用 AP 曲线、14 种副武器的 17 个专属指标、16 种特殊武器的 21 个具名指标/,
+    /12 条通用 AP 曲线、14 种副武器的 17 个专属指标、19 种特殊武器的 32 个具名指标/,
   );
 });

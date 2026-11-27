@@ -1468,7 +1468,7 @@ export default function Home() {
                     </div>
                     <p className="note">
                       套装关系已核对 · {getAbilityModelCoverageNote()} ·
-                      未具名索引与实机动作边界继续逐项核验
+                      射程换算、完整动作周期与实机动作边界继续逐项核验
                     </p>
                   </aside>
                 </div>

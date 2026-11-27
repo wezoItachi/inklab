@@ -29,7 +29,8 @@ void test('context analysis reads the current kit and verified equipped AP curve
   assert.match(sub?.metrics[2]?.note ?? '', /投掷初速度/);
   assert.equal(special?.metrics[0]?.state, 'verified');
   assert.equal(special?.metrics[1]?.state, 'verified');
-  assert.equal(special?.metrics[2]?.state, 'pending');
+  assert.equal(special?.metrics[2]?.state, 'weapon-specific');
+  assert.match(special?.metrics[2]?.note ?? '', /爆炸涂墨半径/);
   assert.equal(mobility?.metrics[0]?.label, '快跳');
   assert.match(mobility?.metrics[0]?.value ?? '', /3AP · \d+帧/);
   assert.equal(other?.metrics[0]?.label, '主省');
@@ -45,7 +46,8 @@ void test('weapon-specific models remain distinct from universal verified curves
 
   assert.equal(sub?.metrics[2]?.state, 'weapon-specific');
   assert.match(sub?.metrics[2]?.note ?? '', /投掷初速度/);
-  assert.equal(special?.metrics[2]?.state, 'pending');
+  assert.equal(special?.metrics[2]?.state, 'weapon-specific');
+  assert.match(special?.metrics[2]?.note ?? '', /爆炸涂墨半径/);
 
   const verifiedSpecialWeapon = weapons.find((candidate) => {
     const specialMetric = buildLoadoutContextSections(candidate, []).find(

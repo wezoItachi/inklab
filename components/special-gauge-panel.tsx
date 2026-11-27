@@ -1,8 +1,10 @@
 import { Check, TrendingUp } from 'lucide-react';
 import type { Ability } from '@/lib/abilities';
 import { analyzeSpecialCharge, analyzeSpecialSaver } from '@/lib/special-gauge';
+import { getSpecialPointAdjustment } from '@/lib/version-adjustments';
 import type { Weapon } from '@/lib/weapon-catalog';
 import { AbilityIcon } from './ability-icon';
+import { OfficialVersionNote } from './official-version-note';
 
 type SpecialGaugeAbilityId = 'scu' | 'ss';
 
@@ -30,6 +32,7 @@ export function SpecialGaugePanel({
   const isCharge = abilityId === 'scu';
   const charge = analyzeSpecialCharge(weapon.id, ap);
   const saver = analyzeSpecialSaver(ap, { hasRespawnPunisher });
+  const versionAdjustment = isCharge ? getSpecialPointAdjustment(weapon.id) : null;
   const quickAp = [3, 6, 10, 20, 30, 57];
 
   return (
@@ -102,6 +105,14 @@ export function SpecialGaugePanel({
           ? '特殊武器增加量不会提高涂墨本身的点数产出，只会降低充满当前特殊武器槽所需的有效点数。'
           : '复活惩罚由击倒者与被击倒者的装备状态决定；页面展示标准、当前自身装备和被复活惩罚击倒三种边界，不假设对手每次都装备该能力。'}
       </p>
+      {versionAdjustment ? (
+        <OfficialVersionNote
+          gameVersion={versionAdjustment.gameVersion}
+          statusLabel="当前套装点数已接入"
+          summary={versionAdjustment.summary}
+          modelNote={versionAdjustment.modelNote}
+        />
+      ) : null}
       <div className="ap-preview-label">
         <div>
           <span>{isPreview ? `正在试算 ${ap}AP` : 'AP 曲线试算'}</span>

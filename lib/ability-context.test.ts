@@ -50,7 +50,7 @@ void test('special power follows the currently selected special weapon', () => {
   assert.ok(ability);
   const context = buildAbilityContext(ability, weapon, 6);
   assert.equal(context.target, '诱饵烟花');
-  assert.match(context.targetNote, /逐项核验/);
+  assert.match(context.targetNote, /具名增强字段已核对/);
   assert.equal(context.verification, 'weapon-specific');
 });
 

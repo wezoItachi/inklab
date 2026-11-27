@@ -4456,6 +4456,66 @@ button {
   flex: 0 0 auto;
   color: #719700;
 }
+.special-version-note {
+  display: grid;
+  grid-template-columns: minmax(150px, 0.75fr) minmax(220px, 1.4fr) minmax(220px, 1.4fr) auto;
+  align-items: center;
+  gap: 12px;
+  margin: 10px 0;
+  padding: 12px 14px;
+  border: 1px solid #cfc6ff;
+  border-left: 4px solid #6842ff;
+  background: linear-gradient(105deg, #f7f4ff 0%, #fff 70%);
+}
+.special-version-note div,
+.special-version-note p,
+.special-version-note span {
+  min-width: 0;
+}
+.special-version-note div {
+  display: grid;
+  gap: 3px;
+}
+.special-version-note small {
+  color: #6842ff;
+  font-family: var(--font-mono);
+  font-size: 8px;
+  letter-spacing: 0.06em;
+}
+.special-version-note strong {
+  font-size: 12px;
+}
+.special-version-note p,
+.special-version-note span {
+  margin: 0;
+  font-size: 9px;
+  line-height: 1.55;
+}
+.special-version-note span {
+  color: #6d6877;
+}
+.special-version-note a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 4px;
+  color: #5836e8;
+  font-size: 9px;
+  white-space: nowrap;
+}
+@media (max-width: 900px) {
+  .special-version-note {
+    grid-template-columns: 1fr 1fr;
+  }
+  .special-version-note a {
+    justify-content: flex-start;
+  }
+}
+@media (max-width: 560px) {
+  .special-version-note {
+    grid-template-columns: 1fr;
+  }
+}
 @media (max-width: 700px) {
   .ink-saver-metrics {
     grid-template-columns: 1fr;

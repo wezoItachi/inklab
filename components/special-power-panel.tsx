@@ -1,8 +1,10 @@
 import { Check, FlaskConical, TrendingUp } from 'lucide-react';
 import type { Ability } from '@/lib/abilities';
 import { analyzeSpecialPower } from '@/lib/special-power';
+import { getSpecialVersionNote } from '@/lib/special-version-notes';
 import type { Weapon } from '@/lib/weapon-catalog';
 import { AbilityIcon } from './ability-icon';
+import { OfficialVersionNote } from './official-version-note';
 
 const quickAp = [3, 6, 10, 20, 30, 57];
 
@@ -10,6 +12,20 @@ function formatValue(value: number, unit: string) {
   const precision = Math.abs(value) < 0.1 ? 3 : Math.abs(value) < 10 ? 2 : 1;
   const formatted = Number.isInteger(value) ? `${value}` : value.toFixed(precision);
   return unit ? `${formatted} ${unit}` : formatted;
+}
+
+function VersionRuleNote({ specialId }: { specialId: string }) {
+  const note = getSpecialVersionNote(specialId);
+  if (!note) return null;
+
+  return (
+    <OfficialVersionNote
+      gameVersion={note.gameVersion}
+      statusLabel={note.modelStatus === 'parameter-linked' ? '当前版本参数已接入' : '官方规则已记录'}
+      summary={note.summary}
+      modelNote={note.modelNote}
+    />
+  );
 }
 
 export function SpecialPowerPanel({
@@ -45,6 +61,7 @@ export function SpecialPowerPanel({
         <p className="effect-boundary">
           当前 {weapon.special} 只保留套装识别；完成索引语义交叉核对前，不显示 AP 收益或推荐投入量。
         </p>
+        <VersionRuleNote specialId={weapon.specialId} />
       </>
     );
   }
@@ -73,6 +90,7 @@ export function SpecialPowerPanel({
       <p className="effect-boundary">
         标为“内部单位”的范围、半径或初速度只用于同一动作的 AP 前后比较，不冒充训练场距离。触手喷射耗墨已按其 150% 专用墨水槽换算。
       </p>
+      <VersionRuleNote specialId={weapon.specialId} />
       <div className="ap-preview-label">
         <div>
           <span>{isPreview ? `正在试算 ${result.ap}AP` : 'AP 曲线试算'}</span>
