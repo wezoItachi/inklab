@@ -35,6 +35,7 @@
     "data:audit-battle-source": "node scripts/audit-battle-source-omissions.mjs",
     "data:resolve-battle-applicability": "node scripts/resolve-battle-parameter-applicability.mjs",
     "data:build-battle-verification-queue": "node scripts/build-battle-verification-queue.mjs",
+    "data:refresh-remaining-verification": "node scripts/refresh-remaining-battle-verification.mjs",
     "typecheck": "tsc --noEmit --incremental false",
     "lint": "oxlint",
     "format": "oxfmt",

@@ -6,9 +6,9 @@
   "rangePolicy": "lib/main-weapon-range-evidence.ts",
   "policy": "Every remaining pending occurrence receives one evidence requirement. This queue records what would close the field; it does not promote assumptions to verified values.",
   "summary": {
-    "pendingFieldOccurrences": 332,
-    "categories": 8,
-    "groupedTasks": 36
+    "pendingFieldOccurrences": 329,
+    "categories": 7,
+    "groupedTasks": 35
   },
   "categories": [
     {
@@ -171,24 +171,6 @@
             "main-2071"
           ],
           "nextEvidence": "Find an explicit source field or perform a controlled capture; do not copy a related weapon value."
-        }
-      ]
-    },
-    {
-      "category": "external-semantic-source-required",
-      "fieldOccurrences": 3,
-      "groups": [
-        {
-          "family": "弓",
-          "key": "projectileCount",
-          "label": "每次发射箭数",
-          "count": 3,
-          "weaponIds": [
-            "main-7020",
-            "main-7021",
-            "main-7022"
-          ],
-          "nextEvidence": "Locate an official description or another auditable source that states the missing game meaning directly."
         }
       ]
     },

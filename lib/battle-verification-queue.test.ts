@@ -32,3 +32,13 @@ void test('runtime defaults expose distinct closure routes', () => {
     true,
   );
 });
+
+void test('every public verification route has a readable explanation', () => {
+  for (const weapon of weapons) {
+    for (const route of getWeaponVerificationRouteSummary(weapon.id)
+      .breakdown) {
+      assert.ok(route.label.length > 0, route.category);
+      assert.ok(route.note.length > 0, route.category);
+    }
+  }
+});

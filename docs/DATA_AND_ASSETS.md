@@ -58,11 +58,13 @@ Ver. 12.0.0 的 174 把对战武器名称直接取自固定上游快照的 `Comm
 - `database/sub-weapons.v12.0.0.json`、`special-weapons.v12.0.0.json`、`weapon-kits.v12.0.0.json`：副武器、特殊武器与版本化套装关系。
 - `database/*-import-report.v12.0.0.json`：各武器族和鲑鱼跑参数的固定上游提交、输入文件哈希、导入日期与计数。
 - `database/salmon-weapon-parameters.v12.0.0.json`、`salmon-ink-cycle-evidence.v12.0.0.json`、`salmon-targets.v12.0.0.json`：71 把打工武器的来源参数、回墨／墨锁证据和 14 个自由目标。
-- `database/battle-parameter-*.v12.0.0.json`：全 174 把对战武器的字段缺口、来源、省略机制、不适用项与 332 次待验证字段的证据队列。
+- `database/battle-parameter-*.v12.0.0.json`：全 174 把对战武器的字段缺口、来源、省略机制、不适用项与 329 次待验证字段的证据队列。
 - `database/*.v11.3.0.json`：上一个游戏版本的历史快照，不参与当前界面运行。
 - `database/schema.ts`：字段类型与自动校验规则。
 
 该目录是随源码维护的版本化数据源，适合当前无账号、无服务器存储的 Web 阶段。它不表示 INKLAB 拥有第三方事实或素材；Leanny 已同意项目按指定署名使用所需数据，INKLAB 会保留仓库链接、导入输入哈希与字段级来源记录。当前仅选取并规范化产品需要的武器目录、套装关系和参数字段，不保存完整上游数据库镜像。未来若开放账号和社区功能，再把用户数据迁移到服务端数据库。
+
+更新剩余武器族参数及验证报告时，应使用 `pnpm data:refresh-remaining-verification -- --source-dir <parameter/1200/weapon>`。该命令固定按“导入、生成完整来源证据、判定不适用、重算缺口、生成验证队列”的顺序执行，避免在不适用判定后重扫来源而丢失上游省略证据。
 
 ### 当前导入范围
 
@@ -72,7 +74,7 @@ Ver. 12.0.0 的 174 把对战武器名称直接取自固定上游快照的 `Comm
 - 射击枪 14 个参数类已额外核对伤害开始／结束衰减帧和弹丸初速，40 把射击枪均在实验室展示这组射程基础证据；完整运动阶段尚未积分，因此不会把这些原始字段合成为未经验证的“有效射程”。
 - 实验室为 11 个武器族分别定义射程命中语义、测量边界和下一证据，避免将直击、爆风、墨滴、散弹、刀身等不同概念混成一个数字。当前共 78 把武器具有至少一项来源基础字段；其余 96 把显示“定义已建立·数值待测量”。通用条件与通过门槛见 [`verification/Range-measurement-protocol-v11.3.0.md`](verification/Range-measurement-protocol-v11.3.0.md)。
 - 七类新增字段只采用文件中直接出现且含义足够明确的伤害、耗墨、射击／蓄力阶段、扩散、移动、翻滚、伞弹丸与爆炸等数值；不把单位伤害误称为整次攻击总伤害，也不把阶段窗口直接解释为完整动作周期。详细边界见 [`verification/Remaining-families-v11.3.0.md`](verification/Remaining-families-v11.3.0.md)。
-- 弓类已建立最低／一段／满蓄力三档动作窗口模型。三发猎鱼弓的三向发射与邦普V的一次五发采用 Nintendo Splatoon Base 的公开武器说明；LACT 系的箭数因当前来源未直接写明而继续留空，不推导整轮伤害。公式、假设和未验证边界见 [`verification/Stringer-charge-model-v11.3.0.md`](verification/Stringer-charge-model-v11.3.0.md)。
+- 弓类已建立最低／一段／满蓄力三档动作窗口模型。三发猎鱼弓的三向发射采用 Nintendo Splatoon Base 的公开武器说明；REEF-LUX 与邦普V分别由 Ver. 12.0.0 参数中的 `ShotParam.ArrowNum = 3 / 5` 直接确认。九套弓类武器均可推导整轮伤害、动作窗口 DPS 与击破轮数；公式、假设和未验证边界见 [`verification/Stringer-charge-model-v11.3.0.md`](verification/Stringer-charge-model-v11.3.0.md)。
 - 双枪已拆分普通射击与翻滚后定点射击状态，并补入显式的翻滚后伤害与扩散角。开尔文525系和灭熄FF系可以计算来源明确的翻滚后射击窗口；其他双枪因参数文件未显式提供翻滚后伤害而继续留空。完整口径见 [`verification/Maneuver-state-model-v11.3.0.md`](verification/Maneuver-state-model-v11.3.0.md)。
 - 刮水刀已拆成横斩／蓄力斩的墨刃与近身刀身四种命中形态，并补入释放帧和回墨锁字段。当前计算独立击倒次数、满墨动作次数及蓄力输入至释放的时间点；在完整重复周期得到实机验证前不输出连续 DPS。完整口径见 [`verification/Saber-action-model-v11.3.0.md`](verification/Saber-action-model-v11.3.0.md)。
 - 伞类已拆分散弹射击与伞面时间轴，补入能否发射、准备／展开／发射帧、普通射击与伞面发射回墨锁和伞面耐久。单次射击使用上游显式的有效总伤害上限，不将最高单颗伤害乘弹丸数；特工配件的 0% 发射耗墨会结合 `IsCanopyShot: false` 显示为不可发射。完整口径见 [`verification/Shelter-shot-canopy-model-v11.3.0.md`](verification/Shelter-shot-canopy-model-v11.3.0.md)。

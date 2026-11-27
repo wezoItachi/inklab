@@ -23679,10 +23679,13 @@
         {
           "key": "projectileCount",
           "label": "每次发射箭数",
-          "value": null,
+          "value": 3,
           "unit": "arrows",
-          "status": "pending",
-          "note": "当前固定上游参数文件未显式提供箭数；在找到可审计来源前不推导整轮伤害"
+          "status": "verified",
+          "note": "直接记录一次射击生成的箭矢数量；只用于单轮全部直击的理论上限",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1200/weapon/WeaponStringerShort.game__GameParameterTable.json#GameParameters.spl__WeaponStringerParam.ShotParam.ArrowNum",
+          "checkedAt": "2026-11-19"
         },
         {
           "key": "minimumChargeArrowDamage",
@@ -23876,10 +23879,13 @@
         {
           "key": "projectileCount",
           "label": "每次发射箭数",
-          "value": null,
+          "value": 3,
           "unit": "arrows",
-          "status": "pending",
-          "note": "当前固定上游参数文件未显式提供箭数；在找到可审计来源前不推导整轮伤害"
+          "status": "verified",
+          "note": "直接记录一次射击生成的箭矢数量；只用于单轮全部直击的理论上限",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1200/weapon/WeaponStringerShort.game__GameParameterTable.json#GameParameters.spl__WeaponStringerParam.ShotParam.ArrowNum",
+          "checkedAt": "2026-11-19"
         },
         {
           "key": "minimumChargeArrowDamage",
@@ -24073,10 +24079,13 @@
         {
           "key": "projectileCount",
           "label": "每次发射箭数",
-          "value": null,
+          "value": 3,
           "unit": "arrows",
-          "status": "pending",
-          "note": "当前固定上游参数文件未显式提供箭数；在找到可审计来源前不推导整轮伤害"
+          "status": "verified",
+          "note": "直接记录一次射击生成的箭矢数量；只用于单轮全部直击的理论上限",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1200/weapon/WeaponStringerShort.game__GameParameterTable.json#GameParameters.spl__WeaponStringerParam.ShotParam.ArrowNum",
+          "checkedAt": "2026-11-19"
         },
         {
           "key": "minimumChargeArrowDamage",
@@ -24273,10 +24282,10 @@
           "value": 5,
           "unit": "arrows",
           "status": "verified",
-          "note": "Nintendo 官方武器说明明确写明一次发射五发；仅用于计算邦普V系单轮全中伤害",
-          "sourceId": "nintendo-splatoon-base-weapons",
-          "upstreamPath": "https://www.nintendo.com/jp/character/splatoon/en/fashion/index.html#weapons",
-          "checkedAt": "2026-10-10"
+          "note": "直接记录一次射击生成的箭矢数量；只用于单轮全部直击的理论上限",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1200/weapon/WeaponStringerExplosion.game__GameParameterTable.json#GameParameters.spl__WeaponStringerParam.ShotParam.ArrowNum",
+          "checkedAt": "2026-11-19"
         },
         {
           "key": "minimumChargeArrowDamage",
@@ -24473,10 +24482,10 @@
           "value": 5,
           "unit": "arrows",
           "status": "verified",
-          "note": "Nintendo 官方武器说明明确写明一次发射五发；仅用于计算邦普V系单轮全中伤害",
-          "sourceId": "nintendo-splatoon-base-weapons",
-          "upstreamPath": "https://www.nintendo.com/jp/character/splatoon/en/fashion/index.html#weapons",
-          "checkedAt": "2026-10-10"
+          "note": "直接记录一次射击生成的箭矢数量；只用于单轮全部直击的理论上限",
+          "sourceId": "leanny-splat3",
+          "upstreamPath": "data/parameter/1200/weapon/WeaponStringerExplosion.game__GameParameterTable.json#GameParameters.spl__WeaponStringerParam.ShotParam.ArrowNum",
+          "checkedAt": "2026-11-19"
         },
         {
           "key": "minimumChargeArrowDamage",

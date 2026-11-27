@@ -538,6 +538,11 @@ function StringerContent({ analysis }: { analysis: StringerEfficiency }) {
                 : `${stage.volleyDamage} / 轮`}
             </strong>
             <em>
+              单箭 {stage.arrowDamage ?? '待验证'} ×{' '}
+              {stage.projectileCount ?? '箭数待验证'}
+              {stage.projectileCount === null ? '' : ' 箭'}
+            </em>
+            <em>
               {stage.directDps === null
                 ? '整轮 DPS 待验证'
                 : `${stage.directDps.toFixed(1)} 动作窗口 DPS`}

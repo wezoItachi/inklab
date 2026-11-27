@@ -7,4 +7,4 @@
 
 Nintendo 的 REEF-LUX 450 入门说明明确说明该武器支持 Charge Storage。因此 INKLAB 将该参数类的 `canStoreCharge` 记录为 `true`，不再因 11.3.0 参数文件省略 `IsEnableChargeKeep` 而保持待验证。
 
-该说明没有明确写出一次发射的箭数，所以 `projectileCount` 仍保持待验证；本次核对不从“缩小版 Tri-Stringer”的描述推断三箭。
+该说明本身没有明确写出一次发射的箭数，因此当时没有从“缩小版 Tri-Stringer”的描述推断三箭。后续 Ver. 12.0.0 上游参数已在 `ShotParam.ArrowNum` 明确给出 `3`，三套 REEF-LUX 的 `projectileCount` 现已改为已核对，并据此开放三档整轮伤害、动作窗口 DPS 与击破轮数计算。

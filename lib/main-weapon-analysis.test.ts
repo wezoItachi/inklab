@@ -320,30 +320,48 @@ void test('compares all three Tri-Stringer charge stages without defaulting to f
   );
 });
 
-void test('keeps REEF-LUX volley calculations pending when projectile count lacks a cited source', () => {
+void test('uses the upstream three-arrow count for REEF-LUX charge-stage totals', () => {
   const result = analyzeStringerEfficiency(
     getMainWeaponParameters('main-7020'),
   );
   assert.ok(result);
-  assert.equal(result.verifiedInputCount, 10);
-  assert.equal(result.projectileCount, null);
-  assert.equal(result.bestDirectDpsStage, null);
-  assert.equal(result.fastestSplatStage, null);
+  assert.equal(result.verifiedInputCount, 11);
+  assert.equal(result.projectileCount, 3);
+  assert.equal(result.bestDirectDpsStage, 'middle');
+  assert.equal(result.fastestSplatStage, 'middle');
   assert.deepEqual(
-    result.stages.map(({ arrowDamage, volleyDamage, directDps }) => ({
-      arrowDamage,
-      volleyDamage,
-      directDps,
-    })),
+    result.stages.map(
+      ({ arrowDamage, volleyDamage, actionFrames, volleysToSplat }) => ({
+        arrowDamage,
+        volleyDamage,
+        actionFrames,
+        volleysToSplat,
+      }),
+    ),
     [
-      { arrowDamage: 30, volleyDamage: null, directDps: null },
-      { arrowDamage: 45, volleyDamage: null, directDps: null },
-      { arrowDamage: 45, volleyDamage: null, directDps: null },
+      {
+        arrowDamage: 30,
+        volleyDamage: 90,
+        actionFrames: 16,
+        volleysToSplat: 2,
+      },
+      {
+        arrowDamage: 45,
+        volleyDamage: 135,
+        actionFrames: 22,
+        volleysToSplat: 1,
+      },
+      {
+        arrowDamage: 45,
+        volleyDamage: 135,
+        actionFrames: 44,
+        volleysToSplat: 1,
+      },
     ],
   );
 });
 
-void test('uses the official five-shot count for Wellstring V charge-stage totals', () => {
+void test('uses the upstream five-arrow count for Wellstring V charge-stage totals', () => {
   const result = analyzeStringerEfficiency(
     getMainWeaponParameters('main-7030'),
   );

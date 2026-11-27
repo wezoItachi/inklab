@@ -876,39 +876,54 @@ function stringerFields(fileName, game) {
   const bullet = game.spl__BulletStringerParam;
   const weapon = game.spl__WeaponStringerParam;
   const charge = weapon?.ChargeParam;
+  const shot = weapon?.ShotParam;
   const paint = bullet?.PaintParam;
   const detonation = bullet?.DetonationParam;
   const blast = detonation?.BlastParam?.DistanceDamage?.[0];
-  const projectileCount = fileName.includes('StringerNormal')
-    ? verifiedField({
-        key: 'projectileCount',
-        label: '每次发射箭数',
-        value: 3,
-        unit: 'arrows',
-        fileName,
-        path: 'official-description',
-        note: 'Nintendo 官方武器说明明确写明三向发射；仅用于计算三发猎鱼弓系单轮全中伤害',
-      })
-    : fileName.includes('StringerExplosion')
-      ? verifiedField({
-          key: 'projectileCount',
-          label: '每次发射箭数',
-          value: 5,
-          unit: 'arrows',
-          fileName,
-          path: 'official-description',
-          note: 'Nintendo 官方武器说明明确写明一次发射五发；仅用于计算邦普V系单轮全中伤害',
-        })
-      : pendingField(
-          'projectileCount',
-          '每次发射箭数',
-          'arrows',
-          '当前固定上游参数文件未显式提供箭数；在找到可审计来源前不推导整轮伤害',
-        );
-  if (projectileCount.status === 'verified') {
+  let projectileCount;
+  if (typeof shot?.ArrowNum === 'number') {
+    projectileCount = verifiedField({
+      key: 'projectileCount',
+      label: '每次发射箭数',
+      value: shot.ArrowNum,
+      unit: 'arrows',
+      fileName,
+      path: 'GameParameters.spl__WeaponStringerParam.ShotParam.ArrowNum',
+      note: '直接记录一次射击生成的箭矢数量；只用于单轮全部直击的理论上限',
+    });
+  } else if (fileName.includes('StringerNormal')) {
+    projectileCount = verifiedField({
+      key: 'projectileCount',
+      label: '每次发射箭数',
+      value: 3,
+      unit: 'arrows',
+      fileName,
+      path: 'official-description',
+      note: 'Nintendo 官方武器说明明确写明三向发射；仅用于计算三发猎鱼弓系单轮全中伤害',
+    });
     projectileCount.sourceId = NINTENDO_WEAPON_SOURCE_ID;
     projectileCount.upstreamPath = NINTENDO_WEAPON_SOURCE_URL;
     projectileCount.checkedAt = '2026-10-10';
+  } else if (fileName.includes('StringerExplosion')) {
+    projectileCount = verifiedField({
+      key: 'projectileCount',
+      label: '每次发射箭数',
+      value: 5,
+      unit: 'arrows',
+      fileName,
+      path: 'official-description',
+      note: 'Nintendo 官方武器说明明确写明一次发射五发；仅用于计算邦普V系单轮全中伤害',
+    });
+    projectileCount.sourceId = NINTENDO_WEAPON_SOURCE_ID;
+    projectileCount.upstreamPath = NINTENDO_WEAPON_SOURCE_URL;
+    projectileCount.checkedAt = '2026-10-10';
+  } else {
+    projectileCount = pendingField(
+      'projectileCount',
+      '每次发射箭数',
+      'arrows',
+      'ShotParam.ArrowNum 未显式提供，且尚无另一项可审计来源；不推导整轮伤害',
+    );
   }
   const canStoreCharge = fileName.includes('StringerShort')
     ? {

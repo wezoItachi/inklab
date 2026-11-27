@@ -111,8 +111,8 @@ void test('battle parameter gap audit accounts for every normalized field', () =
   assert.equal(battleParameterGapReport.gameVersion, '12.0.0');
   assert.equal(battleParameterGapReport.summary.weaponCount, 174);
   assert.equal(battleParameterGapReport.summary.totalFields, 2417);
-  assert.equal(battleParameterGapReport.summary.verifiedFields, 1968);
-  assert.equal(battleParameterGapReport.summary.pendingFields, 332);
+  assert.equal(battleParameterGapReport.summary.verifiedFields, 1971);
+  assert.equal(battleParameterGapReport.summary.pendingFields, 329);
   assert.equal(battleParameterGapReport.summary.notApplicableFields, 117);
   assert.equal(battleParameterGapReport.summary.demoFields, 0);
   assert.equal(battleParameterGapReport.byFamily.length, 11);
@@ -169,10 +169,10 @@ void test('battle verification queue accounts for every remaining pending field'
   assert.equal(battleParameterVerificationQueue.gameVersion, '12.0.0');
   assert.equal(
     battleParameterVerificationQueue.summary.pendingFieldOccurrences,
-    332,
+    329,
   );
-  assert.equal(battleParameterVerificationQueue.summary.categories, 8);
-  assert.equal(battleParameterVerificationQueue.summary.groupedTasks, 36);
+  assert.equal(battleParameterVerificationQueue.summary.categories, 7);
+  assert.equal(battleParameterVerificationQueue.summary.groupedTasks, 35);
   assert.equal(
     battleParameterVerificationQueue.categories.reduce(
       (total, category) => total + category.fieldOccurrences,
@@ -216,7 +216,7 @@ void test('compact battle verification summary matches the full queue', () => {
         total + indexedCounts.reduce((sum, [, count]) => sum + count, 0),
       0,
     ),
-    332,
+    329,
   );
   assert.equal(
     battleParameterVerificationSummary.categoryKeys.length,
@@ -226,9 +226,9 @@ void test('compact battle verification summary matches the full queue', () => {
 
 void test('battle source audit covers every inheritance candidate occurrence', () => {
   assert.equal(battleParameterSourceAudit.gameVersion, '12.0.0');
-  assert.equal(battleParameterSourceAudit.summary.candidateGroups, 31);
-  assert.equal(battleParameterSourceAudit.summary.fieldOccurrences, 241);
-  assert.equal(battleParameterSourceAudit.summary.sourceFiles, 29);
+  assert.equal(battleParameterSourceAudit.summary.candidateGroups, 30);
+  assert.equal(battleParameterSourceAudit.summary.fieldOccurrences, 238);
+  assert.equal(battleParameterSourceAudit.summary.sourceFiles, 28);
   assert.equal(
     Object.values(battleParameterSourceAudit.summary.dispositionCounts).reduce(
       (total, count) => total + count,
@@ -721,6 +721,29 @@ void test('main weapon parameters expose values only after field-level verificat
     ).length,
     7,
   );
+});
+
+void test('Stringer projectile counts retain the source that explicitly proves each value', () => {
+  const records = (mainWeaponParameterDocument as MainWeaponParameterDatabase)
+    .records;
+  const getProjectileCount = (weaponId: string) =>
+    records
+      .find((record) => record.weaponId === weaponId)
+      ?.parameters.find((parameter) => parameter.key === 'projectileCount');
+
+  const triStringer = getProjectileCount('main-7010');
+  assert.equal(triStringer?.value, 3);
+  assert.equal(triStringer?.sourceId, 'nintendo-splatoon-base-weapons');
+
+  const reefLux = getProjectileCount('main-7020');
+  assert.equal(reefLux?.value, 3);
+  assert.equal(reefLux?.sourceId, 'leanny-splat3');
+  assert.match(reefLux?.upstreamPath ?? '', /ShotParam\.ArrowNum$/);
+
+  const wellstring = getProjectileCount('main-7030');
+  assert.equal(wellstring?.value, 5);
+  assert.equal(wellstring?.sourceId, 'leanny-splat3');
+  assert.match(wellstring?.upstreamPath ?? '', /ShotParam\.ArrowNum$/);
 });
 
 void test('Ver. 12.0.0 balance fields keep their fixed upstream values', () => {

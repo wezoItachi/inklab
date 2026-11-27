@@ -13,11 +13,10 @@
     "external-semantic-evidence-required": "The value is not represented by this parameter schema and requires an official description or another auditable source."
   },
   "summary": {
-    "candidateGroups": 31,
-    "fieldOccurrences": 241,
-    "sourceFiles": 29,
+    "candidateGroups": 30,
+    "fieldOccurrences": 238,
+    "sourceFiles": 28,
     "dispositionCounts": {
-      "external-semantic-evidence-required": 3,
       "leaf-omitted-schema-default-unresolved": 87,
       "optional-mechanism-object-absent": 151
     }
@@ -134,10 +133,6 @@
     {
       "upstreamPath": "data/parameter/1200/weapon/WeaponSpinnerStandard.game__GameParameterTable.json",
       "sha256": "92647d586beee1764ca8984820fa37e0fd7887e2a756f7ca18e10e1aef97fd08"
-    },
-    {
-      "upstreamPath": "data/parameter/1200/weapon/WeaponStringerShort.game__GameParameterTable.json",
-      "sha256": "7b8b03d1655e1ac1498242bc10766079387c8647b67d57375d59bac51b51eb2f"
     }
   ],
   "groups": [
@@ -2640,33 +2635,6 @@
           "chain": [
             "WeaponShelterNormal.game__GameParameterTable.json"
           ]
-        }
-      ]
-    },
-    {
-      "family": "弓",
-      "key": "projectileCount",
-      "label": "每次发射箭数",
-      "occurrenceCount": 3,
-      "inspectedPath": null,
-      "dispositionCounts": {
-        "external-semantic-evidence-required": 3
-      },
-      "occurrences": [
-        {
-          "weaponId": "main-7020",
-          "fileName": "WeaponStringerShort.game__GameParameterTable.json",
-          "disposition": "external-semantic-evidence-required"
-        },
-        {
-          "weaponId": "main-7021",
-          "fileName": "WeaponStringerShort.game__GameParameterTable.json",
-          "disposition": "external-semantic-evidence-required"
-        },
-        {
-          "weaponId": "main-7022",
-          "fileName": "WeaponStringerShort.game__GameParameterTable.json",
-          "disposition": "external-semantic-evidence-required"
         }
       ]
     }
