@@ -1363,7 +1363,7 @@ export default function Home() {
                         <p>这些内容只用于生成本机 PNG，不会上传服务器。</p>
                       </div>
                     </details>
-                    <div className="analysis-summary">
+                    <div className="analysis-summary" id="ability-analysis">
                       <h3>
                         选择要分析的能力{' '}
                         <small>仅影响右侧说明，不修改配装</small>
@@ -1459,6 +1459,18 @@ export default function Home() {
                             id: a?.id ?? '',
                             ap,
                           }))}
+                          selectedAbilityId={focus}
+                          onSelectAbility={(abilityId) => {
+                            selectAnalysis(abilityId);
+                            window.requestAnimationFrame(() =>
+                              document
+                                .getElementById('ability-analysis')
+                                ?.scrollIntoView({
+                                  behavior: 'smooth',
+                                  block: 'start',
+                                }),
+                            );
+                          }}
                         />
                       </Suspense>
                     </div>

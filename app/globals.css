@@ -1417,6 +1417,9 @@ button {
 .context-analysis-grid article.empty {
   opacity: 0.72;
 }
+.context-analysis-grid article.selected {
+  box-shadow: 0 0 0 2px rgba(103, 65, 255, 0.14);
+}
 .context-analysis-grid small,
 .context-analysis-grid strong {
   display: block;
@@ -1459,6 +1462,27 @@ button {
 }
 .context-analysis-grid p {
   margin: 5px 0 0;
+}
+.context-analysis-link {
+  margin-top: 8px;
+  padding: 4px 7px;
+  border: 1px solid #cbd6f4;
+  border-radius: var(--radius-control);
+  background: #f5f7ff;
+  color: #465e9b;
+  font: 700 8px/1.4 monospace;
+  cursor: pointer;
+}
+.context-analysis-link:hover,
+.context-analysis-link:focus-visible {
+  border-color: var(--purple);
+  color: var(--purple);
+  outline: none;
+}
+.context-analysis-link[aria-pressed='true'] {
+  border-color: var(--purple);
+  background: #eee8ff;
+  color: var(--purple);
 }
 .ability-context-grid {
   display: grid;

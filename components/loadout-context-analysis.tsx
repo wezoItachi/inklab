@@ -13,9 +13,13 @@ const stateLabels = {
 export function LoadoutContextAnalysis({
   weapon,
   totals,
+  selectedAbilityId,
+  onSelectAbility,
 }: {
   weapon: Weapon;
   totals: readonly EquippedAbilityTotal[];
+  selectedAbilityId: string;
+  onSelectAbility: (abilityId: string) => void;
 }) {
   const sections = buildLoadoutContextSections(weapon, totals);
   return (
@@ -27,16 +31,32 @@ export function LoadoutContextAnalysis({
             <b>{section.summary}</b>
           </summary>
           <div className="context-analysis-grid">
-            {section.metrics.map((metric) => (
-              <article className={metric.state} key={metric.label}>
-                <div className="context-metric-heading">
-                  <small>{metric.label}</small>
-                  <em>{stateLabels[metric.state]}</em>
-                </div>
-                <strong>{metric.value}</strong>
-                <p>{metric.note}</p>
-              </article>
-            ))}
+            {section.metrics.map((metric) => {
+              const isSelected = metric.abilityId === selectedAbilityId;
+              return (
+                <article
+                  className={`${metric.state}${isSelected ? ' selected' : ''}`}
+                  key={metric.label}
+                >
+                  <div className="context-metric-heading">
+                    <small>{metric.label}</small>
+                    <em>{stateLabels[metric.state]}</em>
+                  </div>
+                  <strong>{metric.value}</strong>
+                  <p>{metric.note}</p>
+                  {metric.abilityId && (
+                    <button
+                      type="button"
+                      className="context-analysis-link"
+                      aria-pressed={isSelected}
+                      onClick={() => onSelectAbility(metric.abilityId!)}
+                    >
+                      {isSelected ? '当前正在分析' : '查看单项分析'}
+                    </button>
+                  )}
+                </article>
+              );
+            })}
           </div>
         </details>
       ))}

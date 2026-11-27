@@ -22,6 +22,7 @@ void test('context analysis reads the current kit and verified equipped AP curve
   assert.equal(sections.length, 6);
   assert.equal(main?.summary, 'N-ZAP89 · 主省 10AP');
   assert.equal(main?.metrics[0]?.label, '主武省墨');
+  assert.equal(main?.metrics[0]?.abilityId, 'ism');
   assert.match(main?.metrics[0]?.value ?? '', /10AP · 耗墨 −/);
   assert.match(main?.metrics[0]?.note ?? '', /满墨/);
   assert.equal(main?.metrics[1]?.label, '可复算动作');
@@ -29,6 +30,7 @@ void test('context analysis reads the current kit and verified equipped AP curve
   assert.equal(sub?.metrics[0]?.value, '55%');
   assert.match(sub?.metrics[0]?.note ?? '', /完整使用 1 次/);
   assert.equal(sub?.metrics[1]?.value, '13AP · 48.67%');
+  assert.equal(sub?.metrics[1]?.abilityId, 'iss');
   assert.match(sub?.metrics[1]?.note ?? '', /Lv1 曲线.*完整使用 2 次/);
   assert.equal(sub?.metrics[2]?.state, 'equipped');
   assert.match(sub?.metrics[2]?.note ?? '', /投掷初速度/);
@@ -37,6 +39,7 @@ void test('context analysis reads the current kit and verified equipped AP curve
   assert.equal(special?.metrics[2]?.state, 'weapon-specific');
   assert.match(special?.metrics[2]?.note ?? '', /爆炸涂墨半径/);
   assert.equal(mobility?.metrics[0]?.label, '快跳');
+  assert.equal(mobility?.metrics[0]?.abilityId, 'qsj');
   assert.match(mobility?.metrics[0]?.value ?? '', /3AP · \d+帧/);
 });
 

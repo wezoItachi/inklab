@@ -25,6 +25,7 @@ export type ContextMetric = {
   value: string;
   note: string;
   state: 'verified' | 'weapon-specific' | 'equipped' | 'pending' | 'empty';
+  abilityId?: string;
 };
 
 export type ContextSection = {
@@ -64,6 +65,7 @@ function equippedMetrics(
                       `${ability.name}是固定主能力；按触发规则说明，不进入通用 AP 曲线。`)
                     : `${ability.name}已装备；精确效果曲线仍按字段状态单独核验。`,
             state: 'equipped' as const,
+            abilityId: id,
           },
         ]
       : [];
@@ -176,6 +178,7 @@ export function buildLoadoutContextSections(
           : mainInkAp > 0
             ? 'equipped'
             : 'verified',
+      abilityId: 'ism',
     },
     {
       label: '可复算动作',
@@ -206,6 +209,7 @@ export function buildLoadoutContextSections(
         ? `${analysis.speedClassLabel}游速先按 AP 算到 ${analysis.speedBeforeFixedAbilities.toFixed(3)}，再应用鱿鱼忍者 0.9 倍固定修正。`
         : `${analysis.speedClassLabel}当前速度为每秒 ${analysis.speedPerSecond.toFixed(1)} 单位。`,
       state: 'equipped',
+      abilityId: 'ssu',
     });
   }
   if (runSpeedAp > 0) {
@@ -219,6 +223,7 @@ export function buildLoadoutContextSections(
       value: `${runSpeedAp}AP · ${analysis.speed.toFixed(3)}/帧`,
       note: `${analysis.speedClassLabel}普通人形态速度；射击、蓄力等动作状态在单项分析中独立显示。`,
       state: 'equipped',
+      abilityId: 'rsu',
     });
   }
   if (quickJumpAp > 0 || hasStealthJump) {
@@ -230,6 +235,7 @@ export function buildLoadoutContextSections(
         ? `标准完整跳跃 ${analysis.totalFrames} 帧；隐身跳跃随距离最多增加到 ${analysis.displayedMaxTotalFrames} 帧。`
         : `完整跳跃缩短 ${analysis.savedFrames} 帧，当前约 ${analysis.totalSeconds.toFixed(2)} 秒。`,
       state: 'equipped',
+      abilityId: 'qsj',
     });
   }
   if (actionAp > 0) {
@@ -241,6 +247,7 @@ export function buildLoadoutContextSections(
         ? `当前武器跳射扩散为 ${analysis.jumpSpread.currentDegrees.toFixed(2)}°；鱿鱼滚行窗口没有独立来源数值。`
         : '当前武器没有可复算的跳射额外扩散字段；这里只显示鱿鱼登顶蓄力。',
       state: 'equipped',
+      abilityId: 'ia',
     });
   }
   if (mobilityMetrics.length === 0) {
@@ -264,6 +271,7 @@ export function buildLoadoutContextSections(
         ? '已计入自己装备提升复活惩罚后的固定复活代价；快活仍只在满足连续未击倒条件时触发。'
         : `满足触发条件时缩短 ${analysis.savedFrames.toFixed(0)} 帧。`,
       state: 'equipped',
+      abilityId: 'qr',
     });
   }
   if (enemyInkAp > 0) {
@@ -273,6 +281,7 @@ export function buildLoadoutContextSections(
       value: `${enemyInkAp}AP · 缓冲 ${analysis.graceFrames}帧`,
       note: `敌墨伤害上限 ${analysis.damageLimit.toFixed(1)}，每帧 ${analysis.damagePerFrame.toFixed(3)}；走速等其余边界在单项分析查看。`,
       state: 'equipped',
+      abilityId: 'inkres',
     });
   }
   if (subResistanceAp > 0) {
@@ -282,6 +291,7 @@ export function buildLoadoutContextSections(
       value: `${subResistanceAp}AP · 重伤害 ×${analysis.heavyDamageMultiplier.toFixed(3)}`,
       note: `标记时间 ×${analysis.markingTimeMultiplier.toFixed(3)}；不同副武器伤害与状态效果分别计算。`,
       state: 'equipped',
+      abilityId: 'subr',
     });
   }
   const fixedReturnMetrics = equippedMetrics(
@@ -350,6 +360,7 @@ export function buildLoadoutContextSections(
               ? 'equipped'
               : 'verified'
             : 'pending',
+          abilityId: 'iss',
         },
         {
           label: '副武增强',
@@ -367,6 +378,7 @@ export function buildLoadoutContextSections(
               : subPowerAp > 0
                 ? 'equipped'
                 : 'weapon-specific',
+          abilityId: 'subp',
         },
         {
           label: '回墨协同',
@@ -379,6 +391,7 @@ export function buildLoadoutContextSections(
               ? `对战模式从空槽回满：潜墨 ${inkRecoveryAnalysis.squid.adjustedFrames} 帧，非潜墨 ${inkRecoveryAnalysis.humanoid.adjustedFrames} 帧；不包含${weapon.sub.name}使用后的墨锁。`
               : '当前配装没有提升墨汁回复力；对战回墨曲线已核对，可在上方单项分析中试算。',
           state: inkRecoveryAp > 0 ? 'equipped' : 'verified',
+          abilityId: 'iru',
         },
       ],
     },
@@ -395,6 +408,7 @@ export function buildLoadoutContextSections(
               : '未投入',
           note: `当前套装基础需要 ${specialChargeAnalysis.basePoints}p；当前 AP 下需要 ${specialChargeAnalysis.requiredPoints}p。`,
           state: specialChargeAp > 0 ? 'equipped' : 'verified',
+          abilityId: 'scu',
         },
         {
           label: '大招减量',
@@ -407,6 +421,7 @@ export function buildLoadoutContextSections(
             : `标准被击倒时损失 ${specialSaveAnalysis.standardLossPercent.toFixed(1)}%；复活惩罚边界在上方单项分析独立显示。`,
           state:
             specialSaveAp > 0 || hasRespawnPunisher ? 'equipped' : 'verified',
+          abilityId: 'ss',
         },
         {
           label: '大招增强',
@@ -424,6 +439,7 @@ export function buildLoadoutContextSections(
               : specialPowerAp > 0
                 ? 'equipped'
                 : 'weapon-specific',
+          abilityId: 'spu',
         },
       ],
     },
