@@ -300,6 +300,8 @@ export default function Home() {
     [totals],
   );
   const equippedFocusAp = totals.find((x) => x.a?.id === focus)?.ap ?? 0;
+  const focusedAbility = abilities.find(({ id }) => id === focus) ?? null;
+  const focusedAbilityIsEquipped = totals.some(({ a }) => a?.id === focus);
   const currentAp = analysisApPreview ?? equippedFocusAp;
   const weapon = getWeapon(weaponId);
   const recommendations = useMemo(
@@ -1391,6 +1393,19 @@ export default function Home() {
                         )}
                       </div>
                       <div>
+                        {!focusedAbilityIsEquipped && focusedAbility && (
+                          <button
+                            type="button"
+                            aria-pressed="true"
+                            className="selected-analysis preview-analysis"
+                            onClick={() => selectAnalysis(focusedAbility.id)}
+                          >
+                            <AbilityIcon small ability={focusedAbility} />
+                            <span>{focusedAbility.short}</span>
+                            <b>{currentAp}AP</b>
+                            <em>未装备试算</em>
+                          </button>
+                        )}
                         {totals.map((x) => (
                           <button
                             type="button"

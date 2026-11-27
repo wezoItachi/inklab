@@ -1350,6 +1350,17 @@ button {
   font: 700 8px monospace;
   color: var(--purple);
 }
+.analysis-summary button.preview-analysis {
+  border-style: dashed;
+}
+.analysis-summary button.preview-analysis em {
+  padding: 1px 4px;
+  border-radius: 999px;
+  background: #eee8ff;
+  color: var(--purple);
+  font: 700 7px/1.4 monospace;
+  font-style: normal;
+}
 .accordions {
   display: flex;
   flex-direction: column;
