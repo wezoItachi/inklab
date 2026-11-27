@@ -245,7 +245,7 @@ export default function Home() {
     'idle' | 'working' | 'saved' | 'error'
   >('idle');
   const [slots, setSlots] = useState<EditableLoadoutSlot[]>(initialSlots),
-    [focus, setFocus] = useState('iss');
+    [focus, setFocus] = useState(initialRecommendations[0].focusAbilityId);
   const [recommendationSource, setRecommendationSource] = useState<
     'system' | 'community'
   >('system');
@@ -296,9 +296,7 @@ export default function Home() {
   const equippedAp = totalAp(slots);
   const abilityRouteSummary = useMemo(
     () =>
-      summarizeAbilityLabRoutes(
-        totals.flatMap(({ a }) => (a ? [a.id] : [])),
-      ),
+      summarizeAbilityLabRoutes(totals.flatMap(({ a }) => (a ? [a.id] : []))),
     [totals],
   );
   const equippedFocusAp = totals.find((x) => x.a?.id === focus)?.ap ?? 0;
@@ -385,9 +383,7 @@ export default function Home() {
     const recommendation = recommendations[closestRecommendationIndex];
     if (!recommendation) return;
     const partIndex = { head: 0, clothes: 1, shoes: 2 }[part];
-    setSlots(
-      replaceGearPartFromRecommendation(slots, recommendation, part),
-    );
+    setSlots(replaceGearPartFromRecommendation(slots, recommendation, part));
     setSelectedSlot(partIndex * 4);
     setFocus(recommendation.slots[partIndex * 4]?.[0] ?? focus);
     setAnalysisApPreview(null);
@@ -918,7 +914,9 @@ export default function Home() {
                                 ) : (
                                   <Plus size={14} />
                                 )}
-                                {activePreset === i ? '当前已采用' : '应用此起点'}
+                                {activePreset === i
+                                  ? '当前已采用'
+                                  : '应用此起点'}
                               </span>
                             </button>
                           ))}
@@ -972,7 +970,10 @@ export default function Home() {
                           <>
                             <span className="custom-loadout-diff">
                               最接近“
-                              {recommendations[closestRecommendationIndex]?.name}
+                              {
+                                recommendations[closestRecommendationIndex]
+                                  ?.name
+                              }
                               ”：能力投入相同{' '}
                               {
                                 recommendationComparisons[
@@ -1032,9 +1033,13 @@ export default function Home() {
                                   onClick={() => applyRecommendationPart(part)}
                                 >
                                   仅替换
-                                  {{ head: '头部', clothes: '服装', shoes: '鞋子' }[
-                                    part
-                                  ]}
+                                  {
+                                    {
+                                      head: '头部',
+                                      clothes: '服装',
+                                      shoes: '鞋子',
+                                    }[part]
+                                  }
                                 </button>
                               ))}
                             </span>

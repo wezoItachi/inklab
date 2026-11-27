@@ -14,12 +14,17 @@ void test('context analysis reads the current kit and verified equipped AP curve
       { id: 'ism', ap: 10 },
     ],
   );
+  const main = sections.find(({ id }) => id === 'main');
   const sub = sections.find(({ id }) => id === 'sub');
   const special = sections.find(({ id }) => id === 'special');
   const mobility = sections.find(({ id }) => id === 'mobility');
-  const other = sections.find(({ id }) => id === 'other');
 
-  assert.equal(sections.length, 5);
+  assert.equal(sections.length, 6);
+  assert.equal(main?.summary, 'N-ZAP89 · 主省 10AP');
+  assert.equal(main?.metrics[0]?.label, '主武省墨');
+  assert.match(main?.metrics[0]?.value ?? '', /10AP · 耗墨 −/);
+  assert.match(main?.metrics[0]?.note ?? '', /满墨/);
+  assert.equal(main?.metrics[1]?.label, '可复算动作');
   assert.equal(sub?.summary, '机器人炸弹 · 当前套装');
   assert.equal(sub?.metrics[0]?.value, '55%');
   assert.match(sub?.metrics[0]?.note ?? '', /完整使用 1 次/);
@@ -33,9 +38,6 @@ void test('context analysis reads the current kit and verified equipped AP curve
   assert.match(special?.metrics[2]?.note ?? '', /爆炸涂墨半径/);
   assert.equal(mobility?.metrics[0]?.label, '快跳');
   assert.match(mobility?.metrics[0]?.value ?? '', /3AP · \d+帧/);
-  assert.equal(other?.metrics[0]?.label, '主省');
-  assert.match(other?.metrics[0]?.value ?? '', /10AP · 耗墨 −/);
-  assert.match(other?.metrics[0]?.note ?? '', /满墨/);
 });
 
 void test('weapon-specific models remain distinct from universal verified curves', () => {
@@ -129,7 +131,7 @@ void test('all battle weapons produce finite linked summaries for fixed-ability 
   for (const weapon of weapons) {
     for (const totals of [ninjaStealthTotals, respawnPunisherTotals]) {
       const sections = buildLoadoutContextSections(weapon, totals);
-      assert.equal(sections.length, 5, weapon.name);
+      assert.equal(sections.length, 6, weapon.name);
       const text = sections
         .flatMap(({ metrics }) =>
           metrics.flatMap(({ value, note }) => [value, note]),

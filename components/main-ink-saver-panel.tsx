@@ -152,9 +152,11 @@ export function MainInkSaverPanel({
       <p className="judgement">
         <TrendingUp size={14} />
         <b>当前结论：</b>
-        {primary.extraActionsPerTank > 0
-          ? `${analysis.ap}AP 已让${primary.label}在满墨状态下增加 ${primary.extraActionsPerTank} 次。`
-          : `${analysis.ap}AP 已降低单次耗墨，但还没有让${primary.label}多出一个完整次数。`}
+        {analysis.ap === 0
+          ? `当前为 0AP，${primary.label}保持基础耗墨与满墨 ${primary.baseActionsPerTank} 次。`
+          : primary.extraActionsPerTank > 0
+            ? `${analysis.ap}AP 已让${primary.label}在满墨状态下增加 ${primary.extraActionsPerTank} 次。`
+            : `${analysis.ap}AP 已降低单次耗墨，但还没有让${primary.label}多出一个完整次数。`}
       </p>
       <p className="effect-source">
         <Check size={13} />

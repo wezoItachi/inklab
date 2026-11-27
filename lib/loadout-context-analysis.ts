@@ -28,7 +28,7 @@ export type ContextMetric = {
 };
 
 export type ContextSection = {
-  id: 'sub' | 'special' | 'mobility' | 'survival' | 'other';
+  id: 'main' | 'sub' | 'special' | 'mobility' | 'survival' | 'other';
   title: string;
   summary: string;
   metrics: readonly ContextMetric[];
@@ -112,6 +112,8 @@ export function buildLoadoutContextSections(
       : 100 - baseUses * baseInkCost;
   const subInkAnalysis = getSubInkSaverAnalysis(weapon, subInkAp);
   const subPowerAnalysis = analyzeSubPower(weapon.sub.id, subPowerAp);
+  const mainInkAnalysis = getMainInkSaverAnalysis(weapon.id, mainInkAp);
+  const mainInkPrimary = mainInkAnalysis.profiles[0] ?? null;
   const inkRecoveryAnalysis = getInkRecoveryAnalysis(weapon, inkRecoveryAp);
   const specialChargeAnalysis = analyzeSpecialCharge(
     weapon.id,
@@ -151,7 +153,43 @@ export function buildLoadoutContextSections(
   const otherIds = totals
     .map(({ id }) => id)
     .filter((id) => !coveredIds.has(id));
-  const otherCount = otherIds.length + (mainInkAp > 0 ? 1 : 0);
+  const otherCount = otherIds.length;
+
+  const mainMetrics: ContextMetric[] = [
+    {
+      label: '主武省墨',
+      value:
+        mainInkPrimary === null
+          ? '基础耗墨待核验'
+          : mainInkAp > 0
+            ? `${mainInkAp}AP · 耗墨 −${mainInkAnalysis.reductionPercent.toFixed(1)}%`
+            : '未投入',
+      note:
+        mainInkPrimary === null
+          ? '通用主武省墨曲线已核对，但当前武器尚无可用于完整动作次数换算的基础耗墨字段。'
+          : mainInkAp > 0
+            ? `${mainInkPrimary.label}由 ${mainInkPrimary.baseInkCost.toFixed(2)}% 降至 ${mainInkPrimary.adjustedInkCost.toFixed(2)}%，满墨 ${mainInkPrimary.adjustedActionsPerTank} 次。`
+            : `${mainInkPrimary.label}基础耗墨 ${mainInkPrimary.baseInkCost.toFixed(2)}%，满墨 ${mainInkPrimary.baseActionsPerTank} 次；当前配装没有主武省墨投入。`,
+      state:
+        mainInkPrimary === null
+          ? 'pending'
+          : mainInkAp > 0
+            ? 'equipped'
+            : 'verified',
+    },
+    {
+      label: '可复算动作',
+      value:
+        mainInkAnalysis.profiles.length > 0
+          ? `${mainInkAnalysis.profiles.length} 种`
+          : '尚未建立',
+      note:
+        mainInkAnalysis.profiles.length > 0
+          ? `当前可按主武省墨换算：${mainInkAnalysis.profiles.map(({ label }) => label).join('、')}。基础主武伤害与动作窗口仍由上方主武分析独立展示。`
+          : '当前武器已有其他已核对参数，但尚无适合套入主武省墨曲线的单次耗墨动作。',
+      state: mainInkAnalysis.profiles.length > 0 ? 'verified' : 'pending',
+    },
+  ];
 
   const mobilityMetrics: ContextMetric[] = [];
   if (swimSpeedAp > 0 || hasNinjaSquid) {
@@ -262,18 +300,6 @@ export function buildLoadoutContextSections(
   }
 
   const otherMetrics: ContextMetric[] = [];
-  if (mainInkAp > 0) {
-    const analysis = getMainInkSaverAnalysis(weapon.id, mainInkAp);
-    const primary = analysis.profiles[0] ?? null;
-    otherMetrics.push({
-      label: '主省',
-      value: `${mainInkAp}AP · 耗墨 −${analysis.reductionPercent.toFixed(1)}%`,
-      note: primary
-        ? `${primary.label}由 ${primary.baseInkCost.toFixed(2)}% 降至 ${primary.adjustedInkCost.toFixed(2)}%，满墨 ${primary.adjustedActionsPerTank} 次。`
-        : '通用倍率已核对，但当前武器尚无可用于完整动作次数换算的基础耗墨字段。',
-      state: 'equipped',
-    });
-  }
   otherMetrics.push(
     ...equippedMetrics(totals, otherIds, '').filter(
       ({ state }) => state !== 'empty',
@@ -289,6 +315,12 @@ export function buildLoadoutContextSections(
   }
 
   return [
+    {
+      id: 'main',
+      title: '主要武器与当前配装',
+      summary: `${weapon.name} · 主省 ${mainInkAp}AP`,
+      metrics: mainMetrics,
+    },
     {
       id: 'sub',
       title: '次要武器实际影响',

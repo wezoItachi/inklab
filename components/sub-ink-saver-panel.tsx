@@ -27,7 +27,9 @@ export function SubInkSaverPanel({
       <div className="effect-main generic">
         <AbilityIcon ability={ability} />
         <div>
-          <small>{weapon.name} · {weapon.sub.name}</small>
+          <small>
+            {weapon.name} · {weapon.sub.name}
+          </small>
           <strong>副武省墨参数仍待核验</strong>
           <p>当前副武器缺少基础耗墨或曲线档位，因此不套用其他副武器的数据。</p>
         </div>
@@ -59,8 +61,8 @@ export function SubInkSaverPanel({
             当前耗墨为基础值的 {(analysis.multiplier * 100).toFixed(2)}%
           </strong>
           <p>
-            {analysis.ap}AP 相对 0AP 减少 {analysis.reductionPercent.toFixed(2)}%
-            耗墨；完整使用次数按当前墨水槽容量计算。
+            {analysis.ap}AP 相对 0AP 减少 {analysis.reductionPercent.toFixed(2)}
+            % 耗墨；完整使用次数按当前墨水槽容量计算。
           </p>
         </div>
         <span>曲线已核对</span>
@@ -72,9 +74,7 @@ export function SubInkSaverPanel({
             {analysis.baseInkCost.toFixed(2)} →{' '}
             {analysis.adjustedInkCost.toFixed(2)}
           </b>
-          <span>
-            当前墨水槽占比 {analysis.adjustedTankPercent.toFixed(2)}%
-          </span>
+          <span>当前墨水槽占比 {analysis.adjustedTankPercent.toFixed(2)}%</span>
         </div>
         <div>
           <small>满墨完整使用</small>
@@ -143,14 +143,17 @@ export function SubInkSaverPanel({
       <p className="judgement">
         <TrendingUp size={14} />
         <b>当前结论：</b>
-        {analysis.extraUsesPerTank > 0
-          ? `${analysis.ap}AP 已让${weapon.sub.name}在满墨状态下增加 ${analysis.extraUsesPerTank} 次完整使用。`
-          : `${analysis.ap}AP 已降低${weapon.sub.name}的单次耗墨，但尚未多出一个完整使用次数。`}
+        {analysis.ap === 0
+          ? `当前为 0AP，${weapon.sub.name}保持基础耗墨与满墨 ${analysis.baseUsesPerTank} 次完整使用。`
+          : analysis.extraUsesPerTank > 0
+            ? `${analysis.ap}AP 已让${weapon.sub.name}在满墨状态下增加 ${analysis.extraUsesPerTank} 次完整使用。`
+            : `${analysis.ap}AP 已降低${weapon.sub.name}的单次耗墨，但尚未多出一个完整使用次数。`}
       </p>
       <p className="effect-source">
         <Check size={13} />
         基础耗墨与副省档位来自 Leanny Ver. 12.0.0 固定快照；五档倍率与插值方式经
-        Sendou.ink 公开分析器实现交叉核对。Lv0–Lv4 是内部耗墨曲线档位，不是玩家等级。
+        Sendou.ink 公开分析器实现交叉核对。Lv0–Lv4
+        是内部耗墨曲线档位，不是玩家等级。
       </p>
     </>
   );
