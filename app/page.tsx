@@ -51,7 +51,11 @@ import {
 } from '@/lib/abilities';
 import { AbilityIcon } from '@/components/ability-icon';
 import { CommunitySamplePanel } from '@/components/community-sample-panel';
-import { encodeLoadoutQuery, LOCAL_LOADOUT_KEY } from '@/lib/loadout-share';
+import {
+  buildLoadoutShareUrl,
+  encodeLoadoutQuery,
+  LOCAL_LOADOUT_KEY,
+} from '@/lib/loadout-share';
 import { resolveInitialEditorState } from '@/lib/editor-state';
 import { WeaponPicker } from '@/components/weapon-picker';
 import { SectionErrorBoundary } from '@/components/section-error-boundary';
@@ -471,12 +475,15 @@ export default function Home() {
     setAnalysisApPreview(null);
   };
   const copyShareLink = async () => {
-    const query = encodeLoadoutQuery({
+    const url = buildLoadoutShareUrl(
+      window.location.origin,
+      window.location.pathname,
+      {
         weaponId,
         slots,
         focusAbilityId: focus,
-      }),
-      url = `${window.location.origin}${window.location.pathname}?${query}`;
+      },
+    );
     window.history.replaceState(null, '', url);
     try {
       await navigator.clipboard.writeText(url);

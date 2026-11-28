@@ -27,6 +27,14 @@ export function encodeLoadoutQuery({
   return query.toString();
 }
 
+export function buildLoadoutShareUrl(
+  origin: string,
+  pathname: string,
+  loadout: ShareableLoadout,
+) {
+  return `${origin}${pathname}?${encodeLoadoutQuery(loadout)}#lab`;
+}
+
 export function decodeLoadoutQuery(
   search: string,
   weaponIds: ReadonlySet<string>,

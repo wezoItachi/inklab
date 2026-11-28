@@ -2,7 +2,11 @@ import assert from 'node:assert/strict';
 import test from 'node:test';
 import { abilities } from './abilities.ts';
 import { clearLoadoutSlot, clonePresetSlots } from './loadouts.ts';
-import { decodeLoadoutQuery, encodeLoadoutQuery } from './loadout-share.ts';
+import {
+  buildLoadoutShareUrl,
+  decodeLoadoutQuery,
+  encodeLoadoutQuery,
+} from './loadout-share.ts';
 import { weapons } from './weapons.ts';
 
 const weaponIds = new Set(weapons.map(({ id }) => id));
@@ -35,6 +39,21 @@ void test('share query preserves the selected ability analysis', () => {
   };
   assert.deepEqual(
     decodeLoadoutQuery(encodeLoadoutQuery(state), weaponIds, abilityIds),
+    state,
+  );
+});
+
+void test('share URL explicitly lands in the laboratory', () => {
+  const state = {
+    weaponId: weapons[2].id,
+    slots: clonePresetSlots(1),
+    focusAbilityId: 'ism',
+  };
+  const url = buildLoadoutShareUrl('https://inklab.example', '/tool', state);
+  assert.equal(url.startsWith('https://inklab.example/tool?'), true);
+  assert.equal(url.endsWith('#lab'), true);
+  assert.deepEqual(
+    decodeLoadoutQuery(new URL(url).search, weaponIds, abilityIds),
     state,
   );
 });
