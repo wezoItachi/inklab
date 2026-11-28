@@ -6,6 +6,7 @@ void test('health route exposes only stable public service metadata', async () =
   const response = await GET();
   assert.equal(response.status, 200);
   assert.equal(response.headers.get('cache-control'), 'no-store');
+  assert.equal(response.headers.get('x-content-type-options'), 'nosniff');
   assert.deepEqual(await response.json(), {
     status: 'ok',
     service: 'inklab',

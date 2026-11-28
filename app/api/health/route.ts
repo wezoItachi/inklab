@@ -3,6 +3,7 @@ import databaseManifest from '../../../database/manifest.json' with { type: 'jso
 const headers = {
   'Cache-Control': 'no-store',
   'Content-Type': 'application/json; charset=utf-8',
+  'X-Content-Type-Options': 'nosniff',
 };
 
 export async function GET() {
