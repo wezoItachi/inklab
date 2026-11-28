@@ -66,6 +66,38 @@ if (!/^store-dir=\.\.\/\.pnpm-store$/m.test(projectNpmrc)) {
   );
 }
 
+const viteConfig = readFileSync('vite.config.ts', 'utf8');
+const productionStarter = readFileSync('scripts/start-production.mjs', 'utf8');
+const localToolStateRequirements = [
+  {
+    file: 'vite.config.ts',
+    content: viteConfig,
+    patterns: [
+      /WRANGLER_LOG_PATH'\] \?\?= '\.wrangler\/logs'/,
+      /MINIFLARE_REGISTRY_PATH'\] \?\?= '\.wrangler\/registry'/,
+    ],
+  },
+  {
+    file: 'scripts/start-production.mjs',
+    content: productionStarter,
+    patterns: [
+      /MINIFLARE_REGISTRY_PATH: resolve\(root, '\.wrangler\/registry'\)/,
+      /WRANGLER_LOG_PATH: resolve\(root, '\.wrangler\/logs'\)/,
+      /XDG_CONFIG_HOME: resolve\(root, '\.wrangler\/config'\)/,
+    ],
+  },
+];
+
+for (const requirement of localToolStateRequirements) {
+  if (
+    requirement.patterns.some((pattern) => !pattern.test(requirement.content))
+  ) {
+    failures.push(
+      `当前配置: ${requirement.file} 必须把 Wrangler、Miniflare 与 XDG 状态限制在项目 .wrangler 目录`,
+    );
+  }
+}
+
 for (const file of trackedFiles) {
   try {
     failures.push(...scanContent(file, readFileSync(file, 'utf8'), '当前内容'));
