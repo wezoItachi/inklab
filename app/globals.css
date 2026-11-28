@@ -1307,6 +1307,11 @@ button {
 }
 .analysis-summary {
   margin: 18px 0;
+  scroll-margin-top: 12px;
+}
+.analysis-summary:focus-visible {
+  outline: 2px solid var(--purple);
+  outline-offset: 4px;
 }
 .share-scope-note {
   margin: 5px 0 0;

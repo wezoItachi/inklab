@@ -1390,7 +1390,11 @@ export default function Home() {
                         <p>这些内容只用于生成本机 PNG，不会上传服务器。</p>
                       </div>
                     </details>
-                    <div className="analysis-summary" id="ability-analysis">
+                    <div
+                      className="analysis-summary"
+                      id="ability-analysis"
+                      tabIndex={-1}
+                    >
                       <h3>
                         选择要分析的能力{' '}
                         <small>仅影响右侧说明，不修改配装</small>
@@ -1502,14 +1506,19 @@ export default function Home() {
                           selectedAbilityId={focus}
                           onSelectAbility={(abilityId) => {
                             selectAnalysis(abilityId);
-                            window.requestAnimationFrame(() =>
-                              document
-                                .getElementById('ability-analysis')
-                                ?.scrollIntoView({
-                                  behavior: 'smooth',
-                                  block: 'start',
-                                }),
-                            );
+                            window.requestAnimationFrame(() => {
+                              const analysisTarget =
+                                document.getElementById('ability-analysis');
+                              analysisTarget?.scrollIntoView({
+                                behavior: window.matchMedia(
+                                  '(prefers-reduced-motion: reduce)',
+                                ).matches
+                                  ? 'auto'
+                                  : 'smooth',
+                                block: 'start',
+                              });
+                              analysisTarget?.focus({ preventScroll: true });
+                            });
                           }}
                         />
                       </Suspense>
