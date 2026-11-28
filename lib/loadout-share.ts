@@ -31,8 +31,15 @@ export function buildLoadoutShareUrl(
   origin: string,
   pathname: string,
   loadout: ShareableLoadout,
+  hash = '#lab',
 ) {
-  return `${origin}${pathname}?${encodeLoadoutQuery(loadout)}#lab`;
+  const normalizedHash = hash ? (hash.startsWith('#') ? hash : `#${hash}`) : '';
+  return `${origin}${pathname}?${encodeLoadoutQuery(loadout)}${normalizedHash}`;
+}
+
+export function hasLoadoutShareQuery(search: string) {
+  const query = new URLSearchParams(search);
+  return query.has('w') || query.has('g');
 }
 
 export function decodeLoadoutQuery(

@@ -54,6 +54,7 @@ import { CommunitySamplePanel } from '@/components/community-sample-panel';
 import {
   buildLoadoutShareUrl,
   encodeLoadoutQuery,
+  hasLoadoutShareQuery,
   LOCAL_LOADOUT_KEY,
 } from '@/lib/loadout-share';
 import { resolveInitialEditorState } from '@/lib/editor-state';
@@ -376,6 +377,18 @@ export default function Home() {
         nextStorageStatus = 'available';
       } catch {
         nextStorageStatus = 'unavailable';
+      }
+      if (hasLoadoutShareQuery(window.location.search)) {
+        window.history.replaceState(
+          null,
+          '',
+          buildLoadoutShareUrl(
+            window.location.origin,
+            window.location.pathname,
+            { weaponId, slots, focusAbilityId: focus },
+            window.location.hash || '#lab',
+          ),
+        );
       }
       const timer = window.setTimeout(
         () => setStorageStatus(nextStorageStatus),

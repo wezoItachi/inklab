@@ -6,6 +6,7 @@ import {
   buildLoadoutShareUrl,
   decodeLoadoutQuery,
   encodeLoadoutQuery,
+  hasLoadoutShareQuery,
 } from './loadout-share.ts';
 import { weapons } from './weapons.ts';
 
@@ -56,6 +57,22 @@ void test('share URL explicitly lands in the laboratory', () => {
     decodeLoadoutQuery(new URL(url).search, weaponIds, abilityIds),
     state,
   );
+});
+
+void test('an active shared address can preserve its current section hash', () => {
+  const state = {
+    weaponId: weapons[2].id,
+    slots: clonePresetSlots(1),
+  };
+  const url = buildLoadoutShareUrl(
+    'https://inklab.example',
+    '/',
+    state,
+    '#wiki',
+  );
+  assert.equal(url.endsWith('#wiki'), true);
+  assert.equal(hasLoadoutShareQuery(new URL(url).search), true);
+  assert.equal(hasLoadoutShareQuery('?view=wiki'), false);
 });
 
 void test('share query rejects unknown required ids and malformed AP totals', () => {
