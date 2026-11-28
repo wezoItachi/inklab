@@ -14,7 +14,7 @@
   },
   "scripts": {
     "dev": "vinext dev",
-    "build": "vinext build",
+    "build": "vite build",
     "start": "wrangler dev --config dist/server/wrangler.json",
     "test": "node --experimental-strip-types --test lib/*.test.ts",
     "data:import-weapons": "node scripts/import-leanny-weapons.mjs",
