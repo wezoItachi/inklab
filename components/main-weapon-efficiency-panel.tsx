@@ -1,15 +1,4 @@
 import {
-  analyzeBlasterEfficiency,
-  analyzeBrushEfficiency,
-  analyzeChargerEfficiency,
-  analyzeMainWeaponEfficiency,
-  analyzeManeuverEfficiency,
-  analyzeRollerEfficiency,
-  analyzeSaberEfficiency,
-  analyzeShelterEfficiency,
-  analyzeSlosherEfficiency,
-  analyzeSpinnerEfficiency,
-  analyzeStringerEfficiency,
   type BlasterEfficiency,
   type BrushEfficiency,
   type ChargerEfficiency,
@@ -22,6 +11,7 @@ import {
   type SpinnerEfficiency,
   type StringerEfficiency,
 } from '@/lib/main-weapon-analysis';
+import { analyzeMainWeaponLabModel } from '@/lib/main-weapon-lab-model';
 import {
   analyzeMainWeaponRangeEvidence,
   type MainWeaponRangeEvidence,
@@ -967,83 +957,19 @@ export function MainWeaponEfficiencyPanel({ weaponId }: { weaponId: string }) {
   const rangeEvidence = analyzeMainWeaponRangeEvidence(record, family);
   const actionCycleEvidence = getMainWeaponActionCycleEvidence(record, family);
   const capabilityEvidence = getMainWeaponCapabilityEvidence(record, family);
-  const spinnerAnalysis =
-    family === '加特林' ? analyzeSpinnerEfficiency(record) : null;
-  const shooterAnalysis =
-    family === '射击枪' ? analyzeMainWeaponEfficiency(record) : null;
-  const blasterAnalysis =
-    family === '爆破枪' ? analyzeBlasterEfficiency(record) : null;
-  const chargerAnalysis =
-    family === '蓄力枪' ? analyzeChargerEfficiency(record) : null;
-  const rollerAnalysis =
-    family === '滚筒' ? analyzeRollerEfficiency(record) : null;
-  const stringerAnalysis =
-    family === '弓' ? analyzeStringerEfficiency(record) : null;
-  const maneuverAnalysis =
-    family === '双枪' ? analyzeManeuverEfficiency(record) : null;
-  const saberAnalysis =
-    family === '刮水刀' ? analyzeSaberEfficiency(record) : null;
-  const shelterAnalysis =
-    family === '伞' ? analyzeShelterEfficiency(record) : null;
-  const brushAnalysis =
-    family === '画笔' ? analyzeBrushEfficiency(record) : null;
-  const slosherAnalysis =
-    family === '泼桶' ? analyzeSlosherEfficiency(record) : null;
-  const analysis =
-    spinnerAnalysis ??
-    shooterAnalysis ??
-    blasterAnalysis ??
-    chargerAnalysis ??
-    rollerAnalysis ??
-    stringerAnalysis ??
-    maneuverAnalysis ??
-    saberAnalysis ??
-    shelterAnalysis ??
-    brushAnalysis ??
-    slosherAnalysis;
-  const verifiedInputCount =
-    spinnerAnalysis?.verifiedInputCount ??
-    shooterAnalysis?.verifiedInputCount ??
-    blasterAnalysis?.verifiedInputCount ??
-    chargerAnalysis?.verifiedInputCount ??
-    rollerAnalysis?.verifiedInputCount ??
-    stringerAnalysis?.verifiedInputCount ??
-    maneuverAnalysis?.verifiedInputCount ??
-    saberAnalysis?.verifiedInputCount ??
-    shelterAnalysis?.verifiedInputCount ??
-    brushAnalysis?.verifiedInputCount ??
-    slosherAnalysis?.verifiedInputCount;
-  const modelInputCount = spinnerAnalysis
-    ? 23
-    : shooterAnalysis
-      ? 6
-      : blasterAnalysis
-        ? 8
-        : chargerAnalysis
-          ? 6
-          : rollerAnalysis
-            ? 13
-            : saberAnalysis
-              ? 17
-              : shelterAnalysis
-                ? 14
-                : brushAnalysis
-                  ? 12
-                  : slosherAnalysis
-                    ? 13
-                    : 11;
+  const labModel = analyzeMainWeaponLabModel(record, family);
 
   return (
-    <details className="main-efficiency-panel" open={analysis !== null}>
+    <details className="main-efficiency-panel" open={labModel !== null}>
       <summary>
         <span>主要武器效率与射击数</span>
         <b>
-          {analysis
-            ? `${verifiedInputCount}/${modelInputCount} 试算输入 · 100 HP`
+          {labModel
+            ? `${labModel.analysis.verifiedInputCount}/${labModel.modelInputCount} 试算输入 · 100 HP`
             : '参数待验证'}
         </b>
       </summary>
-      {analysis ? (
+      {labModel ? (
         <p className="main-efficiency-scope-note">
           此处只统计当前结果模型实际读取的输入；整把武器的全部已建字段与剩余证据路线以上方“主武参数覆盖”为准。
         </p>
@@ -1051,28 +977,28 @@ export function MainWeaponEfficiencyPanel({ weaponId }: { weaponId: string }) {
       <RangeEvidenceContent evidence={rangeEvidence} />
       <ActionCycleEvidenceContent entries={actionCycleEvidence} />
       <CapabilityEvidenceContent entries={capabilityEvidence} />
-      {spinnerAnalysis ? (
-        <SpinnerContent analysis={spinnerAnalysis} />
-      ) : shooterAnalysis ? (
-        <ShooterContent analysis={shooterAnalysis} />
-      ) : blasterAnalysis ? (
-        <BlasterContent analysis={blasterAnalysis} />
-      ) : chargerAnalysis ? (
-        <ChargerContent analysis={chargerAnalysis} />
-      ) : rollerAnalysis ? (
-        <RollerContent analysis={rollerAnalysis} />
-      ) : stringerAnalysis ? (
-        <StringerContent analysis={stringerAnalysis} />
-      ) : maneuverAnalysis ? (
-        <ManeuverContent analysis={maneuverAnalysis} />
-      ) : saberAnalysis ? (
-        <SaberContent analysis={saberAnalysis} />
-      ) : shelterAnalysis ? (
-        <ShelterContent analysis={shelterAnalysis} />
-      ) : brushAnalysis ? (
-        <BrushContent analysis={brushAnalysis} />
-      ) : slosherAnalysis ? (
-        <SlosherContent analysis={slosherAnalysis} />
+      {labModel?.kind === 'spinner' ? (
+        <SpinnerContent analysis={labModel.analysis} />
+      ) : labModel?.kind === 'shooter' ? (
+        <ShooterContent analysis={labModel.analysis} />
+      ) : labModel?.kind === 'blaster' ? (
+        <BlasterContent analysis={labModel.analysis} />
+      ) : labModel?.kind === 'charger' ? (
+        <ChargerContent analysis={labModel.analysis} />
+      ) : labModel?.kind === 'roller' ? (
+        <RollerContent analysis={labModel.analysis} />
+      ) : labModel?.kind === 'stringer' ? (
+        <StringerContent analysis={labModel.analysis} />
+      ) : labModel?.kind === 'maneuver' ? (
+        <ManeuverContent analysis={labModel.analysis} />
+      ) : labModel?.kind === 'saber' ? (
+        <SaberContent analysis={labModel.analysis} />
+      ) : labModel?.kind === 'shelter' ? (
+        <ShelterContent analysis={labModel.analysis} />
+      ) : labModel?.kind === 'brush' ? (
+        <BrushContent analysis={labModel.analysis} />
+      ) : labModel?.kind === 'slosher' ? (
+        <SlosherContent analysis={labModel.analysis} />
       ) : (
         <div className="main-efficiency-pending">
           核心参数至少核对一项后，才会显示对应计算。
