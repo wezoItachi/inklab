@@ -176,6 +176,9 @@ export function SchemeLibrary({
         <div className="build-list">
           {visibleSchemes.map((scheme) => {
             const schemeWeapon = getWeapon(scheme.weaponId);
+            const schemeFocusAbility = abilities.find(
+              ({ id }) => id === scheme.focusAbilityId,
+            );
             return (
               <article className="build-card" key={scheme.id}>
                 <div className="build-card-title">
@@ -210,6 +213,7 @@ export function SchemeLibrary({
                 <div className="build-meta">
                   <b>INKLAB 示例</b>
                   <span>{scheme.id.replace('sample-', '方案 #')}</span>
+                  <span>首要分析 · {schemeFocusAbility?.short}</span>
                   <time>Ver. {DATA_VERSION}</time>
                 </div>
                 <div className="build-weapon">

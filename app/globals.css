@@ -2521,6 +2521,7 @@ button {
 .build-meta {
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
   gap: 8px;
   padding: 11px 0;
   color: #888;
