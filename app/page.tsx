@@ -358,7 +358,7 @@ export default function Home() {
       try {
         localStorage.setItem(
           LOCAL_LOADOUT_KEY,
-          encodeLoadoutQuery({ weaponId, slots }),
+          encodeLoadoutQuery({ weaponId, slots, focusAbilityId: focus }),
         );
         nextStorageStatus = 'available';
       } catch {
@@ -370,7 +370,7 @@ export default function Home() {
       );
       return () => window.clearTimeout(timer);
     }
-  }, [localReady, slots, weaponId]);
+  }, [focus, localReady, slots, weaponId]);
   const applyRecommendation = (i: number) => {
     const recommendation = recommendations[i];
     if (!recommendation) return;
@@ -462,7 +462,11 @@ export default function Home() {
     setAnalysisApPreview(null);
   };
   const copyShareLink = async () => {
-    const query = encodeLoadoutQuery({ weaponId, slots }),
+    const query = encodeLoadoutQuery({
+        weaponId,
+        slots,
+        focusAbilityId: focus,
+      }),
       url = `${window.location.origin}${window.location.pathname}?${query}`;
     window.history.replaceState(null, '', url);
     try {

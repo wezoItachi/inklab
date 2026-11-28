@@ -5,19 +5,25 @@ export const LOCAL_LOADOUT_KEY = 'inklab:loadout:v1';
 export type ShareableLoadout = {
   weaponId: string;
   slots: EditableLoadoutSlot[];
+  focusAbilityId?: string;
 };
 
 const legacyWeaponIdAliases: Readonly<Record<string, string>> = {
   'shooter-short-cstm11': 'shooter-precision',
 };
 
-export function encodeLoadoutQuery({ weaponId, slots }: ShareableLoadout) {
+export function encodeLoadoutQuery({
+  weaponId,
+  slots,
+  focusAbilityId,
+}: ShareableLoadout) {
   const query = new URLSearchParams();
   query.set('w', weaponId);
   query.set(
     'g',
     slots.map(([abilityId, ap]) => `${abilityId ?? '_'}.${ap}`).join(','),
   );
+  if (focusAbilityId) query.set('a', focusAbilityId);
   return query.toString();
 }
 
@@ -32,7 +38,9 @@ export function decodeLoadoutQuery(
     ? (legacyWeaponIdAliases[encodedWeaponId] ?? encodedWeaponId)
     : null;
   const encodedSlots = query.get('g');
+  const focusAbilityId = query.get('a');
   if (!weaponId || !weaponIds.has(weaponId) || !encodedSlots) return undefined;
+  if (focusAbilityId && !abilityIds.has(focusAbilityId)) return undefined;
 
   const slots = encodedSlots
     .split(',')
@@ -41,7 +49,10 @@ export function decodeLoadoutQuery(
       if (separator < 1) return undefined;
       const abilityId = encoded.slice(0, separator);
       const ap = Number(encoded.slice(separator + 1));
-      if ((abilityId !== '_' && !abilityIds.has(abilityId)) || (ap !== 3 && ap !== 10))
+      if (
+        (abilityId !== '_' && !abilityIds.has(abilityId)) ||
+        (ap !== 3 && ap !== 10)
+      )
         return undefined;
       return [abilityId === '_' ? null : abilityId, ap];
     });
@@ -50,5 +61,7 @@ export function decodeLoadoutQuery(
   const validSlots = slots as EditableLoadoutSlot[];
   if (validSlots.some(([, ap], index) => ap !== (index % 4 === 0 ? 10 : 3)))
     return undefined;
-  return { weaponId, slots: validSlots };
+  return focusAbilityId
+    ? { weaponId, slots: validSlots, focusAbilityId }
+    : { weaponId, slots: validSlots };
 }

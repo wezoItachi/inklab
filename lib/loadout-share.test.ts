@@ -17,7 +17,22 @@ void test('share query round-trips a complete loadout', () => {
 });
 
 void test('share query preserves an intentionally empty editable slot', () => {
-  const state = { weaponId: weapons[2].id, slots: clearLoadoutSlot(clonePresetSlots(1), 5) };
+  const state = {
+    weaponId: weapons[2].id,
+    slots: clearLoadoutSlot(clonePresetSlots(1), 5),
+  };
+  assert.deepEqual(
+    decodeLoadoutQuery(encodeLoadoutQuery(state), weaponIds, abilityIds),
+    state,
+  );
+});
+
+void test('share query preserves the selected ability analysis', () => {
+  const state = {
+    weaponId: weapons[2].id,
+    slots: clonePresetSlots(1),
+    focusAbilityId: 'ism',
+  };
   assert.deepEqual(
     decodeLoadoutQuery(encodeLoadoutQuery(state), weaponIds, abilityIds),
     state,
@@ -43,6 +58,10 @@ void test('share query rejects unknown ids and malformed AP totals', () => {
   );
   assert.equal(
     decodeLoadoutQuery(valid.replace('ssu', 'unknown'), weaponIds, abilityIds),
+    undefined,
+  );
+  assert.equal(
+    decodeLoadoutQuery(`${valid}&a=unknown`, weaponIds, abilityIds),
     undefined,
   );
 });

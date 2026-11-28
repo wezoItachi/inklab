@@ -19,7 +19,10 @@ function customEditorState(loadout: ShareableLoadout): EditorState {
       ([abilityId, ap]) => [abilityId, ap] as EditableLoadoutSlot,
     ),
     activePreset: -1,
-    focus: loadout.slots.find(([abilityId]) => abilityId !== null)?.[0] ?? 'iss',
+    focus:
+      loadout.focusAbilityId ??
+      loadout.slots.find(([abilityId]) => abilityId !== null)?.[0] ??
+      'iss',
     selectedSlot: 0,
   };
 }
