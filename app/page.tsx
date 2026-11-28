@@ -434,7 +434,7 @@ export default function Home() {
     setSelectedSlot(0);
     setFocus(nextFocusAbilityId);
     setAnalysisApPreview(null);
-    setPage('lab');
+    navigatePage('lab');
     setLabMode('single');
   };
   const selectAnalysis = (id: string) => {
