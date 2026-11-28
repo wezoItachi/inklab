@@ -1,5 +1,4 @@
 @import 'tailwindcss';
-@import 'tw-animate-css';
 @import 'shadcn/tailwind.css';
 :root {
   --ink: #202027;
@@ -3363,12 +3362,6 @@ button {
   font-size: 7px;
   font-weight: 800;
 }
-.salmon-slots [data-slot='native-select-wrapper'] {
-  width: 100%;
-}
-.salmon-slots select {
-  background: #fff;
-}
 .salmon-slots h3 {
   margin: 11px 0 7px;
   font-size: 12px;
@@ -3924,20 +3917,6 @@ button {
     flex: none;
   }
 }
-.weapon-select {
-  min-width: 108px;
-}
-.weapon-select [data-slot='native-select'] {
-  border-radius: 0;
-  border-color: var(--ink);
-  background: var(--ink);
-  color: #fff;
-  font-size: 9px;
-  font-weight: 800;
-}
-.weapon-select [data-slot='native-select-icon'] {
-  color: var(--acid);
-}
 .weapon-kit-card {
   overflow: hidden;
   border: 1px solid #17171c;
@@ -3949,29 +3928,6 @@ button {
   border-bottom: 1px solid #4b4b55;
   background: #202027;
   box-shadow: inset 4px 0 0 var(--acid);
-}
-.weapon-kit-title .weapon-title-select {
-  width: 100%;
-}
-.weapon-kit-title .weapon-title-select [data-slot='native-select'] {
-  min-height: 48px;
-  border: 0;
-  border-radius: 0;
-  background: transparent;
-  padding: 11px 42px 11px 16px;
-  color: #fff;
-  font-size: 16px;
-  font-weight: 900;
-}
-.weapon-kit-title
-  .weapon-title-select
-  [data-slot='native-select']:focus-visible {
-  outline: 2px solid var(--acid);
-  outline-offset: -3px;
-}
-.weapon-kit-title .weapon-title-select [data-slot='native-select-icon'] {
-  right: 16px;
-  color: var(--acid);
 }
 .weapon-kit-visual {
   display: grid;
@@ -4100,9 +4056,6 @@ button {
   background: var(--acid);
 }
 @media (max-width: 680px) {
-  .weapon-kit-title .weapon-title-select [data-slot='native-select'] {
-    font-size: 15px;
-  }
   .weapon-kit-visual {
     grid-template-columns: minmax(0, 1.45fr) minmax(100px, 0.8fr);
   }
@@ -5314,7 +5267,6 @@ button {
   overflow: hidden;
 }
 .lab-switch button,
-.weapon-select [data-slot='native-select'],
 .presets.vertical > button,
 .ability-part-tabs button,
 .breakpoints button,

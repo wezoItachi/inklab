@@ -7,6 +7,7 @@
 ## 已处理
 
 - `shadcn` CLI 从生产依赖移到开发依赖，避免把不参与网站运行的工具链计入生产部署。
+- 移除未引用的 UI 脚手架运行时与动画样式包，安装图减少 83 个包；生产许可证组合由 243 项降至 153 项，重新审计仍未发现已知漏洞。
 - React、React DOM 与 React Server DOM 升级到 19.2.8。
 - vinext 升级到 1.0.1，Vite 升级到 8.3.3，并采用 vinext 要求的 `@vitejs/plugin-rsc` 0.5.34。
 - 对已有兼容补丁的 `fast-uri`、`fflate`、`source-map-js` 和 PostCSS 统一锁定安全版本。
@@ -40,5 +41,6 @@
 ## 2026-11-29 复核
 
 - 在 npm 官方安全公告接口上执行 `pnpm audit --prod --audit-level moderate`，结果为 `No known vulnerabilities found`。
+- 精简未引用依赖并更新锁文件后再次执行同一审计，结果仍为 `No known vulnerabilities found`；生产许可证清单已同步重导出。
 - 此结果只代表执行当时的已知公告与当前锁文件，不表示未来不会出现新公告；部署前和依赖更新后仍须重跑。
 - 同轮测试、类型检查、lint、生产构建、客户端包边界检查、当前文件与完整 Git 历史隐私扫描均通过。
