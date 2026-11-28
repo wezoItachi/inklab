@@ -1,8 +1,8 @@
 # 依赖检查记录
 
-- 最近复核：2026-10-18
+- 最近复核：2026-11-29
 - 范围：`pnpm audit --prod`
-- 结果：从 30 项（1 critical、13 high、12 moderate、4 low）降低为 2 项（1 high、1 low）。
+- 当前结果：未发现已知生产依赖漏洞。此前记录过的 30 项风险已随依赖与锁文件更新全部退出当前生产依赖图。
 
 ## 已处理
 
@@ -11,10 +11,10 @@
 - vinext 升级到 1.0.1，Vite 升级到 8.3.3，并采用 vinext 要求的 `@vitejs/plugin-rsc` 0.5.34。
 - 对已有兼容补丁的 `fast-uri`、`fflate`、`source-map-js` 和 PostCSS 统一锁定安全版本。
 
-## 尚未消除
+## 已退出当前依赖图
 
-1. `braces`（high，GHSA-vfj7-8cjw-p6xm）：来自 `vinext > vite-plugin-commonjs > vite-plugin-dynamic-import > fast-glob > micromatch`。漏洞记录要求 `>=3.0.4`，但检查时 npm registry 最新版本仍为 3.0.3，无法锁定尚未发布的修复版。
-2. `esbuild`（low，GHSA-g7r4-m6w7-qqqr）：影响 Windows 开发服务器的任意文件读取场景，记录要求 `>=0.28.1`；当前链路仍由 React Server DOM 的 webpack 工具固定到 0.27.3。公开网站不应暴露开发服务器，但仍需跟随上游更新。
+1. `braces`（曾为 high，GHSA-vfj7-8cjw-p6xm）：此前来自 vinext 的间接开发工具链；2026-11-29 的生产依赖审计已不再报告。
+2. `esbuild`（曾为 low，GHSA-g7r4-m6w7-qqqr）：此前来自 React Server DOM / webpack 工具链；2026-11-29 的生产依赖审计已不再报告。
 
 ## 公开前处理建议
 
@@ -36,3 +36,9 @@
 - `braces` 公告仍标记为没有已发布修复版本；当前产品不接受用户提供的 glob 表达式，也不把相关开发工具作为公开服务运行。
 - `esbuild` 已有 `0.28.1` 修复版，但当前 7 条依赖路径由 vinext、Vite 与 React Server DOM 工具链间接约束；在兼容上游升级前不强行覆盖。开发服务器继续只监听本机回环地址。
 - 测试、类型检查、lint、生产构建与完整 Git 历史隐私扫描在同日全部通过。上述两项已知风险继续记录，不阻塞“只公开源码、尚不部署网站”的动作。
+
+## 2026-11-29 复核
+
+- 在 npm 官方安全公告接口上执行 `pnpm audit --prod --audit-level moderate`，结果为 `No known vulnerabilities found`。
+- 此结果只代表执行当时的已知公告与当前锁文件，不表示未来不会出现新公告；部署前和依赖更新后仍须重跑。
+- 同轮测试、类型检查、lint、生产构建、客户端包边界检查、当前文件与完整 Git 历史隐私扫描均通过。
