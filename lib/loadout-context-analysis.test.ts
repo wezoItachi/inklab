@@ -1,5 +1,6 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
+import { abilities } from './abilities.ts';
 import { buildLoadoutContextSections } from './loadout-context-analysis.ts';
 import { getWeapon, weapons } from './weapon-catalog.ts';
 
@@ -141,6 +142,28 @@ void test('all battle weapons produce finite linked summaries for fixed-ability 
         )
         .join(' ');
       assert.doesNotMatch(text, /NaN|Infinity/, weapon.name);
+    }
+  }
+});
+
+void test('every linked context metric routes to a known ability', () => {
+  const abilityIds = new Set(abilities.map(({ id }) => id));
+  for (const weapon of weapons) {
+    const sections = buildLoadoutContextSections(weapon, [
+      { id: 'ssu', ap: 6 },
+      { id: 'qsj', ap: 3 },
+      { id: 'ism', ap: 6 },
+      { id: 'ninja', ap: 10 },
+      { id: 'stealth', ap: 10 },
+    ]);
+    for (const metric of sections.flatMap(({ metrics }) => metrics)) {
+      if (metric.abilityId) {
+        assert.equal(
+          abilityIds.has(metric.abilityId),
+          true,
+          `${weapon.name}: ${metric.label} -> ${metric.abilityId}`,
+        );
+      }
     }
   }
 });

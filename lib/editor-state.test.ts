@@ -13,7 +13,11 @@ const weaponIds = new Set(weapons.map(({ id }) => id));
 const abilityIds = new Set(abilities.map(({ id }) => id));
 
 void test('URL state wins over a different locally saved build', () => {
-  const urlLoadout = { weaponId: weapons[1].id, slots: clonePresetSlots(1) };
+  const urlLoadout = {
+    weaponId: weapons[1].id,
+    slots: clonePresetSlots(1),
+    focusAbilityId: 'ism',
+  };
   const localLoadout = { weaponId: weapons[2].id, slots: clonePresetSlots(2) };
   const restored = resolveInitialEditorState({
     urlSearch: encodeLoadoutQuery(urlLoadout),
@@ -26,6 +30,7 @@ void test('URL state wins over a different locally saved build', () => {
   assert.equal(restored.source, 'url');
   assert.equal(restored.state.weaponId, urlLoadout.weaponId);
   assert.deepEqual(restored.state.slots, urlLoadout.slots);
+  assert.equal(restored.state.focus, 'ism');
 });
 
 void test('local state restores when the URL has no valid build', () => {
@@ -61,7 +66,11 @@ void test('invalid persisted state falls back to the first preset', () => {
 void test('a changed weapon and custom slots survive a persistence round trip', () => {
   const slots = clonePresetSlots(0);
   slots[0] = ['iss', 10];
-  const changed = { weaponId: weapons[5].id, slots };
+  const changed = {
+    weaponId: weapons[5].id,
+    slots,
+    focusAbilityId: 'subp',
+  };
   const restored = resolveInitialEditorState({
     urlSearch: '',
     savedSearch: encodeLoadoutQuery(changed),
@@ -73,5 +82,5 @@ void test('a changed weapon and custom slots survive a persistence round trip', 
   assert.equal(restored.state.weaponId, weapons[5].id);
   assert.deepEqual(restored.state.slots, slots);
   assert.equal(restored.state.activePreset, -1);
-  assert.equal(restored.state.focus, 'iss');
+  assert.equal(restored.state.focus, 'subp');
 });

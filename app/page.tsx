@@ -1067,6 +1067,10 @@ export default function Home() {
                         </button>
                         <b>{equippedAp} / 57 AP</b>
                       </div>
+                      <p className="share-scope-note">
+                        分享链接包含当前武器、57AP
+                        配装与正在查看的能力；不包含配装图作者、标签或备注。
+                      </p>
                     </div>
                     <div className="gear-stack compact-gears">
                       {['头部', '服装', '鞋子'].map((g, r) => (

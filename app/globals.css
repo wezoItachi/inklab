@@ -1308,6 +1308,12 @@ button {
 .analysis-summary {
   margin: 18px 0;
 }
+.share-scope-note {
+  margin: 5px 0 0;
+  color: #777;
+  font-size: 8px;
+  line-height: 1.5;
+}
 .analysis-summary h3 {
   font-size: 12px;
   margin: 0 0 9px;
