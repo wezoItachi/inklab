@@ -2725,6 +2725,15 @@ button {
 .library-empty span {
   font-size: 9px;
 }
+.library-empty button {
+  border: 1px solid var(--ink);
+  border-radius: var(--radius-control);
+  background: var(--ink);
+  color: #fff;
+  padding: 8px 11px;
+  font-size: 9px;
+  font-weight: 800;
+}
 .card-anatomy {
   position: sticky;
   top: 16px;
@@ -5987,6 +5996,10 @@ button {
   grid-template-columns: 62px minmax(0, 1fr);
   gap: 10px;
   align-items: start;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
 }
 .salmon-target-group > b {
   padding-top: 9px;

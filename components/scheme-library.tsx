@@ -108,7 +108,7 @@ export function SchemeLibrary({
       <div className="library-toolbar">
         <div>
           <span className="library-scope-label">全部示例</span>
-          <span>
+          <span aria-live="polite" aria-atomic="true">
             {visibleSchemes.length} / {exampleSchemes.length}
           </span>
         </div>
@@ -342,11 +342,20 @@ export function SchemeLibrary({
             );
           })}
           {visibleSchemes.length === 0 ? (
-            <div className="library-empty">
+            <output className="library-empty">
               <Search size={20} />
               <b>没有匹配的示例</b>
               <span>换一个武器名称或玩法标签试试。</span>
-            </div>
+              <button
+                type="button"
+                onClick={() => {
+                  setQuery('');
+                  clearFilters();
+                }}
+              >
+                查看全部示例
+              </button>
+            </output>
           ) : null}
         </div>
         <aside className="card-anatomy">

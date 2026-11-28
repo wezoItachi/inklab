@@ -581,8 +581,7 @@ export function SalmonRunLab() {
                         )}{' '}
                         动作 DPS · {performance.routine.label}
                       </small>
-                      {performance.limit.label !==
-                      performance.routine.label ? (
+                      {performance.limit.label !== performance.routine.label ? (
                         <i>{performance.limit.note}</i>
                       ) : null}
                     </>
@@ -655,8 +654,9 @@ export function SalmonRunLab() {
           </div>
           <div className="salmon-target-groups">
             {targetCategories.map((category) => (
-              <div className="salmon-target-group" key={category}>
-                <b>{category}</b>
+              <fieldset className="salmon-target-group" key={category}>
+                <legend className="visually-hidden">{category}</legend>
+                <b aria-hidden="true">{category}</b>
                 <div className="salmon-target-buttons">
                   {salmonTargets
                     .filter((target) => target.category === category)
@@ -673,7 +673,7 @@ export function SalmonRunLab() {
                       </button>
                     ))}
                 </div>
-              </div>
+              </fieldset>
             ))}
           </div>
           <div className="salmon-target-result comparison">
