@@ -72,23 +72,25 @@ export function AbilityWiki({
           />
         </label>
       </div>
-      <div className="tag-board">
-        {tags.map((tag) => (
-          <button
-            type="button"
-            key={tag.label}
-            className={
-              (tag.label === '全部' && !filters.length) ||
-              filters.includes(tag.label)
-                ? 'active'
-                : ''
-            }
-            onClick={() => toggle(tag.label)}
-          >
-            {tag.label}
-          </button>
-        ))}
-      </div>
+      <fieldset className="tag-board">
+        <legend className="visually-hidden">能力组合标签筛选</legend>
+        {tags.map((tag) => {
+          const selected =
+            (tag.label === '全部' && !filters.length) ||
+            filters.includes(tag.label);
+          return (
+            <button
+              type="button"
+              key={tag.label}
+              className={selected ? 'active' : ''}
+              aria-pressed={selected}
+              onClick={() => toggle(tag.label)}
+            >
+              {tag.label}
+            </button>
+          );
+        })}
+      </fieldset>
       <div className="wiki-grid">
         <section>
           <div className="wiki-count">
@@ -99,6 +101,7 @@ export function AbilityWiki({
               <button
                 type="button"
                 className={focus === ability.id ? 'active' : ''}
+                aria-pressed={focus === ability.id}
                 onClick={() => setFocus(ability.id)}
                 key={ability.id}
               >

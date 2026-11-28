@@ -1967,9 +1967,11 @@ button {
   display: flex;
   flex-wrap: wrap;
   gap: 7px;
+  min-inline-size: 0;
+  border: 0;
   padding: 14px;
   background: #282830;
-  margin-bottom: 15px;
+  margin: 0 0 15px;
 }
 .tag-board button {
   border: 1px solid #555;
@@ -3820,16 +3822,20 @@ button {
   grid-template-columns: 82px 1fr;
   gap: 10px;
   align-items: start;
+  min-inline-size: 0;
+  margin: 0;
+  border: 0;
   padding: 10px 3px;
   border-bottom: 1px dashed #555;
 }
 .scheme-filter-row:last-child {
   border-bottom: 0;
 }
-.scheme-filter-row > b {
+.scheme-filter-row > legend {
   padding-top: 7px;
   color: var(--acid);
   font-size: 9px;
+  font-weight: 700;
 }
 .scheme-filter-row > div {
   display: flex;
@@ -3908,7 +3914,7 @@ button {
   .scheme-filter-row {
     grid-template-columns: 1fr;
   }
-  .scheme-filter-row > b {
+  .scheme-filter-row > legend {
     padding-top: 0;
   }
   .scheme-filter-row > div {
@@ -5622,6 +5628,9 @@ button {
   display: flex;
   gap: 6px;
   overflow-x: auto;
+  min-inline-size: 0;
+  margin: 0;
+  border: 0;
   padding: 4px 22px 12px;
   scrollbar-width: thin;
 }

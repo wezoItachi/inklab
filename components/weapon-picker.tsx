@@ -205,15 +205,11 @@ export function WeaponPicker({
                   {shown.length} / {items.length}
                 </b>
               </div>
-              <div
-                className="weapon-picker-families"
-                role="tablist"
-                aria-label="武器种类"
-              >
+              <fieldset className="weapon-picker-families">
+                <legend className="visually-hidden">武器种类筛选</legend>
                 <button
                   type="button"
-                  role="tab"
-                  aria-selected={family === '全部'}
+                  aria-pressed={family === '全部'}
                   className={family === '全部' ? 'active' : ''}
                   onClick={() => setFamily('全部')}
                 >
@@ -222,8 +218,7 @@ export function WeaponPicker({
                 {families.map((item) => (
                   <button
                     type="button"
-                    role="tab"
-                    aria-selected={family === item}
+                    aria-pressed={family === item}
                     className={family === item ? 'active' : ''}
                     onClick={() => setFamily(item)}
                     key={item}
@@ -231,7 +226,7 @@ export function WeaponPicker({
                     {item}
                   </button>
                 ))}
-              </div>
+              </fieldset>
               <div id={resultsId} className="weapon-picker-results">
                 {shown.map((item, index) => (
                   <button

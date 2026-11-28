@@ -139,6 +139,7 @@ export function SchemeLibrary({
             <button
               type="button"
               className={filters.tags.includes(tag) ? 'active' : ''}
+              aria-pressed={filters.tags.includes(tag)}
               key={tag}
               onClick={() => toggleFilter('tags', tag)}
             >
@@ -151,6 +152,7 @@ export function SchemeLibrary({
             <button
               type="button"
               className={filters.modes.includes(mode.id) ? 'active' : ''}
+              aria-pressed={filters.modes.includes(mode.id)}
               key={mode.id}
               onClick={() => toggleFilter('modes', mode.id)}
             >
@@ -163,6 +165,7 @@ export function SchemeLibrary({
             <button
               type="button"
               className={filters.weaponIds.includes(weapon.id) ? 'active' : ''}
+              aria-pressed={filters.weaponIds.includes(weapon.id)}
               key={weapon.id}
               onClick={() => toggleFilter('weaponIds', weapon.id)}
             >
@@ -187,6 +190,7 @@ export function SchemeLibrary({
                       <button
                         type="button"
                         className={filters.tags.includes(tag) ? 'active' : ''}
+                        aria-pressed={filters.tags.includes(tag)}
                         onClick={() => toggleFilter('tags', tag)}
                         key={tag}
                       >
@@ -200,6 +204,7 @@ export function SchemeLibrary({
                         <button
                           type="button"
                           className={`build-mode mode-${modeId} ${filters.modes.includes(modeId) ? 'active' : ''}`}
+                          aria-pressed={filters.modes.includes(modeId)}
                           onClick={() => toggleFilter('modes', modeId)}
                           key={modeId}
                         >
@@ -259,6 +264,7 @@ export function SchemeLibrary({
                           ? 'active'
                           : ''
                       }
+                      aria-pressed={filters.weaponIds.includes(schemeWeapon.id)}
                       onClick={() => toggleFilter('weaponIds', schemeWeapon.id)}
                     >
                       {schemeWeapon.name}
@@ -382,9 +388,9 @@ function FilterRow({
   children: ReactNode;
 }) {
   return (
-    <div className="scheme-filter-row">
-      <b>{label}</b>
+    <fieldset className="scheme-filter-row">
+      <legend>{label}</legend>
       <div>{children}</div>
-    </div>
+    </fieldset>
   );
 }
