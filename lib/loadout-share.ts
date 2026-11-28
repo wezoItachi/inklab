@@ -38,9 +38,12 @@ export function decodeLoadoutQuery(
     ? (legacyWeaponIdAliases[encodedWeaponId] ?? encodedWeaponId)
     : null;
   const encodedSlots = query.get('g');
-  const focusAbilityId = query.get('a');
+  const encodedFocusAbilityId = query.get('a');
+  const focusAbilityId =
+    encodedFocusAbilityId && abilityIds.has(encodedFocusAbilityId)
+      ? encodedFocusAbilityId
+      : null;
   if (!weaponId || !weaponIds.has(weaponId) || !encodedSlots) return undefined;
-  if (focusAbilityId && !abilityIds.has(focusAbilityId)) return undefined;
 
   const slots = encodedSlots
     .split(',')

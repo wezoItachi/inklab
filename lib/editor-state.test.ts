@@ -50,6 +50,25 @@ void test('local state restores when the URL has no valid build', () => {
   assert.equal(restored.state.selectedSlot, 0);
 });
 
+void test('a stale optional analysis id does not discard a valid shared build', () => {
+  const sharedLoadout = {
+    weaponId: weapons[4].id,
+    slots: clonePresetSlots(1),
+  };
+  const restored = resolveInitialEditorState({
+    urlSearch: `${encodeLoadoutQuery(sharedLoadout)}&a=removed-ability`,
+    savedSearch: null,
+    defaultWeaponId: weapons[0].id,
+    weaponIds,
+    abilityIds,
+  });
+
+  assert.equal(restored.source, 'url');
+  assert.equal(restored.state.weaponId, sharedLoadout.weaponId);
+  assert.deepEqual(restored.state.slots, sharedLoadout.slots);
+  assert.equal(restored.state.focus, sharedLoadout.slots[0][0]);
+});
+
 void test('invalid persisted state falls back to the first preset', () => {
   const restored = resolveInitialEditorState({
     urlSearch: '',

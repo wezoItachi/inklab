@@ -39,7 +39,7 @@ void test('share query preserves the selected ability analysis', () => {
   );
 });
 
-void test('share query rejects unknown ids and malformed AP totals', () => {
+void test('share query rejects unknown required ids and malformed AP totals', () => {
   const valid = encodeLoadoutQuery({
     weaponId: weapons[0].id,
     slots: clonePresetSlots(0),
@@ -60,9 +60,17 @@ void test('share query rejects unknown ids and malformed AP totals', () => {
     decodeLoadoutQuery(valid.replace('ssu', 'unknown'), weaponIds, abilityIds),
     undefined,
   );
-  assert.equal(
-    decodeLoadoutQuery(`${valid}&a=unknown`, weaponIds, abilityIds),
-    undefined,
+});
+
+void test('share query ignores a stale optional analysis id', () => {
+  const state = {
+    weaponId: weapons[0].id,
+    slots: clonePresetSlots(0),
+  };
+  const valid = encodeLoadoutQuery(state);
+  assert.deepEqual(
+    decodeLoadoutQuery(`${valid}&a=removed-ability`, weaponIds, abilityIds),
+    state,
   );
 });
 
