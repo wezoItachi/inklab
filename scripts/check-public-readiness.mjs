@@ -32,7 +32,12 @@ const privateContentPatterns = [
   {
     label: '常见访问令牌',
     pattern:
-      /(?:github_pat_[A-Za-z0-9_]{20,}|gh[pousr]_[A-Za-z0-9]{20,}|AKIA[0-9A-Z]{16}|sk-[A-Za-z0-9_-]{20,})/,
+      /(?:github_pat_[A-Za-z0-9_]{20,}|gh[pousr]_[A-Za-z0-9]{20,}|npm_[A-Za-z0-9]{30,}|glpat-[A-Za-z0-9_-]{20,}|xox[baprs]-[A-Za-z0-9-]{20,}|AKIA[0-9A-Z]{16}|AIza[0-9A-Za-z_-]{35}|sk-[A-Za-z0-9_-]{20,})/,
+  },
+  {
+    label: '含凭据的数据库地址',
+    pattern:
+      /(?:postgres(?:ql)?|mysql|mongodb(?:\+srv)?):\/\/[^:/\s]+:[^@/\s]+@/i,
   },
 ];
 
@@ -97,7 +102,12 @@ if (includeHistory) {
     {
       label: '常见访问令牌',
       pattern:
-        '(github_pat_[A-Za-z0-9_]{20,}|gh[pousr]_[A-Za-z0-9]{20,}|AKIA[0-9A-Z]{16}|sk-[A-Za-z0-9_-]{20,})',
+        '(github_pat_[A-Za-z0-9_]{20,}|gh[pousr]_[A-Za-z0-9]{20,}|npm_[A-Za-z0-9]{30,}|glpat-[A-Za-z0-9_-]{20,}|xox[baprs]-[A-Za-z0-9-]{20,}|AKIA[0-9A-Z]{16}|AIza[0-9A-Za-z_-]{35}|sk-[A-Za-z0-9_-]{20,})',
+    },
+    {
+      label: '含凭据的数据库地址',
+      pattern:
+        '(postgres(ql)?|mysql|mongodb(\\+srv)?):\\/\\/[^:/[:space:]]+:[^@/[:space:]]+@',
     },
   ];
 
