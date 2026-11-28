@@ -5778,6 +5778,16 @@ button {
 .weapon-picker-empty span {
   font-size: 9px;
 }
+.weapon-picker-empty button {
+  margin-top: 5px;
+  border: 1px solid var(--ink);
+  border-radius: var(--radius-control);
+  background: var(--ink);
+  color: #fff;
+  padding: 8px 11px;
+  font-size: 9px;
+  font-weight: 800;
+}
 @media (max-width: 680px) {
   .weapon-picker-backdrop {
     padding: 10px;

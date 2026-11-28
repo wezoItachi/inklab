@@ -272,6 +272,16 @@ export function WeaponPicker({
                   <output className="weapon-picker-empty">
                     <b>没有符合条件的武器</b>
                     <span>更换种类或搜索词后再试。</span>
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setFamily('全部');
+                        setQuery('');
+                        requestAnimationFrame(() => searchRef.current?.focus());
+                      }}
+                    >
+                      查看全部武器
+                    </button>
                   </output>
                 ) : null}
               </div>
