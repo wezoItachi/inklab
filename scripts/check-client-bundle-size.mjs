@@ -3,6 +3,8 @@ import { readFileSync, readdirSync } from 'node:fs';
 import { join } from 'node:path';
 
 const chunkDirectory = join('dist', 'client', '_next', 'static', 'chunks');
+const manifestPath = join('dist', 'client', '.vite', 'manifest.json');
+const manifest = JSON.parse(readFileSync(manifestPath, 'utf8'));
 const pageChunks = readdirSync(chunkDirectory).filter((name) =>
   /^page-[^.]+\.js$/.test(name),
 );
@@ -64,4 +66,50 @@ for (const [prefix, label] of lazySections) {
   }
 
   console.log(`按需模块检查通过：${chunk}。`);
+}
+
+function manifestEntryByName(name) {
+  return Object.entries(manifest).find(([, entry]) => entry.name === name);
+}
+
+function collectImportedNames(entryKey, visited = new Set()) {
+  if (visited.has(entryKey)) return visited;
+  visited.add(entryKey);
+  const entry = manifest[entryKey];
+  for (const importedKey of entry?.imports ?? []) {
+    collectImportedNames(importedKey, visited);
+  }
+  return visited;
+}
+
+const parameterChunkEntry = manifestEntryByName('weapons');
+if (!parameterChunkEntry) {
+  throw new Error('未找到主武参数数据库脚本，无法执行参数包预算检查。');
+}
+const [, parameterChunk] = parameterChunkEntry;
+const parameterSource = readFileSync(
+  join('dist', 'client', parameterChunk.file),
+);
+const parameterRawBytes = parameterSource.byteLength;
+const parameterGzipBytes = gzipSync(parameterSource).byteLength;
+console.log(
+  `主武参数数据库：${(parameterRawBytes / 1000).toFixed(1)} kB，gzip ${(parameterGzipBytes / 1000).toFixed(1)} kB。`,
+);
+if (parameterRawBytes > 900_000 || parameterGzipBytes > 35_000) {
+  throw new Error('主武参数数据库超过独立包预算，请检查是否误并入其他数据。');
+}
+
+for (const [featureName, label] of [
+  ['salmon-run-lab', '鲑鱼跑实验室'],
+  ['scheme-library', '玩家方案库'],
+]) {
+  const featureEntry = manifestEntryByName(featureName);
+  if (!featureEntry) throw new Error(`${label}缺少构建清单记录。`);
+  const importedNames = [...collectImportedNames(featureEntry[0])].map(
+    (key) => manifest[key]?.name,
+  );
+  if (importedNames.includes('weapons')) {
+    throw new Error(`${label}误加载完整主武参数数据库。`);
+  }
+  console.log(`${label}未加载完整主武参数数据库。`);
 }
