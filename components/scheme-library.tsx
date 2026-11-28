@@ -4,7 +4,7 @@ import { useState, type ReactNode } from 'react';
 import { Copy, Plus, Search, Sparkles, Zap } from 'lucide-react';
 import { AbilityIcon } from '@/components/ability-icon';
 import { abilities } from '@/lib/abilities';
-import { encodeLoadoutQuery } from '@/lib/loadout-share';
+import { buildLoadoutShareUrl } from '@/lib/loadout-share';
 import type { EditableLoadoutSlot } from '@/lib/loadouts';
 import {
   cloneSchemeSlots,
@@ -59,7 +59,11 @@ export function SchemeLibrary({
       schemeMatchesQuery(scheme, getWeapon(scheme.weaponId).name, query),
   );
   const copyScheme = async (scheme: ExampleScheme) => {
-    const url = `${window.location.origin}${window.location.pathname}?${encodeLoadoutQuery({ weaponId: scheme.weaponId, slots: cloneSchemeSlots(scheme) })}`;
+    const url = buildLoadoutShareUrl(
+      window.location.origin,
+      window.location.pathname,
+      { weaponId: scheme.weaponId, slots: cloneSchemeSlots(scheme) },
+    );
     try {
       await navigator.clipboard.writeText(url);
       setCopyStatus(scheme.id);
