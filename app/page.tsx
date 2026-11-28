@@ -427,11 +427,12 @@ export default function Home() {
   const openScheme = (
     nextWeaponId: string,
     nextSlots: EditableLoadoutSlot[],
+    nextFocusAbilityId: string,
   ) => {
     setWeaponId(nextWeaponId);
     setSlots(nextSlots);
     setSelectedSlot(0);
-    setFocus(nextSlots[0]?.[0] ?? 'iss');
+    setFocus(nextFocusAbilityId);
     setAnalysisApPreview(null);
     setPage('lab');
     setLabMode('single');

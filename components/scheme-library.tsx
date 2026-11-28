@@ -25,7 +25,11 @@ import {
 export function SchemeLibrary({
   onOpen,
 }: {
-  onOpen: (weaponId: string, slots: EditableLoadoutSlot[]) => void;
+  onOpen: (
+    weaponId: string,
+    slots: EditableLoadoutSlot[],
+    focusAbilityId: string,
+  ) => void;
 }) {
   const [query, setQuery] = useState(''),
     [copyStatus, setCopyStatus] = useState<string | null>(null);
@@ -62,7 +66,11 @@ export function SchemeLibrary({
     const url = buildLoadoutShareUrl(
       window.location.origin,
       window.location.pathname,
-      { weaponId: scheme.weaponId, slots: cloneSchemeSlots(scheme) },
+      {
+        weaponId: scheme.weaponId,
+        slots: cloneSchemeSlots(scheme),
+        focusAbilityId: scheme.focusAbilityId,
+      },
     );
     try {
       await navigator.clipboard.writeText(url);
@@ -308,7 +316,11 @@ export function SchemeLibrary({
                     type="button"
                     className="lab-action"
                     onClick={() =>
-                      onOpen(scheme.weaponId, cloneSchemeSlots(scheme))
+                      onOpen(
+                        scheme.weaponId,
+                        cloneSchemeSlots(scheme),
+                        scheme.focusAbilityId,
+                      )
                     }
                   >
                     <Zap size={14} /> 打开实验室微调

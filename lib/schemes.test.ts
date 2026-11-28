@@ -2,7 +2,14 @@ import assert from 'node:assert/strict';
 import test from 'node:test';
 import { abilities } from './abilities.ts';
 import { totalAp } from './loadouts.ts';
-import { cloneSchemeSlots, exampleSchemes, gameModes, schemeMatchesFilters, schemeMatchesMode, schemeMatchesQuery } from './schemes.ts';
+import {
+  cloneSchemeSlots,
+  exampleSchemes,
+  gameModes,
+  schemeMatchesFilters,
+  schemeMatchesMode,
+  schemeMatchesQuery,
+} from './schemes.ts';
 import { weapons } from './weapons.ts';
 
 void test('example schemes are complete editable 57 AP loadouts', () => {
@@ -10,26 +17,64 @@ void test('example schemes are complete editable 57 AP loadouts', () => {
   const weaponIds = new Set(weapons.map(({ id }) => id));
   const modeIds = new Set(gameModes.map(({ id }) => id));
 
-  assert.equal(new Set(exampleSchemes.map(({ id }) => id)).size, exampleSchemes.length);
+  assert.equal(
+    new Set(exampleSchemes.map(({ id }) => id)).size,
+    exampleSchemes.length,
+  );
   for (const scheme of exampleSchemes) {
     assert.equal(weaponIds.has(scheme.weaponId), true);
+    assert.equal(abilityIds.has(scheme.focusAbilityId), true);
+    assert.equal(
+      scheme.slots.some(([abilityId]) => abilityId === scheme.focusAbilityId),
+      true,
+    );
     assert.equal(scheme.modes.length > 0, true);
     assert.equal(new Set(scheme.modes).size, scheme.modes.length);
-    assert.equal(scheme.modes.every(mode => modeIds.has(mode)), true);
+    assert.equal(
+      scheme.modes.every((mode) => modeIds.has(mode)),
+      true,
+    );
     assert.equal(scheme.slots.length, 12);
     assert.equal(totalAp(scheme.slots), 57);
     assert.equal(scheme.slots.filter(([, ap]) => ap === 10).length, 3);
     assert.equal(scheme.slots.filter(([, ap]) => ap === 3).length, 9);
-    assert.equal(scheme.slots.every(([abilityId]) => abilityIds.has(abilityId)), true);
+    assert.equal(
+      scheme.slots.every(([abilityId]) => abilityIds.has(abilityId)),
+      true,
+    );
   }
 });
 
-void test('faceted scheme filters combine groups with AND and choices inside a group with OR',()=>{
-  const filters={tags:['副武压制'],modes:['zones'] as const,weaponIds:['shooter-quickmiddle-cstm01']};
-  assert.equal(schemeMatchesFilters(exampleSchemes[0],filters),true);
-  assert.equal(schemeMatchesFilters(exampleSchemes[1],filters),false);
-  assert.equal(schemeMatchesFilters(exampleSchemes[0],{...filters,modes:['turf']}),false);
-  assert.equal(schemeMatchesFilters(exampleSchemes[0],{...filters,tags:['不存在','副武压制']}),true);
+void test('each example opens on the ability that explains its stated direction', () => {
+  assert.deepEqual(
+    exampleSchemes.map(({ id, focusAbilityId }) => [id, focusAbilityId]),
+    [
+      ['sample-0042', 'subp'],
+      ['sample-0043', 'ssu'],
+      ['sample-0044', 'spu'],
+    ],
+  );
+});
+
+void test('faceted scheme filters combine groups with AND and choices inside a group with OR', () => {
+  const filters = {
+    tags: ['副武压制'],
+    modes: ['zones'] as const,
+    weaponIds: ['shooter-quickmiddle-cstm01'],
+  };
+  assert.equal(schemeMatchesFilters(exampleSchemes[0], filters), true);
+  assert.equal(schemeMatchesFilters(exampleSchemes[1], filters), false);
+  assert.equal(
+    schemeMatchesFilters(exampleSchemes[0], { ...filters, modes: ['turf'] }),
+    false,
+  );
+  assert.equal(
+    schemeMatchesFilters(exampleSchemes[0], {
+      ...filters,
+      tags: ['不存在', '副武压制'],
+    }),
+    true,
+  );
 });
 
 void test('scheme clones do not mutate the library source', () => {
