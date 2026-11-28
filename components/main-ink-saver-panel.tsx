@@ -1,7 +1,7 @@
 import { Check, TrendingUp } from 'lucide-react';
 import type { Ability } from '@/lib/abilities';
 import { getMainInkSaverAnalysis } from '@/lib/main-ink-saver';
-import type { Weapon } from '@/lib/weapons';
+import type { Weapon } from '@/lib/weapon-catalog';
 import { AbilityIcon } from './ability-icon';
 
 export function MainInkSaverPanel({

@@ -15,7 +15,7 @@ import {
   type ExampleScheme,
   type SchemeFilters,
 } from '@/lib/schemes';
-import { DATA_VERSION, getWeapon } from '@/lib/weapons';
+import { DATA_VERSION, getWeapon } from '@/lib/weapon-catalog';
 import {
   getMainWeaponAssetUrl,
   getSpecialWeaponAssetUrl,

@@ -1,4 +1,4 @@
-import { weapons, type WeaponFamily } from './weapons.ts';
+import { weapons, type WeaponFamily } from './weapon-catalog.ts';
 import salmonWeaponNamesJson from '../database/salmon-weapon-names.v12.0.0.json' with { type: 'json' };
 
 export type SalmonRole = 'frontline' | 'flex' | 'ranged' | 'control';
