@@ -15,7 +15,7 @@
   "scripts": {
     "dev": "vinext dev",
     "build": "vite build",
-    "start": "wrangler dev --config dist/server/wrangler.json",
+    "start": "node scripts/start-production.mjs",
     "test": "node --experimental-strip-types --test lib/*.test.ts",
     "data:import-weapons": "node scripts/import-leanny-weapons.mjs",
     "data:import-shooter-parameters": "node scripts/import-leanny-shooter-parameters.mjs",
@@ -45,11 +45,11 @@
   "dependencies": {
     "clsx": "2.1.1",
     "lucide-react": "1.31.0",
-    "react": "19.2.9",
-    "react-dom": "19.2.9",
-    "react-server-dom-webpack": "19.2.9",
+    "react": "19.3.1",
+    "react-dom": "19.3.1",
+    "react-server-dom-webpack": "19.3.1",
     "tailwind-merge": "3.6.0",
-    "vinext": "1.0.1"
+    "vinext": "1.4.7"
   },
   "devDependencies": {
     "@cloudflare/vite-plugin": "1.37.1",
@@ -57,10 +57,10 @@
     "@openai/sites-vite-plugin": "0.2.0",
     "@tailwindcss/postcss": "4.2.1",
     "@types/node": "22.19.19",
-    "@types/react": "19.2.14",
-    "@types/react-dom": "19.2.3",
+    "@types/react": "19.3.3",
+    "@types/react-dom": "19.3.0",
     "@vitejs/plugin-react": "6.0.2",
-    "@vitejs/plugin-rsc": "0.5.34",
+    "@vitejs/plugin-rsc": "0.5.39",
     "oxfmt": "0.61.0",
     "oxlint": "1.76.0",
     "oxlint-tsgolint": "7.0.2001",
