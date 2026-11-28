@@ -396,6 +396,7 @@ export default function Home() {
       );
       return () => window.clearTimeout(timer);
     }
+    return undefined;
   }, [focus, localReady, slots, weaponId]);
   const applyRecommendation = (i: number) => {
     const recommendation = recommendations[i];

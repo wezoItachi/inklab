@@ -16,17 +16,17 @@ export class SectionErrorBoundary extends Component<
   SectionErrorBoundaryProps,
   SectionErrorBoundaryState
 > {
-  state: SectionErrorBoundaryState = { failed: false };
+  override state: SectionErrorBoundaryState = { failed: false };
 
   static getDerivedStateFromError(): SectionErrorBoundaryState {
     return { failed: true };
   }
 
-  componentDidCatch(_error: Error, _info: ErrorInfo) {
+  override componentDidCatch(_error: Error, _info: ErrorInfo) {
     // The public fallback remains local and does not transmit error details.
   }
 
-  render() {
+  override render() {
     if (!this.state.failed) return this.props.children;
 
     return (
