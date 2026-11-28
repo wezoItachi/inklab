@@ -146,9 +146,17 @@ export function SalmonRunLab() {
     )
       setSelectedIds(matches.map((item) => item!.id));
   };
-  const fetchSchedule = async () => {
+  const getScheduleStorage = () => {
+    try {
+      return window.localStorage;
+    } catch {
+      return null;
+    }
+  };
+  const fetchSchedule = async (signal?: AbortSignal) => {
     const response = await fetch('/api/salmon-schedule', {
       cache: 'no-store',
+      signal,
     });
     if (!response.ok) throw new Error(`schedule ${response.status}`);
     const envelope = parseSalmonScheduleEnvelope(await response.json());
@@ -156,7 +164,9 @@ export function SalmonRunLab() {
     return envelope;
   };
   const acceptCachedSchedule = () => {
-    const cached = readSalmonScheduleCache(window.localStorage);
+    const storage = getScheduleStorage();
+    if (!storage) return false;
+    const cached = readSalmonScheduleCache(storage);
     if (!cached) return false;
     try {
       acceptSchedule(cached, 'cached');
@@ -169,7 +179,8 @@ export function SalmonRunLab() {
     setStatus('loading');
     void fetchSchedule()
       .then((envelope) => {
-        writeSalmonScheduleCache(window.localStorage, envelope);
+        const storage = getScheduleStorage();
+        if (storage) writeSalmonScheduleCache(storage, envelope);
         acceptSchedule(envelope, 'live');
       })
       .catch(() => {
@@ -181,10 +192,12 @@ export function SalmonRunLab() {
   });
   useEffect(() => {
     let active = true;
-    void fetchSchedule()
+    const controller = new AbortController();
+    void fetchSchedule(controller.signal)
       .then((envelope) => {
         if (!active) return;
-        writeSalmonScheduleCache(window.localStorage, envelope);
+        const storage = getScheduleStorage();
+        if (storage) writeSalmonScheduleCache(storage, envelope);
         acceptSchedule(envelope, 'live');
       })
       .catch(() => {
@@ -192,6 +205,7 @@ export function SalmonRunLab() {
       });
     return () => {
       active = false;
+      controller.abort();
     };
   }, []);
   useEffect(() => {
