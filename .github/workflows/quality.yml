@@ -56,3 +56,6 @@ jobs:
 
       - name: Check client bundle budget
         run: pnpm check:bundle
+
+      - name: Smoke-test production preview
+        run: pnpm check:preview

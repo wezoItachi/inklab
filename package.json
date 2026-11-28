@@ -40,6 +40,7 @@
     "lint": "oxlint",
     "format": "oxfmt",
     "check:public": "node scripts/check-public-readiness.mjs",
+    "check:preview": "node scripts/check-production-preview.mjs",
     "check:bundle": "node scripts/check-client-bundle-size.mjs"
   },
   "dependencies": {
