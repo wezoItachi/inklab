@@ -1197,18 +1197,14 @@ export default function Home() {
                           : '未选择槽位 · 点击配装槽或装备部位开始'}
                       </small>
                     </Title>
-                    <div
-                      className="ability-part-tabs"
-                      role="tablist"
-                      aria-label="装备部位"
-                    >
+                    <fieldset className="ability-part-tabs">
+                      <legend className="visually-hidden">装备部位</legend>
                       {abilityParts.map((part) => {
                         const active = selectedPart?.id === part.id;
                         return (
                           <button
                             type="button"
-                            role="tab"
-                            aria-selected={active}
+                            aria-pressed={active}
                             className={active ? 'active' : ''}
                             key={part.id}
                             onClick={() => selectAbilityPart(part.firstSlot)}
@@ -1224,22 +1220,27 @@ export default function Home() {
                           </button>
                         );
                       })}
-                    </div>
+                    </fieldset>
                     <div className="filter mini-filter ability-category-filter">
-                      <div>
+                      <fieldset className="ability-filter-group">
+                        <legend className="visually-hidden">
+                          能力分类筛选
+                        </legend>
                         {abilityFilterGroups.map((filterGroup) => (
                           <button
                             type="button"
                             key={filterGroup}
                             className={group === filterGroup ? 'active' : ''}
+                            aria-pressed={group === filterGroup}
                             onClick={() => selectAbilityGroup(filterGroup)}
                           >
                             {filterGroup}
                           </button>
                         ))}
-                      </div>
+                      </fieldset>
                       <label>
                         <Search size={14} />
+                        <span className="visually-hidden">搜索装备能力</span>
                         <input
                           value={query}
                           onChange={(e) => setQuery(e.target.value)}

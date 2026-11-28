@@ -65,6 +65,7 @@ export function AbilityWiki({
         </div>
         <label className="wiki-search">
           <Search size={15} />
+          <span className="visually-hidden">搜索能力</span>
           <input
             value={query}
             onChange={(event) => setQuery(event.target.value)}

@@ -34,10 +34,22 @@ export class SectionErrorBoundary extends Component<
         <AlertTriangle size={24} />
         <small>SECTION LOAD ERROR</small>
         <h1>{this.props.sectionLabel}暂时无法载入</h1>
-        <p>本次错误没有上传；可以重新载入本地页面再试。</p>
-        <button type="button" onClick={() => window.location.reload()}>
-          <RefreshCw size={15} /> 重新载入页面
-        </button>
+        <p>本次错误没有上传；可以先重试当前分区，不会清空其他本地状态。</p>
+        <div className="section-error-actions">
+          <button
+            type="button"
+            onClick={() => this.setState({ failed: false })}
+          >
+            <RefreshCw size={15} /> 重试当前分区
+          </button>
+          <button
+            type="button"
+            className="secondary"
+            onClick={() => window.location.reload()}
+          >
+            重新载入页面
+          </button>
+        </div>
       </section>
     );
   }

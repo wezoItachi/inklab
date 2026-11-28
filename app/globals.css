@@ -869,6 +869,9 @@ button {
   grid-template-columns: repeat(3, 1fr);
   gap: 6px;
   margin-bottom: 7px;
+  min-width: 0;
+  padding: 0;
+  border: 0;
 }
 .ability-part-tabs button {
   display: flex;
@@ -905,9 +908,14 @@ button {
 .ability-category-filter {
   align-items: flex-end;
 }
-.ability-category-filter > div {
+.ability-category-filter > .ability-filter-group {
+  display: flex;
   flex: 1;
   flex-wrap: wrap;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
 }
 .ability-category-filter button {
   padding: 6px 7px;
@@ -5319,7 +5327,7 @@ button {
   gap: 8px;
   border-bottom: 0;
 }
-.ability-category-filter > div {
+.ability-category-filter > .ability-filter-group {
   gap: 4px;
 }
 .ability-category-filter button {
@@ -5458,7 +5466,14 @@ button {
   margin: 0;
 }
 
-.section-error-state button {
+.section-error-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.55rem;
+}
+
+.section-error-actions button {
   display: inline-flex;
   align-items: center;
   gap: 0.45rem;
@@ -5467,6 +5482,11 @@ button {
   background: var(--ink);
   color: #fff;
   padding: 0.7rem 1rem;
+}
+
+.section-error-actions button.secondary {
+  background: transparent;
+  color: var(--ink);
 }
 
 .weapon-picker-trigger {

@@ -114,6 +114,7 @@ export function SchemeLibrary({
         </div>
         <label>
           <Search size={14} />
+          <span className="visually-hidden">搜索玩家方案</span>
           <input
             value={query}
             onChange={(event) => setQuery(event.target.value)}
