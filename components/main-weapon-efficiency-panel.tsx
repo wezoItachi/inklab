@@ -1013,7 +1013,7 @@ export function MainWeaponEfficiencyPanel({ weaponId }: { weaponId: string }) {
     shelterAnalysis?.verifiedInputCount ??
     brushAnalysis?.verifiedInputCount ??
     slosherAnalysis?.verifiedInputCount;
-  const coreInputCount = spinnerAnalysis
+  const modelInputCount = spinnerAnalysis
     ? 23
     : shooterAnalysis
       ? 6
@@ -1039,10 +1039,15 @@ export function MainWeaponEfficiencyPanel({ weaponId }: { weaponId: string }) {
         <span>主要武器效率与射击数</span>
         <b>
           {analysis
-            ? `${verifiedInputCount}/${coreInputCount} 核心字段 · 100 HP`
+            ? `${verifiedInputCount}/${modelInputCount} 试算输入 · 100 HP`
             : '参数待验证'}
         </b>
       </summary>
+      {analysis ? (
+        <p className="main-efficiency-scope-note">
+          此处只统计当前结果模型实际读取的输入；整把武器的全部已建字段与剩余证据路线以上方“主武参数覆盖”为准。
+        </p>
+      ) : null}
       <RangeEvidenceContent evidence={rangeEvidence} />
       <ActionCycleEvidenceContent entries={actionCycleEvidence} />
       <CapabilityEvidenceContent entries={capabilityEvidence} />

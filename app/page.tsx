@@ -258,6 +258,9 @@ export default function Home() {
     'idle',
   );
   const [localReady, setLocalReady] = useState(false);
+  const [restoreNotice, setRestoreNotice] = useState<'url' | 'local' | null>(
+    null,
+  );
   const [storageStatus, setStorageStatus] = useState<
     'checking' | 'available' | 'unavailable'
   >('checking');
@@ -325,6 +328,7 @@ export default function Home() {
   );
   const currentPresetName = recommendations[activePreset]?.name ?? '自定义配装';
   useEffect(() => {
+    let noticeTimer: number | undefined;
     const timer = window.setTimeout(() => {
       const weaponIds = new Set(weapons.map(({ id }) => id)),
         abilityIds = new Set(abilities.map(({ id }) => id));
@@ -347,10 +351,15 @@ export default function Home() {
         setSlots(restored.state.slots);
         setFocus(restored.state.focus);
         setSelectedSlot(restored.state.selectedSlot);
+        setRestoreNotice(restored.source);
+        noticeTimer = window.setTimeout(() => setRestoreNotice(null), 5000);
       }
       setLocalReady(true);
     }, 0);
-    return () => window.clearTimeout(timer);
+    return () => {
+      window.clearTimeout(timer);
+      if (noticeTimer !== undefined) window.clearTimeout(noticeTimer);
+    };
   }, []);
   useEffect(() => {
     if (localReady) {
@@ -538,9 +547,13 @@ export default function Home() {
           ? '分享链接已复制。'
           : shareStatus === 'error'
             ? '分享链接复制失败，链接已写入浏览器地址栏。'
-            : storageStatus === 'unavailable'
-              ? '浏览器本地存储不可用，本次编辑不会自动保存在此浏览器。'
-              : '';
+            : restoreNotice === 'url'
+              ? '已从分享链接导入武器、57AP 配装与当前分析能力。'
+              : restoreNotice === 'local'
+                ? '已恢复此浏览器上次保存的配装与分析能力。'
+                : storageStatus === 'unavailable'
+                  ? '浏览器本地存储不可用，本次编辑不会自动保存在此浏览器。'
+                  : '';
   return (
     <main className={`lab-surface zone-${pageMeta.zone}`}>
       <output className="visually-hidden" aria-live="polite" aria-atomic="true">
@@ -966,11 +979,15 @@ export default function Home() {
                       <div>
                         <h3>{currentPresetName}</h3>
                         <small>
-                          {!localReady || storageStatus === 'checking'
-                            ? '正在读取本机配装'
-                            : storageStatus === 'available'
-                              ? '已自动保存在此浏览器'
-                              : '本地存储不可用 · 可复制链接保留配装'}
+                          {restoreNotice === 'url'
+                            ? '已从分享链接导入 · 可继续修改'
+                            : restoreNotice === 'local'
+                              ? '已恢复上次配装与分析能力'
+                              : !localReady || storageStatus === 'checking'
+                                ? '正在读取本机配装'
+                                : storageStatus === 'available'
+                                  ? '已自动保存在此浏览器'
+                                  : '本地存储不可用 · 可复制链接保留配装'}
                         </small>
                         {activePreset < 0 && (
                           <>
