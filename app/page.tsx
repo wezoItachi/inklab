@@ -578,6 +578,9 @@ export default function Home() {
                   : '';
   return (
     <main className={`lab-surface zone-${pageMeta.zone}`}>
+      <a className="skip-link" href="#workspace-start">
+        跳到当前实验区
+      </a>
       <output className="visually-hidden" aria-live="polite" aria-atomic="true">
         {operationAnnouncement}
       </output>
@@ -588,12 +591,12 @@ export default function Home() {
             INKLAB <b>墨水研究与配装实验室</b>
           </div>
         </div>
-        <nav>
+        <nav aria-label="主要栏目">
           <button
             type="button"
             data-code="01"
             className={page === 'lab' ? 'active' : ''}
-            aria-pressed={page === 'lab'}
+            aria-current={page === 'lab' ? 'page' : undefined}
             onClick={() => {
               navigatePage('lab');
               setLabMode('single');
@@ -605,7 +608,7 @@ export default function Home() {
             type="button"
             data-code="02"
             className={page === 'salmon' ? 'active' : ''}
-            aria-pressed={page === 'salmon'}
+            aria-current={page === 'salmon' ? 'page' : undefined}
             onClick={() => navigatePage('salmon')}
           >
             鲑鱼跑实验室
@@ -614,7 +617,7 @@ export default function Home() {
             type="button"
             data-code="03"
             className={page === 'wiki' ? 'active' : ''}
-            aria-pressed={page === 'wiki'}
+            aria-current={page === 'wiki' ? 'page' : undefined}
             onClick={() => navigatePage('wiki')}
           >
             能力百科
@@ -623,7 +626,7 @@ export default function Home() {
             type="button"
             data-code="04"
             className={page === 'library' ? 'active' : ''}
-            aria-pressed={page === 'library'}
+            aria-current={page === 'library' ? 'page' : undefined}
             onClick={() => navigatePage('library')}
           >
             玩家方案
@@ -632,7 +635,7 @@ export default function Home() {
             type="button"
             data-code="05"
             className={page === 'motion' ? 'active' : ''}
-            aria-pressed={page === 'motion'}
+            aria-current={page === 'motion' ? 'page' : undefined}
             onClick={() => navigatePage('motion')}
           >
             操作实验
@@ -652,6 +655,11 @@ export default function Home() {
         <span>DATASET / VER.{DATA_VERSION}</span>
         <span>SESSION / LOCAL</span>
       </div>
+      <span
+        id="workspace-start"
+        className="workspace-focus-anchor"
+        tabIndex={-1}
+      />
       <SectionErrorBoundary key={page} sectionLabel={pageMeta.label}>
         {page === 'salmon' ? (
           <Suspense
@@ -727,6 +735,7 @@ export default function Home() {
               <button
                 type="button"
                 className={labMode === 'single' ? 'active' : ''}
+                aria-pressed={labMode === 'single'}
                 onClick={() => setLabMode('single')}
               >
                 <Zap size={15} /> 单套配装分析
@@ -734,6 +743,7 @@ export default function Home() {
               <button
                 type="button"
                 className={labMode === 'planner' ? 'active' : ''}
+                aria-pressed={labMode === 'planner'}
                 onClick={() => setLabMode('planner')}
               >
                 <Layers size={15} /> 通用装备规划

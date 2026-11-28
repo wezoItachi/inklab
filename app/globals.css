@@ -6,6 +6,9 @@
   --purple: #6d4aff;
   --line: #dedbd2;
   --acid: #d9ff35;
+  --violet: var(--purple);
+  --muted: #77736b;
+  --font-mono: ui-monospace, 'SFMono-Regular', Consolas, monospace;
 }
 * {
   box-sizing: border-box;
@@ -5383,6 +5386,32 @@ button {
   clip: rect(0 0 0 0) !important;
   clip-path: inset(50%) !important;
   white-space: nowrap !important;
+}
+
+.skip-link {
+  position: fixed;
+  z-index: 1000;
+  top: 12px;
+  left: 12px;
+  padding: 10px 14px;
+  border: 2px solid var(--violet);
+  border-radius: 10px;
+  background: #fff;
+  color: var(--ink);
+  font-weight: 800;
+  transform: translateY(calc(-100% - 24px));
+  transition: transform 120ms ease;
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+}
+
+.workspace-focus-anchor {
+  display: block;
+  height: 0;
+  scroll-margin-top: 12px;
+  outline: none;
 }
 
 .page-loading-state {
