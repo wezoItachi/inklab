@@ -5,6 +5,7 @@ import { Copy, Plus, Search, Sparkles, Zap } from 'lucide-react';
 import { AbilityIcon } from '@/components/ability-icon';
 import { abilities } from '@/lib/abilities';
 import { buildLoadoutShareUrl } from '@/lib/loadout-share';
+import { copyTextToClipboard } from '@/lib/clipboard';
 import type { EditableLoadoutSlot } from '@/lib/loadouts';
 import {
   cloneSchemeSlots,
@@ -72,11 +73,11 @@ export function SchemeLibrary({
         focusAbilityId: scheme.focusAbilityId,
       },
     );
-    try {
-      await navigator.clipboard.writeText(url);
+    if (await copyTextToClipboard(url)) {
       setCopyStatus(scheme.id);
       setTimeout(() => setCopyStatus(null), 1800);
-    } catch {
+    } else {
+      window.history.replaceState(null, '', url);
       setCopyStatus('error:' + scheme.id);
     }
   };
@@ -84,7 +85,7 @@ export function SchemeLibrary({
     <section className="workspace library-page">
       <output className="visually-hidden" aria-live="polite" aria-atomic="true">
         {copyStatus?.startsWith('error:')
-          ? '分享链接复制失败。'
+          ? '分享链接复制失败，链接已写入浏览器地址栏。'
           : copyStatus
             ? '分享链接已复制。'
             : ''}

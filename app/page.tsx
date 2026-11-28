@@ -58,6 +58,7 @@ import {
   LOCAL_LOADOUT_KEY,
 } from '@/lib/loadout-share';
 import { resolveInitialEditorState } from '@/lib/editor-state';
+import { copyTextToClipboard } from '@/lib/clipboard';
 import { WeaponPicker } from '@/components/weapon-picker';
 import { SectionErrorBoundary } from '@/components/section-error-boundary';
 import type { WeaponPickerItem } from '@/lib/weapon-picker';
@@ -500,11 +501,10 @@ export default function Home() {
       },
     );
     window.history.replaceState(null, '', url);
-    try {
-      await navigator.clipboard.writeText(url);
+    if (await copyTextToClipboard(url)) {
       setShareStatus('copied');
       setTimeout(() => setShareStatus('idle'), 1800);
-    } catch {
+    } else {
       setShareStatus('error');
     }
   };
