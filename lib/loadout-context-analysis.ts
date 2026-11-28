@@ -26,6 +26,7 @@ export type ContextMetric = {
   note: string;
   state: 'verified' | 'weapon-specific' | 'equipped' | 'pending' | 'empty';
   abilityId?: string;
+  relatedAbilityIds?: readonly string[];
 };
 
 export type ContextSection = {
@@ -210,6 +211,7 @@ export function buildLoadoutContextSections(
         : `${analysis.speedClassLabel}当前速度为每秒 ${analysis.speedPerSecond.toFixed(1)} 单位。`,
       state: 'equipped',
       abilityId: 'ssu',
+      relatedAbilityIds: hasNinjaSquid ? ['ninja'] : undefined,
     });
   }
   if (runSpeedAp > 0) {
@@ -236,6 +238,7 @@ export function buildLoadoutContextSections(
         : `完整跳跃缩短 ${analysis.savedFrames} 帧，当前约 ${analysis.totalSeconds.toFixed(2)} 秒。`,
       state: 'equipped',
       abilityId: 'qsj',
+      relatedAbilityIds: hasStealthJump ? ['stealth'] : undefined,
     });
   }
   if (actionAp > 0) {
@@ -272,6 +275,7 @@ export function buildLoadoutContextSections(
         : `满足触发条件时缩短 ${analysis.savedFrames.toFixed(0)} 帧。`,
       state: 'equipped',
       abilityId: 'qr',
+      relatedAbilityIds: hasRespawnPunisher ? ['rp'] : undefined,
     });
   }
   if (enemyInkAp > 0) {

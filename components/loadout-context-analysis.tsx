@@ -10,6 +10,16 @@ const stateLabels = {
   empty: '未投入',
 } as const;
 
+function metricMatchesAbility(
+  metric: { abilityId?: string; relatedAbilityIds?: readonly string[] },
+  selectedAbilityId: string,
+) {
+  return (
+    metric.abilityId === selectedAbilityId ||
+    metric.relatedAbilityIds?.includes(selectedAbilityId) === true
+  );
+}
+
 export function LoadoutContextAnalysis({
   weapon,
   totals,
@@ -25,14 +35,26 @@ export function LoadoutContextAnalysis({
   return (
     <>
       {sections.map((section, index) => (
-        <details open={index === 0} key={section.id}>
+        <details
+          open={
+            index === 0 ||
+            section.metrics.some((metric) =>
+              metricMatchesAbility(metric, selectedAbilityId),
+            )
+          }
+          key={section.id}
+        >
           <summary>
             <span>{section.title}</span>
             <b>{section.summary}</b>
           </summary>
           <div className="context-analysis-grid">
             {section.metrics.map((metric) => {
-              const isSelected = metric.abilityId === selectedAbilityId;
+              const isPrimarySelected = metric.abilityId === selectedAbilityId;
+              const isSelected = metricMatchesAbility(
+                metric,
+                selectedAbilityId,
+              );
               return (
                 <article
                   className={`${metric.state}${isSelected ? ' selected' : ''}`}
@@ -48,10 +70,14 @@ export function LoadoutContextAnalysis({
                     <button
                       type="button"
                       className="context-analysis-link"
-                      aria-pressed={isSelected}
+                      aria-pressed={isPrimarySelected}
                       onClick={() => onSelectAbility(metric.abilityId!)}
                     >
-                      {isSelected ? '当前正在分析' : '查看单项分析'}
+                      {isPrimarySelected
+                        ? '当前正在分析'
+                        : isSelected
+                          ? '查看关联曲线'
+                          : '查看单项分析'}
                     </button>
                   )}
                 </article>

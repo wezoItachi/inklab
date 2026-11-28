@@ -82,10 +82,13 @@ void test('fixed main abilities merge with their verified current-loadout models
   const special = sections.find(({ id }) => id === 'special');
 
   assert.equal(mobility?.metrics[0]?.label, '游速＋隐游');
+  assert.deepEqual(mobility?.metrics[0]?.relatedAbilityIds, ['ninja']);
   assert.match(mobility?.metrics[0]?.note ?? '', /0\.9 倍固定修正/);
   assert.equal(mobility?.metrics[1]?.label, '快跳＋隐跳');
+  assert.deepEqual(mobility?.metrics[1]?.relatedAbilityIds, ['stealth']);
   assert.match(mobility?.metrics[1]?.note ?? '', /最多增加到/);
   assert.equal(survival?.metrics[0]?.label, '快活＋死惩');
+  assert.deepEqual(survival?.metrics[0]?.relatedAbilityIds, ['rp']);
   assert.match(survival?.metrics[0]?.note ?? '', /固定复活代价/);
   assert.match(special?.metrics[1]?.note ?? '', /自身提升复活惩罚代价/);
   assert.equal(
@@ -155,13 +158,19 @@ void test('every linked context metric routes to a known ability', () => {
       { id: 'ism', ap: 6 },
       { id: 'ninja', ap: 10 },
       { id: 'stealth', ap: 10 },
+      { id: 'qr', ap: 3 },
+      { id: 'rp', ap: 10 },
     ]);
     for (const metric of sections.flatMap(({ metrics }) => metrics)) {
-      if (metric.abilityId) {
+      for (const abilityId of [
+        metric.abilityId,
+        ...(metric.relatedAbilityIds ?? []),
+      ]) {
+        if (!abilityId) continue;
         assert.equal(
-          abilityIds.has(metric.abilityId),
+          abilityIds.has(abilityId),
           true,
-          `${weapon.name}: ${metric.label} -> ${metric.abilityId}`,
+          `${weapon.name}: ${metric.label} -> ${abilityId}`,
         );
       }
     }
