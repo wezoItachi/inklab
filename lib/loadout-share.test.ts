@@ -73,6 +73,8 @@ void test('an active shared address can preserve its current section hash', () =
   assert.equal(url.endsWith('#wiki'), true);
   assert.equal(hasLoadoutShareQuery(new URL(url).search), true);
   assert.equal(hasLoadoutShareQuery('?view=wiki'), false);
+  assert.equal(hasLoadoutShareQuery('?w=shooter-precision'), false);
+  assert.equal(hasLoadoutShareQuery('?g=ssu.10'), false);
 });
 
 void test('share query rejects unknown required ids and malformed AP totals', () => {

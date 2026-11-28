@@ -39,7 +39,7 @@ export function buildLoadoutShareUrl(
 
 export function hasLoadoutShareQuery(search: string) {
   const query = new URLSearchParams(search);
-  return query.has('w') || query.has('g');
+  return query.has('w') && query.has('g');
 }
 
 export function decodeLoadoutQuery(
